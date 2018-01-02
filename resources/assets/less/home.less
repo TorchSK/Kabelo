@@ -1,0 +1,150 @@
+#cover{
+	height: 60vh;
+	background-image: url('/img/overlays/dot.png'), url('/img/cover.jpg');
+	background-size: auto, cover;
+
+	#cover_div{
+		position: absolute;
+		top: 25%;
+		left: 15%;
+		text-align: center;
+		width: 35%;
+		line-height: 8em;
+
+		#slogan{
+			font-size: 8em;
+			font-family: "hwt-artz";
+
+			o{
+				color: @brown;
+			}
+		}
+	}
+}
+
+#under_cover{
+	background-color: @brown;
+	text-align: center;
+
+	img{
+		display: inline-block;
+		margin: 35px 130px;
+		position: relative;
+		opacity: 0.8;
+	}
+}
+
+.content{
+	display: flex;
+
+	#filters{
+		background-color: rgba(0,0,0,0.05);
+
+		#product_search{
+			margin-bottom: 15px;
+
+			.ui.input{
+
+				input{
+					background-color: rgba(255,255,255,0.5);
+					border: none;
+					border-radius: 0;
+				}
+			}
+
+		}
+
+		.item{
+			margin: 0px 20px;
+			padding: 10px;
+			border-radius: 3px;
+			cursor: pointer;
+			transition: all 0.3s;
+
+
+			&:hover{
+				background-color: @white;
+			}
+
+			&.header{
+				font-weight: 900;
+			}
+
+			.label{
+				float: right;
+				margin-top: -5px;
+			}
+		}
+	}
+
+	#grid{
+		flex:1;
+		padding: 40px;
+		background-color: #F7F7F7;
+
+		.item{
+			display: inline-block;
+			width: 330px;
+			text-align: center;
+			margin: 15px;
+			padding: 50px 0;
+			border-radius: 5px;
+			transition: all 0.3s;
+			cursor: pointer;
+			background-color: @white;
+
+
+			&:hover{
+				box-shadow: 0 0 3px #AAA;
+
+				.to_cart{
+					opacity: 1;
+				}
+			}
+
+			.image_div{
+				text-align: center;
+				border-radius: 3px;
+				overflow: hidden;
+				margin-bottom: 25px;
+
+				img{
+					display: inline-block;
+					border-radius: 3px;
+					overflow: hidden;
+				}
+			}
+
+			.title{
+				font-weight: 900;
+				font-size: 1.1em;
+			}
+
+			.desc{
+				color: #999;
+				margin: 10px 0;
+			}
+
+			.price{
+				color: @brown;
+				margin: 25px;
+				font-size: 1.4em;
+				font-weight: 900;
+			}
+
+			.to_cart{
+				opacity: 0;
+				transition: all 0.3s;
+
+			}
+
+		}
+
+		.breadcrumb{
+			font-size: 1.2em;
+			font-weight: 900;
+			margin-bottom: 25px;
+			margin-left: 15px;
+		}
+	}
+}
