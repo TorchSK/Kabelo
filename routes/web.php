@@ -24,3 +24,8 @@ Route::get('/user/activate/{token}', 'UserController@activate')->name('activateU
 Route::post('/login', 'UserController@login')->name('login');
 
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin/category/{category_id}/products', 'AdminController@products');
+Route::post('/file/upload', 'ProductController@upload');
+
+Route::resource('category','CategoryController');
+Route::resource('products','ProductController');

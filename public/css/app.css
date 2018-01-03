@@ -198,6 +198,9 @@ a {
 a:hover {
   color: #1B1C1D;
 }
+.sidebar_btn {
+  padding: 15px;
+}
 #cover {
   height: 60vh;
   background-image: url('/img/overlays/dot.png'), url('/img/cover.jpg');
@@ -209,10 +212,10 @@ a:hover {
   left: 15%;
   text-align: center;
   width: 35%;
-  line-height: 8em;
+  line-height: 4vw;
 }
 #cover #cover_div #slogan {
-  font-size: 8em;
+  font-size: 4vw;
   font-family: "hwt-artz";
 }
 #cover #cover_div #slogan o {
@@ -368,7 +371,7 @@ a:hover {
 }
 #header .account {
   float: right;
-  font-size: 1.3em;
+  font-size: 1.2em;
   cursor: pointer;
 }
 #header .account i.icon {
@@ -396,7 +399,7 @@ a:hover {
   width: 230px;
 }
 #auth_popup .row {
-  font-size: 1.2em;
+  font-size: 1.1em;
   padding: 10px;
   border-radius: 3px;
   cursor: pointer;
@@ -404,9 +407,59 @@ a:hover {
 #auth_popup .row:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
+#product_detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 100px;
+}
+#product_detail .left {
+  width: 40%;
+}
+#product_detail .left .img {
+  margin-bottom: 15px;
+}
+#product_detail .right:not(.labeled):not(.action) {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-left: 10%;
+}
+#product_detail .right:not(.labeled):not(.action) #product_name_input {
+  font-size: 3em;
+}
+#product_detail .right:not(.labeled):not(.action) #product_name_input input {
+  font-weight: 900;
+}
+#create_product_params .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 15px;
+}
+#create_product_params .row .ui.input:first-child {
+  margin-right: 15px;
+}
+#create_product_params .row .ui.input:last-child {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+#create_product_submit {
+  margin-top: 50px;
+}
 #admin {
   min-height: 100vh;
 }
-#admin .makers {
-  padding: 15px;
+#admin .categories a {
+  display: block;
+}
+.new_product_btn {
+  font-size: 1.5em;
+  font-weight: 900;
+}
+.new_product_btn .icons {
+  font-size: 3em !important;
+  display: block;
+  margin-bottom: 15px;
 }

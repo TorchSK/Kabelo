@@ -36,9 +36,28 @@ $('#login_btn').click(function(){
 
 });
 
-$('#add_maker_btn').click(function(){
-	$('#add_maker_modal').modal('show');
+$('#add_category_btn').click(function(){
+	$('#add_category_modal').modal('setting', {
+    onApprove : function() {
+    	$name = $('#add_category_input').val();
+    	$.ajax({
+    		type: "POST",
+    		url: "/category/",
+    		data: {name: $name},
+    		success: function(){
+    			location.reload();
+    		}
+    	})
+    }
+  }).modal('show');
 })
+
+
+$('.ui.normal.dropdown')
+  .dropdown({
+    maxSelections: 3
+  })
+;
 
 
 })

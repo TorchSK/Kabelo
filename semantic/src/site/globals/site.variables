@@ -1,3 +1,8 @@
 /*******************************
      User Global Variables
 *******************************/
+
+@linkColor           : rgba(0,0,0,0.87);
+@fontName			 : 'filson-soft';
+@importGoogleFonts : false;
+

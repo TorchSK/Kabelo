@@ -10,13 +10,16 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/semantic.js"></script>
+    <script src="/js/semantic.js"></script>
 
 
-    <link media="all" type="text/css" rel="stylesheet" href="css/semantic.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/css/semantic.css">
     <link rel="stylesheet" href="https://use.typekit.net/nnc8ofe.css">
 
-    <link media="all" type="text/css" rel="stylesheet" href="css/app.css">
-    <script src="js/app.js"></script>
+    <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/css/app.css">
+    <script src="/js/dropzone.js"></script>
+
+    <script src="/js/app.js"></script>
 
 </head>

@@ -1,0 +1,47 @@
+#product_detail{
+	display: flex;
+	padding: 100px;
+
+	.left{
+		width: 40%;
+
+		.img{
+			margin-bottom: 15px;
+		}
+	}
+
+	.right:not(.labeled):not(.action){
+		flex: 1;
+		margin-left: 10%;
+
+		#product_name_input{
+			font-size: 3em;
+
+			input{
+				font-weight: 900;
+			}
+		}
+	}
+}
+
+#create_product_params{
+
+	.row{
+		display: flex;
+		margin-bottom: 15px;
+		
+		.ui.input:first-child{
+			margin-right: 15px;
+		}
+
+		.ui.input:last-child{
+			flex:1;
+		}
+	}
+
+
+}
+
+#create_product_submit{
+	margin-top: 50px;
+}

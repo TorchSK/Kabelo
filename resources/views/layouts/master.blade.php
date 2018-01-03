@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     @include('includes.head')
-    @include('includes.header')
-
     <body>
+    	    @include('includes.header')
+
 	@yield('content')
     </body>
 </html>
