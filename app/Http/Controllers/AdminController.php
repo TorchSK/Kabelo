@@ -40,7 +40,7 @@ class AdminController extends Controller
         $category = Category::find($category_id);
 
         $data = [
-            'products' => Product::where('category_id',$category->id),
+            'products' => $category->products()->where('category_id',$category_id)->get(),
             'categories' => Category::all()
 
         ];

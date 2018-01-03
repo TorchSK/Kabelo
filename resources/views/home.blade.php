@@ -55,20 +55,7 @@
 
                <div class="breadcrumb">Všetky produkty</div>
 
-             @include('productrow')
-             @include('productrow')
-             @include('productrow')
-             @include('productrow')
-             @include('productrow')
-             @include('productrow')
-             @include('productrow')
-             @include('productrow')
-             @include('productrow')
-             @include('productrow')
-             @include('productrow')
-             @include('productrow')
-             @include('productrow')
-             @include('productrow')
+               
 
     </div>
 

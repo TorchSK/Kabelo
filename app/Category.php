@@ -10,9 +10,9 @@ class Category extends Model {
   	protected $fillable = [];
 	public $timestamps = false;
  
- 	public function category() 
+ 	public function products() 
   	{
- 		return $this->belongsTo('App\Category');
+ 		return $this->belongsToMany('App\Product');
  	}
 
 }

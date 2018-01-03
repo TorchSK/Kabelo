@@ -59,7 +59,7 @@
             <div id="grid">
 
             	<div class="item new_product_btn">
-				<a href="/products/create">
+				<a href="/product/create">
 					<i class="huge icons">
 					  <i class="big thin brown circle icon"></i>
 					  <i class="plus brown icon"></i>

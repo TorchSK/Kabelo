@@ -28,4 +28,6 @@ Route::get('/admin/category/{category_id}/products', 'AdminController@products')
 Route::post('/file/upload', 'ProductController@upload');
 
 Route::resource('category','CategoryController');
-Route::resource('products','ProductController');
+
+Route::get('/{maker}/{code}','ProductController@profile');
+Route::resource('product','ProductController');
