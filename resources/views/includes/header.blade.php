@@ -2,7 +2,7 @@
       <div class="container">
         <a class="logo item" href="/">
           <img src="/img/logo.png" width="36"/>
-          <text>Kvalitnékáble</text>
+          <text>Kabelo</text>
         </a>
 
         <div class="cart item">

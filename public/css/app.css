@@ -420,7 +420,7 @@ a:hover {
   margin-bottom: 15px;
 }
 #product_detail .left .img img {
-  padding: 0 100px 100px 100px;
+  padding: 0 10% 10% 10%;
 }
 #product_detail .right:not(.labeled):not(.action) {
   -webkit-box-flex: 1;
@@ -440,34 +440,50 @@ a:hover {
   margin-bottom: 25px;
 }
 #product_detail #code {
-  font-size: 2em;
+  font-size: 1.7em;
   color: #555;
-  font-style: italic;
   vertical-align: top;
-}
-#product_detail #code code {
-  margin-top: 4px;
+  font-weight: 200;
+  font-style: italic;
 }
 #product_detail #code .ui.label {
   margin-left: 15px;
   margin-top: 1px;
 }
-#create_product_params .row {
+#product_detail #parameters {
+  margin-bottom: 50px;
+}
+#product_detail #parameters.empty {
+  color: #CCC;
+}
+#product_detail #price {
+  color: #F2711C;
+  font-weight: 900;
+  font-size: 3em;
+}
+#create_product_params .row,
+#edit_product_params .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 15px;
 }
-#create_product_params .row .ui.input:first-child {
+#create_product_params .row .ui.input:first-child,
+#edit_product_params .row .ui.input:first-child {
   margin-right: 15px;
 }
-#create_product_params .row .ui.input:last-child {
+#create_product_params .row .ui.input:last-child,
+#edit_product_params .row .ui.input:last-child {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 #create_product_submit {
   margin-top: 50px;
+}
+#product_options {
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 15px 0;
 }
 #admin {
   min-height: 100vh;

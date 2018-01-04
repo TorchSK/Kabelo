@@ -92,6 +92,17 @@ $('#create_product_submit').click(function(){
 
 })
 
+$('#edit_product_submit').click(function(){
+  $productid = $('#product_detail').data('id');
+    $.ajax({
+      method: "PUT",
+      url: "/product/"+$productid,
+      success: function(){
+
+      }
+    })
+});
+
 
 
 })

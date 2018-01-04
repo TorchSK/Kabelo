@@ -25,9 +25,13 @@ Route::post('/login', 'UserController@login')->name('login');
 
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/category/{category_id}/products', 'AdminController@products');
-Route::post('/file/upload', 'ProductController@upload');
 
 Route::resource('category','CategoryController');
 
-Route::get('/{maker}/{code}','ProductController@profile');
+Route::get('/{maker}/{code}/detail','ProductController@profile');
+Route::get('/{maker}/{code}/edit','ProductController@edit');
+
 Route::resource('product','ProductController');
+
+// Upload
+Route::post('{type}/upload', 'ProductController@upload');

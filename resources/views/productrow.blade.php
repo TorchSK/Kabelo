@@ -1,5 +1,5 @@
 <div class="item">
-<a href="/{{strtolower($product->maker)}}/{{$product->code}}">
+<a href="/{{strtolower($product->maker)}}/{{$product->code}}/detail">
 	<div class="image_div">
 		@if ($product->images->count() == 0)
 			<img src="/img/empty.jpg" width="200" class="ui image" />
