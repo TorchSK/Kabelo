@@ -97,13 +97,86 @@ $('#edit_product_submit').click(function(){
     $.ajax({
       method: "PUT",
       url: "/product/"+$productid,
-      success: function(){
-
-      }
+      success: function(data){
+        location.replace(data)
+      } 
     })
 });
 
+$('.other_img img').click(function(){
+  $('#product_detail .img img').attr('src', $(this).attr('src'));
+})
 
+function flyToElement(flyer, flyingTo) {
+    var $func = $(this);
+    var divider = 5;
+    var flyerClone = $(flyer).clone();
+    $(flyerClone).css({position: 'absolute', top: $(flyer).offset().top+80 + "px", left: $(flyer).offset().left+100 + "px", opacity: 1, 'z-index': 1000});
+    $('body').append($(flyerClone));
+    $(flyerClone).width('350');
+    var gotoX = $(flyingTo).offset().left + ($(flyingTo).width() / 2) - ($(flyer).width()/divider)/2;
+    var gotoY = $(flyingTo).offset().top + ($(flyingTo).height() / 2) - ($(flyer).height()/divider)/2;
+     
+    $(flyerClone).animate({
+        opacity: 0.4,
+        left: gotoX,
+        top: gotoY,
+        width: $(flyer).width()/divider,
+        height: $(flyer).height()/divider
+    }, 700,
+    function () {
+        $(flyingTo).fadeOut('fast', function () {
+            $(flyingTo).fadeIn('fast', function () {
+                $(flyerClone).fadeOut('fast', function () {
+                    $(flyerClone).remove();
+                });
+            });
+        });
+    });
+}
+
+
+function addToCart(productid){
+  var cart = $('#header .cart.item');
+  var number = parseFloat(cart.find('text number').text());
+  var price = parseFloat(cart.find('price number').text());
+
+  $.ajax({
+    method: "PUT",
+    url: '/cart/add/'+productid,
+    data: {},
+    success: function(data){
+      cart.find('text number').text(number+1);
+      cart.find('price number').text(price+parseFloat(data.price));
+    }
+  })
+}
+
+
+$('#product_detail_tocart_btn').click(function(){
+  $product = $('#product_detail').data('id');
+  var cart = $('#header .cart.item');
+  var img = $('#product_detail').find('.img');
+  flyToElement(img, cart);
+  
+  addToCart($product);
+
+})
+
+$('.delete_cart').click(function(){
+    $('#delete_cart_modal').modal('setting', {
+    onApprove : function() {
+      $.ajax({
+        type: "DELETE",
+        url: "/cart/all",
+        data: {},
+        success: function(){
+          location.reload();
+        }
+      })
+    }
+  }).modal('show');
+})
 
 })
 

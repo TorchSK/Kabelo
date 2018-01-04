@@ -32,4 +32,5 @@ class CategoryController extends Controller
         return 1;
     }
 
+
 }

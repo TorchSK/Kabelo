@@ -5,13 +5,13 @@
           <text>Kabelo</text>
         </a>
 
-        <div class="cart item">
+        <a class="cart item" href="/cart">
           <div id="cart_icon"><i class="shop big icon"></i></div>
           <div id="cart_text">
-              <caption>Nákupný košík (0)</caption>
-              <price>0 Eur</price>
+              <text>Nákupný košík (<number>{{$cartNumber}}</number>)</text>
+              <price><number>{{$cartPrice}}</number> Eur</price>
           </div>
-        </div>
+        </a>
 
         <div class="account item">
           @if (Auth::check())

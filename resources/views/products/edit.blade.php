@@ -11,7 +11,11 @@
 
 <div id="product_detail" data-id="{{$product->id}}">
     <div class="left">
-        <div class="img">
+        <div class="edit_images">
+
+           @foreach($product->images as $image)
+            <img src="/{{$image->path}}" width="30%"/>
+           @endforeach 
            <form action="/file/upload" class="dropzone" id="product_detail_dropzone"> <input name="_token" hidden value="{!! csrf_token() !!}" /></form>
         </div>
     </div>

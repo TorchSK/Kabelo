@@ -17,6 +17,11 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Cart
+Route::delete('cart/all','CartController@delete');
+Route::put('cart/add/{productId}','CartController@addItem');
+Route::get('cart','CartController@index');
+
 Route::post('/register', 'UserController@register')->name('register');
 Route::any('/logout', 'UserController@logout')->name('logout');
 
@@ -35,3 +40,5 @@ Route::resource('product','ProductController');
 
 // Upload
 Route::post('{type}/upload', 'ProductController@upload');
+
+

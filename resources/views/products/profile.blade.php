@@ -9,13 +9,21 @@
 </div>
 </div>
 
-<div id="product_detail">
+<div id="product_detail" data-id={{$product->id}}>
     <div class="left">
         <div class="img">
            @if ($product->images->count() == 0)
            <img src="/img/empty.jpg" class="ui image" />
            @else
+           <img src="/{{$product->image->path}}" class="ui image" />
+           @endif
+        </div>
 
+        <div class="other_img">
+          @if ($product->images->count() > 1)
+          @foreach($product->images as $image)
+           <img src="/{{$image->path}}" class="ui image" width="200px" />
+           @endforeach
            @endif
         </div>
 
@@ -50,6 +58,7 @@
     </div>
 
     <div id="price">{{$product->price}} &euro;</div>
+    <div id="product_detail_tocart_btn" class="ui large brown button"><i class="add to cart icon"></i>Kúpiť</div>
 
 
  </div>

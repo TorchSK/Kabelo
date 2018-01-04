@@ -19,9 +19,14 @@ class Product extends Model {
  		return $this->hasMany('App\Parameter');
  	}
 
+ 	public function image() 
+  	{
+ 		return $this->hasOne('App\File')->where('type','image');
+ 	}
+
  	public function images() 
   	{
- 		return $this->hasMany('App\File');
+ 		return $this->hasMany('App\File')->where('type','image');
  	}
 
 }

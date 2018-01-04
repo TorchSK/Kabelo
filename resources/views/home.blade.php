@@ -15,7 +15,7 @@
 
         </div>
 
-        <div class="content">
+        <div class="content" id="home_content">
 
             <div id="filters">
 
@@ -27,25 +27,17 @@
                 </div>
 
                 <div class="makers">
-                    <div class="header item">Výrobca</div>
-                    <div class="item">Tasker</div>
-                    <div class="item">Tasker</div>
-                    <div class="item">Tasker</div>
+                    <div class="header item">Výrobcovia</div>
+                    @foreach(App\Product::groupBy('maker')->get(['maker']) as $maker)
+                        <div class="item">{{$maker->maker}}</div>
+                    @endforeach
                 </div>
 
                 <div class="categories">
                     <div class="header item">Určenie</div>
-                    <div class="item">Káble na prenos dát<div class="ui brown label">12</div></div>
-                    <div class="item">Káble video<div class="ui brown label">12</div></div>
-                    <div class="item">Káble koaxiálne<div class="ui brown label">12</div></div>
-                    <div class="item">Káble netienené<div class="ui brown label">12</div></div>
-                    <div class="item">Káble mikrofónne<div class="ui brown label">12</div></div>
-                    <div class="item">Káble DMX<div class="ui brown label">12</div></div>
-                    <div class="item">Káble reproduktorové<div class="ui brown label">12</div></div>
-                    <div class="item">Káble tienené<div class="ui brown label">12</div></div>
-                    <div class="item">Káble silikónové<div class="ui brown label">12</div></div>
-                    <div class="item">Káble telefónne<div class="ui brown label">12</div></div>
-                    <div class="item">Odporové drôty, drôty<div class="ui brown label">12</div></div>
+                    @foreach(App\Category::all() as $category)
+                        <div class="item">{{$category->name}}</div>
+                    @endforeach
                 </div>
 
 

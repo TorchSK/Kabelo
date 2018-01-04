@@ -12,6 +12,13 @@
 				padding: 0 10% 10% 10%;
 			}
 		}
+
+		.other_img{
+			img{
+				display: inline-block;
+				cursor: pointer;	
+			}
+		}
 	}
 
 	.right:not(.labeled):not(.action){
@@ -58,6 +65,9 @@
 		color: @orange;
 		font-weight: 900;
 		font-size: 3em;
+		display: inline-block;
+		position: relative;
+		top: 7px;
 	}
 }
 
@@ -87,4 +97,9 @@
 #product_options{
 	background-color: rgba(0,0,0,0.03);
 	padding: 15px 0;
+}
+
+#product_detail_tocart_btn{
+	margin-left: 15px;
+	margin-top: -5px;
 }

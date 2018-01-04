@@ -18,7 +18,7 @@
    					<div class="ui fluid brown button" id="add_category_btn"><i class="add icon"></i>Pridaj kategóriu</div>
    					</div>
 
-   					<div class="ui tiny modal" id="add_category_modal">
+   					<div class="ui mini modal" id="add_category_modal">
 					  
 					  <div class="header">
 					    Pridaj kategóriu
@@ -69,7 +69,7 @@
 				</div>
 
     		@foreach ($products as $product)
-    			@include('productrow')
+    			@include('products.row')
     		@endforeach
            </div>
 

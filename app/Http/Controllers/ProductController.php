@@ -115,6 +115,18 @@ class ProductController extends Controller
            'product' => $product
         ];
 
+        $directory = 'temp';
+        
+        $files = File::files($directory);
+        
+        if (sizeof(File::files($directory)) > 0)
+        {
+            foreach ($files as $file)
+            {
+                File::delete($file);
+            }
+        }
+
         return view('products.edit', $data);
 
     }
@@ -122,8 +134,8 @@ class ProductController extends Controller
     public function update($productid)
     {
         $product = Product::find($productid);
-        
         $directory = 'temp';
+
         if (sizeof(File::files($directory)) > 0)
         {
             $files = File::files($directory);
@@ -140,9 +152,11 @@ class ProductController extends Controller
 
                 $productFile->save();
 
+                $move = File::move($file, 'uploads/'.$filename);
+
             }
         }
 
-
+        return '/'.$product->maker.'/'.$product->code.'/detail';
     }
 }
