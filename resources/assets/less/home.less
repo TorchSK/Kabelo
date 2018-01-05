@@ -35,7 +35,7 @@
 }
 
 #home_content{
-	min-height: 800px;
+	min-height: 1200px;
 }
 
 .content{
@@ -70,6 +70,11 @@
 				background-color: @white;
 			}
 
+			&.active{
+				background-color: @brown;
+				color: @white;
+			}
+
 			&.header{
 				font-weight: 900;
 			}
@@ -77,6 +82,10 @@
 			.label{
 				float: right;
 				margin-top: -5px;
+			}
+
+			&.ui.checkbox{
+				width: 88%;
 			}
 		}
 	}

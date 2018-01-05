@@ -232,7 +232,7 @@ a:hover {
   opacity: 0.8;
 }
 #home_content {
-  min-height: 800px;
+  min-height: 1200px;
 }
 .content {
   display: -webkit-box;
@@ -261,12 +261,19 @@ a:hover {
 .content #filters .item:hover {
   background-color: #FFFFFF;
 }
+.content #filters .item.active {
+  background-color: #A5673F;
+  color: #FFFFFF;
+}
 .content #filters .item.header {
   font-weight: 900;
 }
 .content #filters .item .label {
   float: right;
   margin-top: -5px;
+}
+.content #filters .item.ui.checkbox {
+  width: 88%;
 }
 #grid {
   -webkit-box-flex: 1;
@@ -515,6 +522,14 @@ a:hover {
   display: block;
   margin-bottom: 15px;
 }
+#cart_detail .cart_icon {
+  background-color: #F7F7F7;
+  padding-top: 25px;
+}
+#cart_detail .cart_icon i.icon {
+  opacity: 0.9;
+  color: #A5673F;
+}
 #cart_detail .caption {
   padding: 50px 0;
   font-size: 3em;
@@ -525,4 +540,23 @@ a:hover {
 #cart_detail .actions {
   text-align: center;
   background-color: #F7F7F7;
+}
+#cart_detail .status {
+  padding-top: 50px;
+  background-color: #F7F7F7;
+  text-align: center;
+}
+#cart_detail #grid {
+  text-align: center;
+}
+.cart_item_actions .ui.input {
+  margin-bottom: 15px;
+}
+.cart_item_actions .ui.input input {
+  width: 150px;
+}
+footer {
+  background-color: #2B2D2D   ;
+  padding: 100px;
+  display: block;
 }

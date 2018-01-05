@@ -1,3 +1,13 @@
+<footer>
+a
+</footer>	
+
+
+
+
+
+
+
 	<div class="ui mini modal" id="delete_cart_modal">
 					  
 	  <div class="header">

@@ -16,7 +16,22 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $cookie = Crypt::decrypt(Cookie::get('cart'));
+        $cookie = Cookie::get('cart');
+
+        if ($cookie)
+        {
+            $cookie = Crypt::decrypt($cookie);
+        }
+        else
+        {
+            $cookieData = [
+                'number' => 0,
+                'price' => 0,
+                'items' => []
+            ];
+
+            $cookie = Cookie::queue('cart',$cookieData,0);
+        }
         //dd($cookie);
         if ($cookie)
         {

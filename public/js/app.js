@@ -7,6 +7,7 @@ $.ajaxSetup({
   }
 });
 
+$('.ui.checkbox').checkbox();
 
 $('#header .account.item').popup({
 	popup : $('#auth_popup'),
@@ -177,6 +178,47 @@ $('.delete_cart').click(function(){
     }
   }).modal('show');
 })
+
+
+
+///// Sorting ////////
+
+function doSort($categoryid, $filters){
+  $grid = $('#grid').find('grid');
+  $.get('/product/list',{categoryid:$categoryid, filters: $filters}, function(data){
+    $grid.html(data);
+  })
+};
+
+
+$('.categories .item').click(function(){
+  $filters = {};
+  $filters['makers'] = {};
+
+  $categoryid = $(this).data('categoryid');
+  $$('.makers .item').each(function( index ) {
+
+  $filters['makers'] = 1;
+
+  doSort($categoryid, $filters);
+  $('.categories .item').removeClass('active');
+  $(this).addClass('active');
+  $('.breadcrumb').text($(this).text());
+})
+
+$('.makers .item').click(function(){
+  $filters = {};
+  $makerid = $(this).data('categoryid');
+  $categoryid = $('.categories .item.active').data('categoryid');
+  $(this).checkbox('check');
+  $filters['makers'].push($makerid);
+
+  doSort($categoryid, $filters);
+  $('.categories .item').removeClass('active');
+  $(this).addClass('active');
+  $('.breadcrumb').text($(this).text());
+})
+
 
 })
 

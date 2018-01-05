@@ -29,14 +29,17 @@
                 <div class="makers">
                     <div class="header item">Výrobcovia</div>
                     @foreach(App\Product::groupBy('maker')->get(['maker']) as $maker)
-                        <div class="item">{{$maker->maker}}</div>
+                        <div class="ui checkbox item" data-makerid="{{$maker->id}}>
+                          <input type="checkbox" name="example">
+                          <label>{{$maker->maker}}</label>
+                        </div>
                     @endforeach
                 </div>
 
                 <div class="categories">
                     <div class="header item">Určenie</div>
                     @foreach(App\Category::all() as $category)
-                        <div class="item">{{$category->name}}</div>
+                        <div class="item" data-categoryid="{{$category->id}}">{{$category->name}}</div>
                     @endforeach
                 </div>
 
@@ -47,7 +50,11 @@
 
                <div class="breadcrumb">Všetky produkty</div>
 
-               
+               <grid>
+
+               </grid>
+
+        </div>
 
     </div>
 

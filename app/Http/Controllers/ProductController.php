@@ -93,6 +93,17 @@ class ProductController extends Controller
         }
     }
 
+    public function list(Request $request)
+    {
+        $category = Category::find($request->get('categoryid'));
+
+        $data = [
+            'products' => $category->products()->where('category_id',$category->id)->get(),
+        ];
+
+        return view('products.list', $data)->render();
+    }
+
     public function profile($maker, $code)
     {
 
