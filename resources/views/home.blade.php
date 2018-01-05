@@ -29,7 +29,7 @@
                 <div class="makers">
                     <div class="header item">Výrobcovia</div>
                     @foreach(App\Product::groupBy('maker')->get(['maker']) as $maker)
-                        <div class="ui checkbox item" data-makerid="{{$maker->id}}>
+                        <div class="ui checkbox item" data-makerid="{{$maker->id}}">
                           <input type="checkbox" name="example">
                           <label>{{$maker->maker}}</label>
                         </div>
@@ -49,7 +49,7 @@
             <div id="grid">
 
                <div class="breadcrumb">Všetky produkty</div>
-
+               <div id="active_filters"></div>
                <grid>
 
                </grid>

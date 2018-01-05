@@ -181,44 +181,56 @@ $('.delete_cart').click(function(){
 
 
 
-///// Sorting ////////
+///// Sorting and filtering ////////
 
-function doSort($categoryid, $filters){
+function getActiveFilters(){
+  
+  $filters={};
+
+  $('#active_filters span').each(function(index, element){
+    $filters[$(element).data('filter')]={};
+  });
+
+  $.each($filters,function(key,value){
+    $('#active_filters span.'+key).each(function(index, element) {
+      $filters[key]['item'+index] = $(element).data('value');
+    });
+  });
+
+  return $filters;
+}
+
+function getActiveCategory(){
+  return $('.categories .item.active').data('categoryid');
+}
+
+function doSort(){
   $grid = $('#grid').find('grid');
+
+  $filters = getActiveFilters();
+  $categoryid = getActiveCategory();
+
   $.get('/product/list',{categoryid:$categoryid, filters: $filters}, function(data){
     $grid.html(data);
   })
 };
 
+$('.makers  .ui.checkbox').checkbox({
+  onChecked: function(){
+      $('#active_filters').append('<span data-value="'+$(this).closest('.checkbox').data('makerid')+'" data-filter="maker" class="maker ui large teal label">'+$(this).closest('.checkbox').find('label').text()+'<i class="delete icon"></i></span>');
+      doSort();
+  },
+  onUnchecked: function(){
+      $('#active_filters').find('span[data-value="'+$(this).closest('.checkbox').data('makerid')+'"][data-filter="maker"]').remove();
+      doSort();
+  }
+})
+
 
 $('.categories .item').click(function(){
-  $filters = {};
-  $filters['makers'] = {};
-
-  $categoryid = $(this).data('categoryid');
-  $$('.makers .item').each(function( index ) {
-
-  $filters['makers'] = 1;
-
-  doSort($categoryid, $filters);
   $('.categories .item').removeClass('active');
   $(this).addClass('active');
-  $('.breadcrumb').text($(this).text());
+  doSort();
 })
 
-$('.makers .item').click(function(){
-  $filters = {};
-  $makerid = $(this).data('categoryid');
-  $categoryid = $('.categories .item.active').data('categoryid');
-  $(this).checkbox('check');
-  $filters['makers'].push($makerid);
-
-  doSort($categoryid, $filters);
-  $('.categories .item').removeClass('active');
-  $(this).addClass('active');
-  $('.breadcrumb').text($(this).text());
-})
-
-
-})
-
+});
