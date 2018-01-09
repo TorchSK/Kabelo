@@ -16,7 +16,7 @@ class CreateProductParamsTable extends Migration
         Schema::create('product_parameters', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->index()->unsigned();
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->string('key');
             $table->string('value');
         });

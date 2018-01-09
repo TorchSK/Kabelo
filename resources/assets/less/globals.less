@@ -1,8 +1,26 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.pusher {
+  flex: 1 0 auto;
+}
+
+.pad.wrapper{
+	padding: 60px 0; 
+}
+
 .container{
 	width: 80%;
 	display: inline-block;
 	text-align: left;
 }
+
 
 .ct{
 	text-align: center;
@@ -17,5 +35,33 @@ a{
 }
 
 .sidebar_btn{
-	padding: 15px;
+	padding: 0px 15px 5px 15px;
+}
+
+#filters{
+	.ui.divider.horizontal{
+		width: 330px;
+	}
+}
+
+.labeled.form{
+	.labels{
+		display: inline-block;
+		margin-right: 25px;
+		.item{
+			padding: 17px 0;
+		}
+	}
+
+	.inputs{
+		display: inline-block;
+
+		.ui.input{
+			margin: 5px 0;
+		}
+	}
+}
+
+#active_filters{
+	margin-left: 15px;
 }

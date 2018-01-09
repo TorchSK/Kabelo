@@ -32,5 +32,35 @@ class CategoryController extends Controller
         return 1;
     }
 
+    public function edit($id)
+    {
+        $category = Category::find($id);
+
+        $data = [
+            'category' => $category
+        ];
+
+        return view('categories.edit', $data);
+    }
+
+    public function update($id, Request $request)
+    {
+        $category = Category::find($id);
+        $category->name = $request->get('name');
+        $category->save();
+
+        return '/admin';
+    }
+
+    public function makers($categoryid){
+
+        $category = Category::find($categoryid);
+
+        $data = [
+            'makers' => $category->products()->get(['maker'])
+        ];
+
+        return view('makers', $data);
+    }
 
 }

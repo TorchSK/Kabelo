@@ -1,4 +1,4 @@
-<div class="item">
+<div class="item product" data-productid={{$product->id}}>
 <a href="/{{strtolower($product->maker)}}/{{$product->code}}/detail">
 	<div class="image_div">
 		@if ($product->images->count() == 0)
@@ -14,27 +14,31 @@
 	<div class="price">{{$product->price}} Eur</div>
 	<div class="availability"></div>
 
-	@if(!isset($cart) || !$cart)
-	<a href="/a" class="to_cart">
+	@if((!isset($cart) || !$cart) && Request::segment(1) != 'admin')
+	<a class="to_cart">
 		<button class="ui teal icon button">
 	  		<i class="shop icon"></i>
 	  		Kúpiť
 		</button>
 	</a>
+	@elseif(Request::segment(1) == 'admin')
+		<a href="/product/create?duplicate={{$product->id}}" class="ui button">Duplikuj</a>
 	@endif
 
 </a>
+
 @if(isset($cart) && $cart)
 <div class="cart_item_actions">
 	<div class="ui right labeled action input">
 		<input type="text" value="{{array_count_values($cartItems)[$product->id]}}" />
 		<div class="ui basic label">ks</div>
-		<div type="submit" class="ui icon button"><i class="plus icon"></i></div>
-		<div type="submit" class="ui icon button"><i class="minus icon"></i></div>
 	</div>
+
+	<a class="cart_plus_product"><i class="plus icon"></i></a>
+	<a class="cart_minus_product"><i class="minus icon"></i></a>
 	
 	<div>
-		<div class="ui red button">Vymaž</div>
+		<div class="ui red button cart_delete_product">Vymaž</div>
 	</div>
 
 </div>

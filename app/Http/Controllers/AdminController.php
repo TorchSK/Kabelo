@@ -41,6 +41,7 @@ class AdminController extends Controller
 
         $data = [
             'products' => $category->products()->where('category_id',$category_id)->get(),
+            'category' => $category,
             'categories' => Category::all()
 
         ];

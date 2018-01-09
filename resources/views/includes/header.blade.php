@@ -5,7 +5,7 @@
           <text>Kabelo</text>
         </a>
 
-        <a class="cart item" href="/cart">
+        <a class="cart item" href="/cart/products">
           <div id="cart_icon"><i class="shop big icon"></i></div>
           <div id="cart_text">
               <text>Nákupný košík (<number>{{$cartNumber}}</number>)</text>
@@ -24,6 +24,7 @@
            @if (Auth::check())
               <div class="left">
                 <a href="/admin" class="row"><i class="setting icon"></i> Administruj produkty</a>
+                <a href="/settings/account" class="row"><i class="user icon"></i> Nastavenia účtu</a>
               </div>
               
               <div class="right ct">
@@ -37,7 +38,7 @@
               <input type="text" name="email" placeholder="email">
             </div>
 
-            <div class="ui fluid input">
+            <div class="ui fluid input" id="login_password_input">
               <input type="text" name="password" placeholder="password">
             </div>
 

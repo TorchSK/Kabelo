@@ -17,10 +17,21 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
+
+
 //Cart
-Route::delete('cart/all','CartController@delete');
 Route::put('cart/add/{productId}','CartController@addItem');
-Route::get('cart','CartController@index');
+Route::get('cart/products','CartController@products');
+Route::get('cart/delivery','CartController@delivery');
+Route::get('cart/shipping','CartController@shipping');
+Route::get('cart/confirm','CartController@confirm');
+
+Route::delete('cart/all','CartController@delete');
+Route::delete('cart/{productid}','CartController@deleteItem');
+Route::put('cart/plus/{productid}','CartController@plusItem');
+Route::put('cart/minus/{productid}','CartController@minusItem');
 
 Route::post('/register', 'UserController@register')->name('register');
 Route::any('/logout', 'UserController@logout')->name('logout');
@@ -31,6 +42,7 @@ Route::post('/login', 'UserController@login')->name('login');
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/category/{category_id}/products', 'AdminController@products');
 
+Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
 
 Route::get('/{maker}/{code}/detail','ProductController@profile');
@@ -41,5 +53,9 @@ Route::resource('product','ProductController');
 
 // Upload
 Route::post('{type}/upload', 'ProductController@upload');
+
+
+// Settings
+Route::get('settings/account', 'UserController@settings');
 
 

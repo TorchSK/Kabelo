@@ -46,19 +46,25 @@ class ProductController extends Controller
             $product->categories()->attach($category);
         }
 
-        foreach ($request->get('params') as $param)
+        foreach ($request->get('params') as $key => $param)
         {
-            $product->parameters()->attach($param);
+            $parameter = new Parameter();
+            $parameter->key = $key;
+            $parameter->value = $param;
+
+            $product->parameters()->save($parameter);
         }
 
-        return $product->id;
+        return $product->maker.'/'.$product->code.'/detail';
     }
 
     
-    public function create()
+    public function create(Request $request)
     {
+        $category = Category::find($request->get('category'));
+        
         $data = [
-           'a' => 1
+           'selectedCategory' => $category
         ];
 
         return view('products.create', $data);
@@ -169,5 +175,12 @@ class ProductController extends Controller
         }
 
         return '/'.$product->maker.'/'.$product->code.'/detail';
+    }
+
+    public function destroy($id)
+    {
+        $product = Product::find($id);
+
+        $product->delete();
     }
 }

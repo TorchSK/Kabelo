@@ -100,6 +100,10 @@ class UserController extends Controller
         return 1;
     }
 
+    public function settings(){
+        return view('users.settings');
+    }
+
 
     public function logout()
     {

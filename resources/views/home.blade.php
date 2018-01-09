@@ -20,22 +20,13 @@
             <div id="filters">
 
                 <div id="product_search">
-                    <div class="ui left icon huge input">
+                    <div class="ui left icon huge input product_search_input" >
                       <input type="text" placeholder="Hľadaj produkt...">
                         <i class="search icon"></i>
                     </div>
                 </div>
 
-                <div class="makers">
-                    <div class="header item">Výrobcovia</div>
-                    @foreach(App\Product::groupBy('maker')->get(['maker']) as $maker)
-                        <div class="ui checkbox item" data-makerid="{{$maker->id}}">
-                          <input type="checkbox" name="example">
-                          <label>{{$maker->maker}}</label>
-                        </div>
-                    @endforeach
-                </div>
-
+           
                 <div class="categories">
                     <div class="header item">Určenie</div>
                     @foreach(App\Category::all() as $category)
@@ -43,6 +34,9 @@
                     @endforeach
                 </div>
 
+                 <div class="makers">
+             
+                </div>
 
             </div>
 

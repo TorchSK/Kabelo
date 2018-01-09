@@ -38,19 +38,19 @@
     	<div class="ui header">Název</div>
 
         <div class="ui fluid input" id="create_product_name_input">
-           <input type="text" placeholder="Názov produktu" />
+           <input type="text" placeholder="Názov produktu" @if(Request::has('duplicate'))value="{{App\Product::find(Request::get('duplicate'))->name}}@endif" />
    		</div>
 
 		<div class="ui header">Kód produktu</div>
 
         <div class="ui fluid input" id="create_product_code_input">
-           <input type="text" placeholder="Kód produktu" />
+           <input type="text" placeholder="Kód produktu" @if(Request::has('duplicate'))value="{{App\Product::find(Request::get('duplicate'))->code}}@endif" />
    		</div>
 
 		<div class="ui header">Výrobca</div>
 
         <div class="ui fluid input" id="create_product_maker_input">
-           <input type="text" placeholder="Výrobca" />
+           <input type="text" placeholder="Výrobca" @if(Request::has('duplicate'))value="{{App\Product::find(Request::get('duplicate'))->maker}}@endif"/>
    		</div>
 
 
@@ -58,7 +58,7 @@
 		<select multiple="" name="create_product_categories" id="create_product_categories_input" class="ui fluid normal dropdown">
 		<option value="">Kategória</option>
 		@foreach (App\Category::all() as $category)
-		<option value="{{$category->id}}">{{$category->name}}</option>
+		<option @if(isset($selectedCategory) && $selectedCategory->id==$category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
 		@endforeach
 		</select>
 
@@ -66,7 +66,7 @@
 
 		<div class="ui form">
 		  <div class="field" id="create_product_desc_input">
-		    <textarea></textarea>
+		    <textarea>@if(Request::has('duplicate')){{App\Product::find(Request::get('duplicate'))->desc}}@endif</textarea>
 		  </div>
 		</div>
 

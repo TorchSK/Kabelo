@@ -10,7 +10,7 @@ class File extends Model {
 
   	public function product() 
   	{
- 		return $this->belongsT('App\Product');
+ 		return $this->belongsTo('App\Product');
  	}
 
 }
