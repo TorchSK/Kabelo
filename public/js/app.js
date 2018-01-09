@@ -287,17 +287,37 @@ function doSort(){
 
   $.get('/product/list',{categoryid:$categoryid, filters: $filters}, function(data){
     $grid.html(data);
+    $('#grid').find('.dimmer').removeClass('active');
   })
 };
+
+function addFilter(key, value, desc){
+$('#active_filters').append('<span data-value="'+value+'" data-filter="'+key+'" class="'+key+' ui large teal label">'+desc+'<i class="delete icon"></i></span>');
+
+}
+
+function removeFilter(key, value=''){
+  if(value=='')
+  {
+    $('#active_filters').find('span[data-filter="'+key+'"]').remove();
+  }
+  else
+  {
+    $('#active_filters').find('span[data-value="'+value+'"][data-filter="'+key+'"]').remove();
+  }
+}
+
 
 function makersInit(){
   $('.makers  .ui.checkbox').checkbox({
     onChecked: function(){
-        $('#active_filters').append('<span data-value="'+$(this).closest('.checkbox').data('makerid')+'" data-filter="maker" class="maker ui large teal label">'+$(this).closest('.checkbox').find('label').text()+'<i class="delete icon"></i></span>');
-        doSort();
+      $makerid = $(this).closest('.checkbox').data('makerid');
+      $text = $(this).closest('.checkbox').find('label').text();
+      addFilter('makers',$makerid, 'Výrobca: '+ $text)
+      doSort();
     },
     onUnchecked: function(){
-        $('#active_filters').find('span[data-value="'+$(this).closest('.checkbox').data('makerid')+'"][data-filter="maker"]').remove();
+        removeFilter('makers',$makerid);
         doSort();
     }
   })
@@ -312,7 +332,9 @@ $('.categories .item').click(function(){
         makersInit();
     });
 
-    $('#active_filters').find('span').remove();
+    removeFilter('makers');
+    addFilter('category',$(this).data('categoryid'),$(this).text());
+
   }
 
   $('.categories .item').removeClass('active');
@@ -323,7 +345,6 @@ $('.categories .item').click(function(){
 
 })
 
-$('.product_search_input').
 
 $('#cart_delivery_options .step').click(function(){
   $('#cart_delivery_options .step').removeClass('completed').removeClass('active');
@@ -355,7 +376,7 @@ $('#login_password_input').keypress(function(e){
     }
 });
 
-$('#peoduct_detail_delete_btn').click(function(){
+$('#product_detail_delete_btn').click(function(){
   $productid = $('#product_detail').data('id');
   $('#delete_product_modal').modal('setting', {
     onApprove : function() {
@@ -371,5 +392,17 @@ $('#peoduct_detail_delete_btn').click(function(){
   }).modal('show');
 })
 
+$(".product_search_input input").keyup(function(e){
+
+  $( document ).ajaxStart(function() {
+    $('#grid').find('.dimmer').addClass('active');
+  });
+
+  $query = $(this).val();
+  removeFilter('search');
+  if ($query!='') {addFilter('search',$query,'hľadaj: '+$query)};
+  doSort();
+
+})
 
 });

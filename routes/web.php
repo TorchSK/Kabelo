@@ -48,6 +48,7 @@ Route::resource('category','CategoryController');
 Route::get('/{maker}/{code}/detail','ProductController@profile');
 Route::get('/{maker}/{code}/edit','ProductController@edit');
 
+Route::get('product/search/{query}','ProductController@search');
 Route::get('product/list','ProductController@list');
 Route::resource('product','ProductController');
 

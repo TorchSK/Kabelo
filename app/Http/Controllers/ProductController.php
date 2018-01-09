@@ -101,10 +101,20 @@ class ProductController extends Controller
 
     public function list(Request $request)
     {
-        $category = Category::find($request->get('categoryid'));
+        $filters = $request->get('filters');
 
+        $products = Product::when(isset($filters['category']), function ($query) use ($filters) {
+            return $query->whereHas('categories', function($query) use ($filters){
+                $query->whereIn('category_id', (array)$filters['category']);
+            });
+        })
+        ->when(isset($filters['search']), function ($query) use ($filters) {
+            return $query->whereRaw("name like '%".$filters['search']['item0']."%'");
+        })
+        ->get();
+        
         $data = [
-            'products' => $category->products()->where('category_id',$category->id)->get(),
+            'products' => $products
         ];
 
         return view('products.list', $data)->render();
@@ -175,6 +185,14 @@ class ProductController extends Controller
         }
 
         return '/'.$product->maker.'/'.$product->code.'/detail';
+    }
+
+    public function search($query)
+    {
+        $data['products'] = Product::where('name','like','%'.$query.'%')->get();
+
+        return view('products.list', $data);
+
     }
 
     public function destroy($id)

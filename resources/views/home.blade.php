@@ -42,7 +42,16 @@
 
             <div id="grid">
 
-               <div class="breadcrumb">Všetky produkty</div>
+                 <div class="ui inverted dimmer">
+                    <div class="ui text loader">Loading</div>
+                  </div>
+
+                <div class="tabbs">
+                    <a class="tabb ui brown large label">Všetky produkty</a>
+                    <a class="tabb ui basic large label">Novinky</a>
+                    <a class="tabb ui basic large label">V akcii</a>
+                </div>
+
                <div id="active_filters"></div>
                <grid>
 

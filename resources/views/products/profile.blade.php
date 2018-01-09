@@ -4,7 +4,7 @@
 <div id="product_options" class="ct">
  <div class="container ct">
   <a href="/{{Request::segment(1)}}/{{Request::segment(2)}}/edit" class="ui teal button">Edituj produkt</a>
-  <a class="ui red button" id="peoduct_detail_delete_btn">Zmaž produkt</a>
+  <a class="ui red button" id="product_detail_delete_btn">Zmaž produkt</a>
 
 </div>
 </div>
