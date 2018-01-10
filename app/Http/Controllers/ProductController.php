@@ -108,6 +108,9 @@ class ProductController extends Controller
     public function list(Request $request)
     {
         $filters = $request->get('filters');
+        $sortBy = $request->get('sortBy');
+        
+        $sortOrder = $request->get('sortOrder');
 
         $products = Product::when(isset($filters['category']), function ($query) use ($filters) {
             return $query->whereHas('categories', function($query) use ($filters){
@@ -117,6 +120,7 @@ class ProductController extends Controller
         ->when(isset($filters['search']), function ($query) use ($filters) {
             return $query->whereRaw("name like '%".$filters['search']['item0']."%'");
         })
+        ->orderBy($sortBy,$sortOrder)
         ->get();
         
         $data = [

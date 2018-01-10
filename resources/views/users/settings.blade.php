@@ -37,7 +37,7 @@
 <div class="wrapper" id="right">
 
 	<div class="settings_action ct">
-		<div class="ui green button">Uložiť zmeny</div>
+		<div class="ui green button" id="settings_submit_btn">Uložiť zmeny</div>
 	</div>
 
 

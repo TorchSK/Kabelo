@@ -17,10 +17,12 @@
 
         <div class="content" id="home_content">
 
+
             <div id="filters">
+            <div class="ui accordion">
 
                 <div id="product_search">
-                    <div class="ui left icon huge input product_search_input" >
+                    <div class="ui left icon huge fluid input product_search_input" >
                       <input type="text" placeholder="Hľadaj produkt...">
                         <i class="search icon"></i>
                     </div>
@@ -28,10 +30,12 @@
 
            
                 <div class="categories">
-                    <div class="ui horizontal divider">Kategórie</div>
+                    <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Kategórie</div>
+                    <div class="active content">
                     @foreach(App\Category::all() as $category)
                         <div class="item" data-categoryid="{{$category->id}}">{{$category->name}}</div>
                     @endforeach
+                    </div>
                 </div>
 
                  <div class="makers">
@@ -40,18 +44,14 @@
 
             </div>
 
+            </div>
+
             <div id="grid">
 
 
-                <div class="tabbs">
-                    <a class="tabb active"><i class="icon cubes"></i> Všetky produkty</a>
-                    <a class="tabb"><i class="icon asterisk"></i>Novinky</a>
-                    <a class="tabb"><i class="icon money"></i>V akcii</a>
-                </div>
-
                 <div class="sorts">
-                    <div class="sort"><i class="sort alphabet ascending icon"></i> Nazov</div>
-                    <div class="sort">Cena</div>
+                    <div class="active sort" data-sortby="name" data-sortorder="asc"><i class="sort alphabet ascending icon"></i> Nazov</div>
+                    <div class="sort" data-sortby="price" data-sortorder="asc"><i class="sort numeric    ascending icon"></i> Cena</div>
                 </div>
 
                  <div class="ui inverted dimmer">

@@ -407,14 +407,21 @@ a:hover {
   color: #FFFFFF;
 }
 #grid .sorts {
-  margin: 0 50px;
+  margin: 35px 50px;
   margin-bottom: 25px;
   background-color: #FFFFFF;
+  border-radius: 4px;
+  overflow: hidden;
+  display: none;
 }
 #grid .sorts > .sort {
   display: inline-block;
-  padding: 15px 25px;
+  padding: 12px 25px;
   cursor: pointer;
+}
+#grid .sorts > .sort.active {
+  background-color: #37A0D3;
+  color: #FFFFFF;
 }
 #header {
   background-color: #2B2D2D   ;
@@ -755,7 +762,7 @@ a:hover {
   padding-top: 25px;
   background-color: rgba(0, 0, 0, 0.05);
   width: 400px;
-  height: 100vh;
+  height: 100%;
 }
 #settings_user #left .avatar i.icon {
   opacity: 0.7;

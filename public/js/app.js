@@ -14,6 +14,10 @@ $('#header .account.item').popup({
 	on    : 'click'
 });
 
+$('.ui.accordion')
+  .accordion({exclusive: false})
+;
+
 $('#register_btn').click(function(){
 	$popup = $('#auth_popup');
 	$email = $('#register_div').find('input[name="email"]').val();
@@ -323,13 +327,26 @@ function getActiveCategory(){
   return $('.categories .item.active').data('categoryid');
 }
 
+function getDesiredSortBy(){
+  return $('.sort.active').data('sortby');
+}
+
+function getDesiredSortOrder(){
+  return $('.sort.active').data('sortorder');
+}
+
+
 function doSort(){
   $grid = $('#grid').find('grid');
+
+  $sortBy = getDesiredSortBy();
+  $sortOrder = getDesiredSortOrder();
+
 
   $filters = getActiveFilters();
   $categoryid = getActiveCategory();
 
-  $.get('/product/list',{categoryid:$categoryid, filters: $filters}, function(data){
+  $.get('/product/list',{sortBy: $sortBy, sortOrder: $sortOrder, filters: $filters}, function(data){
     $grid.html(data);
     $('#grid').find('.dimmer').removeClass('active');
   })
@@ -351,6 +368,28 @@ function removeFilter(key, value=''){
   }
 }
 
+
+$('.sort').click(function(){
+  if ($(this).hasClass('active'))
+  {
+    if ($(this).data('sortorder')=='asc')
+    {
+      $(this).data('sortorder','desc');
+      $(this).find('i').removeClass('ascending').addClass('descending');
+    }
+    else
+    {
+      $(this).data('sortorder','asc');
+      $(this).find('i').removeClass('descending').addClass('ascending');
+    }
+  }
+  else
+  {
+    $('.sort').removeClass('active');
+    $(this).addClass('active');
+  }
+  doSort();
+})
 
 function makersInit(){
   $('.makers  .ui.checkbox').checkbox({
@@ -374,6 +413,7 @@ $('.categories .item').click(function(){
     $.get('/category/'+$(this).data('categoryid')+'/makers',{}, function(data){
         $('#home_content .makers').html(data);
         makersInit();
+        $('.sorts').show();
     });
 
     removeFilter('makers');
@@ -455,5 +495,6 @@ $(".product_search_input input").keyup(function(e){
   doSort();
 
 })
+
 
 });
