@@ -27,9 +27,10 @@ class UserController extends Controller
         
     }
 
-    public function sendActivationEmail($user)
+    public function sendActivationEmail($userid)
     {
-       Mail::to($user->email)->queue(new Welcome($user));
+        $user = User::find($userid);
+        Mail::to($user->email)->queue(new Welcome($user));
     }
 
     public function createActivationToken($user)
@@ -57,7 +58,7 @@ class UserController extends Controller
         $user->save();
         
         $token = $this->createActivationToken($user);
-        $email = $this->sendActivationEmail($user);
+        $email = $this->sendActivationEmail($user->id);
 
         return 1;
     }
@@ -95,9 +96,12 @@ class UserController extends Controller
             'password' => $request->get('password')
         ];
 
-        Auth::attempt($credentials, true);
+        if(Auth::attempt($credentials, true))
+        {
+            return 0;
+        }
 
-        return 1;
+        return -1;
     }
 
     public function settings(){

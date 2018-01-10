@@ -19,21 +19,62 @@ $('#register_btn').click(function(){
 	$email = $('#register_div').find('input[name="email"]').val();
 	$password = $('#register_div').find('input[name="password"]').val();
 
-	$.post('/register',{email:$email, password: $password}, function(){
-		$popup.html('Check you email');
-	})
+
+  $.ajax({
+    method: 'POST',
+    url: '/register',
+    data: {email:$email, password: $password}, 
+    success: function(data){
+      if (data == 0)
+      {
+        $('#auth_popup .msg').text('Pokračujte aktiváciou účtu pomocou linku vo Vašom emaily');
+      }
+      else
+      {
+        $('#auth_popup .msg').text(data);
+      }
+    },
+    error: function(data) {
+      $('#auth_popup .msgs').html('');
+      $.each(data.responseJSON.errors, function(i, item) {
+        $('#auth_popup .msgs').append('<div class="msg">'+item[0]+'</div>');
+      });
+
+    }
+  });
 
 })
 
 
 $('#login_btn').click(function(){
-	$popup = $('#auth_popup');
+	$validation = 1;
+
+  $popup = $('#auth_popup');
 	$email = $('#login_div').find('input[name="email"]').val();
 	$password = $('#login_div').find('input[name="password"]').val();
 
-	$.post('/login',{email:$email, password: $password}, function(){
-		location.reload('/');
-	})
+	$.ajax({
+    method: 'POST',
+    url: '/login',
+    data: {email:$email, password: $password}, 
+    success: function(data){
+      if (data == 0)
+      {
+		    location.replace('/')
+      }
+      else
+      {
+        $('#auth_popup .msg').text(data);
+      }
+	  },
+    error: function(data) {
+      $('#auth_popup .msgs').html('');
+      $.each(data.responseJSON.errors, function(i, item) {
+        $('#auth_popup .msgs').append('<div class="msg">'+item[0]+'</div>');
+      });
+
+    }
+  });
 
 });
 
@@ -80,6 +121,9 @@ $('#create_product_submit').click(function(){
   $price = $('#create_product_price_input input').val();
   $unit = $('#create_product_unit_input input').val();
   $maker = $('#create_product_maker_input input').val();
+  $new = ~~$('#create_product_new_flag .checkbox').checkbox('is checked');
+  $sale = ~~$('#create_product_sale_flag .checkbox').checkbox('is checked');
+  $saleprice = $('#create_product_sale_value .input').val();
 
   $("#create_product_params .row").each(function( index ) {
      if ($(this).find('.key').find('input').val()) {$key = $(this).find('.key').find('input').val();};
@@ -101,7 +145,7 @@ $('#create_product_submit').click(function(){
 
  if ($validation==1)
  {
-    $.post('/product',{name:$name, categories: $categories, desc: $desc, params: $params, price:$price, unit:$unit, code: $code, maker: $maker}, function(data){
+    $.post('/product',{name:$name, categories: $categories, desc: $desc, params: $params, price:$price, unit:$unit, code: $code, maker: $maker, sale: $sale, new: $new, sale_price: $saleprice}, function(data){
       location.replace('/'+data);
     })
   }
@@ -375,6 +419,13 @@ $('#login_password_input').keypress(function(e){
         $('#login_btn').click();
     }
 });
+
+$('#register_password_input').keypress(function(e){
+  if(e.which == 13) {
+        $('#register_btn').click();
+    }
+});
+
 
 $('#product_detail_delete_btn').click(function(){
   $productid = $('#product_detail').data('id');

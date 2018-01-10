@@ -28,7 +28,7 @@
 
            
                 <div class="categories">
-                    <div class="header item">Určenie</div>
+                    <div class="ui horizontal divider">Kategórie</div>
                     @foreach(App\Category::all() as $category)
                         <div class="item" data-categoryid="{{$category->id}}">{{$category->name}}</div>
                     @endforeach
@@ -42,15 +42,22 @@
 
             <div id="grid">
 
+
+                <div class="tabbs">
+                    <a class="tabb active"><i class="icon cubes"></i> Všetky produkty</a>
+                    <a class="tabb"><i class="icon asterisk"></i>Novinky</a>
+                    <a class="tabb"><i class="icon money"></i>V akcii</a>
+                </div>
+
+                <div class="sorts">
+                    <div class="sort"><i class="sort alphabet ascending icon"></i> Nazov</div>
+                    <div class="sort">Cena</div>
+                </div>
+
                  <div class="ui inverted dimmer">
                     <div class="ui text loader">Loading</div>
                   </div>
 
-                <div class="tabbs">
-                    <a class="tabb ui brown large label">Všetky produkty</a>
-                    <a class="tabb ui basic large label">Novinky</a>
-                    <a class="tabb ui basic large label">V akcii</a>
-                </div>
 
                <div id="active_filters"></div>
                <grid>

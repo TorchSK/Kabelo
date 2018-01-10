@@ -26,6 +26,27 @@
 		    <div class="item" data-value="m">m</div>
 		    <div class="item" data-value="ks">ks</div>
 		  </div>
+		</div>	
+
+		<div id="create_product_new_flag">
+		<div class="ui checkbox">
+		  <input type="checkbox" name="example">
+		  <label>Novinka</label>
+		</div>
+		</div>
+
+		<div id="create_product_sale_flag">
+		<div class="ui checkbox">
+		  <input type="checkbox" name="example">
+		  <label>V zľave</label>
+		</div>
+		  	<div class="ui right labeled input" id="create_product_sale_value">
+			  <input type="text" placeholder="Nová cena">
+			    <div class="ui basic label">
+		    Eur
+		  </div>
+			</div>
+			
 		</div>
 
 		<div class="ui huge brown button" id="create_product_submit">

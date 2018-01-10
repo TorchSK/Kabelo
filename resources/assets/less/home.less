@@ -94,9 +94,12 @@
 
 #grid{
 		flex:1;
-		padding: 40px;
 		background-color: #F7F7F7;
 		position: relative;
+
+		grid{
+			margin-left: 35px;
+		}
 		
 		.item{
 			display: inline-block;
@@ -154,6 +157,52 @@
 
 			}
 
+		}
+
+		.tabbs{
+			background-color: rgba(0,0,0,0.03);
+			padding-left: 15px;
+			margin-bottom: 35px;
+
+			.tabb{
+				display: inline-block;
+				padding: 16px 25px;
+				margin-right: -4px;
+				transition: all 0.3s;
+				font-size: 1.1em;
+				cursor: pointer;
+
+				&:first-child{
+					margin-left: -15px;
+				}
+
+				i{
+					margin-right: 10px;
+					font-size: 1.1em;
+				}
+
+				&.active{
+					background-color: @teal;
+					color: @white;
+				}
+
+				&:hover{
+					background-color: @teal;
+					color: @white;
+				}
+			}
+		}
+
+		.sorts{
+			margin: 0 50px;
+			margin-bottom: 25px;
+			background-color: @white;
+
+			>.sort{
+				display: inline-block;
+				padding: 15px 25px;
+				cursor: pointer;
+			}
 		}
 
 

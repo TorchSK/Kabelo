@@ -39,6 +39,7 @@ class AddAddressToUsers extends Migration {
 			$table->dropColumn('ico');	
 			$table->dropColumn('dic');	
 			$table->dropColumn('phone');	
+			$table->dropColumn('avatar');	
 
 		});
 	}

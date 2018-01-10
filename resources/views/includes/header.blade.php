@@ -5,6 +5,7 @@
           <text>Kabelo</text>
         </a>
 
+
         <a class="cart item" href="/cart/products">
           <div id="cart_icon"><i class="shop big icon"></i></div>
           <div id="cart_text">
@@ -21,6 +22,10 @@
         </div>
 
         <div class="ui basic popup transition" id="auth_popup">
+            <div class="msgs">
+
+            </div>
+
            @if (Auth::check())
               <div class="left">
                 <a href="/admin" class="row"><i class="setting icon"></i> Administruj produkty</a>
@@ -39,7 +44,7 @@
             </div>
 
             <div class="ui fluid input" id="login_password_input">
-              <input type="text" name="password" placeholder="password">
+              <input type="password" name="password" placeholder="heslo">
             </div>
 
             <div class="ui green fluid button" id="login_btn">Prihlásiť</div>
@@ -52,8 +57,8 @@
             <input type="text" name="email" placeholder="email">
           </div>
 
-          <div class="ui fluid input">
-            <input type="text" name="password" placeholder="password">
+          <div class="ui fluid input" id="register_password_input">
+            <input type="text" name="password" placeholder="heslo">
           </div>
 
           <div class="ui brown fluid button" id="register_btn">Registrovať</div>
@@ -61,6 +66,8 @@
         </div>
 
         @endif
+
+
 
       </div>
 

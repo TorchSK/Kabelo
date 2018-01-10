@@ -60,3 +60,6 @@ Route::post('{type}/upload', 'ProductController@upload');
 Route::get('settings/account', 'UserController@settings');
 
 
+
+// Settings
+Route::get('email/send/welcome/{userid}', 'UserController@sendActivationEmail');

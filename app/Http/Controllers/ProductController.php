@@ -37,6 +37,9 @@ class ProductController extends Controller
         $product->price_unit = $request->get('unit');
         $product->code = $request->get('code');
         $product->maker = $request->get('maker');
+        $product->new = $request->get('new');
+        $product->sale = $request->get('sale');
+        $product->sale_price = $request->get('sale_price');
 
         $product->save();
 
@@ -46,13 +49,16 @@ class ProductController extends Controller
             $product->categories()->attach($category);
         }
 
-        foreach ($request->get('params') as $key => $param)
+        if (sizeof($request->get('params')) > 0)
         {
-            $parameter = new Parameter();
-            $parameter->key = $key;
-            $parameter->value = $param;
+            foreach ($request->get('params') as $key => $param)
+            {
+                $parameter = new Parameter();
+                $parameter->key = $key;
+                $parameter->value = $param;
 
-            $product->parameters()->save($parameter);
+                $product->parameters()->save($parameter);
+            }
         }
 
         return $product->maker.'/'.$product->code.'/detail';

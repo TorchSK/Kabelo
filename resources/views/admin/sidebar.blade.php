@@ -46,7 +46,9 @@
 
 					@endforeach
 					@else
+						<div class="ct">
 						Žiadne kategórie
+						</div>
 					@endif
 
 

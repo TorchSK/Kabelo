@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddTimestampsToProducts extends Migration {
+class AddSaleToProducts extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,7 +13,10 @@ class AddTimestampsToProducts extends Migration {
 	{
 		Schema::table('products', function($table)
 		{
-			$table->timestamps();	
+			$table->boolean('new')->default(0);
+			$table->boolean('sale')->default(0);
+			$table->integer('sale_price')->nullable();;
+
 		});
 	}
 
@@ -26,8 +29,10 @@ class AddTimestampsToProducts extends Migration {
 	{
 		Schema::table('products', function($table)
 		{
-			Schema::dropIfExists('created_at');
-			Schema::dropIfExists('update_at');
+			Schema::dropIfExists('new');
+        	Schema::dropIfExists('sale');
+        	Schema::dropIfExists('sale_price');
+
 		});
 	}
 
