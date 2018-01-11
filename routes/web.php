@@ -17,10 +17,6 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-
-
-
 //Cart
 Route::put('cart/add/{productId}','CartController@addItem');
 Route::get('cart/products','CartController@products');
@@ -32,9 +28,11 @@ Route::delete('cart/all','CartController@delete');
 Route::delete('cart/{productid}','CartController@deleteItem');
 Route::put('cart/plus/{productid}','CartController@plusItem');
 Route::put('cart/minus/{productid}','CartController@minusItem');
+Route::post('cart','CartController@set');
 
 Route::post('/register', 'UserController@register')->name('register');
 Route::any('/logout', 'UserController@logout')->name('logout');
+Route::put('/user/{userid}', 'UserController@update');
 
 Route::get('/user/activate/{token}', 'UserController@activate')->name('activateUser');
 Route::post('/login', 'UserController@login')->name('login');

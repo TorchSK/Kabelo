@@ -349,6 +349,7 @@ function doSort(){
   $.get('/product/list',{sortBy: $sortBy, sortOrder: $sortOrder, filters: $filters}, function(data){
     $grid.html(data);
     $('#grid').find('.dimmer').removeClass('active');
+    $('#grid').show();
   })
 };
 
@@ -483,17 +484,143 @@ $('#product_detail_delete_btn').click(function(){
   }).modal('show');
 })
 
-$(".product_search_input input").keyup(function(e){
+$(document).ajaxStart(function() {
+  $('#grid').find('.dimmer').addClass('active');
+});
 
-  $( document ).ajaxStart(function() {
-    $('#grid').find('.dimmer').addClass('active');
-  });
+$(document).ajaxStop(function() {
+  $('#grid').find('.dimmer').removeClass('active');
+});
+
+$(".product_search_input input").keyup(function(e){
 
   $query = $(this).val();
   removeFilter('search');
   if ($query!='') {addFilter('search',$query,'hľadaj: '+$query)};
   doSort();
 
+})
+
+
+$('#settings_submit_btn').click(function(){
+  $validation = 1;
+
+  $userid = $('#settings_user').data('userid');
+
+  $container = $('#settings_user').find('#right');
+
+  $data = {
+    first_name: $container.find('input[name="first_name"]').val(),
+    last_name: $container.find('input[name="last_name"]').val(),
+    phone: $container.find('input[name="phone"]').val(),
+    invoiceAddress: {
+      street: $container.find('input[name="invoice_address_street"]').val(),
+      zip: $container.find('input[name="invoice_address_zip"]').val(),
+      city: $container.find('input[name="invoice_address_city"]').val(),
+    },
+    deliveryAddress: {
+      name: $container.find('input[name="delivery_address_name"]').val(),
+      street: $container.find('input[name="delivery_address_street"]').val(),
+      city: $container.find('input[name="delivery_address_city"]').val(),
+      zip: $container.find('input[name="delivery_address_zip"]').val(),
+      additional: $container.find('input[name="delivery_address_additional"]').val(),
+      phone: $container.find('input[name="delivery_address_phone"]').val(),
+    },
+  };
+
+  if ($data.invoiceAddress.street && (!$data.invoiceAddress.zip || !$data.invoiceAddress.city))
+  {
+    $validation = 0;
+    $container.find('input[name="invoice_address_zip"]').closest('.input').addClass('error');
+    $container.find('input[name="invoice_address_city"]').closest('.input').addClass('error');
+  }
+
+  if ($data.invoiceAddress.zip && (!$data.invoiceAddress.street || !$data.invoiceAddress.city))
+  {
+    $validation = 0;
+    $container.find('input[name="invoice_address_street"]').closest('.input').addClass('error');
+    $container.find('input[name="invoice_address_city"]').closest('.input').addClass('error');
+  }
+
+  if ($data.invoiceAddress.city && (!$data.invoiceAddress.zip || !$data.invoiceAddress.street))
+  {
+    $validation = 0;
+    $container.find('input[name="invoice_address_zip"]').closest('.input').addClass('error');
+    $container.find('input[name="invoice_address_street"]').closest('.input').addClass('error');
+  }
+
+
+  $deliveryInputsLength = $('.delivery_address.inputs .input').length;
+  $deliveryAddressEmpty = [];
+
+  $('.delivery_address.inputs .input input').each(function(index, element){
+    if ($(element).val()=='')
+    {
+      $deliveryAddressEmpty.push($(element).attr('name'));
+    }
+  })
+
+  if ($deliveryInputsLength != $deliveryAddressEmpty.length){
+    $.each($deliveryAddressEmpty, function(i, item) {
+      $('input[name="'+item+'"]').closest('.input').addClass('error');
+      $validation = 0;
+    });
+  }
+
+  if ($validation)
+  {
+    $.ajax({
+      method: "PUT",
+      url: '/user/'+$userid,
+      data: $data,
+      success: function(data){
+        location.reload();
+        //console.log(data)
+      }
+    })
+  } 
+})
+
+$(".cart_delivery").click(function(){
+  $delivery = $(this).data('delivery');
+
+  $.ajax({
+    method: "POST",
+    url: '/cart',
+    data: {delivery: $delivery}
+  })
+})
+
+$(".cart_payment").click(function(){
+  $payment = $(this).data('payment');
+
+  $.ajax({
+    method: "POST",
+    url: '/cart',
+    data: {payment: $payment}
+  })
+})
+
+$('#use_delivery_address_input').checkbox({
+  onChecked: function(){
+    $('.cart_address .delivery').fadeIn();
+
+    $.ajax({
+      method: "POST",
+      url: '/cart',
+      data: {deliveryAddress: 1}
+    })
+
+  },
+  onUnchecked: function(){
+    $('.cart_address .delivery').fadeOut();
+
+    $.ajax({
+      method: "POST",
+      url: '/cart',
+      data: {deliveryAddress: 0}
+    })
+  },
 })
 
 

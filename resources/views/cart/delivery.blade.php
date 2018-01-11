@@ -14,7 +14,7 @@
 			<div class="ui horizontal divider">Sposob dopravy</div>
 
 			<div class="ui steps">
-			  <a class="step" data-delivery="place">
+			  <a class="step cart_delivery @if ($delivery=='place') completed active @endif" data-delivery="place">
 			    <i class="user icon"></i>
 			    <div class="content">
 			      <div class="title">Osobný odber</div>
@@ -25,7 +25,7 @@
 			
 
 			<div class="ui steps">
-			  <a class="step" data-delivery="ppl">
+			  <a class="step cart_delivery @if ($delivery=='ppl') completed active @endif" data-delivery="ppl">
 			    <i class="truck icon"></i>
 			    <div class="content">
 			      <div class="title">PPL kuriér</div>
@@ -42,7 +42,7 @@
 
 								
 			<div class="ui steps">
-			  <a class="step" data-payment="cash">
+			  <a class="step cart_payment @if ($payment=='cash') completed active @endif @if ($delivery=='ppl') disabled @endif" data-payment="cash">
 			    <i class="money icon"></i>
 			    <div class="content">
 			      <div class="title">Hotovost</div>
@@ -52,7 +52,7 @@
 			</div>
 
 			<div class="ui steps">
-			  <a class="step" data-payment="cod"> 
+			  <a class="step cart_payment @if ($payment=='cod') completed active @endif @if ($delivery=='place') disabled @endif" data-payment="cod"> 
 			    <i class="cube icon"></i>
 			    <div class="content">
 			      <div class="title">Dobierkou</div>

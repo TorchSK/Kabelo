@@ -28,18 +28,80 @@ class CartController extends Controller
     }
 
     public function delivery(){
-        return view('cart.delivery');
+        $cookie = Cookie::get('cart');
+
+        if (isset($cookie['delivery']))
+        {
+            $delivery =  $cookie['delivery'];
+        }
+        else
+        {
+            $delivery =  -1;
+        }
+
+        if (isset($cookie['payment']))
+        {
+            $payment =  $cookie['payment'];
+        }
+        else
+        {
+            $payment =  -1;
+        }
+
+
+        $data = [
+            'delivery' => $delivery,
+            'payment' => $payment
+        ];
+
+        return view('cart.delivery', $data);
     }
 
     public function shipping(){
-        return view('cart.shipping');
+        $cookie = Cookie::get('cart');
+
+        if (isset($cookie['deliveryAddress']))
+        {
+            $deliveryAddress =  $cookie['deliveryAddress'];
+        }
+        else
+        {
+            $deliveryAddress =  0;
+        }
+
+
+
+        $data = [
+            'deliveryAddress' => $deliveryAddress,
+        ];
+
+        return view('cart.shipping', $data);
     }
 
 
    public function confirm(){
-        return view('cart.confirm');
+        $cookie = Cookie::get('cart');
+
+        $data = [
+            'products' => $cookie['items'],
+            'delivery' => $cookie['delivery'],
+            'payment' => $cookie['payment']
+        ];
+
+        return view('cart.confirm', $data);
     }
 
+    public function set(Request $request)
+    {        
+        $cookieData = Cookie::get('cart');
+
+        foreach ($request->except('_token') as $key => $item) {
+          $cookieData[$key] = $item;
+        }        
+
+        Cookie::queue('cart', $cookieData, 0);
+
+    }
 
     public function addItem($productId, Request $request)
     {

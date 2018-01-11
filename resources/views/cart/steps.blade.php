@@ -1,18 +1,18 @@
 <div class="status">
 <div class="ui ordered steps">
-  <a class="@if($step==1)active @endif @if($step==2)completed @endif step">
+  <a class="@if($step==1)active @endif @if($step==2 || $step==3 || $step==4)completed @endif step">
     <div class="content">
       <div class="title">Produkty</div>
       <div class="description">Skontrolte obsah Vášho košíku</div>
     </div>
   </a>
-  <div class="@if($step==2)active @endif step">
+  <div class="@if($step==2)active @endif @if($step==3 || $step==4)completed @endif step">
     <div class="content">
       <div class="title">Doprava a platba</div>
       <div class="description">Zadajte dopravu a sposob platby</div>
     </div>
   </div>
-  <div class="@if($step==3)active @endif step">
+  <div class="@if($step==3)active @endif @if($step==4)completed @endif step">
     <div class="content">
       <div class="title">Dodacie údaje</div>
       <div class="description">Zadajte adresu doručenia</div>

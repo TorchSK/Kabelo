@@ -99,6 +99,9 @@
 }
 
 .cart_address{
+	.ui.input{
+		margin-bottom: 15px;
+	}
 	.labels{
 		display: inline-block;
 		text-align: right;
@@ -111,10 +114,33 @@
 	.inputs{
 		display: inline-block;
 	}
+
+	#use_delivery_address_input{
+		margin: 45px 0;
+	}
+
+	.delivery:not(.active){
+		display: none;
+	}
 }
 
 #empty_cart_text{
 	font-size: 3em;
 	font-weight: 100;
 	font-style: italic;
+}
+
+.cart_confirm{
+	background-color: #F7F7F7;
+
+	.products{
+		.item.product{
+			width: 250px !important;
+			padding: 25px 0 !important;
+
+			img{
+				width: 200px;
+			}
+		}
+	}
 }

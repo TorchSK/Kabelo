@@ -14,7 +14,7 @@
 	<div class="price">{{$product->price}} Eur</div>
 	<div class="availability"></div>
 
-	@if((!isset($cart) || !$cart) && Request::segment(1) != 'admin')
+	@if((!isset($cart) || !$cart) && Request::segment(1) != 'admin'  && (!isset($cart_confirm) || !$cart_confirm))
 	<a class="to_cart">
 		<button class="ui teal icon button">
 	  		<i class="shop icon"></i>
@@ -27,7 +27,7 @@
 
 </a>
 
-@if(isset($cart) && $cart)
+@if(isset($cart) && $cart && (!isset($cart_confirm) || !$cart_confirm))
 <div class="cart_item_actions">
 	<div class="ui right labeled action input">
 		<input type="text" value="{{array_count_values($cartItems)[$product->id]}}" />
