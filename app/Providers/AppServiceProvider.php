@@ -27,24 +27,27 @@ class AppServiceProvider extends ServiceProvider
             $cookieData = [
                 'number' => 0,
                 'price' => 0,
-                'items' => []
+                'items' => [],
+                'delivery' => '',
+                'payment' => '',
+                'invoiceAddress' => '',
+                'deliveryAddress' => '',
+                'deliveryAddressFlag' => 0,
             ];
 
             $cookie = Cookie::queue('cart',$cookieData,0);
         }
         //dd($cookie);
-        if ($cookie)
-        {
-            View::share('cartNumber', $cookie['number']);
-            View::share('cartPrice', $cookie['price']);
-            View::share('cartItems', $cookie['items']);
-        }
-        else
-        {
-            View::share('cartNumber', 0);
-            View::share('cartPrice', 0);
-            View::share('cartItems', []);
-        }
+        View::share('cartNumber', $cookie['number']);
+        View::share('cartPrice', $cookie['price']);
+        View::share('cartItems', $cookie['items']);
+        View::share('cartDelivery', $cookie['delivery']);
+        View::share('cartPayment', $cookie['payment']);
+        View::share('cartInvoiceAddress', $cookie['invoiceAddress']);
+        View::share('cartDeliveryAddress', $cookie['deliveryAddress']);
+        View::share('cartDeliveryAddressFlag', $cookie['deliveryAddressFlag']);
+
+    
     }
 
     /**

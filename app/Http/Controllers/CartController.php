@@ -11,6 +11,7 @@ use App\File as ProductFile;
 use Image;
 use File;
 use Cookie;
+use Auth;
 
 class CartController extends Controller
 {
@@ -60,18 +61,36 @@ class CartController extends Controller
     public function shipping(){
         $cookie = Cookie::get('cart');
 
+        if (isset($cookie['invoiceAddress']))
+        {
+            $invoiceAddress =  $cookie['invoiceAddress'];
+        }
+        else
+        {   
+            if(Auth::check())
+            {
+                $invoiceAddress = Auth::user()->invoiceAddress;
+                $invoiceAddress['name'] = $invoiceAddress['first_name'].' '.$invoiceAddress['last_name'];
+            }
+            else
+            {
+                $invoiceAddress = false;
+            }
+        }
+
         if (isset($cookie['deliveryAddress']))
         {
             $deliveryAddress =  $cookie['deliveryAddress'];
         }
         else
         {
-            $deliveryAddress =  0;
+            $deliveryAddress =  false;
         }
 
 
 
         $data = [
+            'invoiceAddress' => $invoiceAddress,
             'deliveryAddress' => $deliveryAddress,
         ];
 
@@ -85,7 +104,10 @@ class CartController extends Controller
         $data = [
             'products' => $cookie['items'],
             'delivery' => $cookie['delivery'],
-            'payment' => $cookie['payment']
+            'payment' => $cookie['payment'],
+            'invoiceAddress' => $cookie['invoiceAddress'],
+            'deliveryAddress' => $cookie['deliveryAddress']
+
         ];
 
         return view('cart.confirm', $data);
@@ -119,11 +141,12 @@ class CartController extends Controller
 
         array_push($cartItems,$product->id);
 
-        $cookieData = [
-            'number' => $cartNumber + 1,
-            'price' => $cartPrice + $product->price,
-            'items' => $cartItems
-        ];
+
+        $cookieData = $cookie;
+
+        $cookieData['number'] = $cartNumber + 1;
+        $cookieData['price'] = $cartPrice + $product->price;
+        $cookieData['items'] = $cartItems;
         
         Cookie::queue('cart', $cookieData, 0);
         
@@ -150,11 +173,10 @@ class CartController extends Controller
             unset($cartItems[$key]);
         }
 
-        $cookieData = [
-            'number' => $cartNumber - $itemCount,
-            'price' => $cartPrice - $itemCount*$product->price,
-            'items' => $cartItems
-        ];
+        $cookieData =  $cookie ;
+        $cookieData['number'] = $cartNumber - $itemCount;
+        $cookieData['price'] = $cartPrice - $itemCount*$product->price;
+        $cookieData['items'] = $cartItems;
         
         Cookie::queue('cart', $cookieData, 0);
         
@@ -177,11 +199,12 @@ class CartController extends Controller
 
         array_push($cartItems,$product->id);
 
-        $cookieData = [
-            'number' => $cartNumber + 1,
-            'price' => $cartPrice + $product->price,
-            'items' => $cartItems
-        ];
+        $cookieData = $cookie;
+
+        $cookieData['number'] = $cartNumber + 1;
+        $cookieData['price'] = $cartPrice + $product->price;
+        $cookieData['items'] = $cartItems;
+        
         
         Cookie::queue('cart', $cookieData, 0);
         
@@ -208,11 +231,11 @@ class CartController extends Controller
         $minusItemKey = array_keys($cartItems, $productId)[0];
         unset($cartItems[$minusItemKey]);
 
-        $cookieData = [
-            'number' => $cartNumber - 1,
-            'price' => $cartPrice - $product->price,
-            'items' => $cartItems
-        ];
+        $cookieData = $cookie;
+
+        $cookieData['number'] = $cartNumber - 1;
+        $cookieData['price'] = $cartPrice - $product->price;
+        $cookieData['items'] = $cartItems;
         
         Cookie::queue('cart', $cookieData, 0);
         
@@ -223,9 +246,15 @@ class CartController extends Controller
     public function delete()
     {
         $cookieData = [
-            'number' => 0,
-            'price' => 0,
-            'items' => []
+                'number' => 0,
+                'price' => 0,
+                'items' => [],
+                'delivery' => '',
+                'payment' => '',
+                'invoiceAddress' => '',
+                'deliveryAddress' => '',
+                'deliveryAddressFlag' => 0
+
         ];
         
         return Cookie::queue('cart', $cookieData, 0);  

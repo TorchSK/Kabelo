@@ -43,5 +43,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Address')->where('type','delivery');
     }
 
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
 
 }

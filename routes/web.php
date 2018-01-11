@@ -57,6 +57,12 @@ Route::post('{type}/upload', 'ProductController@upload');
 // Settings
 Route::get('settings/account', 'UserController@settings');
 
+//Orders
+Route::get('order/success','OrderController@success');
+Route::get('orders/mine','OrderController@myhistory');
+Route::get('orders/pending','OrderController@pending');
+
+Route::resource('order','OrderController');
 
 
 // Settings

@@ -19,6 +19,7 @@
             {{Auth::user()->email}}
           @endif
           <i class="user big icon"></i>
+          <i class="chevron down icon"></i>
         </div>
 
         <div class="ui basic popup transition" id="auth_popup">
@@ -30,6 +31,9 @@
               <div class="left">
                 <a href="/admin" class="row"><i class="setting icon"></i> Administruj produkty</a>
                 <a href="/settings/account" class="row"><i class="user icon"></i> Nastavenia účtu</a>
+                <a href="/orders/mine" class="row"><i class="history icon"></i> História objednávok</a>
+                <a href="/orders/pending" class="row"><i class="hourglass start icon"></i> Čakajúce objednávky</a>
+
               </div>
               
               <div class="right ct">

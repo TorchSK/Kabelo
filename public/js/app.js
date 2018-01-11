@@ -68,7 +68,8 @@ $('#login_btn').click(function(){
       }
       else
       {
-        $('#auth_popup .msg').text(data);
+        $('#auth_popup .msgs').html('');
+        $('#auth_popup .msgs').append('<div class="msg">Zadali ste nesprávne heslo</div>');
       }
 	  },
     error: function(data) {
@@ -260,7 +261,7 @@ $('.delete_cart').click(function(){
         url: "/cart/all",
         data: {},
         success: function(){
-          location.reload();
+          location.replace('/cart/products');
         }
       })
     }
@@ -444,11 +445,28 @@ $('#cart_delivery_options .step').click(function(){
     $('#cart_payment_options .step[data-payment="cod"]').removeClass('disabled');
     $('#cart_payment_options .step[data-payment="cash"]').addClass('disabled').removeClass('completed');;
   }
+
+  if ($('#cart_payment_options .step.completed').length > 0)
+  {
+    $('.cart_next').removeClass('disabled');
+  }
+   else
+  {
+    $('.cart_next').addClass('disabled');
+  }
 })
 
 $('#cart_payment_options .step').click(function(){
   $('#cart_payment_options .step').removeClass('completed').removeClass('active');
   $(this).addClass('completed active');
+  if ($('#cart_delivery_options .step.completed').length > 0)
+  {
+    $('.cart_next').removeClass('disabled');
+  }
+  else
+  {
+    $('.cart_next').addClass('disabled');
+  }
 })
 
 $('#view_goods_btn').click(function(){
@@ -608,7 +626,7 @@ $('#use_delivery_address_input').checkbox({
     $.ajax({
       method: "POST",
       url: '/cart',
-      data: {deliveryAddress: 1}
+      data: {deliveryAddressFlag: 1}
     })
 
   },
@@ -618,10 +636,60 @@ $('#use_delivery_address_input').checkbox({
     $.ajax({
       method: "POST",
       url: '/cart',
-      data: {deliveryAddress: 0}
+      data: {deliveryAddressFlag: 0}
     })
   },
 })
+
+
+$('#cart_shipping_next_btn').click(function(e){
+    $invoiceAddress = {};
+    $deliveryAddress = {};
+    $button = $(this);
+    $button.addClass('loading');
+    
+    $invoiceAddressInputs = $('.cart_address').find('.invoice').find('.input');
+    $invoiceAddressInputs.each(function(index, item){
+      $type = $(item).data('column');
+      $invoiceAddress[$type] = $(item).find('input').val();
+    })
+
+    $deliveryAddressInputs = $('.cart_address').find('.delivery').find('.input');
+    $deliveryAddressInputs.each(function(index, item){
+      $type = $(item).data('column');
+      $deliveryAddress[$type] = $(item).find('input').val();
+    })
+
+    $.ajax({
+      method: "POST",
+      url: '/cart',
+      data: {invoiceAddress: $invoiceAddress, deliveryAddress: $deliveryAddress}
+    });
+
+    e.preventDefault();
+    setTimeout(function(){
+        $.get($(this).attr('href'),{}, function(){
+        location.replace($button.attr('href'));
+      })
+    },1000);
+
+
+})
+
+
+$('#submit_order_btn').click(function(){
+  $button = $(this);
+  $button.addClass('loading');
+  $.ajax({
+    method: 'POST',
+    url: '/order',
+    success: function(){
+      location.replace("/order/success");
+    }
+  })
+
+})
+
 
 
 });

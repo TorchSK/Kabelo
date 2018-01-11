@@ -296,7 +296,7 @@ a:hover {
 }
 #under_cover img {
   display: inline-block;
-  margin: 35px 130px;
+  margin: 25px 130px;
   position: relative;
   opacity: 0.8;
 }
@@ -496,7 +496,7 @@ a:hover {
   font-size: 1.2em;
   cursor: pointer;
 }
-#header .account i.icon {
+#header .account i.icon.user {
   margin-left: 15px;
 }
 #auth_popup {
@@ -547,6 +547,10 @@ a:hover {
   display: flex;
   padding: 100px;
 }
+#product_detail .other_img img {
+  cursor: pointer;
+  margin-bottom: 1px;
+}
 #product_detail .left {
   width: 40%;
 }
@@ -555,10 +559,6 @@ a:hover {
 }
 #product_detail .left .img img {
   padding: 0 10% 10% 10%;
-}
-#product_detail .left .other_img img {
-  display: inline-block;
-  cursor: pointer;
 }
 #product_detail .right:not(.labeled):not(.action) {
   -webkit-box-flex: 1;

@@ -25,23 +25,23 @@
 
 				<div class="inputs">
 				
-			       	<div class="ui large input">
-			            <input type="text" @if(Auth::check()) value="{{Auth::user()->first_name}} {{Auth::user()->last_name}}" @endif />
+			       	<div class="ui large input" data-column="name">
+			            <input type="text" @if($invoiceAddress) value="{{$invoiceAddress['name']}}" @endif/>
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" @if(Auth::check() && Auth::user()->invoiceAddress) value="{{Auth::user()->invoiceAddress->street}}" @endif  />
+			      	<div class="ui large input" data-column="street">
+			            <input type="text" @if($invoiceAddress) value="{{$invoiceAddress['street']}}" @endif />
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" @if(Auth::check() && Auth::user()->invoiceAddress) value="{{Auth::user()->invoiceAddress->city}}" @endif />
+			      	<div class="ui large input" data-column="city">
+			            <input type="text" @if($invoiceAddress) value="{{$invoiceAddress['city']}}"  @endif/>
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" @if(Auth::check() && Auth::user()->invoiceAddress) value="{{Auth::user()->invoiceAddress->zip}}" @endif  />
+			      	<div class="ui large input" data-column="zip">
+			            <input type="text" @if($invoiceAddress) value="{{$invoiceAddress['zip']}}"  @endif />
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" @if(Auth::check()) value="{{Auth::user()->phone}}"  @endif />
+			      	<div class="ui large input" data-column="phone">
+			            <input type="text" @if($invoiceAddress) value="{{$invoiceAddress['phone']}}" @endif />
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" @if(Auth::check()) value="{{Auth::user()->email}}"  @endif />
+			      	<div class="ui large input" data-column="email">
+			            <input type="text" @if($invoiceAddress) value="{{$invoiceAddress['email']}}" @endif />
 			      	</div><br/>
 
        			</div>
@@ -50,13 +50,13 @@
 
 
 		
-		<div class="ui checkbox @if($deliveryAddress) checked @endif item" id="use_delivery_address_input">
-		  <input type="checkbox" name="example" @if($deliveryAddress) checked @endif>
+		<div class="ui checkbox @if($cartDeliveryAddressFlag) checked @endif item" id="use_delivery_address_input">
+		  <input type="checkbox" name="example" @if($cartDeliveryAddressFlag) checked @endif>
 		  <label>Chcem doručiť na inú ako fakturačnú adresu</label>
 		</div>
 
 		
-   		<div class="delivery  @if($deliveryAddress) active @endif">
+   		<div class="delivery  @if($cartDeliveryAddressFlag) active @endif">
    				<div class="labels">
 	       			<div class="item">Meno *</div>
 	       			<div class="item">Ulica *</div>
@@ -68,23 +68,23 @@
 
 				<div class="inputs">
 				
-			       	<div class="ui large input">
-			            <input type="text" @if(Auth::check() && Auth::user()->deliveryAddress) value="{{Auth::user()->deliveryAddress->name}}" @endif />
+			       	<div class="ui large input" data-column="name">
+			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['name']}}" @endif />
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" @if(Auth::check() && Auth::user()->deliveryAddress)  value="{{Auth::user()->deliveryAddress->street}}"  @endif />
+			      	<div class="ui large input" data-column="street">
+			            <input type="text" @if($deliveryAddress)  value="{{$deliveryAddress['street']}}"  @endif />
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" @if(Auth::check() && Auth::user()->deliveryAddress) value="{{Auth::user()->deliveryAddress->city}}" @endif />
+			      	<div class="ui large input" data-column="city">
+			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['city']}}" @endif />
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" @if(Auth::check() && Auth::user()->deliveryAddress) value="{{Auth::user()->deliveryAddress->zip}}"  @endif />
+			      	<div class="ui large input" data-column="zip">
+			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['zip']}}"  @endif />
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" @if(Auth::check() && Auth::user()->deliveryAddress) value="{{Auth::user()->deliveryAddress->phone}}" @endif  />
+			      	<div class="ui large input" data-column="phone">
+			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['phone']}}" @endif  />
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" @if(Auth::check()) value="{{Auth::user()->email}}"  @endif />
+			      	<div class="ui large input" data-column="email">
+			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['email']	}}"  @endif />
 			      	</div><br/>
 
        			</div>
@@ -97,7 +97,7 @@
 
 	<div class="ct cart_actions">
 		<a href="/cart/delivery" class="ui button"><i class="arrow left icon"></i>Spať</a>
-		<a href="/cart/confirm" class="ui green button">Pokračovať</a>
+		<a href="/cart/confirm" class="ui green button" id="cart_shipping_next_btn">Pokračovať</a>
 	</div>
 
 

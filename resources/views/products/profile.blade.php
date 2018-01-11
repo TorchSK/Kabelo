@@ -10,6 +10,16 @@
 </div>
 
 <div id="product_detail" data-id={{$product->id}}>
+
+      <div class="other_img">
+          @if ($product->images->count() > 1)
+          @foreach($product->images as $image)
+           <img src="/{{$image->path}}" class="ui image" width="200px" />
+           @endforeach
+           @endif
+        </div>
+
+
     <div class="left">
         <div class="img">
            @if ($product->images->count() == 0)
@@ -19,13 +29,7 @@
            @endif
         </div>
 
-        <div class="other_img">
-          @if ($product->images->count() > 1)
-          @foreach($product->images as $image)
-           <img src="/{{$image->path}}" class="ui image" width="200px" />
-           @endforeach
-           @endif
-        </div>
+
 
     </div>
 

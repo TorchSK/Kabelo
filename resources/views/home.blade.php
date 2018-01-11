@@ -10,8 +10,6 @@
 
         <div id="under_cover">               
             <img src="img/tasker.png" width="100" class="ui image" />
-            <img src="img/tasker.png" width="100" class="ui image" />
-            <img src="img/tasker.png" width="100" class="ui image" />
 
         </div>
 

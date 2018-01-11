@@ -29,4 +29,9 @@ class Product extends Model {
  		return $this->hasMany('App\File')->where('type','image');
  	}
 
+ 	public function orders() 
+  	{
+ 		return $this->belongsToMany('App\Order');
+ 	}
+
 }

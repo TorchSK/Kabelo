@@ -74,7 +74,7 @@
 		</div>
 
 		<div class="shipping ct">
-			<div class="ui horizontal divider">Fakturačné údaje</div>
+			<div class="ui horizontal divider">Fakturačné @if(!$deliveryAddress)a dodacie @endif údaje</div>
 
 			<div class="cart_address">
 
@@ -92,29 +92,31 @@
 				<div class="inputs">
 				
 			       	<div class="ui large disabled input">
-			            <input type="text" value="{{Auth::user()->first_name}} {{Auth::user()->last_name}}"/>
+			            <input type="text" value="{{$invoiceAddress['name']}}"/>
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{Auth::user()->invoiceAddress->street}}" />
+			            <input type="text" value="{{$invoiceAddress['street']}}" />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{Auth::user()->invoiceAddress->city}}"/>
+			            <input type="text" value="{{$invoiceAddress['city']}}"/>
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{Auth::user()->invoiceAddress->zip}}" />
+			            <input type="text" value="{{$invoiceAddress['zip']}}" />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{Auth::user()->phone}}" />
+			            <input type="text" value="{{$invoiceAddress['phone']}}" />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{Auth::user()->email}}" />
+			            <input type="text" value="{{$invoiceAddress['email']}}" />
 			      	</div><br/>
 
        			</div>
 
        		</div>
 
-   		<div class="delivery">
+   		<div class="delivery @if($cartDeliveryAddressFlag) active @endif">
+   				<div class="ui horizontal divider">Dodacie údaje</div>
+
    				<div class="labels">
 	       			<div class="item">Meno *</div>
 	       			<div class="item">Ulica *</div>
@@ -126,23 +128,23 @@
 
 				<div class="inputs">
 				
-			       	<div class="ui large input">
-			            <input type="text" value="{{Auth::user()->deliveryAddress->name}}"/>
+			       	<div class="ui large disabled input">
+			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['name']}}" @endif />
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" value="{{Auth::user()->deliveryAddress->street}}" />
+			      	<div class="ui large disabled input">
+			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['street']}}"  @endif />
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" value="{{Auth::user()->deliveryAddress->city}}"/>
+			      	<div class="ui large disabled input">
+			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['city']}}" @endif />
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" value="{{Auth::user()->deliveryAddress->zip}}" />
+			      	<div class="ui large disabled input">
+			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['zip']}}"  @endif />
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" value="{{Auth::user()->deliveryAddress->phone}}" />
+			      	<div class="ui large disabled input">
+			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['phone']}}"  @endif />
 			      	</div><br/>
-			      	<div class="ui large input">
-			            <input type="text" value="{{Auth::user()->email}}" />
+			      	<div class="ui large disabled input">
+			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['email']}}"  @endif 	/>
 			      	</div><br/>
 
        			</div>
@@ -155,7 +157,7 @@
 
 	<div class="ct cart_actions">
 		<a href="/cart/shipping" class="ui button"><i class="arrow left icon"></i>Spať</a>
-		<a href="/cart/shipping" class="ui green button"><i class="upload icon"></i>Odoslať objednávku</a>
+		<a class="ui green button" id="submit_order_btn"><i class="upload icon"></i>Odoslať objednávku</a>
 	</div>
 
 </div>

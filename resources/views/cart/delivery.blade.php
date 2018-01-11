@@ -66,7 +66,8 @@
 
 	<div class="ct cart_actions">
 		<a href="/cart/products" class="ui button"><i class="arrow left icon"></i>Spať</a>
-		<a href="/cart/shipping" class="ui green button">Pokračovať</a>
+
+		<a href="/cart/shipping" class="cart_next ui green @if ($cartDelivery=='' || $cartPayment=='') disabled @endif button">Pokračovať</a>
 	</div>
 
 </div>
