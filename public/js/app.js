@@ -224,6 +224,7 @@ function addToCart(productid){
     method: "PUT",
     url: '/cart/add/'+productid,
     data: {},
+    global: false,
     success: function(data){
       cart.find('text number').text(number+1);
       cart.find('price number').text(price+parseFloat(data.price));

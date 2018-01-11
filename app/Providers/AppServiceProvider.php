@@ -38,6 +38,16 @@ class AppServiceProvider extends ServiceProvider
             $cookie = Cookie::queue('cart',$cookieData,0);
         }
         //dd($cookie);
+
+        if (!isset($cookie['number'])) {$cookie['number']=0;}
+        if (!isset($cookie['price'])) {$cookie['price']=0;}
+        if (!isset($cookie['items'])) {$cookie['items']=[];}
+        if (!isset($cookie['delivery'])) {$cookie['delivery']='';}
+        if (!isset($cookie['payment'])) {$cookie['payment']='';}
+        if (!isset($cookie['invoiceAddress'])) {$cookie['invoiceAddress']='';}
+        if (!isset($cookie['deliveryAddress'])) {$cookie['deliveryAddress']='';}
+        if (!isset($cookie['deliveryAddressFlag'])) {$cookie['deliveryAddressFlag']=0;}
+
         View::share('cartNumber', $cookie['number']);
         View::share('cartPrice', $cookie['price']);
         View::share('cartItems', $cookie['items']);
