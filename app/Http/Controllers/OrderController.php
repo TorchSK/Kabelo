@@ -9,6 +9,7 @@ use App\Product;
 
 use Cookie;
 use Auth;
+use Mail;
 
 class OrderController extends Controller
 {
@@ -33,6 +34,8 @@ class OrderController extends Controller
     	}
 
     	$order->status_id = 0;
+
+
     	$order->delivery_method = $orderData['delivery'];
     	$order->payment_method = $orderData['payment'];
 
@@ -51,7 +54,6 @@ class OrderController extends Controller
 			$order->delivery_address_zip = $orderData['deliveryAddress']['zip'];
 			$order->delivery_address_city = $orderData['deliveryAddress']['city'];
 			$order->delivery_address_phone = $orderData['deliveryAddress']['phone'];
-			$order->delivery_address_email = $orderData['deliveryAddress']['email'];
 		}
 		else
 		{
@@ -60,17 +62,23 @@ class OrderController extends Controller
 			$order->delivery_address_zip = $orderData['invoiceAddress']['zip'];
 			$order->delivery_address_city = $orderData['invoiceAddress']['city'];
 			$order->delivery_address_phone = $orderData['invoiceAddress']['phone'];
-			$order->delivery_address_email = $orderData['invoiceAddress']['email'];
 		}
 		$order->invoice_first_additional = '';
 
-		$order->save();
-
+        $price = 0;
 		foreach ($orderData['items'] as $productid)
 		{
 			$product = Product::find($productid);
+            $price = $price + $product->price;
 			$order->products()->attach($product);
 		};
+
+        $order->price = $price;
+        $order->save();
+
+        $user = Auth::user();
+        Mail::to($order->invoice_email)->queue(new NewOrder($order));
+
     }
 
     public function success()

@@ -61,7 +61,7 @@ class CartController extends Controller
     public function shipping(){
         $cookie = Cookie::get('cart');
 
-        if (isset($cookie['invoiceAddress']))
+        if ($cookie['invoiceAddress']!='')
         {
             $invoiceAddress =  $cookie['invoiceAddress'];
         }
@@ -70,7 +70,10 @@ class CartController extends Controller
             if(Auth::check())
             {
                 $invoiceAddress = Auth::user()->invoiceAddress;
-                $invoiceAddress['name'] = $invoiceAddress['first_name'].' '.$invoiceAddress['last_name'];
+                $invoiceAddress['name'] = Auth::user()->first_name.' '.Auth::user()->last_name;
+                $invoiceAddress['phone'] = Auth::user()->phone;
+                $invoiceAddress['email'] = Auth::user()->email;
+
             }
             else
             {
@@ -78,13 +81,21 @@ class CartController extends Controller
             }
         }
 
-        if (isset($cookie['deliveryAddress']))
+        if ($cookie['deliveryAddress']!='')
         {
             $deliveryAddress =  $cookie['deliveryAddress'];
         }
         else
         {
-            $deliveryAddress =  false;
+            if(Auth::check())
+            {
+                $deliveryAddress = Auth::user()->deliveryAddress;
+
+            }
+            else
+            {
+                $deliveryAddress = false;
+            }
         }
 
 

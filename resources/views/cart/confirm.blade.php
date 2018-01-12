@@ -74,7 +74,7 @@
 		</div>
 
 		<div class="shipping ct">
-			<div class="ui horizontal divider">Fakturačné @if(!$deliveryAddress)a dodacie @endif údaje</div>
+			<div class="ui horizontal divider">Fakturačné @if(!$cartDeliveryAddressFlag)a dodacie @endif údaje</div>
 
 			<div class="cart_address">
 
@@ -123,7 +123,6 @@
 	       			<div class="item">Mesto *</div>
 	       			<div class="item">PSČ *</div>
 	       			<div class="item">Telefón *</div>
-	       			<div class="item">Email *</div>
 				</div>
 
 				<div class="inputs">
@@ -143,9 +142,7 @@
 			      	<div class="ui large disabled input">
 			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['phone']}}"  @endif />
 			      	</div><br/>
-			      	<div class="ui large disabled input">
-			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['email']}}"  @endif 	/>
-			      	</div><br/>
+
 
        			</div>
        	</div>

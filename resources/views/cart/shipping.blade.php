@@ -63,7 +63,6 @@
 	       			<div class="item">Mesto *</div>
 	       			<div class="item">PSČ *</div>
 	       			<div class="item">Telefón *</div>
-	       			<div class="item">Email *</div>
 				</div>
 
 				<div class="inputs">
@@ -83,9 +82,7 @@
 			      	<div class="ui large input" data-column="phone">
 			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['phone']}}" @endif  />
 			      	</div><br/>
-			      	<div class="ui large input" data-column="email">
-			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['email']	}}"  @endif />
-			      	</div><br/>
+
 
        			</div>
        	</div>

@@ -18,7 +18,7 @@
           @if (Auth::check())
             {{Auth::user()->email}}
           @endif
-          <i class="user big icon"></i>
+          <i class="@if(Auth::check() && Auth::user()->admin) doctor @else user @endif  big icon"></i>
           <i class="chevron down icon"></i>
         </div>
 

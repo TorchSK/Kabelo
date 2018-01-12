@@ -8,7 +8,6 @@ class Order extends Model {
 
   	protected $table = "orders";
   	protected $fillable = [];
-	public $timestamps = false;
  
  	public function products() 
   	{
@@ -17,7 +16,7 @@ class Order extends Model {
 
  	public function status() 
   	{
- 		return $this->hasOne('App\OrderStatus');
+ 		return $this->hasOne('App\OrderStatus','id','status_id');
  	}
 
 }
