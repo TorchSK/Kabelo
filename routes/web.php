@@ -37,9 +37,6 @@ Route::put('/user/{userid}', 'UserController@update');
 Route::get('/user/activate/{token}', 'UserController@activate')->name('activateUser');
 Route::post('/login', 'UserController@login')->name('login');
 
-Route::get('/admin', 'AdminController@index');
-Route::get('/admin/category/{category_id}/products', 'AdminController@products');
-
 Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
 
@@ -60,10 +57,18 @@ Route::get('settings/account', 'UserController@settings');
 //Orders
 Route::get('order/success','OrderController@success');
 Route::get('orders/mine','OrderController@myhistory');
-Route::get('orders/pending','OrderController@pending');
 
 Route::resource('order','OrderController');
 
 
 // Settings
 Route::get('email/send/welcome/{userid}', 'UserController@sendActivationEmail');
+
+// Admin
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
+{
+	Route::get('/products', 'AdminController@manageProducts')->name('admin.manageProducts');
+	Route::get('/category/{category_id}/products', 'AdminController@categoryProducts')->name('admin.categoryProducts');
+	Route::get('/orders/', 'AdminController@manageOrders')->name('admin.manageOrders');
+
+});

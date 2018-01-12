@@ -23,7 +23,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function manageProducts()
     {
         $data = [
             'makers' => Product::groupBy('maker'),
@@ -35,7 +35,7 @@ class AdminController extends Controller
 
 
 
-    public function products($category_id)
+    public function categoryProducts($category_id)
     {
         $category = Category::find($category_id);
 

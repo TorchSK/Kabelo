@@ -69,10 +69,23 @@ class CartController extends Controller
         {   
             if(Auth::check())
             {
-                $invoiceAddress = Auth::user()->invoiceAddress;
-                $invoiceAddress['name'] = Auth::user()->first_name.' '.Auth::user()->last_name;
-                $invoiceAddress['phone'] = Auth::user()->phone;
-                $invoiceAddress['email'] = Auth::user()->email;
+
+                if (Auth::user()->invoiceAddress)
+                {
+
+                    $invoiceAddress = Auth::user()->invoiceAddress;
+
+                }
+                else
+                {
+                    $invoiceAddress['street'] = '';
+                    $invoiceAddress['city'] = '';
+                    $invoiceAddress['zip'] = '';
+
+                };
+                    $invoiceAddress['name'] = Auth::user()->first_name.' '.Auth::user()->last_name;
+                    $invoiceAddress['phone'] = Auth::user()->phone;
+                    $invoiceAddress['email'] = Auth::user()->email;
 
             }
             else
@@ -80,6 +93,7 @@ class CartController extends Controller
                 $invoiceAddress = false;
             }
         }
+
 
         if ($cookie['deliveryAddress']!='')
         {

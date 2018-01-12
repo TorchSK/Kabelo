@@ -16,7 +16,7 @@ $('#header .account.item').popup({
 
 $('.ui.accordion')
   .accordion({exclusive: false})
-;
+; 
 
 $('#register_btn').click(function(){
 	$popup = $('#auth_popup');
@@ -644,6 +644,8 @@ $('#use_delivery_address_input').checkbox({
 
 
 $('#cart_shipping_next_btn').click(function(e){
+    $validation = 1;
+
     $invoiceAddress = {};
     $deliveryAddress = {};
     $button = $(this);
@@ -653,27 +655,48 @@ $('#cart_shipping_next_btn').click(function(e){
     $invoiceAddressInputs.each(function(index, item){
       $type = $(item).data('column');
       $invoiceAddress[$type] = $(item).find('input').val();
+      if ($(item).find('input').val() == '')
+      {
+        $validation = 0;
+        $(item).addClass('error');
+      }
     })
 
     $deliveryAddressInputs = $('.cart_address').find('.delivery').find('.input');
     $deliveryAddressInputs.each(function(index, item){
       $type = $(item).data('column');
       $deliveryAddress[$type] = $(item).find('input').val();
+      if ($(item).find('input').val() == '')
+      {
+        $validation = 0;
+        $(item).addClass('error');
+      }
     })
 
-    $.ajax({
-      method: "POST",
-      url: '/cart',
-      data: {invoiceAddress: $invoiceAddress, deliveryAddress: $deliveryAddress}
-    });
 
-    e.preventDefault();
-    setTimeout(function(){
-        $.get($(this).attr('href'),{}, function(){
-        location.replace($button.attr('href'));
-      })
-    },1000);
+    console.log($validation);
 
+    
+
+    if ($validation)
+    {
+      $.ajax({
+        method: "POST",
+        url: '/cart',
+        data: {invoiceAddress: $invoiceAddress, deliveryAddress: $deliveryAddress}
+      });
+
+      e.preventDefault();
+      setTimeout(function(){
+          $.get($(this).attr('href'),{}, function(){
+          location.replace($button.attr('href'));
+        })
+      },1000);
+    }
+    else{
+      e.preventDefault();
+      $button.removeClass('loading');
+    }
 
 })
 
