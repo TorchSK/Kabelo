@@ -14,10 +14,23 @@
             font-weight: 100;
             padding: 5px;
         }
+
+        @media screen {
+          @font-face {
+            font-family: 'Lato';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+          }
+
+          body {
+            font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+          }
+
         </style>
     </head>
     
-    <body style="max-width: 1000px;">
+    <body style="max-width: 1000px; color: #000;">
     
     <div style="background-color: #2B2D2D; border: 1px solid #EEE; padding: 10px; color: #FFF; text-align: center; border-radius: 6px 6px 0 0;">
         <img src="<?php echo $message->embed(public_path().'/img/email_logo.jpg'); ?>" width="191">
@@ -25,10 +38,13 @@
 
     <div style="background-color: rgba(0,0,0,0.04); padding: 50px; text-align: center;border-radius: 0 0 6px 6px;">
 
-        <div style="margin: 15px 0; font-size: 18px">Ďakujeme za registráciu na eshope Kabelo.sk</div>
+        <div style="margin: 15px 0; font-size: 18px">Ďakujeme za Vašu objednávku</div>
 
-        <div style="margin: 15px 0; font-size: 18px; margin-bottom: 35px;">Svoju registráciu dokončite prosím klikom na tlačítko nižšie</div>
-        <a href="{!! url("/user/activate").'/'.$token !!}" style="padding: 10px 30px; background-color: #A5673F; margin-top: 35px; text-decoration: none; color: white; font-weight: 900; border-radius: 5px;">Aktivovať učet</a>
+        <div style="margin: 15px 0; font-size: 18px; font-weight: 100;" >Objednali ste si:</div>
+        @foreach($order->products as $product)
+            <div style="padding: 10px; background-color: #FFF; border-right: 5px; text-align: left;">{{$product->name}}</div>
+        @endforeach
+        <div style="margin: 30px 0; font-size: 14px;">Budeme Vás informovať o stave.</div>
     </div>
 
 

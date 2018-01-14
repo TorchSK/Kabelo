@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
+@if (Auth::user()->admin)
 <div id="product_options" class="ct">
  <div class="container ct">
   <a href="/{{Request::segment(1)}}/{{Request::segment(2)}}/edit" class="ui teal button">Edituj produkt</a>
@@ -8,6 +9,7 @@
 
 </div>
 </div>
+@endif
 
 <div id="product_detail" data-id={{$product->id}}>
 
@@ -37,7 +39,7 @@
     	
     	<div id="name">{{$product->name}}</div>
 
-		<div id="code">{{$product->code}} <div class="ui teal large label">{{$product->maker}}</div></div>
+		<div id="code">{{$product->code}} <div class="ui teal large label">Výrobca: {{$product->maker}}</div></div>
 
    		<div class="ui header">
    			@foreach ($product->categories as $category)
@@ -47,7 +49,7 @@
 
 		<div class="ui divider"></div>
 
-
+    {{$product->desc}}
 		<div id="parameters" class="@if($product->parameters->count()==0) empty @endif" >
           <div class="ui header">Parametre</div>
 

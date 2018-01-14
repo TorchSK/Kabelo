@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Order;
 use App\Product;
+use App\Mail\NewOrder;
+
+use App\Services\Contracts\CartServiceContract;
 
 use Cookie;
 use Auth;
@@ -18,13 +21,23 @@ class OrderController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(
+        CartServiceContract $cartService
+    )
     {
+        $this->cartService = $cartService;
     }
 
     public function store()
-    {
-    	$orderData = Cookie::get('cart');
+    {   
+        if (Auth::check())
+        {
+            $orderData = Auth::user()->cart;
+        }
+        else
+        {
+            $orderData = Cookie::get('cart');
+        }
 
     	$order = new Order();
 
@@ -36,8 +49,8 @@ class OrderController extends Controller
     	$order->status_id = 0;
 
 
-    	$order->delivery_method = $orderData['delivery'];
-    	$order->payment_method = $orderData['payment'];
+    	$order->delivery_method = $orderData['delivery_method'];
+    	$order->payment_method = $orderData['payment_method'];
 
 
     	$order->invoice_name = $orderData['invoiceAddress']['name'];
@@ -47,7 +60,7 @@ class OrderController extends Controller
 		$order->invoice_address_zip = $orderData['invoiceAddress']['zip'];
 		$order->invoice_address_city = $orderData['invoiceAddress']['city'];
 
-		if ($orderData['deliveryAddress']['street'])
+		if ($orderData['deliveryAddressFlag'])
 		{
 			$order->delivery_address_name = $orderData['deliveryAddress']['name'];
 			$order->delivery_address_street = $orderData['deliveryAddress']['street'];
@@ -66,18 +79,25 @@ class OrderController extends Controller
 		$order->invoice_first_additional = '';
 
         $price = 0;
-		foreach ($orderData['items'] as $productid)
-		{
-			$product = Product::find($productid);
-            $price = $price + $product->price;
-			$order->products()->attach($product);
-		};
+
+
 
         $order->price = $price;
         $order->save();
 
+        foreach ($orderData['items'] as $productid)
+        {
+            $product = Product::find($productid);
+            $price = $price + $product->price;
+            $order->products()->attach($product);
+        };
+
         $user = Auth::user();
         Mail::to($order->invoice_email)->queue(new NewOrder($order));
+
+        //delete the cart
+        $this->cartService->delete();  
+
 
     }
 

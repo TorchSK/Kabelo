@@ -17,25 +17,28 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Userz
+Route::post('/register', 'UserController@register')->name('register');
+Route::any('/logout', 'UserController@logout')->name('logout');
+Route::put('/user/{userid}', 'UserController@update');
+
+Route::get('/user/activate/{token}', 'UserController@activate')->name('activateUser');
+Route::post('/login', 'UserController@postLogin')->name('postLogin');
+Route::get('/login', 'UserController@getLogin')->name('getLogin');
+
 //Cart
-Route::put('cart/add/{productId}','CartController@addItem');
 Route::get('cart/products','CartController@products');
 Route::get('cart/delivery','CartController@delivery');
 Route::get('cart/shipping','CartController@shipping');
 Route::get('cart/confirm','CartController@confirm');
 
 Route::delete('cart/all','CartController@delete');
+Route::post('cart/{productId}','CartController@addItem');
 Route::delete('cart/{productid}','CartController@deleteItem');
-Route::put('cart/plus/{productid}','CartController@plusItem');
-Route::put('cart/minus/{productid}','CartController@minusItem');
+Route::put('cart/{productid}','CartController@minusItem');
 Route::post('cart','CartController@set');
 
-Route::post('/register', 'UserController@register')->name('register');
-Route::any('/logout', 'UserController@logout')->name('logout');
-Route::put('/user/{userid}', 'UserController@update');
 
-Route::get('/user/activate/{token}', 'UserController@activate')->name('activateUser');
-Route::post('/login', 'UserController@login')->name('login');
 
 Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
@@ -45,6 +48,8 @@ Route::get('/{maker}/{code}/edit','ProductController@edit');
 
 Route::get('product/search/{query}','ProductController@search');
 Route::get('product/list','ProductController@list');
+Route::post('product/{productid}/change/category/{categoryid}','ProductController@changeCategory');
+
 Route::resource('product','ProductController');
 
 // Upload
@@ -72,3 +77,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/orders/', 'AdminController@manageOrders')->name('admin.manageOrders');
 
 });
+
+Route::get('cookie', 'AdminController@cookie');

@@ -13,7 +13,7 @@
 		<div id="grid" class="products">
 						<div class="ui horizontal divider">Produkty</div>
 
-			@foreach($products as $key => $product)
+			@foreach($cartItems as $key => $product)
 				@include('products.row', ['product'=>App\Product::find($product), 'cart_confirm'=> true])
 			@endforeach
 		</div>
@@ -22,7 +22,7 @@
 
 			<div class="ui horizontal divider">Sposob dopravy a platba</div>
 
-			@if ($delivery=='place')
+			@if ($cartDeliveryMethod=='place')
 			<div class="ui steps">
 			  <div class="step cart_delivery data-delivery="place">
 			    <i class="user icon"></i>
@@ -34,7 +34,7 @@
 			</div>
 			@endif
 
-			@if ($delivery=='ppl')
+			@if ($cartDeliveryMethod=='ppl')
 			<div class="ui steps">
 			  <div class="step cart_delivery" data-delivery="ppl">
 			    <i class="truck icon"></i>
@@ -47,7 +47,7 @@
 			@endif
 
 
-			@if ($payment=='cash')				
+			@if ($cartPaymentMethod=='cash')				
 			<div class="ui steps">
 			  <div class="step cart_payment" data-payment="cash">
 			    <i class="money icon"></i>
@@ -59,7 +59,7 @@
 			</div>
 			@endif
 
-			@if ($payment=='cod')				
+			@if ($cartPaymentMethod=='cod')				
 			<div class="ui steps">
 			  <div class="step cart_payment" data-payment="cod"> 
 			    <i class="cube icon"></i>
@@ -92,22 +92,22 @@
 				<div class="inputs">
 				
 			       	<div class="ui large disabled input">
-			            <input type="text" value="{{$invoiceAddress['name']}}"/>
+			            <input type="text" value="{{$cartInvoiceAddress['name']}}"/>
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{$invoiceAddress['street']}}" />
+			            <input type="text" value="{{$cartInvoiceAddress['street']}}" />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{$invoiceAddress['city']}}"/>
+			            <input type="text" value="{{$cartInvoiceAddress['city']}}"/>
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{$invoiceAddress['zip']}}" />
+			            <input type="text" value="{{$cartInvoiceAddress['zip']}}" />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{$invoiceAddress['phone']}}" />
+			            <input type="text" value="{{$cartInvoiceAddress['phone']}}" />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{$invoiceAddress['email']}}" />
+			            <input type="text" value="{{$cartInvoiceAddress['email']}}" />
 			      	</div><br/>
 
        			</div>
@@ -128,19 +128,19 @@
 				<div class="inputs">
 				
 			       	<div class="ui large disabled input">
-			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['name']}}" @endif />
+			            <input type="text" @if($cartDeliveryAddress) value="{{$cartDeliveryAddress['name']}}" @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['street']}}"  @endif />
+			            <input type="text" @if($cartDeliveryAddress) value="{{$cartDeliveryAddress['street']}}"  @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['city']}}" @endif />
+			            <input type="text" @if($cartDeliveryAddress) value="{{$cartDeliveryAddress['city']}}" @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['zip']}}"  @endif />
+			            <input type="text" @if($cartDeliveryAddress) value="{{$cartDeliveryAddress['zip']}}"  @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" @if($deliveryAddress) value="{{$deliveryAddress['phone']}}"  @endif />
+			            <input type="text" @if($cartDeliveryAddress) value="{{$cartDeliveryAddress['phone']}}"  @endif />
 			      	</div><br/>
 
 

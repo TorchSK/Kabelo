@@ -49,15 +49,20 @@
 
           <div class="left" id="login_div">
 
-            <div class="ui fluid input">
-              <input type="text" name="email" placeholder="email">
-            </div>
+            <form action="/login" id="login_form" method="POST">
+              <input name="_token" type="hidden" value="{{csrf_token()}}">
 
-            <div class="ui fluid input" id="login_password_input">
-              <input type="password" name="password" placeholder="heslo">
-            </div>
+              <div class="ui fluid input">
+                <input type="text" name="email" placeholder="email">
+              </div>
 
-            <div class="ui green fluid button" id="login_btn">Prihlásiť</div>
+              <div class="ui fluid input" id="login_password_input">
+                <input type="password" name="password" placeholder="heslo">
+              </div>
+
+              <button type="submit" class="ui green fluid button" id="login_btn">Prihlásiť</button>
+
+            </form>
 
           </div>
 

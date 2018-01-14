@@ -43,6 +43,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Address')->where('type','delivery');
     }
 
+    public function cart()
+    {
+        return $this->hasOne('App\Cart');
+    }
+
     public function orders()
     {
         return $this->hasMany('App\Order');

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 
+use Auth;
+
 class AdminController extends Controller
 {
     /**
@@ -39,13 +41,30 @@ class AdminController extends Controller
     {
         $category = Category::find($category_id);
 
-        $data = [
-            'products' => $category->products()->where('category_id',$category_id)->get(),
-            'category' => $category,
-            'categories' => Category::all()
+        if ($category_id != 'unknown')
+        {
+            $data = [
+                'products' => $category->products()->where('category_id',$category_id)->get(),
+                'category' => $category,
+                'categories' => Category::all()
 
-        ];
+            ];
+        }
+        else
+        {
+            $data = [
+                'products' => Product::doesntHave('categories')->get(),
+                'categories' => Category::all()
+
+            ];
+        }
 
         return view('admin.products', $data);
+    }
+
+    public function cookie(){
+        $cart = Auth::user()->cart;
+        $cart['items'] = $cart->products->pluck('id');
+        dd($cart);
     }
 }

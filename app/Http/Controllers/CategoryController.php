@@ -49,7 +49,7 @@ class CategoryController extends Controller
         $category->name = $request->get('name');
         $category->save();
 
-        return '/admin';
+        return '/admin/products';
     }
 
     public function makers($categoryid){
@@ -57,7 +57,7 @@ class CategoryController extends Controller
         $category = Category::find($categoryid);
 
         $data = [
-            'makers' => $category->products()->get(['maker'])
+            'makers' => $category->products()->get(['maker'])->unique()
         ];
 
         return view('makers', $data);

@@ -136,7 +136,8 @@ class ProductController extends Controller
         $product = Product::where('maker',$maker)->where('code', $code)->first();
         
         $data = [
-           'product' => $product
+           'product' => $product,
+           'bodyid' => 'body_product_detail'
         ];
 
         return view('products.profile', $data);
@@ -168,9 +169,31 @@ class ProductController extends Controller
 
     }
 
-    public function update($productid)
-    {
+    public function update($productid, Request $request)
+    {   
         $product = Product::find($productid);
+
+        $product->update($request->except('_token'));
+
+        foreach ($request->get('categories') as $categoryid)
+        {   
+            $category = Category::find($categoryid);
+
+            if ($product->categories->where('id', $categoryid)->count() == 0)
+            {
+                $product->categories()->save($category);
+            }
+        }
+
+        foreach ($product->categories as $category)
+        {   
+            if (!in_array($category->id,$request->get('categories')))
+            {
+                $product->categories()->detach($category);
+            }
+        }
+
+
         $directory = 'temp';
 
         if (sizeof(File::files($directory)) > 0)
@@ -194,7 +217,15 @@ class ProductController extends Controller
             }
         }
 
-        return '/'.$product->maker.'/'.$product->code.'/detail';
+        return redirect('/'.$product->maker.'/'.$product->code.'/detail');
+    }
+
+    public function changeCategory($productid, $categoryid)
+    {
+        $product = Product::find($productid);
+        $category = Category::find($categoryid);
+
+        $product->categories()->attach($category);
     }
 
     public function search($query)

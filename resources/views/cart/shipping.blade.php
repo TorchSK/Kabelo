@@ -41,7 +41,7 @@
 			            <input type="text" @if($invoiceAddress) value="{{$invoiceAddress['phone']}}" @endif />
 			      	</div><br/>
 			      	<div class="ui large input" data-column="email">
-			            <input type="text" @if($invoiceAddress) value="{{$invoiceAddress['email']}}" @endif />
+			            <input type="email" @if($invoiceAddress) value="{{$invoiceAddress['email']}}" @endif />
 			      	</div><br/>
 
        			</div>

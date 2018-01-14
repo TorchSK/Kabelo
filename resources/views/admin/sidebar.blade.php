@@ -9,8 +9,14 @@
 
                 <div class="categories">
                 	<div class="sidebar_btn">
+						<a href="/admin/products">Admin prehlad</a>
+                	</div>
+					<div class="ui horizontal divider">Pridaj</div>
+
+                	<div class="sidebar_btn">
    					<div class="ui fluid brown button" id="add_category_btn"><i class="add icon"></i>Pridaj kategóriu</div>
    					</div>
+
    					<div class="sidebar_btn">
    					<a href="/product/create" class="ui fluid blue button"><i class="add icon"></i>Pridaj produkt</a>
    					</div>
@@ -40,8 +46,9 @@
 
 					@if ($categories->count() > 0 )
 					@foreach ($categories as $category)
-						<a href="/admin/category/{{$category->id}}/products" class="item @if(Request::segment(1)=='admin' && Request::segment(2)=='category' && Request::segment(3) == $category->id) active @endif">
+						<a href="/admin/category/{{$category->id}}/products" class="item @if(Request::segment(1)=='admin' && Request::segment(2)=='category' && Request::segment(3) == $category->id) active @endif" data-categoryid="{{$category->id}}">
 							{{$category->name}}
+							<div class=" label">{{$category->products()->count()}}</div>
 						</a>
 
 					@endforeach
@@ -53,6 +60,12 @@
 
 
                 </div>
+
+                <div class="ui horizontal divider">Nezaradane produkty</div>
+   				<div class="sidebar_btn">
+   				<a href="/admin/category/unknown/products" class="ui fluid button">Ukázať <i>({{App\Product::doesntHave('categories')->count()}})</i></a>
+   				</div>
+
 
 
             </div>

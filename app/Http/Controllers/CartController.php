@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\Parameter;
+use App\Cart;
 use App\File as ProductFile;
+
+use App\Services\Contracts\CartServiceContract;
 
 use Image;
 use File;
@@ -20,8 +23,11 @@ class CartController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(
+        CartServiceContract $cartService
+    )
     {
+        $this->cartService = $cartService;
     }
 
     public function products(){
@@ -124,73 +130,89 @@ class CartController extends Controller
 
 
    public function confirm(){
-        $cookie = Cookie::get('cart');
 
-        $data = [
-            'products' => $cookie['items'],
-            'delivery' => $cookie['delivery'],
-            'payment' => $cookie['payment'],
-            'invoiceAddress' => $cookie['invoiceAddress'],
-            'deliveryAddress' => $cookie['deliveryAddress']
+        return view('cart.confirm');
+    }
 
-        ];
+    function getCart()
+    {
+        if (Auth::check())
+        {
+            $cart = Auth::user()->cart;
+            $cart['number'] = $cart->products->count();
+            $cart['price'] = $cart->products->sum('price');
+            $cart['items'] = $cart->products->pluck('id')->toArray();
+        }
+        else
+        {
+            $cart = Cookie::get('cart');
+        }
 
-        return view('cart.confirm', $data);
+        return $cart;
     }
 
     public function set(Request $request)
     {        
-        $cookieData = Cookie::get('cart');
+        $cart = $this->getCart();
 
         foreach ($request->except('_token') as $key => $item) {
-          $cookieData[$key] = $item;
+          $cart[$key] = $item;
         }        
 
-        Cookie::queue('cart', $cookieData, 0);
-
+        if (Auth::check())
+        {
+            unset($cart['number']);
+            unset($cart['price']);
+            unset($cart['items']);
+            $cart->save();
+        }
+        else
+        {
+            Cookie::queue('cart', $cart, 0);
+        }
     }
 
     public function addItem($productId, Request $request)
     {
         $product = Product::find($productId);
 
-        $data = [
-            'price' => $product->price
-        ];
+        $cart = $this->getCart();
 
-        $cookie = Cookie::get('cart');
-
-        $cartNumber = $cookie['number'];
-        $cartPrice = $cookie['price'];
-        $cartItems = $cookie['items'];
+        $cartNumber = $cart['number'];
+        $cartPrice = $cart['price'];
+        $cartItems = $cart['items'];
 
         array_push($cartItems,$product->id);
 
+        $cartData = $cart;
 
-        $cookieData = $cookie;
+        $cartData['number'] = $cartNumber + 1;
+        $cartData['price'] = $cartPrice + $product->price;
+        $cartData['items'] = $cartItems;
+        
+        if (Auth::check())
+        {
+            $cart->products()->attach($product);
+        }
+        else
+        {
+            Cookie::queue('cart', $cartData, 0);
+        }
 
-        $cookieData['number'] = $cartNumber + 1;
-        $cookieData['price'] = $cartPrice + $product->price;
-        $cookieData['items'] = $cartItems;
-        
-        Cookie::queue('cart', $cookieData, 0);
-        
+        // return price for FE
+        $data['price'] = $product->price;
         return $data;
     }
 
     public function deleteItem($productId)
     {
         $product = Product::find($productId);
+        
+        $cart = $this->getCart();
 
-        $data = [
-            'price' => $product->price
-        ];
-
-        $cookie = Cookie::get('cart');
-
-        $cartNumber = $cookie['number'];
-        $cartPrice = $cookie['price'];
-        $cartItems = $cookie['items'];
+        $cartNumber = $cart['number'];
+        $cartPrice = $cart['price'];
+        $cartItems = $cart['items'];
 
         $itemCount = array_count_values($cartItems)[$productId];
 
@@ -198,90 +220,68 @@ class CartController extends Controller
             unset($cartItems[$key]);
         }
 
-        $cookieData =  $cookie ;
-        $cookieData['number'] = $cartNumber - $itemCount;
-        $cookieData['price'] = $cartPrice - $itemCount*$product->price;
-        $cookieData['items'] = $cartItems;
+        $cartData =  $cart ;
+        $cartData['number'] = $cartNumber - $itemCount;
+        $cartData['price'] = $cartPrice - $itemCount*$product->price;
+        $cartData['items'] = $cartItems;
         
-        Cookie::queue('cart', $cookieData, 0);
-        
+        if (Auth::check())
+        {
+            $cart->products()->detach($product);
+        }
+        else
+        {
+            Cookie::queue('cart', $cartData, 0);
+        }
+
+        // return price for FE
+        $data['price'] = $product->price;
         return $data;
     }
 
-    public function plusItem($productId)
-    {
-        $product = Product::find($productId);
-
-        $data = [
-            'price' => $product->price
-        ];
-
-        $cookie = Cookie::get('cart');
-
-        $cartNumber = $cookie['number'];
-        $cartPrice = $cookie['price'];
-        $cartItems = $cookie['items'];
-
-        array_push($cartItems,$product->id);
-
-        $cookieData = $cookie;
-
-        $cookieData['number'] = $cartNumber + 1;
-        $cookieData['price'] = $cartPrice + $product->price;
-        $cookieData['items'] = $cartItems;
-        
-        
-        Cookie::queue('cart', $cookieData, 0);
-        
-        return $data;
-    }
 
     public function minusItem($productId)
     {
         $product = Product::find($productId);
 
-        $data = [
-            'price' => $product->price
-        ];
+        $cart = $this->getCart();
 
-        $cookie = Cookie::get('cart');
-
-        $cartNumber = $cookie['number'];
-        $cartPrice = $cookie['price'];
-        $cartItems = $cookie['items'];
-
+        $cartNumber = $cart['number'];
+        $cartPrice = $cart['price'];
+        $cartItems = $cart['items'];
         
         $itemCount = array_count_values($cartItems)[$productId];
 
         $minusItemKey = array_keys($cartItems, $productId)[0];
         unset($cartItems[$minusItemKey]);
 
-        $cookieData = $cookie;
+        $cartData = $cart;
 
-        $cookieData['number'] = $cartNumber - 1;
-        $cookieData['price'] = $cartPrice - $product->price;
-        $cookieData['items'] = $cartItems;
+        $cartData['number'] = $cartNumber - 1;
+        $cartData['price'] = $cartPrice - $product->price;
+        $cartData['items'] = $cartItems;
         
-        Cookie::queue('cart', $cookieData, 0);
-        
+        if (Auth::check())
+        {
+            $cart->products()->sync([]);
+            foreach ($cartData['items'] as $item)
+            {
+                $cart->products()->attach($item);
+            }
+        }
+        else
+        {
+            Cookie::queue('cart', $cartData, 0);
+        }
+
+        // return price for FE
+        $data['price'] = $product->price;
         return $data;
     }
 
 
     public function delete()
     {
-        $cookieData = [
-                'number' => 0,
-                'price' => 0,
-                'items' => [],
-                'delivery' => '',
-                'payment' => '',
-                'invoiceAddress' => '',
-                'deliveryAddress' => '',
-                'deliveryAddressFlag' => 0
-
-        ];
-        
-        return Cookie::queue('cart', $cookieData, 0);  
+        return $this->cartService->delete();  
     }
 }

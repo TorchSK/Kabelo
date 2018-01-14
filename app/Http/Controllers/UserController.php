@@ -10,10 +10,12 @@ use App\Http\Requests\AuthRequest;
 use Mail;
 use Hash;
 use Auth;
+use Cookie;
 
 use App\User;
 use App\Address;
 use App\Activation;
+use App\Cart;
 use Carbon\Carbon;
 
 class UserController extends Controller
@@ -61,6 +63,18 @@ class UserController extends Controller
         $token = $this->createActivationToken($user);
         $email = $this->sendActivationEmail($user->id);
 
+        // create DB Cart
+        $cart = new Cart();
+        $cart->user_id = $user->id;
+        $cart->price  = 0;
+        $cart->delivery_method = '';
+        $cart->payment_method = '';
+        $cart->invoice_address = '';
+        $cart->delivery_address = '';
+        $cart->delivery_address_flag = 0;
+
+        $cart->save();
+
         return 1;
     }
 
@@ -89,20 +103,28 @@ class UserController extends Controller
        
     }
 
-    public function login(AuthRequest $request)
+    public function getLogin()
     {
-     
+        return view('auth.login');
+    }
+
+    public function postLogin(AuthRequest $request)
+    {
         $credentials = [
             'email' => $request->get('email'),
             'password' => $request->get('password')
         ];
 
-        if(Auth::attempt($credentials, true))
+        if ($auth = Auth::attempt($credentials, true))
         {
-            return 0;
+            return redirect('/');
+        }
+        else
+        {
+             return redirect('/login')->withErrors(['1'=>'Zadali ste nesprávne heslo']);
         }
 
-        return -1;
+
     }
 
     public function update($id, Request $request){
@@ -183,6 +205,20 @@ class UserController extends Controller
 
     public function logout()
     {
+        $cookieData = [
+                'number' => 0,
+                'price' => 0,
+                'items' => [],
+                'delivery_method' => '',
+                'payment_method' => '',
+                'invoiceAddress' => '',
+                'deliveryAddress' => '',
+                'deliveryAddressFlag' => 0
+
+        ];
+
+        Cookie::queue('cart', $cookieData, 0);  
+
         Auth::logout();
         return redirect('/');
     }

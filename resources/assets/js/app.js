@@ -50,36 +50,19 @@ $('#register_btn').click(function(){
 })
 
 
-$('#login_btn').click(function(){
+$('#login_form').submit(function(){
 	$validation = 1;
 
   $popup = $('#auth_popup');
-	$email = $('#login_div').find('input[name="email"]').val();
+  $email = $('#login_div').find('input[name="email"]').val();
 	$password = $('#login_div').find('input[name="password"]').val();
 
-	$.ajax({
-    method: 'POST',
-    url: '/login',
-    data: {email:$email, password: $password}, 
-    success: function(data){
-      if (data == 0)
-      {
-		    location.replace('/')
-      }
-      else
-      {
-        $('#auth_popup .msgs').html('');
-        $('#auth_popup .msgs').append('<div class="msg">Zadali ste nesprávne heslo</div>');
-      }
-	  },
-    error: function(data) {
-      $('#auth_popup .msgs').html('');
-      $.each(data.responseJSON.errors, function(i, item) {
-        $('#auth_popup .msgs').append('<div class="msg">'+item[0]+'</div>');
-      });
+  if ($validation==1){
+    return true
+  } else {
+    return false;
+  }
 
-    }
-  });
 
 });
 
@@ -156,16 +139,7 @@ $('#create_product_submit').click(function(){
   }
 })
 
-$('#edit_product_submit').click(function(){
-  $productid = $('#product_detail').data('id');
-    $.ajax({
-      method: "PUT",
-      url: "/product/"+$productid,
-      success: function(data){
-        location.replace(data)
-      } 
-    })
-});
+
 
 $('#edit_category_submit').click(function(){
   $categoryid = $('#category_options').data('categoryid');
@@ -221,8 +195,8 @@ function addToCart(productid){
   var price = parseFloat(cart.find('price number').text());
 
   $.ajax({
-    method: "PUT",
-    url: '/cart/add/'+productid,
+    method: "POST",
+    url: '/cart/'+productid,
     data: {},
     global: false,
     success: function(data){
@@ -285,8 +259,8 @@ $('.cart_delete_product').click(function(){
 $('.cart_plus_product').click(function(){
   $productid = $(this).closest('.product').data('productid');
   $.ajax({
-    type: "PUT",
-    url: "/cart/plus/"+$productid,
+    type: "POST",
+    url: "/cart/"+$productid,
     data: {},
     success: function(){
       location.reload();
@@ -298,7 +272,7 @@ $('.cart_minus_product').click(function(){
   $productid = $(this).closest('.product').data('productid');
   $.ajax({
     type: "PUT",
-    url: "/cart/minus/"+$productid,
+    url: "/cart/"+$productid,
     data: {},
     success: function(){
       location.reload();
@@ -420,6 +394,7 @@ $('.categories .item').click(function(){
     });
 
     removeFilter('makers');
+    removeFilter('category');
     addFilter('category',$(this).data('categoryid'),$(this).text());
 
   }
@@ -476,7 +451,7 @@ $('#view_goods_btn').click(function(){
 
 $('#login_password_input').keypress(function(e){
   if(e.which == 13) {
-        $('#login_btn').click();
+        $('#login_form').submit();
     }
 });
 
@@ -601,22 +576,22 @@ $('#settings_submit_btn').click(function(){
 })
 
 $(".cart_delivery").click(function(){
-  $delivery = $(this).data('delivery');
+  $delivery = $(this).data('delivery_method');
 
   $.ajax({
     method: "POST",
     url: '/cart',
-    data: {delivery: $delivery}
+    data: {delivery_method: $delivery}
   })
 })
 
 $(".cart_payment").click(function(){
-  $payment = $(this).data('payment');
+  $payment = $(this).data('payment_method');
 
   $.ajax({
     method: "POST",
     url: '/cart',
-    data: {payment: $payment}
+    data: {payment_method: $payment}
   })
 })
 
@@ -662,16 +637,21 @@ $('#cart_shipping_next_btn').click(function(e){
       }
     })
 
-    $deliveryAddressInputs = $('.cart_address').find('.delivery').find('.input');
-    $deliveryAddressInputs.each(function(index, item){
-      $type = $(item).data('column');
-      $deliveryAddress[$type] = $(item).find('input').val();
-      if ($(item).find('input').val() == '')
-      {
-        $validation = 0;
-        $(item).addClass('error');
-      }
-    })
+    $deliveryAdressFlag = $('#use_delivery_address_input').checkbox('is checked');
+    
+    if ($deliveryAdressFlag)
+    {
+      $deliveryAddressInputs = $('.cart_address').find('.delivery').find('.input');
+      $deliveryAddressInputs.each(function(index, item){
+        $type = $(item).data('column');
+        $deliveryAddress[$type] = $(item).find('input').val();
+        if ($(item).find('input').val() == '')
+        {
+          $validation = 0;
+          $(item).addClass('error');
+        }
+      })
+    }
 
 
     console.log($validation);
@@ -715,5 +695,39 @@ $('#submit_order_btn').click(function(){
 })
 
 
+$('#grid .product.item').draggable({ 
+  opacity: 0.6, 
+  helper: "clone"
+});
+
+$('.categories .item').droppable({
+  tolerance: "touch",
+  over: function( event, ui ) {
+    $(this).addClass('active');
+  },
+  out: function( event, ui ) {
+    $(this).removeClass('active');
+  },
+  deactivate: function( event, ui ) {
+    $(this).removeClass('active');
+  },
+  drop: function( event, ui ) {
+    $categoryId = $(this).data('categoryid');
+    $product = $(ui.draggable);
+
+    $.post('/product/'+$product.data('productid')+'/change/category/'+$categoryId,{},function(){
+          $product.remove();
+    });
+
+    $(this).removeClass('active');
+  }
+
+});
+
+$('.dropzone').dropzone({
+     params: {
+    '_token': $('meta[name="csrf-token"]').attr('content')
+    }
+})
 
 });
