@@ -56,18 +56,18 @@
 
         <div id="create_product_new_flag">
     <div class="ui checkbox">
-      <input type="checkbox" name="new" @if($product->new) checked @endif>
+      <input type="checkbox" name="new" @if($product->new) checked="1"  @endif>
       <label>Novinka</label>
     </div>
     </div>
 
     <div id="create_product_sale_flag">
     <div class="ui checkbox">
-      <input type="checkbox" name="sale"  @if($product->sale) checked @endif>
+      <input type="checkbox" name="sale"  @if($product->sale) checked="1" @endif>
       <label>V zľave</label>
     </div>
         <div class="ui right labeled input" id="create_product_sale_value">
-        <input type="text" placeholder="Nová cena">
+        <input type="text" placeholder="Nová cena" name="sale_price">
           <div class="ui basic label">
         Eur
       </div>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model {
 
   protected $table = "products";
-  protected $fillable = ["category_id", "name", "code", "price", "price_unit", "desc", "link", "stock", "maker", "new", "sale"];
+  protected $fillable = ["category_id", "name", "code", "price", "price_unit", "desc", "link", "stock", "maker", "new", "sale", "sale_price"];
 
   	public function categories() 
   	{
@@ -21,13 +21,18 @@ class Product extends Model {
 
  	public function image() 
   	{
- 		return $this->hasOne('App\File')->where('type','image');
+ 		return $this->hasOne('App\File')->where('type','image')->where('primary',1);
  	}
 
- 	public function images() 
+ 	public function otherImages() 
   	{
- 		return $this->hasMany('App\File')->where('type','image');
+ 		return $this->hasMany('App\File')->where('type','image')->where('primary',0);;
  	}
+
+  public function images() 
+    {
+    return $this->hasMany('App\File')->where('type','image');
+  }
 
  	public function orders() 
   	{
@@ -36,12 +41,26 @@ class Product extends Model {
 
 	public function setSaleAttribute($value)
   	{
-    $this->attributes['sale'] = (boolean)($value);
+      if ($value == 'on')
+      {
+        $this->attributes['sale'] = 1;
+      }
+      else
+      {
+        $this->attributes['sale'] = 0;
+      }
   	}
 	
 	public function setNewAttribute($value)
   	{
-    $this->attributes['new'] = (boolean)($value);
+      if ($value == 'on')
+      {
+        $this->attributes['new'] = 1;
+      }
+      else
+      {
+        $this->attributes['new'] = 0;
+      }
   	}
 
 }

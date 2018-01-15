@@ -173,6 +173,9 @@ class ProductController extends Controller
     {   
         $product = Product::find($productid);
 
+        if (!$request->has('new')) {$request['new']='off';}
+        if (!$request->has('sale')) {$request['sale']='off';}
+
         $product->update($request->except('_token'));
 
         foreach ($request->get('categories') as $categoryid)

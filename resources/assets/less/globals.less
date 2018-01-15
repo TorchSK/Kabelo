@@ -78,20 +78,19 @@ a{
 
 
 .crossed {
-    position: relative;
-    padding: 30px;
-    overflow: hidden; //hide overflow of pseudo elements
+    padding: 5px;
+    opacity: 0.5;
 }
 
 .crossed:before, .crossed:after {
     position: absolute;
     content: '';
-    background: @red;
+    background: @grey;
     display: block;
-    width: 100%;
-    height: 20px;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+    width: 80%;
+    height: 6px;
+    -webkit-transform: rotate(-35deg);
+    transform: rotate(-35deg);
     //center the X vertically and horizontally:
     left: 0;
     right: 0;
@@ -99,9 +98,5 @@ a{
     bottom: 0;
     margin: auto;
     z-index: 99;
-}
-
-.crossed:after {
-    -webkit-transform: rotate(45deg);    
-    transform: rotate(45deg);
+    opacity: 0.9;
 }

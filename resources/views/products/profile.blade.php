@@ -14,7 +14,7 @@
 <div id="product_detail" data-id={{$product->id}}>
 
       <div class="other_img">
-          @if ($product->images->count() > 1)
+          @if ($product->images->count() > 0)
           @foreach($product->images as $image)
            <img src="/{{$image->path}}" class="ui image" width="200px" />
            @endforeach
@@ -41,8 +41,13 @@
 
 		<div id="code">{{$product->code}} </div>
     <div class="ui teal large label" id="maker">Výrobca: {{$product->maker}}</div>
+    @if ($product->sale)
     <div id="sale" class="ui brown large label"><i class="money icon"></i> Zľava</div>
+    @endif
+
+    @if ($product->new)
     <div id="new" class="ui blue large label"><i class="star icon"></i> Novinka</div>
+    @endif
 
    		<div class="ui header">
    			@foreach ($product->categories as $category)
@@ -71,8 +76,12 @@
 
     <div class="ui divider"></div>
 
-
-    <div id="price">{{$product->price}} &euro;</div>
+    <div id="prices">
+    <div id="price" @if($product->sale) class="crossed" @endif>{{$product->price}} &euro;</div>
+    @if ($product->sale)
+    <div id="sale_price">{{$product->sale_price}} &euro;</div>
+    @endif
+    </div>
     <div id="product_detail_tocart_btn" class="ui large brown button"><i class="add to cart icon"></i>Kúpiť</div>
 
 
