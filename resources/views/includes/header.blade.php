@@ -29,8 +29,6 @@
 
            @if (Auth::check())
               <div class="left">
-                                  <a href="{{route('admin.manageUsers')}}" class="row"><i class="users icon"></i> Správa uživateľov</a>
-
                 <a href="/settings/account" class="row"><i class="user icon"></i> Nastavenia účtu</a>
                 <a href="/orders/mine" class="row"><i class="history icon"></i> História objednávok</a>
                 @if(Auth::check() && Auth::user()->admin)
@@ -38,6 +36,7 @@
 
                   <a href="{{route('admin.manageProducts')}}" class="row"><i class="setting icon"></i> Administruj produkty</a>
                   <a href="{{route('admin.manageOrders')}}" class="row"><i class="hourglass start icon"></i> Čakajúce objednávky</a>
+                  <a href="{{route('admin.manageUsers')}}" class="row"><i class="users icon"></i> Správa uživateľov</a>
 
                 @endif
 
