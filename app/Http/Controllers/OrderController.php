@@ -110,4 +110,6 @@ class OrderController extends Controller
     {
     	return view('orders.myhistory');
     }
+
+
 }

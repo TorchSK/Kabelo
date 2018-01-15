@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\User;
+use App\Order;
 use Auth;
 
 class AdminController extends Controller
@@ -74,5 +75,15 @@ class AdminController extends Controller
         $cart = Auth::user()->cart;
         $cart['items'] = $cart->products->pluck('id');
         dd($cart);
+    }
+
+    
+    public function manageOrders()
+    {
+        $data = [
+            'orders' => Order::all()
+        ];
+
+        return view('orders.manage', $data);
     }
 }

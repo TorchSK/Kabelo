@@ -4,7 +4,7 @@
 <div id="category_options" class="ct" data-categoryid={{$category->id}}>
  <div class="container ct">
   <a class="ui teal button" id="edit_category_submit">Ulož zmeny</a>
-  <a href="/admin" class="ui red button">Zruš editáciu</a>
+  <a href="/admin/products" class="ui red button">Zruš editáciu</a>
 </div>
 </div>
 
