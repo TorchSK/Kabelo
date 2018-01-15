@@ -73,7 +73,7 @@ Route::resource('order','OrderController');
 Route::get('email/send/welcome/{userid}', 'UserController@sendActivationEmail');
 
 // Admin
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
+Route::group(['prefix' => 'admin'], function()
 {
 	Route::get('/products', 'AdminController@manageProducts')->name('admin.manageProducts');
 	Route::get('/category/{category_id}/products', 'AdminController@categoryProducts')->name('admin.categoryProducts');
