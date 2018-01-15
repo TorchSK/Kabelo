@@ -26,7 +26,7 @@ class GlobalComposer {
         {   
             //if user is authenticated, get cart from DB
             $cart = Auth::user()->cart;
-            if ($cart)
+            if (!$cart)
             {
                  $cart = new Cart();
                 $cart->user_id = Auth::user()->id;
