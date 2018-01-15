@@ -10,7 +10,6 @@
 
 	</div>
 	<div class="title">{{$product->name}}</div>
-	<div class="desc">{{$product->desc}}</div>
 	<div class="price">{{$product->price}} Eur</div>
 	<div class="availability"></div>
 

@@ -56,7 +56,7 @@
 
     <div class="right">
     	
-    	<div class="ui header">Název</div>
+    	<div class="ui header">Názov</div>
 
         <div class="ui fluid input" id="create_product_name_input">
            <input type="text" placeholder="Názov produktu" @if(Request::has('duplicate'))value="{{App\Product::find(Request::get('duplicate'))->name}}@endif" />

@@ -31,7 +31,7 @@
 
 
   <input type="submit" class="ui brown big fluid button" value="Registrovať">
-
+    
 
 </form>
 
