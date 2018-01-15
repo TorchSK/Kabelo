@@ -39,7 +39,10 @@
     	
     	<div id="name">{{$product->name}}</div>
 
-		<div id="code">{{$product->code}} <div class="ui teal large label">Výrobca: {{$product->maker}}</div></div>
+		<div id="code">{{$product->code}} </div>
+    <div class="ui teal large label" id="maker">Výrobca: {{$product->maker}}</div>
+    <div id="sale" class="ui brown large label"><i class="money icon"></i> Zľava</div>
+    <div id="new" class="ui blue large label"><i class="star icon"></i> Novinka</div>
 
    		<div class="ui header">
    			@foreach ($product->categories as $category)

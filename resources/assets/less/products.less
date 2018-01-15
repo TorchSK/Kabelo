@@ -54,11 +54,8 @@
 		vertical-align: top;
 		font-weight: 200;
 		font-style: italic;
-
-		.ui.label{
-			margin-left: 15px;
-			margin-top: 1px;
-		}
+		display: inline-block;
+		padding-top: 6px;
 	}
 
 	#parameters{
@@ -84,6 +81,23 @@
 		top: 7px;
 		margin-top: 25px;
 	}
+
+	#maker{
+		display: inline-block;
+		margin-left: 15px;
+		margin-top: 1px;
+	
+	}
+
+	#sale{
+		display: inline-block;
+		margin-left: 35px;
+	}
+
+	#new{
+		display: inline-block;
+	}
+
 }
 
 #create_product_params,
@@ -129,4 +143,31 @@
 	label{
 		margin-right: 25px;
 	}
+}
+
+.edit_product_images{
+	.image_div{
+		position: relative;
+		margin-bottom: 5px;
+
+		&.primary{
+			box-shadow: 0 0 3px @brown;
+		}
+
+		&:hover{
+			.edit_product_images_actions{
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.edit_product_images_actions{
+	margin: auto;
+  	position: absolute;
+  	top: 0; left: 0; bottom: 0; right: 0;
+  	z-index: 99;
+  	opacity: 0;
+  	height: 20px;
+  	width: 165px;
 }

@@ -58,6 +58,8 @@ Route::resource('product','ProductController');
 // Upload
 Route::post('{type}/upload', 'ProductController@upload');
 
+//Files
+Route::resource('file', 'FileController');
 
 // Settings
 Route::get('settings/account', 'UserController@settings');

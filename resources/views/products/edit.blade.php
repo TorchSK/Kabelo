@@ -15,15 +15,20 @@
 </div>
 
 <div id="product_detail" data-id="{{$product->id}}">
-       <div class=>
+       <div class="edit_product_images">
           @foreach($product->images as $image)
-            <img src="/{{$image->path}}" width="200px" class="ui image"/>
+            <div class="image_div @if($image->primary) primary @endif" data-fileid="{{$image->id}}">
+              <img src="/{{$image->path}}" width="200px" class="ui image " />
+              <div class="edit_product_images_actions">
+                <a class="ui circular red label delete_img"><i class="remove icon"></i> Zmaž</a>
+                <a class="ui circular blue icon label make_primary_img"><i class="star icon"></i> Primárny</a>
+              </div>
+           </div>
            @endforeach 
         </div>
     <div class="left">
 
         <div class="edit_images">
-           
            <div action="/file/upload" class="dropzone" id="product_detail_dropzone"> <input name="_token" hidden value="{!! csrf_token() !!}" /></div>
          </div>
 
@@ -51,14 +56,14 @@
 
         <div id="create_product_new_flag">
     <div class="ui checkbox">
-      <input type="checkbox" name="example">
+      <input type="checkbox" name="new" @if($product->new) checked @endif>
       <label>Novinka</label>
     </div>
     </div>
 
     <div id="create_product_sale_flag">
     <div class="ui checkbox">
-      <input type="checkbox" name="example">
+      <input type="checkbox" name="sale"  @if($product->sale) checked @endif>
       <label>V zľave</label>
     </div>
         <div class="ui right labeled input" id="create_product_sale_value">
@@ -113,16 +118,16 @@
 
     <div id="edit_product_params">
       <div class="row">
-        <div class="ui input key"><input type="text" name="parameter_key[]"/></div>
-        <div class="ui input value"><input type="text"  name="parameter_value[]"/></div>
+        <div class="ui input key"><input type="text" name="parameter_keys[]" /></div>
+        <div class="ui input value"><input type="text" name="parameter_values[]" /></div>
       </div>
       <div class="row">
-        <div class="ui input key"><input type="text" name="parameter_key[]"/></div>
-        <div class="ui input value"><input type="text" name="parameter_value[]"/></div>
+        <div class="ui input key"><input type="text" name="parameter_keys[]" /></div>
+        <div class="ui input value"><input type="text" name="parameter_values[]" /></div>
       </div>
       <div class="row">
-        <div class="ui input key"><input type="text" name="parameter_key[]"/></div>
-        <div class="ui input value"><input type="text" name="parameter_value[]"/></div>
+        <div class="ui input key"><input type="text" name="parameter_keys[]" /></div>
+        <div class="ui input value"><input type="text" name="parameter_values[]" /></div>
       </div>
     </div>
 

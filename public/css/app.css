@@ -607,10 +607,8 @@ a:hover {
   vertical-align: top;
   font-weight: 200;
   font-style: italic;
-}
-#product_detail #code .ui.label {
-  margin-left: 15px;
-  margin-top: 1px;
+  display: inline-block;
+  padding-top: 6px;
 }
 #product_detail #parameters {
   margin-bottom: 50px;
@@ -631,6 +629,18 @@ a:hover {
   position: relative;
   top: 7px;
   margin-top: 25px;
+}
+#product_detail #maker {
+  display: inline-block;
+  margin-left: 15px;
+  margin-top: 1px;
+}
+#product_detail #sale {
+  display: inline-block;
+  margin-left: 35px;
+}
+#product_detail #new {
+  display: inline-block;
 }
 #create_product_params .row,
 #edit_product_params .row {
@@ -666,6 +676,29 @@ a:hover {
 }
 #create_product_sale_flag label {
   margin-right: 25px;
+}
+.edit_product_images .image_div {
+  position: relative;
+  margin-bottom: 5px;
+}
+.edit_product_images .image_div.primary {
+  -webkit-box-shadow: 0 0 3px #A5673F;
+          box-shadow: 0 0 3px #A5673F;
+}
+.edit_product_images .image_div:hover .edit_product_images_actions {
+  opacity: 1;
+}
+.edit_product_images_actions {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 99;
+  opacity: 0;
+  height: 20px;
+  width: 165px;
 }
 #admin {
   min-height: 100vh;

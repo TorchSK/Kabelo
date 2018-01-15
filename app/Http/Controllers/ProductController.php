@@ -49,7 +49,7 @@ class ProductController extends Controller
             $product->categories()->attach($category);
         }
 
-        if (sizeof($request->get('params')) > 0)
+        if (isset($request->get('params')) && sizeof($request->get('params')) > 0)
         {
             foreach ($request->get('params') as $key => $param)
             {
@@ -192,6 +192,23 @@ class ProductController extends Controller
                 $product->categories()->detach($category);
             }
         }
+
+        foreach ($product->parameters as $parameter)
+        {
+            $parameter->delete();
+        }
+
+
+        foreach (array_filter($request->get('parameter_keys')) as $index => $key)
+        {   
+            $parameter = new Parameter();
+            $parameter->key = $key;
+            $parameter->value = $request->get('parameter_values')[$index];
+
+            $product->parameters()->save($parameter);
+        }
+
+
 
 
         $directory = 'temp';

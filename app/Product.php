@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model {
 
   protected $table = "products";
-  protected $fillable = ["category_id", "name", "code", "price", "price_unit", "desc", "link", "stock", "maker"];
+  protected $fillable = ["category_id", "name", "code", "price", "price_unit", "desc", "link", "stock", "maker", "new", "sale"];
 
   	public function categories() 
   	{
@@ -33,5 +33,15 @@ class Product extends Model {
   	{
  		return $this->belongsToMany('App\Order');
  	}
+
+	public function setSaleAttribute($value)
+  	{
+    $this->attributes['sale'] = (boolean)($value);
+  	}
+	
+	public function setNewAttribute($value)
+  	{
+    $this->attributes['new'] = (boolean)($value);
+  	}
 
 }

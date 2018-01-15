@@ -745,4 +745,35 @@ $('.admin_admin_checkbox').checkbox({
   },
 })
 
+
+$('.delete_img').click(function(){
+  $image = $(this).closest('.image_div');
+  $imageid = $image.data('fileid');
+
+   $.ajax({
+    method: "DELETE",
+    url: '/file/'+$imageid,
+    data: {},
+    success: function(){
+      $image.remove();
+    }
+  })
+})
+
+
+$('.make_primary_img').click(function(){
+  $image = $(this).closest('.image_div');
+  $imageid = $image.data('fileid');
+
+   $.ajax({
+    method: "PUT",
+    url: '/file/'+$imageid,
+    data: {primary:1},
+    success: function(){
+      $('.image_div').removeClass('primary');
+     $image.addClass('primary');
+    }
+  })
+})
+
 });
