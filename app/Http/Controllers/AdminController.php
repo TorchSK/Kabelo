@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
-
+use App\User;
 use Auth;
 
 class AdminController extends Controller
@@ -35,6 +35,14 @@ class AdminController extends Controller
         return view('admin.index', $data);
     }
 
+    public function manageUsers()
+    {
+        $data = [
+            'users' => User::all(),
+        ];
+
+        return view('admin.users', $data);
+    }
 
 
     public function categoryProducts($category_id)

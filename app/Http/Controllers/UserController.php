@@ -48,7 +48,17 @@ class UserController extends Controller
         return $token;
     }
 
-    public function register(RegisterRequest $request)
+       public function getRegister()
+    {
+        return view('auth.register');
+    }
+
+    public function registerSuccess()
+    {
+        return view('auth.registersuccess');
+    }
+
+    public function postRegister(RegisterRequest $request)
     {
         $data = [
             'email' => $request->get('email'),
@@ -59,9 +69,6 @@ class UserController extends Controller
 
         $user->password = Hash::make($data['password']);
         $user->save();
-        
-        $token = $this->createActivationToken($user);
-        $email = $this->sendActivationEmail($user->id);
 
         // create DB Cart
         $cart = new Cart();
@@ -75,7 +82,11 @@ class UserController extends Controller
 
         $cart->save();
 
-        return 1;
+        $token = $this->createActivationToken($user);
+        $email = $this->sendActivationEmail($user->id);
+
+        return redirect('/register/success');
+
     }
 
     public function activate($token)
@@ -130,9 +141,11 @@ class UserController extends Controller
     public function update($id, Request $request){
         $user = User::find($id);
 
-        $user->first_name = $request->get('first_name');
-        $user->last_name = $request->get('last_name');
-        $user->phone = $request->get('phone');
+        foreach ($request->except('_token') as $key => $value)
+        {
+             $user->$key = $value;
+        }
+
 
         if (!$user->invoiceAddress && $request->get('invoiceAddress')['street'])
         {
@@ -221,5 +234,17 @@ class UserController extends Controller
 
         Auth::logout();
         return redirect('/');
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        if (isset($user->cart))
+        {
+            $user->cart->delete();
+        }
+
+        $user->delete();
+
     }
 }

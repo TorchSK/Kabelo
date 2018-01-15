@@ -6,7 +6,9 @@ use Response;
 use Illuminate\Foundation\Http\FormRequest;
  
 class RegisterRequest extends FormRequest {
- 
+    
+    protected $redirectRoute = 'getRegister';
+
     public function rules()
     {
         return [

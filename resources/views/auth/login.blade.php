@@ -11,7 +11,7 @@
 
 <div class="lander ct">
 @include ('utils/errors')
-<form  action="login" method="POST" autocomplete="true" class="ui form small_form" id="login_form">
+<form  action="login" method="POST" autocomplete="true" class="ui form small_form login_form">
               <input name="_token" type="hidden" value="{{csrf_token()}}">
 
     <div class="field">

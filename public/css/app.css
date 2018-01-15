@@ -674,6 +674,28 @@ a:hover {
 #admin .categories a {
   display: block;
 }
+#admin .users {
+  padding: 50px;
+}
+#admin .users .item {
+  background-color: #FFFFFF;
+  margin-bottom: 3px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+#admin .users .item .title {
+  padding: 15px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+#admin .users .item .title:hover {
+  background-color: #A5673F;
+  color: #FFFFFF;
+}
+#admin .users .item .content {
+  padding: 15px;
+  border-top: 1px dashed #EEE;
+}
 .new_product_btn {
   font-size: 1.5em;
   font-weight: 900;
@@ -897,11 +919,11 @@ a:hover {
           align-items: center;
 }
 .order_success i.icon {
-  font-size: 6vw;
+  font-size: 5vw;
   color: #21BA45;
 }
 .order_success .msg {
-  font-size: 2.5vw;
+  font-size: 2vw;
   font-weight: 100;
   margin-top: 50px;
   display: block;

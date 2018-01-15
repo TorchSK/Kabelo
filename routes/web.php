@@ -17,10 +17,13 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Userz
-Route::post('/register', 'UserController@register')->name('register');
+// Users
+Route::get('/register', 'UserController@getRegister')->name('getRegister');
+Route::post('/register', 'UserController@postRegister')->name('register');
 Route::any('/logout', 'UserController@logout')->name('logout');
 Route::put('/user/{userid}', 'UserController@update');
+Route::delete('/user/{userid}', 'UserController@destroy');
+Route::get('/register/success', 'UserController@registerSuccess')->name('registerSuccess');
 
 Route::get('/user/activate/{token}', 'UserController@activate')->name('activateUser');
 Route::post('/login', 'UserController@postLogin')->name('postLogin');
@@ -75,6 +78,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/products', 'AdminController@manageProducts')->name('admin.manageProducts');
 	Route::get('/category/{category_id}/products', 'AdminController@categoryProducts')->name('admin.categoryProducts');
 	Route::get('/orders/', 'AdminController@manageOrders')->name('admin.manageOrders');
+	Route::get('/users/', 'AdminController@manageUsers')->name('admin.manageUsers');
 
 });
 

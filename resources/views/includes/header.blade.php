@@ -29,6 +29,8 @@
 
            @if (Auth::check())
               <div class="left">
+                                  <a href="{{route('admin.manageUsers')}}" class="row"><i class="users icon"></i> Správa uživateľov</a>
+
                 <a href="/settings/account" class="row"><i class="user icon"></i> Nastavenia účtu</a>
                 <a href="/orders/mine" class="row"><i class="history icon"></i> História objednávok</a>
                 @if(Auth::check() && Auth::user()->admin)
@@ -36,6 +38,7 @@
 
                   <a href="{{route('admin.manageProducts')}}" class="row"><i class="setting icon"></i> Administruj produkty</a>
                   <a href="{{route('admin.manageOrders')}}" class="row"><i class="hourglass start icon"></i> Čakajúce objednávky</a>
+
                 @endif
 
               </div>
@@ -49,7 +52,7 @@
 
           <div class="left" id="login_div">
 
-            <form action="/login" id="login_form" method="POST">
+            <form action="/login" class="login_form" method="POST">
               <input name="_token" type="hidden" value="{{csrf_token()}}">
 
               <div class="ui fluid input">
@@ -68,6 +71,10 @@
 
           <div class="right" id="register_div">
 
+
+            <form action="/register" class="register_form" method="POST">
+              <input name="_token" type="hidden" value="{{csrf_token()}}">
+
           <div class="ui fluid input">
             <input type="text" name="email" placeholder="email">
           </div>
@@ -76,8 +83,8 @@
             <input type="text" name="password" placeholder="heslo">
           </div>
 
-          <div class="ui brown fluid button" id="register_btn">Registrovať</div>
-
+          <button type="submit" class="ui brown fluid button" id="register_btn">Registrovať</button>
+        </form>
         </div>
 
         @endif

@@ -18,39 +18,16 @@ $('.ui.accordion')
   .accordion({exclusive: false})
 ; 
 
-$('#register_btn').click(function(){
+$('.register_form').click(function(){
 	$popup = $('#auth_popup');
 	$email = $('#register_div').find('input[name="email"]').val();
 	$password = $('#register_div').find('input[name="password"]').val();
 
 
-  $.ajax({
-    method: 'POST',
-    url: '/register',
-    data: {email:$email, password: $password}, 
-    success: function(data){
-      if (data == 0)
-      {
-        $('#auth_popup .msg').text('Pokračujte aktiváciou účtu pomocou linku vo Vašom emaily');
-      }
-      else
-      {
-        $('#auth_popup .msg').text(data);
-      }
-    },
-    error: function(data) {
-      $('#auth_popup .msgs').html('');
-      $.each(data.responseJSON.errors, function(i, item) {
-        $('#auth_popup .msgs').append('<div class="msg">'+item[0]+'</div>');
-      });
-
-    }
-  });
-
 })
 
 
-$('#login_form').submit(function(){
+$('.login_form').submit(function(){
 	$validation = 1;
 
   $popup = $('#auth_popup');
@@ -728,6 +705,44 @@ $('.dropzone').dropzone({
      params: {
     '_token': $('meta[name="csrf-token"]').attr('content')
     }
+})
+
+
+$(document).on('click', '.admin_delete_user_btn', function(){
+  $userid = $(this).closest('.user').data('userid');
+  $.ajax({
+    method: "DELETE",
+    url: '/user/'+$userid,
+    success: function(){
+      location.reload();
+    }
+  })
+});
+
+
+
+$('.admin_admin_checkbox').checkbox({
+  onChecked: function(){
+
+    $userid = $(this).closest('.user').data('userid');
+
+    $.ajax({
+      method: "PUT",
+      url: '/user/'+$userid,
+      data: {admin: 1}
+    })
+
+  },
+  onUnchecked: function(){
+
+    $userid = $(this).closest('.user').data('userid');
+
+    $.ajax({
+      method: "PUT",
+      url: '/user/'+$userid,
+      data: {admin: 0}
+    })
+  },
 })
 
 });
