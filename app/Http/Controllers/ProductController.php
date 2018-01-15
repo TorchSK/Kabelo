@@ -260,6 +260,11 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
+        foreach ($product->images as $file)
+        {
+            File::delete($file->path);
+            $file->delete();
+        }
         $product->delete();
     }
 }
