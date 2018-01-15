@@ -61,6 +61,8 @@ class ProductController extends Controller
             }
         }
 
+        $this->uploadImages();
+
         return $product->maker.'/'.$product->code.'/detail';
     }
 
@@ -169,6 +171,37 @@ class ProductController extends Controller
 
     }
 
+    public function uploadImages()
+    {
+        $directory = 'temp';
+
+        if (sizeof(File::files($directory)) > 0)
+        {
+            $files = File::files($directory);
+
+            foreach ($files as $key => $file)
+            {
+                $filename = explode("/", $file)[1];
+
+                $productFile = new ProductFile();
+
+                $productFile->product_id = $product->id;
+                $productFile->path = 'uploads/'.$filename;
+                $productFile->type = 'image';
+
+                if ($key==0)
+                {
+                    $productFile->primary = 1;
+                }
+
+                $productFile->save();
+
+                $move = File::move($file, 'uploads/'.$filename);
+
+            }
+        }
+    }
+
     public function update($productid, Request $request)
     {   
         $product = Product::find($productid);
@@ -211,31 +244,7 @@ class ProductController extends Controller
             $product->parameters()->save($parameter);
         }
 
-
-
-
-        $directory = 'temp';
-
-        if (sizeof(File::files($directory)) > 0)
-        {
-            $files = File::files($directory);
-
-            foreach ($files as $file)
-            {
-                $filename = explode("/", $file)[1];
-
-                $productFile = new ProductFile();
-
-                $productFile->product_id = $product->id;
-                $productFile->path = 'uploads/'.$filename;
-                $productFile->type = 'image';
-
-                $productFile->save();
-
-                $move = File::move($file, 'uploads/'.$filename);
-
-            }
-        }
+        $this->uploadImages();
 
         return redirect('/'.$product->maker.'/'.$product->code.'/detail');
     }
