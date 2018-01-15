@@ -448,7 +448,7 @@ $('#product_detail_delete_btn').click(function(){
         url: "/product/"+$productid,
         data: {},
         success: function(){
-          location.replace('/admin');
+          location.replace('/admin/products');
         }
       })
     }
