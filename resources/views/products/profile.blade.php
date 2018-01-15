@@ -27,7 +27,6 @@
            @if ($product->images->count() == 0)
            <img src="/img/empty.jpg" class="ui image" />
            @else
-           <img src="/{{$product->image->path}}" class="ui image" />
            @endif
         </div>
 
