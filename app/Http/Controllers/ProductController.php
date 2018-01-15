@@ -61,7 +61,7 @@ class ProductController extends Controller
             }
         }
 
-        $this->uploadImages();
+        $this->uploadImages($product);
 
         return $product->maker.'/'.$product->code.'/detail';
     }
@@ -171,7 +171,7 @@ class ProductController extends Controller
 
     }
 
-    public function uploadImages()
+    public function uploadImages(Product $product)
     {
         $directory = 'temp';
 
@@ -244,7 +244,7 @@ class ProductController extends Controller
             $product->parameters()->save($parameter);
         }
 
-        $this->uploadImages();
+        $this->uploadImages($product);
 
         return redirect('/'.$product->maker.'/'.$product->code.'/detail');
     }
