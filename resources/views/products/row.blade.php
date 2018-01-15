@@ -3,7 +3,7 @@
 	<div class="image_div">
 		@if ($product->images->count() == 0)
 			<img src="/img/empty.jpg" width="200" class="ui image" />
-		@else
+		@elseif ($product->image)
            <img src="/{{$product->image->path}}" class="ui image" />
 
 	@endif
