@@ -2,12 +2,26 @@ footer{
 	background-color: #2B2D2D   ;
 	padding: 90px 100px 80px 100px;
 
+	@media @break3{
+		padding: 40px;
+	}
+
 	.column{
 		display: inline-block;
 		
+		@media @break3{
+			display: block;
+			text-align: center;
+		}
+
 		&:last-child{
 			float: right;
 			margin-top: 15px;
+
+
+			@media @break3{
+				float: none;
+			}
 		}
 	}
 
@@ -16,6 +30,10 @@ footer{
 
 		img{
 			margin-right: 15px;
+
+			@media @break3{
+				display: none;
+			}
 		}
 		
 		text{
@@ -26,6 +44,10 @@ footer{
 			display: inline-block;
 			font-size: 1.7em;
 			color: #CCC;
+
+			@media @break3{
+				font-size: 1.4em;
+			}
 		}
 	}
 

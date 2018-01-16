@@ -8,7 +8,7 @@
                 </div>
 
                 <div class="categories">
-                	<div class="sidebar_btn">
+                	<div class="sidebar_btn item">
 						<a href="/admin/products">Admin prehlad</a>
                 	</div>
 					<div class="ui horizontal divider">Pridaj</div>

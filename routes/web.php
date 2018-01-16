@@ -15,7 +15,8 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home/eshop', 'HomeController@index')->name('home.eshop');
 
 // Users
 Route::get('/register', 'UserController@getRegister')->name('getRegister');

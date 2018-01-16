@@ -1,11 +1,11 @@
   <div id="header">
       <div class="container">
         <a class="logo item" href="/">
-          <img src="/img/logo.png" width="36"/>
+          <div class="image"><img src="/img/logo.png" /></div>
           <text>Kabelo</text>
         </a>
 
-        <a class="ui icon item" id="handle">
+        <a class="item" id="handle">
         <i class="icon content"></i>
         </a>
 

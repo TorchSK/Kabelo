@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-@if (Auth::user()->admin)
+@if (Auth::check() && Auth::user()->admin)
 <div id="product_options" class="ct">
  <div class="container ct">
   <a href="/{{Request::segment(1)}}/{{Request::segment(2)}}/edit" class="ui teal button">Edituj produkt</a>
@@ -88,26 +88,6 @@
  </div>
 </div>
 
-
-
-  <div class="ui mini modal" id="delete_product_modal">
-            
-    <div class="header">
-      Zmazať produkt
-    </div>
-    <div class="content">
-       Naozaj chcete vymazať produkt
-    </div>
-    <div class="actions">
-      <div class="ui red deny button">
-        Níe
-      </div>
-      <div class="ui positive right labeled icon button">
-        Áno
-        <i class="checkmark icon"></i>
-      </div>
-    </div>
-  </div>
 
 
 @stop

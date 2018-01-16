@@ -9,13 +9,17 @@
         </div>
 
         <div id="under_cover">               
-            <img src="img/tasker.png" width="100" class="ui image" />
+            <img src="/img/tasker.png" width="100" class="ui image" />
 
         </div>
 
         <div class="content" id="home_content">
 
 
+            <!-- mobile -->
+            <div id="m_categories_btn">Kategorie</div>
+
+            <!-- desktop/tablet -->
             <div id="filters">
             <div class="ui accordion">
 
@@ -26,12 +30,13 @@
                     </div>
                 </div>
 
-           
+                <a href="{{route('home')}}/home/eshop" class="item">Úvodná stránka<i class="home large icon"></i></a>
+
                 <div class="categories">
                     <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Kategórie</div>
                     <div class="active content">
                     @foreach(App\Category::all() as $category)
-                        <div class="item filter" data-filter="category" data-value="{{$category->id}}" data-categoryid="{{$category->id}}">{{$category->name}}</div>
+                        <div class="item filter" data-filter="category" data-value="{{$category->id}}" data-categoryid="{{$category->id}}">{{$category->name}}<div class="label">{{$category->products->count()}}</div></div>
                     @endforeach
                     </div>
                 </div>
@@ -60,9 +65,20 @@
                <div id="active_filters"></div>
                
                <grid>
-                @foreach(App\Product::all() as $product)
+                <div class="ui horizontal divider active title">Akcie</div>
+                <div id="home_sales_div">
+                @foreach(App\Product::where('sale',1)->get() as $product)
                     @include('products.row')
                 @endforeach
+                </div>
+
+                 <div class="ui horizontal divider active title">Novinky</div>
+                 <div id="home_news_div">
+
+                @foreach(App\Product::where('new',1)->get() as $product)
+                    @include('products.row')
+                @endforeach
+            </div>
                </grid>
 
         </div>

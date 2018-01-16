@@ -7,6 +7,13 @@ $.ajaxSetup({
   }
 });
 
+var path = window.location.pathname.split( '/' );
+
+if (path[2] == 'eshop')
+{
+  scrollTo('#grid');
+}
+
 $('.ui.checkbox').checkbox();
 
 $('#header .account.item').popup({
@@ -448,12 +455,30 @@ $('#product_detail_delete_btn').click(function(){
         url: "/product/"+$productid,
         data: {},
         success: function(){
-          location.replace('/admin');
+          location.replace('/admin/products');
         }
       })
     }
   }).modal('show');
 })
+
+$('.product_row_delete_btn').click(function(){
+  $productid = $(this).closest('.product').data('productid');
+  $('#delete_product_modal').modal('setting', {
+    onApprove : function() {
+      $.ajax({
+        type: "DELETE",
+        url: "/product/"+$productid,
+        data: {},
+        success: function(){
+          location.reload();
+        }
+      })
+    }
+  }).modal('show');
+})
+
+
 
 $(document).ajaxStart(function() {
   $('#grid').find('.dimmer').addClass('active');
@@ -672,7 +697,7 @@ $('#submit_order_btn').click(function(){
 })
 
 
-$('#grid .product.item').draggable({ 
+$('#admin #grid .product.item').draggable({ 
   opacity: 0.6, 
   helper: "clone"
 });
@@ -793,5 +818,21 @@ $("#handle").click(function(){
 $('#close_sidebar_btn').click(function(){
   $('.ui.sidebar').sidebar('hide');
 })
+
+$('#home_sales_div').flickity({
+    cellAlign: 'left',
+    contain: true,
+    pageDots: false,
+    prevNextButtons: false
+});
+
+$('#home_news_div').flickity({
+    cellAlign: 'left',
+    contain: true,
+    pageDots: false,
+    prevNextButtons: false
+});
+
+
 
 });

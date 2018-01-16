@@ -9,7 +9,7 @@
 		color: #DDD;
 
 		@media @break3{
-			padding: 15px 18px;
+			padding: 24px 18px;
 		}
 	}
 
@@ -24,10 +24,17 @@
 
 	.logo{
 		padding: 20px;
+		display: inline-flex;
+		align-items: center;
+
+		@media @break3{
+			padding: 15px;
+		}
 
 		img{
 			margin-right: 15px;
-			
+			width: 35px;
+
 			@media @break3{
 				width: 25px;
 			}
@@ -35,11 +42,13 @@
 		
 		text{
 			font-family: "hwt-artz";
-			vertical-align: top;
-			margin-top: 15px;
 			letter-spacing: 10px;
 			display: inline-block;
-			font-size: 1.5vw;
+			font-size: 1.5em;
+
+			@media @break3{
+				font-size: 1em;
+			}
 		}
 	}
 

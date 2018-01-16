@@ -1,27 +1,50 @@
 <div class="item product" data-productid={{$product->id}}>
 <a href="/{{strtolower($product->maker)}}/{{$product->code}}/detail">
+	
+
+
 	<div class="image_div">
+
+	 <div class="labels">
+		@if ($product->sale)
+		<div class="ui green label">- {{round(1 - ($product->sale_price/$product->price),2)*100}} %</div>
+		@endif
+
+		@if ($product->new)
+		<div class="ui blue label">Novinka</div>
+		@endif
+
+	</div>
+
 		@if ($product->images->count() == 0)
 			<img src="/img/empty.jpg" width="200" class="ui image" />
 		@elseif ($product->image)
            <img src="/{{$product->image->path}}" class="ui image" />
-
 	@endif
 
 	</div>
 	<div class="title">{{$product->name}}</div>
-	<div class="price">{{$product->price}} Eur</div>
+	 
+
+
+
+	<div class="prices">
+    <div class="price @if($product->sale) crossed @endif">{{$product->price}} &euro;</div>
+    @if ($product->sale)
+    <div class="sale_price">{{$product->sale_price}} &euro;</div>
+    @endif
+    </div>
+
 	<div class="availability"></div>
 
 	@if((!isset($cart) || !$cart) && Request::segment(1) != 'admin'  && (!isset($cart_confirm) || !$cart_confirm))
-	<a class="to_cart">
-		<button class="ui teal icon button">
-	  		<i class="shop icon"></i>
-	  		Kúpiť
-		</button>
-	</a>
+	<button class="to_cart ui teal icon button"><i class="shop icon"></i> Kúpiť</button>
 	@elseif(Request::segment(1) == 'admin')
-		<a href="/product/create?duplicate={{$product->id}}" class="ui button">Duplikuj</a>
+		<div class="actions">
+		<a href="/product/create?duplicate={{$product->id}}" class="ui teal button">Duplikuj</a>
+		<a href="/{{$product->maker}}/{{$product->code}}/edit" class="ui blue button">Zmeň</a>
+		<a class="ui red button product_row_delete_btn">Zmaž</a>
+		</div>	
 	@endif
 
 </a>
