@@ -448,7 +448,7 @@ $('#product_detail_delete_btn').click(function(){
         url: "/product/"+$productid,
         data: {},
         success: function(){
-          location.replace('/admin/products');
+          location.replace('/admin');
         }
       })
     }
@@ -774,6 +774,24 @@ $('.make_primary_img').click(function(){
      $image.addClass('primary');
     }
   })
+})
+
+// callback for clicking the active filter delete icon
+$("#active_filters").on('click','span .delete', function () {
+    $filter = $(this).parent().data('filter');
+    $value = $(this).parent().data('value');
+    $(this).parent().remove();
+    $('.filter[data-filter="'+$filter+'"][data-value="'+$value+'"]').removeClass('active');
+    doSort();
+});
+
+
+$("#handle").click(function(){
+  $('.ui.sidebar').sidebar('toggle');
+})
+
+$('#close_sidebar_btn').click(function(){
+  $('.ui.sidebar').sidebar('hide');
 })
 
 });

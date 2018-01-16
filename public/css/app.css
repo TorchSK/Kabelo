@@ -295,6 +295,11 @@ a:hover {
   background-color: #A5673F;
   text-align: center;
 }
+@media all and (max-width: 736px) {
+  #under_cover {
+    display: none;
+  }
+}
 #under_cover img {
   display: inline-block;
   margin: 25px 130px;
@@ -353,19 +358,51 @@ a:hover {
           flex: 1;
   background-color: #F7F7F7;
   position: relative;
+  padding-top: 35px;
 }
 #grid grid {
   margin-left: 35px;
+  margin-right: 35px;
 }
 #grid .item {
   display: inline-block;
-  width: 330px;
+  width: 12%;
   text-align: center;
   margin: 15px;
-  padding: 50px 0 40px 0;
+  padding: 2.2% 0 40px 0;
   border-radius: 5px;
   cursor: pointer;
   background-color: #FFFFFF;
+}
+@media all and (max-width: 2100px) {
+  #grid .item {
+    width: 21.5%;
+  }
+}
+@media all and (max-width: 1690px) {
+  #grid .item {
+    width: 17.55%;
+  }
+}
+@media all and (max-width: 1280px) {
+  #grid .item {
+    width: 22%;
+  }
+}
+@media all and (max-width: 980px) {
+  #grid .item {
+    width: 30%;
+  }
+}
+@media all and (max-width: 736px) {
+  #grid .item {
+    width: 47%;
+  }
+}
+@media all and (max-width: 480px) {
+  #grid .item {
+    width: 100%;
+  }
 }
 #grid .item:hover {
   -webkit-box-shadow: 0 0 3px #AAA;
@@ -446,7 +483,7 @@ a:hover {
   color: #FFFFFF;
 }
 #grid .sorts {
-  margin: 35px 50px;
+  margin: 0px 0 35px 50px;
   margin-bottom: 25px;
   background-color: #FFFFFF;
   border-radius: 4px;
@@ -459,7 +496,7 @@ a:hover {
   cursor: pointer;
 }
 #grid .sorts > .sort.active {
-  background-color: #37A0D3;
+  background-color: #2185D0;
   color: #FFFFFF;
 }
 #header {
@@ -472,11 +509,32 @@ a:hover {
   display: inline-block;
   color: #DDD;
 }
+@media all and (max-width: 980px) {
+  #header .item {
+    padding: 15px 18px;
+  }
+}
+#header #handle {
+  display: none;
+  float: right;
+}
+@media all and (max-width: 980px) {
+  #header #handle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
 #header .logo {
   padding: 20px;
 }
 #header .logo img {
   margin-right: 15px;
+}
+@media all and (max-width: 980px) {
+  #header .logo img {
+    width: 25px;
+  }
 }
 #header .logo text {
   font-family: "hwt-artz";
@@ -484,12 +542,17 @@ a:hover {
   margin-top: 15px;
   letter-spacing: 10px;
   display: inline-block;
-  font-size: 1.7em;
+  font-size: 1.5vw;
 }
 #header .cart {
   float: right;
   background-color: rgba(0, 0, 0, 0.4);
   font-weight: 900;
+}
+@media all and (max-width: 980px) {
+  #header .cart {
+    display: none;
+  }
 }
 #header .cart #cart_icon {
   display: inline-block;
@@ -508,6 +571,11 @@ a:hover {
   float: right;
   font-size: 1.2em;
   cursor: pointer;
+}
+@media all and (max-width: 980px) {
+  #header .account {
+    display: none;
+  }
 }
 #header .account i.icon.user {
   margin-left: 15px;

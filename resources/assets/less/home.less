@@ -26,6 +26,10 @@
 	background-color: @brown;
 	text-align: center; 
 
+	@media @break2{
+		display: none;
+	}
+
 	img{
 		display: inline-block;
 		margin: 25px 130px;
@@ -98,21 +102,47 @@
 		flex:1;
 		background-color: #F7F7F7;
 		position: relative;
-
+		padding-top: 35px;
+		
 		grid{
 			margin-left: 35px;
+			margin-right: 35px;
 		}
+
 		
 		.item{
 			display: inline-block;
-			width: 330px;
+			width: @cw7;
 			text-align: center;
 			margin: 15px;
-			padding: 50px 0 40px 0;
+			padding: 2.2% 0 40px 0;
 			border-radius: 5px;
 			cursor: pointer;
 			background-color: @white;
 
+			@media @break6{
+				width: @cw6;
+			}
+
+			@media @break5{
+				width: @cw5;
+			}
+
+			@media @break4{
+				width: @cw4;
+			}
+
+			@media @break3{
+				width: @cw3;
+			}
+
+			@media @break2{
+				width: @cw2;
+			}
+
+			@media @break1{
+				width: @cw1;
+			}
 
 			&:hover{
 				box-shadow: 0 0 3px #AAA;
@@ -209,7 +239,7 @@
 		}
 
 		.sorts{
-			margin: 35px 50px;
+			margin: 0px 0 35px 50px;
 			margin-bottom: 25px;
 			background-color: @white;
 			border-radius: 4px;

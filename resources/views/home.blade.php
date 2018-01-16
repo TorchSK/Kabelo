@@ -31,7 +31,7 @@
                     <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Kategórie</div>
                     <div class="active content">
                     @foreach(App\Category::all() as $category)
-                        <div class="item" data-categoryid="{{$category->id}}">{{$category->name}}</div>
+                        <div class="item filter" data-filter="category" data-value="{{$category->id}}" data-categoryid="{{$category->id}}">{{$category->name}}</div>
                     @endforeach
                     </div>
                 </div>
@@ -58,8 +58,11 @@
 
 
                <div id="active_filters"></div>
+               
                <grid>
-
+                @foreach(App\Product::all() as $product)
+                    @include('products.row')
+                @endforeach
                </grid>
 
         </div>

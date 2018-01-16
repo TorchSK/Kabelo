@@ -7,13 +7,30 @@
 		padding: 27px 18px;
 		display: inline-block;
 		color: #DDD;
+
+		@media @break3{
+			padding: 15px 18px;
+		}
 	}
+
+	#handle{
+		  display: none;
+		  float: right;
+
+		  @media @break3{
+		    display: flex;
+		  }
+		}
 
 	.logo{
 		padding: 20px;
 
 		img{
 			margin-right: 15px;
+			
+			@media @break3{
+				width: 25px;
+			}
 		}
 		
 		text{
@@ -22,7 +39,7 @@
 			margin-top: 15px;
 			letter-spacing: 10px;
 			display: inline-block;
-			font-size: 1.7em;
+			font-size: 1.5vw;
 		}
 	}
 
@@ -30,6 +47,10 @@
 		float: right;
 		background-color: rgba(0,0,0,0.4);
 		font-weight: 900;
+
+		@media @break3{
+			display: none;
+		}
 
 		#cart_icon{  
 			display: inline-block;
@@ -52,6 +73,10 @@
 		float: right;
 		font-size: 1.2em;
 		cursor: pointer;
+
+		@media @break3{
+			display: none;
+		}
 
 		i.icon.user{
 			margin-left: 15px;

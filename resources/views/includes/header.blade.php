@@ -5,6 +5,9 @@
           <text>Kabelo</text>
         </a>
 
+        <a class="ui icon item" id="handle">
+        <i class="icon content"></i>
+        </a>
 
         <a class="cart item" href="/cart/products">
           <div id="cart_icon"><i class="shop big icon"></i></div>
