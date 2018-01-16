@@ -3,7 +3,7 @@
 
         <div id="cover">
             <div id="cover_div">
-                <div id="slogan">Profesionálne <o>Audio</o> a <o>video</o> káble</div>
+                <div id="slogan"><o>Audio</o> a <o>video</o> káble</div>
                 <div id="view_goods_btn" class="ui huge inverted brown button"><i class="icon cubes"></i>Sortiment</div>
             </div>
         </div>

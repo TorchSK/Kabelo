@@ -703,7 +703,7 @@ $('#admin #grid .product.item').draggable({
 });
 
 $('.categories .item').droppable({
-  tolerance: "touch",
+  tolerance: "pointer",
   over: function( event, ui ) {
     $(this).addClass('active');
   },
