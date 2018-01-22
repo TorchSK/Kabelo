@@ -43,14 +43,21 @@ Route::put('cart/{productid}','CartController@minusItem');
 Route::post('cart','CartController@set');
 
 
+// Categories
+Route::post('category/parameter/add','CategoryController@addParameter');
+Route::get('category/parameter/{id}/edit','CategoryController@editParameter');
+Route::put('category/parameter/{id}','CategoryController@updateParam');
 
 Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
 
+
 Route::get('/{maker}/{code}/detail','ProductController@profile');
 Route::get('/{maker}/{code}/edit','ProductController@edit');
 
+// Products
 Route::get('product/search/{query}','ProductController@search');
+Route::get('product/{id}/parameters/options','ProductController@paramOptions');
 Route::get('product/list','ProductController@list');
 Route::post('product/{productid}/change/category/{categoryid}','ProductController@changeCategory');
 

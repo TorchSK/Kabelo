@@ -65,7 +65,7 @@
           <div class="ui bulleted list">
 
           @foreach ($product->parameters as $parameter)
-              <div class="item"><b>{{$parameter->key}}:</b> {{$parameter->value}}</div>
+              <div class="item"><b>{{$parameter->categoryParameter->display_key}}:</b> {{$parameter->value}}</div>
           @endforeach
         </div>
         @else

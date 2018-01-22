@@ -837,8 +837,8 @@ a:hover {
   display: flex;
   margin-bottom: 15px;
 }
-#create_product_params .row .ui.input:first-child,
-#edit_product_params .row .ui.input:first-child {
+#create_product_params .row .ui.dropdown:first-child,
+#edit_product_params .row .ui.dropdown:first-child {
   margin-right: 15px;
 }
 #create_product_params .row .ui.input:last-child,
@@ -857,7 +857,7 @@ a:hover {
 #product_detail_tocart_btn {
   margin-left: 15px;
   position: relative;
-  top: -6px;
+  top: 15px;
 }
 #create_product_new_flag {
   margin-top: 25px;
@@ -917,6 +917,9 @@ a:hover {
   padding: 15px;
   border-top: 1px dashed #EEE;
 }
+#admin .right {
+  padding: 0 35px;
+}
 .new_product_btn {
   font-size: 1.5em;
   font-weight: 900;
@@ -952,6 +955,28 @@ a:hover {
   font-style: italic;
   color: #767676;
   font-weight: 100;
+}
+.admin_filters {
+  margin-bottom: 35px;
+  margin-left: 15px;
+}
+.admin_filters .row {
+  margin-bottom: 3px;
+}
+.admin_filters .active {
+  margin-bottom: 15px;
+}
+.admin_filters .active .item {
+  background-color: #FFFFFF;
+  padding: 10px;
+}
+#admin_add_category_param_btn {
+  margin-top: 0px;
+}
+#admin_change_category_param_btn {
+  float: right;
+  position: relative;
+  margin-top: -7px;
 }
 #cart_detail {
   padding: 80px 0;
@@ -1203,6 +1228,7 @@ footer .logo {
 }
 footer .logo img {
   margin-right: 15px;
+  display: inline-block;
 }
 @media all and (max-width: 980px) {
   footer .logo img {

@@ -41,7 +41,7 @@
                     </div>
                 </div>
 
-                 <div class="makers">
+                 <div class="filters">
              
                 </div>
 

@@ -16,9 +16,11 @@ class CreateProductParamsTable extends Migration
         Schema::create('product_parameters', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->index()->unsigned();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->string('key');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');;
+            $table->integer('category_parameter_id')->index()->unsigned()->nullable();
+            $table->foreign('category_parameter_id')->references('id')->on('category_parameters')->onDelete('cascade')->onUpdate('cascade');
             $table->string('value');
+            $table->string('dvalue');
         });
     }
 

@@ -44,18 +44,19 @@ class ProductController extends Controller
         $product->save();
 
 
-        foreach ($request->get('categories') as $category)
+        foreach ((array)$request->get('categories') as $category)
         {
             $product->categories()->attach($category);
         }
 
-        if ($request->has('params') && sizeof($request->get('params')) > 0)
+        if ($request->has('key') && sizeof($request->get('key')) > 0)
         {
-            foreach ($request->get('params') as $key => $param)
+            foreach ((array)$request->get('key') as $key => $param)
             {
                 $parameter = new Parameter();
-                $parameter->key = $key;
-                $parameter->value = $param;
+                $parameter->category_parameter_id = $param;
+                $parameter->value = $request->get('value')[$key];
+                $parameter->dvalue = $request->get('value')[$key];
 
                 $product->parameters()->save($parameter);
             }
@@ -63,7 +64,7 @@ class ProductController extends Controller
 
         $this->uploadImages($product);
 
-        return $product->maker.'/'.$product->code.'/detail';
+        return redirect($product->maker.'/'.$product->code.'/detail');
     }
 
     
@@ -114,6 +115,44 @@ class ProductController extends Controller
         
         $sortOrder = $request->get('sortOrder');
 
+        $result = Product::leftjoin('product_parameters',function($leftjoin){
+            $leftjoin->on('product_parameters.product_id', '=', 'products.id');
+            })
+        ->leftjoin('category_parameters',function($leftjoin){
+            $leftjoin->on('category_parameters.id', '=', 'product_parameters.category_parameter_id');
+            })
+        ->where(function($query) use ($filters,$sortBy,$sortOrder){
+            foreach ((array)$filters as $key => $temp){
+              if ($filters[$key])
+              {
+                if ($key=='search')
+                {   
+                    $query->whereRaw("name like '%".$filters['search']['item0']."%'");
+                }
+                elseif($key=='category')
+                {
+                   $query->whereHas('categories', function($query) use ($filters){
+                        $query->whereIn('category_id', (array)$filters['category']);
+                    });
+                }
+                else
+                {
+                    foreach ((array)$filters[$key] as $key => $filter)
+                    {
+                        $query->whereHas('parameters', function ($query) use ($key, $filter) {
+                            $query->whereIn('value',(array)$filter)->whereHas('categoryParameter', function ($query)  use ($key, $filter){
+                                   $query->where('key', $key);
+                        });
+                        }); 
+                    }
+                };
+              }
+            }
+        });
+
+        $products = $result->orderBy($sortBy,$sortOrder)->groupBy(['products.id'])->get(['products.*']);
+
+        /*
         $products = Product::when(isset($filters['category']), function ($query) use ($filters) {
             return $query->whereHas('categories', function($query) use ($filters){
                 $query->whereIn('category_id', (array)$filters['category']);
@@ -124,7 +163,8 @@ class ProductController extends Controller
         })
         ->orderBy($sortBy,$sortOrder)
         ->get();
-        
+        */
+
         $data = [
             'products' => $products
         ];

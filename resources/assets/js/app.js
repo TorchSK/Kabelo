@@ -77,50 +77,36 @@ $('.ui.dropdown')
 ;
 
 $('#create_product_add_param_row').click(function(){
-  $html = '<div class="row"><div class="ui input key"><input type="text" /></div><div class="ui input value"><input type="text" /></div></div>';
-  $('#create_product_params').append($html);
+  $html = $('#create_product_params .row:first-child').html();
+  $('#create_product_params').append('<div class="row">'+$html+'</div>');
+  $('.ui.dropdown').dropdown();
+})
+
+$('#create_product_categories_input').dropdown({
+  onAdd: function(addedValue, addedText, $addedChoice){
+    console.log(addedValue);
+  }
 })
 
 
-$('#create_product_submit').click(function(){
-  $params = {};
+$('#create_product_form').submit(function(e){
   $validation = 1;
 
-  $name = $('#create_product_name_input input').val();
-  $code = $('#create_product_code_input input').val();
-  $categories = $('#create_product_categories_input').val();
-  $desc = $('#create_product_desc_input textarea').val();
-  $price = $('#create_product_price_input input').val();
-  $unit = $('#create_product_unit_input input').val();
-  $maker = $('#create_product_maker_input input').val();
-  $new = ~~$('#create_product_new_flag .checkbox').checkbox('is checked');
-  $sale = ~~$('#create_product_sale_flag .checkbox').checkbox('is checked');
-  $saleprice = $('#create_product_sale_value .input').val();
+  $name = $('#product_detail input[name="name"]').val();
+  $code = $('#product_detail input[name="code"]').val();
+  $maker = $('#product_detail input[name="maker"]').val();
 
-  $("#create_product_params .row").each(function( index ) {
-     if ($(this).find('.key').find('input').val()) {$key = $(this).find('.key').find('input').val();};
-     if ($(this).find('.value').find('input').val()) {$value = $(this).find('.value').find('input').val();}
 
-     if (typeof $key!=='undefined' && typeof $value !== 'undefined')
-     {
-        $params[$key] = $value;
-     }
-
-  });
-
-  if ($params.length > 0)
-  {
-    $params = JSON.stringify($params);
-  }
-
-  if ($name=='') {$validation=0; $('#create_product_name_input').addClass('error');}
+  if ($name=='') {$validation=0; $('#product_detail input[name="name"]').parent().addClass('error');}
+  if ($code=='') {$validation=0; $('#product_detail input[name="code"]').parent().addClass('error');}
+  if ($maker=='') {$validation=0; $('#product_detail input[name="maker"]').parent().addClass('error');}
 
  if ($validation==1)
  {
-    $.post('/product',{name:$name, categories: $categories, desc: $desc, params: $params, price:$price, unit:$unit, code: $code, maker: $maker, sale: $sale, new: $new, sale_price: $saleprice}, function(data){
-      location.replace('/'+data);
-    })
+    return true
   }
+
+  return false;
 })
 
 
@@ -269,16 +255,37 @@ $('.cart_minus_product').click(function(){
 function getActiveFilters(){
   
   $filters={};
+  $filters['parameter'] = {};
 
   $('#active_filters span').each(function(index, element){
-    $filters[$(element).data('filter')]={};
+    var group = $(element).data('group');
+    var filter = $(element).data('filter');
+
+    if ($(element).data('group'))
+    {
+
+      $filters[group][filter] = [];
+    }
+    else
+    {
+      $filters[$(element).data('filter')]={};
+    }
   });
 
-  $.each($filters,function(key,value){
-    $('#active_filters span.'+key).each(function(index, element) {
-      $filters[key]['item'+index] = $(element).data('value');
+  console.log($filters);
+
+  $('#active_filters span').each(function(index, element) {
+      var group = $(element).data('group');
+      var filter = $(element).data('filter');
+      if (group!=null)
+      {
+        $filters[group][filter].push($(element).data('value'));
+      }
+      else
+      {
+        $filters[filter]['item'+index] = $(element).data('value');
+      }
     });
-  });
 
   return $filters;
 }
@@ -313,9 +320,8 @@ function doSort(){
   })
 };
 
-function addFilter(key, value, desc){
-$('#active_filters').append('<span data-value="'+value+'" data-filter="'+key+'" class="'+key+' ui large teal label">'+desc+'<i class="delete icon"></i></span>');
-
+function addFilter(key, value, desc, group=null){
+  $('#active_filters').append('<span data-value="'+value+'" data-filter="'+key+'" data-group="'+group+'" class="'+key+' ui large teal label">'+desc+'<i class="delete icon"></i></span>');
 }
 
 function removeFilter(key, value=''){
@@ -352,42 +358,52 @@ $('.sort').click(function(){
   doSort();
 })
 
-function makersInit(){
-  $('.makers  .ui.checkbox').checkbox({
+function filtersInit(){
+  $('.filters  .ui.checkbox').checkbox({
     onChecked: function(){
-      $makerid = $(this).closest('.checkbox').data('makerid');
+      $value = $(this).closest('.checkbox').data('value');
       $text = $(this).closest('.checkbox').find('label').text();
-      addFilter('makers',$makerid, 'Výrobca: '+ $text)
+      $filter = $(this).closest('.checkbox').data('filter');
+      $display = $(this).closest('.checkbox').data('display');
+
+      addFilter($filter, $value, $display+': '+ $text, 'parameter')
       doSort();
     },
     onUnchecked: function(){
-        removeFilter('makers',$makerid);
-        doSort();
+      $value = $(this).closest('.checkbox').data('value');
+      $text = $(this).closest('.checkbox').find('label').text();
+      $filter = $(this).closest('.checkbox').data('filter');
+      $display = $(this).closest('.checkbox').data('display');
+
+      removeFilter($filter,$value);
+      doSort();
     }
   })
 }
 
+
+// MAIN
 $('.categories .item').click(function(){
 
   if (!$(this).hasClass('active'))
   {
     $.get('/category/'+$(this).data('categoryid')+'/makers',{}, function(data){
-        $('#home_content .makers').html(data);
-        makersInit();
+        $('#home_content .filters').html(data);
+        filtersInit();
         $('.sorts').show();
     });
 
     removeFilter('makers');
     removeFilter('category');
     addFilter('category',$(this).data('categoryid'),$(this).text());
-
-  }
-
   $('.categories .item').removeClass('active');
   $(this).addClass('active');
 
 
   doSort();
+  }
+
+
 
 })
 
@@ -833,6 +849,10 @@ $('#home_news_div').flickity({
     prevNextButtons: false
 });
 
+$('#admin_add_category_param_btn').click(function(){
+  $html = $('#admin_filters_div .row:first-child').clone();
+  $('#admin_filters_div').append($html);
+})
 
 
 });
