@@ -100,10 +100,10 @@ class AdminController extends Controller
     {
         $file = $request->file('file');
 
-        Excel::load($file, function($reader) {
-            $results = $reader->all();
+        $results  = Excel::load($file, function($reader) {
             
-        });
+        })->get();
 
+        return $results;
     }
 }

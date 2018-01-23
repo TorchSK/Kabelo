@@ -742,12 +742,6 @@ $('.categories .item').droppable({
 
 });
 
-$('.dropzone').dropzone({
-     params: {
-    '_token': $('meta[name="csrf-token"]').attr('content')
-    }
-})
-
 
 $(document).on('click', '.admin_delete_user_btn', function(){
   $userid = $(this).closest('.user').data('userid');
@@ -855,4 +849,18 @@ $('#admin_add_category_param_btn').click(function(){
 })
 
 
+
+$('#import_dropzone').dropzone({
+    success: function(param, data){
+      $.each(data, function(index,item){
+       $('#admin_import_results').append('a');
+      })
+    },
+    params: {
+    '_token': $('meta[name="csrf-token"]').attr('content')
+    }
+})
+
 });
+
+
