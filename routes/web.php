@@ -89,6 +89,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/category/{category_id}/products', 'AdminController@categoryProducts')->name('admin.categoryProducts');
 	Route::get('/orders/', 'AdminController@manageOrders')->name('admin.manageOrders');
 	Route::get('/users/', 'AdminController@manageUsers')->name('admin.manageUsers');
+	Route::get('/import/', 'AdminController@import')->name('admin.import');
+	Route::post('/import/', 'AdminController@postImport')->name('admin.postImport');
 
 });
 

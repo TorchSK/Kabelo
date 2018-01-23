@@ -10,7 +10,8 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "nesbot/carbon": "~1.21",
-        "intervention/image": "dev-master"
+        "intervention/image": "dev-master",
+        "maatwebsite/excel": "~2.1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

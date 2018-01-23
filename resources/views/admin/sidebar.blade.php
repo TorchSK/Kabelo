@@ -14,6 +14,10 @@
 					<div class="ui horizontal divider">Pridaj</div>
 
                 	<div class="sidebar_btn">
+   					<a href="/admin/import" class="ui fluid green button"><i class="cloud upload icon"></i>Import zo súboru</a>
+   					</div>
+
+                	<div class="sidebar_btn">
    					<div class="ui fluid brown button" id="add_category_btn"><i class="add icon"></i>Pridaj kategóriu</div>
    					</div>
 

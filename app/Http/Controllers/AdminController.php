@@ -8,6 +8,7 @@ use App\Category;
 use App\User;
 use App\Order;
 use Auth;
+use Excel;
 
 class AdminController extends Controller
 {
@@ -85,5 +86,24 @@ class AdminController extends Controller
         ];
 
         return view('orders.manage', $data);
+    }
+
+    public function import()
+    {
+        $data = [
+        ];
+
+        return view('admin.import', $data);
+    }
+
+    public function postImport(Request $request)
+    {
+        $file = $request->file('file');
+
+        Excel::load($file, function($reader) {
+            $results = $reader->all();
+            
+        });
+
     }
 }
