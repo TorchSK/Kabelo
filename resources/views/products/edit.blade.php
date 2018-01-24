@@ -118,21 +118,22 @@
 
     <div id="edit_product_params">
       <div class="row">
-        <div class="ui input key"><input type="text" name="parameter_keys[]" /></div>
-        <div class="ui input value"><input type="text" name="parameter_values[]" /></div>
-      </div>
-      <div class="row">
-        <div class="ui input key"><input type="text" name="parameter_keys[]" /></div>
-        <div class="ui input value"><input type="text" name="parameter_values[]" /></div>
-      </div>
-      <div class="row">
-        <div class="ui input key"><input type="text" name="parameter_keys[]" /></div>
-        <div class="ui input value"><input type="text" name="parameter_values[]" /></div>
+        <div class="ui search selection dropdown">
+          <input type="hidden" name="key[]">
+          <i class="dropdown icon"></i>
+            <div class="default text">Parameter</div>
+
+          <div class="menu">
+            @foreach ($product->parameters as $param)
+              @include('products.paramoptions')
+            @endforeach
+          </div>
+        </div>
+        <div class="ui input value"><input type="text" name="value[]" /></div>
       </div>
     </div>
 
-  
-  <div class="ui teal button" id="edit_product_add_param_row">Pridaj</div>
+    <div class="ui teal button" id="create_product_add_param_row">Pridaj</div>
 
 
 

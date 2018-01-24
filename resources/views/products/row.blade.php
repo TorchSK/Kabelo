@@ -38,7 +38,7 @@
 	<div class="availability"></div>
 
 	@if((!isset($cart) || !$cart) && Request::segment(1) != 'admin'  && (!isset($cart_confirm) || !$cart_confirm))
-	<button class="to_cart ui teal icon button"><i class="shop icon"></i> Kúpiť</button>
+	<a class="to_cart ui teal icon button"><i class="shop icon"></i> Kúpiť</a>
 	@elseif(Request::segment(1) == 'admin')
 		<div class="actions">
 		<a href="/product/create?duplicate={{$product->id}}" class="ui teal small button">Duplikuj</a>
