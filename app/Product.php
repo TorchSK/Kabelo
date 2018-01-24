@@ -39,6 +39,7 @@ class Product extends Model {
  		return $this->belongsToMany('App\Order');
  	}
 
+
 	public function setSaleAttribute($value)
   	{
       if ($value == 'on')

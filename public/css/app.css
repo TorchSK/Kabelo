@@ -276,10 +276,10 @@ a:hover {
   opacity: 0.9;
 }
 #cover {
-  height: 60vh;
+  height: 55vh;
   background-image: url('/img/overlays/dot.png'), url('/img/cover.jpg');
   background-size: auto, cover;
-  background-position: 0 0, 100% 100%;
+  background-position: 0 0, 100% 0%;
   position: relative;
 }
 @media all and (max-width: 980px) {
@@ -324,6 +324,16 @@ a:hover {
 }
 #cover #cover_div #slogan o {
   color: #A5673F;
+}
+#cover #cover_div #sub_slogan {
+  color: #222;
+  margin-top: 1%;
+  font-size: 1.5em;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 2em;
+  width: 70%;
+  margin: 0 auto;
 }
 @media all and (max-width: 980px) {
   #cover #view_goods_btn {
@@ -395,6 +405,9 @@ a:hover {
 }
 .content #filters .item.header {
   font-weight: 900;
+}
+.content #filters .item label {
+  display: inline-block;
 }
 .content #filters .item .label {
   float: right;

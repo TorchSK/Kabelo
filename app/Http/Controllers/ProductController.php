@@ -10,7 +10,7 @@ use App\File as ProductFile;
 
 use Image;
 use File;
-
+use Response;
 
 class ProductController extends Controller
 {
@@ -112,7 +112,9 @@ class ProductController extends Controller
     {
         $filters = $request->get('filters');
         $sortBy = $request->get('sortBy');
-        
+        $category = Category::find($request->get('categoryid'));
+        $activeFilters = collect([]);
+
         $sortOrder = $request->get('sortOrder');
 
         $result = Product::leftjoin('product_parameters',function($leftjoin){
@@ -121,55 +123,66 @@ class ProductController extends Controller
         ->leftjoin('category_parameters',function($leftjoin){
             $leftjoin->on('category_parameters.id', '=', 'product_parameters.category_parameter_id');
             })
-        ->where(function($query) use ($filters,$sortBy,$sortOrder){
+        ->where(function($query) use ($filters,$sortBy,$sortOrder, $activeFilters){
             foreach ((array)$filters as $key => $temp){
               if ($filters[$key])
               {
                 if ($key=='search')
                 {   
                     $query->whereRaw("name like '%".$filters['search']['item0']."%'");
+                    $activeFilters->put('search', $filters['search']['item0']);
                 }
                 elseif($key=='category')
                 {
-                   $query->whereHas('categories', function($query) use ($filters){
+                    $query->whereHas('categories', function($query) use ($filters){
                         $query->whereIn('category_id', (array)$filters['category']);
                     });
+
+                    $activeFilters->put('category', $filters['category']);
+
                 }
                 else
                 {
                     foreach ((array)$filters[$key] as $key => $filter)
                     {
-                        $query->whereHas('parameters', function ($query) use ($key, $filter) {
-                            $query->whereIn('value',(array)$filter)->whereHas('categoryParameter', function ($query)  use ($key, $filter){
-                                   $query->where('key', $key);
-                        });
-                        }); 
+                        if ($key!='maker')
+                        {
+                            $query->whereHas('parameters', function ($query) use ($key, $filter) {
+                                $query->whereIn('value',(array)$filter)->whereHas('categoryParameter', function ($query)  use ($key, $filter){
+                                       $query->where('key', $key);
+                                });
+                            }); 
+                        }
+                   
+                       $activeFilters->put($key, $filter);
+
                     }
                 };
               }
             }
         });
+        
+        $products = $result->orderBy($sortBy,$sortOrder)->groupBy(['products.id'])->select(['products.*'])->get();
 
-        $products = $result->orderBy($sortBy,$sortOrder)->groupBy(['products.id'])->get(['products.*']);
 
-        /*
-        $products = Product::when(isset($filters['category']), function ($query) use ($filters) {
-            return $query->whereHas('categories', function($query) use ($filters){
-                $query->whereIn('category_id', (array)$filters['category']);
-            });
-        })
-        ->when(isset($filters['search']), function ($query) use ($filters) {
-            return $query->whereRaw("name like '%".$filters['search']['item0']."%'");
-        })
-        ->orderBy($sortBy,$sortOrder)
-        ->get();
-        */
+        $makers = $category->products()->get(['maker']);
+        $filterCounts = [];
+        $filterCounts['makers'] = [];
+
+        foreach ($makers as $maker)
+        {
+            $filterCounts['makers'][$maker->maker] = $maker->maker;
+        }
 
         $data = [
-            'products' => $products
+            'makers' => $makers,
+            'filters' => $category->parameters,
+            'products' => $products,
+            'activeFilters' => $activeFilters,
+            'filterCounts' => $filterCounts,
         ];
 
-        return view('products.list', $data)->render();
+        return Response::json(['products' => view('products.list', $data)->render(), 'filters' => view('makers', $data)->render(), 'data' => $data]);
     }
 
     public function profile($maker, $code)

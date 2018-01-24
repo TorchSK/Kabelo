@@ -53,17 +53,6 @@ class CategoryController extends Controller
         return '/admin/products';
     }
 
-    public function makers($categoryid){
-
-        $category = Category::find($categoryid);
-
-        $data = [
-            'makers' => $category->products()->get(['maker'])->unique(),
-            'filters' => $category->parameters,
-        ];
-
-        return view('makers', $data);
-    }
 
     public function addParameter(Request $request)
     {

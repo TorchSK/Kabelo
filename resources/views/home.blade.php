@@ -3,7 +3,8 @@
 
         <div id="cover">
             <div id="cover_div">
-                <div id="slogan"><o>Audio</o> a <o>video</o> káble</div>
+                <div id="slogan"><o>Trochu iné spojenie</o></div>
+                <div id="sub_slogan">Ponúkame najkvalitenjšie káble značky Tasker. Nájdete u nás celý sortiment od audio, video až po datové káble.</div>
                 <div id="view_goods_btn" class="ui huge inverted brown button"><i class="icon cubes"></i>Sortiment</div>
             </div>
         </div>

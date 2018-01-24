@@ -305,6 +305,7 @@ function getDesiredSortOrder(){
 
 function doSort(){
   $grid = $('#grid').find('grid');
+  $filtersDiv = $('#filters').find('.filters');
 
   $sortBy = getDesiredSortBy();
   $sortOrder = getDesiredSortOrder();
@@ -313,10 +314,14 @@ function doSort(){
   $filters = getActiveFilters();
   $categoryid = getActiveCategory();
 
-  $.get('/product/list',{sortBy: $sortBy, sortOrder: $sortOrder, filters: $filters}, function(data){
-    $grid.html(data);
+  $.get('/product/list',{categoryid: $categoryid, sortBy: $sortBy, sortOrder: $sortOrder, filters: $filters}, function(data){
+    $grid.html(data.products);
+    $filtersDiv.html(data.filters);
+    filtersInit();
     $('#grid').find('.dimmer').removeClass('active');
     $('#grid').show();
+
+    console.log(data);
   })
 };
 
@@ -387,12 +392,6 @@ $('.categories .item').click(function(){
 
   if (!$(this).hasClass('active'))
   {
-    $.get('/category/'+$(this).data('categoryid')+'/makers',{}, function(data){
-        $('#home_content .filters').html(data);
-        filtersInit();
-        $('.sorts').show();
-    });
-
     removeFilter('makers');
     removeFilter('category');
     addFilter('category',$(this).data('categoryid'),$(this).text());
