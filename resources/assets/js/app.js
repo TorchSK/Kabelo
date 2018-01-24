@@ -255,7 +255,7 @@ $('.cart_minus_product').click(function(){
 function getActiveFilters(){
   
   $filters={};
-  $filters['parameter'] = {};
+  $filters['parameters'] = {};
 
   $('#active_filters span').each(function(index, element){
     var group = $(element).data('group');
@@ -283,7 +283,7 @@ function getActiveFilters(){
       }
       else
       {
-        $filters[filter]['item'+index] = $(element).data('value');
+        $filters[filter] = $(element).data('value');
       }
     });
 
@@ -371,7 +371,7 @@ function filtersInit(){
       $filter = $(this).closest('.checkbox').data('filter');
       $display = $(this).closest('.checkbox').data('display');
 
-      addFilter($filter, $value, $display+': '+ $text, 'parameter')
+      addFilter($filter, $value, $display+': '+ $text, 'parameters')
       doSort();
     },
     onUnchecked: function(){
@@ -395,8 +395,8 @@ $('.categories .item').click(function(){
     removeFilter('makers');
     removeFilter('category');
     addFilter('category',$(this).data('categoryid'),$(this).text());
-  $('.categories .item').removeClass('active');
-  $(this).addClass('active');
+    $('.categories .item').removeClass('active');
+    $(this).addClass('active');
 
 
   doSort();

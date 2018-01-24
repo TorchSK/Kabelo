@@ -108,14 +108,9 @@ class ProductController extends Controller
         }
     }
 
-    public function list(Request $request)
+    public function query($filters, $except=[])
     {
-        $filters = $request->get('filters');
-        $sortBy = $request->get('sortBy');
-        $category = Category::find($request->get('categoryid'));
-        $activeFilters = collect([]);
 
-        $sortOrder = $request->get('sortOrder');
 
         $result = Product::leftjoin('product_parameters',function($leftjoin){
             $leftjoin->on('product_parameters.product_id', '=', 'products.id');
@@ -123,55 +118,93 @@ class ProductController extends Controller
         ->leftjoin('category_parameters',function($leftjoin){
             $leftjoin->on('category_parameters.id', '=', 'product_parameters.category_parameter_id');
             })
-        ->where(function($query) use ($filters,$sortBy,$sortOrder, $activeFilters){
+        ->where(function($query) use ($filters, $except){
             foreach ((array)$filters as $key => $temp){
               if ($filters[$key])
               {
                 if ($key=='search')
                 {   
-                    $query->whereRaw("name like '%".$filters['search']['item0']."%'");
-                    $activeFilters->put('search', $filters['search']['item0']);
+                    $query->whereRaw("name like '%".$filters['search']."%'");
                 }
                 elseif($key=='category')
                 {
                     $query->whereHas('categories', function($query) use ($filters){
-                        $query->whereIn('category_id', (array)$filters['category']);
+                        $query->where('category_id', $filters['category']);
                     });
-
-                    $activeFilters->put('category', $filters['category']);
-
                 }
-                else
+                elseif($key=='parameters')
                 {
-                    foreach ((array)$filters[$key] as $key => $filter)
+                    foreach ((array)$filters['parameters'] as $categoryParameter => $value)
                     {
-                        if ($key!='maker')
+                        if ($categoryParameter == 'makers')
                         {
-                            $query->whereHas('parameters', function ($query) use ($key, $filter) {
-                                $query->whereIn('value',(array)$filter)->whereHas('categoryParameter', function ($query)  use ($key, $filter){
-                                       $query->where('key', $key);
+                             $query->whereIn('maker', $value);
+                        }
+                        else
+                        {
+                            $query->whereHas('parameters', function ($query) use ($categoryParameter, $value) {
+                                $query->whereIn('value',(array)$value)->whereHas('categoryParameter', function ($query)  use ($categoryParameter, $value){
+                                       $query->where('key', $categoryParameter);
                                 });
                             }); 
                         }
                    
-                       $activeFilters->put($key, $filter);
 
                     }
                 };
               }
             }
         });
+
+        return $result->groupBy(['products.id'])->select(['products.*']);
+    }
+
+    public function list(Request $request)
+    {
+        $filters = $request->get('filters');
+        $category = Category::find($request->get('categoryid'));
+
+        $sortBy = $request->get('sortBy');
+        $sortOrder = $request->get('sortOrder');    
         
-        $products = $result->orderBy($sortBy,$sortOrder)->groupBy(['products.id'])->select(['products.*'])->get();
+        // set active filters
+        $activeFilters = collect($filters);
+
+        // set products
+        $products = $this->query($filters)->orderBy($sortBy,$sortOrder)->get();
+
+        $makers = $category->products()->get()->unique(['maker']);
+        $categoryParameters = $category->parameters;
 
 
-        $makers = $category->products()->get(['maker']);
-        $filterCounts = [];
-        $filterCounts['makers'] = [];
+        $temp = [];
+        $filterCounts['parameters'] = [];
 
+        $filterCounts['parameters']['makers'] = [];
+        $filterCountFilters['parameters']['makers'] = [];
         foreach ($makers as $maker)
         {
-            $filterCounts['makers'][$maker->maker] = $maker->maker;
+            $filterCountFilters = $filters;
+            
+            $filterCountFilters['parameters']['makers'] = [$maker->maker];
+            
+            $filterCounts['parameters']['makers'][$maker->maker] = $this->query($filterCountFilters)->get()->count();
+            
+        }
+
+
+        foreach ($categoryParameters as $categoryParameter)
+        {
+            $filterCounts['parameters'][$categoryParameter->id] = [];
+            $filterCountFilters = $filters;
+
+            foreach ($categoryParameter->parameters as $productParameter)
+            {   
+                $filterCountFilters['parameters'][$categoryParameter->key] = $productParameter->value;
+                array_push($temp, $filterCountFilters);
+                $filterCounts['parameters'][$categoryParameter->id][$productParameter->value] = $this->query($filterCountFilters, [$categoryParameter->key])->get()->count();
+                unset($filterCountFilters['parameters'][$categoryParameter->key]);
+            }
         }
 
         $data = [
@@ -180,6 +213,7 @@ class ProductController extends Controller
             'products' => $products,
             'activeFilters' => $activeFilters,
             'filterCounts' => $filterCounts,
+            'temp' => $temp
         ];
 
         return Response::json(['products' => view('products.list', $data)->render(), 'filters' => view('makers', $data)->render(), 'data' => $data]);

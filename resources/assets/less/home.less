@@ -57,12 +57,19 @@
 			line-height: 2em;
 			width: 70%;
 			margin: 0 auto;
+
+			@media @break6{
+				font-size: 1.2em;
+			}
 		}
 	}
 
 	#view_goods_btn{
 		@media @break3{
 			font-size: 1em;
+		}
+		@media @break6{
+			font-size: 1.3em;
 		}
 	}
 }
@@ -153,6 +160,12 @@
 
 			&.ui.checkbox{
 				width: 88%;
+
+				&.disabled{
+					.label{
+						opacity: 0.3;
+					}
+				}
 			}
 
 			i.icon{
