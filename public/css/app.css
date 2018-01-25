@@ -601,7 +601,7 @@ a:hover {
   color: #FFFFFF;
 }
 #grid .sorts {
-  margin: 0px 0 35px 50px;
+  margin: 0px 50px 35px 50px;
   margin-bottom: 25px;
   background-color: #FFFFFF;
   border-radius: 4px;
@@ -914,6 +914,14 @@ a:hover {
   opacity: 0;
   height: 20px;
   width: 165px;
+}
+#price_slider {
+  margin: 0 auto 70px auto;
+  width: 94.2%;
+  display: none;
+}
+#price_slider .noUi-value {
+  margin-top: 5px;
 }
 #admin {
   min-height: 100vh;

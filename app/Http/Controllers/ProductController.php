@@ -132,6 +132,12 @@ class ProductController extends Controller
                         $query->where('category_id', $filters['category']);
                     });
                 }
+                elseif($key=='price')
+                {
+                    $array = explode(",",$filters['price']);
+                    $query->whereBetween('price', $array);
+
+                }
                 elseif($key=='parameters')
                 {
                     foreach ((array)$filters['parameters'] as $categoryParameter => $value)
@@ -173,6 +179,13 @@ class ProductController extends Controller
         // set products
         $products = $this->query($filters)->orderBy($sortBy,$sortOrder)->get();
 
+        // set price range
+        $priceRangeFilters = $filters;
+        unset($priceRangeFilters['price']);
+        $priceRange = [];
+        $priceRange[0] = $this->query($priceRangeFilters)->pluck('price')->min();
+        $priceRange[1] = $this->query($priceRangeFilters)->pluck('price')->max();
+
         $makers = $category->products()->get()->unique(['maker']);
         $categoryParameters = $category->parameters;
 
@@ -213,7 +226,8 @@ class ProductController extends Controller
             'products' => $products,
             'activeFilters' => $activeFilters,
             'filterCounts' => $filterCounts,
-            'temp' => $temp
+            'temp' => $temp,
+            'priceRange' => $priceRange
         ];
 
         return Response::json(['products' => view('products.list', $data)->render(), 'filters' => view('makers', $data)->render(), 'data' => $data]);
@@ -322,13 +336,17 @@ class ProductController extends Controller
         }
 
 
-        foreach (array_filter($request->get('parameter_keys')) as $index => $key)
-        {   
-            $parameter = new Parameter();
-            $parameter->key = $key;
-            $parameter->value = $request->get('parameter_values')[$index];
+        if ($request->has('key') && sizeof($request->get('key')) > 0)
+        {
+            foreach ((array)$request->get('key') as $key => $param)
+            {
+                $parameter = new Parameter();
+                $parameter->category_parameter_id = $param;
+                $parameter->value = $request->get('value')[$key];
+                $parameter->dvalue = $request->get('value')[$key];
 
-            $product->parameters()->save($parameter);
+                $product->parameters()->save($parameter);
+            }
         }
 
         $this->uploadImages($product);

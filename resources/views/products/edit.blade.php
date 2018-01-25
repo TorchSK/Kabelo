@@ -67,7 +67,7 @@
       <label>V zľave</label>
     </div>
         <div class="ui right labeled input" id="create_product_sale_value">
-        <input type="text" placeholder="Nová cena" name="sale_price">
+        <input type="text" placeholder="Nová cena" name="sale_price" value="{{$product->sale_price}}">
           <div class="ui basic label">
         Eur
       </div>
@@ -117,23 +117,44 @@
     <div class="ui header">Parametre</div>
 
     <div id="edit_product_params">
-      <div class="row">
+      @if ($product->parameters->count() == 0)
+        <div class="row">
         <div class="ui search selection dropdown">
           <input type="hidden" name="key[]">
           <i class="dropdown icon"></i>
             <div class="default text">Parameter</div>
 
           <div class="menu">
-            @foreach ($product->parameters as $param)
+            @foreach (App\Category::find($product->categories->first()->id)->parameters as $param)
               @include('products.paramoptions')
             @endforeach
           </div>
         </div>
         <div class="ui input value"><input type="text" name="value[]" /></div>
       </div>
+
+      @else
+
+      @foreach ($product->parameters as $parameter)
+      <div class="row">
+        <div class="ui search selection dropdown">
+          <input type="hidden" name="key[]" value="{{$parameter->categoryParameter->id}}">
+          <i class="dropdown icon"></i>
+          <div class="text">{{$parameter->categoryParameter->display_key}}</div>
+
+          <div class="menu">
+            @foreach (App\Category::find($product->categories->first()->id)->parameters as $param)
+              @include('products.paramoptions')
+            @endforeach
+          </div>
+        </div>
+        <div class="ui input value"><input type="text" name="value[]" value="{{$parameter->value}}"/></div>
+      </div>
+      @endforeach
+      @endif
     </div>
 
-    <div class="ui teal button" id="create_product_add_param_row">Pridaj</div>
+    <div class="ui teal button" id="edit_product_add_param_row">Pridaj</div>
 
 
 

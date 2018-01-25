@@ -82,6 +82,12 @@ $('#create_product_add_param_row').click(function(){
   $('.ui.dropdown').dropdown();
 })
 
+$('#edit_product_add_param_row').click(function(){
+  $html = $('#edit_product_params .row:first-child').html();
+  $('#edit_product_params').append('<div class="row">'+$html+'</div>');
+  $('.ui.dropdown').dropdown();
+})
+
 $('#create_product_categories_input').dropdown({
   onAdd: function(addedValue, addedText, $addedChoice){
     console.log(addedValue);
@@ -304,6 +310,9 @@ function getDesiredSortOrder(){
 
 
 function doSort(){
+
+   console.log(getPriceFilter('price'));
+
   $grid = $('#grid').find('grid');
   $filtersDiv = $('#filters').find('.filters');
 
@@ -320,14 +329,63 @@ function doSort(){
     filtersInit();
     $('#grid').find('.dimmer').removeClass('active');
     $('#grid').show();
+    $('.sorts').show();
+    $('#price_slider').show();
 
-    console.log(data);
+
+    if ($('#price_slider')[0].noUiSlider)
+    {
+      $('#price_slider')[0].noUiSlider.destroy();
+    }
+
+    var priceSlider = document.getElementById('price_slider');
+
+    noUiSlider.create(priceSlider, {
+      start: [ getPriceFilter('price')[0], getPriceFilter('price')[1]],
+      connect: true,
+      range: {
+        'min': 0,
+        'max': $('#grid_stats').data('maxprice')
+      },
+      pips: { 
+        mode: 'count', 
+        density: 1,
+        values: 10,
+        format: wNumb({
+          decimals: 2,
+          postfix: '€'
+        })
+      }
+    });
+
+    priceSlider.noUiSlider.on('set', function()
+    {
+      $min = priceSlider.noUiSlider.get()[0];
+      $max = priceSlider.noUiSlider.get()[1];
+
+      removeFilter('price');
+      addFilter('price',  priceSlider.noUiSlider.get(), 'Cena medzi: '+$min+' a '+$max);
+      doSort();
+    });
+   
   })
 };
 
 function addFilter(key, value, desc, group=null){
   $('#active_filters').append('<span data-value="'+value+'" data-filter="'+key+'" data-group="'+group+'" class="'+key+' ui large teal label">'+desc+'<i class="delete icon"></i></span>');
 }
+
+function getPriceFilter(key){
+  $div = $('#active_filters').find('span[data-filter="'+key+'"]')
+
+  if ($div.length){
+    $array = $div.data('value').split(',');
+    return $array;
+  }else{
+    return [0,$('#grid_stats').data('maxprice')];
+  }
+}
+
 
 function removeFilter(key, value=''){
   if(value=='')
@@ -394,7 +452,7 @@ $('.categories .item').click(function(){
   {
     removeFilter('makers');
     removeFilter('category');
-    addFilter('category',$(this).data('categoryid'),$(this).text());
+    addFilter('category',$(this).data('categoryid'),$(this).find('text').text());
     $('.categories .item').removeClass('active');
     $(this).addClass('active');
 
@@ -859,6 +917,9 @@ $('#import_dropzone').dropzone({
     '_token': $('meta[name="csrf-token"]').attr('content')
     }
 })
+
+
+
 
 });
 

@@ -37,7 +37,10 @@
                     <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Kategórie</div>
                     <div class="active content">
                     @foreach(App\Category::all() as $category)
-                        <div class="item filter" data-filter="category" data-value="{{$category->id}}" data-categoryid="{{$category->id}}">{{$category->name}}<div class="label">{{$category->products->count()}}</div></div>
+                        <div class="item filter" data-filter="category" data-value="{{$category->id}}" data-categoryid="{{$category->id}}">
+                            <text>{{$category->name}}</text>
+                            <div class="label">{{$category->products->count()}}</div>
+                        </div>
                     @endforeach
                     </div>
                 </div>
@@ -62,10 +65,14 @@
                     <div class="ui text loader">Loading</div>
                   </div>
 
+                  <div id="price_slider"></div>
+
 
                <div id="active_filters"></div>
                
+
                <grid>
+                
                 <div class="ui horizontal divider active title">Akcie</div>
                 <div id="home_sales_div">
                 @foreach(App\Product::where('sale',1)->get() as $product)
@@ -80,6 +87,7 @@
                     @include('products.row')
                 @endforeach
             </div>
+               
                </grid>
 
         </div>
