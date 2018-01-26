@@ -10,12 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/welcome', 'HomeController@welcome')->name('welcome');
+
+Route::group(['middleware' => 'onlyAuth'], function()
+{
 
 Route::get('/', function () {
     return view('home');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
+
 Route::get('/home/eshop', 'HomeController@index')->name('home.eshop');
 
 // Users
@@ -81,6 +86,8 @@ Route::resource('order','OrderController');
 
 // Settings
 Route::get('email/send/welcome/{userid}', 'UserController@sendActivationEmail');
+});
+
 
 // Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
