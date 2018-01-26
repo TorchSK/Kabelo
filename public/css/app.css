@@ -1288,12 +1288,16 @@ footer .social {
   color: #CCC;
   font-size: 2em;
 }
+#welcome {
+  -webkit-text-fill-color: #DDD !important;
+}
 #welcome input:-webkit-autofill,
 #welcome input:-webkit-autofill:hover,
 #welcome input:-webkit-autofill:focus,
 #welcome input:-webkit-autofill:active {
   -webkit-transition: background-color 5000s ease-in-out 0s;
   transition: background-color 5000s ease-in-out 0s;
+  color: #DDD;
 }
 #welcome input {
   color: #DDD;
