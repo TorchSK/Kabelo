@@ -1289,7 +1289,13 @@ footer .social {
   font-size: 2em;
 }
 #welcome {
+  border: 13px solid #A5673F;
   -webkit-text-fill-color: #DDD !important;
+}
+@media all and (max-width: 980px) {
+  #welcome {
+    border: 8px solid #A5673F;
+  }
 }
 #welcome input:-webkit-autofill,
 #welcome input:-webkit-autofill:hover,
