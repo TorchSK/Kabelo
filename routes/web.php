@@ -11,13 +11,11 @@
 |
 */
 Route::get('/welcome', 'HomeController@welcome')->name('welcome');
+Route::post('/login', 'UserController@postLogin')->name('postLogin');
+Route::get('/login', 'UserController@getLogin')->name('getLogin');
 
 Route::group(['middleware' => 'onlyAuth'], function()
 {
-
-Route::get('/', function () {
-    return view('home');
-});
 
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -32,8 +30,6 @@ Route::delete('/user/{userid}', 'UserController@destroy');
 Route::get('/register/success', 'UserController@registerSuccess')->name('registerSuccess');
 
 Route::get('/user/activate/{token}', 'UserController@activate')->name('activateUser');
-Route::post('/login', 'UserController@postLogin')->name('postLogin');
-Route::get('/login', 'UserController@getLogin')->name('getLogin');
 
 //Cart
 Route::get('cart/products','CartController@products');
