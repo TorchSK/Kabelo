@@ -1288,6 +1288,16 @@ footer .social {
   color: #CCC;
   font-size: 2em;
 }
+#welcome input:-webkit-autofill,
+#welcome input:-webkit-autofill:hover,
+#welcome input:-webkit-autofill:focus,
+#welcome input:-webkit-autofill:active {
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+#welcome input {
+  color: #DDD;
+}
 #welcome #cover {
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0.3))), url('/img/overlays/dot.png'), url('/img/welcome.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/overlays/dot.png'), url('/img/welcome.jpg');
