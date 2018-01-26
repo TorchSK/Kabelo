@@ -1315,13 +1315,23 @@ footer .social {
   font-weight: 100;
   margin-bottom: 45px;
 }
+@media all and (max-width: 980px) {
+  #welcome #cover #msg {
+    font-size: 2em;
+  }
+}
 #welcome #cover #login_div {
   text-align: center;
 }
 #welcome #cover #login_div form {
-  width: 60%;
+  width: 70%;
   display: inline-block;
   margin: 0 auto;
+}
+@media all and (max-width: 1690px) {
+  #welcome #cover #login_div form {
+    width: 100%;
+  }
 }
 #welcome #cover #login_div .ui.input {
   margin-bottom: 1px;
