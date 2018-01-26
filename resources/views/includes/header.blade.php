@@ -6,7 +6,7 @@
         </a>
 
         <a class="item" id="handle">
-        <i class="icon content"></i>
+          <i class="icon content"></i>
         </a>
 
         <a class="cart item" href="/cart/products">

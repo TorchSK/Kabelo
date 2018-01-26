@@ -910,6 +910,7 @@ $('#admin_add_category_param_btn').click(function(){
 $('#import_dropzone').dropzone({
     success: function(param, data){
       $.each(data, function(index,item){
+        console.log(item);
        $('#admin_import_results').append('a');
       })
     },

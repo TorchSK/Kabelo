@@ -5,6 +5,7 @@
     <body @if (isset($bodyid)) id="{{$bodyid}}" @endif>
 
     @include('includes.header')
+    @include('includes.sidebar')
 
    	<div class="pusher">
 		@yield('content')
