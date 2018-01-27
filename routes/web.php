@@ -13,6 +13,11 @@
 Route::get('/welcome', 'HomeController@welcome')->name('welcome');
 Route::post('/login', 'UserController@postLogin')->name('postLogin');
 Route::get('/login', 'UserController@getLogin')->name('getLogin');
+Route::get('/register', 'UserController@getRegister')->name('getRegister');
+Route::post('/register', 'UserController@postRegister')->name('register');
+Route::any('/logout', 'UserController@logout')->name('logout');
+Route::get('/register/success', 'UserController@registerSuccess')->name('registerSuccess');
+Route::get('/user/activate/{token}', 'UserController@activate')->name('activateUser');
 
 Route::group(['middleware' => 'onlyAuth'], function()
 {
@@ -22,14 +27,9 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home/eshop', 'HomeController@index')->name('home.eshop');
 
 // Users
-Route::get('/register', 'UserController@getRegister')->name('getRegister');
-Route::post('/register', 'UserController@postRegister')->name('register');
-Route::any('/logout', 'UserController@logout')->name('logout');
 Route::put('/user/{userid}', 'UserController@update');
 Route::delete('/user/{userid}', 'UserController@destroy');
-Route::get('/register/success', 'UserController@registerSuccess')->name('registerSuccess');
 
-Route::get('/user/activate/{token}', 'UserController@activate')->name('activateUser');
 
 //Cart
 Route::get('cart/products','CartController@products');
