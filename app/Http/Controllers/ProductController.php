@@ -49,7 +49,7 @@ class ProductController extends Controller
             $product->categories()->attach($category);
         }
 
-        if ($request->has('key') && sizeof($request->get('key')) > 0)
+        if ($request->filled('key')[0])
         {
             foreach ((array)$request->get('key') as $key => $param)
             {
@@ -336,7 +336,7 @@ class ProductController extends Controller
         }
 
 
-        if ($request->has('key') && sizeof($request->get('key')) > 0)
+        if ($request->filled('key')[0])
         {
             foreach ((array)$request->get('key') as $key => $param)
             {
