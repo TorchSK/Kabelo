@@ -249,7 +249,7 @@ a:hover {
   margin: 5px 0;
 }
 #active_filters {
-  margin-left: 50px;
+  margin-bottom: 25px;
 }
 #active_filters span.search {
   font-size: 1em !important;
@@ -441,18 +441,17 @@ a:hover {
           flex: 1;
   background-color: #F7F7F7;
   position: relative;
-  padding: 35px 0 75px 0;
+  padding: 50px;
 }
 #grid grid {
   display: block;
-  margin-left: 35px;
-  padding-right: 0px;
 }
 #grid .item {
   display: inline-block;
-  width: 13.5%;
+  width: 12.95%;
   text-align: center;
-  margin: 15px;
+  margin-bottom: 25px;
+  margin-right: 25px;
   padding: 2.2% 0 25px 0;
   border-radius: 5px;
   cursor: pointer;
@@ -568,7 +567,6 @@ a:hover {
 }
 #grid .tabbs {
   background-color: rgba(0, 0, 0, 0.03);
-  padding-left: 15px;
   margin-bottom: 35px;
 }
 #grid .tabbs .tabb {
@@ -596,7 +594,6 @@ a:hover {
   color: #FFFFFF;
 }
 #grid .sorts {
-  margin: 0px 50px 35px 50px;
   margin-bottom: 25px;
   background-color: #FFFFFF;
   border-radius: 4px;
@@ -613,10 +610,14 @@ a:hover {
   color: #FFFFFF;
 }
 #home_sales_div {
-  margin-bottom: 70px;
+  margin-bottom: 50px;
 }
 #home_sales_div .next {
   margin-right: 25px;
+}
+.flickity-slider {
+  padding: 2px;
+  margin-left: 3px;
 }
 #header {
   background-color: #2B2D2D   ;
@@ -912,7 +913,7 @@ a:hover {
 }
 #price_slider {
   margin: 0 auto 70px auto;
-  width: 94.2%;
+  width: 98.5%;
   display: none;
 }
 #price_slider .noUi-value {
