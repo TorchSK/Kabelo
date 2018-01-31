@@ -4,10 +4,13 @@
 
     <body @if (isset($bodyid)) id="{{$bodyid}}" @endif>
 
-    @include('includes.header')
     @include('includes.sidebar')
+    @include('includes.catbar')
+    @include('includes.parambar')
 
    	<div class="pusher">
+            @include('includes.header')
+
 		@yield('content')
 		<div class="push"></div>
 	</div>

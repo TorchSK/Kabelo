@@ -3,9 +3,16 @@
 }
 
 #product_detail{
-	display: flex;
-	padding: 100px;
+	padding: 100px;	
+	display: flex; 
+	background-color: #FFF;
 
+	@media @break3{
+		flex-direction: column;
+		display: block;
+		padding: 10px;
+	}
+	
 
 	.other_img{
 			img{
@@ -18,11 +25,22 @@
 		width: 40%;
 		padding-left: 50px;
 
+		@media @break3{
+			width: 100%;
+			padding-left: 0;
+
+		}
+	
+
 		.img{
 			margin-bottom: 15px;
 
 			img{
 				padding: 0 10% 10% 10%;
+
+					@media @break3{
+						padding: 0;
+				}
 			}
 		}
 
@@ -32,6 +50,12 @@
 	.right:not(.labeled):not(.action){
 		flex: 1;
 		margin-left: 5%;
+
+		@media @break3{
+			margin-left: 0;
+			text-align: center;
+		}
+
 
 		#product_name_input{
 			font-size: 3em;
@@ -46,6 +70,12 @@
 		font-size: 3em;
 		font-weight: 900;
 		margin-bottom: 25px;
+
+		@media @break3{
+			margin-top: 25px;
+			text-align: center;
+			line-height: 1em;
+		}
 	}
 
 	#code{
@@ -56,15 +86,32 @@
 		font-style: italic;
 		display: inline-block;
 		padding-top: 6px;
+
+		@media @break3{
+			display: block;
+			text-align: center;
+			padding: 0;
+			margin-bottom: 10px;
+		}
 	}
 
 	#parameters{
 		margin-bottom: 50px;
 		margin-top: 50px;
 
+		.header{
+			@media @break3{
+				display: none;
+			}
+
+		}
 		.ui.list{
 			font-size: 1.2em;
 			margin-left: 55px;
+
+			@media @break3{
+				margin-left: 0;
+			}
 		}
 
 		&.empty{
@@ -76,6 +123,11 @@
 		margin-top: 25px;
 		position: relative;
 		display: inline-block;
+
+		@media @break3{
+			display: block;
+			text-align: center;
+		}
 	}
 
 	#price{
@@ -100,12 +152,20 @@
 		display: inline-block;
 		margin-left: 15px;
 		margin-top: 1px;
+
+		@media @break3{
+			display: none;
+		}
 	
 	}
 
 	#sale{
 		display: inline-block;
 		margin-left: 35px;
+
+		@media @break3{
+			margin-left: 0px;
+		}
 	}
 
 
@@ -147,6 +207,14 @@
 	margin-left: 15px;
 	position: relative;
 	top: 15px;
+
+	@media @break3{
+		margin-top: 15px;
+		margin-bottom: 85px;
+		display: inline-block;
+		margin-left: 0;
+
+	}
 }
 
 #create_product_new_flag{
@@ -192,6 +260,10 @@
 	margin: 0 auto 70px auto;
 	width: 98.5%;
 	display: none;
+
+	@media @break3{
+		width: 90%;
+	}
 
 	.noUi-value{
 		margin-top: 5px;

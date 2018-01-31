@@ -340,6 +340,16 @@ function doSort(){
 
     var priceSlider = document.getElementById('price_slider');
 
+   var window_width = $(window).width();
+    
+    if (window_width < 770){
+      $pipsCount = 5;
+      $decimals = 1;
+    } else {
+      $pipsCount = 10;
+      $decimals = 2;
+    }
+
     noUiSlider.create(priceSlider, {
       start: [ getPriceFilter('price')[0], getPriceFilter('price')[1]],
       connect: true,
@@ -350,9 +360,9 @@ function doSort(){
       pips: { 
         mode: 'count', 
         density: 1,
-        values: 10,
+        values: $pipsCount,
         format: wNumb({
-          decimals: 2,
+          decimals: $decimals,
           postfix: '€'
         })
       }
@@ -878,11 +888,23 @@ $("#active_filters").on('click','span .delete', function () {
 });
 
 
-$("#handle").click(function(){
-  $('.ui.sidebar').sidebar('toggle');
+$("#sidebar_handle").click(function(){
+  $('#sidebar').sidebar('toggle');
 })
 
-$('#close_sidebar_btn').click(function(){
+$("#catbar_handle").click(function(){
+  $('#catbar').sidebar('toggle');
+})
+
+$('#catbar .categories .item').click(function(){
+  $('#catbar').sidebar('hide');
+})
+
+$("#parambarbar_handle").click(function(){
+  $('#parambar').sidebar('toggle');
+})
+
+$('.close_btn').click(function(){
   $('.ui.sidebar').sidebar('hide');
 })
 

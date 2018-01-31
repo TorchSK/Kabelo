@@ -18,7 +18,9 @@
 
 
             <!-- mobile -->
-            <div id="m_categories_btn">Kategorie</div>
+            <div id="m_categories_btn">
+                <div class="ui brown  small fluid button" id="catbar_handle">Kategorie</div>
+            </div>
 
             <!-- desktop/tablet -->
             <div id="filters">
@@ -39,7 +41,7 @@
                     @foreach(App\Category::all() as $category)
                         <div class="item filter" data-filter="category" data-value="{{$category->id}}" data-categoryid="{{$category->id}}">
                             <text>{{$category->name}}</text>
-                            <div class="label">{{$category->products->count()}}</div>
+                            <count>{{$category->products->count()}}</count>
                         </div>
                     @endforeach
                     </div>

@@ -5,7 +5,7 @@
           <text>Kabelo</text>
         </a>
 
-        <a class="item" id="handle">
+        <a class="item" id="sidebar_handle">
           <i class="icon content"></i>
         </a>
 
