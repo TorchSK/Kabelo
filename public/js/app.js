@@ -478,15 +478,15 @@ $('.categories .item').click(function(){
 $('#cart_delivery_options .step').click(function(){
   $('#cart_delivery_options .step').removeClass('completed').removeClass('active');
   $(this).addClass('completed active');
-  if ($(this).data('delivery')=='place')
+  if ($(this).data('delivery_method')=='place')
   {
-    $('#cart_payment_options .step[data-payment="cash"]').removeClass('disabled');
-    $('#cart_payment_options .step[data-payment="cod"]').addClass('disabled').removeClass('completed');
+    $('#cart_payment_options .step[data-payment_method="cash"]').removeClass('disabled');
+    $('#cart_payment_options .step[data-payment_method="cod"]').addClass('disabled').removeClass('completed');
   }
   else
   {
-    $('#cart_payment_options .step[data-payment="cod"]').removeClass('disabled');
-    $('#cart_payment_options .step[data-payment="cash"]').addClass('disabled').removeClass('completed');;
+    $('#cart_payment_options .step[data-payment_method="cod"]').removeClass('disabled');
+    $('#cart_payment_options .step[data-payment_method="cash"]').addClass('disabled').removeClass('completed');;
   }
 
   if ($('#cart_payment_options .step.completed').length > 0)
