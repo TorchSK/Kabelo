@@ -283,6 +283,9 @@ a:hover {
   z-index: 99;
   opacity: 0.9;
 }
+.ui.steps:last-child {
+  margin-bottom: 1em;
+}
 #cover {
   height: 55vh;
   background-image: url('/img/overlays/dot.png'), url('/img/cover.jpg');
@@ -403,11 +406,56 @@ a:hover {
 }
 .content #filters {
   background-color: rgba(0, 0, 0, 0.05);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 @media all and (max-width: 980px) {
   .content #filters {
     display: none;
   }
+}
+.content #filters .tabs {
+  background-color: rgba(0, 0, 0, 0.05);
+  float: left;
+  padding: 12px;
+  height: 100%;
+  padding-top: 25px;
+  cursor: pointer;
+}
+.content #filters .tabs .tab {
+  -webkit-writing-mode: tb-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: tb-rl;
+  font-weight: 500;
+  font-size: 1.1em;
+  padding: 10px;
+  border-radius: 3px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.content #filters .tabs .tab:first-child {
+  margin-bottom: 15px;
+}
+.content #filters .tabs .tab:not(.disabled):hover {
+  background-color: #A5673F;
+  color: #FFFFFF;
+}
+.content #filters .tabs .tab.active {
+  background-color: #A5673F;
+  color: #FFFFFF;
+}
+.content #filters .tabs .tab.disabled {
+  opacity: 0.5;
+}
+.content #filters .categories.hidden {
+  display: none;
+}
+.content #filters .categories .active.category .subcategory {
+  display: block;
+}
+.content #filters .categories .subcategory {
+  display: none;
 }
 .content #filters #product_search {
   margin-bottom: 15px;
@@ -451,10 +499,6 @@ a:hover {
 .content #filters .item.ui.checkbox.disabled .label {
   opacity: 0.3;
 }
-.content #filters .item i.icon {
-  color: #A5673F;
-  float: right;
-}
 #grid {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -471,9 +515,31 @@ a:hover {
 #grid grid {
   display: block;
 }
+#grid .caption {
+  font-size: 3em;
+  font-weight: 100;
+  margin-bottom: 60px;
+}
+#grid .subcategories {
+  margin-bottom: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#grid .subcategories .subcategory {
+  padding: 15px 30px 15px 85px;
+  opacity: 0.7;
+  position: relative;
+  overflow: hidden;
+}
+#grid .subcategories .subcategory i.icon {
+  position: absolute;
+  font-size: 4em;
+  left: 15px;
+}
 #grid .item {
   display: inline-block;
-  width: 12.95%;
+  width: 12.9%;
   text-align: center;
   margin-bottom: 25px;
   margin-right: 25px;
@@ -565,6 +631,13 @@ a:hover {
 }
 #grid .item .actions {
   margin-top: 25px;
+  text-align: center;
+}
+#grid .item .actions .ui.button {
+  display: inline-block;
+  width: 80%;
+  margin-bottom: 2px;
+  opacity: 0.8;
 }
 #grid .item .labels {
   position: absolute;
@@ -610,7 +683,6 @@ a:hover {
   background-color: #FFFFFF;
   border-radius: 4px;
   overflow: hidden;
-  display: none;
 }
 @media all and (max-width: 980px) {
   #grid .sorts {
@@ -1015,7 +1087,6 @@ a:hover {
 #price_slider {
   margin: 0 auto 70px auto;
   width: 98.5%;
-  display: none;
 }
 @media all and (max-width: 980px) {
   #price_slider {
@@ -1096,15 +1167,10 @@ a:hover {
   margin-bottom: 35px;
   margin-left: 15px;
 }
-.admin_filters .row {
-  margin-bottom: 3px;
-}
-.admin_filters .active {
-  margin-bottom: 15px;
-}
-.admin_filters .active .item {
+.admin_filters .item {
   background-color: #FFFFFF;
   padding: 10px;
+  margin-bottom: 2px;
 }
 #admin_add_category_param_btn {
   margin-top: 0px;

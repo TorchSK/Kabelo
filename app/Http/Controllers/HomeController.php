@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Services\Contracts\ProductServiceContract;
+
 class HomeController extends Controller
 {
     /**
@@ -11,8 +13,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ProductServiceContract $productService)
     {
+        $this->productService = $productService;
+
     }
 
     /**
@@ -20,9 +24,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('home');
+    public function index(Request $request)
+    {   
+        if ($request->has('category'))
+        {
+            $data = $this->productService->list($request);
+            return view('home', $data);
+        }
+        else
+        {
+            $data = [];
+        }
+
+        return view('home', $data);
+
     }
 
     public function welcome()

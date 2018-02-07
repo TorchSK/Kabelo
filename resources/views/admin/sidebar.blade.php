@@ -1,5 +1,6 @@
   <div id="filters">
 
+  	<div>
                 <div id="product_search">
                     <div class="ui left icon huge input">
                       <input type="text" placeholder="Hľadaj produkt...">
@@ -33,6 +34,21 @@
 					    Pridaj kategóriu
 					  </div>
 					  <div class="content">
+
+					  	<div class="label">Nadradená kategória</div>
+				  	    <div class="ui fluid selection dropdown" id="add_category_parent_input">
+					      <input type="hidden" name="parent_id" value="">
+					      <i class="dropdown icon"></i>
+					      <div class="default text">Vyberte kategóriu</div>
+					      <div class="menu">
+					        @foreach (App\Category::all() as $category)
+					        	<div class="item" data-value="{{$category->id}}">{{$category->name}}</div>
+					        @endforeach
+					      </div>
+					    </div>
+
+					  	<div class="label">Názov</div>
+
 					    <div class="ui fluid input">
 					    	<input type="text" placeholder="Názov" id="add_category_input"/>
 					    </div>
@@ -50,9 +66,12 @@
 
 					@if ($categories->count() > 0 )
 					@foreach ($categories as $category)
-						<a href="/admin/category/{{$category->id}}/products" class="item @if(Request::segment(1)=='admin' && Request::segment(2)=='category' && Request::segment(3) == $category->id) active @endif" data-categoryid="{{$category->id}}">
+						<a href="/admin/category/{{$category->id}}/products" class="item @if(Request::segment(1)=='admin' && Request::segment(2)=='category' && Request::segment(3) == $category->id) active @endif @if($category->parent_id) subcategory @endif" data-categoryid="{{$category->id}}">
+							@if($category->parent_id)
+							<i class="circle thin icon"></i> 
+							@endif
 							{{$category->name}}
-							<div class=" label">{{$category->products()->count()}}</div>
+							<count>{{$category->products()->count()}}</count>
 						</a>
 
 					@endforeach
@@ -71,5 +90,5 @@
    				</div>
 
 
-
-            </div>
+   			</div>
+</div>

@@ -17,7 +17,7 @@ class OnlyAuth
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (!Auth::guard($guard)->check()) {
+        if (!Auth::guard($guard)->check() && env('APP_ENV')=='production') {
             return redirect('/welcome');
         }
 

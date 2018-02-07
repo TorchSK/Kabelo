@@ -27,5 +27,10 @@ class AppServiceProvider extends ServiceProvider
             'App\Services\Contracts\CartServiceContract',
             'App\Services\CartService'
         );
+
+        $this->app->bind(
+            'App\Services\Contracts\ProductServiceContract',
+            'App\Services\ProductService'
+        );
     }
 }

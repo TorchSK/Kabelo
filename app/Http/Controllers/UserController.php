@@ -224,9 +224,9 @@ class UserController extends Controller
                 'items' => [],
                 'delivery_method' => '',
                 'payment_method' => '',
-                'invoiceAddress' => '',
-                'deliveryAddress' => '',
-                'deliveryAddressFlag' => 0
+                'invoice_address' => '',
+                'delivery_address' => '',
+                'delivery_address_flag' => 0
 
         ];
 

@@ -37,22 +37,22 @@
 
 	<div class="availability"></div>
 
-	@if((!isset($cart) || !$cart) && Request::segment(1) != 'admin'  && (!isset($cart_confirm) || !$cart_confirm))
+	@if((!isset($productOptions) || !$productOptions) && Request::segment(1) != 'admin'  && (!isset($cart_confirm) || !$cart_confirm))
 	<a class="to_cart ui teal icon button"><i class="shop icon"></i> Kúpiť</a>
 	@elseif(Request::segment(1) == 'admin')
 		<div class="actions">
-		<a href="/product/create?duplicate={{$product->id}}" class="ui teal small button">Duplikuj</a>
-		<a href="/{{$product->maker}}/{{$product->code}}/edit" class="ui blue small button">Zmeň</a>
-		<a class="ui red small button product_row_delete_btn">Zmaž</a>
+		<a href="/product/create?duplicate={{$product->id}}" class="ui teal small fluid button">Duplikuj</a>
+		<a href="/{{$product->maker}}/{{$product->code}}/edit" class="ui blue small fluid button">Zmeň</a>
+		<a class="ui red small fluid button product_row_delete_btn">Zmaž</a>
 		</div>	
 	@endif
 
 </a>
 
-@if(isset($cart) && $cart && (!isset($cart_confirm) || !$cart_confirm))
+@if(isset($productOptions) && $productOptions && (!isset($cart_confirm) || !$cart_confirm))
 <div class="cart_item_actions">
 	<div class="ui right labeled action input">
-		<input type="text" value="{{array_count_values($cartItems)[$product->id]}}" />
+		<input type="text" value="{{array_count_values($cart['items'])[$product->id]}}" />
 		<div class="ui basic label">ks</div>
 	</div>
 

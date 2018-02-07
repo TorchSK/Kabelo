@@ -65,67 +65,9 @@ class CartController extends Controller
     }
 
     public function shipping(){
-        $cookie = Cookie::get('cart');
+   
 
-        if ($cookie['invoiceAddress']!='')
-        {
-            $invoiceAddress =  $cookie['invoiceAddress'];
-        }
-        else
-        {   
-            if(Auth::check())
-            {
-
-                if (Auth::user()->invoiceAddress)
-                {
-
-                    $invoiceAddress = Auth::user()->invoiceAddress;
-
-                }
-                else
-                {
-                    $invoiceAddress['street'] = '';
-                    $invoiceAddress['city'] = '';
-                    $invoiceAddress['zip'] = '';
-
-                };
-                    $invoiceAddress['name'] = Auth::user()->first_name.' '.Auth::user()->last_name;
-                    $invoiceAddress['phone'] = Auth::user()->phone;
-                    $invoiceAddress['email'] = Auth::user()->email;
-
-            }
-            else
-            {
-                $invoiceAddress = false;
-            }
-        }
-
-
-        if ($cookie['deliveryAddress']!='')
-        {
-            $deliveryAddress =  $cookie['deliveryAddress'];
-        }
-        else
-        {
-            if(Auth::check())
-            {
-                $deliveryAddress = Auth::user()->deliveryAddress;
-
-            }
-            else
-            {
-                $deliveryAddress = false;
-            }
-        }
-
-
-
-        $data = [
-            'invoiceAddress' => $invoiceAddress,
-            'deliveryAddress' => $deliveryAddress,
-        ];
-
-        return view('cart.shipping', $data);
+        return view('cart.shipping');
     }
 
 

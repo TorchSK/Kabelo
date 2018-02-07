@@ -54,10 +54,12 @@ $('#add_category_btn').click(function(){
 	$('#add_category_modal').modal('setting', {
     onApprove : function() {
     	$name = $('#add_category_input').val();
+      $parent_id = $('#add_category_parent_input input').val();
+
     	$.ajax({
     		type: "POST",
     		url: "/category/",
-    		data: {name: $name},
+    		data: {name: $name, parent_id:$parent_id},
     		success: function(){
     			location.reload();
     		}
@@ -308,32 +310,9 @@ function getDesiredSortOrder(){
   return $('.sort.active').data('sortorder');
 }
 
+function initPriceSlider(){
 
-function doSort(){
-
-   console.log(getPriceFilter('price'));
-
-  $grid = $('#grid').find('grid');
-  $filtersDiv = $('#filters').find('.filters');
-
-  $sortBy = getDesiredSortBy();
-  $sortOrder = getDesiredSortOrder();
-
-
-  $filters = getActiveFilters();
-  $categoryid = getActiveCategory();
-
-  $.get('/product/list',{categoryid: $categoryid, sortBy: $sortBy, sortOrder: $sortOrder, filters: $filters}, function(data){
-    $grid.html(data.products);
-    $filtersDiv.html(data.filters);
-    filtersInit();
-    $('#grid').find('.dimmer').removeClass('active');
-    $('#grid').show();
-    $('.sorts').show();
-    $('#price_slider').show();
-
-
-    if ($('#price_slider')[0].noUiSlider)
+if ($('#price_slider')[0].noUiSlider)
     {
       $('#price_slider')[0].noUiSlider.destroy();
     }
@@ -377,6 +356,37 @@ function doSort(){
       addFilter('price',  priceSlider.noUiSlider.get(), 'Cena medzi: '+$min+' a '+$max);
       doSort();
     });
+}
+
+initPriceSlider();
+  filtersInit();
+
+function doSort(){
+
+  //console.log(getPriceFilter('price'));
+
+  $grid = $('#grid').find('grid');
+  $filtersDiv = $('#filters').find('.filters');
+
+  $sortBy = getDesiredSortBy();
+  $sortOrder = getDesiredSortOrder();
+
+
+  $filters = getActiveFilters();
+  $categoryid = getActiveCategory();
+
+  $.get('/product/list',{category: $categoryid, sortBy: $sortBy, sortOrder: $sortOrder, filters: $filters}, function(data){
+    $grid.html(data.products);
+    $filtersDiv.html(data.filters);
+    filtersInit();
+    $('#grid').find('.dimmer').removeClass('active');
+    $('#grid').show();
+    $('.sorts').show();
+    $('#price_slider').show();
+    
+    initPriceSlider();
+
+    
    
   })
 };
@@ -456,18 +466,19 @@ function filtersInit(){
 
 
 // MAIN
-$('.categories .item').click(function(){
+$('.categories .item').click(function(e){
 
   if (!$(this).hasClass('active'))
   {
     removeFilter('makers');
     removeFilter('category');
-    addFilter('category',$(this).data('categoryid'),$(this).find('text').text());
-    $('.categories .item').removeClass('active');
-    $(this).addClass('active');
+    //addFilter('category',$(this).data('categoryid'),$(this).find('text').text());
+    //$('.categories .item').removeClass('active');
+    //$(this).addClass('active');
 
-
-  doSort();
+  }
+  else{
+  e.preventDefault();
   }
 
 
@@ -480,13 +491,13 @@ $('#cart_delivery_options .step').click(function(){
   $(this).addClass('completed active');
   if ($(this).data('delivery_method')=='place')
   {
-    $('#cart_payment_options .step[data-payment_method="cash"]').removeClass('disabled');
-    $('#cart_payment_options .step[data-payment_method="cod"]').addClass('disabled').removeClass('completed');
+    $('#cart_payment_options .step[data-payment_method="cash"]').removeClass('active disabled');
+    $('#cart_payment_options .step[data-payment_method="cod"]').addClass('disabled').removeClass('completed active');
   }
   else
   {
-    $('#cart_payment_options .step[data-payment_method="cod"]').removeClass('disabled');
-    $('#cart_payment_options .step[data-payment_method="cash"]').addClass('disabled').removeClass('completed');;
+    $('#cart_payment_options .step[data-payment_method="cod"]').removeClass('active disabled');
+    $('#cart_payment_options .step[data-payment_method="cash"]').addClass('disabled').removeClass('completed active');;
   }
 
   if ($('#cart_payment_options .step.completed').length > 0)
@@ -687,7 +698,7 @@ $('#use_delivery_address_input').checkbox({
     $.ajax({
       method: "POST",
       url: '/cart',
-      data: {deliveryAddressFlag: 1}
+      data: {delivery_address_flag: 1}
     })
 
   },
@@ -697,7 +708,7 @@ $('#use_delivery_address_input').checkbox({
     $.ajax({
       method: "POST",
       url: '/cart',
-      data: {deliveryAddressFlag: 0}
+      data: {delivery_address_flag: 0}
     })
   },
 })
@@ -744,11 +755,11 @@ $('#cart_shipping_next_btn').click(function(e){
     
 
     if ($validation)
-    {
+    { 
       $.ajax({
         method: "POST",
         url: '/cart',
-        data: {invoiceAddress: $invoiceAddress, deliveryAddress: $deliveryAddress}
+        data: {invoice_address: JSON.stringify($invoiceAddress), delivery_address: JSON.stringify($deliveryAddress)}
       });
 
       e.preventDefault();
@@ -942,7 +953,18 @@ $('#import_dropzone').dropzone({
 })
 
 
+$('#filters .tabs .category.tab').click(function(){
+  $('#filters').find('.categories').show();
+  $('#filters .tabs .tab').removeClass('active');
+  $(this).addClass('active');
+})
 
+
+$('#filters .tabs .params.tab').click(function(){
+    $('#filters').find('.categories').hide();
+      $('#filters .tabs .tab').removeClass('active');
+  $(this).addClass('active');
+})
 
 });
 

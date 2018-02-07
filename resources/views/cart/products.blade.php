@@ -9,10 +9,10 @@
 
 
 	<div id="grid">
-		@if (sizeof($cartItems) > 0)
+		@if (sizeof($cart['items']) > 0)
 		
-			@foreach( array_unique((array)$cartItems) as $productid)
-				@include('products.row', ['product'=>App\Product::find($productid), 'cart'=> true])
+			@foreach( array_unique((array)$cart['items']) as $productid)
+				@include('products.row', ['product'=>App\Product::find($productid), 'productOptions'=> true])
 			@endforeach
 		
 		@else
@@ -22,7 +22,7 @@
 	</div>
 
 	<div class="ct cart_actions">
-		@if (sizeof($cartItems) > 0)
+		@if (sizeof($cart['items']) > 0)
 		<a href="/cart/delivery" class="ui green button">Pokračovať</a>
 		@else
 		<a href="/" class="ui green button">Do obchodu</a>

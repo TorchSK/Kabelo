@@ -12,8 +12,8 @@
         <a class="cart item" href="/cart/products">
           <div id="cart_icon"><i class="shop big icon"></i></div>
           <div id="cart_text">
-              <text>Nákupný košík (<number>{{$cartNumber}}</number>)</text>
-              <price><number>{{$cartPrice}}</number> Eur</price>
+              <text>Nákupný košík (<number>{{$cart['number']}}</number>)</text>
+              <price><number>{{$cart['price']}}</number> Eur</price>
           </div>
         </a>
 

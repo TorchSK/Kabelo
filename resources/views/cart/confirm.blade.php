@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
 	
+
 <div id="cart_detail">
 	<div class="cart_icon ct"><i class="shopping basket huge icon"></i></div>
 	<div class="caption">Nákupný košík <a class="delete_cart" data-tooltip="Vymazať obsah košíku"><i class="delete icon"></i></a></div>
@@ -13,7 +14,7 @@
 		<div id="grid" class="products">
 						<div class="ui horizontal divider">Produkty</div>
 
-			@foreach($cartItems as $key => $product)
+			@foreach($cart['items'] as $key => $product)
 				@include('products.row', ['product'=>App\Product::find($product), 'cart_confirm'=> true])
 			@endforeach
 		</div>
@@ -22,7 +23,7 @@
 
 			<div class="ui horizontal divider">Sposob dopravy a platba</div>
 
-			@if ($cartDeliveryMethod=='place')
+			@if ($cart['delivery_method']=='place')
 			<div class="ui steps">
 			  <div class="step cart_delivery data-delivery="place">
 			    <i class="user icon"></i>
@@ -34,7 +35,7 @@
 			</div>
 			@endif
 
-			@if ($cartDeliveryMethod=='ppl')
+			@if ($cart['delivery_method']=='ppl')
 			<div class="ui steps">
 			  <div class="step cart_delivery" data-delivery="ppl">
 			    <i class="truck icon"></i>
@@ -47,7 +48,7 @@
 			@endif
 
 
-			@if ($cartPaymentMethod=='cash')				
+			@if ($cart['payment_method']=='cash')				
 			<div class="ui steps">
 			  <div class="step cart_payment" data-payment="cash">
 			    <i class="money icon"></i>
@@ -59,7 +60,7 @@
 			</div>
 			@endif
 
-			@if ($cartPaymentMethod=='cod')				
+			@if ($cart['payment_method']=='cod')				
 			<div class="ui steps">
 			  <div class="step cart_payment" data-payment="cod"> 
 			    <i class="cube icon"></i>
@@ -71,10 +72,11 @@
 			</div>
 			@endif
 
-		</div>
+		</div>	
+
 
 		<div class="shipping ct">
-			<div class="ui horizontal divider">Fakturačné @if(!$cartDeliveryAddressFlag)a dodacie @endif údaje</div>
+			<div class="ui horizontal divider">Fakturačné @if(!$cart['delivery_address_flag'])a dodacie @endif údaje</div>
 
 			<div class="cart_address">
 
@@ -89,32 +91,33 @@
 	       			<div class="item">Email *</div>
 				</div>
 
+
 				<div class="inputs">
 				
 			       	<div class="ui large disabled input">
-			            <input type="text" value="{{$cartInvoiceAddress['name']}}"/>
+			            <input type="text" value="{{json_decode($cart['invoice_address'], true)['name']}}" />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{$cartInvoiceAddress['street']}}" />
+			            <input type="text" value="{{json_decode($cart['invoice_address'])->street}}" />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{$cartInvoiceAddress['city']}}"/>
+			            <input type="text" value="{{json_decode($cart['invoice_address'])->city}}" />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{$cartInvoiceAddress['zip']}}" />
+			            <input type="text" value="{{json_decode($cart['invoice_address'])->zip}}" />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{$cartInvoiceAddress['phone']}}" />
+			            <input type="text" value="{{json_decode($cart['invoice_address'])->phone}}" />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" value="{{$cartInvoiceAddress['email']}}" />
+			            <input type="text" value="{{json_decode($cart['invoice_address'])->email}}" />
 			      	</div><br/>
 
        			</div>
 
        		</div>
 
-   		<div class="delivery @if($cartDeliveryAddressFlag) active @endif">
+   		<div class="delivery @if($cart['delivery_address_flag']) active @endif">
    				<div class="ui horizontal divider">Dodacie údaje</div>
 
    				<div class="labels">
@@ -128,19 +131,19 @@
 				<div class="inputs">
 				
 			       	<div class="ui large disabled input">
-			            <input type="text" @if($cartDeliveryAddress) value="{{$cartDeliveryAddress['name']}}" @endif />
+			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])['name']}}" @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" @if($cartDeliveryAddress) value="{{$cartDeliveryAddress['street']}}"  @endif />
+			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->street}}"  @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" @if($cartDeliveryAddress) value="{{$cartDeliveryAddress['city']}}" @endif />
+			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->city}}" @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" @if($cartDeliveryAddress) value="{{$cartDeliveryAddress['zip']}}"  @endif />
+			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->zip}}"  @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" @if($cartDeliveryAddress) value="{{$cartDeliveryAddress['phone']}}"  @endif />
+			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->phone}}"  @endif />
 			      	</div><br/>
 
 

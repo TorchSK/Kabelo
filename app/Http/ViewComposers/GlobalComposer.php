@@ -26,9 +26,10 @@ class GlobalComposer {
         {   
             //if user is authenticated, get cart from DB
             $cart = Auth::user()->cart;
+
             if (!$cart)
             {
-                 $cart = new Cart();
+                $cart = new Cart();
                 $cart->user_id = Auth::user()->id;
                 $cart->price  = 0;
                 $cart->delivery_method = '';
@@ -52,15 +53,7 @@ class GlobalComposer {
 
         //dd($cart);
         
-        $view->with('cartNumber', $cart['number']);
-        $view->with('cartPrice', $cart['price']);
-        $view->with('cartItems', $cart['items']);
-        $view->with('cartDeliveryMethod', $cart['delivery_method']);
-        $view->with('cartPaymentMethod', $cart['payment_method']);
-        $view->with('cartInvoiceAddress', $cart['invoiceAddress']);
-        $view->with('cartDeliveryAddress', $cart['deliveryAddress']);
-        $view->with('cartDeliveryAddressFlag', $cart['deliveryAddressFlag']);
-
+        $view->with('cart', $cart);
     
     }
 

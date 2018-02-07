@@ -14,7 +14,7 @@
 			<div class="ui horizontal divider">Sposob dopravy</div>
 
 			<div class="ui steps">
-			  <a class="step cart_delivery @if ($cartDeliveryMethod=='place') completed active @endif" data-delivery_method="place">
+			  <a class="step cart_delivery @if ($cart['delivery_method']=='place') completed active @endif" data-delivery_method="place">
 			    <i class="user icon"></i>
 			    <div class="content">
 			      <div class="title">Osobný odber</div>
@@ -25,7 +25,7 @@
 			
 
 			<div class="ui steps">
-			  <a class="step cart_delivery @if ($cartDeliveryMethod=='ppl') completed active @endif" data-delivery_method="ppl">
+			  <a class="step cart_delivery @if ($cart['delivery_method']=='ppl') completed active @endif" data-delivery_method="ppl">
 			    <i class="truck icon"></i>
 			    <div class="content">
 			      <div class="title">PPL kuriér</div>
@@ -42,7 +42,7 @@
 
 								
 			<div class="ui steps">
-			  <a class="step cart_payment @if ($cartPaymentMethod=='cash') completed active @endif @if ($cartDeliveryMethod=='ppl') disabled @endif" data-payment_method="cash">
+			  <a class="step cart_payment @if ($cart['payment_method']=='cash') completed active @endif @if ($cart['delivery_method']=='ppl') disabled @endif" data-payment_method="cash">
 			    <i class="money icon"></i>
 			    <div class="content">
 			      <div class="title">Hotovost</div>
@@ -52,7 +52,7 @@
 			</div>
 
 			<div class="ui steps">
-			  <a class="step cart_payment @if ($cartPaymentMethod=='cod') completed active @endif @if ($cartDeliveryMethod=='place') disabled @endif" data-payment_method="cod"> 
+			  <a class="step cart_payment @if ($cart['payment_method']=='cod') completed active @endif @if ($cart['delivery_method']=='place') disabled @endif" data-payment_method="cod"> 
 			    <i class="cube icon"></i>
 			    <div class="content">
 			      <div class="title">Dobierkou</div>
@@ -67,7 +67,7 @@
 	<div class="ct cart_actions">
 		<a href="/cart/products" class="ui button"><i class="arrow left icon"></i>Spať</a>
 
-		<a href="/cart/shipping" class="cart_next ui green @if ($cartDeliveryMethod=='' || $cartPaymentMethod=='') disabled @endif button">Pokračovať</a>
+		<a href="/cart/shipping" class="cart_next ui green @if ($cart['delivery_method']=='' || $cart['payment_method']=='') disabled @endif button">Pokračovať</a>
 	</div>
 
 </div>
