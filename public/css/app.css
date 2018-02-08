@@ -1087,6 +1087,7 @@ a:hover {
 #price_slider {
   margin: 0 auto 70px auto;
   width: 98.5%;
+  opacity: 0.8;
 }
 @media all and (max-width: 980px) {
   #price_slider {
