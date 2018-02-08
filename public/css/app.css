@@ -453,6 +453,7 @@ a:hover {
 }
 .content #filters .categories .active.category .subcategory {
   display: block;
+  padding-left: 35px;
 }
 .content #filters .categories .subcategory {
   display: none;
@@ -1157,6 +1158,10 @@ a:hover {
   display: inline-block;
   float: right;
 }
+.admin_categories_list .admin_delete_category_btn {
+  display: inline-block;
+  float: right;
+}
 .no_of_items {
   display: inline-block;
   margin-left: 20px;
@@ -1186,6 +1191,9 @@ a:hover {
   display: inline-block;
   width: 400px;
   padding: 0;
+}
+#admin_import_results {
+  padding: 25px;
 }
 #cart_detail {
   padding: 80px 0;

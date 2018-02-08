@@ -52,6 +52,7 @@ $('.login_form').submit(function(){
 
 $('#add_category_btn').click(function(){
 	$('#add_category_modal').modal('setting', {
+    autofocus: false,
     onApprove : function() {
     	$name = $('#add_category_input').val();
       $parent_id = $('#add_category_parent_input input').val();
@@ -312,14 +313,9 @@ function getDesiredSortOrder(){
 
 function initPriceSlider(){
 
-if ($('#price_slider')[0].noUiSlider)
-    {
-      $('#price_slider')[0].noUiSlider.destroy();
-    }
+    var checkExists = $('#price_slider').length;
 
-    var priceSlider = document.getElementById('price_slider');
-
-   var window_width = $(window).width();
+    var window_width = $(window).width();
     
     if (window_width < 770){
       $pipsCount = 5;
@@ -329,37 +325,49 @@ if ($('#price_slider')[0].noUiSlider)
       $decimals = 2;
     }
 
-    noUiSlider.create(priceSlider, {
-      start: [ getPriceFilter('price')[0], getPriceFilter('price')[1]],
-      connect: true,
-      range: {
-        'min': 0,
-        'max': $('#grid_stats').data('maxprice')
-      },
-      pips: { 
-        mode: 'count', 
-        density: 1,
-        values: $pipsCount,
-        format: wNumb({
-          decimals: $decimals,
-          postfix: '€'
-        })
-      }
-    });
-
-    priceSlider.noUiSlider.on('set', function()
+    if (checkExists)
     {
-      $min = priceSlider.noUiSlider.get()[0];
-      $max = priceSlider.noUiSlider.get()[1];
 
-      removeFilter('price');
-      addFilter('price',  priceSlider.noUiSlider.get(), 'Cena medzi: '+$min+' a '+$max);
-      doSort();
-    });
+      if ($('#price_slider')[0].noUiSlider)
+      {
+        $('#price_slider')[0].noUiSlider.destroy();
+      }
+
+      var priceSlider = document.getElementById('price_slider');
+
+      noUiSlider.create(priceSlider, {
+        start: [ getPriceFilter('price')[0], getPriceFilter('price')[1]],
+        connect: true,
+        range: {
+          'min': 0,
+          'max': $('#grid_stats').data('maxprice')
+        },
+        pips: { 
+          mode: 'count', 
+          density: 1,
+          values: $pipsCount,
+          format: wNumb({
+            decimals: $decimals,
+            postfix: '€'
+          })
+        }
+      });
+
+      priceSlider.noUiSlider.on('set', function()
+      {
+        $min = priceSlider.noUiSlider.get()[0];
+        $max = priceSlider.noUiSlider.get()[1];
+
+        removeFilter('price');
+        addFilter('price',  priceSlider.noUiSlider.get(), 'Cena medzi: '+$min+' a '+$max);
+        doSort();
+      });
+
+    }
 }
 
 initPriceSlider();
-  filtersInit();
+filtersInit();
 
 function doSort(){
 
@@ -547,6 +555,22 @@ $('#product_detail_delete_btn').click(function(){
       $.ajax({
         type: "DELETE",
         url: "/product/"+$productid,
+        data: {},
+        success: function(){
+          location.replace('/admin/products');
+        }
+      })
+    }
+  }).modal('show');
+})
+
+$('.admin_delete_category_btn').click(function(){
+  $categoryid = $(this).closest('.category').data('id');
+  $('#delete_category_modal').modal('setting', {
+    onApprove : function() {
+      $.ajax({
+        type: "DELETE",
+        url: "/category/"+$categoryid,
         data: {},
         success: function(){
           location.replace('/admin/products');
@@ -938,17 +962,29 @@ $('#admin_add_category_param_btn').click(function(){
   $('#admin_filters_div').append($html);
 })
 
-
+$('#product_detail_dropzone').dropzone();
 
 $('#import_dropzone').dropzone({
     success: function(param, data){
+      $table = $('#admin_import_results').find('table');
+      $row = $table.find('tbody tr');
       $.each(data, function(index,item){
+        $lastRow = $table.find('tr:last-child');
+        $lastRow.find('td[col="name"]').html(item[0]);
+        $lastRow.find('td[col="code"]').html(item[1]);
+        $lastRow.find('td[col="maker"]').html(item[2]);
+
         console.log(item);
-       $('#admin_import_results').append('a');
+
+        $row.clone().appendTo($table);
+
       })
+
+      //delete the duplicate last row
+      $table.find('tr:last-child').remove();
     },
     params: {
-    '_token': $('meta[name="csrf-token"]').attr('content')
+      '_token': $('meta[name="csrf-token"]').attr('content')
     }
 })
 

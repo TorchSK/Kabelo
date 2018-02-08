@@ -66,3 +66,24 @@
       </div>
     </div>
   </div>
+
+
+
+  <div class="ui mini modal" id="delete_category_modal">
+            
+    <div class="header">
+      Zmazať kategóriu
+    </div>
+    <div class="content">
+       Naozaj chcete vymazať kategóriu
+    </div>
+    <div class="actions">
+      <div class="ui red deny button">
+        Níe
+      </div>
+      <div class="ui positive right labeled icon button">
+        Áno
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>

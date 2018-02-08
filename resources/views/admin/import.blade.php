@@ -7,9 +7,25 @@
 
 </div>
 </div>
-
 <div id="admin_import_results">
 
-	</div>
-	
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Názov</th>
+      <th>Kód</th>
+      <th>Výrobca</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td col="name"></td>
+      <td col="code"></td>
+      <td col="maker"></td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
 @stop

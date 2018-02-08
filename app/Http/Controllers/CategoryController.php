@@ -94,4 +94,11 @@ class CategoryController extends Controller
         return redirect('/admin/category/'.$param->category_id.'/products');
     }
 
+
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+
+        $category->delete();
+    }
 }

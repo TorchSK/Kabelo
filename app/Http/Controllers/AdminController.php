@@ -102,8 +102,10 @@ class AdminController extends Controller
 
         $results  = Excel::load($file, function($reader) {
             
-        })->get();
+        })->get();  
 
+        // check the results, and add valid flag at the end
+        
         return $results;
     }
 }
