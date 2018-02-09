@@ -969,10 +969,10 @@ $('#import_dropzone').dropzone({
       $table = $('#admin_import_results').find('table');
       $row = $table.find('tbody tr');
       $.each(data, function(index,item){
-        $lastRow = $table.find('tr:last-child');
-        $lastRow.find('td[col="name"]').html(item[0]);
-        $lastRow.find('td[col="code"]').html(item[1]);
-        $lastRow.find('td[col="maker"]').html(item[2]);
+        $lastRow = $table.find('tbody tr:last-child');
+        $lastRow.find('td[col="name"]').html(item['name']);
+        $lastRow.find('td[col="code"]').html(item['code']);
+        $lastRow.find('td[col="maker"]').html(item['maker']);
 
         console.log(item);
 
@@ -981,7 +981,7 @@ $('#import_dropzone').dropzone({
       })
 
       //delete the duplicate last row
-      $table.find('tr:last-child').remove();
+      $table.find('tbody tr:last-child').remove();
     },
     params: {
       '_token': $('meta[name="csrf-token"]').attr('content')
