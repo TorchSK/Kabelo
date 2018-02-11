@@ -74,11 +74,6 @@ function scrollTo(element){
   $('html,body').animate({scrollTop: $(element).offset().top});  
 }
 
-$('.ui.dropdown')
-  .dropdown({
-  })
-;
-
 $('#create_product_add_param_row').click(function(){
   $html = $('#create_product_params .row:first-child').html();
   $('#create_product_params').append('<div class="row">'+$html+'</div>');
@@ -92,11 +87,19 @@ $('#edit_product_add_param_row').click(function(){
 })
 
 $('#create_product_categories_input').dropdown({
+  maxSelections: 1,
   onAdd: function(addedValue, addedText, $addedChoice){
     console.log(addedValue);
   }
 })
 
+
+$('#edit_product_categories_input').dropdown({
+  maxSelections: 1,
+  onAdd: function(addedValue, addedText, $addedChoice){
+    console.log(addedValue);
+  }
+})
 
 $('#create_product_form').submit(function(e){
   $validation = 1;
@@ -996,11 +999,54 @@ $('#filters .tabs .category.tab').click(function(){
 })
 
 
-$('#filters .tabs .params.tab').click(function(){
+$('#filters .tabs .params.tab:not(".disabled")').click(function(){
     $('#filters').find('.categories').hide();
       $('#filters .tabs .tab').removeClass('active');
   $(this).addClass('active');
 })
+
+$('.ui.dropdown').dropdown();
+
+$('#category_image_dropzone').dropzone({
+  success: function(file, response){
+    var $x, $y, $w, $h;
+    this.removeAllFiles(true); 
+    $('.category_image').html("<img src=/"+response+" height='50' />").unbind('focus');
+    $('.crop_preview').html("<img src=/"+response+" height='50' />").unbind('focus');
+
+    $('.crop_preview img').cropper({
+      guides: false,
+      crop: function(e){
+        $x = e.x;
+        $y = e.y;
+        $w = e.width;
+        $h = e.height;
+      },
+      preview: $('.category_image')
+    });
+
+    // confirm crop
+    $('.crop_ok').show().click(function(){
+      $categoryid = $(this).data('categoryid');
+
+      $.ajax({
+        method: "POST",
+        url: '/category/'+$categoryid+'/image/confirmCrop',
+        data: {filename: file.name, x: $x, y:$y, w:$w, h:$h},
+        success: function(){
+          location.reload();
+        }
+      })
+    });
+
+  }
+});
+
+$('.covers').flickity({
+  autoPlay: 6000,
+  adaptiveHeight: true
+
+});
 
 });
 

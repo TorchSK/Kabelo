@@ -1,80 +1,81 @@
-#cover{
-	height: 55vh;
-	background-image: url('/img/overlays/dot.png'), url('/img/cover.jpg');
-	background-size: auto, cover;
-	background-position: 0 0, 100% 0%;
-	position: relative;
+.covers{
+		height: 55vh;
 
-	@media @break3{
-		height: 20vh;
-		text-align: center;
-	}
 
-	#cover_div{
-		position: absolute;
-		top: 25%;
-		left: 15%;
-		text-align: center;
-		width: 35%;
-		line-height: 5vw;
+	.cover{
+		width: 100%;
+		height: 100%;
 
 		@media @break3{
-			width: 100%;
-			height: 50px;
-			left: 0;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			position: absolute;
-			display: block;
+			height: 20vh;
 			text-align: center;
-			line-height: 5vw;
-			margin: auto;
 		}
 
-
-		#slogan{
-			font-size: 4vw;
-			font-family: "hwt-artz";
+		.cover_div{
+			position: absolute;
+			line-height: 5vw;
 
 			@media @break3{
-				font-size: 2.2em;
-				line-height: 1.1em;
-				margin-bottom: 25px;
+				width: 100%;
+				height: 50px;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				position: absolute;
+				display: block;
+				text-align: center;
+				line-height: 5vw;
+				margin: auto;
 			}
 
-			o{
-				color: @brown;
+
+			#slogan{
+				font-size: 4vw;
+				font-family: "hwt-artz";
+
+				@media @break3{
+					font-size: 2.2em;
+					line-height: 1.1em;
+					margin-bottom: 25px;
+				}
+
+				o{
+					color: @brown;
+				}
+			}
+
+			#sub_slogan{
+				color: #222;
+				margin-top: 1%;
+				font-size: 1.5em;
+				font-style: italic;
+				font-weight: 600;
+				line-height: 2em;
+				width: 70%;
+				margin: 0 auto;
+
+				@media @break6{
+					font-size: 1.2em;
+				}
+
+				@media @break3{
+					display: none;
+				}
 			}
 		}
 
-		#sub_slogan{
-			color: #222;
-			margin-top: 1%;
-			font-size: 1.5em;
-			font-style: italic;
-			font-weight: 600;
-			line-height: 2em;
-			width: 70%;
-			margin: 0 auto;
-
-			@media @break6{
-				font-size: 1.2em;
-			}
-
+		#view_goods_btn{
 			@media @break3{
 				display: none;
 			}
 		}
 	}
 
-	#view_goods_btn{
-		@media @break3{
-			display: none;
-		}
-	}
+	.flickity-page-dots { bottom: 15px; }
+	.flickity-prev-next-button{background-color: transparent;}
+	.flickity-slider{padding:0; margin:0;}
 }
-
 #m_categories_btn{
 	display: none;
  background-color: #F7F7F7;
@@ -85,7 +86,8 @@
 }
 
 #under_cover{ 
-	background-color: @brown;
+	background-image: url('/img/diag.jpg');
+	height: 13px;
 	text-align: center; 
 
 	@media @break2{
@@ -105,6 +107,10 @@
 
 	 @media @break3{
 		min-height: auto;
+	}
+
+	#grid{
+		padding: 50px;
 	}
 }
 
@@ -168,13 +174,15 @@
 			}
 
 			.category{
-
+				.sub{
+					padding-left: 35px;	
+				}
 			}
 
 			.active.category{
-				.subcategory{
+				.sub{
 					display: block;
-					padding-left: 35px;
+					padding-left: 35px;	
 				}
 			}
 
@@ -248,11 +256,12 @@
 
 }
 
+
+
 #grid{
 		flex:1;
 		background-color: #F7F7F7;
 		position: relative;
-		padding: 50px;
 		
 		@media @break3{
 			padding: 0 10px 0 10px;
@@ -271,18 +280,9 @@
 		.subcategories{
 			margin-bottom: 50px;
 			display: flex;
-			
-			.subcategory{
-				padding: 15px 30px 15px 85px;
-				opacity: 0.7;
-				position: relative;
-				overflow: hidden;
 
-				i.icon{
-					position: absolute;
-					font-size: 4em;
-					left: 15px;
-				}
+			.subcategory{
+				margin-right: 5px;
 			}
 		}
 		
@@ -389,12 +389,13 @@
 			.actions{
 				margin-top: 25px;
 				text-align: center;
+				border-radius: 3px;
+				overflow: hidden;
+				padding: 0 15px;
+				opacity: 0.7;
 
-				.ui.button{
-					display: inline-block;
-					width: 80%;
-					margin-bottom: 2px;
-					opacity: 0.8;
+				.ui.button:nth-child(2){
+					border-radius: 3px 0 0 3px;
 				}
 			}
 

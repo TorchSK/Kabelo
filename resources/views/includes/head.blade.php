@@ -18,6 +18,7 @@
     <script src="/js/flickity.js"></script>
     <script src="/js/wNumb.js"></script>
     <script src="/js/nouislider.js"></script>
+    <script src="/js/cropper.js"></script>
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
 
@@ -28,6 +29,7 @@
     <link media="all" type="text/css" rel="stylesheet" href="/css/nouislider.css">
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
+        <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/app.css">
     <script src="/js/dropzone.js"></script>
     

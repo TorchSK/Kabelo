@@ -19,12 +19,9 @@
    					</div>
 
                 	<div class="sidebar_btn">
-   					<div class="ui fluid brown button" id="add_category_btn"><i class="add icon"></i>Pridaj kategóriu</div>
+   					<div class="ui fluid blue button" id="add_category_btn"><i class="add icon"></i>Pridaj kategóriu</div>
    					</div>
 
-   					<div class="sidebar_btn">
-   					<a href="/product/create" class="ui fluid blue button"><i class="add icon"></i>Pridaj produkt</a>
-   					</div>
 
 					<div class="ui horizontal divider">Kategórie</div>
 

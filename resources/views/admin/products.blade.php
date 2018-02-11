@@ -8,7 +8,20 @@
 
           <div class="right">
 
+
             @if (Request::segment(3) != 'unknown')
+            <div class="ui horizontal divider active title">Obrázok</div>
+ 
+
+            <div id="category_image_div">
+
+              <div>@include('categories.row')</div>
+
+              <form action="/category/image/upload" class="dropzone" id="category_image_dropzone"> <input name="_token" hidden value="{!! csrf_token() !!}" /></form>
+              <div class="crop_preview"></div>
+              <div><div class="crop_ok ui button" data-categoryid="{{$category->id}}">OK</div></div>
+            </div>
+
             <div class="ui horizontal divider active title">Parametre / Filtre</div>
 
             <div class="admin_filters">

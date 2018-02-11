@@ -7,6 +7,9 @@ use App\Product;
 use App\Category;
 use App\CategoryParameter;
 
+use Session;
+use Image;
+
 class CategoryController extends Controller
 {
     /**
@@ -92,6 +95,49 @@ class CategoryController extends Controller
         $param->save();
 
         return redirect('/admin/category/'.$param->category_id.'/products');
+    }
+
+    public function uploadImage(Request $request)
+    {
+        $file = $request->file('file');
+
+        $destinationPath = 'temp/categories';
+        $extension = $file->getClientOriginalExtension(); 
+        $filename = $file->getClientOriginalName();
+        $fullpath = $destinationPath.'/'.$filename;
+
+        $preview_success = $file->move($destinationPath, $filename);
+
+
+        return $fullpath;
+    }
+
+    public function confirmCrop($categoryid, Request $request)
+    {
+        $filename = $request->get('filename');
+
+        $x = round($request->get('x'));
+        $y = round($request->get('y'));
+        $w = round($request->get('w'));
+        $h = round($request->get('h'));
+
+        $path = 'temp/categories/'.$filename;
+        $destinationPath = 'uploads/categories';
+
+
+        $width = 400;   
+
+        Image::make($path)
+                 ->crop($w, $h, $x, $y)
+                 ->widen($width)
+                 ->save($destinationPath.'/'.$filename);
+
+        $category = Category::find($categoryid);
+
+        $category->image = $destinationPath.'/'.$filename;
+        $category->save();
+        
+        return $filename;
     }
 
 

@@ -108,7 +108,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   border-radius: 3px;
 }
 .noUi-connect {
-  background: #00B5AD;
+  background: rgba(0,0,0,0.1);
 }
 /* Handles and cursors;
  */

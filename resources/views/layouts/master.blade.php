@@ -9,6 +9,7 @@
     @include('includes.parambar')
 
    	<div class="pusher">
+            @include('includes.nav')
             @include('includes.header')
 
 		@yield('content')

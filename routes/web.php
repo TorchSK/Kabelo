@@ -52,9 +52,11 @@ Route::put('category/parameter/{id}','CategoryController@updateParam');
 Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
 
-
 Route::get('/{maker}/{code}/detail','ProductController@profile');
 Route::get('/{maker}/{code}/edit','ProductController@edit');
+
+Route::post('/category/image/upload','CategoryController@uploadImage');
+Route::post('/category/{categoryid}/image/confirmCrop','CategoryController@confirmCrop');
 
 // Products
 Route::get('product/search/{query}','ProductController@search');

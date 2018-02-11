@@ -1,16 +1,25 @@
 @extends('layouts.master')
 @section('content')
+        
+        <div class="covers">
+            <div class="cover" style="background-image: url('/img/overlays/dot.png'), url('/img/tasker_cover.jpg');background-size: auto, cover; background-position: 0 0, 80% 18%;">
+                <div class="cover_div" style="top: 5%;right: 2%;text-align: center;width: 50%;">
+                    <div id="slogan" style="color: rgba(0,0,0,0.6);">Tasker káble</div>
+                    <div id="sub_slogan" style="color: rgba(255,255,255,0.9); text-shadow: 1px 1px 1px #555">Ponúkame najkvalitenjšie káble značky Tasker. Nájdete u nás celý sortiment od audio, video až po datové káble.</div>
+                </div>
+            </div>
 
-        <div id="cover">
-            <div id="cover_div">
-                <div id="slogan"><o>Trochu iné spojenie</o></div>
-                <div id="sub_slogan">Ponúkame najkvalitenjšie káble značky Tasker. Nájdete u nás celý sortiment od audio, video až po datové káble.</div>
-                <div id="view_goods_btn" class="ui huge inverted brown button"><i class="icon cubes"></i>Sortiment</div>
+            <div class="cover" style="background-image: url('/img/peaktech_cover.jpg');background-size: cover; background-position: 0 0, 80% 18%;">
+                <div class="cover_div" style="top: 25%;right: 12%;text-align: center;width: 50%;">
+                    <div id="slogan" style="color: rgba(0,0,0,0.6);">Multimetre Peaktech</div>
+                    <div id="sub_slogan" style="color: rgba(255,255,255,0.9); text-shadow: 1px 1px 1px #555">Ponúkame najkvalitenjšie káble značky Tasker. Nájdete u nás celý sortiment od audio, video až po datové káble.</div>
+                </div>
+                    
             </div>
         </div>
 
         <div id="under_cover">               
-            <img src="/img/tasker.png" width="100" class="ui image" />
+          &nbsp;
 
         </div>
 
@@ -55,7 +64,7 @@
                             </a>
 
                             @foreach($category->children as $child)
-                                <a href="?category={{$child->id}}" class="item subcategory filter @if(Request::get('category') == $child->id) active @endif" data-filter="category" data-value="{{$child->id}}" data-categoryid="{{$child->id}}">
+                                <a href="?category={{$child->id}}" class="item sub filter @if(Request::get('category') == $child->id) active @endif" data-filter="category" data-value="{{$child->id}}" data-categoryid="{{$child->id}}">
                                     <i class="cube icon"></i>
                                     <text>{{$child->name}}</text>
                                     <count>{{$child->products->count()}}</count>
@@ -94,14 +103,14 @@
                 @if(Request::get('category') && !App\Category::find(Request::get('category'))->parent_id && App\Category::find(Request::get('category'))->children->count() > 0)
                 <div class="subcategories">
                     @foreach($category->children as $child)
-
-                        <a href="?category={{$child->id}}" class="subcategory ui yellow button"><i class="cube icon"></i>{{$child->name}}</a>          
+                        @include('categories.row',['category'=>$child])
+                                 
                     @endforeach         
                 </div>
                 @endif 
 
                 @if (Request::has('category'))
-                <div id="grid_stats" @if(isset($priceRang)) data-minprice="{{$priceRange[0]}}" data-maxprice="{{$priceRange[1]}}" @else data-minprice="0" data-maxprice="1" @endif >
+                <div id="grid_stats" @if(isset($priceRange)) data-minprice="{{$priceRange[0]}}" data-maxprice="{{$priceRange[1]}}" @else data-minprice="0" data-maxprice="1" @endif >
                 <div class="sorts">
                     <div class="active sort" data-sortby="name" data-sortorder="asc"><i class="sort alphabet ascending icon"></i> Nazov</div>
                     <div class="sort" data-sortby="price" data-sortorder="asc"><i class="sort numeric    ascending icon"></i> Cena</div>
