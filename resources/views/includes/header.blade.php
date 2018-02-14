@@ -2,7 +2,7 @@
       <div class="container">
         <a class="logo item" href="/">
           <div class="image"><img src="/img/logo.png" /></div>
-          <text>Copper<span>electronics</span></text>
+          <text>Kabelo</text>
         </a>
 
         <a class="item" id="sidebar_handle">

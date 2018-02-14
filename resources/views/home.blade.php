@@ -9,13 +9,8 @@
                 </div>
             </div>
 
-            <div class="cover" style="background-image: url('/img/peaktech_cover.jpg');background-size: cover; background-position: 0 0, 80% 18%;">
-                <div class="cover_div" style="top: 25%;right: 12%;text-align: center;width: 50%;">
-                    <div id="slogan" style="color: rgba(0,0,0,0.6);">Multimetre Peaktech</div>
-                    <div id="sub_slogan" style="color: rgba(255,255,255,0.9); text-shadow: 1px 1px 1px #555">Ponúkame najkvalitenjšie káble značky Tasker. Nájdete u nás celý sortiment od audio, video až po datové káble.</div>
-                </div>
-                    
-            </div>
+        
+
         </div>
 
         <div id="under_cover">               

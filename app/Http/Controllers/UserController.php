@@ -146,7 +146,6 @@ class UserController extends Controller
              $user->$key = $value;
         }
 
-
         if (!$user->invoiceAddress && $request->get('invoiceAddress')['street'])
         {
             $invoiceAddress = new Address();
@@ -160,7 +159,7 @@ class UserController extends Controller
             $user->invoiceAddress()->save($invoiceAddress);
 
         }
-        elseif($user->invoiceAddress)
+        elseif($user->invoiceAddress['street'])
         {
             $invoiceAddress = $user->invoiceAddress;
 
@@ -189,7 +188,7 @@ class UserController extends Controller
             $user->deliveryAddress()->save($deliveryAddress);
 
         }
-        elseif($user->deliveryAddress)
+        elseif($user->deliveryAddress['street'])
         {
             $deliveryAddress = $user->deliveryAddress;
 
