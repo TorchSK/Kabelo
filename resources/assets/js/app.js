@@ -1048,6 +1048,14 @@ $('.covers').flickity({
 
 });
 
+
+$('#admin .categories').sortable({
+  change: function(event, ui){
+    
+  }
+});
+
+
 });
 
 

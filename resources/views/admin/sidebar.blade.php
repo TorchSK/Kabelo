@@ -38,7 +38,7 @@
 					      <i class="dropdown icon"></i>
 					      <div class="default text">Vyberte kategóriu</div>
 					      <div class="menu">
-					        @foreach (App\Category::all() as $category)
+					        @foreach (App\Category::orderBy('order','asc')->get() as $category)
 					        	<div class="item" data-value="{{$category->id}}">{{$category->name}}</div>
 					        @endforeach
 					      </div>
@@ -50,6 +50,7 @@
 					    	<input type="text" placeholder="Názov" id="add_category_input"/>
 					    </div>
 					  </div>
+					  
 					  <div class="actions">
 					    <div class="ui black deny button">
 					      Zruš
@@ -60,7 +61,7 @@
 					    </div>
 					  </div>
 					</div>
-
+					
 					@if ($categories->count() > 0 )
 					@foreach ($categories as $category)
 						<a href="/admin/category/{{$category->id}}/products" class="item @if(Request::segment(1)=='admin' && Request::segment(2)=='category' && Request::segment(3) == $category->id) active @endif @if($category->parent_id) subcategory @endif" data-categoryid="{{$category->id}}">

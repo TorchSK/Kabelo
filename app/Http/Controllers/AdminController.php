@@ -31,7 +31,7 @@ class AdminController extends Controller
     {
         $data = [
             'makers' => Product::groupBy('maker'),
-            'categories' => Category::all()
+            'categories' => Category::orderBy('order','asc')->get()
         ];
 
         return view('admin.index', $data);
