@@ -1,11 +1,15 @@
-<a href="?category={{$category->id}}" class="subcategory">
-	<div class="category_image">
-	@if($category->image)
-	<img src="/{{$category->image}}" height=50/>
-	@else
-	<img src="/img/cable.jpg" height=50/>
-	@endif
-	</div>
+<div class="category title item @if(Request::get('category') == $category->id || in_array(Request::get('category'), (array)$category->children->pluck('id')->toArray())) selected @endif @if($category->parent_id) sub @endif">
 
-	<div class="category_name">{{$category->name}}</div>
-</a> 
+    <div href="?category={{$category->id}}" class="filter" data-filter="category" data-value="{{$category->id}}" data-categoryid="{{$category->id}}">
+        <i class="dropdown icon"></i>
+        <text>{{$category->name}}</text>
+        <count>{{$category->products->count()}}</count>
+    </div>
+
+</div>
+
+<div class="content">
+@foreach($category->children as $child)
+    @include('categories.row',['category'=>$child])
+@endforeach
+</div>

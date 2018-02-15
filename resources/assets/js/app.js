@@ -645,6 +645,7 @@ $('#settings_submit_btn').click(function(){
     },
   };
 
+  /*
   if ($data.invoiceAddress.street && (!$data.invoiceAddress.zip || !$data.invoiceAddress.city))
   {
     $validation = 0;
@@ -666,7 +667,8 @@ $('#settings_submit_btn').click(function(){
     $container.find('input[name="invoice_address_street"]').closest('.input').addClass('error');
   }
 
-
+  */
+  
   $deliveryInputsLength = $('.delivery_address.inputs .input').length;
   $deliveryAddressEmpty = [];
 

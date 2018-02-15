@@ -29,56 +29,36 @@
             <!-- desktop/tablet -->
             <div id="filters">
 
-            <div class="tabs">
-                <div class="category tab @if(!Request::get('category')) active @endif">Kategórie</div>
-                <div class="params tab @if(Request::get('category')) active @else disabled  @endif">Parametre</div>
-            </div>
-
-
-            <div class="ui accordion">
-
-                <div id="product_search">
-                    <div class="ui left icon huge fluid input product_search_input" >
-                      <input type="text" placeholder="Hľadaj produkt...">
-                        <i class="search icon"></i>
-                    </div>
+                <div class="tabs">
+                    <div class="category tab @if(!Request::get('category')) active @endif">Kategórie</div>
+                    <div class="params tab @if(Request::get('category')) active @else disabled  @endif">Parametre</div>
                 </div>
 
-                <a href="{{route('home')}}/home/eshop" class="item">Úvodná stránka</a>
 
-                <div class="categories @if(Request::get('category')) hidden @endif">
-                    <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Kategórie</div>
-                    <div class="active content">
-                    @foreach(App\Category::whereNull('parent_id')->get() as $category)
-                        <div class="category @if(Request::get('category') == $category->id || in_array(Request::get('category'), (array)$category->children->pluck('id')->toArray()) ) active @endif">
+                <div class="ui accordion">
 
-                            <a href="?category={{$category->id}}" class="item filter @if(Request::get('category') == $category->id) active @endif" data-filter="category" data-value="{{$category->id}}" data-categoryid="{{$category->id}}">
-                                <i class="cubes icon"></i>
-                                <text>{{$category->name}}</text>
-                                <count>{{$category->products->count()}}</count>
-                            </a>
-
-                            @foreach($category->children as $child)
-                                <a href="?category={{$child->id}}" class="item sub filter @if(Request::get('category') == $child->id) active @endif" data-filter="category" data-value="{{$child->id}}" data-categoryid="{{$child->id}}">
-                                    <i class="cube icon"></i>
-                                    <text>{{$child->name}}</text>
-                                    <count>{{$child->products->count()}}</count>
-                               </a>
-                            @endforeach
-
+                    <div id="product_search">
+                        <div class="ui left icon huge fluid input product_search_input" >
+                          <input type="text" placeholder="Hľadaj produkt...">
+                            <i class="search icon"></i>
                         </div>
-
-                    @endforeach
                     </div>
-                </div>
 
-                 <div class="filters">
-                     @if(Request::get('category'))  
-                        @include('makers')
-                     @endif
-                </div>
+                    <a href="{{route('home')}}/home/eshop" class="item">Úvodná stránka</a>
+                    
+                    <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Kategórie</div>
 
-            </div>
+                    <div class="active content">
+                        @include('categories.sidebar')
+                    </div>
+
+                     <div class="filters">
+                         @if(Request::get('category'))  
+                            @include('makers')
+                         @endif
+                    </div>
+
+                </div>
 
             </div>
 

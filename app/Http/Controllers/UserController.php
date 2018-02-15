@@ -146,19 +146,18 @@ class UserController extends Controller
              $user->$key = $value;
         }
 
-        if ($user->address)
+        if ($user->invoiceAddress)
         {
-            $address = $user->address;
-            $address->invoice_address =  $request->get('invoiceAddress');
-            $address->delivery_address =  $request->get('deliveryAddress');
+            $address = $user->invoiceAddress;
+            $address->address =  $request->get('invoiceAddress');
             $address->save();
         }
         else
         {
             $address = new Address();
-            $address->invoice_address =  $request->get('invoiceAddress');
-            $address->delivery_address =  $request->get('deliveryAddress');
-            $user->address()->save($address);
+            $address->address =  $request->get('invoiceAddress');
+            $address->type =  'invoice';
+            $user->invoiceAddress()->save($address);
         }
 
 
