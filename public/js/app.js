@@ -684,6 +684,9 @@ $('#settings_submit_btn').click(function(){
     });
   }
 
+  $data.invoiceAddress = JSON.stringify($data.invoiceAddress);
+  $data.deliveryAddress = JSON.stringify($data.deliveryAddress);
+
   if ($validation)
   {
     $.ajax({
@@ -825,6 +828,7 @@ $('#admin #grid .product.item').draggable({
 
 $('.categories .item').droppable({
   tolerance: "pointer",
+  accept: ".product",
   over: function( event, ui ) {
     $(this).addClass('active');
   },
@@ -1050,8 +1054,19 @@ $('.covers').flickity({
 
 
 $('#admin .categories').sortable({
-  change: function(event, ui){
-    
+  stop: function(event, ui){
+    $data = {};
+
+    $('#admin .categories .category.item').each(function(index, item){
+      $data[$(item).data('categoryid')] = index;
+    });
+    console.log($data);
+
+    $.ajax({
+      method: "PUT",
+      url: '/categories/setorder',
+      data: $data
+    })
   }
 });
 

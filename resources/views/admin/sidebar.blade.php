@@ -64,7 +64,7 @@
 					
 					@if ($categories->count() > 0 )
 					@foreach ($categories as $category)
-						<a href="/admin/category/{{$category->id}}/products" class="item @if(Request::segment(1)=='admin' && Request::segment(2)=='category' && Request::segment(3) == $category->id) active @endif @if($category->parent_id) subcategory @endif" data-categoryid="{{$category->id}}">
+						<a href="/admin/category/{{$category->id}}/products" class="item @if(Request::segment(1)=='admin' && Request::segment(2)=='category' && Request::segment(3) == $category->id) active @endif @if($category->parent_id) subcategory @else category @endif" data-categoryid="{{$category->id}}">
 							@if($category->parent_id)
 							<i class="circle thin icon"></i> 
 							@endif

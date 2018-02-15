@@ -141,6 +141,16 @@ class CategoryController extends Controller
     }
 
 
+    public function setOrder(Request $request)
+    {
+        foreach(Category::all() as $category)
+        {
+            $category->order = $request->get($category->id);
+            $category->save();
+        }
+    }
+
+
     public function destroy($id)
     {
         $category = Category::find($id);

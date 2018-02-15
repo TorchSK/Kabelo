@@ -56,7 +56,7 @@ class AdminController extends Controller
             $data = [
                 'products' => $category->products()->where('category_id',$category_id)->get(),
                 'category' => $category,
-                'categories' => Category::all()
+            'categories' => Category::orderBy('order','asc')->get()
 
             ];
         }
@@ -64,7 +64,7 @@ class AdminController extends Controller
         {
             $data = [
                 'products' => Product::doesntHave('categories')->get(),
-                'categories' => Category::all()
+            'categories' => Category::orderBy('order','asc')->get()
 
             ];
         }

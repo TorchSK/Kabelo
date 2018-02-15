@@ -1591,6 +1591,20 @@ count {
   transition: all 0.3s;
   border-radius: 2px;
 }
-#nav .item:hover {
+#nav .item:first-child:hover {
   background-color: #A5673F;
+}
+#nav .item:nth-child(2):hover {
+  background-color: #21BA45;
+  color: #1B1C1D;
+}
+#nav .item:nth-child(3):hover {
+  background-color: #DB2828;
+}
+#nav .item:nth-child(4):hover {
+  background-color: #FBBD08;
+  color: #1B1C1D;
+}
+#nav .item:last-child:hover {
+  background-color: #2185D0;
 }

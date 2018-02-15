@@ -49,6 +49,8 @@ Route::post('category/parameter/add','CategoryController@addParameter');
 Route::get('category/parameter/{id}/edit','CategoryController@editParameter');
 Route::put('category/parameter/{id}','CategoryController@updateParam');
 
+Route::put('categories/setorder/','CategoryController@setOrder');
+
 Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
 

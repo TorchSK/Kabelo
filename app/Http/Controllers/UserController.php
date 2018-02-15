@@ -141,66 +141,24 @@ class UserController extends Controller
     public function update($id, Request $request){
         $user = User::find($id);
 
-        foreach ($request->except('_token') as $key => $value)
+        foreach ($request->except(['_token','invoiceAddress', 'deliveryAddress']) as $key => $value)
         {
              $user->$key = $value;
         }
 
-        if (!$user->invoiceAddress && $request->get('invoiceAddress')['street'])
+        if ($user->address)
         {
-            $invoiceAddress = new Address();
-            
-            $invoiceAddress->street =  $request->get('invoiceAddress')['street'];
-            $invoiceAddress->zip =  $request->get('invoiceAddress')['zip'];
-            $invoiceAddress->city =  $request->get('invoiceAddress')['city'];
-            $invoiceAddress->type =  'invoice';
-            $invoiceAddress->state =  'Slovenská Republika';
-
-            $user->invoiceAddress()->save($invoiceAddress);
-
+            $address = $user->address;
+            $address->invoice_address =  $request->get('invoiceAddress');
+            $address->delivery_address =  $request->get('deliveryAddress');
+            $address->save();
         }
-        elseif($user->invoiceAddress['street'])
+        else
         {
-            $invoiceAddress = $user->invoiceAddress;
-
-            $invoiceAddress->street =  $request->get('invoiceAddress')['street'];
-            $invoiceAddress->zip =  $request->get('invoiceAddress')['zip'];
-            $invoiceAddress->city =  $request->get('invoiceAddress')['city'];
-            
-            $invoiceAddress->save();
-
-        }
-
-        if (!$user->deliveryAddress && $request->get('deliveryAddress')['street'])
-        {
-            $deliveryAddress = new Address();
-            
-            $deliveryAddress->name =  $request->get('deliveryAddress')['name'];
-            $deliveryAddress->street =  $request->get('deliveryAddress')['street'];
-            $deliveryAddress->zip =  $request->get('deliveryAddress')['zip'];
-            $deliveryAddress->city =  $request->get('deliveryAddress')['city'];
-            $deliveryAddress->additional =  $request->get('deliveryAddress')['additional'];
-            $deliveryAddress->phone =  $request->get('deliveryAddress')['phone'];
-
-            $deliveryAddress->type =  'delivery';
-            $deliveryAddress->state =  'Slovenská Republika';
-
-            $user->deliveryAddress()->save($deliveryAddress);
-
-        }
-        elseif($user->deliveryAddress['street'])
-        {
-            $deliveryAddress = $user->deliveryAddress;
-
-            $deliveryAddress->name =  $request->get('deliveryAddress')['name'];
-            $deliveryAddress->street =  $request->get('deliveryAddress')['street'];
-            $deliveryAddress->zip =  $request->get('deliveryAddress')['zip'];
-            $deliveryAddress->city =  $request->get('deliveryAddress')['city'];
-            $deliveryAddress->additional =  $request->get('deliveryAddress')['additional'];
-            $deliveryAddress->phone =  $request->get('deliveryAddress')['phone'];
-            
-            $deliveryAddress->save();
-
+            $address = new Address();
+            $address->invoice_address =  $request->get('invoiceAddress');
+            $address->delivery_address =  $request->get('deliveryAddress');
+            $user->address()->save($address);
         }
 
 

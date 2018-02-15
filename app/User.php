@@ -33,14 +33,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Activation');
     }
 
-    public function invoiceAddress()
+    public function address()
     {
-        return $this->hasOne('App\Address')->where('type','invoice');
-    }
-
-    public function deliveryAddress()
-    {
-        return $this->hasOne('App\Address')->where('type','delivery');
+        return $this->hasOne('App\Address');
     }
 
     public function cart()
