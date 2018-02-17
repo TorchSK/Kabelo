@@ -952,14 +952,16 @@ $('#home_sales_div').flickity({
     cellAlign: 'left',
     contain: true,
     pageDots: false,
-    prevNextButtons: false
+    prevNextButtons: false,
+    imagesLoaded: true
 });
 
 $('#home_news_div').flickity({
     cellAlign: 'left',
     contain: true,
     pageDots: false,
-    prevNextButtons: false
+    prevNextButtons: false,
+    imagesLoaded: true
 });
 
 $('#admin_add_category_param_btn').click(function(){
