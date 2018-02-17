@@ -57,6 +57,8 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->name = $request->get('name');
+        $category->url = $request->get('url');
+
         $category->save();
 
         return '/admin/products';

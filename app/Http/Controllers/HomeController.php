@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Services\Contracts\ProductServiceContract;
 
+use App\Category;
+
 class HomeController extends Controller
 {
     /**
@@ -24,10 +26,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index($category=null, Request $request)
     {   
-        if ($request->has('category'))
+        if (isset($category))
         {
+            $cat = Category::whereUrl($category)->first();
+            $request['category'] = $cat->id;
             $data = $this->productService->list($request);
             return view('home/home', $data);
         }

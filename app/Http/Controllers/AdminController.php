@@ -47,14 +47,14 @@ class AdminController extends Controller
     }
 
 
-    public function categoryProducts($category_id)
+    public function categoryProducts($category)
     {
-        $category = Category::find($category_id);
+        $category = Category::find($category);
 
-        if ($category_id != 'unknown')
+        if ($category != 'unknown')
         {
             $data = [
-                'products' => $category->products()->where('category_id',$category_id)->get(),
+                'products' => $category->products()->where('category_id',$category)->get(),
                 'category' => $category,
             'categories' => Category::orderBy('order','asc')->get()
 

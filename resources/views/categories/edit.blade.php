@@ -15,6 +15,12 @@
         <div class="ui fluid input" id="edit_product_name_input">
            <input type="text" value="{{$category->name}}" />
       </div>
+
+        <div class="ui header">URL</div>
+
+        <div class="ui fluid input" id="edit_product_url_input">
+           <input type="text" value="{{$category->url}}" />
+      </div>
 </div>
 </div>
 

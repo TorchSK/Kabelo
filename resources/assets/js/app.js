@@ -133,10 +133,12 @@ $('#create_product_form').submit(function(e){
 $('#edit_category_submit').click(function(){
   $categoryid = $('#category_options').data('categoryid');
   $name = $('#edit_product_name_input input').val()
+  $url = $('#edit_product_url_input input').val()
+
     $.ajax({
       method: "PUT",
       url: "/category/"+$categoryid,
-      data: {name: $name},
+      data: {name: $name, url: $url},
       success: function(data){
         location.replace(data)
       } 
@@ -1015,18 +1017,21 @@ $('#category_image_dropzone').dropzone({
   success: function(file, response){
     var $x, $y, $w, $h;
     this.removeAllFiles(true); 
-    $('.category_image').html("<img src=/"+response+" height='50' />").unbind('focus');
     $('.crop_preview').html("<img src=/"+response+" height='50' />").unbind('focus');
+    $('.crok_ok').show();
 
     $('.crop_preview img').cropper({
       guides: false,
+      viewMode: 1,
+      aspectRatio: 1.78,
+      autoCropArea: 1,
       crop: function(e){
         $x = e.x;
         $y = e.y;
         $w = e.width;
         $h = e.height;
       },
-      preview: $('.category_image')
+      preview: $('.category_image .image')
     });
 
     // confirm crop
@@ -1074,6 +1079,8 @@ $('#admin .categories').nestedSortable({
     })
   }
 });
+
+
 
 
 });

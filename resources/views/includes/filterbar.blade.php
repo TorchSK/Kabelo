@@ -16,8 +16,10 @@
                 <i class="search icon"></i>
             </div>
         </div>
-
-        <a href="{{route('home')}}/categories/all" class="pad item all_products_btn"><i class="cubes icon"></i> Všetky kategórie</a>
+        
+        @if (Request::segment(1)!='admin')
+        <a href="/categories/all" class="pad item all_products_btn"><i class="cubes icon"></i> Všetky kategórie</a>
+        @endif
         
         <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Kategórie</div>
 
@@ -30,6 +32,13 @@
                 @include('home.makers')
              @endif
         </div>
+        
+        @if (Request::segment(1)=='admin')
+           <div class="ui horizontal divider">Nezaradane produkty</div>
+                <div class="sidebar_btn">
+                <a href="/admin/unknown" class="ui fluid button">Ukázať <i>({{App\Product::doesntHave('categories')->count()}})</i></a>
+            </div>
+        @endif
 
     </div>
 

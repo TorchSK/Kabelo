@@ -7,8 +7,11 @@
         <i class="cube icon"></i>
     @endif
 
-
-    <a href="?category={{$category->id}}" class="filter">
+    @if (Request::segment(1)=='admin')
+    <a href="/admin/{{$category->id}}" class="filter">
+    @else
+    <a href="/{{$category->url}}" class="filter">
+    @endif
 
         <text>{{$category->name}}</text>
         <count>{{$category->products->count()}}</count>

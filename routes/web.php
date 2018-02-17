@@ -23,6 +23,7 @@ Route::group(['middleware' => 'onlyAuth'], function()
 {
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/{category}', 'HomeController@index')->name('home');
 
 Route::get('/home/eshop', 'HomeController@index')->name('home.eshop');
 
@@ -95,11 +96,11 @@ Route::get('email/send/welcome/{userid}', 'UserController@sendActivationEmail');
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 {
 	Route::get('/products', 'AdminController@manageProducts')->name('admin.manageProducts');
-	Route::get('/category/{category_id}/products', 'AdminController@categoryProducts')->name('admin.categoryProducts');
 	Route::get('/orders/', 'AdminController@manageOrders')->name('admin.manageOrders');
 	Route::get('/users/', 'AdminController@manageUsers')->name('admin.manageUsers');
 	Route::get('/import/', 'AdminController@import')->name('admin.import');
 	Route::post('/import/', 'AdminController@postImport')->name('admin.postImport');
+	Route::get('/{category}', 'AdminController@categoryProducts')->name('admin.categoryProducts');
 
 });
 

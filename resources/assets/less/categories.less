@@ -8,10 +8,10 @@
 }
 
 #category_image_dropzone{
-	padding: 10px;
+	padding: 80px 20px;
 	margin: 0 35px;
 	min-height: 60px;
-	height: 65px;
+	height: 223px;
 
 	.dz-message{
 		margin: 8px;
@@ -19,51 +19,62 @@
 }
 
 .crop_preview{
-	max-height: 200px;
+	max-height: 223px;
+	margin-right: 25px;
 }
 
-		
-.subcategory{
-	padding: 8px;
-	position: relative;
-	overflow: hidden;
-	display: inline-block;
-	background-color: @white;
-	border-radius: 4px;
-	border: 1px solid #EEE;
+.ui.button.crop_ok{
+	display: none
+}
+
+.subcategories{
 
 	.category_image{
-		display: inline-block;
-		overflow: hidden;
-		border-radius: 3px;
-		font-size: 3em;
-	}
 
-	.category_name{
-		display: inline-block;
-		margin:0 30px;
-		font-weight: 700;
-	}
-}
+		.image{
+			overflow: hidden;
 
-.category_images{
-	display: flex;
-	padding: 50px 20%;
-	justify-content: center;
-	flex-wrap: wrap;
+			img{
+				border-radius: 6px;
+				width: 200px;
 
-	.category{
-		margin: 0 35px 55px 35px;
-
-		.image img{
-			border-radius: 6px;
+			}
 		}
 
 		.name{
 			text-align: center;
 			font-weight: 200;
-			font-size: 20px;
+			font-size: 18px;
 			margin-top: 15px;
 		}
+	}
+}
+
+.category_images{
+	display: flex;
+	padding: 50px 10%;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	
+	.category_image{
+		margin-bottom: 35px;
+	}
+}
+
+.category_image{
+
+	.image{
+		overflow: hidden;
+
+		img{
+			border-radius: 6px;
+		}
+	}
+
+	.name{
+		text-align: center;
+		font-weight: 200;
+		font-size: 20px;
+		margin-top: 15px;
 	}
 }
