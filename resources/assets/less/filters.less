@@ -1,0 +1,156 @@
+#filterbar{
+	background-color: rgba(0,0,0,0.05);
+	display: flex;
+
+	@media @break3{
+		display: none;
+	}
+
+	.all_products_btn{
+		background-color: @blue;
+		color: @white;
+		opacity: 0.7;
+
+		&:hover{
+			opacity: 1;
+			background-color: @blue !important;
+			color:@white;
+		}
+
+		i{
+			margin-right: 15px;
+			margin-left: 5px;
+		}
+	}
+
+	.ui.divider.horizontal{
+		width: 330px;
+	}
+
+	.pad.item{
+		margin: 0 10px;
+		padding: 10px;
+		display: block;
+		border-radius: 3px;
+
+		&:hover{
+			background-color: @white;
+		}
+	
+	}
+
+	.tabs{
+		background-color: rgba(0,0,0,0.05);
+		float:left;
+		padding: 12px;
+		height: 100%;
+		padding-top: 25px;
+		cursor: pointer;
+
+		.tab{
+			writing-mode: tb-rl;
+			font-weight: 500;
+			font-size: 1.1em;
+			padding: 10px;
+			border-radius: 3px;
+			letter-spacing: 3px;
+			text-transform: uppercase;
+
+			&:first-child{
+				margin-bottom: 15px;
+			}
+			
+			&:not(.disabled):hover{
+				background-color: @brown;
+				color: @white;
+			}
+
+			&.active{
+				background-color: @brown;
+				color: @white;
+			}
+
+			&.disabled{
+				opacity: 0.5;
+			}
+		}
+	}
+
+	.categories{
+		padding: 0 10px;
+
+		.item{
+			cursor: pointer;
+			transition: all 0.3s;
+			border-radius: 3px;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+
+			.caption{
+				flex: 1;
+				display: flex;
+
+				&:hover{
+					background-color: @white;
+				}
+			}
+
+			.content{
+				flex: 1;
+			}
+
+			&.selected{
+				>.caption>i{
+					background-color: @brown;
+					color: @white;
+
+					&:hover{
+						background-color: @brown;
+						color: @white;
+					}
+
+				}
+
+				>.caption>a{
+					background-color: @brown;
+					color: @white;
+				}
+			}
+
+			i.plus,
+			i.minus{
+				font-size: 1.36em;
+			}
+
+			i{
+				padding: 10px 14px;
+				height: auto;
+				margin: auto;
+				width: auto;
+				max-width: 48px;
+				transition: all 0.3s;
+			}
+
+			a{
+				padding: 10px; 
+				flex: 1;
+				transition: all 0.3s;
+
+			}
+		}
+
+		.title{
+			padding: 0;
+		}
+
+
+		.content .sub{
+			padding-left: 10px;
+		}
+
+		.content .content .sub{
+			padding-left: 20px;
+		}
+	}
+}

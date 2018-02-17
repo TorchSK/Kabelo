@@ -21,8 +21,15 @@ $('#header .account.item').popup({
 	on    : 'click'
 });
 
-$('.ui.accordion')
-  .accordion({exclusive: false})
+$('.ui.accordion').accordion({
+  exclusive: false,
+    selector    : {
+    accordion : '.accordion',
+    title     : '.title',
+    trigger   : '.title i',
+    content   : '.content'
+  }
+})
 ; 
 
 $('.register_form').click(function(){
@@ -476,24 +483,13 @@ function filtersInit(){
 }
 
 
-// MAIN
-$('.categories .item').click(function(e){
 
-  if (!$(this).hasClass('active'))
-  {
-    removeFilter('makers');
-    removeFilter('category');
-    //addFilter('category',$(this).data('categoryid'),$(this).find('text').text());
-    //$('.categories .item').removeClass('active');
-    //$(this).addClass('active');
+$('.categories .item i.plus').click(function(e){
+  //$(this).toggleClass('minus plus');
+})
 
-  }
-  else{
-  e.preventDefault();
-  }
-
-
-
+$('.categories .item i.minus').click(function(e){
+  //$(this).toggleClass('minus plus').find('.content').toggle();
 })
 
 
@@ -1055,8 +1051,13 @@ $('.covers').flickity({
 });
 
 
-$('#admin .categories').sortable({
-  stop: function(event, ui){
+$('#admin .categories').nestedSortable({
+  handle: 'div',
+  items: 'li',
+  toleranceElement: '> div',
+  listType: 'ul',
+  disableParentChange: true,
+  relocate: function(event, ui){
     $data = {};
 
     $('#admin .categories .category.item').each(function(index, item){

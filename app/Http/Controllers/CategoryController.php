@@ -21,6 +21,11 @@ class CategoryController extends Controller
     {
     }
 
+    public function all()
+    {
+        return view('categories.all');
+    }
+
     /**
      * Show the application dashboard.
      *

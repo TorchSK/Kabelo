@@ -82,7 +82,6 @@ class ProductService implements ProductServiceContract {
     {
         $filters = $request->get('filters');
         $category = Category::find($request->get('category'));
-
         $sortBy = $request->get('sortBy');
         $sortOrder = $request->get('sortOrder');    
 
@@ -104,6 +103,7 @@ class ProductService implements ProductServiceContract {
         $priceRange[1] = $this->query($priceRangeFilters)->pluck('price')->max();
 
         $makers = $category->products()->get()->unique(['maker']);
+
         $categoryParameters = $category->parameters;
 
 

@@ -45,6 +45,8 @@ Route::post('cart','CartController@set');
 
 
 // Categories
+Route::get('/categories/all','CategoryController@all');
+
 Route::post('category/parameter/add','CategoryController@addParameter');
 Route::get('category/parameter/{id}/edit','CategoryController@editParameter');
 Route::put('category/parameter/{id}','CategoryController@updateParam');

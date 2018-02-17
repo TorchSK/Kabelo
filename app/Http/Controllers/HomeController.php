@@ -29,19 +29,19 @@ class HomeController extends Controller
         if ($request->has('category'))
         {
             $data = $this->productService->list($request);
-            return view('home', $data);
+            return view('home/home', $data);
         }
         else
         {
             $data = [];
         }
 
-        return view('home', $data);
+        return view('home/home', $data);
 
     }
 
     public function welcome()
     {
-        return view('welcome');
+        return view('home/welcome');
     }
 }
