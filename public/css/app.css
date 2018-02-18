@@ -1261,6 +1261,8 @@ a:hover {
   font-weight: 200;
   font-size: 15px;
   margin-top: 15px;
+  word-wrap: wrap;
+  width: 80%;
 }
 .category_images {
   display: -webkit-box;
