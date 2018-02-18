@@ -462,7 +462,7 @@ $('.sort').click(function(){
 })
 
 function filtersInit(){
-  $('.filters  .ui.checkbox').checkbox({
+  $('#filterbar  .ui.checkbox').checkbox({
     onChecked: function(){
       $value = $(this).closest('.checkbox').data('value');
       $text = $(this).closest('.checkbox').find('label').text();

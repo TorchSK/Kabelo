@@ -1,7 +1,7 @@
 <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Výrobcovia</div>
 <div class="active content">
 @foreach($makers as $maker)
-    <div class="ui checkbox item @if($filterCounts['parameters']['makers'][$maker->maker]==0) disabled @endif" data-value="{{$maker->maker}}" data-filter="makers" data-display="Výrobca">
+    <div class="ui checkbox pad item @if($filterCounts['parameters']['makers'][$maker->maker]==0) disabled @endif" data-value="{{$maker->maker}}" data-filter="makers" data-display="Výrobca">
       <input type="checkbox" name="example" @if($activeFilters->has('parameters') && isset($activeFilters->get('parameters')['makers']) && in_array($maker->maker, $activeFilters->get('parameters')['makers'])) checked @endif>
       <label>{{$maker->maker}}</label>
       <count>{{$filterCounts['parameters']['makers'][$maker->maker]}}</count>

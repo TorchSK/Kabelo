@@ -1579,6 +1579,14 @@ count {
   padding: 10px;
   display: block;
   border-radius: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#filterbar .pad.item label {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 #filterbar .pad.item:hover {
   background-color: #FFFFFF;
