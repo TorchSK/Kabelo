@@ -10,6 +10,8 @@ use App\Order;
 use Auth;
 use Excel;
 
+use App\Services\Contracts\ProductServiceContract;
+
 class AdminController extends Controller
 {
     /**
@@ -17,9 +19,10 @@ class AdminController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(ProductServiceContract $productService)
+    {        
         $this->middleware('auth');
+        $this->productService = $productService;
     }
 
     /**
@@ -31,7 +34,9 @@ class AdminController extends Controller
     {
         $data = [
             'makers' => Product::groupBy('maker'),
-            'categories' => Category::orderBy('order','asc')->get()
+            'categories' => Category::orderBy('order','asc')->get(),
+            'categoryCounts' => $this->productService->categoryCounts()
+
         ];
 
         return view('admin.index', $data);
@@ -56,7 +61,8 @@ class AdminController extends Controller
             $data = [
                 'products' => $cat->products()->where('category_id',$category)->get(),
                 'category' => $cat,
-                'categories' => Category::orderBy('order','asc')->get()
+                'categories' => Category::orderBy('order','asc')->get(),
+                'categoryCounts' => $this->productService->categoryCounts()
             ];
         }
         else
@@ -64,7 +70,9 @@ class AdminController extends Controller
             $data = [
                 'products' => Product::doesntHave('categories')->get(),
                 'categories' => Category::orderBy('order','asc')->get(),
-                'category' => 'unknown'
+                'category' => 'unknown',
+                            'categoryCounts' => $this->productService->categoryCounts()
+
             ];
         }
 

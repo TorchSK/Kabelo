@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\Contracts\ProductServiceContract;
 
 use Cookie;
 use Crypt;
@@ -13,6 +14,11 @@ use App\User;
 use App\Cart;
 
 class GlobalComposer {
+
+    public function __construct(ProductServiceContract $productService)
+    {        
+        $this->productService = $productService;
+    }
 
     /**
      * Bind data to the view.
@@ -54,7 +60,10 @@ class GlobalComposer {
         //dd($cart);
         
         $view->with('cart', $cart);
-    
+
+        $categoryCounts = $this->productService->categoryCounts();
+
+        $view->with('categoryCounts', $categoryCounts);
     }
 
 }

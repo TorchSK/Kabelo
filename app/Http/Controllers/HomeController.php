@@ -33,11 +33,12 @@ class HomeController extends Controller
             $cat = Category::whereUrl($category)->first();
             $request['category'] = $cat->id;
             $data = $this->productService->list($request);
+
             return view('home/home', $data);
         }
         else
         {
-            $data = [];
+            $data['categoryCounts'] = $this->productService->categoryCounts();
         }
 
         return view('home/home', $data);

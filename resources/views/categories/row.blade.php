@@ -14,7 +14,7 @@
     @endif
 
         <text>{{$category->name}}</text>
-        <count>{{1}}</count>
+        <count>{{$categoryCounts['categories'][$category->id]}}</count>
     </a>
     </div>
 

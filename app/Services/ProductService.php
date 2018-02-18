@@ -122,7 +122,6 @@ class ProductService implements ProductServiceContract {
             
         }
 
-
         foreach ($categoryParameters as $categoryParameter)
         {
             $filterCounts['parameters'][$categoryParameter->id] = [];
@@ -150,5 +149,35 @@ class ProductService implements ProductServiceContract {
         return $data;
         //return Response::json(['products' => view('products.list', $data)->render(), 'filters' => view('makers', $data)->render(), 'data' => $data]);
     }
+
+
+     public function categoryCounts()
+     {
+        $categoryCounts = [];
+        $categoryCounts['categories'] = [];
+
+        foreach (Category::all() as $category)
+        {
+            $categoryCounts['categories'][$category->id] = $category->products->count();
+
+            if ($category->children->count() > 0)
+            {
+                foreach ($category->children as $child)
+                {
+                    $categoryCounts['categories'][$category->id] += $child->products->count();
+
+                    if ($child->children->count() > 0)
+                    {
+                        foreach ($child->children as $subchild)
+                        {
+                            $categoryCounts['categories'][$category->id] += $subchild->products->count();
+                        }
+                    }
+                }
+            }
+        }
+
+        return $categoryCounts;
+     }
  
 }
