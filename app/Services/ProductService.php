@@ -24,7 +24,6 @@ class ProductService implements ProductServiceContract {
 	public function query($filters, $except=[])
     {
 
-
         $result = Product::leftjoin('product_parameters',function($leftjoin){
             $leftjoin->on('product_parameters.product_id', '=', 'products.id');
             })
@@ -43,6 +42,21 @@ class ProductService implements ProductServiceContract {
                 {
                     $query->whereHas('categories', function($query) use ($filters){
                         $query->where('category_id', $filters['category']);
+
+                        if (Category::find($filters['category'])->children->count() > 0)
+                        {
+                            $query->orWhereIn('category_id', Category::find($filters['category'])->children->pluck('id'));
+                        }
+
+                        if (Category::find($filters['category'])->children->count() > 0)
+                        {
+                            foreach(Category::find($filters['category'])->children as $child)
+                            {
+                                $query->orWhereIn('category_id', Category::find($child->id)->children->pluck('id'));
+                            }
+                        }
+
+                        //dd(Category::find($filters['category'])->parent->id);
                     });
                 }
                 elseif($key=='price')
@@ -81,6 +95,8 @@ class ProductService implements ProductServiceContract {
     public function list(Request $request)
     {
         $filters = $request->get('filters');
+        $filters['category'] = $request->get('category');
+
         $category = Category::find($request->get('category'));
         $sortBy = $request->get('sortBy');
         $sortOrder = $request->get('sortOrder');    
