@@ -1259,13 +1259,15 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   padding: 50px 10%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 .category_images .category_image {
+  margin-bottom: 35px;
+}
+.category_images .divider {
   margin-bottom: 35px;
 }
 .category_image .image {
