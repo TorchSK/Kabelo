@@ -35,6 +35,7 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $category->name = $request->get('name');
+        $category->url = str_slug($request->get('name'));
         $category->parent_id = $request->get('parent_id');
 
         $category->save();

@@ -17,6 +17,16 @@
             </div>
         </div>
         
+        @if (Request::segment(1)=='admin')
+        <div class="sidebar_btn">
+            <a href="/admin/import" class="ui fluid green button"><i class="cloud upload icon"></i>Import zo súboru</a>
+            </div>
+
+            <div class="sidebar_btn">
+            <div class="ui fluid blue button" id="add_category_btn"><i class="add icon"></i>Pridaj kategóriu</div>
+        </div>
+        @endif
+        
         @if (Request::segment(1)!='admin')
         <a href="/categories/all" class="pad item all_products_btn"><i class="cubes icon"></i> Všetky kategórie</a>
         @endif
