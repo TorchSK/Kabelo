@@ -49,23 +49,22 @@ class AdminController extends Controller
 
     public function categoryProducts($category)
     {
-        $category = Category::find($category);
+        $cat = Category::find($category);
 
-        if ($category != 'unknown')
+        if($category != 'unknown')
         {
             $data = [
-                'products' => $category->products()->where('category_id',$category)->get(),
-                'category' => $category,
-            'categories' => Category::orderBy('order','asc')->get()
-
+                'products' => $cat->products()->where('category_id',$category)->get(),
+                'category' => $cat,
+                'categories' => Category::orderBy('order','asc')->get()
             ];
         }
         else
         {
             $data = [
                 'products' => Product::doesntHave('categories')->get(),
-            'categories' => Category::orderBy('order','asc')->get()
-
+                'categories' => Category::orderBy('order','asc')->get(),
+                'category' => 'unknown'
             ];
         }
 

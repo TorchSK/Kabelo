@@ -9,7 +9,7 @@
           <div class="right">
 
 
-            @if (Request::segment(3) != 'unknown')
+            @if ($category!='unknown')
 
             <div class="ui horizontal divider active title">Data</div>
 
@@ -19,7 +19,6 @@
 
             <div class="ui horizontal divider active title">Obrázok</div>
  
-
             <div id="category_image_div">
 
               <div>@include('categories.image')</div>
@@ -67,7 +66,8 @@
             <div class="ui horizontal divider active title">Produkty</div>
 
             <div id="grid">
-              @if (isset($category))
+            
+            @if ($category!='unknown')
             <div class="item new_product_btn">
 				      <a href="/product/create?category={{$category->id}}">
 					   <i class="huge icons">
