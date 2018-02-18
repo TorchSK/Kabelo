@@ -20,7 +20,7 @@
 
     <ul class="content  @if(Request::has('category')  && (Request::get('category') == $category->id || in_array(Request::get('category'), (array)$category->children->pluck('id')->toArray()))) active @endif @if(Request::has('category') && App\Category::find(Request::get('category'))->parent&& App\Category::find(Request::get('category'))->parent->parent_id == $category->id) active @endif">
 
-        @foreach($category->children as $child)
+        @foreach($category->children->sortBy('order') as $child)
             @include('categories.row',['category'=>$child])
         @endforeach
 
