@@ -1241,6 +1241,14 @@ a:hover {
 .ui.button.crop_ok {
   display: none;
 }
+.subcategories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.subcategories .category_image {
+  margin: 0px 8px 15px 8px;
+}
 .subcategories .category_image .image {
   overflow: hidden;
 }
