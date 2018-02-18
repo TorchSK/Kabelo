@@ -998,16 +998,16 @@ $('#import_dropzone').dropzone({
 })
 
 
-$('#filters .tabs .category.tab').click(function(){
-  $('#filters').find('.categories').show();
-  $('#filters .tabs .tab').removeClass('active');
+$('#filterbar .tabs .category.tab').click(function(){
+  $('#cat_div').show();
+  $('#filterbar .tabs .tab').removeClass('active');
   $(this).addClass('active');
 })
 
 
-$('#filters .tabs .params.tab:not(".disabled")').click(function(){
-    $('#filters').find('.categories').hide();
-      $('#filters .tabs .tab').removeClass('active');
+$('#filterbar .tabs .params.tab:not(".disabled")').click(function(){
+    $('#cat_div').hide();
+      $('#filterbar .tabs .tab').removeClass('active');
   $(this).addClass('active');
 })
 

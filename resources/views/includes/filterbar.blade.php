@@ -31,10 +31,12 @@
         <a href="/categories/all" class="pad item all_products_btn"><i class="cubes icon"></i> Všetky kategórie</a>
         @endif
         
+        <div id="cat_div">
         <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Kategórie</div>
 
         <div class="active content">
             @include('categories.categories')
+        </div>
         </div>
 
          <div class="params">
