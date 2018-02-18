@@ -60,10 +60,6 @@ class GlobalComposer {
         //dd($cart);
         
         $view->with('cart', $cart);
-
-        $categoryCounts = $this->productService->categoryCounts();
-
-        $view->with('categoryCounts', $categoryCounts);
     }
 
 }
