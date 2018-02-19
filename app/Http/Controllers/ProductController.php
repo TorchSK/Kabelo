@@ -224,8 +224,7 @@ class ProductController extends Controller
             $parameter->delete();
         }
 
-
-        if ($request->filled('key')[0])
+        if ($request->filled('key'))
         {
             foreach ((array)$request->get('key') as $key => $param)
             {

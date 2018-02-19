@@ -312,7 +312,7 @@ function getActiveFilters(){
 }
 
 function getActiveCategory(){
-  return $('.categories .item.active').data('categoryid');
+  return $('.categories .item.selected').data('categoryid');
 }
 
 function getDesiredSortBy(){
@@ -386,7 +386,7 @@ function doSort(){
   //console.log(getPriceFilter('price'));
 
   $grid = $('#grid').find('grid');
-  $filtersDiv = $('#filters').find('.filters');
+  $filtersDiv = $('#filterbar').find('.params');
 
   $sortBy = getDesiredSortBy();
   $sortOrder = getDesiredSortOrder();
@@ -1005,7 +1005,7 @@ $('#filterbar .tabs .category.tab').click(function(){
 })
 
 
-$('#filterbar .tabs .params.tab:not(".disabled")').click(function(){
+$('#filterbar .tabs .param.tab:not(".disabled")').click(function(){
     $('#cat_div').hide();
       $('#filterbar .tabs .tab').removeClass('active');
   $(this).addClass('active');

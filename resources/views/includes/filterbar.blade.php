@@ -4,7 +4,7 @@
     @if (Request::segment(1)!='admin')
     <div class="tabs">
         <div class="category tab @if(!Request::get('category')) active @endif">Kategórie</div>
-        <div class="params tab @if(Request::get('category')) active @else disabled  @endif">Parametre</div>
+        <div class="param tab @if(Request::get('category')) active @else disabled  @endif">Parametre</div>
     </div>
     @endif
 

@@ -13,7 +13,7 @@
 <div class="ui horizontal divider active title"><i class="dropdown icon"></i>{{$filter->display_key}}</div>
 <div class="active content">
 @foreach($filter->parameters->unique('value') as $parameter)
-    <div class="ui checkbox item filter @if($filterCounts['parameters'][$filter->id][$parameter->value]==0) disabled @endif" data-filter={{$filter->key}} data-filterid="{{$filter->id}}" data-value="{{$parameter->value}}" data-valueid="{{$parameter->id}}" data-display="{{$filter->display_key}}">
+    <div class="ui checkbox pad item filter @if($filterCounts['parameters'][$filter->id][$parameter->value]==0) disabled @endif" data-filter={{$filter->key}} data-filterid="{{$filter->id}}" data-value="{{$parameter->value}}" data-valueid="{{$parameter->id}}" data-display="{{$filter->display_key}}">
       <input type="checkbox" name="example" @if($activeFilters->has('parameters') && isset($activeFilters->get('parameters')[$filter->key]) && in_array($parameter->value, $activeFilters->get('parameters')[$filter->key])) checked @endif>
 
       <label>{{$parameter->value}}</label>
