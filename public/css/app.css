@@ -289,6 +289,20 @@ a:hover {
 .ui.accordion .accordion {
   margin: 0;
 }
+/* Rotate */
+.hover {
+  overflow: hidden;
+}
+.hover img {
+  -webkit-transition: 0.3s ease-in-out;
+  -webkit-transition: 0.15s ease-in-out;
+  transition: 0.15s ease-in-out;
+}
+.hover img:hover {
+  -webkit-transform: rotate(10deg) scale(1.2);
+  transform: rotate(10deg) scale(1.4);
+  border-radius: 4px;
+}
 .covers {
   height: 55vh;
 }
@@ -1276,12 +1290,14 @@ a:hover {
 }
 .category_images .category_image {
   margin-bottom: 35px;
+  overflow: hidden;
 }
 .category_images .divider {
   margin-bottom: 35px;
 }
 .category_image .image {
   overflow: hidden;
+  border-radius: 6px;
 }
 .category_image .image img {
   border-radius: 6px;
