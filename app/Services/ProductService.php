@@ -118,7 +118,7 @@ class ProductService implements ProductServiceContract {
         $priceRange[0] = $this->query($priceRangeFilters)->pluck('price')->min();
         $priceRange[1] = $this->query($priceRangeFilters)->pluck('price')->max();
 
-        $makers = $category->products()->get()->unique(['maker']);
+        $makers = $products->unique(['maker']);
 
         $categoryParameters = $category->parameters;
 
@@ -152,9 +152,19 @@ class ProductService implements ProductServiceContract {
             }
         }
 
+        $params = $category->parameters;
+
+        if($category->children->count() > 0)
+        {
+            foreach ($category->children as $child)
+            {
+                $params = $params->union($child->parameters); 
+            }
+        }
+
         $data = [
             'makers' => $makers,
-            'filters' => $category->parameters,
+            'filters' => $params,
             'products' => $products,
             'activeFilters' => $activeFilters,
             'filterCounts' => $filterCounts,
