@@ -2,9 +2,9 @@
 	<a href="/{{$category->url}}">
 	<div class="image @if (Request::segment(1)!='admin') hover @endif">
 		@if($category->image)
-			<img src="/{{$category->image}}" />
+			<img src="/{{$category->image}}" width="350"/>
 		@else
-			<img src="/img/category.jpg" width="400" />
+			<img src="/img/category.jpg" width="350" />
 		@endif
 
 	</div>
