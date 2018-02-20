@@ -16,7 +16,7 @@ class CreateProductRelationsTable extends Migration {
       $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
       $table->integer('related_product_id')->unsigned()->index();
       $table->foreign('related_product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
-      $table->string('relation_type')
+      $table->string('relation_type');
       $table->timestamps();
     });
   }
