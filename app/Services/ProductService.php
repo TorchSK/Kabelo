@@ -97,6 +97,11 @@ class ProductService implements ProductServiceContract {
         $filters = $request->get('filters');
         $filters['category'] = $request->get('category');
 
+        if (!isset($filters['search']))
+        {
+            $filters['search'] = '';
+        }
+
         $category = Category::find($request->get('category'));
         $sortBy = $request->get('sortBy');
         $sortOrder = $request->get('sortOrder');    
@@ -118,53 +123,62 @@ class ProductService implements ProductServiceContract {
         $priceRange[0] = $this->query($priceRangeFilters)->pluck('price')->min();
         $priceRange[1] = $this->query($priceRangeFilters)->pluck('price')->max();
 
-        $makers = $category->products->unique(['maker']);
-
-        $categoryParameters = $category->parameters;
-
-        foreach($category->children as $child)
+        if ($filters['search'] && !$filters['category'])
         {
-            $categoryParameters = $categoryParameters->union($child->parameters);
-            $makers = $makers->union($child->products->unique(['maker']));
+            $makers = [];
+            $params = [];
+            $filterCounts = [];
         }
-
-
-        $temp = [];
-        $filterCounts['parameters'] = [];
-
-        $filterCounts['parameters']['makers'] = [];
-        $filterCountFilters['parameters']['makers'] = [];
-        foreach ($makers as $maker)
+        else
         {
-            $filterCountFilters = $filters;
-            
-            $filterCountFilters['parameters']['makers'] = [$maker->maker];
-            
-            $filterCounts['parameters']['makers'][$maker->maker] = $this->query($filterCountFilters)->get()->count();
-            
-        }
+            $makers = $category->products->unique(['maker']); 
 
-        foreach ($categoryParameters as $categoryParameter)
-        {
-            $filterCounts['parameters'][$categoryParameter->id] = [];
-            $filterCountFilters = $filters;
+            $categoryParameters = $category->parameters;
 
-            foreach ($categoryParameter->parameters as $productParameter)
-            {   
-                $filterCountFilters['parameters'][$categoryParameter->key] = $productParameter->value;
-                array_push($temp, $filterCountFilters);
-                $filterCounts['parameters'][$categoryParameter->id][$productParameter->value] = $this->query($filterCountFilters, [$categoryParameter->key])->get()->count();
-                unset($filterCountFilters['parameters'][$categoryParameter->key]);
-            }
-        }
-
-        $params = $category->parameters;
-
-        if($category->children->count() > 0)
-        {
-            foreach ($category->children as $child)
+            foreach($category->children as $child)
             {
-                $params = $params->union($child->parameters); 
+                $categoryParameters = $categoryParameters->union($child->parameters);
+                $makers = $makers->union($child->products->unique(['maker']));
+            }
+
+
+            $temp = [];
+            $filterCounts['parameters'] = [];
+
+            $filterCounts['parameters']['makers'] = [];
+            $filterCountFilters['parameters']['makers'] = [];
+            foreach ($makers as $maker)
+            {
+                $filterCountFilters = $filters;
+                
+                $filterCountFilters['parameters']['makers'] = [$maker->maker];
+                
+                $filterCounts['parameters']['makers'][$maker->maker] = $this->query($filterCountFilters)->get()->count();
+                
+            }
+
+            foreach ($categoryParameters as $categoryParameter)
+            {
+                $filterCounts['parameters'][$categoryParameter->id] = [];
+                $filterCountFilters = $filters;
+
+                foreach ($categoryParameter->parameters as $productParameter)
+                {   
+                    $filterCountFilters['parameters'][$categoryParameter->key] = $productParameter->value;
+                    array_push($temp, $filterCountFilters);
+                    $filterCounts['parameters'][$categoryParameter->id][$productParameter->value] = $this->query($filterCountFilters, [$categoryParameter->key])->get()->count();
+                    unset($filterCountFilters['parameters'][$categoryParameter->key]);
+                }
+            }
+
+            $params = $category->parameters;
+
+            if($category->children->count() > 0)
+            {
+                foreach ($category->children as $child)
+                {
+                    $params = $params->union($child->parameters); 
+                }
             }
         }
 
@@ -174,12 +188,10 @@ class ProductService implements ProductServiceContract {
             'products' => $products,
             'activeFilters' => $activeFilters,
             'filterCounts' => $filterCounts,
-            'temp' => $temp,
             'priceRange' => $priceRange
         ];
 
         return $data;
-        //return Response::json(['products' => view('products.list', $data)->render(), 'filters' => view('makers', $data)->render(), 'data' => $data]);
     }
 
 

@@ -40,7 +40,7 @@
         </div>
 
          <div class="params">
-             @if(Request::get('category'))  
+             @if(Request::get('category') && Request::segment(1)!='admin')  
                 @include('home.makers')
              @endif
         </div>

@@ -785,7 +785,7 @@ a:hover {
   background-color: #FFF;
 }
 #product_detail {
-  padding: 100px;
+  padding: 100px 100px 15px 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -942,6 +942,32 @@ a:hover {
 #product_detail #new {
   display: inline-block;
 }
+#product_tabs .tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 20px;
+}
+#product_tabs .tabs .tab {
+  display: inline-block;
+}
+#product_tabs .contents {
+  background-color: #F8F8F8;
+  padding: 80px 200px 100px 200px;
+}
+#product_tabs .contents .content {
+  display: none;
+  padding-top: 25px;
+}
+#product_tabs .contents .content #parameters {
+  font-size: 1.2em;
+}
+#product_tabs .contents .content.active {
+  display: inline-block;
+}
 #create_product_params .row,
 #edit_product_params .row {
   display: -webkit-box;
@@ -1053,6 +1079,12 @@ a:hover {
 }
 #admin .right {
   padding: 0 35px;
+}
+#admin .ui.divider {
+  margin: 40px  0;
+}
+#admin .ui.divider:first-child {
+  margin-top: 15px;
 }
 .new_product_btn {
   font-size: 1.5em;
@@ -1469,13 +1501,7 @@ footer .social {
   font-size: 2em;
 }
 #welcome {
-  border: 13px solid #A5673F;
   -webkit-text-fill-color: #DDD !important;
-}
-@media all and (max-width: 980px) {
-  #welcome {
-    border: 8px solid #A5673F;
-  }
 }
 #welcome input:-webkit-autofill,
 #welcome input:-webkit-autofill:hover,
@@ -1532,7 +1558,7 @@ footer .social {
   margin-bottom: 1px;
 }
 #welcome #cover #login_div .ui.input input {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 count {
   float: right;

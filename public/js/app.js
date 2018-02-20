@@ -611,7 +611,15 @@ $(".product_search_input input").keyup(function(e){
 
   $query = $(this).val();
   removeFilter('search');
-  if ($query!='') {addFilter('search',$query,'hľadaj: '+$query)};
+  if ($query!='') 
+  {
+    addFilter('search',$query,'hľadaj: '+$query)
+  }
+  else
+  {
+    removeFilter('search')
+
+  };
   doSort();
 
 })
@@ -1080,7 +1088,12 @@ $('#admin .categories').nestedSortable({
   }
 });
 
-
+$('#product_tabs .tab').click(function(){
+  $('.tabs .tab').removeClass('brown').addClass('basic');
+  $(this).addClass('brown').removeClass('basic')
+  $('#product_tabs .content').removeClass('active');
+  $('#product_tabs .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
+})
 
 
 });

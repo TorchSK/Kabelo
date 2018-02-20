@@ -8,7 +8,7 @@
     @endif
 
     @if (Request::segment(1)=='admin')
-    <a href="/admin/{{$category->id}}" class="filter">
+    <a href="{{route('admin.category',['category'=>$category->url])}}" class="filter">
     @else
     <a href="/{{$category->url}}" class="filter">
     @endif

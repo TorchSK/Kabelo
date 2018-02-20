@@ -89,5 +89,36 @@
 </div>
 
 
+<div id="product_tabs">
+
+  <div class="tabs">
+    <div class="tab ui brown button" data-tab="parameters">Parametre</div>
+    <div class="tab ui basic button" data-tab="recommended">Doporučene produkty</div>
+    <div class="tab ui basic button" data-tab="ratings">Hodnotenia</div>
+  </div>
+
+  <div class="contents">
+    <div class="content active" data-tab="parameters">
+      <div id="parameters">
+      @if ($product->parameters->count() > 0)
+          <div class="ui bulleted list">
+
+          @foreach ($product->parameters as $parameter)
+              <div class="item"><b>{{$parameter->categoryParameter->display_key}}:</b> {{$parameter->value}}</div>
+          @endforeach
+        </div>
+        @else
+          Žiadne parametre
+        @endif
+      </div>
+    </div>
+    <div class="content" data-tab="recommended">sa</div>
+    <div class="content" data-tab="ratings">sa</div>
+
+  </div>
+
+
+</div>
+
 
 @stop

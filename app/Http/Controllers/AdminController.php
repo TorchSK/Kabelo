@@ -52,18 +52,21 @@ class AdminController extends Controller
     }
 
 
-    public function categoryProducts($category)
+    public function categoryProducts($category, Request $request)
     {
-        $cat = Category::find($category);
+        $cat = Category::where('url',$category)->first();
 
         if($category != 'unknown')
         {
             $data = [
-                'products' => $cat->products()->where('category_id',$category)->get(),
+                'products' => $cat->products,
                 'category' => $cat,
                 'categories' => Category::orderBy('order','asc')->get(),
                 'categoryCounts' => $this->productService->categoryCounts()
             ];
+
+            $request['category'] = $cat->id;
+
         }
         else
         {
@@ -71,7 +74,7 @@ class AdminController extends Controller
                 'products' => Product::doesntHave('categories')->get(),
                 'categories' => Category::orderBy('order','asc')->get(),
                 'category' => 'unknown',
-                            'categoryCounts' => $this->productService->categoryCounts()
+                'categoryCounts' => $this->productService->categoryCounts()
 
             ];
         }

@@ -14,7 +14,7 @@
             <div class="ui horizontal divider active title">Data</div>
 
             <div id="category_data_div">
-              aaa
+              {{$category->name}}
             </div>
 
             <div class="ui horizontal divider active title">Obrázok</div>
