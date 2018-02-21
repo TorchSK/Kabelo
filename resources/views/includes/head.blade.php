@@ -22,6 +22,7 @@
     <script src="/js/rating.js"></script>
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/css/rateyo.css">
 
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/semantic.css">
@@ -38,8 +39,6 @@
     <script src="/js/nestedsortable.js"></script>
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/fontawesome-stars-o.css">
 
     <script src="/js/app.js"></script>
 

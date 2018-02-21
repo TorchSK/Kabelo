@@ -1099,10 +1099,10 @@ $('#product_tabs .tab').click(function(){
   $('#product_tabs .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
 })
 
-$('.rating').barrating({
+$('.rating:not(.disabled)').rateYo({
     theme: 'fontawesome-stars-o',
     initialRating: $('select.rating').data('rating'),
-    onSelect:function(value, text, event){
+    set:function(value, text, event){
       $('#new_rating_modal').modal('setting', {
         autofocus: true,
         onApprove : function() {
@@ -1122,13 +1122,17 @@ $('.rating').barrating({
   });
 
 
-$('.dis_rating').barrating({
+$('.disabled.rating').rateYo({
   readonly: true,
-  theme: 'fontawesome-stars-o'
+  theme: 'fontawesome-stars-o',
+  initialRating: 0,
+  deselectable: true
+
 })
 
-$('.dis_rating').each(function(index, item){
-  $(item).barrating('set', $(item).data('rating'));
+$('.disabled.rating').each(function(index, item){
+  //console.log($(item).data('rating'));
+  $(item).rateYo('rating', $(item).data('rating'));
 })
 
 });
