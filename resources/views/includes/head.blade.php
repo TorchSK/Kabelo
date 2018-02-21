@@ -19,6 +19,7 @@
     <script src="/js/wNumb.js"></script>
     <script src="/js/nouislider.js"></script>
     <script src="/js/cropper.js"></script>
+    <script src="/js/rating.js"></script>
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
 
@@ -36,6 +37,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
     <script src="/js/nestedsortable.js"></script>
 
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/fontawesome-stars-o.css">
 
     <script src="/js/app.js"></script>
 

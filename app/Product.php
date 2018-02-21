@@ -39,6 +39,11 @@ class Product extends Model {
  		return $this->belongsToMany('App\Order');
  	}
 
+  public function ratings()
+  {
+    return $this->morphMany('App\Rating','ratingable');
+  }
+
 
 	public function setSaleAttribute($value)
   	{

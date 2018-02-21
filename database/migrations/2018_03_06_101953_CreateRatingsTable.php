@@ -18,7 +18,7 @@ class CreateRatingsTable extends Migration {
       $table->integer('user_id')->unsigned()->index();
       $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
       $table->tinyInteger('value');
-      $table->string('text');
+      $table->string('text')->nullable();
       $table->timestamp('created_at')->nullable();
       $table->timestamp('updated_at')->nullable();
     });

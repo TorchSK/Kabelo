@@ -138,3 +138,33 @@ a{
 	transform: rotate(2deg) scale(1.1);
 	border-radius: 4px;
 }
+
+.br-wrapper{
+	display: inline-block;
+}
+
+
+.effect-1 {
+  padding-top: 10px;
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    transition: transform .5s ease;
+  }
+  &:before {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #666;
+    transform:  scaleX(0);
+  }
+  &:hover:before {
+    transform:  scaleX(1);
+  }
+}
+
+

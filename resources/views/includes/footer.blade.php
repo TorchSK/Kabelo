@@ -87,3 +87,29 @@
       </div>
     </div>
   </div>
+
+
+  <div class="ui mini modal" id="new_rating_modal">
+            
+    <div class="header">
+      Pridať hodnotienie
+    </div>
+    <div class="content">
+       <div class="ui form">
+        <h4 class="ui dividing header">Napíšte krátky komentár</h4>
+        <div class="field">
+          <label>Komentár</label>
+          <textarea></textarea>
+        </div>
+        </div>
+      </div>
+    <div class="actions">
+      <div class="ui red deny button">
+        Storno
+      </div>
+      <div class="ui positive right labeled icon button">
+        OK
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>

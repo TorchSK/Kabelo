@@ -68,6 +68,7 @@ Route::get('product/search/{query}','ProductController@search');
 Route::get('product/{id}/parameters/options','ProductController@paramOptions');
 Route::get('product/list','ProductController@list');
 Route::post('product/{productid}/change/category/{categoryid}','ProductController@changeCategory');
+Route::post('product/{productid}/rating/','ProductController@addRating');
 
 Route::resource('product','ProductController');
 

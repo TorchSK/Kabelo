@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div id="under_cover">               
+    <div class="under_cover">               
       &nbsp;
     </div>
 
@@ -29,7 +29,7 @@
 
             <div class="caption">
             @if(App\Category::find(Request::get('category'))->parent_id)
-                <a href="?category={{App\Category::find(Request::get('category'))->parent_id}}">{{App\Category::find(App\Category::find(Request::get('category'))->parent_id)->name}}</a> -
+                <a class="effect-1" href="/{{App\Category::find(Request::get('category'))->parent->url}}">{{App\Category::find(App\Category::find(Request::get('category'))->parent_id)->name}}</a> -
             @endif
                 <a>{{App\Category::find(Request::get('category'))->name}}</a>
             </div>
@@ -78,6 +78,10 @@
 
         </div>
 
+    </div>
+
+        <div class="under_cover">               
+      &nbsp;
     </div>
 
 @stop

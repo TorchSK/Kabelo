@@ -22,6 +22,11 @@ $('#header .account.item').popup({
 });
 
 $('.ui.accordion').accordion({
+  exclusive: false
+}); 
+
+
+$('#filterbar .ui.accordion').accordion({
   exclusive: false,
     selector    : {
     accordion : '.accordion',
@@ -29,8 +34,7 @@ $('.ui.accordion').accordion({
     trigger   : '.title i',
     content   : '.content'
   }
-})
-; 
+}); 
 
 $('.register_form').click(function(){
 	$popup = $('#auth_popup');
@@ -1094,6 +1098,28 @@ $('#product_tabs .tab').click(function(){
   $('#product_tabs .content').removeClass('active');
   $('#product_tabs .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
 })
+
+$('.rating').barrating({
+    theme: 'fontawesome-stars-o',
+    initialRating: $('select.rating').data('rating'),
+    onSelect:function(value, text, event){
+      $('#new_rating_modal').modal('setting', {
+        autofocus: true,
+        onApprove : function() {
+          $text = $('#new_rating_modal textarea').val();
+          $id = $('#product_detail').data('id');
+          $.ajax({
+            type: "POST",
+            url: "/product/"+$id+"/rating",
+            data: {value: value},
+            success: function(){
+              location.reload();
+            }
+          })
+        }
+        }).modal('show');
+    }
+  });
 
 
 });

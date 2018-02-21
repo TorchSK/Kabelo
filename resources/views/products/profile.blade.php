@@ -98,7 +98,7 @@
   </div>
 
   <div class="contents">
-    <div class="content active" data-tab="parameters">
+    <div class="content par active" data-tab="parameters">
       <div id="parameters">
       @if ($product->parameters->count() > 0)
           <div class="ui bulleted list">
@@ -112,8 +112,21 @@
         @endif
       </div>
     </div>
-    <div class="content" data-tab="recommended">sa</div>
-    <div class="content" data-tab="ratings">sa</div>
+    <div class="content rec" data-tab="recommended">sa</div>
+    <div class="content rat" data-tab="ratings">
+      
+      <div class="wrapper ct">
+        <div class="rating_number">@if($product->ratings->pluck('value')->avg() > 0) {{$product->ratings->pluck('value')->avg()}} @else Žiadne hodnotenia @endif</div>
+        <select class="rating" @if($product->ratings->pluck('value')->avg() > 0) data-rating="{{$product->ratings->pluck('value')->avg()}}" @else data-rating="2.5" @endif">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select>
+      </div>
+
+    </div>
 
   </div>
 

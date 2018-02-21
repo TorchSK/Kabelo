@@ -76,8 +76,8 @@ class UserController extends Controller
         $cart->price  = 0;
         $cart->delivery_method = '';
         $cart->payment_method = '';
-        $cart->invoice_address = '';
-        $cart->delivery_address = '';
+        $cart->invoice_address = '{}';
+        $cart->delivery_address = '{}';
         $cart->delivery_address_flag = 0;
 
         $cart->save();

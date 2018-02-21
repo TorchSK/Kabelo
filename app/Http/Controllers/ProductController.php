@@ -7,10 +7,12 @@ use App\Product;
 use App\Category;
 use App\Parameter;
 use App\File as ProductFile;
+use App\Rating;
 
 use Image;
 use File;
 use Response;
+use Auth;
 
 use App\Services\Contracts\ProductServiceContract;
 
@@ -155,9 +157,17 @@ class ProductController extends Controller
     }
 
     public function list(Request $request){
-        $data = $this->productService->list($request);
+        if (!$request->has('filters') && !$request->has('category'))
+        {
+            return Response::json(['products' => view('home.initial')->render()]);   
+        }
+        else
+        {
+            $data = $this->productService->list($request);
 
-        return Response::json(['products' => view('products.list', $data)->render(), 'filters' => view('home.makers', $data)->render(), 'data' => $data]);
+            return Response::json(['products' => view('products.list', $data)->render(), 'filters' => view('home.makers', $data)->render(), 'data' => $data]);   
+        }
+
     }
 
 
@@ -256,6 +266,19 @@ class ProductController extends Controller
 
         return view('products.list', $data);
 
+    }
+
+    public function addRating($id, Request $request)
+    {
+        $product = Product::find($id);
+        $rating = new Rating();
+        $rating->value = $request->get('value');
+        $rating->text = $request->get('text');
+        $rating->user_id = Auth::user()->id;
+
+        $product->ratings()->save($rating);
+
+        return 1;
     }
 
     public function destroy($id)
