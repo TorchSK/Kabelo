@@ -1005,6 +1005,31 @@ a:hover {
 #product_tabs .rating_number {
   font-size: 30px;
   margin-bottom: 15px;
+  font-weight: 900;
+}
+#product_tabs .rating_number span {
+  font-weight: 200;
+  font-size: 20px;
+  margin-left: 10px;
+}
+#product_tabs .ratings_list {
+  margin-top: 35px;
+}
+#product_tabs .ratings_list .rating_div {
+  text-align: left;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 14px !important;
+}
+#product_tabs .ratings_list .rating_div .user {
+  font-size: 14px;
 }
 #create_product_params .row,
 #edit_product_params .row {

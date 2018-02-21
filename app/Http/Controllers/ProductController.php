@@ -8,6 +8,7 @@ use App\Category;
 use App\Parameter;
 use App\File as ProductFile;
 use App\Rating;
+use App\ProductRelation;
 
 use Image;
 use File;
@@ -248,6 +249,15 @@ class ProductController extends Controller
         }
 
         $this->uploadImages($product);
+
+        foreach ($request->get('related_products') as $relprod)
+        {   
+            $relatedProduct = new ProductRelation();
+            $relatedProduct->product_id = $product->id;
+            $relatedProduct->related_product_id = $relprod;
+            $relatedProduct->relation_type = 0;
+            $relatedProduct->save();
+        }
 
         return redirect('/'.$product->maker.'/'.$product->code.'/detail');
     }

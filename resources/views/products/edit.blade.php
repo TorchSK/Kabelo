@@ -157,7 +157,18 @@
     <div class="ui teal button" id="edit_product_add_param_row">Pridaj</div>
 
 
+    <div class="ui header">Doporúčane produkty</div>
 
+    <div class="ui fluid multiple search normal selection dropdown">
+      <input type="hidden" name="related_products[]">
+      <i class="dropdown icon"></i>
+      <div class="default text">Hľadať produkt</div>
+      <div class="menu">
+        @foreach(App\Product::where('id', "!=", $product->id)->get() as $pro)
+        <div class="item" data-value="{{$pro->id}}">{{$pro->name}}</div>
+        @endforeach
+      </div>
+    </div>
 
 
  </div>

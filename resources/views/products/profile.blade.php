@@ -92,9 +92,9 @@
 <div id="product_tabs">
 
   <div class="tabs">
-    <div class="tab ui brown button" data-tab="parameters">Parametre</div>
-    <div class="tab ui basic button" data-tab="recommended">Doporučene produkty</div>
-    <div class="tab ui basic button" data-tab="ratings">Hodnotenia</div>
+    <div class="tab ui brown button" data-tab="parameters">Parametre ({{$product->parameters->count()}})</div>
+    <div class="tab ui basic button" data-tab="recommended">Doporučene produkty ({{$product->relatedProducts->count()}})</div>
+    <div class="tab ui basic button" data-tab="ratings">Hodnotenia ({{$product->ratings->count()}})</div>
   </div>
 
   <div class="contents">
@@ -112,11 +112,19 @@
         @endif
       </div>
     </div>
-    <div class="content rec" data-tab="recommended">sa</div>
+    <div class="content rec" data-tab="recommended">
+      <div id="grid">
+
+      @foreach($product->relatedProducts as $relprod)
+        @include('products.row',['product'=>$relprod])
+      @endforeach
+
+      </div>
+    </div>
     <div class="content rat" data-tab="ratings">
       
       <div class="wrapper ct">
-        <div class="rating_number">@if($product->ratings->pluck('value')->avg() > 0) {{$product->ratings->pluck('value')->avg()}} @else Žiadne hodnotenia @endif</div>
+        <div class="rating_number"><number>@if($product->ratings->pluck('value')->avg() > 0) {{$product->ratings->pluck('value')->avg()}}</number> @else Žiadne hodnotenia @endif <span>({{$product->ratings->count()}} hodnotení)</span></div>
         <select class="rating" @if($product->ratings->pluck('value')->avg() > 0) data-rating="{{$product->ratings->pluck('value')->avg()}}" @else data-rating="2.5" @endif">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -124,6 +132,25 @@
         <option value="4">4</option>
         <option value="5">5</option>
         </select>
+
+        <div class="ratings_list">
+          @foreach($product->ratings as $rating)
+            <div class="rating_div">
+              <div class="user">{{$rating->user->email}}</div>
+              <div class="value">
+
+                  <select class="dis_rating" data-rating="{{$rating->value}}">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    </select>
+
+              </div>
+            </div>
+          @endforeach
+        </div>
       </div>
 
     </div>

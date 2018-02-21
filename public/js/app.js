@@ -1122,6 +1122,15 @@ $('.rating').barrating({
   });
 
 
+$('.dis_rating').barrating({
+  readonly: true,
+  theme: 'fontawesome-stars-o'
+})
+
+$('.dis_rating').each(function(index, item){
+  $(item).barrating('set', $(item).data('rating'));
+})
+
 });
 
 

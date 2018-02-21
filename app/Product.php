@@ -19,6 +19,12 @@ class Product extends Model {
  		return $this->hasMany('App\Parameter');
  	}
 
+    public function relatedProducts() 
+    {
+    return $this->hasManyThrough('App\Product', 'App\ProductRelation','product_id','id','id','related_product_id');
+  }
+
+
  	public function image() 
   	{
  		return $this->hasOne('App\File')->where('type','image')->where('primary',1);
