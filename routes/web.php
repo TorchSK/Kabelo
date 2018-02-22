@@ -106,3 +106,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 });
 
 Route::get('cookie', 'AdminController@cookie');
+Route::get('connectors/guide', 'UtilController@connectorsGuide');

@@ -1663,6 +1663,9 @@ count {
   background-color: #21BA45;
   color: #1B1C1D;
 }
+#nav .item:nth-child(3) {
+  background-color: #DB2828;
+}
 #nav .item:nth-child(3):hover {
   background-color: #DB2828;
 }
@@ -1672,6 +1675,57 @@ count {
 }
 #nav .item:last-child:hover {
   background-color: #2185D0;
+}
+.connector_list {
+  margin: 35px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.connector_list .item {
+  width: 250px;
+  margin: 0 15px 30px 15px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 2px #CCC;
+          box-shadow: 0 0 2px #CCC;
+}
+.connector_list .item .image {
+  background-color: rgba(0, 0, 0, 0.03);
+  text-align: center;
+}
+.connector_list .item .image img {
+  display: inline-block;
+  width: 80%;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.connector_list .item .image img:hover {
+  -webkit-filter: grayscale(0%);
+          filter: grayscale(0%);
+}
+.connector_list .item .name {
+  font-weight: 900;
+  margin: 15px 0;
+  text-align: center;
+}
+.connector_list .item .text {
+  text-align: justify;
+}
+h1.header {
+  text-align: center;
+  margin: 55px 0;
+  font-size: 2.5em;
+  font-weight: 200;
 }
 #filterbar {
   background-color: rgba(0, 0, 0, 0.05);
