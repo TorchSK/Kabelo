@@ -1099,10 +1099,7 @@ $('#product_tabs .tab').click(function(){
   $('#product_tabs .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
 })
 
-$('.rating:not(.disabled)').rateYo({
-    theme: 'fontawesome-stars-o',
-    initialRating: $('select.rating').data('rating'),
-    set:function(value, text, event){
+$('.rating:not(.disabled)').rateYo().on("rateyo.set", function(e, data){
       $('#new_rating_modal').modal('setting', {
         autofocus: true,
         onApprove : function() {
@@ -1111,22 +1108,18 @@ $('.rating:not(.disabled)').rateYo({
           $.ajax({
             type: "POST",
             url: "/product/"+$id+"/rating",
-            data: {value: value},
+            data: {value: data.rating},
             success: function(){
               location.reload();
             }
           })
         }
         }).modal('show');
-    }
-  });
+    });
 
 
 $('.disabled.rating').rateYo({
-  readonly: true,
-  theme: 'fontawesome-stars-o',
-  initialRating: 0,
-  deselectable: true
+  readOnly: true,
 
 })
 
