@@ -61,7 +61,7 @@ $('.login_form').submit(function(){
 
 });
 
-$('#add_category_btn').click(function(){
+$('.add_category_btn').click(function(){
 	$('#add_category_modal').modal('setting', {
     autofocus: false,
     onApprove : function() {
@@ -1023,7 +1023,9 @@ $('#filterbar .tabs .param.tab:not(".disabled")').click(function(){
   $(this).addClass('active');
 })
 
-$('.ui.dropdown').dropdown();
+$('.ui.dropdown').dropdown({
+  allowCategorySelection: true
+});
 
 $('#category_image_dropzone').dropzone({
   success: function(file, response){

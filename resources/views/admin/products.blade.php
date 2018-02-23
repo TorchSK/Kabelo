@@ -11,10 +11,20 @@
 
             @if ($category!='unknown')
 
-            <div class="ui horizontal divider active title">Data</div>
+            <div class="ui horizontal divider active title">Podkategórie</div>
 
-            <div id="category_data_div">
-              {{$category->name}}
+            <div class="subcategories" id="category_subcat_div">
+              @foreach($category->children->sortBy('order') as $child)
+                @include('categories.image',['category'=>$child])
+              @endforeach 
+
+              <div class="add_category_btn">
+                <i class="big icons">
+                  <i class="big thin brown circle icon"></i>
+                  <i class="plus brown icon"></i>
+                </i>
+                <div class="text">Pridaj subkategóriu</div>
+              </div>
             </div>
 
             <div class="ui horizontal divider active title">Obrázok</div>

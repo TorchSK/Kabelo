@@ -6,20 +6,20 @@
 	<div class="connector_list">
 
 
-		<div class="item">
+		<a class="item">
 			<div class="image"><img src="/img/connectors/audio.png" /></div>
 			<div class="name">Audio</div>
 			<div class="text">
 				Audio konektory ako napr. 3.5mm, RCA a XLR použitelné napríklad v systémoch domáceho kina alebo Vašom osobnom MP3 prehrávači. 
 			</div>
-		</div>
-		<div class="item">
+		</a>
+		<a class="item">
 			<div class="image"><img src="/img/connectors/video.png" /></div>
 			<div class="name">Video</div>
 			<div class="text">
 				Audio konektory ako napr. 3.5mm, RCA a XLR použitelné napríklad v systémoch domáceho kina alebo Vašom osobnom MP3 prehrávači. 
 			</div>
-		</div>
+		</a>
 		<div class="item">
 			<div class="image"><img src="/img/connectors/audio.jpg" /></div>
 			<div class="name">Video</div>

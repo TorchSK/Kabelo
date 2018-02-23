@@ -23,7 +23,7 @@
             </div>
 
             <div class="sidebar_btn">
-            <div class="ui fluid blue button" id="add_category_btn"><i class="add icon"></i>Pridaj kategóriu</div>
+            <div class="ui fluid blue button add_category_btn"><i class="add icon"></i>Pridaj kategóriu</div>
         </div>
         @endif
         

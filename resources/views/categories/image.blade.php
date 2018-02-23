@@ -9,10 +9,9 @@
 
 	</div>
 
-	@if (Request::segment(1)!='admin')
 	<div class="name">
 		{{$category->name}}
 	</div>
-	@endif
+	
 	</a>
 </div>
