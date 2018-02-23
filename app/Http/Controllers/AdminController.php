@@ -25,11 +25,20 @@ class AdminController extends Controller
         $this->productService = $productService;
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function dashboard()
+    {
+        $data = [
+            'makers' => Product::groupBy('maker'),
+            'categories' => Category::orderBy('order','asc')->get(),
+            'categoryCounts' => $this->productService->categoryCounts()
+
+        ];
+
+        return view('admin.dashboard', $data);
+    }
+
+    
     public function manageProducts()
     {
         $data = [
@@ -95,8 +104,19 @@ class AdminController extends Controller
             'orders' => Order::all()
         ];
 
-        return view('orders.manage', $data);
+        return view('admin.orders', $data);
     }
+
+
+    public function settings()
+    {
+        $data = [
+            'orders' => Order::all()
+        ];
+
+        return view('admin.settings', $data);
+    }
+
 
     public function import()
     {

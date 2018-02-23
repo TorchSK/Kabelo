@@ -1,7 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 @section('content')
 
-    <div id="admin" class="flex">
 
     @include('admin.sidebar')
 
@@ -19,8 +18,5 @@
 		@endif
 
     </div>
-
-
-	</div>
 
 @stop

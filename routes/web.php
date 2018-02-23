@@ -10,6 +10,24 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+// Admin
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
+{
+	Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
+	Route::get('/products', 'AdminController@manageProducts')->name('admin.products');
+	Route::get('/orders/', 'AdminController@manageOrders')->name('admin.orders');
+	Route::get('/users/', 'AdminController@manageUsers')->name('admin.users');
+	Route::get('/import/', 'AdminController@import')->name('admin.import');
+	Route::post('/import/', 'AdminController@postImport')->name('admin.postImport');
+	Route::get('/category/{category}', 'AdminController@categoryProducts')->name('admin.category');
+	Route::get('/settings/', 'AdminController@settings')->name('admin.settings');
+
+});
+
+
+
 Route::get('/welcome', 'HomeController@welcome')->name('welcome');
 Route::post('/login', 'UserController@postLogin')->name('postLogin');
 Route::get('/login', 'UserController@getLogin')->name('getLogin');
@@ -92,18 +110,6 @@ Route::resource('order','OrderController');
 Route::get('email/send/welcome/{userid}', 'UserController@sendActivationEmail');
 });
 
-
-// Admin
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
-{
-	Route::get('/products', 'AdminController@manageProducts')->name('admin.manageProducts');
-	Route::get('/orders/', 'AdminController@manageOrders')->name('admin.manageOrders');
-	Route::get('/users/', 'AdminController@manageUsers')->name('admin.manageUsers');
-	Route::get('/import/', 'AdminController@import')->name('admin.import');
-	Route::post('/import/', 'AdminController@postImport')->name('admin.postImport');
-	Route::get('/category/{category}', 'AdminController@categoryProducts')->name('admin.category');
-
-});
 
 Route::get('cookie', 'AdminController@cookie');
 Route::get('connectors/guide', 'UtilController@connectorsGuide');

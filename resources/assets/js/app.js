@@ -1130,6 +1130,23 @@ $('.disabled.rating').each(function(index, item){
   $(item).rateYo('rating', $(item).data('rating'));
 })
 
+
+$('.dashboard_tabs .new.tab').click(function(){
+  $('.dashboard_tabs .overall.tab').removeClass('blue').addClass('basic');
+  $(this).addClass('blue').removeClass('basic');
+  $('.admin_dashboard .new.boxes').removeClass('hidden');
+  $('.admin_dashboard .overall.boxes').addClass('hidden');
+});
+
+
+$('.dashboard_tabs .overall.tab').click(function(){
+  $('.dashboard_tabs .new.tab').removeClass('blue').addClass('basic');
+  $(this).addClass('blue').removeClass('basic');
+  $('.admin_dashboard .new.boxes').addClass('hidden');
+  $('.admin_dashboard .overall.boxes').removeClass('hidden');
+});
+
+
 });
 
 

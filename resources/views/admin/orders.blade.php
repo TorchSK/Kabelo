@@ -1,11 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 @section('content')
-
-<div class="pad dark wrapper ct">
-<div class="order_history container ct">
 	
-	<div class="header">Správa objednávok</div>
-
 	<div class="orders">
 	<div class="ui horizontal divider">Otvorené objednávky</div>
 
@@ -20,6 +15,4 @@
 	@endforeach
 	</div>
 
-</div>
-</div>
 @stop

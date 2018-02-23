@@ -37,9 +37,7 @@
                 @if(Auth::check() && Auth::user()->admin)
                   <div class="ui horizontal divider"><i class="caret down icon"></i> Admin <i class="caret down icon"></i></div>
 
-                  <a href="{{route('admin.manageProducts')}}" class="row"><i class="setting icon"></i> Administruj produkty</a>
-                  <a href="{{route('admin.manageOrders')}}" class="row"><i class="hourglass start icon"></i> Čakajúce objednávky</a>
-                  <a href="{{route('admin.manageUsers')}}" class="row"><i class="users icon"></i> Správa uživateľov</a>
+                  <a href="{{route('admin.dashboard')}}" class="row"><i class="setting icon"></i> Administrácia</a>
 
                 @endif
 
