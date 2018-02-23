@@ -491,11 +491,11 @@ function filtersInit(){
 
 
 $('.categories .item i.plus').click(function(e){
-  //$(this).toggleClass('minus plus');
+  $(this).toggleClass('minus plus');
 })
 
 $('.categories .item i.minus').click(function(e){
-  //$(this).toggleClass('minus plus').find('.content').toggle();
+  $(this).toggleClass('minus plus').toggle();
 })
 
 
