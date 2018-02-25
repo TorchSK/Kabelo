@@ -1081,7 +1081,7 @@ $('.covers').flickity({
 });
 
 
-$('#admin .categories').nestedSortable({
+$('.admin_wrapper .categories').nestedSortable({
   handle: 'div',
   items: 'li',
   toleranceElement: '> div',
@@ -1090,7 +1090,7 @@ $('#admin .categories').nestedSortable({
   relocate: function(event, ui){
     $data = {};
 
-    $('#admin .categories .category.item').each(function(index, item){
+    $('.admin_wrapper .categories .category.item').each(function(index, item){
       $data[$(item).data('categoryid')] = index;
     });
     console.log($data);

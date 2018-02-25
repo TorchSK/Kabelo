@@ -1136,6 +1136,10 @@ a:hover {
 .admin_wrapper .ui.divider:first-child {
   margin-top: 15px;
 }
+.admin_wrapper #filterbar .categories .item {
+  -webkit-transition: all 0s;
+  transition: all 0s;
+}
 .admin_tabs {
   background-color: rgba(0, 0, 0, 0.1);
   display: -webkit-box;
