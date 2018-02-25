@@ -351,12 +351,21 @@ function initPriceSlider(){
 
       var priceSlider = document.getElementById('price_slider');
 
+      if ($('#grid_stats').data('maxprice'))
+      {
+        $max = $('#grid_stats').data('maxprice')
+      }
+      else
+      {
+        $max = 1;
+      }
+
       noUiSlider.create(priceSlider, {
         start: [ getPriceFilter('price')[0], getPriceFilter('price')[1]],
         connect: true,
         range: {
           'min': 0,
-          'max': $('#grid_stats').data('maxprice')
+          'max': $max
         },
         pips: { 
           mode: 'count', 
@@ -490,12 +499,8 @@ function filtersInit(){
 
 
 
-$('.categories .item i.plus').click(function(e){
+$('.categories .item .icon').click(function(e){
   $(this).toggleClass('minus plus');
-})
-
-$('.categories .item i.minus').click(function(e){
-  $(this).toggleClass('minus plus').toggle();
 })
 
 
@@ -1094,11 +1099,11 @@ $('#admin .categories').nestedSortable({
   }
 });
 
-$('#product_tabs .tab').click(function(){
+$('.tabs .tab').click(function(){
   $('.tabs .tab').removeClass('brown').addClass('basic');
   $(this).addClass('brown').removeClass('basic')
-  $('#product_tabs .content').removeClass('active');
-  $('#product_tabs .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
+  $('.tabs .content').removeClass('active');
+  $('.tabs .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
 })
 
 $('.rating:not(.disabled)').rateYo().on("rateyo.set", function(e, data){
@@ -1145,6 +1150,102 @@ $('.dashboard_tabs .overall.tab').click(function(){
   $('.admin_dashboard .new.boxes').addClass('hidden');
   $('.admin_dashboard .overall.boxes').removeClass('hidden');
 });
+
+
+$('.add_delivery_method_btn').click(function(){
+    $('#add_delivery_method_modal').modal('setting', {
+    onApprove : function() {
+      $key = $('#add_delivery_method_key_input').val();
+      $name = $('#add_delivery_method_name_input').val();
+      
+      $.ajax({
+        type: "POST",
+        url: "/admin/delivery/",
+        data: {name: $name, key:$key},
+        success: function(){
+          location.reload();
+        }
+      })
+    }
+  }).modal('show');
+})
+
+
+
+$('.add_payment_method_btn').click(function(){
+    $('#add_payment_method_modal').modal('setting', {
+    onApprove : function() {
+      $key = $('#add_payment_method_key_input').val();
+      $name = $('#add_payment_method_name_input').val();
+      
+      $.ajax({
+        type: "POST",
+        url: "/admin/payment/",
+        data: {name: $name, key:$key},
+        success: function(){
+          location.reload();
+        }
+      })
+    }
+  }).modal('show');
+})
+
+
+$(document).on('click','.admin_method_list i.action', function(){
+  $row = $(this).closest('tr');
+  $type = $(this).closest('tbody').data('type');
+  $id = $row.data('id');
+  $this = $(this);
+  $key = $row.find('td:first-child').text();
+  $name = $row.find('td:nth-child(2)').text();
+  $desc = $row.find('td:nth-child(3)').text();
+  $icon = $row.find('.ui.dropdown').dropdown('get value');
+
+
+  if ($(this).hasClass('edit'))
+  {
+      $row.find('i.red').css('display','inline-block');
+      $(this).toggleClass('edit check square green');
+
+      $row.find('td:not(:last-child):not(:nth-child(4))').prop('contenteditable',true).addClass('editable');
+      $row.find('.ui.dropdown').show();
+      $row.find('td:nth-child(4)>i.icon').hide();
+  }
+  else
+  {
+      $.ajax({
+        type: "PUT",
+        url: "/admin/"+$type+"/"+$id,
+        data: {name:$name, key: $key, desc:$desc, icon: $icon},
+        success: function(){
+            $this.toggleClass('edit check square green');
+            isEditable=$row.is('.editable');
+            $row.find('td:not(:last-child)').prop('contenteditable',false).removeClass('editable');
+            $row.find('i.red').hide();
+            $row.find('.ui.dropdown').hide();
+            $row.find('td:nth-child(4)>i.icon').attr('class','').addClass('big icon '+$icon).show();
+        }
+      })
+  };
+})
+
+$('.admin_method_list i.red').click(function(){
+  $(this).hide();
+  $row = $(this).closest('tr');
+  $row.find('td:not(:last-child)').prop('contenteditable',false).removeClass('editable');
+  $('.admin_method_list i.green.square.check').toggleClass('green square check edit');
+              $row.find('.ui.dropdown').hide();
+            $row.find('td:nth-child(4)>i.icon').show();
+})
+
+
+
+$('.tabbs .tabb').click(function(){
+  $('.tabbs .tabb').removeClass('brown').addClass('basic');
+  $(this).addClass('brown').removeClass('basic')
+  $('.tabbs .content').removeClass('active');
+  $('.tabbs .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
+})
 
 
 });

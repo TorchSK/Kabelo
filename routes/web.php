@@ -23,6 +23,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::post('/import/', 'AdminController@postImport')->name('admin.postImport');
 	Route::get('/category/{category}', 'AdminController@categoryProducts')->name('admin.category');
 	Route::get('/settings/', 'AdminController@settings')->name('admin.settings');
+	Route::post('/delivery', 'AdminController@addDeliveryMethod');
+	Route::post('/payment', 'AdminController@addPaymentMethod');
+	Route::put('/delivery/{id}', 'AdminController@editDeliveryMethod');
+	Route::put('/payment/{id}', 'AdminController@editPaymentMethod');
+	Route::get('/order/{id}', 'AdminController@orderDetail')->name('admin.orderDetail');
 
 });
 
@@ -113,3 +118,4 @@ Route::get('email/send/welcome/{userid}', 'UserController@sendActivationEmail');
 
 Route::get('cookie', 'AdminController@cookie');
 Route::get('connectors/guide', 'UtilController@connectorsGuide');
+

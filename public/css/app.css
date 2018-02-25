@@ -334,6 +334,14 @@ a:hover {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
 }
+.editable {
+  font-style: italic;
+  -webkit-box-shadow: inset 0 0 0 4px #fff, inset 0 0 0 5px #DDD;
+          box-shadow: inset 0 0 0 4px #fff, inset 0 0 0 5px #DDD;
+}
+.ui.table {
+  margin: 0px;
+}
 .covers {
   height: 55vh;
 }
@@ -584,34 +592,6 @@ a:hover {
 }
 #grid .item .labels .label {
   display: inline-block;
-}
-#grid .tabbs {
-  background-color: rgba(0, 0, 0, 0.03);
-  margin-bottom: 35px;
-}
-#grid .tabbs .tabb {
-  display: inline-block;
-  padding: 16px 25px;
-  margin-right: -4px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  font-size: 1.1em;
-  cursor: pointer;
-}
-#grid .tabbs .tabb:first-child {
-  margin-left: -15px;
-}
-#grid .tabbs .tabb i {
-  margin-right: 10px;
-  font-size: 1.1em;
-}
-#grid .tabbs .tabb.active {
-  background-color: #00B5AD;
-  color: #FFFFFF;
-}
-#grid .tabbs .tabb:hover {
-  background-color: #00B5AD;
-  color: #FFFFFF;
 }
 #grid .sorts {
   margin-bottom: 25px;
@@ -1235,18 +1215,20 @@ a:hover {
   display: none;
 }
 .admin_dashboard .box {
-  background-color: #FFFFFF;
   width: 48%;
   margin: 0 2% 2% 0;
   border-radius: 5px;
-  padding: 25px;
 }
 .admin_dashboard .box .caption {
   font-size: 1.5em;
   font-weight: 200;
 }
+.admin_dashboard .box table tbody td {
+  font-weight: 300 !important;
+}
 .admin_settings {
   padding: 2%;
+  width: 50%;
 }
 .new_product_btn {
   font-size: 1.5em;
@@ -1335,6 +1317,85 @@ a:hover {
   font-weight: 900;
   font-size: 1.2em;
   margin-top: 5px;
+}
+.admin_method_list i.icon {
+  cursor: pointer;
+}
+.admin_method_list i.icon.red {
+  display: none;
+}
+.admin_method_list .ui.dropdown {
+  display: none;
+}
+.order_detail {
+  padding: 2%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.order_detail .section {
+  padding: 1% 0;
+}
+.order_detail .section:first-child {
+  padding-top: 0;
+}
+.order_detail .header.section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: dashed 1px #CCC;
+}
+.order_detail .header.section .status_div text {
+  font-size: 2em;
+  font-weight: 200;
+  margin-right: 10px;
+}
+.order_detail .header.section .new_statuses text {
+  font-size: 2em;
+  font-weight: 200;
+  margin-right: 10px;
+}
+.order_detail .header.section .status.label {
+  font-weight: 300;
+}
+.order_detail .header.section .status.label[data-statusid="1"] {
+  background-color: #FBBD08;
+  color: #FFFFFF;
+}
+.order_detail .header.section .status.label[data-statusid="2"] {
+  background-color: #00B5AD;
+  color: #FFFFFF;
+}
+.order_detail .header.section .status.label[data-statusid="3"] {
+  background-color: #2185D0;
+  color: #FFFFFF;
+}
+.order_detail .header.section .status.label[data-statusid="4"] {
+  background-color: #21BA45;
+  color: #FFFFFF;
+}
+.order_detail .header.section .status.label[data-statusid="5"] {
+  background-color: #DB2828;
+  color: #FFFFFF;
+}
+.order_detail .header.section .status.label .ui.label {
+  margin-left: 10px;
+}
+.order_detail .detail.section .tabs {
+  margin-bottom: 35px;
+}
+.order_detail .detail.section table {
+  display: inline-block;
+  margin-right: 2%;
+}
+.order_detail .detail.section table td {
+  font-weight: 200;
+}
+.order_detail .detail.section table td:last-child {
+  font-weight: 600;
 }
 #cart_detail {
   padding: 80px 0;

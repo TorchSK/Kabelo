@@ -122,15 +122,22 @@
 	}
 
 	.box{
-		background-color: @white;
 		width: 48%;
 		margin: 0 2% 2% 0;
 		border-radius: 5px;
-		padding: 25px;
 
 		.caption{
 			font-size: 1.5em;
 			font-weight: 200;
+		}
+
+		table{
+			tbody {
+				td{
+					font-weight: 300 !important;
+				}
+
+			}
 		}
 
 	}
@@ -138,6 +145,7 @@
 
 .admin_settings{
 	padding: 2%;
+	width: 50%;
 }
 
 
@@ -243,5 +251,108 @@
 		font-weight: 900;
 		font-size: 1.2em;
 		margin-top: 5px;
+	}
+}
+
+
+.admin_method_list{
+
+	i.icon{
+		cursor: pointer;
+
+		&.red{
+			display: none;
+		}
+	}
+
+	.ui.dropdown{
+		display: none;
+	}
+
+
+}
+
+
+.order_detail{
+	padding: 2%;
+	flex: 1;
+
+	.section{
+		padding: 1% 0;
+
+		&:first-child{
+			padding-top: 0;
+		}
+	}
+
+	.header.section{
+		display: flex;
+		justify-content: space-between;
+		border-bottom: dashed 1px #CCC;
+
+		.status_div{
+			text{
+				font-size: 2em;
+				font-weight: 200;
+				margin-right: 10px;
+			}
+		}
+
+		.new_statuses{
+			text{
+				font-size: 2em;
+				font-weight: 200;
+				margin-right: 10px;
+			}
+		}
+
+
+		.status.label{
+			font-weight: 300;
+
+			&[data-statusid="1"]{
+				background-color: @yellow;
+				color: @white;
+			}
+			&[data-statusid="2"]{
+				background-color: @teal;
+				color: @white;
+			}
+			&[data-statusid="3"]{
+				background-color: @blue;
+				color: @white;
+			}
+			&[data-statusid="4"]{
+				background-color: @green;
+				color: @white;
+			}
+			&[data-statusid="5"]{
+				background-color: @red;
+				color: @white;
+			}
+
+			.ui.label{
+				margin-left: 10px;
+			}
+		}
+	}
+
+	.detail.section{
+		.tabs{
+			margin-bottom: 35px;
+		}
+
+		table{
+			display: inline-block;
+			margin-right: 2%;
+
+			td{
+				font-weight: 200;
+
+				&:last-child{
+					font-weight: 600;
+				}
+			}
+		}
 	}
 }

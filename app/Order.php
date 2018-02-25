@@ -16,7 +16,21 @@ class Order extends Model {
 
  	public function status() 
   	{
- 		return $this->hasOne('App\OrderStatus','id','status_id');
+ 		return $this->belongsTo('App\OrderStatus');
  	}
 
+ 	public function delivery() 
+  	{
+ 		return $this->belongsTo('App\DeliveryMethod','delivery_method_id','id');
+ 	}
+
+ 	 	public function payment() 
+  	{
+ 		return $this->belongsTo('App\PaymentMethod','payment_method_id','id');
+ 	}
+
+ 	public function user() 
+  	{
+ 		return $this->belongsTo('App\User');
+ 	}
 }

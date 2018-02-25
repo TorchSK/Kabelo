@@ -10,6 +10,9 @@ use App\Order;
 use Auth;
 use Excel;
 
+use App\DeliveryMethod;
+use App\PaymentMethod;
+
 use App\Services\Contracts\ProductServiceContract;
 
 class AdminController extends Controller
@@ -108,6 +111,16 @@ class AdminController extends Controller
     }
 
 
+    public function orderDetail($id)
+    {
+        $data = [
+            'order' => Order::find($id)
+        ];
+
+        return view('admin.orderdetail', $data);
+    }
+
+
     public function settings()
     {
         $data = [
@@ -138,4 +151,49 @@ class AdminController extends Controller
         
         return $results;
     }
+
+    public function addDeliveryMethod(Request $request)
+    {
+        $delivery = new DeliveryMethod();
+        $delivery->name = $request->get('name');
+        $delivery->key = $request->get('key');
+        $delivery->save();
+
+        return $delivery;
+    }
+
+    public function editDeliveryMethod($id, Request $request)
+    {
+        $delivery = DeliveryMethod::find($id);
+        $delivery->name = $request->get('name');
+        $delivery->key = $request->get('key');
+        $delivery->desc = $request->get('desc');
+        $delivery->icon = $request->get('icon');
+        $delivery->save();
+
+        return $delivery;
+    }
+
+    public function addPaymentMethod(Request $request)
+    {
+        $payment = new PaymentMethod();
+        $payment->name = $request->get('name');
+        $payment->key = $request->get('key');
+        $payment->save();
+
+        return $payment;
+    }
+
+    public function editPaymentMethod($id, Request $request)
+    {
+        $payment = PaymentMethod::find($id);
+        $payment->name = $request->get('name');
+        $payment->key = $request->get('key');
+        $payment->desc = $request->get('desc');
+        $payment->icon = $request->get('icon');
+        $payment->save();
+
+        return $payment;
+    }
+
 }
