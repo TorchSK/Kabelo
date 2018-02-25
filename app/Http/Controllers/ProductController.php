@@ -244,7 +244,9 @@ class ProductController extends Controller
                 $parameter->value = $request->get('value')[$key];
                 $parameter->dvalue = $request->get('value')[$key];
 
-                $product->parameters()->save($parameter);
+                if ($param){
+                    $product->parameters()->save($parameter);
+                }
             }
         }
 
@@ -256,7 +258,11 @@ class ProductController extends Controller
             $relatedProduct->product_id = $product->id;
             $relatedProduct->related_product_id = $relprod;
             $relatedProduct->relation_type = 0;
-            $relatedProduct->save();
+
+            if($relprod){
+        
+                $relatedProduct->save();
+            }
         }
 
         return redirect('/'.$product->maker.'/'.$product->code.'/detail');

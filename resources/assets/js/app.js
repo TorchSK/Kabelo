@@ -988,7 +988,11 @@ $('#admin_add_category_param_btn').click(function(){
   $('#admin_filters_div').append($html);
 })
 
-$('#product_detail_dropzone').dropzone();
+$('#product_detail_dropzone').dropzone({
+    params: {
+      '_token': $('meta[name="csrf-token"]').attr('content')
+    }
+});
 
 $('#import_dropzone').dropzone({
     success: function(param, data){
