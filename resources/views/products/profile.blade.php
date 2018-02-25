@@ -91,10 +91,10 @@
 
 <div id="product_tabs">
 
-  <div class="tabs">
-    <div class="tab ui brown button" data-tab="parameters">Parametre ({{$product->parameters->count()}})</div>
-    <div class="tab ui basic button" data-tab="recommended">Doporučene produkty ({{$product->relatedProducts->count()}})</div>
-    <div class="tab ui basic button" data-tab="ratings">Hodnotenia ({{$product->ratings->count()}})</div>
+  <div class="tabbs">
+    <div class="tabb ui brown button" data-tab="parameters">Parametre ({{$product->parameters->count()}})</div>
+    <div class="tabb ui basic button" data-tab="recommended">Doporučene produkty ({{$product->relatedProducts->count()}})</div>
+    <div class="tabb ui basic button" data-tab="ratings">Hodnotenia ({{$product->ratings->count()}})</div>
   </div>
 
   <div class="contents">
@@ -132,8 +132,9 @@
         </div>
 
         <div class="my_rating">
-          <div class="rating_number"><number>@if($product->ratings->pluck('value')->avg() > 0) {{$product->ratings->pluck('value')->avg()}}</number> @else MOjeho @endif <span>(Moje hodnotenie)</span></div>
-          <div class="rating" @if($product->ratings->pluck('value')->avg() > 0) data-rating="{{$product->ratings->pluck('value')->avg()}}" @else data-rating="2.5" @endif">
+          <div class="rating_number"><number>@if(App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value > 0) {{App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value}}</number> @else 0 @endif <span>(Moje hodnotenie)</span></div>
+
+           <div class="my rating" @if(App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value > 0) data-rating="{{App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value}}" @else data-rating="0" @endif>
           </div>
         </div>
 
@@ -155,9 +156,11 @@
     </div>
 
   </div>
+  
+  <div id="myrating" @if(App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value > 0) data-rating="{{App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value}}" @else data-rating="0" @endif></div>
 
 
 </div>
 
-
+  
 @stop

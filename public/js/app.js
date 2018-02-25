@@ -1110,7 +1110,12 @@ $('.tabs .tab').click(function(){
   $('.tabs .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
 })
 
+$('.my.rating').rateYo({
+  rating: $('#myrating').data('rating')
+})
+
 $('.rating:not(.disabled)').rateYo().on("rateyo.set", function(e, data){
+
       $('#new_rating_modal').modal('setting', {
         autofocus: true,
         onApprove : function() {
@@ -1131,8 +1136,10 @@ $('.rating:not(.disabled)').rateYo().on("rateyo.set", function(e, data){
 
 $('.disabled.rating').rateYo({
   readOnly: true,
-
 })
+
+
+
 
 $('.disabled.rating').each(function(index, item){
   //console.log($(item).data('rating'));
@@ -1247,8 +1254,8 @@ $('.admin_method_list i.red').click(function(){
 $('.tabbs .tabb').click(function(){
   $('.tabbs .tabb').removeClass('brown').addClass('basic');
   $(this).addClass('brown').removeClass('basic')
-  $('.tabbs .content').removeClass('active');
-  $('.tabbs .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
+  $('.tabbs+.contents .content').removeClass('active');
+  $('.tabbs+.contents .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
 })
 
 

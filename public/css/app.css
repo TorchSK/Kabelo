@@ -940,7 +940,7 @@ a:hover {
 #product_detail #new {
   display: inline-block;
 }
-#product_tabs .tabs {
+#product_tabs .tabbs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -949,7 +949,7 @@ a:hover {
           justify-content: center;
   margin-bottom: 20px;
 }
-#product_tabs .tabs .tab {
+#product_tabs .tabbs .tabb {
   display: inline-block;
 }
 #product_tabs .contents {
