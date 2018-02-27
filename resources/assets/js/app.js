@@ -1166,13 +1166,14 @@ $('.dashboard_tabs .overall.tab').click(function(){
 $('.add_delivery_method_btn').click(function(){
     $('#add_delivery_method_modal').modal('setting', {
     onApprove : function() {
-      $key = $('#add_delivery_method_key_input').val();
       $name = $('#add_delivery_method_name_input').val();
-      
+      $desc = $('#add_delivery_method_desc_input').val();
+      $icon = $('#add_delivery_method_modal').find('.ui.dropdown').dropdown('get value');
+
       $.ajax({
         type: "POST",
         url: "/admin/delivery/",
-        data: {name: $name, key:$key},
+        data: {name: $name, desc:$desc, icon: $icon},
         success: function(){
           location.reload();
         }
@@ -1186,13 +1187,14 @@ $('.add_delivery_method_btn').click(function(){
 $('.add_payment_method_btn').click(function(){
     $('#add_payment_method_modal').modal('setting', {
     onApprove : function() {
-      $key = $('#add_payment_method_key_input').val();
       $name = $('#add_payment_method_name_input').val();
+      $desc = $('#add_payment_method_desc_input').val();
+      $icon = $('#add_payment_method_modal').find('.ui.dropdown').dropdown('get value');
       
       $.ajax({
         type: "POST",
         url: "/admin/payment/",
-        data: {name: $name, key:$key},
+        data: {name: $name, desc:$desc, icon: $icon},
         success: function(){
           location.reload();
         }
@@ -1257,6 +1259,33 @@ $('.tabbs .tabb').click(function(){
   $('.tabbs+.contents .content').removeClass('active');
   $('.tabbs+.contents .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
 })
+
+
+
+$('.delivery_payment_checkbox').checkbox({
+  onChecked: function(){
+    $delivery_method_id = $(this).closest('tr').data('delivery_method_id');
+    $payment_method_id = $(this).closest('tr').data('payment_method_id');
+
+    $.ajax({
+      method: 'POST',
+      url: '/admin/deliverypayment',
+      data: {delivery_method_id: $delivery_method_id, payment_method_id: $payment_method_id}
+    })
+  },
+  onUnchecked: function(){
+    $delivery_method_id = $(this).closest('tr').data('delivery_method_id');
+    $payment_method_id = $(this).closest('tr').data('payment_method_id');
+
+    $.ajax({
+      method: 'DELETE',
+      url: '/admin/deliverypayment',
+      data: {delivery_method_id: $delivery_method_id, payment_method_id: $payment_method_id}
+    })
+  }
+})
+
+
 
 
 });

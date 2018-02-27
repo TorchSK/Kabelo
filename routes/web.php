@@ -28,6 +28,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::put('/delivery/{id}', 'AdminController@editDeliveryMethod');
 	Route::put('/payment/{id}', 'AdminController@editPaymentMethod');
 	Route::get('/order/{id}', 'AdminController@orderDetail')->name('admin.orderDetail');
+	Route::get('/user/{id}', 'AdminController@userDetail')->name('admin.userDetail');
+	Route::post('/deliverypayment', 'AdminController@addDeliveryPayment');
+	Route::delete('/deliverypayment', 'AdminController@removeDeliveryPayment');
 
 });
 

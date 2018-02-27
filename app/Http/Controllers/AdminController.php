@@ -120,6 +120,16 @@ class AdminController extends Controller
         return view('admin.orderdetail', $data);
     }
 
+    
+    public function userDetail($id)
+    {
+        $data = [
+            'user' => User::find($id)
+        ];
+
+        return view('admin.userdetail', $data);
+    }
+
 
     public function settings()
     {
@@ -156,7 +166,9 @@ class AdminController extends Controller
     {
         $delivery = new DeliveryMethod();
         $delivery->name = $request->get('name');
-        $delivery->key = $request->get('key');
+        $delivery->key = str_slug($request->get('name'));
+        $delivery->desc = $request->get('desc');
+        $delivery->icon = $request->get('icon');
         $delivery->save();
 
         return $delivery;
@@ -178,7 +190,9 @@ class AdminController extends Controller
     {
         $payment = new PaymentMethod();
         $payment->name = $request->get('name');
-        $payment->key = $request->get('key');
+        $payment->key = str_slug($request->get('name'));
+        $payment->desc = $request->get('desc');
+        $payment->icon = $request->get('icon');
         $payment->save();
 
         return $payment;
@@ -194,6 +208,24 @@ class AdminController extends Controller
         $payment->save();
 
         return $payment;
+    }
+
+    public function addDeliveryPayment(Request $request)
+    {
+        $delivery = DeliveryMethod::find($request->get('delivery_method_id'));
+        $payment = PaymentMethod::find($request->get('payment_method_id'));
+
+        return $delivery->paymentMethods()->attach($payment);
+
+    }
+    
+    public function removeDeliveryPayment(Request $request)
+    {
+        $delivery = DeliveryMethod::find($request->get('delivery_method_id'));
+        $payment = PaymentMethod::find($request->get('payment_method_id'));
+
+        return $delivery->paymentMethods()->detach($payment);
+
     }
 
 }

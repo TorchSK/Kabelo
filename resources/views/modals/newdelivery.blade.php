@@ -6,11 +6,6 @@ Pridaj sposob dopravy
 
 <div class="content">
 
-	<div class="label">Kód</div>
-
-  <div class="ui fluid input">
-  	<input type="text" placeholder="Kód" id="add_delivery_method_key_input" />
-  </div>
 
     <div class="label">Názov</div>
 
@@ -21,7 +16,7 @@ Pridaj sposob dopravy
   <div class="label">Popis</div>
 
   <div class="ui fluid input">
-    <input type="text" placeholder="Popis" id="add_delivery_method_name_input" />
+    <input type="text" placeholder="Popis" id="add_delivery_method_desc_input" />
   </div>
 
   <div class="label">Ikona</div>
