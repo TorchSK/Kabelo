@@ -445,10 +445,24 @@ a:hover {
 #home_content #grid {
   padding: 50px;
 }
+@media all and (max-width: 980px) {
+  #home_content #grid {
+    padding: 10px;
+    padding-top: 0px;
+  }
+}
 .flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+@media all and (max-width: 980px) {
+  .flex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 #grid {
   -webkit-box-flex: 1;
@@ -456,11 +470,6 @@ a:hover {
           flex: 1;
   background-color: #F7F7F7;
   position: relative;
-}
-@media all and (max-width: 980px) {
-  #grid {
-    padding: 0 10px 0 10px;
-  }
 }
 #grid grid {
   display: block;
@@ -470,11 +479,24 @@ a:hover {
   font-weight: 100;
   margin-bottom: 60px;
 }
+@media all and (max-width: 980px) {
+  #grid .caption {
+    font-size: 2em;
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+}
 #grid .subcategories {
   margin-bottom: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+@media all and (max-width: 980px) {
+  #grid .subcategories {
+    margin-bottom: 15px;
+  }
 }
 #grid .subcategories .subcategory {
   margin-right: 5px;
@@ -508,6 +530,7 @@ a:hover {
 @media all and (max-width: 980px) {
   #grid .item {
     width: 30%;
+    padding-bottom: 5px;
   }
 }
 @media all and (max-width: 736px) {
@@ -517,7 +540,8 @@ a:hover {
 }
 @media all and (max-width: 480px) {
   #grid .item {
-    width: 98%;
+    width: 47%;
+    margin-right: 5px;
   }
 }
 #grid .item:hover {
@@ -536,9 +560,21 @@ a:hover {
   padding: 25px;
   width: 100%;
 }
+@media all and (max-width: 980px) {
+  #grid .item .image_div {
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+}
 #grid .item .title {
   font-weight: 900;
   font-size: 1.1em;
+}
+@media all and (max-width: 980px) {
+  #grid .item .title {
+    font-size: 0.9em;
+    font-weight: 800;
+  }
 }
 #grid .item .desc {
   color: #999;
@@ -556,6 +592,12 @@ a:hover {
   display: inline-block;
   overflow: hidden;
 }
+@media all and (max-width: 980px) {
+  #grid .item .price {
+    font-size: 1.3em;
+    font-weight: 800;
+  }
+}
 #grid .item .sale_price {
   color: #A5673F;
   font-size: 1.4em;
@@ -565,11 +607,25 @@ a:hover {
   display: inline-block;
   margin-left: 10px;
 }
+@media all and (max-width: 980px) {
+  #grid .item .sale_price {
+    font-size: 1.3em;
+    font-weight: 800;
+  }
+}
 #grid .item .to_cart {
   opacity: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   margin-top: 15px;
+}
+@media all and (max-width: 980px) {
+  #grid .item .to_cart {
+    opacity: 0.7;
+    display: block;
+    margin: 15px 10px 5px 10px;
+    padding: 9px;
+  }
 }
 #grid .item .actions {
   margin-top: 25px;
@@ -589,6 +645,11 @@ a:hover {
   z-index: 99;
   right: 40px;
   top: 35px;
+}
+@media all and (max-width: 980px) {
+  #grid .item .labels {
+    display: none;
+  }
 }
 #grid .item .labels .label {
   display: inline-block;
@@ -1096,6 +1157,14 @@ a:hover {
   display: flex;
   min-height: 1050px;
 }
+@media all and (max-width: 980px) {
+  .admin_wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
 .admin_wrapper .users {
   padding: 50px;
   -webkit-box-flex: 1;
@@ -1150,6 +1219,17 @@ a:hover {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+@media all and (max-width: 980px) {
+  .admin_tabs {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
 .admin_tabs .tab {
   position: relative;
   -webkit-transition: all 0.2s ease;
@@ -1202,8 +1282,26 @@ a:hover {
   display: block;
   margin-bottom: 2%;
 }
+@media all and (max-width: 736px) {
+  .admin_dashboard .dashboard_tabs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin: 10px 5px 20px 5px;
+  }
+}
 .admin_dashboard .dashboard_tabs .tab {
   display: inline-block;
+}
+@media all and (max-width: 736px) {
+  .admin_dashboard .dashboard_tabs .tab {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
 }
 .admin_dashboard .boxes {
   display: -webkit-box;
@@ -1222,6 +1320,11 @@ a:hover {
   width: 48%;
   margin: 0 2% 2% 0;
   border-radius: 5px;
+}
+@media all and (max-width: 980px) {
+  .admin_dashboard .box {
+    width: 100%;
+  }
 }
 .admin_dashboard .box .caption {
   font-size: 1.5em;
@@ -1552,6 +1655,11 @@ a:hover {
   border-radius: 6px;
   width: 200px;
 }
+@media all and (max-width: 980px) {
+  .subcategories .category_image .image img {
+    width: 100px;
+  }
+}
 .subcategories .category_image .name {
   text-align: center;
   font-weight: 200;
@@ -1827,6 +1935,11 @@ count {
   text-align: center;
   padding: 5px 0;
 }
+@media all and (max-width: 980px) {
+  #nav {
+    display: none;
+  }
+}
 #nav .item {
   padding: 4px 15px;
   color: #CCC;
@@ -2069,4 +2182,50 @@ h1.header {
   background-color: rgba(255, 255, 255, 0.5);
   border: none;
   border-radius: 0;
+}
+.admin_add_cover {
+  padding: 50px;
+  width: 100%;
+}
+.admin_add_cover #cover_dropzone {
+  width: 100%;
+}
+.admin_add_cover .cover_image {
+  height: 55vh;
+  display: none;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+.admin_add_cover .cover_image .cover_text {
+  position: absolute;
+  z-index: 999;
+  top: 30%;
+  left: 10%;
+  border: dashed 1px #000;
+}
+.admin_add_cover .cover_image .cover_text h1 {
+  font-size: 5em;
+}
+.admin_add_cover .cover_image .cover_text h2 {
+  font-size: 4em;
+}
+.admin_add_cover .crop_preview {
+  margin-right: 0px;
+  width: 400px;
+  display: inline-block;
+}
+.admin_add_cover #admin_add_cover_h2 {
+  margin: 3px 0;
+}
+.admin_add_cover .admin_add_cover_under {
+  margin: 10px 0;
+  display: none;
+}
+.admin_add_cover .admin_add_cover_under .inputs {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-left: 10px;
 }

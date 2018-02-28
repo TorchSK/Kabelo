@@ -4,6 +4,18 @@
 
 
 <div class="admin_settings">
+	<div class="ui horizontal divider">Banery</div>
+
+	<div class="admin_banner_list">
+		@foreach(App\Cover::all() as $cover)
+			<img src="/{{$cover->image}}" />
+		@endforeach
+
+		<a href="{{route('admin.addCover')}}" class="ui blue button">Pridať baner</a>
+	</div>
+
+
+
 	<div class="ui horizontal divider">Sposoby dopravy</div>
 
 	<table class="ui celled padded table">

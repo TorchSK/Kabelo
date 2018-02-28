@@ -228,4 +228,26 @@ class AdminController extends Controller
 
     }
 
+    public function addCover()
+    {
+
+        return view('admin.addcover');
+    }
+
+    public function uploadCover(Request $request)
+    {   
+        $file = $request->file('file');
+
+        $destinationPath = 'temp/covers';
+        $extension = $file->getClientOriginalExtension(); 
+        $filename = $file->getClientOriginalName();
+        $fullpath = $destinationPath.'/'.$filename;
+
+        $preview_success = $file->move($destinationPath, $filename);
+
+        return $fullpath;
+
+    }
+
+
 }

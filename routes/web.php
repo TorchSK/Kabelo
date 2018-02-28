@@ -31,6 +31,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/user/{id}', 'AdminController@userDetail')->name('admin.userDetail');
 	Route::post('/deliverypayment', 'AdminController@addDeliveryPayment');
 	Route::delete('/deliverypayment', 'AdminController@removeDeliveryPayment');
+	Route::get('/banner/', 'AdminController@addCover')->name('admin.addCover');
+	Route::post('/cover/upload', 'AdminController@uploadCover')->name('admin.uploadCover');
 
 });
 

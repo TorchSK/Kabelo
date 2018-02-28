@@ -1,0 +1,54 @@
+.admin_add_cover{
+	padding: 50px;
+	width: 100%;
+
+
+	#cover_dropzone{
+		width: 100%;
+	}
+
+	.cover_image{
+		height: 55vh;
+		display: none;
+		overflow: hidden;
+		width: 100%;
+		margin-bottom: 20px;
+		position: relative;
+
+		.cover_text{
+			position: absolute;
+			z-index: 999;
+			top: 30%;
+			left: 10%;
+			border: dashed 1px #000;
+			
+			h1{
+				font-size: 5em;
+			}
+			h2{
+				font-size: 4em;
+			}
+		}
+	}
+
+	.crop_preview{
+		margin-right: 0px;
+		width: 400px;
+		display: inline-block;
+	}
+
+	#admin_add_cover_h2{
+		margin: 3px 0;
+	}
+
+	.admin_add_cover_under{
+		margin: 10px 0;
+
+		display: none;
+
+		.inputs{
+			flex: 1;
+			margin-left: 10px;
+		}
+	}
+}

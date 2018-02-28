@@ -13,7 +13,7 @@
 		<div class="box">
 			<div class="caption">Najnovšie objednávky</div>
 
-			<table class="ui celled selectable table">
+			<table class="ui celled selectable unstackable table">
 			  <thead>
 			    <tr>
 			    <th>ID</th>
@@ -46,7 +46,7 @@
 
 			<div class="caption">Najnovšie produkty</div>
 
-				<table class="ui celled selectable table">
+				<table class="ui celled selectable unstackable table">
 			  <thead>
 			    <tr>
 			    <th>ID</th>
@@ -79,7 +79,7 @@
 
 			<div class="caption">Najnovší uživatelia</div>
 
-			<table class="ui celled selectable table">
+			<table class="ui celled selectable unstackable table">
 			  <thead>
 			    <tr>
 			    <th>ID</th>

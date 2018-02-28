@@ -1286,6 +1286,85 @@ $('.delivery_payment_checkbox').checkbox({
 })
 
 
+$('#cover_dropzone').dropzone({
+  success: function(file, response){
+    var $x, $y, $w, $h;
+    this.removeAllFiles(true); 
+    $('.crop_preview').html("<img src=/"+response+" />").unbind('focus');
+    $('.admin_add_cover_under').css('display','flex');
+    $('.cover_image').show();
+    $('#cover_dropzone').hide();
+
+    $('.crop_preview img').cropper({
+      guides: false,
+      viewMode: 1,
+      aspectRatio: 3.3,
+      autoCropArea: 1,
+      crop: function(e){
+        $x = e.x;
+        $y = e.y;
+        $w = e.width;
+        $h = e.height;
+      if ($('.cover_image').find('.cover_text').length == 0)
+      {
+       $('.cover_image').append('<div class="cover_text"><h1>Nadpis</h1><h2>Text ktory sa zobrazi pod nadpsion</h2></div>');
+      }
+
+      $('.cover_text').resizable().draggable({
+        containment: ".cover_image",
+        start: function start(event, ui) {
+          var left = parseInt($(this).css('left'), 10);
+          left = isNaN(left) ? 0 : left;
+          var top = parseInt($(this).css('top'), 10);
+          top = isNaN(top) ? 0 : top;
+          __recoupLeft = left - ui.position.left;
+          __recoupTop = top - ui.position.top;
+        },
+        drag: function drag(event, ui) {
+          //resize bug fix ui drag `enter code here`
+          __dx = ui.position.left - ui.originalPosition.left;
+          __dy = ui.position.top - ui.originalPosition.top;
+          //ui.position.left = ui.originalPosition.left + ( __dx/__scale);
+          //ui.position.top = ui.originalPosition.top + ( __dy/__scale );
+          ui.position.left = ui.originalPosition.left + __dx;
+          ui.position.top = ui.originalPosition.top + __dy;
+          //
+          ui.position.left += __recoupLeft;
+          ui.position.top += __recoupTop;
+        },
+        stop: function stop() {
+          var pos = {};
+
+          pos['h1_left'] = $(this).position().left / $(this).parent().width() * 100;
+          pos['h1_top'] = $(this).position().top / $(this).parent().height() * 100;
+
+
+        }
+      });
+
+
+      },
+      preview: $('.cover_image')
+    });
+
+
+    // confirm crop
+    $('.crop_ok').show().click(function(){
+      $categoryid = $(this).data('categoryid');
+
+      $.ajax({
+        method: "POST",
+        url: '/category/'+$categoryid+'/image/confirmCrop',
+        data: {filename: file.name, x: $x, y:$y, w:$w, h:$h},
+        success: function(){
+          location.reload();
+        }
+      })
+    });
+
+  }
+});
+
 
 
 });
