@@ -410,6 +410,7 @@ function doSort(){
 
   $.get('/product/list',{category: $categoryid, sortBy: $sortBy, sortOrder: $sortOrder, filters: $filters}, function(data){
     $grid.html(data.products);
+
     $filtersDiv.html(data.filters);
     filtersInit();
     $('#grid').find('.dimmer').removeClass('active');
@@ -507,16 +508,15 @@ $('.categories .item .icon').click(function(e){
 $('#cart_delivery_options .step').click(function(){
   $('#cart_delivery_options .step').removeClass('completed').removeClass('active');
   $(this).addClass('completed active');
-  if ($(this).data('delivery_method')=='place')
-  {
-    $('#cart_payment_options .step[data-payment_method="cash"]').removeClass('active disabled');
-    $('#cart_payment_options .step[data-payment_method="cod"]').addClass('disabled').removeClass('completed active');
-  }
-  else
-  {
-    $('#cart_payment_options .step[data-payment_method="cod"]').removeClass('active disabled');
-    $('#cart_payment_options .step[data-payment_method="cash"]').addClass('disabled').removeClass('completed active');;
-  }
+  $delivery_method_id = $(this).data('delivery_method');
+
+  $('#cart_payment_options .step').each(function(index, element){
+    $(element).removeClass('disabled completed active');
+    if ($.inArray($delivery_method_id, $(element).data('delivery_methods'))==-1)
+    {
+      $(element).addClass('disabled');
+    }
+  });
 
   if ($('#cart_payment_options .step.completed').length > 0)
   {

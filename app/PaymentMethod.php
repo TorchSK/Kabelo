@@ -10,4 +10,10 @@ class PaymentMethod extends Model {
 
 	public $timestamps = false;
 
+
+  	public function deliveryMethods() 
+  	{
+ 		return $this->belongsToMany('App\DeliveryMethod');
+ 	}
+
 }

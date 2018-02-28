@@ -13,53 +13,37 @@
 		<div id="cart_delivery_options">
 			<div class="ui horizontal divider">Sposob dopravy</div>
 
+			@foreach(App\DeliveryMethod::all() as $delivery)
 			<div class="ui steps">
-			  <a class="step cart_delivery @if ($cart['delivery_method']=='place') completed active @endif" data-delivery_method="place">
-			    <i class="user icon"></i>
+			  <a class="step cart_delivery @if ($cart['delivery_method']==$delivery->id) completed active @endif" data-delivery_method="{{$delivery->id}}">
+			    <i class="{{$delivery->icon}} icon"></i>
 			    <div class="content">
-			      <div class="title">Osobný odber</div>
-			      <div class="description">Na predajni v Banskej Bystrici</div>
+			      <div class="title">{{$delivery->name}}</div>
+			      <div class="description">{{$delivery->desc}}</div>
 			    </div>
 			  </a>
 			</div>
-			
+			@endforeach
 
-			<div class="ui steps">
-			  <a class="step cart_delivery @if ($cart['delivery_method']=='ppl') completed active @endif" data-delivery_method="ppl">
-			    <i class="truck icon"></i>
-			    <div class="content">
-			      <div class="title">PPL kuriér</div>
-			      <div class="description">PPL prepravná spoločnosť</div>
-			    </div>
-			  </a>
-			</div>
 
 
 		</div>
 
 		<div id="cart_payment_options">
 			<div class="ui horizontal divider">Sposob plabty</div>
-
-								
+			
+			@foreach(App\PaymentMethod::all() as $payment)
 			<div class="ui steps">
-			  <a class="step cart_payment @if ($cart['payment_method']=='cash') completed active @endif @if ($cart['delivery_method']=='ppl') disabled @endif" data-payment_method="cash">
-			    <i class="money icon"></i>
+			  <a class="step cart_payment @if ($cart['payment_method']==$payment->id) completed active @endif @if ($cart['delivery_method'] && !in_array($cart['delivery_method'], $payment->deliveryMethods->pluck('id')->toArray())) disabled @endif" data-payment_method="{{$payment->id}}" data-delivery_methods="{{$payment->deliveryMethods->pluck('id')}}">
+			    <i class="{{$payment->icon}} icon"></i>
 			    <div class="content">
-			      <div class="title">Hotovost</div>
-			      <div class="description">Pri prevzatí tovaru</div>
+			      <div class="title">{{$payment->name}}</div>
+			      <div class="description">{{$payment->desc}}</div>
 			    </div>
 			  </a>
 			</div>
+			@endforeach
 
-			<div class="ui steps">
-			  <a class="step cart_payment @if ($cart['payment_method']=='cod') completed active @endif @if ($cart['delivery_method']=='place') disabled @endif" data-payment_method="cod"> 
-			    <i class="cube icon"></i>
-			    <div class="content">
-			      <div class="title">Dobierkou</div>
-			      <div class="description">Pri prevzatí balíku</div>
-			    </div>
-			  </a>
-			</div>
 		</div>
 
 	</div>

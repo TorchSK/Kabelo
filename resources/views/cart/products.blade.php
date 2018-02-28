@@ -2,7 +2,6 @@
 @section('content')
 	
 <div id="cart_detail">
-	<div class="cart_icon ct"><i class="shopping basket huge icon"></i></div>
 	<div class="caption">Nákupný košík <a class="delete_cart" data-tooltip="Vymazať obsah košíku"><i class="delete icon"></i></a></div>
 	
 	@include('cart.steps',['step'=>'1'])

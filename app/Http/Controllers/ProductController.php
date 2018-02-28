@@ -106,7 +106,7 @@ class ProductController extends Controller
         {
           $image = Image::make($destinationPath.'/'.$filename)
                ->widen($w)
-               ->resizeCanvas($w, $w)
+               ->resizeCanvas($w, $w*0.8)
                ->save($destinationPath.'/'.$filename);
 
           return url($destinationPath.'/'.$filename);

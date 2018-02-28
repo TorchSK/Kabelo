@@ -4,7 +4,7 @@
 
     @include('admin.sidebar')
 
-    <div class="admin_categories_list">
+		<div class="admin_categories_list">
     	@if ($categories->count() > 0 )
 		@foreach ($categories as $category)
     	<div class="item category" data-id={{$category->id}}>
@@ -16,6 +16,8 @@
 		</div>
 		@endforeach
 		@endif
+
+
 
     </div>
 
