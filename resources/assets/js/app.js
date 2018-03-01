@@ -1300,47 +1300,53 @@ $('#cover_dropzone').dropzone({
       viewMode: 1,
       aspectRatio: 3.3,
       autoCropArea: 1,
+
       crop: function(e){
-        $x = e.x;
-        $y = e.y;
-        $w = e.width;
-        $h = e.height;
-      if ($('.cover_image').find('.cover_text').length == 0)
-      {
-       $('.cover_image').append('<div class="cover_text"><h1>Nadpis</h1><h2>Text ktory sa zobrazi pod nadpsion</h2></div>');
-      }
+        $('#admin_add_cover_form input[name="x"]').val(e.x);
+        $('#admin_add_cover_form input[name="y"]').val(e.y);
+        $('#admin_add_cover_form input[name="w"]').val(e.width);
+        $('#admin_add_cover_form input[name="h"]').val(e.height);
 
-      $('.cover_text').resizable().draggable({
-        containment: ".cover_image",
-        start: function start(event, ui) {
-          var left = parseInt($(this).css('left'), 10);
-          left = isNaN(left) ? 0 : left;
-          var top = parseInt($(this).css('top'), 10);
-          top = isNaN(top) ? 0 : top;
-          __recoupLeft = left - ui.position.left;
-          __recoupTop = top - ui.position.top;
-        },
-        drag: function drag(event, ui) {
-          //resize bug fix ui drag `enter code here`
-          __dx = ui.position.left - ui.originalPosition.left;
-          __dy = ui.position.top - ui.originalPosition.top;
-          //ui.position.left = ui.originalPosition.left + ( __dx/__scale);
-          //ui.position.top = ui.originalPosition.top + ( __dy/__scale );
-          ui.position.left = ui.originalPosition.left + __dx;
-          ui.position.top = ui.originalPosition.top + __dy;
-          //
-          ui.position.left += __recoupLeft;
-          ui.position.top += __recoupTop;
-        },
-        stop: function stop() {
-          var pos = {};
-
-          pos['h1_left'] = $(this).position().left / $(this).parent().width() * 100;
-          pos['h1_top'] = $(this).position().top / $(this).parent().height() * 100;
-
-
+        if ($('.cover_image').find('.cover_text').length == 0)
+        {
+         $('.cover_image').append('<div class="cover_text"><h1>Nadpis</h1><h2>Text ktory sa zobrazi pod nadpsion</h2></div>');
         }
-      });
+
+        $('.cover_text').resizable({
+            stop: function stop() {
+              $('#admin_add_cover_form input[name="width"]').val($(this).width() / $(this).parent().width() * 100);
+            }
+        }).draggable({
+          containment: ".cover_image",
+          start: function start(event, ui) {
+            var left = parseInt($(this).css('left'), 10);
+            left = isNaN(left) ? 0 : left;
+            var top = parseInt($(this).css('top'), 10);
+            top = isNaN(top) ? 0 : top;
+            __recoupLeft = left - ui.position.left;
+            __recoupTop = top - ui.position.top;
+          },
+          drag: function drag(event, ui) {
+            //resize bug fix ui drag `enter code here`
+            __dx = ui.position.left - ui.originalPosition.left;
+            __dy = ui.position.top - ui.originalPosition.top;
+            //ui.position.left = ui.originalPosition.left + ( __dx/__scale);
+            //ui.position.top = ui.originalPosition.top + ( __dy/__scale );
+            ui.position.left = ui.originalPosition.left + __dx;
+            ui.position.top = ui.originalPosition.top + __dy;
+            //
+            ui.position.left += __recoupLeft;
+            ui.position.top += __recoupTop;
+          },
+          stop: function stop() {
+            var pos = {};
+
+            $('#admin_add_cover_form input[name="left"]').val($(this).position().left / $(this).parent().width() * 100);
+            $('#admin_add_cover_form input[name="left"]').val($(this).position().top / $(this).parent().height() * 100);
+
+
+          }
+        });
 
 
       },
@@ -1365,6 +1371,53 @@ $('#cover_dropzone').dropzone({
   }
 });
 
+
+$('.admin_add_cover_h1_color_btn').spectrum();
+$('.admin_add_cover_h2_color_btn').spectrum();
+
+$(".admin_add_cover_h1_color_btn").on('move.spectrum', function(e, color) {
+    $('.cover_text h1').css('color',color.toHexString());
+    $('#admin_add_cover_form input[name="h1_color"]').val(color.toHexString());
+});
+
+$(".admin_add_cover_h2_color_btn").on('move.spectrum', function(e, color) {
+    $('.cover_text h2').css('color',color.toHexString()); 
+    $('#admin_add_cover_form input[name="h2_color"]').val(color.toHexString());
+});
+
+var h1Slider = document.getElementById('admin_add_cover_h1_size_slider');
+var h2Slider = document.getElementById('admin_add_cover_h2_size_slider');
+
+noUiSlider.create(h1Slider ,{
+ start: 0,
+    connect: true,
+    range: {
+      'min': 0,
+      'max': 6
+    },
+  });
+
+noUiSlider.create(h2Slider ,{
+ start: 0,
+    connect: true,
+    range: {
+      'min': 0,
+      'max': 6
+    },
+  });
+
+
+h1Slider.noUiSlider.on('update', function(aa){
+    $('.cover_text h1').css('font-size',aa[0]+'vw'); 
+    $('#admin_add_cover_form input[name="h1_size"]').val(aa[0]);
+});
+
+
+h2Slider.noUiSlider.on('update', function(aa){
+    $('.cover_text h2').css('font-size',aa[0]+'vw'); 
+    $('#admin_add_cover_form input[name="h2_size"]').val(aa[0]);
+
+});
 
 
 });

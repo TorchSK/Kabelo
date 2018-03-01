@@ -21,11 +21,12 @@
     <script src="/js/nouislider.js"></script>
     <script src="/js/cropper.js"></script>
     <script src="/js/rating.js"></script>
+    <script src="/js/spectrum.js"></script>
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/rateyo.css">
 
-
+    <link media="all" type="text/css" rel="stylesheet" href="/css/spectrum.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/semantic.css">
     <link rel="stylesheet" href="https://use.typekit.net/nnc8ofe.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/flickity.css">

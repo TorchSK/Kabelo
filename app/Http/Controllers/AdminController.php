@@ -7,6 +7,8 @@ use App\Product;
 use App\Category;
 use App\User;
 use App\Order;
+use App\Cover;
+
 use Auth;
 use Excel;
 
@@ -233,6 +235,23 @@ class AdminController extends Controller
 
         return view('admin.addcover');
     }
+
+    public function storeCover(Request $request)
+    {
+        $cover = new Cover();
+        $cover->image = Session::get('cover_image_path');
+        $cover->left = $request->get('left');
+        $cover->top = $request->get('top');
+        $cover->h1_font = $request->get('h1_font');
+        $cover->h2_font = $request->get('h2_font');
+        $cover->h1_size = $request->get('h1_size');
+        $cover->h2_size = $request->get('h2_size');
+        $cover->h1_color = $request->get('h1_color');
+        $cover->h2_color = $request->get('h2_color');
+        $cover->width = $request->get('width');
+        return $cover->save();
+    }
+
 
     public function uploadCover(Request $request)
     {   
