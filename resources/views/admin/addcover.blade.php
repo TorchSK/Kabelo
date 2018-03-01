@@ -11,12 +11,17 @@
 			<div class="crop_preview"></div>
 
 			<div class="inputs">
-				<div class="ui fluid input">
-				  <input type="text" placeholder="Nadpis" id="admin_add_cover_h1">
+
+				<div class="h1_input">
+					<div class="ui big input">
+					  <input type="text" placeholder="Nadpis" id="admin_add_cover_h1">
+					</div>
 				</div>
 
-				<div class="ui fluid input">
-				  <input type="text" placeholder="Text" id="admin_add_cover_h2">
+				<div class="h1_input">
+					<div class="ui big input">
+					  <input type="text" placeholder="Text" id="admin_add_cover_h2">
+					</div>
 				</div>
 
 			<div class="ui green button">Ulož</div>

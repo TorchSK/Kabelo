@@ -2203,6 +2203,10 @@ h1.header {
   z-index: 999;
   top: 30%;
   left: 10%;
+  border: dashed 1px transparent;
+  cursor: move;
+}
+.admin_add_cover .cover_image .cover_text:hover {
   border: dashed 1px #000;
 }
 .admin_add_cover .cover_image .cover_text h1 {
