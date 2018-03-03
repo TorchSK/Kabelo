@@ -68,6 +68,26 @@
   </div>
 
 
+  <div class="ui mini modal" id="delete_cover_modal">
+            
+    <div class="header">
+      Zmazať banner
+    </div>
+    <div class="content">
+       Naozaj chcete vymazať bannner
+    </div>
+    <div class="actions">
+      <div class="ui red deny button">
+        Níe
+      </div>
+      <div class="ui positive right labeled icon button">
+        Áno
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>
+
+
 
   <div class="ui mini modal" id="delete_category_modal">
             

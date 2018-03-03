@@ -1,5 +1,140 @@
 $(document).ready(function(){
 	
+
+
+/*
+  A simple, lightweight jQuery plugin for creating sortable tables.
+  https://github.com/kylefox/jquery-tablesort
+  Version 0.0.11
+*/
+
+(function($) {
+  $.tablesort = function ($table, settings) {
+    var self = this;
+    this.$table = $table;
+    this.$thead = this.$table.find('thead');
+    this.settings = $.extend({}, $.tablesort.defaults, settings);
+    this.$sortCells = this.$thead.length > 0 ? this.$thead.find('th:not(.no-sort)') : this.$table.find('th:not(.no-sort)');
+    this.$sortCells.on('click.tablesort', function() {
+      self.sort($(this));
+    });
+    this.index = null;
+    this.$th = null;
+    this.direction = null;
+  };
+
+  $.tablesort.prototype = {
+
+    sort: function(th, direction) {
+      var start = new Date(),
+        self = this,
+        table = this.$table,
+        rowsContainer = table.find('tbody').length > 0 ? table.find('tbody') : table,
+        rows = rowsContainer.find('tr').has('td, th'),
+        cells = rows.find(':nth-child(' + (th.index() + 1) + ')').filter('td, th'),
+        sortBy = th.data().sortBy,
+        sortedMap = [];
+
+      var unsortedValues = cells.map(function(idx, cell) {
+        if (sortBy)
+          return (typeof sortBy === 'function') ? sortBy($(th), $(cell), self) : sortBy;
+        return ($(this).data().sortValue != null ? $(this).data().sortValue : $(this).text());
+      });
+      if (unsortedValues.length === 0) return;
+
+      //click on a different column
+      if (this.index !== th.index()) {
+        this.direction = 'asc';
+        this.index = th.index();
+      }
+      else if (direction !== 'asc' && direction !== 'desc')
+        this.direction = this.direction === 'asc' ? 'desc' : 'asc';
+      else
+        this.direction = direction;
+
+      direction = this.direction == 'asc' ? 1 : -1;
+
+      self.$table.trigger('tablesort:start', [self]);
+      self.log("Sorting by " + this.index + ' ' + this.direction);
+
+      // Try to force a browser redraw
+      self.$table.css("display");
+      // Run sorting asynchronously on a timeout to force browser redraw after
+      // `tablesort:start` callback. Also avoids locking up the browser too much.
+      setTimeout(function() {
+        self.$sortCells.removeClass(self.settings.asc + ' ' + self.settings.desc);
+        for (var i = 0, length = unsortedValues.length; i < length; i++)
+        {
+          sortedMap.push({
+            index: i,
+            cell: cells[i],
+            row: rows[i],
+            value: unsortedValues[i]
+          });
+        }
+
+        sortedMap.sort(function(a, b) {
+          return self.settings.compare(a.value, b.value) * direction;
+        });
+
+        $.each(sortedMap, function(i, entry) {
+          rowsContainer.append(entry.row);
+        });
+
+        th.addClass(self.settings[self.direction]);
+
+        self.log('Sort finished in ' + ((new Date()).getTime() - start.getTime()) + 'ms');
+        self.$table.trigger('tablesort:complete', [self]);
+        //Try to force a browser redraw
+        self.$table.css("display");
+      }, unsortedValues.length > 2000 ? 200 : 10);
+    },
+
+    log: function(msg) {
+      if(($.tablesort.DEBUG || this.settings.debug) && console && console.log) {
+        console.log('[tablesort] ' + msg);
+      }
+    },
+
+    destroy: function() {
+      this.$sortCells.off('click.tablesort');
+      this.$table.data('tablesort', null);
+      return null;
+    }
+
+  };
+
+  $.tablesort.DEBUG = false;
+
+  $.tablesort.defaults = {
+    debug: $.tablesort.DEBUG,
+    asc: 'sorted ascending',
+    desc: 'sorted descending',
+    compare: function(a, b) {
+      if (a > b) {
+        return 1;
+      } else if (a < b) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+  };
+
+  $.fn.tablesort = function(settings) {
+    var table, sortable, previous;
+    return this.each(function() {
+      table = $(this);
+      previous = table.data('tablesort');
+      if(previous) {
+        previous.destroy();
+      }
+      table.data('tablesort', new $.tablesort(table, settings));
+    });
+  };
+
+})(window.Zepto || window.jQuery);
+
 // append csrf token to all ajax calls
 $.ajaxSetup({
   headers: {
@@ -1075,9 +1210,8 @@ $('#category_image_dropzone').dropzone({
 });
 
 $('.covers').flickity({
-  autoPlay: 6000,
+  autoPlay: 4000,
   adaptiveHeight: true
-
 });
 
 
@@ -1286,7 +1420,59 @@ $('.delivery_payment_checkbox').checkbox({
 })
 
 
+function initCoverEdit()
+{
+    $('.cover.editable .cover_div').resizable({
+        stop: function stop() {
+          $('#admin_add_cover_form input[name="width"]').val($(this).width() / $(this).parent().width() * 100);
+        }
+      }).draggable({
+      containment: ".cover_image",
+      start: function start(event, ui) {
+        var left = parseInt($(this).css('left'), 10);
+        left = isNaN(left) ? 0 : left;
+        var top = parseInt($(this).css('top'), 10);
+        top = isNaN(top) ? 0 : top;
+        __recoupLeft = left - ui.position.left;
+        __recoupTop = top - ui.position.top;
+      },
+      drag: function drag(event, ui) {
+        //resize bug fix ui drag `enter code here`
+        __dx = ui.position.left - ui.originalPosition.left;
+        __dy = ui.position.top - ui.originalPosition.top;
+        //ui.position.left = ui.originalPosition.left + ( __dx/__scale);
+        //ui.position.top = ui.originalPosition.top + ( __dy/__scale );
+        ui.position.left = ui.originalPosition.left + __dx;
+        ui.position.top = ui.originalPosition.top + __dy;
+        //
+        ui.position.left += __recoupLeft;
+        ui.position.top += __recoupTop;
+      },
+      stop: function stop() {
+        var pos = {};
+
+        $('#admin_add_cover_form input[name="left"]').val($(this).position().left / $(this).parent().width() * 100);
+        $('#admin_add_cover_form input[name="top"]').val($(this).position().top / $(this).parent().height() * 100);
+      }
+    });
+
+    $('.cover_div h1').css('color',$('#admin_add_cover_form input[name="h1_color"]').val());
+    $('.cover_div h1').css('font-size',$('#admin_add_cover_form input[name="h1_size"]').val()+'vw');
+    $('.cover_div h2').css('color',$('#admin_add_cover_form input[name="h2_color"]').val());
+    $('.cover_div h2').css('font-size',$('#admin_add_cover_form input[name="h2_size"]').val()+'vw');
+    $('.cover_div h1').text($('#admin_add_cover_form input[name="h1_text"]').val());
+    $('.cover_div h2').text($('#admin_add_cover_form input[name="h2_text"]').val());
+
+    $('.cover_div').css('left',$('#admin_add_cover_form input[name="left"]').val()+'%');
+    $('.cover_div').css('top',$('#admin_add_cover_form input[name="top"]').val()+'%');
+    $('.cover_div').css('width',$('#admin_add_cover_form input[name="width"]').val()+'%');
+
+}
+
+initCoverEdit();
+
 $('#cover_dropzone').dropzone({
+  clickable: ['#admin_add_cover_change_image_btn', '#cover_dropzone'],
   success: function(file, response){
     var $x, $y, $w, $h;
     this.removeAllFiles(true); 
@@ -1294,6 +1480,8 @@ $('#cover_dropzone').dropzone({
     $('.admin_add_cover_under').css('display','flex');
     $('.cover_image').show();
     $('#cover_dropzone').hide();
+    $('#admin_add_cover_form input[name="filename"]').val(file.name);
+    $('#admin_add_cover_change_image_btn').hide();
 
     $('.crop_preview img').cropper({
       guides: false,
@@ -1307,50 +1495,15 @@ $('#cover_dropzone').dropzone({
         $('#admin_add_cover_form input[name="w"]').val(e.width);
         $('#admin_add_cover_form input[name="h"]').val(e.height);
 
-        if ($('.cover_image').find('.cover_text').length == 0)
+        if ($('.cover_image').find('.cover_div').length == 0)
         {
-         $('.cover_image').append('<div class="cover_text"><h1>Nadpis</h1><h2>Text ktory sa zobrazi pod nadpsion</h2></div>');
+         $('.cover_image .cover').append('<div class="cover_div"><h1>Nadpis</h1><h2>Text ktory sa zobrazi pod nadpisom</h2></div>');
         }
 
-        $('.cover_text').resizable({
-            stop: function stop() {
-              $('#admin_add_cover_form input[name="width"]').val($(this).width() / $(this).parent().width() * 100);
-            }
-        }).draggable({
-          containment: ".cover_image",
-          start: function start(event, ui) {
-            var left = parseInt($(this).css('left'), 10);
-            left = isNaN(left) ? 0 : left;
-            var top = parseInt($(this).css('top'), 10);
-            top = isNaN(top) ? 0 : top;
-            __recoupLeft = left - ui.position.left;
-            __recoupTop = top - ui.position.top;
-          },
-          drag: function drag(event, ui) {
-            //resize bug fix ui drag `enter code here`
-            __dx = ui.position.left - ui.originalPosition.left;
-            __dy = ui.position.top - ui.originalPosition.top;
-            //ui.position.left = ui.originalPosition.left + ( __dx/__scale);
-            //ui.position.top = ui.originalPosition.top + ( __dy/__scale );
-            ui.position.left = ui.originalPosition.left + __dx;
-            ui.position.top = ui.originalPosition.top + __dy;
-            //
-            ui.position.left += __recoupLeft;
-            ui.position.top += __recoupTop;
-          },
-          stop: function stop() {
-            var pos = {};
-
-            $('#admin_add_cover_form input[name="left"]').val($(this).position().left / $(this).parent().width() * 100);
-            $('#admin_add_cover_form input[name="left"]').val($(this).position().top / $(this).parent().height() * 100);
-
-
-          }
-        });
-
+        initCoverEdit();
 
       },
-      preview: $('.cover_image')
+      preview: $('.cover_image .cover')
     });
 
 
@@ -1372,53 +1525,120 @@ $('#cover_dropzone').dropzone({
 });
 
 
-$('.admin_add_cover_h1_color_btn').spectrum();
-$('.admin_add_cover_h2_color_btn').spectrum();
+$('.admin_add_cover_h1_color_btn').spectrum({
+      showAlpha: true,
+});
+
+$('.admin_add_cover_h2_color_btn').spectrum({
+      showAlpha: true
+
+});
 
 $(".admin_add_cover_h1_color_btn").on('move.spectrum', function(e, color) {
-    $('.cover_text h1').css('color',color.toHexString());
-    $('#admin_add_cover_form input[name="h1_color"]').val(color.toHexString());
+    $('.cover_div h1').css('color',color.toRgbString());
+    $('#admin_add_cover_form input[name="h1_color"]').val(color.toRgbString());
 });
 
 $(".admin_add_cover_h2_color_btn").on('move.spectrum', function(e, color) {
-    $('.cover_text h2').css('color',color.toHexString()); 
-    $('#admin_add_cover_form input[name="h2_color"]').val(color.toHexString());
+    $('.cover_div h2').css('color',color.toRgbString()); 
+    $('#admin_add_cover_form input[name="h2_color"]').val(color.toRgbString());
 });
 
 var h1Slider = document.getElementById('admin_add_cover_h1_size_slider');
 var h2Slider = document.getElementById('admin_add_cover_h2_size_slider');
 
-noUiSlider.create(h1Slider ,{
- start: 0,
-    connect: true,
-    range: {
-      'min': 0,
-      'max': 6
-    },
+if ($('#admin_add_cover_h1_size_slider').length)
+{
+  noUiSlider.create(h1Slider ,{
+   start: $('#admin_add_cover_form input[name="h1_size"]').val(),
+      connect: true,
+      range: {
+        'min': 0,
+        'max': 6
+      },
+    });
+
+  noUiSlider.create(h2Slider ,{
+   start: $('#admin_add_cover_form input[name="h2_size"]').val(),
+      connect: true,
+      range: {
+        'min': 0,
+        'max': 6
+      },
+    });
+
+
+  h1Slider.noUiSlider.on('update', function(aa){
+      $('.cover_div h1').css('font-size',aa[0]+'vw'); 
+      $('#admin_add_cover_form input[name="h1_size"]').val(aa[0]);
   });
 
-noUiSlider.create(h2Slider ,{
- start: 0,
-    connect: true,
-    range: {
-      'min': 0,
-      'max': 6
-    },
+
+  h2Slider.noUiSlider.on('update', function(aa){
+      $('.cover_div h2').css('font-size',aa[0]+'vw'); 
+      $('#admin_add_cover_form input[name="h2_size"]').val(aa[0]);
+
   });
 
+}
 
-h1Slider.noUiSlider.on('update', function(aa){
-    $('.cover_text h1').css('font-size',aa[0]+'vw'); 
-    $('#admin_add_cover_form input[name="h1_size"]').val(aa[0]);
+
+$('#admin_add_cover_h1').on('keyup', function(e, color) {
+    $('.cover_div h1').html($(this).val());
+    $('#admin_add_cover_form input[name="h1_text"]').val($(this).val());
+});
+
+$('#admin_add_cover_h2').on('keyup', function(e, color) {
+    $('.cover_div h2').html($(this).val());
+    $('#admin_add_cover_form input[name="h2_text"]').val($(this).val());
 });
 
 
-h2Slider.noUiSlider.on('update', function(aa){
-    $('.cover_text h2').css('font-size',aa[0]+'vw'); 
-    $('#admin_add_cover_form input[name="h2_size"]').val(aa[0]);
-
+$('.admin_cover_list h1').each(function(index,element){
+  $(element).css('font-size', parseFloat(($(element).css('font-size')))*0.18);
 });
 
+$('.admin_cover_list h2').each(function(index,element){
+  $(element).css('font-size', parseFloat(($(element).css('font-size')))*0.2);
+});
+
+
+
+$('.delete_cover_btn').click(function(){
+  $btn = $(this);
+  $('#delete_cover_modal').modal('setting', {
+    autofocus: false,
+    onApprove : function() {
+      $id = $btn.closest('.cover').data('id');
+      $.ajax({
+        type: "DELETE",
+        url: "/admin/cover/"+$id,
+        success: function(){
+          location.reload();
+        }
+      })
+    }
+  }).modal('show');
+})
+
+
+$('.admin_cover_list').sortable({
+  stop: function(){
+    $data = {};
+
+    $('.admin_cover_list .cover').each(function(index, item){
+      $data[$(item).data('id')] = index;
+    });
+
+    $.ajax({
+      method: "PUT",
+      url: '/admin/cover/setorder',
+      data: $data
+    })
+  }
+});
+
+$('table').tablesort();
 
 });
 

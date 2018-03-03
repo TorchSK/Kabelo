@@ -16,12 +16,12 @@ class CreateCoversTable extends Migration {
       $table->string('image');
       $table->float('left')->default(15);
       $table->float('top')->default(30);
-      $table->string('h1_font',30)->default('inherit');
+      $table->string('h1_font',30)->default('hwt-artz');
       $table->string('h2_font',30)->default('inherit');
       $table->float('h1_size')->default(5);
       $table->float('h2_size')->default(4);
-      $table->string('h1_color',20)->default('#FFF');
-      $table->string('h2_color',20)->default('#FFF');
+      $table->string('h1_color',40)->default('#FFF');
+      $table->string('h2_color',40)->default('#FFF');
       $table->timestamp('created_at')->nullable();
       $table->timestamp('updated_at')->nullable();
 

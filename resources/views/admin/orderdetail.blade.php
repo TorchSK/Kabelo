@@ -36,7 +36,7 @@
 
 		    	<div class="content par active" data-tab="detail">
 
-		    		<table class="ui very basic collapsing table">
+		    		<table class="ui very basic collapsing unstackable table">
 		    			<thead >
 					    <tr><th colspan="2">
 					      Detaily
@@ -58,7 +58,7 @@
 					  </tbody>
 					</table>
 
-		    		<table class="ui very basic collapsing table">
+		    		<table class="ui very basic collapsing unstackable table">
 		    			<thead >
 					    <tr><th colspan="2">
 					      &nbsp;
@@ -80,7 +80,7 @@
 					  </tbody>
 					</table>
 					
-					<table class="ui very basic collapsing table">
+					<table class="ui very basic collapsing unstackable table">
 		    			<thead >
 					    <tr><th colspan="2">
 					      &nbsp;

@@ -4,7 +4,7 @@
 	<div class="orders">
 	<div class="ui horizontal divider">Uživatelia</div>
 	
-	<table class="ui celled selectable table">
+	<table class="ui celled selectable sortable table">
 	  <thead>
 	    <tr>
 	    <th>ID</th>
@@ -12,6 +12,7 @@
 	    <th>Email</th>
 	    <th>Admin</th>
 	   	<th>Datum registrácie</th>
+	   	<th>Počet objednávok</th>
 	   	<th></th>
 
 	  </tr></thead>
@@ -23,10 +24,12 @@
 	      <td>{{$user->email}}</td>
 	      <td>{{$user->admin}}</td>
 	      <td>{{Carbon\Carbon::parse($user->created_at)->format('d.m.Y H:i:s')}}</td>
+	      <td>{{$user->orders->count()}}</td>
 
 	      <td>
 	      	<a href="{{route('admin.userDetail',['user'=>$user->id])}}" class="ui mini icon blue button"><i class="search large icon"></i></a>
 	      </td>
+
 
 	  	</tr>
 

@@ -2,12 +2,9 @@
 @section('content')
         
     <div class="covers">
-        <div class="cover" style="background-image: url('/img/overlays/dot.png'), url('/img/tasker_cover2.jpg');background-size: auto, cover; background-position: 0 0, 80% 75%;">
-            <div class="cover_div" style="top: 25%;left: 2%;text-align: center;width: 50%;">
-                <div id="slogan" style="color: rgba(255,255,255,0.8);">Tasker káble</div>
-                <div id="sub_slogan" style="color: rgba(255,255,255,0.9); text-shadow: 1px 1px 1px #555">Ponúkame najkvalitenjšie káble značky Tasker. Nájdete u nás celý sortiment od audio, video až po datové káble.</div>
-            </div>
-        </div>
+        @foreach(App\Cover::orderBy('order')->get() as $cover)
+            @include('home.cover')
+        @endforeach
     </div>
 
     <div class="under_cover">               

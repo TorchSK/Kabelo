@@ -32,8 +32,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::post('/deliverypayment', 'AdminController@addDeliveryPayment');
 	Route::delete('/deliverypayment', 'AdminController@removeDeliveryPayment');
 	Route::get('/banner/', 'AdminController@addCover')->name('admin.addCover');
-	Route::post('/banner/', 'AdminController@storeCover')->name('admin.storeCover');
+	Route::post('/cover/', 'AdminController@storeCover')->name('admin.storeCover');
 	Route::post('/cover/upload', 'AdminController@uploadCover')->name('admin.uploadCover');
+	Route::put('/cover/setorder', 'AdminController@setCoverOrder')->name('admin.setCoverOrder');
+	Route::get('/cover/edit/{id}', 'AdminController@editCover')->name('admin.editcover');
+	Route::put('/cover/{id}', 'AdminController@updatecover')->name('admin.updatecover');
+	Route::delete('/cover/{id}', 'AdminController@deleteCover')->name('admin.deletecover');
 
 });
 
