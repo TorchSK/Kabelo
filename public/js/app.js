@@ -1390,8 +1390,8 @@ $('.admin_method_list i.red').click(function(){
 $('.tabbs .tabb').click(function(){
   $('.tabbs .tabb').removeClass('brown').addClass('basic');
   $(this).addClass('brown').removeClass('basic')
-  $('.tabbs+.contents .content').removeClass('active');
-  $('.tabbs+.contents .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
+  $('.tabbs .contents .content').removeClass('active');
+  $('.tabbs .contents .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
 })
 
 
@@ -1639,6 +1639,12 @@ $('.admin_cover_list').sortable({
 });
 
 $('table').tablesort();
+
+
+setTimeout(function () {
+  $('.covers').fadeTo("slow", 1);
+}, 100);
+
 
 });
 

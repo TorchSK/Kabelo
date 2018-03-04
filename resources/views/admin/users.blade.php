@@ -26,7 +26,7 @@
 	      <td>{{Carbon\Carbon::parse($user->created_at)->format('d.m.Y H:i:s')}}</td>
 	      <td>{{$user->orders->count()}}</td>
 
-	      <td>
+	      <td class="collapsing">
 	      	<a href="{{route('admin.userDetail',['user'=>$user->id])}}" class="ui mini icon blue button"><i class="search large icon"></i></a>
 	      </td>
 
