@@ -26,7 +26,7 @@
 
 				<div class="h1_input">
 					<div class="ui big input">
-					  <input type="text" value="Nadpis" id="admin_add_cover_h1">
+					  <input type="text" @if(isset($cover)) value="{{$cover->h1_text}}" @else value="Nadpis" @endif id="admin_add_cover_h1">
 					</div>
 
 					<input type="text" class="admin_add_cover_h1_color_btn" value="000">
@@ -38,7 +38,7 @@
 
 				<div class="h2_input">
 					<div class="ui big input">
-					  <input type="text" value="Text ktory sa zobrazi pod nadpisom" id="admin_add_cover_h2">
+					  <input type="text" @if(isset($cover)) value="{{$cover->h2_text}}" @else value="Text ktory sa zobrazi pod nadpisom" @endif id="admin_add_cover_h2">
 					</div>
 
 					<input type="text" class="admin_add_cover_h2_color_btn" value="000">

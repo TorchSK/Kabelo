@@ -1526,10 +1526,12 @@ $('#cover_dropzone').dropzone({
 
 
 $('.admin_add_cover_h1_color_btn').spectrum({
-      showAlpha: true,
+      color:  $('#admin_add_cover_form input[name="h1_color"]').val(),
+      showAlpha: true
 });
 
 $('.admin_add_cover_h2_color_btn').spectrum({
+      color:  $('#admin_add_cover_form input[name="h2_color"]').val(),
       showAlpha: true
 
 });
