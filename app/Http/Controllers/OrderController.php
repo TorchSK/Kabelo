@@ -33,6 +33,7 @@ class OrderController extends Controller
         if (Auth::check())
         {
             $orderData = Auth::user()->cart;
+            $orderData['items'] =  Auth::user()->cart->products->pluck('id');
         }
         else
         {
@@ -49,34 +50,17 @@ class OrderController extends Controller
     	$order->status_id = 0;
 
 
-    	$order->delivery_method = $orderData['delivery_method'];
-    	$order->payment_method = $orderData['payment_method'];
+    	$order->delivery_method_id = $orderData['delivery_method'];
+    	$order->payment_method_id = $orderData['payment_method'];
 
 
-    	$order->invoice_name = $orderData['invoiceAddress']['name'];
-	   	$order->invoice_phone = $orderData['invoiceAddress']['phone'];
-		$order->invoice_email = $orderData['invoiceAddress']['email'];
-		$order->invoice_address_street = $orderData['invoiceAddress']['street'];
-		$order->invoice_address_zip = $orderData['invoiceAddress']['zip'];
-		$order->invoice_address_city = $orderData['invoiceAddress']['city'];
+    	$order->invoice_address = $orderData['invoice_address'];
 
-		if ($orderData['deliveryAddressFlag'])
+
+		if ($orderData['delivery_address_flag'])
 		{
-			$order->delivery_address_name = $orderData['deliveryAddress']['name'];
-			$order->delivery_address_street = $orderData['deliveryAddress']['street'];
-			$order->delivery_address_zip = $orderData['deliveryAddress']['zip'];
-			$order->delivery_address_city = $orderData['deliveryAddress']['city'];
-			$order->delivery_address_phone = $orderData['deliveryAddress']['phone'];
+			$order->delivery_address = $orderData['delivery_address'];
 		}
-		else
-		{
-			$order->delivery_address_name = $orderData['invoiceAddress']['name'];
-			$order->delivery_address_street = $orderData['invoiceAddress']['street'];
-			$order->delivery_address_zip = $orderData['invoiceAddress']['zip'];
-			$order->delivery_address_city = $orderData['invoiceAddress']['city'];
-			$order->delivery_address_phone = $orderData['invoiceAddress']['phone'];
-		}
-		$order->invoice_first_additional = '';
 
         $price = 0;
 
@@ -93,10 +77,10 @@ class OrderController extends Controller
         };
 
         $user = Auth::user();
-        Mail::to($order->invoice_email)->queue(new NewOrder($order));
+        Mail::to(json_decode($order->invoice_address)->email)->queue(new NewOrder($order));
 
         //delete the cart
-        $this->cartService->delete();  
+        //$this->cartService->delete();  
 
 
     }

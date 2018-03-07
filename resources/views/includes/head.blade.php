@@ -22,6 +22,7 @@
     <script src="/js/cropper.js"></script>
     <script src="/js/rating.js"></script>
     <script src="/js/spectrum.js"></script>
+    <script src="/js/tablesorter.js"></script>
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/rateyo.css">
