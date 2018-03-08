@@ -10,9 +10,11 @@ use App\Mail\NewOrder;
 
 use App\Services\Contracts\CartServiceContract;
 
+use DB;
 use Cookie;
 use Auth;
 use Mail;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -94,5 +96,13 @@ class OrderController extends Controller
     	return view('orders.myhistory');
     }
 
+    public function countByDays($daysago)
+    {
+        $orders = Order::select(DB::raw('DATE_FORMAT(created_at, "%Y-%c-%e") as date'), DB::raw('count(*) as count'))
+            ->groupBy('date')
+            ->get();
+
+        return $orders;
+    }
 
 }

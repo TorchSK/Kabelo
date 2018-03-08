@@ -112,7 +112,10 @@
 	<div class="boxes hidden overall">
 
 		<div class="box">
-			<div class="caption">Objednávky</div>
+			<div class="caption">Objednávky <i class="table icon"></i><i class="chart line icon"></i></div>
+
+			<canvas id="orders_chart" width="400" height="400"></canvas>
+
 		</div>
 
 

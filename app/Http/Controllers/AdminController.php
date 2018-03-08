@@ -37,7 +37,8 @@ class AdminController extends Controller
         $data = [
             'makers' => Product::groupBy('maker'),
             'categories' => Category::orderBy('order','asc')->get(),
-            'categoryCounts' => $this->productService->categoryCounts()
+            'categoryCounts' => $this->productService->categoryCounts(),
+            'bodyid' => 'dashboard'
 
         ];
 

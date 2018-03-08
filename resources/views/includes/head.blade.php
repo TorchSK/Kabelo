@@ -22,6 +22,8 @@
     <script src="/js/cropper.js"></script>
     <script src="/js/rating.js"></script>
     <script src="/js/spectrum.js"></script>
+    <script src="/js/tablesorter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/rateyo.css">
