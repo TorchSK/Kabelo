@@ -72,8 +72,7 @@ class OrderController extends Controller
         foreach ($orderData['items'] as $productid)
         {
             $product = Product::find($productid);
-            $price = $price + $product->price;
-            $order->products()->attach($product);
+            $order->products()->attach($product, ['price' => $product->price]);
         };
 
         $user = Auth::user();

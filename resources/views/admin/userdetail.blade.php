@@ -135,7 +135,7 @@
 
 					<div class="content" data-tab="orders">
 
-						<div class="sum">Ceková suma objednávok: <number>{{$user->orders->sum('price')}} €</number></div>
+						<div class="sum">Ceková suma objednávok: <number>{{$userOrdersPrice}} €</number></div>
 
 						<table class="ui celled selectable sortable table">
 						  <thead>
@@ -155,7 +155,7 @@
 						      <td>{{$order->id}}</td>
 						      <td>{{Carbon\Carbon::parse($order->created_at)->format('d.m.Y H:i:s')}}</td>
 						   	  <td>{{$order->invoice_name}}</td>
-						      <td>{{$order->price}}</td>
+						      <td>{{$order->products->sum('price')}}</td>
 						      <td  class="warning">{{$order->status->name}}</td>
 						      <td>{{$order->delivery->name}} / {{$order->payment->name}}</td>
 						      <td class="collapsing">
