@@ -12,6 +12,7 @@ use Hash;
 use Auth;
 use Cookie;
 
+use DB;
 use App\User;
 use App\Address;
 use App\Activation;
@@ -202,5 +203,15 @@ class UserController extends Controller
 
         $user->delete();
 
+    }
+
+
+    public function countByDays($daysago)
+    {
+        $orders = User::select(DB::raw('DATE_FORMAT(created_at, "%Y-%c-%e") as date'), DB::raw('count(*) as count'))
+            ->groupBy('date')
+            ->get();
+
+        return $orders;
     }
 }

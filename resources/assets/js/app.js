@@ -1524,11 +1524,25 @@ if ($('body').attr('id')=='dashboard')
   $.get('/api/orders/countbydays/'+7, {}, function(data){
     $orders = data;
 
-    $labels = getLastDays(7);
-    $data = getDataByDays($orders, 7);
+    $labels = getLastDays(7).reverse();
+    $data = getDataByDays($orders, 7).reverse();
 
-    $(data).each(function(index, element){
+
+    $($data).each(function(index, element){
       addChartData(orderCountChart, $labels[index], $data[index]);
+    })
+  });
+
+  $regs = [];
+  $.get('/api/users/countbydays/'+7, {}, function(data){
+    $regs = data;
+
+    $labels = getLastDays(7).reverse();
+    $data = getDataByDays($regs, 7).reverse();
+
+
+    $($data).each(function(index, element){
+      addChartData(regCountChart, $labels[index], $data[index]);
     })
   })
 }
@@ -1581,8 +1595,11 @@ function getDataByDays(data, goBackDays)
 }
 
 
-var ctx = document.getElementById("orders_chart").getContext('2d');
-ctx.height = 500;
+var canvas = document.getElementById("orders_chart");
+var ctx = canvas.getContext('2d');
+
+canvas.height = $(canvas).parent().height();
+
 var orderCountChart = new Chart(ctx, {
     type: 'line',
 
@@ -1600,15 +1617,65 @@ var orderCountChart = new Chart(ctx, {
 
     options: {
       responsive: true,
+      responsiveAnimationDuration: 1000,
       maintainAspectRatio: false,
+
       legend: {
         display: false
-      }
-
+      },
+      animation: {
+        duration: 10000
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            stepSize: 1
+          }
+        }]
+      },
     },
 
-    scales: {},
+});
 
+var canvas = document.getElementById("reg_chart");
+var ctx = canvas.getContext('2d');
+
+canvas.height = parent.offsetHeight;
+
+var regCountChart = new Chart(ctx, {
+    type: 'line',
+
+    data: {
+        labels: [],
+        datasets: [{
+            label: "Počet",
+            backgroundColor: '#6AACD6',
+            borderColor: '#6AACD6',
+            data:[],
+            fill: false,
+            lineTension: 0
+        }]
+    },
+
+    options: {
+      responsive: true,
+      responsiveAnimationDuration: 1000,
+      maintainAspectRatio: false,
+
+      legend: {
+        display: false
+      },
+      animation: {
+        duration: 10000
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            stepSize: 1
+          }
+        }]
+      },
+    },
 
 });
 

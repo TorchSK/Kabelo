@@ -114,19 +114,49 @@
 		<div class="box">
 			<div class="caption">Objednávky <i class="table icon"></i><i class="chart line icon"></i></div>
 
-			<canvas id="orders_chart" width="400" height="400"></canvas>
+			<canvas id="orders_chart"></canvas>
 
 		</div>
 
 
 		<div class="box">
 
-			<div class="caption">Produkty</div>
+			<div class="caption">Registrácie  <i class="table icon"></i><i class="chart line icon"></i></div>
+
+			<canvas id="reg_chart" width="400" height="400"></canvas>
+
 		</div>
 
 		<div class="box">
 
-			<div class="caption">Kategórie</div>
+			<div class="caption">Najpredávanejšie produkty</div>
+
+			<table class="ui celled selectable unstackable sortable table">
+			  <thead>
+			    <tr>
+			    <th>ID</th>
+			    <th>Datum registrácie</th>
+			 	<th>Email</th>
+			    <th>Meno</th>
+			    <th>Admin</th>
+			    <th>Akcie</th>
+			  </tr></thead>
+			  <tbody>
+			  	@foreach(App\User::orderBy('created_at','desc')->get() as $user)
+				<tr>
+			      <td>{{$user->id}}</td>
+			      <td>{{Carbon\Carbon::parse($user->created_at)->format('d.m.Y H:i:s')}}</td>
+			   	  <td>{{$user->email}}</td>
+			      <td>{{$user->name}}</td>
+			      <td>{{$user->admin}}</td>
+			      <td></td>
+
+			  	</tr>
+
+				@endforeach
+			  </tbody>
+			</table>
+
 		</div>
 
 	</div>
