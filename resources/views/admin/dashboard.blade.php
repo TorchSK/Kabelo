@@ -27,7 +27,7 @@
 			  	@foreach(App\Order::orderBy('created_at','desc')->get() as $order)
 				<tr>
 			      <td>{{$order->id}}</td>
-			      <td>{{Carbon\Carbon::parse($order->created_at)->format('d.m.Y H:i:s')}}</td>
+			      <td>{{Carbon\Carbon::parse($order->created_at)->format('j.n.Y H:i:s')}}</td>
 			   	  <td>{{json_decode($order->invoice_address)->name}}</td>
 			      <td>{{$order->products->sum('price')}} €</td>
 			      <td  class="warning">{{$order->status->name}}</td>
@@ -111,8 +111,18 @@
 
 	<div class="boxes hidden overall">
 
-		<div class="box">
-			<div class="caption">Objednávky <i class="table icon"></i><i class="chart line icon"></i></div>
+		<div class="box" data-resource="orders" data-type="countbydays">
+			<div class="caption">
+				Objednávky 
+				<i class="table icon"></i>
+				<i class="chart line icon"></i>
+				<div class="fr">
+					<a class="chart_days_btn" data-days="7"> 7 dní |</a> 
+					<a class="chart_days_btn" data-days="30"> 30 dní |</a>
+					<a class="chart_days_btn" data-days="160"> 6 mes. |</a>
+					<a class="chart_days_btn" data-days="365"> Všetko &nbsp;&nbsp;&nbsp;</a>
+				</div>	
+			</div>
 
 			<canvas id="orders_chart"></canvas>
 

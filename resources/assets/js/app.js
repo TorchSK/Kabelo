@@ -1557,6 +1557,7 @@ function addChartData(chart, label, data) {
 }
 
 
+
 function getLastDays(goBackDays)
 {
     var today = new Date();
@@ -1590,7 +1591,7 @@ function getDataByDays(data, goBackDays)
         result.push(0);
       }
     })
-
+    console.log(data);
     return result;
 }
 
@@ -1622,9 +1623,6 @@ var orderCountChart = new Chart(ctx, {
 
       legend: {
         display: false
-      },
-      animation: {
-        duration: 10000
       },
       scales: {
         yAxes: [{
@@ -1665,9 +1663,6 @@ var regCountChart = new Chart(ctx, {
       legend: {
         display: false
       },
-      animation: {
-        duration: 10000
-      },
       scales: {
         yAxes: [{
           ticks: {
@@ -1678,6 +1673,30 @@ var regCountChart = new Chart(ctx, {
     },
 
 });
+
+
+$('.chart_days_btn').click(function(){
+  $days = $(this).data('days');
+  $resource = $(this).closest('.box').data('resource');
+  $type = $(this).closest('.box').data('type');
+
+  $.get('/api/'+$resource+'/'+$type+'/'+$days, {}, function(data){
+
+    $labels = getLastDays($days).reverse();
+    $data = getDataByDays(data, $days).reverse();
+
+    orderCountChart.data.labels = [];
+    orderCountChart.data.datasets.forEach((dataset) => {
+        dataset.data = [];
+    });
+
+    $($data).each(function(index, element){
+      addChartData(orderCountChart, $labels[index], $data[index]);
+    })
+  })
+});
+
+
 
 });
 

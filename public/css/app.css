@@ -229,6 +229,9 @@ a {
 a:hover {
   color: #1B1C1D;
 }
+.fr {
+  float: right;
+}
 .sidebar_btn {
   padding: 0px 15px 5px 15px;
 }
@@ -2358,4 +2361,7 @@ h1.header {
 }
 .tablesorter-header-inner {
   display: inline-block;
+}
+.chart_days_btn {
+  cursor: pointer;
 }
