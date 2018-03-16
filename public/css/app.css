@@ -1343,6 +1343,8 @@ a:hover {
   width: 48%;
   margin: 0 2% 2% 0;
   border-radius: 5px;
+  position: relative;
+  max-height: 30vh;
 }
 @media all and (max-width: 980px) {
   .admin_dashboard .box {
@@ -1582,9 +1584,6 @@ a:hover {
 }
 .user_detail .detail.section .tabs {
   margin-bottom: 35px;
-}
-canvas {
-  margin-top: 25px;
 }
 #cart_detail {
   padding: 80px 0;
@@ -2115,6 +2114,9 @@ h1.header {
     display: none;
   }
 }
+#filterbar #cat_div.hidden {
+  display: none;
+}
 #filterbar .all_products_btn {
   background-color: #2185D0;
   color: #FFFFFF;
@@ -2364,4 +2366,23 @@ h1.header {
 }
 .chart_days_btn {
   cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 15px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.chart_days_btn.selected {
+  background-color: #2185D0;
+  color: #FFFFFF;
+}
+.chart_days_btn:last-child {
+  margin-right: 20px;
+}
+canvas {
+  margin-top: 25px;
+  width: 100%;
+  max-height: 100% !important;
 }

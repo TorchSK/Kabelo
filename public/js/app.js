@@ -1161,7 +1161,6 @@ $('.dashboard_tabs .overall.tab').click(function(){
   $(this).addClass('blue').removeClass('basic');
   $('.admin_dashboard .new.boxes').addClass('hidden');
   $('.admin_dashboard .overall.boxes').removeClass('hidden');
-  orderCountChart.render(1000,0);
 });
 
 
@@ -1520,31 +1519,44 @@ setTimeout(function () {
 
 if ($('body').attr('id')=='dashboard')
 {
-  $orders = [];
-  $.get('/api/orders/countbydays/'+7, {}, function(data){
-    $orders = data;
+  initCharts();
+  drawCharts();
+}
 
-    $labels = getLastDays(7).reverse();
-    $data = getDataByDays($orders, 7).reverse();
+function drawCharts(){
 
+  $('canvas').each(function(index, item)
+  {
+    var days = $(item).closest('.box').data('days');
+    var resource = $(item).closest('.box').data('resource');
+    var type = $(item).closest('.box').data('type');
+    var chart = $(item).closest('.box').data('resource')+$(item).closest('.box').data('type');
 
-    $($data).each(function(index, element){
-      addChartData(orderCountChart, $labels[index], $data[index]);
+    $.get('/api/'+resource+'/'+type+'/'+days, {}, function(data){
+
+      var labels = getLastDays(days).reverse();
+      var chartdata = getDataByDays(data, days).reverse();
+
+      drawChart(chart, labels, chartdata);
+
     })
-  });
-
-  $regs = [];
-  $.get('/api/users/countbydays/'+7, {}, function(data){
-    $regs = data;
-
-    $labels = getLastDays(7).reverse();
-    $data = getDataByDays($regs, 7).reverse();
 
 
-    $($data).each(function(index, element){
-      addChartData(regCountChart, $labels[index], $data[index]);
-    })
   })
+
+}
+
+function drawChart(chart, labels, data){
+
+    $charts[chart].data.labels = [];
+    $charts[chart].data.datasets.forEach((dataset) => {
+        dataset.data = [];
+    }); 
+
+    $(data).each(function(index, element){
+      addChartData($charts[chart], labels[index], data[index]);
+    })
+
 }
 
 
@@ -1575,6 +1587,7 @@ function getLastDays(goBackDays)
 function getDataByDays(data, goBackDays)
 { 
     var result = [];
+
     var days = getLastDays(goBackDays);
     assocData = {};
 
@@ -1591,111 +1604,84 @@ function getDataByDays(data, goBackDays)
         result.push(0);
       }
     })
-    console.log(data);
     return result;
 }
 
+function randomColor(){
+  var colorR = Math.floor((Math.random() * 256));
+  var colorG = Math.floor((Math.random() * 256));
+  var colorB = Math.floor((Math.random() * 256));
+  rand="rgb(" + colorR + "," + colorG + "," + colorB + ")";
+  return rand;
+}
 
-var canvas = document.getElementById("orders_chart");
-var ctx = canvas.getContext('2d');
+function initCharts()
+{
+  $charts = {};
+  $('canvas').each(function(index, item){
+    var canvas = item;
+    var ctx = canvas.getContext('2d');
+    var color = randomColor();
+    canvas.height = $(canvas).parent().height();
 
-canvas.height = $(canvas).parent().height();
+    $charts[$(item).closest('.box').data('resource')+$(item).closest('.box').data('type')] = new Chart(ctx, {
+        type: 'line',
 
-var orderCountChart = new Chart(ctx, {
-    type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: "Počet",
+                backgroundColor: color,
+                borderColor: color,
+                data:[],
+                fill: false,
+                lineTension: 0
+            }]
+        },
 
-    data: {
-        labels: [],
-        datasets: [{
-            label: "Počet",
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data:[],
-            fill: false,
-            lineTension: 0
-        }]
-    },
+        options: {
+          responsive: true,
+          responsiveAnimationDuration: 0,
+          maintainAspectRatio: false,
 
-    options: {
-      responsive: true,
-      responsiveAnimationDuration: 1000,
-      maintainAspectRatio: false,
+          legend: {
+            display: false
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                stepSize: 1
+              }
+            }]
+          },
+        },
 
-      legend: {
-        display: false
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            stepSize: 1
-          }
-        }]
-      },
-    },
+    });
+  })
 
-});
+}
 
-var canvas = document.getElementById("reg_chart");
-var ctx = canvas.getContext('2d');
 
-canvas.height = parent.offsetHeight;
 
-var regCountChart = new Chart(ctx, {
-    type: 'line',
-
-    data: {
-        labels: [],
-        datasets: [{
-            label: "Počet",
-            backgroundColor: '#6AACD6',
-            borderColor: '#6AACD6',
-            data:[],
-            fill: false,
-            lineTension: 0
-        }]
-    },
-
-    options: {
-      responsive: true,
-      responsiveAnimationDuration: 1000,
-      maintainAspectRatio: false,
-
-      legend: {
-        display: false
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            stepSize: 1
-          }
-        }]
-      },
-    },
-
-});
 
 
 $('.chart_days_btn').click(function(){
-  $days = $(this).data('days');
-  $resource = $(this).closest('.box').data('resource');
-  $type = $(this).closest('.box').data('type');
+  var box = $(this).closest('.box');
+  var days = $(this).data('days');
+  var resource = $(this).closest('.box').data('resource');
+  var type = $(this).closest('.box').data('type');
+  var chart =  resource+type;
 
-  $.get('/api/'+$resource+'/'+$type+'/'+$days, {}, function(data){
-
-    $labels = getLastDays($days).reverse();
-    $data = getDataByDays(data, $days).reverse();
-
-    orderCountChart.data.labels = [];
-    orderCountChart.data.datasets.forEach((dataset) => {
-        dataset.data = [];
-    });
-
-    $($data).each(function(index, element){
-      addChartData(orderCountChart, $labels[index], $data[index]);
-    })
+  $.get('/api/'+resource+'/'+type+'/'+days, {}, function(data){
+    var labels = getLastDays(days).reverse();
+    var chartdata = getDataByDays(data, days).reverse();
+    drawChart(chart, labels, chartdata);
   })
-});
 
+  $(this).closest('.fr').find('.chart_days_btn').removeClass('selected');
+  $(this).addClass('selected');
+
+});
 
 
 });

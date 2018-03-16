@@ -31,7 +31,7 @@
         <a href="/categories/all" class="pad item all_products_btn"><i class="cubes icon"></i> Všetky kategórie</a>
         @endif
         
-        <div id="cat_div">
+        <div id="cat_div" class="@if (Request::segment(1) && Request::segment(1)!='admin') hidden @endif">
         <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Kategórie</div>
 
         <div class="active content">
