@@ -61,7 +61,7 @@ class GlobalComposer {
         //dd($cart);
         
         $view->with('cart', $cart);
-        $view->with('layout', Setting::firstOrNew(['key' => 'layout'])->value);
+        $view->with('layout', Setting::firstOrCreate(['key' => 'layout'])->value);
     }
 
 }
