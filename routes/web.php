@@ -38,6 +38,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/cover/edit/{id}', 'AdminController@editCover')->name('admin.editcover');
 	Route::put('/cover/{id}', 'AdminController@updatecover')->name('admin.updatecover');
 	Route::delete('/cover/{id}', 'AdminController@deleteCover')->name('admin.deletecover');
+	Route::get('/layout', 'AdminController@layout')->name('admin.layout');
+	Route::post('/layout/set', 'AdminController@setLayout')->name('admin.setLayout');
 
 });
 

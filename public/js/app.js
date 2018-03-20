@@ -1684,6 +1684,13 @@ $('.chart_days_btn').click(function(){
 });
 
 
+$('.layout_div').click(function(){
+  $layout = $(this).data('layout');
+  $.post('/admin/layout/set',{layout:$layout}, function(){
+    location.reload();
+  })
+})
+
 });
 
 

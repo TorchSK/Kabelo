@@ -470,3 +470,24 @@
 	}
 }
 
+#admin_layouts{
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+
+	.layout_div{
+		padding: 35px;
+		border-radius: 16px;
+		border: 8px solid transparent;
+		cursor: pointer;
+
+		&:hover, &.selected{
+			border: 8px solid #666;
+			background-color: rgba(0,0,0,0.05);
+		}
+
+		&:first-child{
+			margin-right: 35px;
+		}
+	}
+}

@@ -8,6 +8,8 @@
 	<div class="text">Produkty</div>
 </a>
 
+
+
 <a href="{{route('admin.users')}}" class="tab">
 	<i class="big user icon"></i>
 	<div class="text">Uživatelia</div>
@@ -22,5 +24,11 @@
 <a href="{{route('admin.settings')}}" class="tab">
 	<i class="big setting icon"></i>
 	<div class="text">Nastavenia</div>
+</a>
+
+
+<a href="{{route('admin.layout')}}" class="tab">
+	<i class="big laptop icon"></i>
+	<div class="text">Roloženie</div>
 </a>
 

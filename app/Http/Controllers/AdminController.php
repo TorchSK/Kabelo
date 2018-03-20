@@ -8,6 +8,7 @@ use App\Category;
 use App\User;
 use App\Order;
 use App\Cover;
+use App\Setting;
 
 use Auth;
 use Excel;
@@ -369,5 +370,20 @@ class AdminController extends Controller
         }
     }
 
+
+    public function layout()
+    {
+
+        return view('admin.layout');
+    }
+
+    public function setLayout(Request $request)
+    {
+
+        $setting = Setting::firstOrNew(['key' => 'layout']);
+        $setting->value = $request->get('layout');
+        $setting->save();
+
+    }
 
 }

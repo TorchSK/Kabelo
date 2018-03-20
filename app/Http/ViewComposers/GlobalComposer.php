@@ -12,6 +12,7 @@ use Cookie;
 use Crypt;
 use App\User;
 use App\Cart;
+use App\Setting;
 
 class GlobalComposer {
 
@@ -60,6 +61,7 @@ class GlobalComposer {
         //dd($cart);
         
         $view->with('cart', $cart);
+        $view->with('layout', Setting::where('key','layout')->first()->value);
     }
 
 }

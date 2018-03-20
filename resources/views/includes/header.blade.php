@@ -17,6 +17,7 @@
           </div>
         </a>
 
+
         <div class="account item">
           @if (Auth::check())
             {{Auth::user()->email}}
@@ -24,6 +25,8 @@
           <i class="@if(Auth::check() && Auth::user()->admin) doctor @else user @endif  big icon"></i>
           <i class="chevron down icon"></i>
         </div>
+
+
 
         <div class="ui basic popup transition" id="auth_popup">
             <div class="msgs">

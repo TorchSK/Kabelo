@@ -1,11 +1,86 @@
-html, body {
+html {
   height: 100%;
-  background-color: #F7F7F7;
+  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.0) 40%) , url('/img/squairy_light.png');
+  background-repeat: no-repeat, repeat;
 }
 
 body {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #F7F7F7;
+
+  &[data-layout="1"]{
+	  width: 100%;
+	  background-color: #F7F7F7;
+
+	  .cover{
+	  	height: 55vh;
+	  }
+
+	  #nav{
+	  	background-color: black;
+	  }
+
+	  #header{
+	  	background-color: #2B2D2D;
+
+	  	.cart{
+	  		background-color: rgba(0,0,0,0.4);
+	  	}
+	  }
+	}
+
+  &[data-layout="2"]{
+	  width: 100%;
+	  max-width: 1500px;
+	  margin: 0 auto;
+	  background-color: #F7F7F7;
+
+	  .cover{
+	  	height: 40vh;
+	  }
+
+	  #nav{
+ 	    background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.19) ) , url('/img/squairy_light.png');
+
+	  	.item{
+	  		color: #444;
+
+	  		&:nth-child(3){
+	  			background-color: transparent;
+	  		}
+	  	}
+	  }
+
+
+	#header{
+	  	background-color: #2B2D2D;
+
+	  	.item{
+			color: #DDD;
+		}
+
+		.cart{
+			background-color: transparent;
+		}
+	  }
+
+	  #grid{
+		.item{
+				width: @ccw7;
+			}
+		}
+		footer{
+			margin-bottom: 50px;
+		}
+		.container{
+			width: 95%;
+		}
+
+	}
+
+
 }
 
 

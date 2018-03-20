@@ -184,12 +184,14 @@
 /*---  Brand   ---*/
 /*---  Dark Tones  ---*/
 /*---  Light Tones  ---*/
-html,
-body {
+html {
   height: 100%;
-  background-color: #F7F7F7;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), color-stop(40%, rgba(0, 0, 0, 0))), url('/img/squairy_light.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 40%), url('/img/squairy_light.png');
+  background-repeat: no-repeat, repeat;
 }
 body {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -197,6 +199,60 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background-color: #F7F7F7;
+}
+body[data-layout="1"] {
+  width: 100%;
+  background-color: #F7F7F7;
+}
+body[data-layout="1"] .cover {
+  height: 55vh;
+}
+body[data-layout="1"] #nav {
+  background-color: black;
+}
+body[data-layout="1"] #header {
+  background-color: #2B2D2D;
+}
+body[data-layout="1"] #header .cart {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+body[data-layout="2"] {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  background-color: #F7F7F7;
+}
+body[data-layout="2"] .cover {
+  height: 40vh;
+}
+body[data-layout="2"] #nav {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.19))), url('/img/squairy_light.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.19)), url('/img/squairy_light.png');
+}
+body[data-layout="2"] #nav .item {
+  color: #444;
+}
+body[data-layout="2"] #nav .item:nth-child(3) {
+  background-color: transparent;
+}
+body[data-layout="2"] #header {
+  background-color: #2B2D2D;
+}
+body[data-layout="2"] #header .item {
+  color: #DDD;
+}
+body[data-layout="2"] #header .cart {
+  background-color: transparent;
+}
+body[data-layout="2"] #grid .item {
+  width: 23%;
+}
+body[data-layout="2"] footer {
+  margin-bottom: 50px;
+}
+body[data-layout="2"] .container {
+  width: 95%;
 }
 .pusher {
   -webkit-box-flex: 1;
@@ -366,7 +422,6 @@ a:hover {
   font-weight: 900;
 }
 .covers {
-  height: 55vh;
   opacity: 0;
 }
 @media all and (max-width: 980px) {
@@ -459,6 +514,10 @@ a:hover {
 }
 #home_content {
   min-height: 1100px;
+  background-color: #F7F7F7;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 @media all and (max-width: 980px) {
   #home_content {
@@ -715,7 +774,6 @@ a:hover {
   margin-left: 3px;
 }
 #header {
-  background-color: #2B2D2D   ;
   width: 100%;
   text-align: center;
 }
@@ -1591,6 +1649,29 @@ a:hover {
 .user_detail .detail.section .tabs {
   margin-bottom: 35px;
 }
+#admin_layouts {
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#admin_layouts .layout_div {
+  padding: 35px;
+  border-radius: 16px;
+  border: 8px solid transparent;
+  cursor: pointer;
+}
+#admin_layouts .layout_div:hover,
+#admin_layouts .layout_div.selected {
+  border: 8px solid #666;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+#admin_layouts .layout_div:first-child {
+  margin-right: 35px;
+}
 #cart_detail {
   padding: 80px 0;
 }
@@ -2019,7 +2100,6 @@ count {
   opacity: 0.7;
 }
 #nav {
-  background-color: black;
   text-align: center;
   padding: 5px 0;
 }

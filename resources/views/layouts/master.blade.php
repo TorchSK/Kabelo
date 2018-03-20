@@ -2,7 +2,7 @@
 <html>
     @include('includes.head')
 
-    <body @if (isset($bodyid)) id="{{$bodyid}}" @endif>
+    <body @if (isset($bodyid)) id="{{$bodyid}}" @endif data-layout="{{App\Setting::where('key','layout')->first()->value}}">
 
     @include('includes.sidebar')
     @include('includes.catbar')
