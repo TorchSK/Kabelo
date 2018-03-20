@@ -31,7 +31,6 @@
 
               <div class="add_category_btn">
                 <i class="big icons">
-                  <i class="big thin brown circle icon"></i>
                   <i class="plus brown icon"></i>
                 </i>
                 <div class="text">Pridaj subkategóriu</div>
@@ -82,7 +81,6 @@
             <div class="item new_product_btn">
 				      <a href="/product/create?category={{$category->id}}">
 					   <i class="huge icons">
-					  <i class="big thin brown circle icon"></i>
 					  <i class="plus brown icon"></i>
 					</i>
 					Pridaj produkt

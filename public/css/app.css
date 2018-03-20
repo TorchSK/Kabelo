@@ -1403,14 +1403,15 @@ a:hover {
   width: 50%;
 }
 .new_product_btn {
-  font-size: 1.5em;
-  font-weight: 900;
+  font-size: 1.1em;
+  font-weight: 300;
   vertical-align: top;
 }
 .new_product_btn .icons {
   font-size: 3em !important;
   display: block;
   margin-bottom: 15px;
+  margin-top: 30px;
 }
 .admin_categories_list {
   padding: 50px;
@@ -1419,10 +1420,18 @@ a:hover {
           flex: 1;
 }
 .admin_categories_list .item {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.08);
   padding: 15px;
   margin-bottom: 3px;
   border-radius: 5px;
+}
+.admin_categories_list .item.sub {
+  margin-left: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.admin_categories_list .item.sub2 {
+  margin-left: 20px;
+  background-color: rgba(0, 0, 0, 0.03);
 }
 .admin_categories_list .name {
   display: inline-block;
@@ -1471,7 +1480,7 @@ a:hover {
   background-color: #FFFFFF;
   width: 200px;
   height: 110px;
-  margin: 0 7px;
+  margin: 0 15px;
   text-align: center;
   padding-top: 20px;
   border-radius: 5px;
@@ -1479,15 +1488,12 @@ a:hover {
           box-shadow: 0 0 2px #CCC;
   cursor: pointer;
 }
-.subcategories .add_category_btn i.circle.icon {
-  font-size: 45px;
-}
 .subcategories .add_category_btn i.plus.icon {
-  margin-left: -1px;
+  margin-bottom: 8px;
 }
 .subcategories .add_category_btn .text {
-  font-weight: 900;
-  font-size: 1.2em;
+  font-weight: 300;
+  font-size: 1em;
   margin-top: 5px;
 }
 .admin_method_list i.icon {
@@ -1710,6 +1716,7 @@ a:hover {
   margin: 0 35px;
   min-height: 60px;
   height: 223px;
+  display: none;
 }
 #category_image_dropzone .dz-message {
   margin: 8px;

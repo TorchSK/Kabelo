@@ -235,14 +235,15 @@
 
 
 .new_product_btn{
-	font-size: 1.5em;
-	font-weight: 900;
+	font-size: 1.1em;
+	font-weight: 300;
 	vertical-align: top;
 	
 	.icons{
 		font-size: 3em !important;
 		display: block;
 		margin-bottom: 15px;
+		margin-top: 30px;
 	}
 }
 
@@ -251,10 +252,22 @@
 	flex: 1;
 
 	.item{
-		background-color: rgba(0,0,0,0.05);
+		background-color: rgba(0,0,0,0.08);
 		padding: 15px;
 		margin-bottom: 3px;
 		border-radius: 5px;
+
+		&.sub{
+			margin-left: 10px;
+			background-color: rgba(0,0,0,0.05);
+
+		}
+
+		&.sub2{
+			margin-left: 20px;
+			background-color: rgba(0,0,0,0.03);
+
+		}
 	}
 
 	.name{
@@ -316,24 +329,20 @@
 	background-color: @white;
 	width: 200px;
 	height: 110px;
-	margin: 0 7px;
+	margin: 0 15px;
 	text-align: center;
 	padding-top: 20px;
 	border-radius: 5px;
 	box-shadow:  0 0 2px #CCC;
 	cursor: pointer;
 
-	i.circle.icon{
-		font-size: 45px;
-	}
-
 	i.plus.icon{
-		margin-left: -1px;
+		margin-bottom: 8px;
 	}
 
 	.text{
-		font-weight: 900;
-		font-size: 1.2em;
+		font-weight: 300;
+		font-size: 1em;
 		margin-top: 5px;
 	}
 }
