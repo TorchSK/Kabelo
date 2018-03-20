@@ -61,10 +61,7 @@ class GlobalComposer {
         //dd($cart);
         
         $view->with('cart', $cart);
-        if(Setting::where('key','layout')->count())
-        {
-            $view->with('layout', Setting::where('key','layout')->first()->value);
-        }
+        $view->with('layout', Setting::firstOrNew(['key' => 'layout'])->value);
     }
 
 }
