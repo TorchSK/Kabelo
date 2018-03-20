@@ -502,7 +502,7 @@ function filtersInit(){
 
 
 
-$('.categories .item .icon').click(function(e){
+$('.categories .item .icon.plus').click(function(e){
   $(this).toggleClass('minus plus');
 })
 
@@ -1255,8 +1255,8 @@ $('.admin_method_list i.red').click(function(){
 
 
 $('.tabbs .tabb').click(function(){
-  $('.tabbs .tabb').removeClass('brown').addClass('basic');
-  $(this).addClass('brown').removeClass('basic')
+  $('.tabbs .tabb').removeClass('brown selected').addClass('basic');
+  $(this).addClass('brown selected').removeClass('basic')
   $('.tabbs .contents .content').removeClass('active');
   $('.tabbs .contents .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
 })

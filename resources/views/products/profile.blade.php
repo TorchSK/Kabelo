@@ -89,12 +89,12 @@
 </div>
 
 
-<div id="product_tabs">
+<div class="tabbs" id="product_tabs">
 
-  <div class="tabbs">
-    <div class="tabb ui brown button" data-tab="parameters">Parametre ({{$product->parameters->count()}})</div>
-    <div class="tabb ui basic button" data-tab="recommended">Doporučene produkty ({{$product->relatedProducts->count()}})</div>
-    <div class="tabb ui basic button" data-tab="ratings">Hodnotenia ({{$product->ratings->count()}})</div>
+  <div class="tabs">
+    <div class="tabb selected" data-tab="parameters">Parametre ({{$product->parameters->count()}})</div>
+    <div class="tabb" data-tab="recommended">Doporučene produkty ({{$product->relatedProducts->count()}})</div>
+    <div class="tabb" data-tab="ratings">Hodnotenia ({{$product->ratings->count()}})</div>
   </div>
 
   <div class="contents">

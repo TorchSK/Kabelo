@@ -27,8 +27,8 @@
         </div>
         @endif
         
-        @if (Request::segment(1)!='admin')
-        <a href="/categories/all" class="pad item all_products_btn"><i class="cubes icon"></i> Všetky kategórie</a>
+        @if (Request::segment(1)!='admin' && !Request::get('category'))
+        <a href="/categories/all" class="pad item all_products_btn"><i class="cubes icon"></i> Prehľad kategórií</a>
         @endif
         
         <div id="cat_div" class="@if (Request::segment(1) && Request::segment(1)!='admin') hidden @endif">
