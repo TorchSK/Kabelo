@@ -1255,8 +1255,8 @@ $('.admin_method_list i.red').click(function(){
 
 
 $('.tabbs .tabb').click(function(){
-  $('.tabbs .tabb').removeClass('brown selected').addClass('basic');
-  $(this).addClass('brown selected').removeClass('basic')
+  $('.tabbs .tabb').removeClass('blue selected').addClass('basic');
+  $(this).addClass('blue selected').removeClass('basic')
   $('.tabbs .contents .content').removeClass('active');
   $('.tabbs .contents .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
 })
@@ -1690,6 +1690,21 @@ $('.layout_div').click(function(){
     location.reload();
   })
 })
+
+
+$('.ui.product.search')
+  .search({
+    apiSettings: {
+      url: '/api/products'
+    },
+    fields: {
+      results : '',
+      title   : 'name',
+      url     : ''
+    },
+    minCharacters : 1
+  })
+;
 
 });
 

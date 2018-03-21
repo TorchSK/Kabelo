@@ -4,11 +4,18 @@
 
     @include('admin.sidebar')
 
-    
-    	<div class="products_tabs">
-			<div class="new tab ui blue button"><i class="asterisk icon"></i> Najnovšie</div>
-			<div class="overall tab ui basic button"><i class="archive icon"></i> Súhrnné</div>
-		</div>
+<div class="admin_right">
+
+	<div class="tabbs">
+
+	  <div class="tabs">
+	    <div class="tabb ui button blue selected" data-tab="categories">Všetky kategórie</div>
+	   	<div class="tabb ui button basic" data-tab="news">Všetky novinky</div>
+	    <div class="tabb ui button basic" data-tab="sales">Všetky zľavy</div>
+	  </div>
+
+	  <div class="contents">
+	  	<div class="content active" data-tab="categories">
 
 		<ul class="admin_categories_list">
 		@foreach (App\Category::whereNull('parent_id')->orderBy('order')->get() as $category)
@@ -47,7 +54,38 @@
 		@endforeach
 		</ul>
 
+		</div>
 
+		<div class="content" data-tab="news">
 
+			<table class="ui celled selectable unstackable sortable table">
+			  <thead>
+			    <tr>
+			    <th>ID</th>
+			    <th>Názov</th>
+			    <th>Zmazať</th>
+			  </tr></thead>
+			  <tbody>
+			  	@foreach(App\Product::whereNew('1')->get() as $product)
+				<tr>
+			      <td>{{$product->id}}</td>
+			      <td>{{$product->name}}</td>
+			      <td class="collapsing"><a href="" class="ui mini icon red button"><i class="delete large icon"></i></a></td>
+			  	</tr>
+				@endforeach
+				<tr>
+					<td colspan="3">
+						<div class="ui product search">
+						  <input class="prompt" type="text" placeholder="Common passwords...">
+						  <div class="results"></div>
+						</div>
+					</td>
+				</tr>
+			  </tbody>
+			</table>
 
+		</div>
+	</div>
+</div>
+</div>
 @stop

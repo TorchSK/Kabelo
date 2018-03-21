@@ -1,6 +1,7 @@
 .admin_wrapper{
 	display: flex;
-	min-height: 1050px;
+	background-color: #F7F7F7;
+	flex: 1 0 auto;
 
 	@media @break3{
 		flex-direction: column;
@@ -139,10 +140,15 @@
 	.boxes{
 		display: flex;
 		flex-wrap: wrap;
-		flex:1;
+		flex:1 0 auto;
 
 		&.hidden{
 			display: none;
+		}
+
+		&.overall .box{
+			max-height: 30vh;
+			margin-bottom: 100px;
 		}
 	}
 
@@ -151,7 +157,6 @@
 		margin: 0 2% 2% 0;
 		border-radius: 5px;
 		position: relative;
-		max-height: 30vh;
 
 		@media @break3{
 			width: 100%;
@@ -247,9 +252,13 @@
 	}
 }
 
-.admin_categories_list{
-	padding: 50px;
+.admin_right{
+		padding: 50px;
 	flex: 1;
+}
+
+.admin_categories_list{
+
 
 	.item{
 		background-color: rgba(0,0,0,0.08);
@@ -486,8 +495,9 @@
 			background-color: rgba(0,0,0,0.05);
 		}
 
-		&:first-child{
-			margin-right: 35px;
+		&:last-child{
+			margin-left: 35px;
 		}
+	
 	}
 }

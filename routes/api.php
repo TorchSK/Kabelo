@@ -15,3 +15,4 @@ use Illuminate\Http\Request;
 
 Route::get('orders/countbydays/{daysago}', 'OrderController@countByDays');
 Route::get('users/countbydays/{daysago}', 'UserController@countByDays');
+Route::get('products', 'ProductController@all');

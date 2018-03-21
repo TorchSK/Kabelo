@@ -31,6 +31,10 @@ class ProductController extends Controller
 
     }
 
+    public function all(Request $request)
+    {
+        return Product::all();
+    }
     /**
      * Show the application dashboard.
      *

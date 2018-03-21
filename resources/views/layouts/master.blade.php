@@ -7,14 +7,10 @@
     @include('includes.sidebar')
     @include('includes.catbar')
     @include('includes.parambar')
+    @include('includes.nav')
+    @include('includes.header')
 
-   	<div class="pusher">
-            @include('includes.nav')
-            @include('includes.header')
-
-		@yield('content')
-		<div class="push"></div>
-	</div>
+    @yield('content')
 
 	@include('includes.footer')
 

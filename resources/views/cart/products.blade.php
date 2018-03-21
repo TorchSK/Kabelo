@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 	
-<div id="cart_detail">
+<div class="flex_content" id="cart_detail">
 	<div class="caption">Nákupný košík <a class="delete_cart" data-tooltip="Vymazať obsah košíku"><i class="delete icon"></i></a></div>
 	
 	@include('cart.steps',['step'=>'1'])
