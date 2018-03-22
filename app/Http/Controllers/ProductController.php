@@ -31,9 +31,9 @@ class ProductController extends Controller
 
     }
 
-    public function all(Request $request)
+    public function inputSearch(Request $request)
     {
-        return Product::all();
+        return response()->json(['results'=>Product::where('name', 'like', '%'.$request->get('query').'%')->get()]);
     }
     /**
      * Show the application dashboard.
@@ -207,6 +207,21 @@ class ProductController extends Controller
             }
         }
     }
+
+    public function apiUpdate($productid, Request $request)
+    {
+        $product = Product::find($productid);
+
+        foreach ($request->except('_token') as $key => $value){
+            $product->$key = $value;
+        }
+
+        $product->save();
+        return 1;
+    }
+
+
+
 
     public function update($productid, Request $request)
     {   

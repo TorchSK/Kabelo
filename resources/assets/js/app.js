@@ -1695,16 +1695,40 @@ $('.layout_div').click(function(){
 $('.ui.product.search')
   .search({
     apiSettings: {
-      url: '/api/products'
+      url: '/api/products/search?query={query}',
     },
     fields: {
-      results : '',
+      results : 'results',
       title   : 'name',
-      url     : ''
     },
-    minCharacters : 1
+    onSelect: function(result, response){
+       $.ajax({
+        method: 'PUT',
+        url: '/api/product/'+result.id,
+        data: {new: 1}, 
+        success: function(data){
+          $row = $('#new_product_table tbody tr:first-child').clone();
+          $row.find('td:first-child').text(result.id);
+          $row.find('td:nth-child(2)').text(result.name);
+          $row.data('id',result.id);
+          $('#new_product_table tbody tr:last-child').before($row);
+        }   
+      })
+    }
+  });
+
+$('#new_product_table').on('click', '.red.button', function(){
+  $row = $(this).closest('tr');
+  $id = $row.data('id');
+  $.ajax({
+    method: 'PUT',
+    url: '/api/product/'+$id,
+    data: {new: 0}, 
+    success: function(data){
+      $row.remove();
+    }   
   })
-;
+})
 
 });
 

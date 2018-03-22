@@ -53,7 +53,7 @@ class Product extends Model {
 
 	public function setSaleAttribute($value)
   	{
-      if ($value == 'on')
+      if ($value == 'on' || $value == 1)
       {
         $this->attributes['sale'] = 1;
       }
@@ -65,7 +65,7 @@ class Product extends Model {
 	
 	public function setNewAttribute($value)
   	{
-      if ($value == 'on')
+      if ($value == 'on' || $value == 1)
       {
         $this->attributes['new'] = 1;
       }

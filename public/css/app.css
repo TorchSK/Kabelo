@@ -228,13 +228,14 @@ body[data-layout="2"] .cover {
 }
 body[data-layout="2"] #nav {
   padding-top: 25px;
+  padding-bottom: 10px;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.19))), url('/img/squairy_light.png');
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.19)), url('/img/squairy_light.png');
 }
 body[data-layout="2"] #nav .item {
   color: #FFF;
-  font-weight: 500;
-  text-shadow: 1px 1px 1px #999;
+  font-weight: 400;
+  text-shadow: 0px 0px 4px #444;
 }
 body[data-layout="2"] #nav .item:hover {
   text-shadow: none;
@@ -415,19 +416,19 @@ a:hover {
 .tabbs .tabb {
   display: inline-block;
 }
-.contents .content {
+.contents > .content {
   display: none;
   padding-top: 25px;
 }
-.contents .content.active {
+.contents > .content.active {
   display: block;
 }
-.contents .content .sum {
+.contents > .content .sum {
   font-weight: 100;
   font-size: 2em;
   margin-bottom: 25px;
 }
-.contents .content .sum number {
+.contents > .content .sum number {
   font-weight: 900;
 }
 .covers {
