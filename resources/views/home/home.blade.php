@@ -11,7 +11,7 @@
       &nbsp;
     </div>
 
-    <div class="flex" id="home_content">
+    <div class="flex flex_content" id="home_content">
 
         <!-- mobile -->
         <div id="m_categories_btn">

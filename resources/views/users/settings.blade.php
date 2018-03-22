@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="content" id="settings_user" data-userid="{{Auth::user()->id}}">
+<div class="flex_content" id="settings_user" data-userid="{{Auth::user()->id}}">
 
 <div id="left" class="ct">
 		<div class="avatar">

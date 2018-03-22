@@ -1,12 +1,13 @@
 html {
   height: 100%;
-  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.0) 40%) , url('/img/squairy_light.png');
-  background-repeat: no-repeat, repeat;
+  background-color: #FFF;
+  background-image:  url('/img/overlays/dot.png'), linear-gradient(#CCC, #FFF);
+  background-repeat: repeat, no-repeat;
 }
 
 body {
   height: 100%;
-  background-color: #F7F7F7;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
 
@@ -32,9 +33,8 @@ body {
 
   &[data-layout="2"]{
 	  width: 100%;
-	  max-width: 1500px;
+	  max-width: 1320px;
 	  margin: 0 auto;
- 	    background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.19) ) , url('/img/squairy_light.png');
 
 	  .cover{
 	  	height: 40vh;
@@ -43,12 +43,12 @@ body {
 	  #nav{
 	  	padding-top: 25px;
 	  	padding-bottom: 10px;
- 	    background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.19) ) , url('/img/squairy_light.png');
+  		background: transparent;
 
 	  	.item{
 	  		color: #FFF;
-	  		font-weight: 400;
-	  		text-shadow: 0px 0px 4px #444;
+	  		font-weight: 500;
+	  		text-shadow: 1px 1px 1px #444;
 
 
 	  		&:hover{
@@ -100,7 +100,11 @@ body {
 
 .flex_content{
 	flex: 1 0 auto;
-	  background-color: #F7F7F7;
+	background-color: #F7F7F7;
+	min-height: 90vh;
+	border-left: 1px solid #DDD;
+	border-right: 1px solid #DDD;
+
 }
 
 .pad.wrapper{
