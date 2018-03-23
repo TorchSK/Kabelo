@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="category_images">
+<div class="category_images flex_content">
 
     <div class="ui horizontal divider">Základné kategórie</div>
 

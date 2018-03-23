@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('content')
 
+<div class="flex_content">
+
+
 @if (Auth::check() && Auth::user()->admin)
 <div id="product_options" class="ct">
  <div class="container ct">
@@ -161,6 +164,6 @@
 
 
 </div>
-
+</div>
   
 @stop

@@ -186,9 +186,8 @@
 /*---  Light Tones  ---*/
 html {
   height: 100%;
-  background-color: #FFF;
-  background-image: url('/img/overlays/dot.png'), -webkit-gradient(linear, left top, left bottom, from(#CCC), to(#FFF));
-  background-image: url('/img/overlays/dot.png'), linear-gradient(#CCC, #FFF);
+  background-image: url('/img/overlays/dot.png'), -webkit-gradient(linear, left top, left bottom, from(#DDD), to(#FFF));
+  background-image: url('/img/overlays/dot.png'), linear-gradient(#DDD, #FFF);
   background-repeat: repeat, no-repeat;
 }
 body {
@@ -219,11 +218,11 @@ body[data-layout="1"] #header .cart {
 }
 body[data-layout="2"] {
   width: 100%;
-  max-width: 1320px;
+  max-width: 1360px;
   margin: 0 auto;
 }
 body[data-layout="2"] .cover {
-  height: 40vh;
+  height: 35vh;
 }
 body[data-layout="2"] #nav {
   padding-top: 25px;
@@ -932,9 +931,6 @@ a:hover {
   margin-bottom: 10px;
   color: #DB2828;
 }
-#body_product_detail {
-  background-color: #FFF;
-}
 #product_detail {
   padding: 100px 100px 15px 100px;
   display: -webkit-box;
@@ -1092,6 +1088,10 @@ a:hover {
 }
 #product_detail #new {
   display: inline-block;
+}
+#product_tabs {
+  background-color: #FFF;
+  padding-top: 110px;
 }
 #product_tabs .tabs {
   display: -webkit-box;

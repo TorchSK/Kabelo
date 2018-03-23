@@ -1692,7 +1692,7 @@ $('.layout_div').click(function(){
 })
 
 
-$('.ui.product.search')
+$('.ui.new.product.search')
   .search({
     apiSettings: {
       url: '/api/products/search?query={query}',
@@ -1724,6 +1724,45 @@ $('#new_product_table').on('click', '.red.button', function(){
     method: 'PUT',
     url: '/api/product/'+$id,
     data: {new: 0}, 
+    success: function(data){
+      $row.remove();
+    }   
+  })
+})
+
+
+$('.ui.sale.product.search')
+  .search({
+    apiSettings: {
+      url: '/api/products/search?query={query}',
+    },
+    fields: {
+      results : 'results',
+      title   : 'name',
+    },
+    onSelect: function(result, response){
+       $.ajax({
+        method: 'PUT',
+        url: '/api/product/'+result.id,
+        data: {sale: 1}, 
+        success: function(data){
+          $row = $('#sale_product_table tbody tr:first-child').clone();
+          $row.find('td:first-child').text(result.id);
+          $row.find('td:nth-child(2)').text(result.name);
+          $row.data('id',result.id);
+          $('#sale_product_table tbody tr:last-child').before($row);
+        }   
+      })
+    }
+  });
+
+$('#sale_product_table').on('click', '.red.button', function(){
+  $row = $(this).closest('tr');
+  $id = $row.data('id');
+  $.ajax({
+    method: 'PUT',
+    url: '/api/product/'+$id,
+    data: {sale: 0}, 
     success: function(data){
       $row.remove();
     }   

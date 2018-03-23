@@ -75,7 +75,7 @@
 				@endforeach
 				<tr>
 					<td colspan="3">
-						<div class="ui product search">
+						<div class="ui product new search">
 						  <input class="prompt" type="text" placeholder="Pridaj produkt">
 						  <div class="results"></div>
 						</div>
@@ -88,7 +88,7 @@
 
 		<div class="content" data-tab="sales">
 
-			<table class="ui celled selectable unstackable sortable table" id="new_product_table">
+			<table class="ui celled selectable unstackable sortable table" id="sale_product_table">
 			  <thead>
 			    <tr>
 			    <th>ID</th>
@@ -105,7 +105,7 @@
 				@endforeach
 				<tr>
 					<td colspan="3">
-						<div class="ui product search">
+						<div class="ui product sale search">
 						  <input class="prompt" type="text" placeholder="Pridaj produkt">
 						  <div class="results"></div>
 						</div>
