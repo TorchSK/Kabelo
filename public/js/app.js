@@ -1056,7 +1056,7 @@ $('#category_image_dropzone').dropzone({
         $w = e.width;
         $h = e.height;
       },
-      preview: $('.category_image .image')
+      preview: $('#category_image_div .category_image .image')
     });
 
     // confirm crop
