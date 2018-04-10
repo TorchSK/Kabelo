@@ -9,9 +9,9 @@
 	<div class="tabbs">
 
 	  <div class="tabs">
-	    <div class="tabb ui button blue selected" data-tab="categories">Všetky kategórie</div>
-	   	<div class="tabb ui button basic" data-tab="news">Všetky novinky</div>
-	    <div class="tabb ui button basic" data-tab="sales">Všetky zľavy</div>
+	    <div class="tabb ui button blue selected" data-tab="categories">Všetky kategórie ({{App\Category::all()->count()}})</div>
+	   	<div class="tabb ui button basic" data-tab="news">Všetky novinky ({{App\Product::whereNew(1)->count()}})</div>
+	    <div class="tabb ui button basic" data-tab="sales">Všetky zľavy ({{App\Product::whereSale(1)->count()}})</div>
 	  </div>
 
 	  <div class="contents">
@@ -25,7 +25,6 @@
 
 
 			<a class="admin_delete_category_btn ui red label">Zmaž</a>
-			<a href="/category/{{$category->id}}/edit" class="admin_edit_category_btn ui brown label">Zmeň</a>
 
 		</li>
 
@@ -36,7 +35,6 @@
 
 
 				<a class="admin_delete_category_btn ui red label">Zmaž</a>
-				<a href="/category/{{$child->id}}/edit" class="admin_edit_category_btn ui brown label">Zmeň</a>
 
 					@foreach ($child->children->sortBy('order') as $child2)
 				    	<li class="item category @if($child->parent_id) sub2 @endif" data-id={{$category->id}}>
@@ -45,7 +43,6 @@
 
 
 							<a class="admin_delete_category_btn ui red label">Zmaž</a>
-							<a href="/category/{{$category->id}}/edit" class="admin_edit_category_btn ui brown label">Zmeň</a>
 
 						</li>
 					@endforeach

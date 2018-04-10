@@ -1828,8 +1828,8 @@ a:hover {
   margin: 8px;
 }
 .crop_preview {
-  max-height: 223px;
-  margin-right: 25px;
+  max-height: 197px;
+  margin: 0 25px;
 }
 .ui.button.crop_ok {
   display: none;
@@ -1880,8 +1880,23 @@ a:hover {
   margin-bottom: 35px;
 }
 .category_image .image {
-  overflow: hidden;
   border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.category_image .image:hover .options {
+  opacity: 1;
+}
+.category_image .image .options {
+  width: 148px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  top: 40%;
+  opacity: 0;
 }
 .category_image .image img {
   border-radius: 6px;

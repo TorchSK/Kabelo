@@ -17,7 +17,9 @@
 
               <div>@include('categories.image')</div>
 
-              <form action="/category/image/upload" class="dropzone" id="category_image_dropzone"> <input name="_token" hidden value="{!! csrf_token() !!}" /></form>
+              <form action="/category/image/upload" class="dropzone" id="category_image_dropzone"> 
+                  <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
+              </form>
               <div class="crop_preview"></div>
               <div><div class="crop_ok ui green button" data-categoryid="{{$category->id}}">OK</div></div>
             </div>

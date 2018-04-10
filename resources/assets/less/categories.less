@@ -20,8 +20,8 @@
 }
 
 .crop_preview{
-	max-height: 223px;
-	margin-right: 25px;
+	max-height: 197px;
+	margin: 0 25px;
 }
 
 .ui.button.crop_ok{
@@ -78,14 +78,34 @@
 .category_image{
 
 	.image{
-		overflow: hidden;
 		border-radius: 6px;
+		position: relative;
+		overflow: hidden;
 
+		&:hover{
+			.options{
+				opacity: 1;
+			}	
+		}
+
+		.options{
+			width: 148px;
+			position: absolute;
+			margin-left: auto;
+			margin-right: auto;
+			left: 0;
+			right: 0;
+			z-index: 999;
+			top: 40%;
+			opacity: 0;
+		}
 
 		img{
 			border-radius: 6px;
 		}
 	}
+
+
 
 	.name{
 		text-align: center;

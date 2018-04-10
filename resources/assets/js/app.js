@@ -1769,6 +1769,11 @@ $('#sale_product_table').on('click', '.red.button', function(){
   })
 })
 
+
+$('.change_cat_img_btn').click(function(){
+  $('#category_image_dropzone').click();
+});
+
 });
 
 
