@@ -230,9 +230,8 @@ body[data-layout="2"] #nav {
   background: transparent;
 }
 body[data-layout="2"] #nav .item {
-  color: #FFF;
+  color: #333;
   font-weight: 500;
-  text-shadow: 1px 1px 1px #444;
 }
 body[data-layout="2"] #nav .item:hover {
   text-shadow: none;
