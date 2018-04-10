@@ -1847,6 +1847,9 @@ a:hover {
 .subcategories .category_image .image {
   overflow: hidden;
 }
+.subcategories .category_image .image .options {
+  display: none;
+}
 .subcategories .category_image .image img {
   border-radius: 6px;
   width: 200px;
