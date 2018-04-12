@@ -1880,6 +1880,9 @@ a:hover {
   margin-bottom: 35px;
   overflow: hidden;
 }
+.category_images .category_image .options {
+  display: none;
+}
 .category_images .divider {
   margin-bottom: 35px;
 }
