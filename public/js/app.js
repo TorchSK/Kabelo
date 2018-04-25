@@ -1047,7 +1047,7 @@ $('#category_image_dropzone').dropzone({
 
     $('.crop_preview img').cropper({
       guides: false,
-      viewMode: 1,
+      viewMode: 0,
       aspectRatio: 1.78,
       autoCropArea: 1,
       crop: function(e){
