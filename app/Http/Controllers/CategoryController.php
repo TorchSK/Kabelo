@@ -10,6 +10,8 @@ use App\CategoryParameter;
 use Session;
 use Image;
 
+use App\Services\Contracts\ProductServiceContract;
+
 class CategoryController extends Controller
 {
     /**
@@ -17,13 +19,19 @@ class CategoryController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(ProductServiceContract $productService)
+    {        
+        $this->productService = $productService;
     }
+
 
     public function all()
     {
-        return view('categories.all');
+        $data = [
+            'categoryCounts' => $this->productService->categoryCounts()
+        ];
+
+        return view('categories.all', $data);
     }
 
     /**

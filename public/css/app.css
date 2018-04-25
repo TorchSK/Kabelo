@@ -211,7 +211,7 @@ body[data-layout="1"] #nav {
   background-color: black;
 }
 body[data-layout="1"] #header {
-  background-color: #2B2D2D;
+  background-color: #2F2F2F;
 }
 body[data-layout="1"] #header .cart {
   background-color: rgba(0, 0, 0, 0.4);
@@ -1865,16 +1865,6 @@ a:hover {
   margin: 15px auto 0 auto;
   word-wrap: wrap;
   width: 80%;
-}
-.category_images {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 50px 10%;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
 }
 .category_images .category_image {
   margin-bottom: 35px;
