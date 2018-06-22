@@ -1,19 +1,22 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 @section('content')
 
-<form action="/product" method="POST" id="create_product_form">
+<form action="/product" method="POST" id="create_product_form" class="admin_wrapper">
 
 
 <div id="product_detail">
     <div class="left">
         <div class="img">
-           <div action="/file/upload" class="dropzone" id="product_detail_dropzone"> <input name="_token" hidden value="{!! csrf_token() !!}" /></div>
+           <div action="/file/upload" class="dropzone" id="product_detail_dropzone"> 
+           	<input name="_token" hidden value="{!! csrf_token() !!}" />
+           	<div class="dz-message">Klikni pre nahranie súboru</div>
+           </div>
         </div>
 
    		<div class="ui header">Cena</div>
 
         <div class="ui right labeled fluid huge input">
-		  <input type="text" placeholder="Cena" name="price">
+		  <input type="text" placeholder="Cena" name="price" @if(Request::has('duplicate'))value="{{App\Product::find(Request::get('duplicate'))->price}}@endif" />
 		  <div class="ui basic label">
 		    Eur
 		  </div>
@@ -82,7 +85,7 @@
 		<select multiple="" name="categories" id="create_product_categories_input" class="ui fluid normal dropdown">
 		<option value="">Kategória</option>
 		@foreach (App\Category::all() as $category)
-		<option @if(isset($selectedCategory) && $selectedCategory->id==$category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+		<option @if((isset($selectedCategory) && $selectedCategory->id==$category->id) || (Request::has('duplicate')) && in_array($category->id, App\Product::find(Request::get('duplicate'))->categories()->pluck('id')->toArray())) selected @endif value="{{$category->id}}">{{$category->name}}</option>
 		@endforeach
 		</select>
 
@@ -104,9 +107,15 @@
 				    <div class="default text">Parameter</div>
 
 				  <div class="menu">
-				  	@foreach (App\Category::find(Request::get('category'))->parameters as $param)
-				  		@include('products.paramoptions')
-				  	@endforeach
+				  	@if(Request::has('duplicate'))
+	 					@foreach (App\Product::find(Request::get('duplicate'))->categories()->first()->parameters as $param)
+					  		@include('products.paramoptions')
+					  	@endforeach
+				  	@else
+					  	@foreach (App\Category::find(Request::get('category'))->parameters as $param)
+					  		@include('products.paramoptions')
+					  	@endforeach
+				  	@endif
 				  </div>
 				</div>
 				<div class="ui input value"><input type="text" name="value[]" /></div>

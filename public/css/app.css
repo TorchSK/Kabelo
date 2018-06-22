@@ -579,7 +579,7 @@ a:hover {
   }
 }
 #grid .subcategories {
-  margin-bottom: 50px;
+  margin: 50px 0 25px  0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -746,9 +746,8 @@ a:hover {
   display: inline-block;
 }
 #grid .sorts {
+  margin-top: 40px;
   margin-bottom: 25px;
-  background-color: #FFFFFF;
-  border-radius: 4px;
   overflow: hidden;
 }
 @media all and (max-width: 980px) {
@@ -762,6 +761,8 @@ a:hover {
   display: inline-block;
   padding: 12px 25px;
   cursor: pointer;
+  border-radius: 4px;
+  opacity: 0.8;
 }
 @media all and (max-width: 980px) {
   #grid .sorts > .sort {
@@ -936,6 +937,7 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   background-color: #FFF;
+  width: 100%;
 }
 @media all and (max-width: 980px) {
   #product_detail {
@@ -1257,7 +1259,6 @@ a:hover {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
-  min-height: 90vh;
 }
 @media all and (max-width: 980px) {
   .admin_wrapper {
@@ -1298,8 +1299,8 @@ a:hover {
       -ms-flex: 1;
           flex: 1;
 }
-.admin_wrapper .right {
-  padding: 0 35px;
+.admin_wrapper > .right {
+  padding: 25px;
 }
 .admin_wrapper .ui.divider {
   margin: 40px  0;
@@ -1851,7 +1852,6 @@ a:hover {
 }
 .subcategories .category_image .image img {
   border-radius: 6px;
-  width: 200px;
 }
 @media all and (max-width: 980px) {
   .subcategories .category_image .image img {

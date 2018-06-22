@@ -120,11 +120,13 @@ $('#create_product_form').submit(function(e){
   $name = $('#product_detail input[name="name"]').val();
   $code = $('#product_detail input[name="code"]').val();
   $maker = $('#product_detail input[name="maker"]').val();
+  $maker = $('#product_detail input[name="price"]').val();
 
 
   if ($name=='') {$validation=0; $('#product_detail input[name="name"]').parent().addClass('error');}
   if ($code=='') {$validation=0; $('#product_detail input[name="code"]').parent().addClass('error');}
   if ($maker=='') {$validation=0; $('#product_detail input[name="maker"]').parent().addClass('error');}
+  if ($maker=='') {$validation=0; $('#product_detail input[name="price"]').parent().addClass('error');}
 
  if ($validation==1)
  {
