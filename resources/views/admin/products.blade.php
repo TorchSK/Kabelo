@@ -80,14 +80,12 @@
             <div id="grid">
             
             @if ($category!='unknown')
-            <div class="item new_product_btn">
-				      <a href="/product/create?category={{$category->id}}">
-					   <i class="huge icons">
-					  <i class="plus brown icon"></i>
-					</i>
-					Pridaj produkt
-				</a>
-				</div>
+				      <a class="item new_product_btn" href="/product/create?category={{$category->id}}">
+    					   <i class="huge icons">
+    					  <i class="plus brown icon"></i>
+    					</i>
+    					Pridaj produkt
+    				</a>
         @endif
 
     		@foreach ($products as $product)
