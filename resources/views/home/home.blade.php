@@ -30,9 +30,11 @@
             @endif
                 <a>{{App\Category::find(Request::get('category'))->name}}</a>
             </div>
+
+                    <div class="ui horizontal divider active title"></i>Podkategórie</div>
+
             @endif
 
-        <div class="ui horizontal divider active title"></i>Podkategórie</div>
 
             @if(Request::get('category') && App\Category::find(Request::get('category'))->children->count() > 0)
             <div class="subcategories">
@@ -40,9 +42,11 @@
                     @include('categories.image',['category'=>$child])
                 @endforeach         
             </div>
+
+                    <div class="ui horizontal divider active title"></i>Produkty</div>
+
             @endif 
 
-        <div class="ui horizontal divider active title"></i>Produkty</div>
 
             @if (Request::has('category'))
             <div id="grid_stats" @if(isset($priceRange)) data-minprice="{{$priceRange[0]}}" data-maxprice="{{$priceRange[1]}}" @else data-minprice="0" data-maxprice="1" @endif ></div>
