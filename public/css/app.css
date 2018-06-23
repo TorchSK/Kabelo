@@ -596,6 +596,7 @@ a:hover {
   cursor: pointer;
   background-color: #FFFFFF;
   padding-bottom: 25px;
+  position: relative;
 }
 @media all and (max-width: 2100px) {
   #grid .item {
