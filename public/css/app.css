@@ -186,8 +186,6 @@
 /*---  Light Tones  ---*/
 html {
   height: 100%;
-  background-image: url('/img/overlays/dot.png'), -webkit-gradient(linear, left top, left bottom, from(#DDD), to(#FFF));
-  background-image: url('/img/overlays/dot.png'), linear-gradient(#DDD, #FFF);
   background-repeat: repeat, no-repeat;
 }
 body {
@@ -273,7 +271,6 @@ body[data-layout="2"] .container {
 }
 .pad.wrapper {
   padding: 60px 0;
-  height: 100%;
 }
 .dark.wrapper {
   background-color: #F7F7F7;
@@ -1697,6 +1694,12 @@ a:hover {
 #admin_layouts .layout_div:last-child {
   margin-left: 35px;
 }
+#import_json_btn {
+  margin: 25px 0;
+}
+#import_json_table {
+  display: none;
+}
 #cart_detail {
   padding: 80px 0;
 }
@@ -1909,6 +1912,9 @@ a:hover {
 }
 #add_category_modal .sub2.item {
   padding-left: 40px !important;
+}
+#edit_category_submit {
+  margin-top: 20px;
 }
 #settings_user {
   display: -webkit-box;

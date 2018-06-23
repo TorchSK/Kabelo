@@ -8,7 +8,7 @@
 		@endif
 
 		<div class="options">
-			<a class="ui green button change_cat_img_btn">Zmeň obrázok</a>
+			<a class="ui green tiny button change_cat_img_btn">Zmeň obrázok</a>
 		</div>
 	
 	</div>

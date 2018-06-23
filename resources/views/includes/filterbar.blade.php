@@ -23,6 +23,10 @@
             </div>
 
             <div class="sidebar_btn">
+            <a href="/admin/import/json" class="ui fluid teal button"><i class="cloud upload icon"></i>Import z JSON</a>
+            </div>
+
+            <div class="sidebar_btn">
             <div class="ui fluid blue button add_category_btn"><i class="add icon"></i>Pridaj kategóriu</div>
         </div>
         @endif

@@ -21,6 +21,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/users/', 'AdminController@manageUsers')->name('admin.users');
 	Route::get('/import/', 'AdminController@import')->name('admin.import');
 	Route::post('/import/', 'AdminController@postImport')->name('admin.postImport');
+	
+	Route::get('/import/json', 'AdminController@importJson')->name('admin.importJson');
+	Route::post('/import/json', 'AdminController@postImportJson')->name('admin.postImportJson');
+
 	Route::get('/category/{category}', 'AdminController@categoryProducts')->name('admin.category');
 	Route::get('/settings/', 'AdminController@settings')->name('admin.settings');
 	Route::post('/delivery', 'AdminController@addDeliveryMethod');

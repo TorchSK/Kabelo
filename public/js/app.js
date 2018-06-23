@@ -1,3 +1,6 @@
+!function(a){"use strict";a.fn.tableToJSON=function(b){var c={ignoreColumns:[],onlyColumns:null,ignoreHiddenRows:!0,ignoreEmptyRows:!1,headings:null,allowHTML:!1,includeRowId:!1,textDataOverride:"data-override",extractor:null,textExtractor:null};b=a.extend(c,b);var d=function(a){return void 0!==a&&null!==a},e=function(a){return void 0!==a&&a.length>0},f=function(c){return d(b.onlyColumns)?-1===a.inArray(c,b.onlyColumns):-1!==a.inArray(c,b.ignoreColumns)},g=function(b,c){var f={},g=0;return a.each(c,function(a,c){g<b.length&&d(c)&&(e(b[g])&&(f[b[g]]=c),g++)}),f},h=function(c,d,e){var f,g=a(d),h=b.extractor||b.textExtractor,i=g.attr(b.textDataOverride);return null===h||e?a.trim(i||(b.allowHTML?g.html():d.textContent||g.text())||""):a.isFunction(h)?(f=i||h(c,g),"string"==typeof f?a.trim(f):f):"object"==typeof h&&a.isFunction(h[c])?(f=i||h[c](c,g),"string"==typeof f?a.trim(f):f):a.trim(i||(b.allowHTML?g.html():d.textContent||g.text())||"")},i=function(c,d){var e=[],f=b.includeRowId,g="boolean"==typeof f?f:"string"==typeof f,i="string"==typeof f==!0?f:"rowId";return g&&void 0===a(c).attr("id")&&e.push(i),a(c).children("td,th").each(function(a,b){e.push(h(a,b,d))}),e},j=function(a){var c=a.find("tr:first").first();return d(b.headings)?b.headings:i(c,!0)};return function(c,e){var i,j,k,l,m,n,o,p=[],q=0,r=[];return c.children("tbody,*").children("tr").each(function(c,e){if(c>0||d(b.headings)){var f=b.includeRowId,g="boolean"==typeof f?f:"string"==typeof f;n=a(e);var r=n.find("td").length===n.find("td:empty").length;!n.is(":visible")&&b.ignoreHiddenRows||r&&b.ignoreEmptyRows||n.data("ignore")&&"false"!==n.data("ignore")||(q=0,p[c]||(p[c]=[]),g&&(q+=1,void 0!==n.attr("id")?p[c].push(n.attr("id")):p[c].push("")),n.children().each(function(){for(o=a(this);p[c][q];)q++;if(o.filter("[rowspan]").length)for(k=parseInt(o.attr("rowspan"),10)-1,m=h(q,o),i=1;i<=k;i++)p[c+i]||(p[c+i]=[]),p[c+i][q]=m;if(o.filter("[colspan]").length)for(k=parseInt(o.attr("colspan"),10)-1,m=h(q,o),i=1;i<=k;i++)if(o.filter("[rowspan]").length)for(l=parseInt(o.attr("rowspan"),10),j=0;j<l;j++)p[c+j][q+i]=m;else p[c][q+i]=m;m=p[c][q]||h(q,o),d(m)&&(p[c][q]=m),q++}))}}),a.each(p,function(c,h){if(d(h)){var i=d(b.onlyColumns)||b.ignoreColumns.length?a.grep(h,function(a,b){return!f(b)}):h,j=d(b.headings)?e:a.grep(e,function(a,b){return!f(b)});m=g(j,i),r[r.length]=m}}),r}(this,j(this))}}(jQuery);
+
+
 $(document).ready(function(){
 
 
@@ -15,6 +18,7 @@ if (path[2] == 'eshop')
 {
   scrollTo('#grid');
 }
+
 
 $('.ui.checkbox').checkbox();
 
@@ -139,7 +143,7 @@ $('#create_product_form').submit(function(e){
 
 
 $('#edit_category_submit').click(function(){
-  $categoryid = $('#category_options').data('categoryid');
+  $categoryid = $(this).data('categoryid');
   $name = $('#edit_product_name_input input').val()
   $url = $('#edit_product_url_input input').val()
 
@@ -148,7 +152,7 @@ $('#edit_category_submit').click(function(){
       url: "/category/"+$categoryid,
       data: {name: $name, url: $url},
       success: function(data){
-        location.replace(data)
+        location.reload();
       } 
     })
 });
@@ -1775,6 +1779,32 @@ $('#sale_product_table').on('click', '.red.button', function(){
 $('.change_cat_img_btn').click(function(){
   $('#category_image_dropzone').click();
 });
+
+$('#import_json_btn').click(function(){
+  $json = $.parseJSON($('#import_json').find('textarea').val());
+  $table = $('#import_json_table');
+  $tbody = $table.find('tbody');
+  $table.show();
+
+  $($json).each(function(i,e){
+    $tbody.find('tr:last-child td:nth-child(2)').html('<img src="'+e.img+'" width="100" />');
+    $tbody.find('tr:last-child td:nth-child(3)').text(e.id);
+    $tbody.find('tr:last-child td:nth-child(4)').text(e.nome);
+    $tbody.find('tr:last-child td:nth-child(5)').text(e.descr);
+    $tbody.find('tr:last-child').clone().appendTo($tbody);
+  })
+
+  $('.ui.checkbox').checkbox();
+
+})
+
+$('#import_json_accept').click(function(){
+  var json = $('#import_json_table').tableToJSON();
+  console.log(json);
+  $.post('/admin/import/json', {json: $('#import_json').find('textarea').val()}, function(e){
+    console.log(e);
+  })
+})
 
 });
 

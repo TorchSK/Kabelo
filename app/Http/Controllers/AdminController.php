@@ -173,6 +173,22 @@ class AdminController extends Controller
         return $results;
     }
 
+
+    public function importJson()
+    {
+        $data = [
+        ];
+
+        return view('admin.importjson', $data);
+    }
+
+    public function postImportJson(Request $request)
+    {
+        $json = json_decode($request->get('json'));
+        return $json;
+    }
+
+
     public function addDeliveryMethod(Request $request)
     {
         $delivery = new DeliveryMethod();

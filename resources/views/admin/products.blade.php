@@ -10,6 +10,19 @@
 
             @if ($category!='unknown')
 
+            <div class="ui horizontal divider active title">URL kategórie</div>
+
+              <div class="ui labeled input" id="edit_product_name_input">
+                 <div class="ui label">Názov</div>
+                 <input type="text" value="{{$category->name}}" />
+            </div>
+
+              <div class="ui labeled input" id="edit_product_url_input">
+                <div class="ui label">URL</div>
+                 <input type="text" value="{{$category->url}}" />
+            </div>
+            <br />
+            <a class="ui green button" id="edit_category_submit" data-categoryid="{{$category->id}}">Ulož</a>
 
             <div class="ui horizontal divider active title">Obrázok kategórie</div>
  
