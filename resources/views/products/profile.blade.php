@@ -92,30 +92,34 @@
 </div>
 
 
-<div class="tabbs" id="product_tabs">
+<div id="product_tabs">
+<div class="pad wrapper ct" id="product_detail_params">
+<div class="container">
+        <div class="ui horizontal divider">Parametre</div>
 
-  <div class="tabs">
-    <div class="tabb selected" data-tab="parameters">Parametre ({{$product->parameters->count()}})</div>
-    <div class="tabb" data-tab="recommended">Doporučene produkty ({{$product->relatedProducts->count()}})</div>
-    <div class="tabb" data-tab="ratings">Hodnotenia ({{$product->ratings->count()}})</div>
-  </div>
-
-  <div class="contents">
-    <div class="content par active" data-tab="parameters">
-      <div id="parameters">
       @if ($product->parameters->count() > 0)
-          <div class="ui bulleted list">
 
+      <table class="ui celled table">
+       <tbody>
           @foreach ($product->parameters as $parameter)
-              <div class="item"><b>{{$parameter->categoryParameter->display_key}}:</b> {{$parameter->value}}</div>
+              <tr>
+                <td class="collapsing"><b>{{$parameter->categoryParameter->display_key}}</b></td>
+                <td> {{$parameter->value}}</td>
+              </tr>
           @endforeach
         </div>
         @else
           Žiadne parametre
         @endif
-      </div>
-    </div>
-    <div class="content rec" data-tab="recommended">
+          </tbody>
+</table>
+</div>
+</div>
+
+<div class="pad wrapper ct">
+  <div class="container">
+  <div class="ui horizontal divider">Doporučené výrobky</div>
+
       <div id="grid">
 
       @foreach($product->relatedProducts as $relprod)
@@ -123,10 +127,13 @@
       @endforeach
 
       </div>
-    </div>
-    <div class="content rat" data-tab="ratings">
-      
-      <div class="wrapper ct">
+</div>
+</div>
+
+<div class="pad wrapper ct">
+      <div class="container ct">
+
+             <div class="ui horizontal divider">Hodnotenia</div>
 
         <div class="overall_rating">
           <div class="rating_number"><number>@if($product->ratings->pluck('value')->avg() > 0) {{$product->ratings->pluck('value')->avg()}}</number> @else 0 @endif <span>({{$product->ratings->count()}} hodnotení)</span></div>
@@ -154,15 +161,11 @@
             </div>
           @endforeach
         </div>
-      </div>
-
-    </div>
-
   </div>
-  
   <div id="myrating" @if(App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->count() >0) data-rating="{{App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value}}" @else data-rating="0" @endif></div>
 
 
+</div>
 </div>
 </div>
   

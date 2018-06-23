@@ -1089,7 +1089,9 @@ a:hover {
 }
 #product_tabs {
   background-color: #FFF;
-  padding-top: 110px;
+}
+#product_tabs .divider {
+  margin-bottom: 70px;
 }
 #product_tabs .tabs {
   display: -webkit-box;
