@@ -715,7 +715,12 @@ a:hover {
   opacity: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  margin-top: 15px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 50%;
+  bottom: 16px;
 }
 @media all and (max-width: 980px) {
   #grid .item .to_cart {
