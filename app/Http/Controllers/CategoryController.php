@@ -75,7 +75,8 @@ class CategoryController extends Controller
 
 
     public function addParameter(Request $request)
-    {
+    {   
+        if($request->get('keys')){
         foreach ($request->get('keys') as $index => $key)
         {
             $param = new CategoryParameter();
@@ -87,8 +88,9 @@ class CategoryController extends Controller
         }
 
         $param->save();
+        }
 
-        return redirect('/admin/category/'.$request->get('category_id').'/products');
+        return redirect('/admin/category/'.$request->get('category_url'));
 
     }
 

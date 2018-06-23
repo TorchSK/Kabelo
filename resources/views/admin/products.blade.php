@@ -69,7 +69,7 @@
 
               <form action="/category/parameter/add" method="POST">
                 <input name="_token" hidden value="{!! csrf_token() !!}" />
-                <input name="category_id" hidden value="{!! $category->id !!}" />
+                <input name="category_url" hidden value="{!! $category->url !!}" />
 
                 <div id="admin_filters_div">
                 <div class="row">
