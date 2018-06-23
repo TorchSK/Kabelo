@@ -71,7 +71,7 @@
     <div id="sale_price">{{$product->sale_price}} &euro;</div>
     @endif
     </div>
-    <div id="product_detail_tocart_btn" class="ui large brown button"><i class="add to cart icon"></i>Kúpiť</div>
+    <div id="product_detail_tocart_btn" class="ui large brown labeled icon button"><i class="add to cart icon"></i>Kúpiť</div>
 
 
  </div>

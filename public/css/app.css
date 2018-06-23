@@ -209,7 +209,7 @@ body[data-layout="1"] #nav {
   background-color: black;
 }
 body[data-layout="1"] #header {
-  background-color: #2F2F2F;
+  background-color: #1F1F1F;
 }
 body[data-layout="1"] #header .cart {
   background-color: rgba(0, 0, 0, 0.4);
