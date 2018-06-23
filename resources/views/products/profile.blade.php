@@ -45,7 +45,7 @@
 		<div id="code">{{$product->code}} </div>
     <div class="ui teal large label" id="maker">Výrobca: {{$product->maker}}</div>
     @if ($product->sale)
-    <div id="sale" class="ui brown large label"><i class="money icon"></i> Zľava</div>
+    <div id="sale" class="ui green large label"><i class="money icon"></i> Zľava</div>
     @endif
 
     @if ($product->new)
@@ -59,22 +59,8 @@
    		</div>
 
 		<div class="ui divider"></div>
-
+    <div id="desc">
     {{$product->desc}}
-		<div id="parameters" class="@if($product->parameters->count()==0) empty @endif" >
-          <div class="ui header">Parametre</div>
-
-      @if ($product->parameters->count() > 0)
-          <div class="ui bulleted list">
-
-          @foreach ($product->parameters as $parameter)
-              <div class="item"><b>{{$parameter->categoryParameter->display_key}}:</b> {{$parameter->value}}</div>
-          @endforeach
-        </div>
-        @else
-          Žiadne parametre
-        @endif
-
     </div>
 
     <div class="ui divider"></div>

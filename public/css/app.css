@@ -1073,6 +1073,13 @@ a:hover {
   display: inline-block;
   position: relative;
 }
+#product_detail #desc {
+  padding: 45px 0;
+  font-size: 1.4em;
+  line-height: 2em;
+  width: 70%;
+  font-weight: 300;
+}
 #product_detail #sale_price {
   color: #F2711C;
   font-weight: 900;
