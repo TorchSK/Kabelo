@@ -161,7 +161,13 @@ class CategoryController extends Controller
     {
         foreach(Category::all() as $category)
         {
-            $category->order = $request->get($category->id);
+            $category->order = $request->get('orders')[$category->id];
+
+            if (isset($request->get('parents')[$category->id]))
+            {
+                $category->parent_id = $request->get('parents')[$category->id];
+            }
+
             $category->save();
         }
     }

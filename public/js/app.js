@@ -1093,19 +1093,22 @@ $('.admin_wrapper .categories').nestedSortable({
   items: 'li',
   toleranceElement: '> div',
   listType: 'ul',
-  disableParentChange: true,
-  relocate: function(event, ui){
-    $data = {};
+  disableParentChange: false,
+  stop: function(event, ui){
+    $data = [];
+    $orders = {};
+    $parents = {};
 
     $('.admin_wrapper .categories .category.item').each(function(index, item){
-      $data[$(item).data('categoryid')] = index;
+      $orders[$(item).data('categoryid')] = index;
+      $parents[$(item).data('categoryid')] = $(item).closest('li').parent().closest('li').data('categoryid');
     });
-    console.log($data);
+    //console.log($(ui.item).closest('li').parent().closest('li').data('categoryid'));
 
     $.ajax({
       method: "PUT",
       url: '/categories/setorder',
-      data: $data
+      data: {'orders':$orders, 'parents': $parents}
     })
   }
 });
