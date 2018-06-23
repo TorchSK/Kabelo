@@ -112,7 +112,7 @@ class CategoryController extends Controller
 
         $param->save();
 
-        return redirect('/admin/category/'.$param->category_id.'/products');
+        return redirect('/admin/category/'.$param->category->url);
     }
 
     public function uploadImage(Request $request)
