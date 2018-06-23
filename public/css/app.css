@@ -1534,6 +1534,9 @@ a:hover {
 .admin_filters {
   margin-bottom: 35px;
 }
+.admin_filters .active {
+  margin-bottom: 20px;
+}
 .admin_filters .item {
   background-color: #FFFFFF;
   padding: 10px;
