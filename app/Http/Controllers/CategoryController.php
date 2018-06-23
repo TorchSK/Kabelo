@@ -76,7 +76,7 @@ class CategoryController extends Controller
 
     public function addParameter(Request $request)
     {   
-        if($request->get('keys')){
+        if($request->has('keys')){
         foreach ($request->get('keys') as $index => $key)
         {
             $param = new CategoryParameter();
