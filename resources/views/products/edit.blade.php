@@ -35,7 +35,7 @@
              <div class="ui header">Cena</div>
 
         <div class="ui right labeled fluid huge input" id="edit_product_price_input">
-      <input type="text" value="{{$product->price}}">
+      <input type="text" name="price" value="{{$product->price}}">
       <div class="ui basic label">
         Eur
       </div>
