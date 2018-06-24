@@ -29,6 +29,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/settings/', 'AdminController@settings')->name('admin.settings');
 	Route::post('/delivery', 'AdminController@addDeliveryMethod');
 	Route::post('/payment', 'AdminController@addPaymentMethod');
+
+	Route::post('/color', 'AdminController@addColor');
+
 	Route::put('/delivery/{id}', 'AdminController@editDeliveryMethod');
 	Route::put('/payment/{id}', 'AdminController@editPaymentMethod');
 	Route::get('/order/{id}', 'AdminController@orderDetail')->name('admin.orderDetail');

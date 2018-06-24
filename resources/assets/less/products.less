@@ -376,3 +376,39 @@
 		margin-top: 5px;
 	}
 }
+
+.product_color{
+	border-radius: 9999px;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #AAA;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.product_color.choosable{
+	position: relative;
+	.product_color.pickable{
+		position: absolute;
+		top: -50px;
+
+		&:nth-child(1){
+			left: -70px;
+		}
+
+		&:nth-child(2){
+			left: -25px;
+			top: -65px;
+		}
+
+		&:nth-child(3){
+			left: 20px;
+			top: -65px;
+
+		}
+
+		&:nth-child(4){
+			left: 65px;
+		}
+	}
+}

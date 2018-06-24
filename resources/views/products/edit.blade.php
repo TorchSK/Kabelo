@@ -114,6 +114,17 @@
       </div>
     </div>
 
+      <div class="ui header">Dostupné vo farbe</div>
+      <div class="product_color choosable">
+        <div class="product_color pickable"></div>
+        <div class="product_color pickable"></div>
+        <div class="product_color pickable"></div>
+        <div class="product_color pickable"></div>
+      </div>
+        <div class="ui teal button" id="edit_product_add_param_row">Pridaj</div>
+
+
+
     <div class="ui header">Parametre</div>
 
     <div id="edit_product_params">

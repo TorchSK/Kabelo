@@ -143,8 +143,31 @@
 	@endforeach
 	</tbody>
 	</table>
-
 	@include('modals.newpayment')
+
+
+	<div class="ui horizontal divider">Farby</div>
+	<table class="ui celled padded table">
+	  <thead>
+	    <tr>
+		    <th>Kód</th>
+		    <th>Farba</th>
+		   	<th>Vizuál</th>
+	  	</tr>
+	</thead>
+	<tbody class="admin_method_list" data-type="payment">
+	@foreach(App\Color::all() as $color)
+		<tr data-color_id="{{$color->id}}">
+			<td>{{$color->key}}</td>
+			<td>{{$color->value}}</td>
+			<td><div class="product_color" style="background-color:{{$color->value}}"></div></td>
+		</tr>
+	@endforeach
+	</tbody>
+	</table>
+	<div class="ui blue button add_color_btn">Pridať</div>
+
+	@include('modals.newcolor')
 
 
 </div>

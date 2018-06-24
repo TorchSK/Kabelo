@@ -678,6 +678,7 @@ a:hover {
   /* fallback */
   max-height: 110px;
   /* fallback */
+  min-height: 110px;
 }
 #grid .item .prices {
   overflow: hidden;
@@ -1272,6 +1273,35 @@ a:hover {
 }
 #price_slider .noUi-value {
   margin-top: 5px;
+}
+.product_color {
+  border-radius: 9999px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #AAA;
+  cursor: pointer;
+  display: inline-block;
+}
+.product_color.choosable {
+  position: relative;
+}
+.product_color.choosable .product_color.pickable {
+  position: absolute;
+  top: -50px;
+}
+.product_color.choosable .product_color.pickable:nth-child(1) {
+  left: -70px;
+}
+.product_color.choosable .product_color.pickable:nth-child(2) {
+  left: -25px;
+  top: -65px;
+}
+.product_color.choosable .product_color.pickable:nth-child(3) {
+  left: 20px;
+  top: -65px;
+}
+.product_color.choosable .product_color.pickable:nth-child(4) {
+  left: 65px;
 }
 .admin_wrapper {
   display: -webkit-box;

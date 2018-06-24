@@ -9,6 +9,7 @@ use App\User;
 use App\Order;
 use App\Cover;
 use App\Setting;
+use App\Color;
 
 use Auth;
 use Excel;
@@ -244,6 +245,17 @@ class AdminController extends Controller
 
         return $delivery->paymentMethods()->attach($payment);
 
+    }
+
+
+    public function addColor(Request $request)
+    {
+        $color = new Color();
+        $color->key = $request->get('key');
+        $color->value = $request->get('value');
+        $color->save();
+
+        return $color;
     }
     
     public function removeDeliveryPayment(Request $request)
