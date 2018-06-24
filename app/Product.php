@@ -75,4 +75,11 @@ class Product extends Model {
       }
   	}
 
+    public function setPriceAttribute($value)
+    {
+        $this->attributes['price'] =  floatval(str_replace(',', '.', $value));
+    }
+
 }
+
+
