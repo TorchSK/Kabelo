@@ -103,10 +103,10 @@
 </div>
 </div>
 
-<div class="pad wrapper ct">
-    <div class="ui horizontal divider">Doporučené výrobky</div>
+<div class="pad wrapper ct" id="product_detail_suggested_wrapper">
 
   <div class="container">
+    <div class="ui header">Doporučené výrobky</div>
 
       <div id="grid">
 
