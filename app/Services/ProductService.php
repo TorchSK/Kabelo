@@ -139,6 +139,12 @@ class ProductService implements ProductServiceContract {
             {
                 $categoryParameters = $categoryParameters->union($child->parameters);
                 $makers = $makers->union($child->products->unique(['maker']));
+
+                foreach($child->children as $child2)
+                {
+                    $categoryParameters = $categoryParameters->union($child2->parameters);
+                    $makers = $makers->union($child2->products->unique(['maker']));
+                }
             }
 
 
@@ -178,6 +184,14 @@ class ProductService implements ProductServiceContract {
                 foreach ($category->children as $child)
                 {
                     $params = $params->union($child->parameters); 
+
+                    if($child->children->count() > 0)
+                    {
+                        foreach ($child->children as $child2)
+                        {
+                            $params = $params->union($child2->parameters); 
+                        }
+                    }
                 }
             }
         }
