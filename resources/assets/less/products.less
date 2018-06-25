@@ -18,7 +18,7 @@
 			}
 	}
 
-	.left{
+	>.left{
 		width: 40%;
 		padding-left: 50px;
 
@@ -405,9 +405,12 @@
 
 .product_color.choosable{
 	position: relative;
+
 	.product_color.pickable{
+		display: none;
 		position: absolute;
 		top: -50px;
+		background-color: #FFF;
 
 		&:nth-child(1){
 			left: -70px;

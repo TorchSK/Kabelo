@@ -1852,6 +1852,13 @@ $(".product_color.editable").on('change.spectrum', function(e, color) {
     $('#add_color_value_input').val(color.toHexString());
 });
 
+$('.product_color.choosable')
+  .popup({
+    popup : $('.flowing.popup'),
+    on    : 'hover',
+    hoverable: true
+  })
+;
 
 });
 
