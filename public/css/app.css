@@ -1112,8 +1112,8 @@ a:hover {
 #product_detail #new {
   display: inline-block;
 }
-#product_tabs {
-  background-color: #FFF;
+#product_tabs .wrapper {
+  background-color: #FFF !important;
 }
 #product_tabs .divider {
   margin-bottom: 70px;

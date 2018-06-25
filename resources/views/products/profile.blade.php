@@ -80,8 +80,9 @@
 
 <div id="product_tabs">
 <div class="pad wrapper ct" id="product_detail_params">
+          <div class="ui horizontal divider">Parametre</div>
+
 <div class="container">
-        <div class="ui horizontal divider">Parametre</div>
 
       @if ($product->parameters->count() > 0)
 
@@ -103,8 +104,9 @@
 </div>
 
 <div class="pad wrapper ct">
+    <div class="ui horizontal divider">Doporučené výrobky</div>
+
   <div class="container">
-  <div class="ui horizontal divider">Doporučené výrobky</div>
 
       <div id="grid">
 
@@ -117,9 +119,10 @@
 </div>
 
 <div class="pad wrapper ct">
+               <div class="ui horizontal divider">Hodnotenia</div>
+
       <div class="container ct">
 
-             <div class="ui horizontal divider">Hodnotenia</div>
 
         <div class="overall_rating">
           <div class="rating_number"><number>@if($product->ratings->pluck('value')->avg() > 0) {{$product->ratings->pluck('value')->avg()}}</number> @else 0 @endif <span>({{$product->ratings->count()}} hodnotení)</span></div>
