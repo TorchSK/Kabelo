@@ -36,7 +36,7 @@ class ProductService implements ProductServiceContract {
               {
                 if ($key=='search')
                 {   
-                    $query->whereRaw("name like '%".$filters['search']."%'");
+                    $query->where("name", "like", "%".$filters['search']."%")->orWhere("desc", "like", "%".$filters['search']."%");;
                 }
                 elseif($key=='category')
                 {

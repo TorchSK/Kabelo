@@ -11,6 +11,7 @@
       &nbsp;
     </div>
 
+    <div id="eshop">
     <div class="flex flex_content" id="home_content">
 
         <!-- mobile -->
@@ -85,6 +86,7 @@
         </div>
 
     </div>
+</div>
 
         <div class="under_cover">               
       &nbsp;

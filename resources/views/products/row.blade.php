@@ -31,9 +31,9 @@
 
 
 	<div class="prices">
-    <div class="price @if($product->sale) crossed @endif">{{$product->price}} &euro;</div>
+    <div class="price @if($product->sale) crossed @endif">{{$product->price}} &euro; @if(!$product->sale)/ {{$product->price_unit}}@endif</div>
     @if ($product->sale)
-    <div class="sale_price">{{$product->sale_price}} &euro;</div>
+    <div class="sale_price">{{$product->sale_price}} &euro; / {{$product->price_unit}}</div>
     @endif
     </div>
 

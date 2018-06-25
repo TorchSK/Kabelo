@@ -298,7 +298,7 @@ class ProductController extends Controller
 
     public function search($query)
     {
-        $data['products'] = Product::where('name','like','%'.$query.'%')->get();
+        $data['products'] = Product::where('name','like','%'.$query.'%')->orWhere('desc','like','%'.$query.'%')->get();
 
         return view('products.list', $data);
 
