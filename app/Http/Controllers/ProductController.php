@@ -9,6 +9,7 @@ use App\Parameter;
 use App\File as ProductFile;
 use App\Rating;
 use App\ProductRelation;
+use App\PriceLevel;
 
 use Image;
 use File;
@@ -42,10 +43,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $product = new Product();
         $product->name = $request->get('name');
         $product->desc = $request->get('desc');
-        $product->price = $request->get('price');
+        $product->price = 0;
         $product->price_unit = $request->get('unit');
         $product->code = $request->get('code');
         $product->maker = $request->get('maker');
@@ -54,6 +56,18 @@ class ProductController extends Controller
         $product->sale_price = $request->get('sale_price');
 
         $product->save();
+
+        foreach ((array)$request->get('thresholds') as $key=>$threshold)
+        {
+            $pricelevel = new PriceLevel();
+            $pricelevel->threshold = $threshold;
+            $pricelevel->moc_regular = $request->get('mocs')[$key];
+            $pricelevel->moc_sale = $request->get('moc_sales')[$key];
+            $pricelevel->voc_regular = $request->get('vocs')[$key];
+            $pricelevel->voc_sale = $request->get('voc_sales')[$key];
+
+            $product->priceLevels()->save($pricelevel);
+        }
 
 
         foreach ((array)$request->get('categories') as $category)
@@ -81,7 +95,7 @@ class ProductController extends Controller
 
     
     public function create(Request $request)
-    {
+    {   
         $category = Category::find($request->get('category'));
         
         $data = [
@@ -232,6 +246,24 @@ class ProductController extends Controller
 
         $product->update($request->except('_token'));
 
+        foreach ($product->priceLevels as $priceLevel)
+        {
+            $priceLevel->delete();
+        }
+
+        foreach ((array)$request->get('thresholds') as $key=>$threshold)
+        {
+            $pricelevel = new PriceLevel();
+            $pricelevel->threshold = $threshold;
+            $pricelevel->moc_regular = $request->get('mocs')[$key];
+            $pricelevel->moc_sale = $request->get('moc_sales')[$key];
+            $pricelevel->voc_regular = $request->get('vocs')[$key];
+            $pricelevel->voc_sale = $request->get('voc_sales')[$key];
+
+            $product->priceLevels()->save($pricelevel);
+        }
+
+
         foreach ($request->get('categories') as $categoryid)
         {   
             $category = Category::find($categoryid);
@@ -316,6 +348,11 @@ class ProductController extends Controller
 
         return 1;
     }
+
+     public function viewPriceLevel()
+     {
+        return view('products.pricelevel');
+     }
 
     public function destroy($id)
     {

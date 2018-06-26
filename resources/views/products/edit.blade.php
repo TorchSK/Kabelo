@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 @section('content')
 
 <form action="/product/{{$product->id}}" method="POST">
@@ -15,6 +15,9 @@
 </div>
 
 <div id="product_detail" data-id="{{$product->id}}">
+      <div class="left">
+        <div class="img">
+
        <div class="edit_product_images">
           @foreach($product->images as $image)
             <div class="image_div @if($image->primary) primary @endif" data-fileid="{{$image->id}}">
@@ -26,55 +29,66 @@
            </div>
            @endforeach 
         </div>
-    <div class="left">
 
         <div class="edit_images">
-           <div action="/file/upload" class="dropzone" id="product_detail_dropzone"> <input name="_token" hidden value="{!! csrf_token() !!}" /></div>
+           <div action="/file/upload" class="dropzone" id="product_detail_dropzone">
+            <input name="_token" hidden value="{!! csrf_token() !!}" />
+            <div class="dz-message">Klikni pre nahranie súboru</div>
+
+          </div>
          </div>
+       </div>
 
-             <div class="ui header">Cena</div>
+    <div class="ui grid three column">
 
-        <div class="ui right labeled fluid huge input" id="edit_product_price_input">
-      <input type="text" name="price" value="{{$product->price}}">
-      <div class="ui basic label">
-        Eur
-      </div>
-    </div>
-
-      <div class="ui header">Jendotky</div>
-
-    <div class="ui fluid selection dropdown" id="edit_product_unit_input">
-      <input type="hidden" name="unit" value="{{$product->price_unit}}">
-      <i class="dropdown icon"></i>
-      <div class="default text">{{$product->price_unit}}"</div>
-      <div class="menu">
-        <div class="item" data-value="m">m</div>
-        <div class="item" data-value="ks">ks</div>
-      </div>
-    </div>
-
-
-        <div id="create_product_new_flag">
+    <div class="column">
+    <div id="create_product_new_flag">
     <div class="ui checkbox">
       <input type="checkbox" name="new" @if($product->new) checked="1"  @endif>
       <label>Novinka</label>
     </div>
     </div>
+   </div>
 
+       <div class="column">
     <div id="create_product_sale_flag">
     <div class="ui checkbox">
       <input type="checkbox" name="sale"  @if($product->sale) checked="1" @endif>
       <label>V zľave</label>
     </div>
-        <div class="ui right labeled input" id="create_product_sale_value">
-        <input type="text" placeholder="Nová cena" name="sale_price" value="{{$product->sale_price}}">
-          <div class="ui basic label">
-        Eur
-      </div>
-      </div>
-      
     </div>
+  </div>
 
+      <div class="column">
+
+          <div class="ui selection dropdown" id="edit_product_unit_input">
+            <input type="hidden" name="unit" value="m">
+            <i class="dropdown icon"></i>
+            <div class="text">m</div>
+            <div class="menu">
+              <div class="item" data-value="m">m</div>
+              <div class="item" data-value="ks">ks</div>
+            </div>
+          </div>
+        </div>
+
+  </div>
+
+    <div id="product_price_levels_list">
+      @foreach($product->priceLevels as $priceLevel)
+       @include('products.pricelevel')
+      @endforeach
+    </div>
+    
+
+
+      <div class="ui teal button" id="add_price_level_btn">Pridaj cenovú úroveň</div>
+      
+
+    <div class="product_price_levels_edit">
+
+
+    </div>
 
     </div>
 

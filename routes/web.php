@@ -83,7 +83,7 @@ Route::get('cart/confirm','CartController@confirm');
 Route::delete('cart/all','CartController@delete');
 Route::post('cart/{productId}','CartController@addItem');
 Route::delete('cart/{productid}','CartController@deleteItem');
-Route::put('cart/{productid}','CartController@minusItem');
+Route::put('cart/{productid}','CartController@setItem');
 Route::post('cart','CartController@set');
 
 

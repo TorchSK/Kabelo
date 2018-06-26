@@ -1,10 +1,16 @@
 @extends('layouts.admin')
 @section('content')
 
-<form action="/product" method="POST" id="create_product_form" class="admin_wrapper">
+<form action="/product" method="POST" id="create_product_form">
 
+<div id="product_options" class="ct">
+ <div class="container ct">
+		<button type="submit" class="ui huge brown button" id="create_product_submit">Vytvor produkt</button>
 
-<div id="product_detail">
+ </div>
+</div>
+
+<div id="product_detail" class="admin_wrapper">
     <div class="left">
         <div class="img">
            <div action="/file/upload" class="dropzone" id="product_detail_dropzone"> 
@@ -13,52 +19,54 @@
            </div>
         </div>
 
-   		<div class="ui header">Cena</div>
 
-        <div class="ui right labeled fluid huge input">
-		  <input type="text" placeholder="Cena" name="price" @if(Request::has('duplicate'))value="{{App\Product::find(Request::get('duplicate'))->price}}@endif" />
-		  <div class="ui basic label">
-		    Eur
-		  </div>
-		</div>
+        <div class="ui grid three column">
 
-   		<div class="ui header">Jendotky</div>
-
- 		<div class="ui fluid selection dropdown" id="create_product_unit_input">
-		  <input type="hidden" name="unit" value="m">
-		  <i class="dropdown icon"></i>
-		  <div class="default text">m</div>
-		  <div class="menu">
-		    <div class="item" data-value="m">m</div>
-		    <div class="item" data-value="ks">ks</div>
-		  </div>
-		</div>	
-
-		<div id="create_product_new_flag">
-		<div class="ui checkbox">
-		  <input type="checkbox" name="new">
-		  <label>Novinka</label>
-		</div>
-		</div>
-
-		<div id="create_product_sale_flag">
-		<div class="ui checkbox">
-		  <input type="checkbox" name="sale">
-		  <label>V zľave</label>
-		</div>
-		  	<div class="ui right labeled input" id="create_product_sale_value">
-			  <input type="text" placeholder="Nová cena" name="sale_price">
-			    <div class="ui basic label">
-		    Eur
-		  </div>
+        	<div class="column">
+	       	<div id="create_product_new_flag">
+			<div class="ui checkbox">
+			  <input type="checkbox" name="new">
+			  <label>Novinka</label>
 			</div>
+			</div>
+			</div>
+
+        	<div class="column">
+			<div id="create_product_sale_flag">
+			<div class="ui checkbox">
+			  <input type="checkbox" name="sale">
+			  <label>V zľave</label>
+			</div>
+			</div>
+			</div>
+			
+			<div class="column">
+
+			    <div class="ui selection dropdown" id="edit_product_unit_input">
+			      <input type="hidden" name="unit" value="m">
+			      <i class="dropdown icon"></i>
+			      <div class="text">m</div>
+			      <div class="menu">
+			        <div class="item" data-value="m">m</div>
+			        <div class="item" data-value="ks">ks</div>
+			      </div>
+			    </div>
+				</div>
+			</div>
+
+       	
+
+		<div id="product_price_levels_list">
+			@include('products.pricelevel')
+		</div>
+
+   		<div class="ui teal button" id="add_price_level_btn">Pridaj cenovú úroveň</div>
+
+
+
 			
 		</div>
 
-		<button type="submit" class="ui huge brown button" id="create_product_submit">
-			Vytvor produkt
-		</button>
-    </div>
 
     <div class="right">
     	

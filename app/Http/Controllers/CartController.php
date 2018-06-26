@@ -8,6 +8,7 @@ use App\Category;
 use App\Parameter;
 use App\Cart;
 use App\File as ProductFile;
+use App\PriceLevel;
 
 use App\Services\Contracts\CartServiceContract;
 
@@ -82,14 +83,22 @@ class CartController extends Controller
         {
             $cart = Auth::user()->cart;
             $cart['number'] = $cart->products->count();
-            $cart['price'] = $cart->products->sum('price');
             $cart['items'] = $cart->products->pluck('id')->toArray();
+
+            $price = 0;
+            foreach($cart->products as $product)
+            {
+                $price = $price + $this->getUserProductPrice($product->id, $product->pivot->qty);
+            }
+
+            $cart['price'] = $price;
+
         }
         else
         {
             $cart = Cookie::get('cart');
         }
-
+        
         return $cart;
     }
 
@@ -114,6 +123,71 @@ class CartController extends Controller
         }
     }
 
+    public function getUserProductPrice($productId, $qty)
+    {
+        $user = Auth::user();
+        $product = Product::find($productId);
+
+        $levels = $product->priceLevels->pluck('threshold');
+
+        $closest = null;
+        foreach ($levels as $level) 
+        {
+            if ($closest === null || abs($qty - $closest) > abs($level - $qty)) 
+            {
+                $closest = $level;
+            }
+        }
+    
+        if ($user->voc)
+        {
+            if ($product->sale)
+            {
+                $price = $product->priceLevels->where('threshold', $closest)->first()->voc_sale;
+            }
+            else
+            {
+                $price = $product->priceLevels->where('threshold', $closest)->first()->voc_regular;
+            }
+        }
+        else
+        {
+            if ($product->sale)
+            {
+                $price = $product->priceLevels->where('threshold', $closest)->first()->moc_sale;
+            }
+            else
+            {
+                $price = $product->priceLevels->where('threshold', $closest)->first()->moc_regular;
+            }   
+        }
+
+        return $price*$qty;     
+
+    }
+
+    public function getPriceLevel($productId, $qty)
+    {
+        $user = Auth::user();
+        $product = Product::find($productId);
+
+        $levels = $product->priceLevels->pluck('threshold')->toArray();
+        sort($levels);
+
+        foreach($levels as $key => $level) 
+        {
+          if($qty >= $level) 
+          {
+            $index = $key;
+          }
+        }
+        
+        $id = PriceLevel::where('threshold',$levels[$index])->first()->id;
+
+        return $id;   
+
+    }
+
     public function addItem($productId, Request $request)
     {
         $product = Product::find($productId);
@@ -128,13 +202,22 @@ class CartController extends Controller
 
         $cartData = $cart;
 
+        $price = $this->getUserProductPrice($productId, $request->get('qty'));
         $cartData['number'] = $cartNumber + 1;
-        $cartData['price'] = $cartPrice + $product->price;
+        $cartData['price'] = $cartPrice + $price;
         $cartData['items'] = $cartItems;
         
         if (Auth::check())
-        {
-            $cart->products()->attach($product);
+        {   
+            if (! $cart->products->contains($product->id))
+            {
+                $cart->products()->attach($product, ['qty'=>$request->get('qty'), 'price_level_id' => $this->getPriceLevel($productId, $request->get('qty'))]);
+            }
+            else
+            {
+                $oldQty = $cart->products->where('id',$productId)->first()->qty;
+                $cart->products()->updateExistingPivot($product->id, ['qty'=>$oldQty + $request->get('qty'), 'price_level_id' => $this->getPriceLevel($productId, $request->get('qty'))]);
+            }
         }
         else
         {
@@ -142,8 +225,26 @@ class CartController extends Controller
         }
 
         // return price for FE
-        $data['price'] = $product->price;
+        $data['price'] = $price;
         return $data;
+    }
+
+    public function setItem($productid, Request $request)
+    {
+        $product = Product::find($productid);
+        
+        $cart = $this->getCart();
+
+        if (Auth::check())
+        {
+            $cart->products()->updateExistingPivot($product->id, ['qty'=>$request->get('qty'), 'price_level_id' => $this->getPriceLevel($productid, $request->get('qty'))]);
+        }
+        else
+        {
+            Cookie::queue('cart', $cartData, 0);
+        }
+
+        return $cart;
     }
 
     public function deleteItem($productId)

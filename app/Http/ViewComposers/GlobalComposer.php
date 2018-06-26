@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use App\Services\Contracts\ProductServiceContract;
 
+use App\Http\Controllers\CartController;
+
+
 use Cookie;
 use Crypt;
 use App\User;
@@ -16,9 +19,10 @@ use App\Setting;
 
 class GlobalComposer {
 
-    public function __construct(ProductServiceContract $productService)
+    public function __construct(ProductServiceContract $productService, CartController $cartController)
     {        
         $this->productService = $productService;
+        $this->cartController = $cartController;
     }
 
     /**
@@ -47,9 +51,9 @@ class GlobalComposer {
 
                 $cart->save();
             }
-            $cart['number'] = $cart->products->count();
-            $cart['price'] = $cart->products->sum('price');
-            $cart['items'] = $cart->products->pluck('id')->toArray();
+
+            $cart= $this->cartController->getCart();
+            
 
         }
         else

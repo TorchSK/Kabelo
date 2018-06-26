@@ -17,3 +17,5 @@ Route::get('orders/countbydays/{daysago}', 'OrderController@countByDays');
 Route::get('users/countbydays/{daysago}', 'UserController@countByDays');
 Route::get('products/search', 'ProductController@inputSearch');
 Route::put('product/{id}', 'ProductController@apiUpdate');
+
+Route::get('view/pricelevel', 'ProductController@viewPriceLevel');

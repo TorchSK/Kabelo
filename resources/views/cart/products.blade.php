@@ -10,8 +10,8 @@
 	<div id="grid">
 		@if (sizeof($cart['items']) > 0)
 		
-			@foreach( array_unique((array)$cart['items']) as $productid)
-				@include('products.row', ['product'=>App\Product::find($productid), 'productOptions'=> true])
+			@foreach($cart->products as $product)
+				@include('products.row', ['productOptions'=> true])
 			@endforeach
 		
 		@else

@@ -124,13 +124,20 @@ $('#create_product_form').submit(function(e){
   $name = $('#product_detail input[name="name"]').val();
   $code = $('#product_detail input[name="code"]').val();
   $maker = $('#product_detail input[name="maker"]').val();
-  $price = $('#product_detail input[name="price"]').val();
-
+  $threshold = $('#product_detail input[name^="thresholds"]').val();
+  $moc = $('#product_detail input[name^="mocs"]').val();
+  $mocs = $('#product_detail input[name^="moc_sales"]').val();
+  $voc = $('#product_detail input[name^="vocs"]').val();
+  $vocs = $('#product_detail input[name^="voc_sales"]').val();
 
   if ($name=='') {$validation=0; $('#product_detail input[name="name"]').parent().addClass('error');}
   if ($code=='') {$validation=0; $('#product_detail input[name="code"]').parent().addClass('error');}
   if ($maker=='') {$validation=0; $('#product_detail input[name="maker"]').parent().addClass('error');}
-  if ($price=='') {$validation=0; $('#product_detail input[name="price"]').parent().addClass('error');}
+  if ($threshold=='') {$validation=0; $('#product_detail input[name^="thresholds"]').parent().addClass('error');}
+  if ($moc=='') {$validation=0; $('#product_detail input[name^="moc"]').parent().addClass('error');}
+  if ($mocs=='') {$validation=0; $('#product_detail input[name^="mocs"]').parent().addClass('error');}
+  if ($voc=='') {$validation=0; $('#product_detail input[name^="voc"]').parent().addClass('error');}
+  if ($vocs=='') {$validation=0; $('#product_detail input[name^="vocs"]').parent().addClass('error');}
 
  if ($validation==1)
  {
@@ -192,7 +199,7 @@ function flyToElement(flyer, flyingTo) {
 }
 
 
-function addToCart(productid){
+function addToCart(productid, qty){
   var cart = $('#header .cart.item');
   var number = parseFloat(cart.find('text number').text());
   var price = parseFloat(cart.find('price number').text());
@@ -200,7 +207,7 @@ function addToCart(productid){
   $.ajax({
     method: "POST",
     url: '/cart/'+productid,
-    data: {},
+    data: {qty: qty},
     global: false,
     success: function(data){
       cart.find('text number').text(number+1);
@@ -212,11 +219,13 @@ function addToCart(productid){
 
 $('#product_detail_tocart_btn').click(function(){
   $product = $('#product_detail').data('id');
+  $qty = $(this).data('qty');
+
   var cart = $('#header .cart.item');
   var img = $('#product_detail').find('.img');
   flyToElement(img, cart);
   
-  addToCart($product);
+  addToCart($product, $qty);
 
 })
 
@@ -1860,6 +1869,137 @@ $('.product_color.choosable')
   })
 ;
 
+
+function initCartProductSlider(){
+
+  var sliders = document.getElementsByClassName('cart_length_slider');
+  
+  for ( var i = 0; i < sliders.length; i++ ) {
+
+     $qty = $(sliders[i]).data('qty');
+     $productid = $(sliders[i]).data('productid');
+     $thresholds = $(sliders[i]).data('thresholds');
+           console.log($thresholds);
+
+     $prices = JSON.parse($(sliders[i]).data('prices'));
+      console.log($prices);
+
+     noUiSlider.create(sliders[i], {
+          start: $qty,
+          connect: "lower",
+          orientation: "horizontal",
+          tooltips: true,
+          range: {
+              'min': 0,
+              'max': 200
+          },
+        
+          format: wNumb({
+            decimals: 0,
+          })
+      });
+  
+     sliders[i].noUiSlider.on('slide', function ( values, handle ) {
+      $level = getClosestValue($thresholds,values[handle]); 
+      $index = $thresholds.indexOf($level);
+      $newprice =$prices[$index];
+      $($(this)[0].target).closest('.item.product').find('.final_price').html($newprice+ ' &euro;');
+     });
+
+      sliders[i].noUiSlider.on('change', function ( values, handle ) {
+
+      $.ajax({
+        type: "PUT",
+        url: "/cart/"+$productid,
+        data: {qty: values[handle]},
+        success: function(){
+          location.reload();
+        }
+      })
+     });
+
+  }
+  
+
+}
+
+initCartProductSlider();
+
+
+function getClosestValue(myArray, myValue){
+    //optional
+    var i = 0;
+
+    while(myArray[++i] <= myValue);
+
+    return myArray[--i];
+}
+
+function initProductQtySlider(){
+
+  var slider = document.getElementById('product_buy_qty_m_slider');
+    if ($(slider).length)
+    {
+    $min = $(slider).data('min');
+    $max = $(slider).data('max');
+    $thresholds = [];
+
+    $('#product_price_thresholds').find('.threshold').each(function(index, obj)
+    {
+      $thresholds.push(parseInt($(this).text()));
+    });
+
+
+     noUiSlider.create(slider, {
+          start: $min,
+          step: 1,
+          orientation: "horizontal",
+          connect: [true, false],
+          range: {
+              'min': 0,
+              'max': $max
+          },
+          pips: {
+            mode: 'values',
+            values: $thresholds,
+            density: 1
+          },
+          format: wNumb({
+            decimals: 0,
+          })
+      });
+  
+    slider.noUiSlider.on('change', function ( values, handle ) {
+    if ( values[handle] < $min ) {
+      slider.noUiSlider.set($min);
+      $('#product_buy_qty_value').find('qty').text($min);
+      $price = $min * parseInt($('#product_price_thresholds').find('.threshold').next().find('#final_price').text()); 
+      $('#product_buy_qty_value').find('price').text($price);
+
+    };
+  });
+
+
+  slider.noUiSlider.on('slide', function ( values, handle ) {
+    $('#product_buy_qty_value').find('qty').text(values[handle]);
+    $('#product_detail_tocart_btn').data('qty',values[handle]);
+    $price = values[handle] * parseInt($('#product_price_thresholds').find('.threshold[data-value="'+getClosestValue($thresholds,values[handle])+'"]').next().find('#final_price').text()); 
+    $('#product_price_thresholds').find('.threshold').closest('tr').removeClass('positive');
+    $('#product_price_thresholds').find('.threshold[data-value="'+getClosestValue($thresholds,values[handle])+'"]').closest('tr').addClass('positive');
+    $('#product_buy_qty_value').find('price').text($price);
+   });
+}
+}
+
+
+initProductQtySlider();
+
+
+
+$('#add_price_level_btn').click(function(){
+  $.get('/api/view/pricelevel',{}, function(data){
+    $('#product_price_levels_list').append(data);
+  })
+})
+
 });
-
-

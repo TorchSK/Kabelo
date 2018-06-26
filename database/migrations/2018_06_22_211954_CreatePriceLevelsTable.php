@@ -2,7 +2,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateColorsProductsTable extends Migration {
+class CreatePriceLevelsTable extends Migration {
   /**
    * Run the migrations.
    *
@@ -10,13 +10,16 @@ class CreateColorsProductsTable extends Migration {
    */
   public function up()
   {
-    Schema::create('color_product', function(Blueprint $table)
+    Schema::create('price_levels', function(Blueprint $table)
     {
-      $table->integer('color_id')->unsigned()->index();
-      $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade')->onUpdate('cascade');
+      $table->increments('id');
       $table->integer('product_id')->unsigned()->index();
       $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
-
+      $table->unsignedInteger('threshold');
+      $table->float('moc_regular');
+      $table->float('moc_sale');
+      $table->float('voc_regular');
+      $table->float('voc_sale');
       $table->timestamps();
     });
   }
@@ -27,6 +30,6 @@ class CreateColorsProductsTable extends Migration {
    */
   public function down()
   {
-    Schema::drop('color_product');
+    Schema::drop('price_levels');
   }
 }
