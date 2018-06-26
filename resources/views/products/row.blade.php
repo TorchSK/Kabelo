@@ -37,7 +37,9 @@
 	 
 
 
-	<div class="prices">
+	@if(isset($productOptions) && $productOptions)
+
+    <div class="prices">
     @if(Auth::user()->voc)
 	    @if($product->sale)
 	    <div class="price crossed">{{App\PriceLevel::find($product->pivot->price_level_id)->voc_regular}} &euro; </div>
@@ -54,6 +56,27 @@
 	    @endif
 	  @endif
     </div>
+
+    @else
+    	<div class="prices">
+    @if(Auth::user()->voc)
+	    @if($product->sale)
+	    <div class="price crossed">{{$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_regular}} &euro; </div>
+	    <div class="final_price">{{$$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_sale}} &euro; </div>
+	    @else
+	    <div class="final_price">{{$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_regular}} &euro;</div>
+	    @endif
+	  @else
+	    @if($product->sale)
+	    <div class="price crossed">{{$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_regular}} &euro; </div>
+	    <div class="final_price">{{$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_sale}} &euro;</div>
+	    @else
+	    <div class="final_price">{{$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_regular}} &euro;</div>
+	    @endif
+	  @endif
+    </div>
+
+    @endif
 
 	<div class="availability"></div>
 
