@@ -2007,8 +2007,8 @@ $('#add_price_level_btn').click(function(){
 
 
 $('#product_detail .img img').loupe({
-    width: 300, // width of magnifier
-  height: 250, // height of magnifier
+    width: 250, // width of magnifier
+  height: 200, // height of magnifier
   loupe: 'loupe' // css class for magnifier
 });
 
