@@ -129,7 +129,7 @@ class AdminController extends Controller
     
     public function userDetail($id)
     {
-
+        $userOrdersPrice = 0;
         foreach (User::find($id)->orders as $order){
             $userOrdersPrice =+ $order->products->sum('price');
         }

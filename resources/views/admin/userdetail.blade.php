@@ -129,7 +129,22 @@
 
 					<div class="content" data-tab="type">
 
-						zsazx
+						<form action="/user" method="POST">
+							<input name="_method" type="hidden" value="PUT">
+
+							<div class="ui checkbox">
+							  <input type="checkbox" name="voc">
+							  <label>VOC</label>
+							</div>
+
+							<br />
+							<div class="ui labeled input">
+							  <div class="ui label">
+							    Zľava %
+							  </div>
+							  <input type="text" placeholder="0">
+							</div>
+						</form>
 
 					</div>
 

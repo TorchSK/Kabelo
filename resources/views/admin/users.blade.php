@@ -11,6 +11,7 @@
 	 	<th>Meno</th>
 	    <th>Email</th>
 	    <th>Admin</th>
+	   	<th>VOC</th>
 	   	<th>Datum registrácie</th>
 	   	<th>Počet objednávok</th>
 	   	<th></th>
@@ -23,6 +24,7 @@
 	   	  <td>{{$user->name}}</td>
 	      <td>{{$user->email}}</td>
 	      <td>{{$user->admin}}</td>
+	      <td>{{$user->voc}}</td>
 	      <td>{{Carbon\Carbon::parse($user->created_at)->format('d.m.Y H:i:s')}}</td>
 	      <td>{{$user->orders->count()}}</td>
 
