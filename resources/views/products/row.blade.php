@@ -1,4 +1,4 @@
-<div class="item product" data-productid={{$product->id}}>
+<div class="item product" data-productid={{$product->id}} data-minqty="{{$product->priceLevels->min('threshold')}}">
 <a href="/{{strtolower($product->maker)}}/{{$product->code}}/detail">
 	
 

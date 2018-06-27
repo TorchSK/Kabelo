@@ -235,9 +235,11 @@ $(document).on('click', '#grid .to_cart',function(){
   $product = $(this).closest('.product').data('productid');
   var cart = $('#header .cart.item');
   var img = $(this).closest('.product').find('.image_div');
+  $qty = $(this).closest('.product').data('minqty');
+
   flyToElement(img, cart);
   
-  addToCart($product);
+  addToCart($product, $qty);
 
 })
 
