@@ -22,6 +22,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/import/', 'AdminController@import')->name('admin.import');
 	Route::post('/import/', 'AdminController@postImport')->name('admin.postImport');
 	
+	Route::get('/bulk/', 'AdminController@bulk')->name('admin.bulk');
+
 	Route::get('/import/json', 'AdminController@importJson')->name('admin.importJson');
 	Route::post('/import/json', 'AdminController@postImportJson')->name('admin.postImportJson');
 

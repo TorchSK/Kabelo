@@ -19,11 +19,7 @@
         
         @if (Request::segment(1)=='admin')
         <div class="sidebar_btn">
-            <a href="/admin/import" class="ui fluid green button"><i class="cloud upload icon"></i>Import zo súboru</a>
-            </div>
-
-            <div class="sidebar_btn">
-            <a href="/admin/import/json" class="ui fluid teal button"><i class="cloud upload icon"></i>Import z JSON</a>
+            <a href="/admin/bulk" class="ui fluid green button"><i class="cloud upload icon"></i>Hromadné zmeny</a>
             </div>
 
             <div class="sidebar_btn">
