@@ -2026,12 +2026,15 @@ $('.admin_checkbox_onthefly').checkbox({
       })
     },
     onUnchecked: function(){
-      $resource = $(this).data('resource');
-      $name = $(this).find('input').attr('name');
+      $resource = $(this).parent().data('resource');
+      $name = $(this).attr('name');
+      $id = $(this).parent().data('id');
+      $data = {};
+      $data[$name] = 0;
       $.ajax({
-        'method': 'PUT',
-        'url': '/'+$resource,
-        data: {$name: 0}          
+        method: 'PUT',
+        url: '/'+$resource+'/'+$id,
+        data: $data          
       })
     }
   })
