@@ -15,13 +15,12 @@
 </div>
 
 <div id="product_detail" data-id="{{$product->id}}">
-      <div class="left">
-        <div class="img">
+   
 
        <div class="edit_product_images">
           @foreach($product->images as $image)
             <div class="image_div @if($image->primary) primary @endif" data-fileid="{{$image->id}}">
-              <img src="/{{$image->path}}" width="200px" class="ui image " />
+              <img src="/{{$image->path}}" width="120px" class="ui image " />
               <div class="edit_product_images_actions">
                 <a class="ui circular red label delete_img"><i class="remove icon"></i> Zmaž</a>
                 <a class="ui circular blue icon label make_primary_img"><i class="star icon"></i> Primárny</a>
@@ -29,7 +28,8 @@
            </div>
            @endforeach 
         </div>
-
+   <div class="left">
+        <div class="img">
         <div class="edit_images">
            <div action="/file/upload" class="dropzone" id="product_detail_dropzone">
             <input name="_token" hidden value="{!! csrf_token() !!}" />
@@ -61,8 +61,8 @@
 
       <div class="column">
 
-          <div class="ui selection dropdown" id="edit_product_unit_input">
-            <input type="hidden" name="unit" value="m">
+          <div class="ui fluid  selection dropdown" id="edit_product_unit_input">
+            <input type="hidden" name="price_unit" value="m">
             <i class="dropdown icon"></i>
             <div class="text">m</div>
             <div class="menu">
