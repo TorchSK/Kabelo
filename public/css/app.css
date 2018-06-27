@@ -1079,6 +1079,9 @@ a:hover {
 #product_detail #product_buy_qty_m_slider {
   margin-top: 45px;
 }
+#product_detail #product_buy_qty_m_slider .noUi-connect {
+  background-color: #2185D0;
+}
 #product_detail #product_buy_qty_value {
   margin-top: 55px;
   font-size: 1.5em;
