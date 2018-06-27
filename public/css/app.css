@@ -1338,6 +1338,11 @@ a:hover {
 .product_price_level .grid {
   margin-top: 5px;
 }
+.loupe {
+  border: 3px solid #000;
+  border-radius: 6px;
+  z-index: 99999;
+}
 .admin_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
