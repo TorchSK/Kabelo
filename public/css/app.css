@@ -601,7 +601,7 @@ a:hover {
 }
 @media all and (max-width: 2100px) {
   #grid .item {
-    width: 18%;
+    width: 17.85%;
   }
 }
 @media all and (max-width: 1690px) {
