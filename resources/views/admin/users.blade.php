@@ -24,7 +24,12 @@
 	   	  <td>{{$user->name}}</td>
 	      <td>{{$user->email}}</td>
 	      <td>{{$user->admin}}</td>
-	      <td>{{$user->voc}}</td>
+	      <td>
+	      	<div class="ui checkbox admin_checkbox_onthefly" data-resource="user" data-id="{{$user->id}}" >
+			  <input type="checkbox" name="voc" @if($user->voc) checked @endif>
+			  <label></label>
+			</div>
+		  </td>
 	      <td>{{Carbon\Carbon::parse($user->created_at)->format('d.m.Y H:i:s')}}</td>
 	      <td>{{$user->orders->count()}}</td>
 

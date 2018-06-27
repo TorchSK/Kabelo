@@ -45,7 +45,7 @@
 	    <div class="price crossed">{{App\PriceLevel::find($product->pivot->price_level_id)->voc_regular}} &euro; </div>
 	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->voc_sale}} &euro; </div>
 	    @else
-	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id->voc_regular)}} &euro;</div>
+	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->voc_regular}} &euro;</div>
 	    @endif
 	  @else
 	    @if($product->sale)
@@ -62,7 +62,7 @@
     @if(Auth::user()->voc)
 	    @if($product->sale)
 	    <div class="price crossed">{{$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_regular}} &euro; </div>
-	    <div class="final_price">{{$$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_sale}} &euro; </div>
+	    <div class="final_price">{{$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_sale}} &euro; </div>
 	    @else
 	    <div class="final_price">{{$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_regular}} &euro;</div>
 	    @endif

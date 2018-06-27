@@ -2012,4 +2012,27 @@ $('#product_detail .img img').loupe({
   loupe: 'loupe' // css class for magnifier
 });
 
+$('.admin_checkbox_onthefly').checkbox({
+    onChecked: function(){
+      $resource = $(this).parent().data('resource');
+      $name = $(this).attr('name');
+      $id = $(this).parent().data('id');
+      $data = {};
+      $data[$name] = 1;
+      $.ajax({
+        method: 'PUT',
+        url: '/'+$resource+'/'+$id,
+        data: $data          
+      })
+    },
+    onUnchecked: function(){
+      $resource = $(this).data('resource');
+      $name = $(this).find('input').attr('name');
+      $.ajax({
+        'method': 'PUT',
+        'url': '/'+$resource,
+        data: {$name: 0}          
+      })
+    }
+  })
 });
