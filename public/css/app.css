@@ -1804,6 +1804,12 @@ a:hover {
 #import_json_table {
   display: none;
 }
+#bulk_products {
+  padding: 50px;
+  overflow-x: scroll;
+  width: 100%;
+  margin: 5px;
+}
 #cart_detail {
   padding: 80px 0;
 }

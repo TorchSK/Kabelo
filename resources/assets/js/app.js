@@ -2037,5 +2037,52 @@ $('.admin_checkbox_onthefly').checkbox({
         data: $data          
       })
     }
+  });
+
+
+ $('#bulk_products_table').DataTable({
+  paging: false,
+  info: false,
+  lengthChange: false,
+ });
+
+
+$editedRows=[];
+
+    var tbl = $('#bulk_products_table tbody tr').get().map(function(row) {
+      return $(row).find('td').get().map(function(cell) {
+        return $(cell).data('order')
+      });
+    });
+
+    console.log(tbl);
+
+$('#bulk_products_table').on('change keyup','.product_param', function(){
+  $tr = $(this).closest('tr');
+  $tr.addClass('positive');
+  $productid=$tr.data('id');
+  $editedRows.push($productid);
+ });
+
+$('#bulk_save_btn').click(function(){
+  $editedRows.each(function(index, item){
+
+    var tbl = $('table#bulk_products_table tr').get().map(function(row) {
+      return $(row).find('td').get().map(function(cell) {
+        return $(cell).html();
+      });
+    });
+
+    console.log(tbl);
+
+    $.ajax({
+      method: 'PUT',
+      url: '/product/'+item,
+        data: $data   
+     })
   })
+})
+
+
+
 });
