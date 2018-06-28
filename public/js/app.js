@@ -2047,42 +2047,43 @@ $('.admin_checkbox_onthefly').checkbox({
  });
 
 
-$editedRows=[];
+function getBulkEditedRows()
+{
+    var myRows = {};
+    var tbl = $('#bulk_products_table tbody tr.edited').each(function(index, item) {
+      $cells = $(this).find("td.edit");
 
-    var tbl = $('#bulk_products_table tbody tr').get().map(function(row) {
-      return $(row).find('td').get().map(function(cell) {
-        return $(cell).data('order')
-      });
+      $productid = $(item).data('id');
+      myRows[$productid] = {};
+      $cells.each(function(cindex,citem) {
+        myRows[$productid][$(citem).data('name')] = $(citem).find('input').val();
+      });    
     });
+    
 
-    console.log(tbl);
+    return myRows;
+}
 
+  $editedRows=[];
 $('#bulk_products_table').on('change keyup','.product_param', function(){
   $tr = $(this).closest('tr');
-  $tr.addClass('positive');
+  $tr.addClass('positive edited');
   $productid=$tr.data('id');
   $editedRows.push($productid);
  });
 
 $('#bulk_save_btn').click(function(){
-  $editedRows.each(function(index, item){
-
-    var tbl = $('table#bulk_products_table tr').get().map(function(row) {
-      return $(row).find('td').get().map(function(cell) {
-        return $(cell).html();
-      });
-    });
-
-    console.log(tbl);
+  console.log(getBulkEditedRows());
 
     $.ajax({
-      method: 'PUT',
-      url: '/product/'+item,
-        data: $data   
-     })
-  })
+      method: 'POST',
+      url: '/bulk',
+      data: getBulkEditedRows() ,
+      success: function(data){
+        location.reload();
+      } 
+    })
 })
-
 
 
 });

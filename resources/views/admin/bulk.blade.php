@@ -44,11 +44,11 @@
   	@foreach(App\Product::all() as $product)
     <tr data-id="{{$product->id}}">
       <td>{{$product->id}}</td>
-      <td data-order="{{$product->name}}" data-name="name"><div class="ui input product_param"><input type="text" value="{{$product->name}}" /></div></td>
-      <td data-order="{{$product->code}}"  data-name="code"><div class="ui input product_param"><input type="text" value="{{$product->code}}" /></div></td>
-      <td data-order="{{$product->maker}}"  data-name="maker"><div class="ui input product_param"><input type="text" value="{{$product->maker}}" /></div></td>
-      <td data-order="{{$product->desc}}"  data-name="desc"><div class="ui input product_param"><input type="text" value="{{$product->desc}}" /></div></td>
-      <td data-order="{{$product->desc}}"  data-name="new"><div class="ui checkbox product_param"><input type="checkbox" value="{{$product->new}}" /></div></td>
+      <td data-order="{{$product->name}}" data-name="name" class="edit"><div class="ui input product_param"><input type="text" value="{{$product->name}}" /></div></td>
+      <td data-order="{{$product->code}}"  data-name="code" class="edit"><div class="ui input product_param"><input type="text" value="{{$product->code}}" /></div></td>
+      <td data-order="{{$product->maker}}"  data-name="maker" class="edit"><div class="ui input product_param"><input type="text" value="{{$product->maker}}" /></div></td>
+      <td data-order="{{$product->desc}}"  data-name="desc" class="edit"><div class="ui input product_param"><input type="text" value="{{$product->desc}}" /></div></td>
+      <td data-order="{{$product->desc}}"  data-name="new" class="edit"><div class="ui checkbox product_param"><input type="checkbox" value="{{$product->new}}" /></div></td>
       <td data-order="{{$product->desc}}"  data-name="sale"><div class="ui checkbox product_param"><input type="checkbox" value="{{$product->sale}}" /></div></td>
       @foreach($product->priceLevels as $priceLevel)
       <td><div class="ui input product_param"><input type="text" value="{{$priceLevel->threshold}}" /></div></td>
@@ -56,17 +56,15 @@
       <td><div class="ui input product_param"><input type="text" value="{{$priceLevel->moc_sale}}" /></div></td>
       <td><div class="ui input product_param"><input type="text" value="{{$priceLevel->voc_regular}}" /></div></td>
       <td><div class="ui input product_param"><input type="text" value="{{$priceLevel->voc_sale}}" /></div></td>
-
-      @for ($i = $product->priceLevels->count() + 1; $i <= 5; $i++)
-	  <td><div class="ui input product_param"><input type="text" /></div></td>
-      <td><div class="ui input product_param"><input type="text" /></div></td>
-      <td><div class="ui input product_param"><input type="text" /></div></td>
-      <td><div class="ui input product_param"><input type="text" /></div></td>
-      <td><div class="ui input product_param"><input type="text" /></div></td>
-	  @endfor
-
-
       @endforeach
+
+            @for ($i = $product->priceLevels->count() + 1; $i <= 5; $i++)
+    <td><div class="ui input product_param"><input type="text" /></div></td>
+      <td><div class="ui input product_param"><input type="text" /></div></td>
+      <td><div class="ui input product_param"><input type="text" /></div></td>
+      <td><div class="ui input product_param"><input type="text" /></div></td>
+      <td><div class="ui input product_param"><input type="text" /></div></td>
+    @endfor
     </tr>
     @endforeach
 

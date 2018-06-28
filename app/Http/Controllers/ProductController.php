@@ -222,6 +222,28 @@ class ProductController extends Controller
         }
     }
 
+    public function bulk()
+    {
+
+        return view('admin.bulk');
+    }
+
+
+    public function postBulk(Request $request)
+    {
+        $products = [];
+        foreach ($request->all() as $key=>$data){
+            $product = Product::find($key);
+            foreach($data as $param => $value)
+            {
+                $product->$param = $value;
+            }
+            $product->save();
+        }
+
+        return $products;
+    }
+
     public function apiUpdate($productid, Request $request)
     {
         $product = Product::find($productid);
@@ -263,24 +285,27 @@ class ProductController extends Controller
             $product->priceLevels()->save($pricelevel);
         }
 
+        if ($request->has('categories'))
+        {
+            foreach ($request->get('categories') as $categoryid)
+            {   
+                $category = Category::find($categoryid);
 
-        foreach ($request->get('categories') as $categoryid)
-        {   
-            $category = Category::find($categoryid);
+                if ($product->categories->where('id', $categoryid)->count() == 0)
+                {
+                    $product->categories()->save($category);
+                }
+            }
 
-            if ($product->categories->where('id', $categoryid)->count() == 0)
-            {
-                $product->categories()->save($category);
+            foreach ($product->categories as $category)
+            {   
+                if (!in_array($category->id,$request->get('categories')))
+                {
+                    $product->categories()->detach($category);
+                }
             }
         }
 
-        foreach ($product->categories as $category)
-        {   
-            if (!in_array($category->id,$request->get('categories')))
-            {
-                $product->categories()->detach($category);
-            }
-        }
 
         foreach ($product->parameters as $parameter)
         {

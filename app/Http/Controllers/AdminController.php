@@ -273,11 +273,7 @@ class AdminController extends Controller
         return view('admin.addcover');
     }
 
-    public function bulk()
-    {
 
-        return view('admin.bulk');
-    }
 
 
     public function editCover($id)
