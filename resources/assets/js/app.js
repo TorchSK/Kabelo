@@ -2085,5 +2085,14 @@ $('#bulk_save_btn').click(function(){
     })
 })
 
+$('#cookies_msg i').click(function(){
+  $('#cookies_msg').hide();
+  $.ajax({
+    method: "PUT",
+    url: '/user/'+$(this).data('user_id'),
+    data: {cookies: 1}
+  })
+});
+
 
 });

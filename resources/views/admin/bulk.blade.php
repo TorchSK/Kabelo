@@ -48,8 +48,8 @@
       <td data-order="{{$product->code}}"  data-name="code" class="edit"><div class="ui input product_param"><input type="text" value="{{$product->code}}" /></div></td>
       <td data-order="{{$product->maker}}"  data-name="maker" class="edit"><div class="ui input product_param"><input type="text" value="{{$product->maker}}" /></div></td>
       <td data-order="{{$product->desc}}"  data-name="desc" class="edit"><div class="ui input product_param"><input type="text" value="{{$product->desc}}" /></div></td>
-      <td data-order="{{$product->desc}}"  data-name="new" class="edit"><div class="ui checkbox product_param"><input type="checkbox" value="{{$product->new}}" /></div></td>
-      <td data-order="{{$product->desc}}"  data-name="sale"><div class="ui checkbox product_param"><input type="checkbox" value="{{$product->sale}}" /></div></td>
+      <td data-order="{{$product->new}}"  data-name="new" class="edit"><div class="ui checkbox product_param"><input type="checkbox" @if($product->new) checked @endif value="{{$product->new}}" /></div></td>
+      <td data-order="{{$product->sale}}"  data-name="sale"><div class="ui checkbox product_param"><input type="checkbox"  @if($product->sale) checked @endif value="{{$product->sale}}" /></div></td>
       @foreach($product->priceLevels as $priceLevel)
       <td><div class="ui input product_param"><input type="text" value="{{$priceLevel->threshold}}" /></div></td>
       <td><div class="ui input product_param"><input type="text" value="{{$priceLevel->moc_regular}}" /></div></td>

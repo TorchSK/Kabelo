@@ -30,4 +30,9 @@ class UtilController extends Controller
     {       
         return view('pages/connectorsguide');
     }
+
+    public function cookiesInfo()
+    {       
+        return view('utils/cookiesinfo');
+    }
 }

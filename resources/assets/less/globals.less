@@ -98,7 +98,6 @@ body {
 .flex_content{
 	flex: 1 0 auto;
 	background-color: #F7F7F7;
-	min-height: 90vh;
 	border-left: 1px solid #DDD;
 	border-right: 1px solid #DDD;
 
@@ -295,5 +294,38 @@ a{
 				font-weight: 900;
 			}
 		}
+	}
+}
+
+#cookies_msg{
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left:0;
+	padding: 12px;
+	background-color: @brown;
+	color: #FFF;
+	text-align: center;
+
+	a{
+		color: #FFF;
+		position: relative;
+		top: -1px;
+		text-decoration: underline;
+	}
+
+	i.icon{
+		margin-left: 15px;
+		cursor: pointer;
+	}
+}
+
+#cookies_info{
+	padding: 4% 25%;
+	font-size: 1.2em;
+	font-weight: 300;
+
+	img{
+		display: inline-block;
 	}
 }

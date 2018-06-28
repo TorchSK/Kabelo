@@ -7,7 +7,7 @@
     @include('includes.sidebar')
     @include('includes.catbar')
     @include('includes.parambar')
-    
+	
     @include('includes.header')
 
     @yield('content')
