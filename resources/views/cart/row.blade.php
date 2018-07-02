@@ -49,7 +49,7 @@
 	    @if($product->sale)
 	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->moc_sale*$product->pivot->qty}} &euro;</div>
 	    @else
-	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->moc_regular*$product->pivot->data-qty}} &euro;</div>
+	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->moc_regular*$product->pivot->qty}} &euro;</div>
 	    @endif
 	  @endif
     </div>
