@@ -1838,7 +1838,46 @@ a:hover {
   margin: 5px;
 }
 #cart_detail {
-  padding: 80px 0;
+  padding: 4%;
+}
+#cart_detail .product {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  text-align: left;
+  background-color: #FFF;
+  padding: 10px 10px 10px 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+#cart_detail .product .image_div {
+  width: 100px;
+  display: inline-block;
+  margin-right: 25px;
+}
+#cart_detail .product .name {
+  font-size: 1.2em;
+  font-weight: 400;
+}
+#cart_detail .product .actions {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-color: #FFF;
+  margin: 0 25px;
+}
+#cart_detail .product .level {
+  white-space: nowrap;
+  margin-right: 125px;
+}
+#cart_detail .product .price {
+  font-size: 1.2em;
+  font-weight: 900;
 }
 #cart_detail .cart_icon {
   background-color: #F7F7F7;
@@ -1879,13 +1918,22 @@ a:hover {
   padding: 0;
 }
 #cart_detail .status {
-  padding-top: 50px;
   background-color: #F7F7F7;
   text-align: center;
 }
 #cart_detail #grid {
   text-align: center;
   padding: 80px  0 0 0;
+}
+#cart_total_price {
+  text-align: right;
+  font-size: 2em;
+  margin-top: 30px;
+  font-weight: 200;
+}
+#cart_total_price price,
+#cart_total_price symbol {
+  font-weight: 900;
 }
 .cart_item_actions .ui.input {
   margin: 15px 0;

@@ -2,7 +2,6 @@
 @section('content')
 	
 <div class="flex_content" id="cart_detail">
-	<div class="caption">Nákupný košík <a class="delete_cart" data-tooltip="Vymazať obsah košíku"><i class="delete icon"></i></a></div>
 	
 	@include('cart.steps',['step'=>'1'])
 
@@ -11,7 +10,7 @@
 		@if (sizeof($cart['items']) > 0)
 		
 			@foreach($cart->products as $product)
-				@include('products.row', ['productOptions'=> true])
+				@include('cart.row')
 			@endforeach
 		
 		@else
@@ -19,6 +18,8 @@
 		
 		@endif
 	</div>
+
+	<div id="cart_total_price">Celková cena: <price></price> <symbol>&euro;</symbol></div>
 
 	<div class="ct cart_actions">
 		@if (sizeof($cart['items']) > 0)

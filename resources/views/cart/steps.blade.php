@@ -1,5 +1,5 @@
 <div class="status">
-<div class="ui ordered steps">
+<div class="ui ordered fluid steps">
   <a class="@if($step==1)active @endif @if($step==2 || $step==3 || $step==4)completed @endif step" @if($step==1)active @endif @if($step==2 || $step==3 || $step==4) href="/cart/products" @endif>
     <div class="content">
       <div class="title">Produkty</div>

@@ -1880,12 +1880,9 @@ function initCartProductSlider(){
   for ( var i = 0; i < sliders.length; i++ ) {
 
      $qty = $(sliders[i]).data('qty');
-     $productid = $(sliders[i]).data('productid');
      $thresholds = $(sliders[i]).data('thresholds');
-           console.log($thresholds);
 
      $prices = JSON.parse($(sliders[i]).data('prices'));
-      console.log($prices);
 
      noUiSlider.create(sliders[i], {
           start: $qty,
@@ -1893,7 +1890,7 @@ function initCartProductSlider(){
           orientation: "horizontal",
           tooltips: true,
           range: {
-              'min': 0,
+              'min': 1,
               'max': 200
           },
         
@@ -1913,7 +1910,7 @@ function initCartProductSlider(){
 
       $.ajax({
         type: "PUT",
-        url: "/cart/"+$productid,
+        url: "/cart/"+$($(this)[0].target).data('productid'),
         data: {qty: values[handle]},
         success: function(){
           location.reload();
@@ -2093,6 +2090,15 @@ $('#cookies_msg i').click(function(){
     data: {cookies: 1}
   })
 });
+
+
+$cart_price = 0;
+
+$('#cart_detail .product').each(function(index,item){
+  $cart_price = $cart_price + parseFloat($(item).find('.final_price').text());
+})
+
+$('#cart_total_price').find('price').text($cart_price);
 
 
 });

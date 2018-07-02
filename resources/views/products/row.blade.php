@@ -37,27 +37,9 @@
 	 
 
 
-	@if(isset($productOptions) && $productOptions)
 
-    <div class="prices">
-    @if(Auth::user()->voc)
-	    @if($product->sale)
-	    <div class="price crossed">{{App\PriceLevel::find($product->pivot->price_level_id)->voc_regular}} &euro; </div>
-	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->voc_sale}} &euro; </div>
-	    @else
-	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->voc_regular}} &euro;</div>
-	    @endif
-	  @else
-	    @if($product->sale)
-	    <div class="price crossed">{{App\PriceLevel::find($product->pivot->price_level_id)->moc_regular}} &euro; </div>
-	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->moc_sale}} &euro;</div>
-	    @else
-	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->moc_regular}} &euro;</div>
-	    @endif
-	  @endif
-    </div>
 
-    @else
+
     	<div class="prices">
     @if(Auth::user()->voc)
 	    @if($product->sale)
@@ -76,7 +58,6 @@
 	  @endif
     </div>
 
-    @endif
 
 	<div class="availability"></div>
 
@@ -92,26 +73,5 @@
 
 </a>
 
-@if(isset($productOptions) && $productOptions && (!isset($cart_confirm) || !$cart_confirm))
-<div class="cart_item_actions">
-	@if ($product->price_unit == 'ks')
-	<div class="ui right labeled action input">
-		<input type="text" value="{{array_count_values($cart['items'])[$product->id]}}" />
-		<div class="ui basic label">ks</div>
-	</div>
-
-	<a class="cart_plus_product"><i class="plus icon"></i></a>
-	<a class="cart_minus_product"><i class="minus icon"></i></a>
-	
-	<div>
-		<div class="ui red button cart_delete_product">Vymaž</div>
-	</div>
-	@else
-	<div class="cart_slider" >
-		<div class="cart_length_slider" data-productid="{{$product->id}}" data-qty="{{$product->pivot->qty}}" data-min="{{$product->priceLevels->min('threshold')}}" data-thresholds="{{$product->priceLevels->pluck('threshold')}}" data-prices="@if(Auth::user()->voc)@if($product->sale){{$product->priceLevels->pluck('voc_sale')}}@else{{$product->priceLevels->pluck('voc_regular')}}@endif @else @if($product->sale) {{$product->priceLevels->pluck('moc_sale')}} @else {{$product->priceLevels->pluck('moc_regular') }} @endif @endif"></div>
-	</div>
-	@endif
-</div>
-@endif
 
 </div>
