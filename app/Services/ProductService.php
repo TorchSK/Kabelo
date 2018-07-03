@@ -25,12 +25,12 @@ class ProductService implements ProductServiceContract {
   {
     if(Auth::user()->voc)
     {
-        $price = "voc_regular";
+        $price = "voc_sort_price";
 
     }
     else
     {
-        $price = "moc_regular";
+        $price = "moc_sort_price";
     }
 
     return $price;   
@@ -44,9 +44,6 @@ class ProductService implements ProductServiceContract {
         })
         ->leftjoin('category_parameters',function($leftjoin){
             $leftjoin->on('category_parameters.id', '=', 'product_parameters.category_parameter_id');
-        })
-        ->join('price_levels',function($join){
-            $join->on('price_levels.product_id', '=', '.products.id')->whereRaw('price_levels.threshold = (select MIN(threshold) from price_levels aa where aa.product_id = products.id)');
         })
         ->where(function($query) use ($filters, $except){
             foreach ((array)$filters as $key => $temp){
@@ -113,7 +110,7 @@ class ProductService implements ProductServiceContract {
             }
         });
 
-        return $result->groupBy(['products.id','price_levels.'.$this->getUserPriceType()])->select(['products.*','price_levels.'.$this->getUserPriceType()])->distinct();
+        return $result->groupBy(['products.id'])->select(['products.*']);
     }
 
     public function list(Request $request)
@@ -132,6 +129,11 @@ class ProductService implements ProductServiceContract {
 
         if (!$sortBy) {$sortBy = 'name';};
         if (!$sortOrder) {$sortOrder = 'asc';};
+
+        if ($sortBy == 'price')
+        {
+            $sortBy = $this->getUserPriceType();
+        }
 
         
         // set active filters

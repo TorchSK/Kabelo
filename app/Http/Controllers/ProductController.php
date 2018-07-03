@@ -47,7 +47,7 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = $request->get('name');
         $product->desc = $request->get('desc');
-        $product->price = 0;
+
         $product->price_unit = $request->get('unit');
         $product->code = $request->get('code');
         $product->maker = $request->get('maker');
