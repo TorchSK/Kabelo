@@ -100,7 +100,7 @@ Route::put('categories/setorder/','CategoryController@setOrder');
 Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
 
-Route::get('/{maker}/{code}/detail','ProductController@profile');
+Route::get('/{maker}/{code}/detail','ProductController@profile')->name('product.detail');
 Route::get('/{maker}/{code}/edit','ProductController@edit');
 
 Route::post('/category/image/upload','CategoryController@uploadImage');

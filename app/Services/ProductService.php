@@ -21,6 +21,12 @@ class ProductService implements ProductServiceContract {
   {
   }
 
+  public function getPrice($producid)
+  {
+    $product = Product::find($productid);
+    
+  }
+
 	public function query($filters, $except=[])
     {
 
@@ -119,6 +125,7 @@ class ProductService implements ProductServiceContract {
         // set price range
         $priceRangeFilters = $filters;
         unset($priceRangeFilters['price']);
+
         $priceRange = [];
         $priceRange[0] = $this->query($priceRangeFilters)->pluck('price')->min();
         $priceRange[1] = $this->query($priceRangeFilters)->pluck('price')->max();

@@ -1,14 +1,17 @@
 <!-- desktop/tablet -->
 <div id="filterbar">
     
-    @if (Request::segment(1)!='admin')
+    @if (Request::segment(1)!='admin' && Route::currentRouteName()!='product.detail')
     <div class="tabs">
         <div class="category tab @if(!Request::get('category')) active @endif">Kategórie</div>
+        @if (Route::currentRouteName()!='product.detail')
         <div class="param tab @if(Request::get('category')) active @else disabled  @endif">Parametre</div>
+        @endif
     </div>
     @endif
 
     <div class="ui accordion">
+        @if (Route::currentRouteName()!='product.detail')
 
         <div id="product_search">
             <div class="ui left icon huge fluid input product_search_input" >
@@ -16,6 +19,7 @@
                 <i class="search icon"></i>
             </div>
         </div>
+        @endif
         
         @if (Request::segment(1)=='admin')
         <div class="sidebar_btn">
@@ -27,13 +31,9 @@
         </div>
         @endif
         
-        <!--
-        @if (Request::segment(1)!='admin' && !Request::get('category'))
-        <a href="/categories/all" class="pad item all_products_btn"><i class="cubes icon"></i> Prehľad kategórií</a>
-        @endif 
-        -->
         
-        <div id="cat_div" class="@if (Request::segment(1) && Request::segment(1)!='admin') hidden @endif">
+        <div id="cat_div" class="@if (Request::segment(1) && Request::segment(1)!='admin' && Route::currentRouteName()!='product.detail') hidden @endif">
+
         <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Kategórie</div>
 
         <div class="active content">

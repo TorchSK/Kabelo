@@ -3,29 +3,20 @@
 
 <div class="flex_content">
 
+<div class="flex flex_content" id="product_content">
 
-@if (Auth::check() && Auth::user()->admin)
-<div id="product_options" class="ct">
- <div class="container ct">
-  <a href="/{{Request::segment(1)}}/{{Request::segment(2)}}/edit" class="ui teal button">Edituj produkt</a>
-  <a class="ui red button" id="product_detail_delete_btn">Zmaž produkt</a>
+@include('includes/filterbar')
 
-</div>
-</div>
-@endif
+<div id="product_right">
+
 
 <div id="product_detail" data-id={{$product->id}}>
 
-      <div class="other_img">
-          @if ($product->images->count() > 0)
-          @foreach($product->images as $image)
-           <img src="/{{$image->path}}" class="ui image" width="200px" />
-           @endforeach
-           @endif
-        </div>
-
 
     <div class="left">
+
+
+
         <div class="img">
            @if ($product->images->count() == 0)
            <img src="/img/empty.jpg" class="ui image" />
@@ -33,7 +24,15 @@
            <img src="/{{$product->image->path}}" class="ui image" />
            @endif
         </div>
+        
+          @if ($product->images->count() > 1)
 
+          <div class="other_img">
+          @foreach($product->images as $image)
+           <img src="/{{$image->path}}" class="ui image" width="200px" />
+           @endforeach
+        </div>
+           @endif
 
 
     </div>
@@ -227,5 +226,8 @@
 </div>
 </div>
 </div>
-  
+</div>
+
+</div>
+
 @stop
