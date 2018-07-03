@@ -73,7 +73,7 @@ $('.add_category_btn').click(function(){
     autofocus: false,
     onApprove : function() {
     	$name = $('#add_category_input').val();
-      $parent_id = $('#add_category_parent_input input').val();
+      $parent_id = $('input[name="parent_id"]').val();
 
     	$.ajax({
     		type: "POST",
