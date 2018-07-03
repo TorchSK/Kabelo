@@ -69,7 +69,6 @@ class ProductController extends Controller
             $product->priceLevels()->save($pricelevel);
         }
 
-
         foreach ((array)$request->get('categories') as $category)
         {
             $product->categories()->attach($category);
@@ -89,6 +88,19 @@ class ProductController extends Controller
         }
 
         $this->uploadImages($product);
+
+        if ($product->sale)
+        {
+            $product->moc_sort_price = $product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_sale;
+            $product->voc_sort_price = $product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_sale; 
+        }
+        else
+        {
+            $product->moc_sort_price = $product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_regular;
+            $product->voc_sort_price = $product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_regular;  
+        }
+        $product->save();
+
 
         return redirect($product->maker.'/'.$product->code.'/detail');
     }
@@ -354,6 +366,18 @@ class ProductController extends Controller
                 $relatedProduct->save();
             }
         }
+
+        if ($product->sale)
+        {
+            $product->moc_sort_price = $product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_sale;
+            $product->voc_sort_price = $product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_sale; 
+        }
+        else
+        {
+            $product->moc_sort_price = $product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_regular;
+            $product->voc_sort_price = $product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_regular;  
+        }
+        $product->save();
 
         return redirect('/'.$product->maker.'/'.$product->code.'/detail');
     }
