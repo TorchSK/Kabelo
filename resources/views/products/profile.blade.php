@@ -8,7 +8,14 @@
 @include('includes/filterbar')
 
 <div id="product_right">
-
+@if (Auth::check() && Auth::user()->admin)
+<div id="product_options" class="ct">
+ <div class="container ct">
+  <a href="/{{Request::segment(1)}}/{{Request::segment(2)}}/edit" class="ui teal button">Edituj produkt</a>
+  <a class="ui red button" id="product_detail_delete_btn">Zmaž produkt</a>
+</div>
+</div>
+  @endif
 
 <div id="product_detail" data-id={{$product->id}}>
 

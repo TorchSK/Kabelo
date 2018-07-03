@@ -21,10 +21,19 @@ class ProductService implements ProductServiceContract {
   {
   }
 
-  public function getPrice($producid)
+  public function getUserPriceType()
   {
-    $product = Product::find($productid);
-    
+    if(Auth::user()->voc)
+    {
+        $price = "voc_regular";
+
+    }
+    else
+    {
+        $price = "moc_regular";
+    }
+
+    return $price;   
   }
 
 	public function query($filters, $except=[])
@@ -32,10 +41,13 @@ class ProductService implements ProductServiceContract {
 
         $result = Product::leftjoin('product_parameters',function($leftjoin){
             $leftjoin->on('product_parameters.product_id', '=', 'products.id');
-            })
+        })
         ->leftjoin('category_parameters',function($leftjoin){
             $leftjoin->on('category_parameters.id', '=', 'product_parameters.category_parameter_id');
-            })
+        })
+        ->join('price_levels',function($join){
+            $join->on('price_levels.product_id', '=', '.products.id')->whereRaw('price_levels.threshold = (select MIN(threshold) from price_levels aa where aa.product_id = products.id)');
+        })
         ->where(function($query) use ($filters, $except){
             foreach ((array)$filters as $key => $temp){
               if ($filters[$key])
@@ -68,7 +80,13 @@ class ProductService implements ProductServiceContract {
                 elseif($key=='price')
                 {
                     $array = explode(",",$filters['price']);
-                    $query->whereBetween('price', $array);
+
+                    $query->whereHas('priceLevels', function($query) use ($array){
+                        $query->whereBetween($this->getUserPriceType(), $array);
+                    });
+
+                    //old price parameter
+                    //$query->whereBetween('price', $array);
 
                 }
                 elseif($key=='parameters')
@@ -95,7 +113,7 @@ class ProductService implements ProductServiceContract {
             }
         });
 
-        return $result->groupBy(['products.id'])->select(['products.*']);
+        return $result->groupBy(['products.id','price_levels.'.$this->getUserPriceType()])->select(['products.*','price_levels.'.$this->getUserPriceType()])->distinct();
     }
 
     public function list(Request $request)
@@ -127,8 +145,8 @@ class ProductService implements ProductServiceContract {
         unset($priceRangeFilters['price']);
 
         $priceRange = [];
-        $priceRange[0] = $this->query($priceRangeFilters)->pluck('price')->min();
-        $priceRange[1] = $this->query($priceRangeFilters)->pluck('price')->max();
+        $priceRange[0] = $this->query($priceRangeFilters)->pluck($this->getUserPriceType())->min();
+        $priceRange[1] = $this->query($priceRangeFilters)->pluck($this->getUserPriceType())->max();
 
         if ($filters['search'] && !$filters['category'])
         {
