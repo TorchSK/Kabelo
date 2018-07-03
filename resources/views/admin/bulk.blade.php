@@ -50,21 +50,23 @@
       <td data-order="{{$product->desc}}"  data-name="desc" class="edit"><div class="ui input product_param"><input type="text" value="{{$product->desc}}" /></div></td>
       <td data-order="{{$product->new}}"  data-name="new" class="edit"><div class="ui checkbox product_param"><input type="checkbox" @if($product->new) checked @endif value="{{$product->new}}" /></div></td>
       <td data-order="{{$product->sale}}"  data-name="sale"><div class="ui checkbox product_param"><input type="checkbox"  @if($product->sale) checked @endif value="{{$product->sale}}" /></div></td>
-      @foreach($product->priceLevels as $priceLevel)
-      <td><div class="ui input product_param"><input type="text" value="{{$priceLevel->threshold}}" /></div></td>
-      <td><div class="ui input product_param"><input type="text" value="{{$priceLevel->moc_regular}}" /></div></td>
-      <td><div class="ui input product_param"><input type="text" value="{{$priceLevel->moc_sale}}" /></div></td>
-      <td><div class="ui input product_param"><input type="text" value="{{$priceLevel->voc_regular}}" /></div></td>
-      <td><div class="ui input product_param"><input type="text" value="{{$priceLevel->voc_sale}}" /></div></td>
+     
+      @foreach($product->priceLevels as $key => $priceLevel)
+      <td data-order="{{$priceLevel->threshold}}" data-name="thresholds_{{$key}}" class="edit"><div class="ui input product_param"><input type="text" value="{{$priceLevel->threshold}}" /></div></td>
+      <td data-order="{{$priceLevel->moc_regular}}" data-name="mocs_{{$key}}"  class="edit"><div class="ui input product_param"><input type="text" value="{{$priceLevel->moc_regular}}" /></div></td>
+      <td data-order="{{$priceLevel->moc_sale}}" data-name="moc_sales_{{$key}}"  class="edit"><div class="ui input product_param"><input type="text" value="{{$priceLevel->moc_sale}}" /></div></td>
+      <td data-order="{{$priceLevel->voc_regular}}" data-name="vocs_{{$key}}"  class="edit"><div class="ui input product_param"><input type="text" value="{{$priceLevel->voc_regular}}" /></div></td>
+      <td data-order="{{$priceLevel->voc_sale}}" data-name="voc_sales_{{$key}}"  class="edit"><div class="ui input product_param"><input type="text" value="{{$priceLevel->voc_sale}}" /></div></td>
       @endforeach
 
-            @for ($i = $product->priceLevels->count() + 1; $i <= 5; $i++)
-    <td><div class="ui input product_param"><input type="text" /></div></td>
-      <td><div class="ui input product_param"><input type="text" /></div></td>
-      <td><div class="ui input product_param"><input type="text" /></div></td>
-      <td><div class="ui input product_param"><input type="text" /></div></td>
-      <td><div class="ui input product_param"><input type="text" /></div></td>
-    @endfor
+      @for ($i = $product->priceLevels->count() + 1; $i <= 5; $i++)
+      <td data-order="{{$priceLevel->threshold}}" data-name="thresholds_{{$i}}" class="edit"><div class="ui input product_param"><input type="text" /></div></td>
+      <td data-order="{{$priceLevel->moc_regular}}" data-name="mocs_{{$i}}" class="edit"><div class="ui input product_param"><input type="text" /></div></td>
+      <td data-order="{{$priceLevel->moc_sale}}" data-name="moc_sales_{{$i}}" class="edit"><div class="ui input product_param"><input type="text" /></div></td>
+      <td data-order="{{$priceLevel->voc_regular}}" data-name="vocs_{{$i}}" class="edit"><div class="ui input product_param"><input type="text" /></div></td>
+      <td data-order="{{$priceLevel->voc_sale}}" data-name="voc_sales_{{$i}}"  class="edit"><div class="ui input product_param"><input type="text" /></div></td>
+      @endfor
+
     </tr>
     @endforeach
 

@@ -237,8 +237,22 @@ class ProductController extends Controller
             foreach($data as $param => $value)
             {
                 $product->$param = $value;
+
+                if (strpos($param, 'http')$param)
             }
             $product->save();
+        }
+
+        foreach ((array)$request->get('thresholds') as $key=>$threshold)
+        {
+            $pricelevel = new PriceLevel();
+            $pricelevel->threshold = $threshold;
+            $pricelevel->moc_regular = $request->get('mocs')[$key];
+            $pricelevel->moc_sale = $request->get('moc_sales')[$key];
+            $pricelevel->voc_regular = $request->get('vocs')[$key];
+            $pricelevel->voc_sale = $request->get('voc_sales')[$key];
+
+            $product->priceLevels()->save($pricelevel);
         }
 
         return $products;
