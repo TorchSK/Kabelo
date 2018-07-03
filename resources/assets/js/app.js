@@ -1973,7 +1973,7 @@ function initProductQtySlider(){
     if ( values[handle] < $min ) {
       slider.noUiSlider.set($min);
       $('#product_buy_qty_value').find('qty').text($min);
-      $price = $min * parseInt($('#product_price_thresholds').find('.threshold').next().find('#final_price').text()); 
+      $price = $min * parseFloat($('#product_price_thresholds').find('.threshold').next().find('#final_price').text()); 
       $('#product_buy_qty_value').find('price').text($price);
 
     };
@@ -1983,7 +1983,7 @@ function initProductQtySlider(){
   slider.noUiSlider.on('slide', function ( values, handle ) {
     $('#product_buy_qty_value').find('qty').text(values[handle]);
     $('#product_detail_tocart_btn').data('qty',values[handle]);
-    $price = values[handle] * parseInt($('#product_price_thresholds').find('.threshold[data-value="'+getClosestValue($thresholds,values[handle])+'"]').next().find('#final_price').text()); 
+    $price = values[handle] * Math.round(parseFloat($('#product_price_thresholds').find('.threshold[data-value="'+getClosestValue($thresholds,values[handle])+'"]').next().find('#final_price').text())*100)/100; 
     $('#product_price_thresholds').find('.threshold').closest('tr').removeClass('positive');
     $('#product_price_thresholds').find('.threshold[data-value="'+getClosestValue($thresholds,values[handle])+'"]').closest('tr').addClass('positive');
     $('#product_buy_qty_value').find('price').text($price);
