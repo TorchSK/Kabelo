@@ -128,6 +128,7 @@
       </div>
     </div>
 
+    <!--
       <div class="ui header">Dostupné vo farbe</div>
       <div class="product_color choosable"></div>
 
@@ -139,7 +140,7 @@
       </div>
       
       <div class="ui teal button" id="edit_product_add_param_row">Pridaj</div>
-
+  -->
 
 
     <div class="ui header">Parametre</div>
