@@ -113,7 +113,7 @@ $('#create_product_categories_input').dropdown({
 
 
 $('#edit_product_categories_input').dropdown({
-  maxSelections: 1,
+  maxSelections: 10,
   onAdd: function(addedValue, addedText, $addedChoice){
     console.log(addedValue);
   }

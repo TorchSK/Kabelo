@@ -147,8 +147,8 @@ class ProductService implements ProductServiceContract {
         unset($priceRangeFilters['price']);
 
         $priceRange = [];
-        $priceRange[0] = $products ->pluck($this->getUserPriceType())->min();
-        $priceRange[1] = $products ->pluck($this->getUserPriceType())->max();
+        $priceRange[0] = $products->pluck($this->getUserPriceType())->min();
+        $priceRange[1] = $products->pluck($this->getUserPriceType())->max();
 
         if ($filters['search'] && !$filters['category'])
         {
