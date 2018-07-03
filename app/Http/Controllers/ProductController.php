@@ -238,7 +238,6 @@ class ProductController extends Controller
             {
                 $product->$param = $value;
 
-                if (strpos($param, 'http')$param)
             }
             $product->save();
         }
