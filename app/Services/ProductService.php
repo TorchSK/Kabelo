@@ -51,7 +51,7 @@ class ProductService implements ProductServiceContract {
               {
                 if ($key=='search')
                 {   
-                    $query->where(function($query){
+                    $query->where(function($query)  use ($filters, $except){
                           $query->where("name", "like", "%".$filters['search']."%")->orWhere("desc", "like", "%".$filters['search']."%");
                     });
                 }
