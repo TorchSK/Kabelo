@@ -1,9 +1,22 @@
 #product_content{
 
-	#filterbar{
-			background-color: #FAFAFA;
-			border-right: 1px dashed #CCC;
+	position: relative;
 
+	#filterbar{
+			background-color: #EEE;
+			display: none;
+			position: absolute;
+			height: 99vh;
+			z-index: 99999;
+			top: 45px;
+			left: 5px;
+			border-radius: 6px;
+			border-right: 2px solid #FFF;
+	}
+
+	.filterbar_handle{
+		margin: 5px;
+		position: absolute;
 	}
 }
 
@@ -105,6 +118,15 @@
 			text-align: center;
 			padding: 0;
 			margin-bottom: 10px;
+		}
+	}
+
+	#maker{
+		float: right;
+		font-weight: 300;
+
+		b{
+			font-weight: 900;
 		}
 	}
 
@@ -210,9 +232,10 @@
 
 	#sale{
 		display: inline-block;
+			margin-left: 15px;
 
 		@media @break3{
-			margin-left: 0px;
+			margin-left: 15px;
 		}
 	}
 

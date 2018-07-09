@@ -45,6 +45,16 @@ class HomeController extends Controller
 
     }
 
+    public function makerProducts($maker, Request $request)
+    {   
+
+            $request['maker'] = $maker;
+            $data = $this->productService->makerList($request);
+
+            return view('home/makerProducts', $data);
+
+    }
+
     public function welcome()
     {
         return view('home/welcome');

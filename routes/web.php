@@ -66,7 +66,6 @@ Route::group(['middleware' => 'onlyAuth'], function()
 {
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/{category}', 'HomeController@index');
 
 Route::get('/home/eshop', 'HomeController@index')->name('home.eshop');
 
@@ -99,6 +98,8 @@ Route::put('categories/setorder/','CategoryController@setOrder');
 
 Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
+Route::get('/category/{category}', 'HomeController@index');
+Route::get('/maker/{maker}', 'HomeController@makerProducts')->name('maker.products');
 
 Route::get('/{maker}/{code}/detail','ProductController@profile')->name('product.detail');
 Route::get('/{maker}/{code}/edit','ProductController@edit');

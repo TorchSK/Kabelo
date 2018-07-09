@@ -25,14 +25,14 @@
 
             @if (Request::has('category'))
 
-            <div class="caption">
-            @if(App\Category::find(Request::get('category'))->parent_id)
-                <a class="effect-1" href="/{{App\Category::find(Request::get('category'))->parent->url}}">{{App\Category::find(App\Category::find(Request::get('category'))->parent_id)->name}}</a> -
-            @endif
-                <a>{{App\Category::find(Request::get('category'))->name}}</a>
-            </div>
+                <div class="caption">
+                @if(App\Category::find(Request::get('category'))->parent_id)
+                    <a class="effect-1" href="/{{App\Category::find(Request::get('category'))->parent->url}}">{{App\Category::find(App\Category::find(Request::get('category'))->parent_id)->name}}</a> -
+                @endif
+                    <a>{{App\Category::find(Request::get('category'))->name}}</a>
+                </div>
 
-                    <div class="ui horizontal divider active title"></i>Podkategórie</div>
+                <div class="ui horizontal divider active title"></i>Podkategórie</div>
 
             @endif
 
@@ -71,7 +71,7 @@
 
            <grid>
 
-                @if(Request::get('category'))
+                @if(Request::get('category') || Route::currentRouteName()=='maker.products')
 
                     @include('products.list')
 

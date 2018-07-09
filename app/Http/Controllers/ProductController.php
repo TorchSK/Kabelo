@@ -102,7 +102,7 @@ class ProductController extends Controller
         $product->save();
 
 
-        return redirect($product->maker.'/'.$product->code.'/detail');
+        return redirect('admin/category/'.$product->categories->first()->url);
     }
 
     

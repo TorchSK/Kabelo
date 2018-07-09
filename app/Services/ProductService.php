@@ -113,6 +113,48 @@ class ProductService implements ProductServiceContract {
         return $result->groupBy(['products.id'])->select(['products.*']);
     }
 
+    public function makerList(Request $request){
+        
+        $filters['parameters']['makers'] = [$request->get('maker')];  
+
+        $sortBy = $request->get('sortBy');
+        $sortOrder = $request->get('sortOrder');    
+
+        if (!$sortBy) {$sortBy = 'name';};
+        if (!$sortOrder) {$sortOrder = 'asc';};
+
+        if ($sortBy == 'price')
+        {
+            $sortBy = $this->getUserPriceType();
+        }
+       $products = $this->query($filters)->orderBy($sortBy,$sortOrder)->get();
+
+        // set price range
+        $priceRangeFilters = $filters;
+        unset($priceRangeFilters['price']);
+
+        $priceRange = [];
+        $priceRange[0] = $products->pluck($this->getUserPriceType())->min();
+        $priceRange[1] = $products->pluck($this->getUserPriceType())->max();
+
+        $categories = [];
+        foreach ($products as $product)
+        {
+            array_push($categories, $product->categories->first()->id);
+        }
+
+
+      $data = [
+            'products' => $products,
+            'priceRange' => $priceRange,
+            'categories' => $categories,
+            'maker' => $request->get('maker')
+        ];
+
+        return $data;
+
+    }
+
     public function list(Request $request)
     {
         $filters = $request->get('filters');

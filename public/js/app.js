@@ -2002,12 +2002,13 @@ $('#add_price_level_btn').click(function(){
   })
 })
 
-
+/*
 $('#product_detail .img img').loupe({
     width: 250, // width of magnifier
   height: 200, // height of magnifier
   loupe: 'loupe' // css class for magnifier
 });
+*/
 
 $('.admin_checkbox_onthefly').checkbox({
     onChecked: function(){
@@ -2099,6 +2100,16 @@ $('#cart_detail .product').each(function(index,item){
 })
 
 $('#cart_total_price').find('price').text($cart_price);
+
+$('.filterbar_handle').mouseover(function(){
+  $('#filterbar').show();
+})
+
+$('#product_content #filterbar').mouseleave(function(){
+  setTimeout(function(){
+    $('#filterbar').hide();
+  },600)
+})
 
 
 });

@@ -5,9 +5,16 @@
 
 <div class="flex flex_content" id="product_content">
 
-@include('includes/filterbar')
+
 
 <div id="product_right">
+
+<div class="ui button filterbar_handle">
+  Zobrazit katalóg
+</div>
+
+@include('includes/filterbar')
+
 @if (Auth::check() && Auth::user()->admin)
 <div id="product_options" class="ct">
  <div class="container ct">
@@ -49,8 +56,7 @@
     	<div id="name">{{$product->name}}</div>
 
 		<div id="code">{{$product->code}} </div>
-    <div class="ui teal large label" id="maker">Výrobca: {{$product->maker}}</div>
-    @if ($product->sale)
+      @if ($product->sale)
     <div id="sale" class="ui green large label"><i class="money icon"></i> Zľava</div>
     @endif
 
@@ -68,6 +74,9 @@
         @endif
         <a href="/{{$category->url}}#eshop" class="effect-1">{{$category->name}}</a>
    			@endforeach
+
+        <div class="" id="maker">Výrobca: <b><a href="/maker/{{$product->maker}}" class="effect-1">{{$product->maker}}</a></b></div>
+
    		</div>
 
 		<div class="ui divider"></div>
