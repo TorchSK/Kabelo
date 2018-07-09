@@ -51,10 +51,13 @@ class ProductService implements ProductServiceContract {
               {
                 if ($key=='search')
                 {   
-                    $query->where("name", "like", "%".$filters['search']."%")->orWhere("desc", "like", "%".$filters['search']."%");;
+                    $query->where(function($query){
+                          $query->where("name", "like", "%".$filters['search']."%")->orWhere("desc", "like", "%".$filters['search']."%");
+                    });
                 }
                 elseif($key=='category')
                 {
+
                     $query->whereHas('categories', function($query) use ($filters){
                         $query->where('category_id', $filters['category']);
 
