@@ -38,7 +38,7 @@ class ProductService implements ProductServiceContract {
 
 	public function query($filters, $except=[])
     {
-
+        //dd($filters);
         $result = Product::leftjoin('product_parameters',function($leftjoin){
             $leftjoin->on('product_parameters.product_id', '=', 'products.id');
         })
