@@ -147,7 +147,7 @@ class ProductService implements ProductServiceContract {
       $data = [
             'products' => $products,
             'priceRange' => $priceRange,
-            'categories' => $categories,
+            'categories' => array_unique($categories),
             'maker' => $request->get('maker')
         ];
 
