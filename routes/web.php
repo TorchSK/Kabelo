@@ -66,7 +66,7 @@ Route::group(['middleware' => 'onlyAuth'], function()
 {
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/{category}', 'HomeController@index')->name('home');
+Route::get('/{category}', 'HomeController@index');
 
 Route::get('/home/eshop', 'HomeController@index')->name('home.eshop');
 
