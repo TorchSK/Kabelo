@@ -424,7 +424,7 @@ class ProductController extends Controller
     {
         ini_set('max_execution_time', 180); //3 minutes
 
-        $url = "ZM.csv";
+        $url = "zm.csv";
         $file = Storage::disk('s3')->get($url);
         Storage::disk('local')->put("zm.csv", $file);
 
