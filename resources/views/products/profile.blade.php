@@ -67,12 +67,12 @@
    		<div class="ui header">
    			@foreach ($product->categories as $category)
         @if(isset($category->parent) && $category->parent->count() > 0  && isset($category->parent->parent) && $category->parent->has('parent'))
-        <a href="/{{$category->parent->parent->url}}#eshop" class="effect-1">{{$category->parent->parent->name}}</a> - 
+        <a href="/category/{{$category->parent->parent->url}}#eshop" class="effect-1">{{$category->parent->parent->name}}</a> - 
         @endif
         @if(isset($category->parent) && $category->parent->count() > 0)
-        <a href="/{{$category->parent->url}}#eshop" class="effect-1">{{$category->parent->name}}</a> - 
+        <a href="/category/{{$category->parent->url}}#eshop" class="effect-1">{{$category->parent->name}}</a> - 
         @endif
-        <a href="/{{$category->url}}#eshop" class="effect-1">{{$category->name}}</a>
+        <a href="/category/{{$category->url}}#eshop" class="effect-1">{{$category->name}}</a>
    			@endforeach
 
         <div class="" id="maker">Výrobca: <b><a href="/maker/{{$product->maker}}" class="effect-1">{{$product->maker}}</a></b></div>

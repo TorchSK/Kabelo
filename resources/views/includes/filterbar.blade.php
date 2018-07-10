@@ -32,7 +32,7 @@
         @endif
         
         
-        <div id="cat_div" class="@if (Request::segment(1) && Request::segment(1)!='admin' && Route::currentRouteName()!='product.detail' && Route::currentRouteName()!='maker.products') hidden @endif">
+        <div id="cat_div" class="">
 
             <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Kategórie</div>
 
