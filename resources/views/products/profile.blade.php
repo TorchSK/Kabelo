@@ -136,6 +136,15 @@
       </table>
       </div>
 
+  <div class="stock @if($product->stock >0) instock @else outstock @endif">
+    @if($product->stock > 0)
+    Skladom     {{$product->stock}} {{$product->price_unit}}
+    @else
+    Na objednávku 
+    @endif
+  </div>
+
+
       <div id="product_buy_qty_m_slider" data-min="{{$product->priceLevels->min('threshold')}}" data-max="200"></div>
       <div id="product_buy_qty_value">Kupujete: <qty>{{$product->priceLevels->min('threshold')}}</qty> {{$product->price_unit}} za 
         <price>

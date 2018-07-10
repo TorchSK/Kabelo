@@ -219,6 +219,22 @@
 		position: relative;
 	}
 
+	.stock{
+		font-weight: 900;
+		font-size: 1.5em;
+		margin-top: 25px;
+
+
+		&.instock{
+			color: @green;
+		}
+
+		&.outstock{
+			color: #CCC;
+			font-style: italic !important;
+		}
+	}
+
 	#maker{
 		display: inline-block;
 		margin-left: 15px;

@@ -16,6 +16,8 @@ use File;
 use Response;
 use Auth;
 use Storage;
+use Excel;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 use App\Services\Contracts\ProductServiceContract;
 
@@ -418,12 +420,29 @@ class ProductController extends Controller
      }
 
 
-    public function getStock()
+    public function setStock()
     {
-        $url = "https://drive.google.com/a/kabelo.sk/uc?authuser=0&id=1Ke6RdNjLfYp47J4dIq0wzrWYXQCP5Dqo&export=download";
-        $file = file_get_contents($url);
+        ini_set('max_execution_time', 180); //3 minutes
 
-        return $file;
+        $url = "ZM.dbf";
+        //$file = Storage::disk('s3')->get($url);
+        //Storage::disk('local')->put("zm.csv", $file);
+
+        $results = (new FastExcel)->import(storage_path('app/zm.csv'));
+        $productCodes = Product::all()->pluck('code')->toArray();
+
+        foreach ($results as $row)
+        {
+            if(in_array($row['CISLO_MAS'], $productCodes))
+            {
+                $product = Product::where('code',$row['CISLO_MAS'])->first();
+                $product->stock = $row['POCET_MJ'];
+                $product->save();
+            }
+        };
+
+      
+
     }
 
     public function destroy($id)

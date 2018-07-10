@@ -7,11 +7,13 @@
     "require": {
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
+        "intervention/image": "dev-master",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "maatwebsite/excel": "^2.1",
         "nesbot/carbon": "~1.21",
-        "intervention/image": "dev-master",
-        "maatwebsite/excel": "~2.1.0"
+        "rap2hpoutre/fast-excel": "^0.6.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

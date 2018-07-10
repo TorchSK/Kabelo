@@ -71,6 +71,15 @@
 		</div>	
 	@endif
 
+	<div class="stock @if($product->stock >0) instock @else outstock @endif">
+		@if($product->stock > 0)
+		Skladom 		{{$product->stock}} {{$product->price_unit}}
+		@else
+		Na objednávku 
+		@endif
+
+
+	</div>
 </a>
 
 

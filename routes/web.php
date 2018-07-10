@@ -53,7 +53,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
 	Route::post('/bulk/', 'ProductController@postBulk')->name('admin.postBulk');
 
-Route::get('/stock/', 'ProductController@getStock')->name('getStock');
+Route::get('/stock/', 'ProductController@setStock')->name('setStock');
 
 Route::get('/welcome', 'HomeController@welcome')->name('welcome');
 Route::post('/login', 'UserController@postLogin')->name('postLogin');

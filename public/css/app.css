@@ -775,6 +775,17 @@ a:hover {
     padding: 9px;
   }
 }
+#grid .item .stock {
+  margin-top: 20px;
+  font-weight: 700;
+}
+#grid .item .stock.instock {
+  color: #21BA45;
+}
+#grid .item .stock.outstock {
+  color: #CCC;
+  font-style: italic !important;
+}
 #grid .item .actions {
   margin-top: 25px;
   text-align: center;
@@ -1183,6 +1194,18 @@ a:hover {
   font-size: 2em;
   display: inline-block;
   position: relative;
+}
+#product_detail .stock {
+  font-weight: 900;
+  font-size: 1.5em;
+  margin-top: 25px;
+}
+#product_detail .stock.instock {
+  color: #21BA45;
+}
+#product_detail .stock.outstock {
+  color: #CCC;
+  font-style: italic !important;
 }
 #product_detail #maker {
   display: inline-block;
