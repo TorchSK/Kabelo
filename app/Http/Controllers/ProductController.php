@@ -424,9 +424,9 @@ class ProductController extends Controller
     {
         ini_set('max_execution_time', 180); //3 minutes
 
-        $url = "ZM.dbf";
-        //$file = Storage::disk('s3')->get($url);
-        //Storage::disk('local')->put("zm.csv", $file);
+        $url = "ZM.csv";
+        $file = Storage::disk('s3')->get($url);
+        Storage::disk('local')->put("zm.csv", $file);
 
         $results = (new FastExcel)->import(storage_path('app/zm.csv'));
         $productCodes = Product::all()->pluck('code')->toArray();
