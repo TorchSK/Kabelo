@@ -1,5 +1,9 @@
 <div class="category_image">
+	@if(Request::segment(1)=='admin')
+	<a href="/admin/category/{{$category->url}}">
+	@else
 	<a href="/category/{{$category->url}}">
+	@endif
 	<div class="image @if (Request::segment(1)!='admin') hover @endif">
 		@if($category->image)
 			<img src="/{{$category->image}}" width="180"/>
