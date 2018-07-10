@@ -62,7 +62,7 @@
       <div class="column">
 
           <div class="ui fluid  selection dropdown" id="edit_product_unit_input">
-            <input type="hidden" name="price_unit" value="m">
+            <input type="hidden" name="price_unit" value="{{$product->price_unit}}">
             <i class="dropdown icon"></i>
             <div class="text">m</div>
             <div class="menu">
