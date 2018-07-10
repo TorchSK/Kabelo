@@ -15,6 +15,7 @@ use Image;
 use File;
 use Response;
 use Auth;
+use Storage;
 
 use App\Services\Contracts\ProductServiceContract;
 
@@ -415,6 +416,15 @@ class ProductController extends Controller
      {
         return view('products.pricelevel');
      }
+
+
+    public function getStock()
+    {
+        $url = "https://drive.google.com/a/kabelo.sk/uc?authuser=0&id=1Ke6RdNjLfYp47J4dIq0wzrWYXQCP5Dqo&export=download";
+        $file = file_get_contents($url);
+
+        return $file;
+    }
 
     public function destroy($id)
     {
