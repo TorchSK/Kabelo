@@ -174,6 +174,7 @@ class CartController extends Controller
         $levels = $product->priceLevels->pluck('threshold')->toArray();
         sort($levels);
 
+        $index=0;
         foreach($levels as $key => $level) 
         {
           if($qty >= $level) 

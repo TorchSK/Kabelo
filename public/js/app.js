@@ -637,9 +637,6 @@ $(document).ajaxStart(function() {
   $('#grid').find('.dimmer').addClass('active');
 });
 
-$(document).ajaxStop(function() {
-  $('#grid').find('.dimmer').removeClass('active');
-});
 
 $(".product_search_input input").keyup(function(e){
 
@@ -1894,6 +1891,7 @@ function initCartProductSlider(){
       sliders[i].noUiSlider.on('change', function ( values, handle ) {
 
       $('#grid .dimmer').addClass('active');
+
       $.ajax({
         type: "PUT",
         url: "/cart/"+$($(this)[0].target).data('productid'),
