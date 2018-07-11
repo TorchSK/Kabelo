@@ -440,7 +440,7 @@ class ProductController extends Controller
                 $product->save();
             }
         };
-
+    return 'Stock updated';
       
 
     }
