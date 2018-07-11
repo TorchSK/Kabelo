@@ -1063,40 +1063,20 @@ $('.ui.dropdown').dropdown({
 
 $('#category_image_dropzone').dropzone({
   success: function(file, response){
-    var $x, $y, $w, $h;
-    this.removeAllFiles(true); 
-    $('.crop_preview').html("<img src=/"+response+" height='50' />").unbind('focus');
-    $('.crok_ok').show();
+    
+    this.removeAllFiles(true);
+    $categoryid = $('#category_image_div').data('categoryid');
 
-    $('.crop_preview img').cropper({
-      guides: false,
-      viewMode: 0,
-      aspectRatio: 1.78,
-      autoCropArea: 1,
-      crop: function(e){
-        $x = e.x;
-        $y = e.y;
-        $w = e.width;
-        $h = e.height;
-      },
-      preview: $('#category_image_div .category_image .image')
-    });
+    $.ajax({
+      method: "POST",
+      url: '/category/'+$categoryid+'/image/confirmCrop',
+      data: {filename: file.name},
+      success: function(){
+        location.reload();
+      }
+    })
 
-    // confirm crop
-    $('.crop_ok').show().click(function(){
-      $categoryid = $(this).data('categoryid');
-
-      $.ajax({
-        method: "POST",
-        url: '/category/'+$categoryid+'/image/confirmCrop',
-        data: {filename: file.name, x: $x, y:$y, w:$w, h:$h},
-        success: function(){
-          location.reload();
-        }
-      })
-    });
-
-  }
+  } 
 });
 
 $('.covers').flickity({

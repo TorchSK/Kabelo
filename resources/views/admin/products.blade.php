@@ -26,7 +26,7 @@
 
             <div class="ui horizontal divider active title">Obrázok kategórie</div>
  
-            <div id="category_image_div">
+            <div id="category_image_div" data-categoryid="{{$category->id}}">
 
               <div>@include('categories.image')</div>
 

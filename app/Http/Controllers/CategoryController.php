@@ -134,20 +134,16 @@ class CategoryController extends Controller
     {
         $filename = $request->get('filename');
 
-        $x = round($request->get('x'));
-        $y = round($request->get('y'));
-        $w = round($request->get('w'));
-        $h = round($request->get('h'));
 
         $path = 'temp/categories/'.$filename;
         $destinationPath = 'uploads/categories';
 
 
-        $width = 400;   
+        $w = 400;
 
         Image::make($path)
-                 ->crop($w, $h, $x, $y)
-                 ->widen($width)
+                 ->widen($w)
+                 ->resizeCanvas($w, $w*0.8)
                  ->save($destinationPath.'/'.$filename);
 
         $category = Category::find($categoryid);
