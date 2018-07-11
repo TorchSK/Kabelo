@@ -62,7 +62,7 @@
 	<div class="availability"></div>
 
 	@if((!isset($productOptions) || !$productOptions) && Request::segment(1) != 'admin'  && (!isset($cart_confirm) || !$cart_confirm))
-	<a class="to_cart ui teal icon button"><i class="shop icon"></i> Kúpiť</a>
+	<a class="to_cart ui teal icon button"><i class="shop icon"></i> Kúpiť &nbsp;{{$product->priceLevels->min('threshold')}} {{$product->price_unit}}</a>
 	@elseif(Request::segment(1) == 'admin')
 		<div class="actions ui fluid icon buttons">
 		<a href="/product/create?duplicate={{$product->id}}" class="ui teal small button"><i class="copy icon"></i></a>
