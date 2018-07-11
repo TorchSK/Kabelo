@@ -2,7 +2,7 @@
    
     <div class="caption title">
     @if($category->children->count() > 0) 
-        <i class="@if(Request::has('category') && (Request::get('category') == $category->id || (App\Category::find(Request::get('category'))->parent && App\Category::find(Request::get('category'))->parent->parent_id == $category->id) || in_array(Request::get('category'), (array)$category->children->pluck('id')->toArray())) || (isset($product) && in_array($category->id, $product->parentCategories->pluck('id')->toArray()))) minus @else plus @endif square outline icon"></i>
+        <i class="@if(Request::has('category') && (Request::get('category') == $category->id || (App\Category::find(Request::get('category'))->parent && App\Category::find(Request::get('category'))->parent->parent_id == $category->id) || in_array(Request::get('category'), (array)$category->children->pluck('id')->toArray())) || (isset($product) && in_array($category->id, $product->parentCategories->pluck('id')->toArray())) || (isset($product) && in_array($category->id, $product->parentBaseCategories->pluck('id')->toArray()))) minus @else plus @endif square outline icon"></i>
         @else
         <i class="cube icon"></i>
     @endif
