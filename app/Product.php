@@ -11,8 +11,17 @@ class Product extends Model {
 
   	public function categories() 
   	{
- 		return $this->belongsToMany('App\Category');
- 	}
+ 		 return $this->belongsToMany('App\Category');
+ 	  }
+
+    public function getParentCategoriesAttribute() {
+        $result = collect();
+        $parents = function($categories) use(&$result, &$parents) {
+            $result = $result->merge($categories->pluck('parent'));
+        };
+        $parents($this->categories);
+        return $result;
+    }
 
   	public function parameters() 
   	{

@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
+
 <div class="flex_content">
 
 <div class="flex flex_content" id="product_content">

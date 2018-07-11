@@ -1931,13 +1931,17 @@ a:hover {
 #cart_detail .product .name {
   font-size: 1.2em;
   font-weight: 400;
+  margin-right: 25px;
+}
+#cart_detail .product .delete {
+  cursor: pointer;
 }
 #cart_detail .product .actions {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   background-color: #FFF;
-  margin: 0 25px;
+  margin-right: 25px;
 }
 #cart_detail .product .level {
   white-space: nowrap;

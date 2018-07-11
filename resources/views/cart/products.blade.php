@@ -7,6 +7,10 @@
 
 
 	<div id="grid">
+		<div class="ui inverted dimmer">
+		    <div class="ui text loader">Prepočítavam</div>
+		 </div>
+
 		@if (sizeof($cart['items']) > 0)
 		
 			@foreach($cart->products as $product)

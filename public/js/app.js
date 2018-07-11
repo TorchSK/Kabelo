@@ -524,6 +524,11 @@ $('.categories .item .icon.plus').click(function(e){
   $(this).toggleClass('minus plus');
 })
 
+$('.categories .item .icon.minus').click(function(e){
+  $(this).toggleClass('minus plus');
+})
+
+
 
 $('#cart_delivery_options .step').click(function(){
   $('#cart_delivery_options .step').removeClass('completed').removeClass('active');
@@ -1908,6 +1913,7 @@ function initCartProductSlider(){
 
       sliders[i].noUiSlider.on('change', function ( values, handle ) {
 
+      $('#grid .dimmer').addClass('active');
       $.ajax({
         type: "PUT",
         url: "/cart/"+$($(this)[0].target).data('productid'),

@@ -8,6 +8,7 @@
 	</div>
 
 	<div class="name">{{$product->name}}</div>
+	<div class="delete cart_delete_product" data-tooltip="Zmazat"><i class="icon red large delete"></i></div>
 
 	@if(!isset($cart_confirm) || !$cart_confirm)
 	<div class="actions">

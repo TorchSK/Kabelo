@@ -39,7 +39,7 @@
 
             @if(Request::get('category') && App\Category::find(Request::get('category'))->children->count() > 0)
             <div class="subcategories">
-                @foreach(App\Category::find(Request::get('category'))->children as $child)
+                @foreach(App\Category::find(Request::get('category'))->children->sortBy('order') as $child)
                     @include('categories.image',['category'=>$child])
                 @endforeach         
             </div>
