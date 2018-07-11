@@ -22,7 +22,7 @@ if (path[3] != '')
 
 // scrolTo smooth 
 function scrollTo(element){
-  $('html,body').animate({scrollTop: $(element).offset().top},0);  
+  $('html,body').scrollTop($(element).offset().top);  
 }
 
 
