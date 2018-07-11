@@ -13,11 +13,16 @@ $.ajaxSetup({
   }
 });
 
-var path = window.location.pathname.split( '/' );
-
-if (path[2] == 'eshop')
+var path = window.location.href.split( '/' );
+console.log(path);
+if (path[3] != '')
 {
   scrollTo('#grid');
+}
+
+// scrolTo smooth 
+function scrollTo(element){
+  $('html,body').animate({scrollTop: $(element).offset().top},0);  
 }
 
 
@@ -87,10 +92,6 @@ $('.add_category_btn').click(function(){
   }).modal('show');
 })
 
-// scrolTo smooth 
-function scrollTo(element){
-  $('html,body').animate({scrollTop: $(element).offset().top});  
-}
 
 $('#create_product_add_param_row').click(function(){
   $html = $('#create_product_params .row:first-child').html();
