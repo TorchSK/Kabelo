@@ -15,6 +15,7 @@ $.ajaxSetup({
 
 var path = window.location.href.split( '/' );
 console.log(path);
+
 if (path[3] != '')
 {
   scrollTo('#grid');
@@ -22,7 +23,9 @@ if (path[3] != '')
 
 // scrolTo smooth 
 function scrollTo(element){
+  if($(element).length){
   $('html,body').scrollTop($(element).offset().top);  
+  }
 }
 
 
