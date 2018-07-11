@@ -23,6 +23,15 @@ class Product extends Model {
         return $result;
     }
 
+      public function getParentBaseCategoriesAttribute() {
+        $result = collect();
+        $parents = function($parentCategories) use(&$result, &$parents) {
+            $result = $result->merge($parentCategories->pluck('parent'));
+        };
+        $parents($this->parentCategories);
+        return $result;
+    }
+
   	public function parameters() 
   	{
  		return $this->hasMany('App\Parameter');
