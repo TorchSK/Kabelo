@@ -27,9 +27,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
-            ProductController::setStock();
-        })->everyMinute();
+        $schedule->call('ProductController@setStock')->everyMinute();
     }
 
     /**
