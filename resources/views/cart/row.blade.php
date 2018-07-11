@@ -22,7 +22,6 @@
 
 	<div class="level">
 		<div>Cena: 
-			{{$product->pivot->price_level_id}}
 			@if(Auth::user()->voc)
 		    	@if($product->sale)
 		    		{{App\PriceLevel::find($product->pivot->price_level_id)->voc_sale}} &euro;

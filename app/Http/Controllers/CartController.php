@@ -183,7 +183,7 @@ class CartController extends Controller
           }
         }
         
-        $id = PriceLevel::where('threshold',$levels[$index])->first()->id;
+        $id = $product->priceLevels()->where('threshold',$levels[$index])->first()->id;
 
         return $id;   
 
