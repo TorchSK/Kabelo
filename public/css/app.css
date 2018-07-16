@@ -1118,13 +1118,6 @@ a:hover {
     margin-bottom: 10px;
   }
 }
-#product_detail #maker {
-  float: right;
-  font-weight: 300;
-}
-#product_detail #maker b {
-  font-weight: 900;
-}
 #product_detail #parameters {
   margin-bottom: 50px;
   margin-top: 50px;
@@ -1217,6 +1210,12 @@ a:hover {
   display: inline-block;
   margin-left: 15px;
   margin-top: 1px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  font-weight: 300;
+}
+#product_detail #maker b {
+  font-weight: 900;
 }
 @media all and (max-width: 980px) {
   #product_detail #maker {
@@ -1234,6 +1233,14 @@ a:hover {
 }
 #product_detail #new {
   display: inline-block;
+}
+#product_detail #product_categories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 #product_tabs .wrapper {
   background-color: #FFF !important;

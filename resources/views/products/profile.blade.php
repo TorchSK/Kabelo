@@ -65,8 +65,10 @@
     <div id="new" class="ui blue large label"><i class="star icon"></i> Novinka</div>
     @endif
 
-   		<div class="ui header">
+   		<div class="ui header" id="product_categories">
+        <div>
    			@foreach ($product->categories as $category)
+        <div>
         @if(isset($category->parent) && $category->parent->count() > 0  && isset($category->parent->parent) && $category->parent->has('parent'))
         <a href="/category/{{$category->parent->parent->url}}#eshop" class="effect-1">{{$category->parent->parent->name}}</a> - 
         @endif
@@ -74,7 +76,9 @@
         <a href="/category/{{$category->parent->url}}#eshop" class="effect-1">{{$category->parent->name}}</a> - 
         @endif
         <a href="/category/{{$category->url}}#eshop" class="effect-1">{{$category->name}}</a>
+        </div>
    			@endforeach
+        </div>
 
         <div class="" id="maker">Výrobca: <b><a href="/maker/{{$product->maker}}" class="effect-1">{{$product->maker}}</a></b></div>
 

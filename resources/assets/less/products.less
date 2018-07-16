@@ -125,14 +125,6 @@
 		}
 	}
 
-	#maker{
-		float: right;
-		font-weight: 300;
-
-		b{
-			font-weight: 900;
-		}
-	}
 
 	#parameters{
 		margin-bottom: 50px;
@@ -243,6 +235,12 @@
 		display: inline-block;
 		margin-left: 15px;
 		margin-top: 1px;
+		align-self: flex-end;
+		font-weight: 300;
+
+		b{
+			font-weight: 900;
+		}
 
 		@media @break3{
 			display: none;
@@ -262,6 +260,11 @@
 
 	#new{
 		display: inline-block;
+	}
+
+	#product_categories{
+		display: flex;
+		justify-content: space-between;
 	}
 
 }
