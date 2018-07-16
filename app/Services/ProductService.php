@@ -45,6 +45,7 @@ class ProductService implements ProductServiceContract {
         ->leftjoin('category_parameters',function($leftjoin){
             $leftjoin->on('category_parameters.id', '=', 'product_parameters.category_parameter_id');
         })
+        ->where('active',1)
         ->where(function($query) use ($filters, $except){
             foreach ((array)$filters as $key => $temp){
               if ($filters[$key])
@@ -288,19 +289,19 @@ class ProductService implements ProductServiceContract {
 
         foreach (Category::all() as $category)
         {
-            $categoryCounts['categories'][$category->id] = $category->products->count();
+            $categoryCounts['categories'][$category->id] = $category->products->where('active',1)->count();
 
             if ($category->children->count() > 0)
             {
                 foreach ($category->children as $child)
                 {
-                    $categoryCounts['categories'][$category->id] += $child->products->count();
+                    $categoryCounts['categories'][$category->id] += $child->products->where('active',1)->count();
 
                     if ($child->children->count() > 0)
                     {
                         foreach ($child->children as $subchild)
                         {
-                            $categoryCounts['categories'][$category->id] += $subchild->products->count();
+                            $categoryCounts['categories'][$category->id] += $subchild->products->where('active',1)->count();
                         }
                     }
                 }

@@ -4,7 +4,7 @@
 
 <div class="flex_content">
 
-<div class="flex flex_content" id="product_content">
+<div class="flex flex_content @if($product->active==0) inactive @endif" id="product_content">
 
 
 

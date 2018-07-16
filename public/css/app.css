@@ -680,6 +680,9 @@ a:hover {
 #grid .item:hover .to_cart {
   opacity: 1;
 }
+#grid .item.inactive {
+  opacity: 0.4;
+}
 #grid .item .image_div {
   text-align: center;
   border-radius: 3px;
@@ -1001,6 +1004,9 @@ a:hover {
 }
 #product_content {
   position: relative;
+}
+#product_content.inactive {
+  opacity: 0.5;
 }
 #product_content #filterbar {
   background-color: #EEE;
@@ -2021,6 +2027,7 @@ a:hover {
 .cart_actions {
   background-color: #F7F7F7;
   padding: 50px 0;
+  text-align: right;
 }
 #cart_delivery {
   background-color: #F7F7F7;

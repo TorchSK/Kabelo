@@ -293,6 +293,7 @@ class ProductController extends Controller
 
         if (!$request->has('new')) {$request['new']='off';}
         if (!$request->has('sale')) {$request['sale']='off';}
+        if (!$request->has('active')) {$request['active']='off';}
 
         $product->update($request->except('_token'));
 

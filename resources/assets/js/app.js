@@ -1779,6 +1779,47 @@ $('#sale_product_table').on('click', '.red.button', function(){
 })
 
 
+
+$('.ui.inactive.product.search')
+  .search({
+    apiSettings: {
+      url: '/api/products/search?query={query}',
+    },
+    fields: {
+      results : 'results',
+      title   : 'name',
+    },
+    onSelect: function(result, response){
+       $.ajax({
+        method: 'PUT',
+        url: '/api/product/'+result.id,
+        data: {active: 0}, 
+        success: function(data){
+          $row = $('#inactive_product_table tbody tr:first-child').clone();
+          $row.find('td:first-child').text(result.id);
+          $row.find('td:nth-child(2)').text(result.name);
+          $row.data('id',result.id);
+          $('#inactive_product_table tbody tr:last-child').before($row);
+        }   
+      })
+    }
+  });
+
+$('#inactive_product_table').on('click', '.red.button', function(){
+  $row = $(this).closest('tr');
+  $id = $row.data('id');
+  $.ajax({
+    method: 'PUT',
+    url: '/api/product/'+$id,
+    data: {active: 1}, 
+    success: function(data){
+      $row.remove();
+    }   
+  })
+})
+
+
+
 $('.change_cat_img_btn').click(function(){
   $('#category_image_dropzone').click();
 });

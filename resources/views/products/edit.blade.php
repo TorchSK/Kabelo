@@ -59,6 +59,16 @@
     </div>
   </div>
 
+         <div class="column">
+    <div id="create_product_active_flag">
+    <div class="ui checkbox">
+      <input type="checkbox" name="active"  @if($product->active) checked="1" @endif>
+      <label>Aktívny</label>
+    </div>
+    </div>
+  </div>
+
+
       <div class="column">
 
           <div class="ui fluid  selection dropdown" id="edit_product_unit_input">

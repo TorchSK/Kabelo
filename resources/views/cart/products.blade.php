@@ -25,11 +25,13 @@
 
 	<div id="cart_total_price">Celková cena: <price></price> <symbol>&euro;</symbol></div>
 
-	<div class="ct cart_actions">
+	<div class="cart_actions">
 		@if (sizeof($cart['items']) > 0)
+		<a href="/#eshop" class="ui blue button"><i class="icon arrow left"></i>Do eshopu</a>
 		<a href="/cart/delivery" class="ui green button">Pokračovať</a>
+
 		@else
-		<a href="/" class="ui green button">Do obchodu</a>
+		<a href="/" class="ui green button">Do eshopu</a>
 		@endif
 	</div>
 

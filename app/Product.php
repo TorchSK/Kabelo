@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model {
 
   protected $table = "products";
-  protected $fillable = ["category_id", "name", "code", "price", "price_unit", "desc", "link", "stock", "maker", "new", "sale", "sale_price"];
+  protected $fillable = ["category_id", "name", "code", "price", "price_unit", "desc", "link", "stock", "maker", "new", "sale", "sale_price","active"];
 
   	public function categories() 
   	{
@@ -97,6 +97,20 @@ class Product extends Model {
         $this->attributes['new'] = 0;
       }
   	}
+
+
+  public function setActiveAttribute($value)
+    {
+      if ($value == 'on' || $value == 1)
+      {
+        $this->attributes['active'] = 1;
+      }
+      else
+      {
+        $this->attributes['active'] = 0;
+      }
+    }
+
 
     public function setPriceAttribute($value)
     {
