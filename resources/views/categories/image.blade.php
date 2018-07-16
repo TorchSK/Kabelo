@@ -4,7 +4,7 @@
 	@else
 	<a href="/category/{{$category->url}}">
 	@endif
-	<div class="image @if (Request::segment(1)!='admin') hover @endif">
+	<div class="image @if (Request::segment(1)!='admin') btn-4  @endif">
 		@if($category->image)
 			<img src="/{{$category->image}}" width="180"/>
 		@else

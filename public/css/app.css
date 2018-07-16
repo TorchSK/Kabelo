@@ -356,20 +356,6 @@ a:hover {
 .ui.accordion .accordion {
   margin: 0;
 }
-/* Rotate */
-.hover {
-  overflow: hidden;
-}
-.hover img {
-  -webkit-transition: 0.3s ease-in-out;
-  -webkit-transition: 0.15s ease-in-out;
-  transition: 0.15s ease-in-out;
-}
-.hover img:hover {
-  -webkit-transform: rotate(2deg) scale(1.1);
-  transform: rotate(2deg) scale(1.1);
-  border-radius: 4px;
-}
 .br-wrapper {
   display: inline-block;
 }
@@ -468,6 +454,31 @@ a:hover {
 .covers .cover.is-selected {
   opacity: 1;
   z-index: 0;
+}
+/*----- button 4 -----*/
+.btn-4::after {
+  right: 0;
+  bottom: 0;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+}
+.btn-4 span::after {
+  right: 0;
+  bottom: 0;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+}
+.btn-4::before {
+  left: 0;
+  top: 0;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+}
+.btn-4 span::before {
+  left: 0;
+  top: 0;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
 }
 .covers {
   opacity: 0;
@@ -1448,11 +1459,6 @@ a:hover {
 }
 .product_price_level .grid {
   margin-top: 5px;
-}
-.loupe {
-  border: 3px solid #000;
-  border-radius: 6px;
-  z-index: 99999;
 }
 .admin_wrapper {
   display: -webkit-box;

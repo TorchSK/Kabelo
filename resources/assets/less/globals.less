@@ -218,21 +218,6 @@ a{
 }
 
 
-/* Rotate */
-.hover{ 
-	overflow: hidden;
-		img {
-			-webkit-transition: .3s ease-in-out;
-			transition: .15s ease-in-out;
-		}
-}
-
-.hover img:hover{
-	-webkit-transform: rotate(2deg) scale(1.1);
-	transform: rotate(2deg) scale(1.1);
-	border-radius: 4px;
-}
-
 .br-wrapper{
 	display: inline-block;
 }
@@ -349,3 +334,24 @@ a{
   z-index: 0
 }
 
+/*----- button 4 -----*/
+.btn-4::after{
+  right:0;
+  bottom: 0;
+  transition-duration: 0.4s;
+}
+.btn-4 span::after{
+  right:0;
+  bottom: 0;
+  transition-duration: 0.4s;
+}
+.btn-4::before{
+  left: 0;
+  top: 0;
+  transition-duration: 0.4s;
+}
+.btn-4 span::before{
+  left: 0;
+  top: 0;
+  transition-duration: 0.4s;
+}
