@@ -2048,6 +2048,9 @@ a:hover {
 #cart_user_discount symbol {
   font-weight: 500;
 }
+#cart_user_discount.hidden {
+  display: none;
+}
 .cart_item_actions .ui.input {
   margin: 15px 0;
 }

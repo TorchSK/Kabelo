@@ -22,9 +22,8 @@
 		
 		@endif
 	</div>
-	@if(Auth::user()->discount)
-	<div id="cart_user_discount">Vaša zľava: <price>{{Auth::user()->discount}}</price> <symbol>%</symbol></div>
-	@endif
+	
+	<div id="cart_user_discount" @if(Auth::user()->discount==0) class="hidden" @endif>Vaša zľava: <price>{{Auth::user()->discount}}</price> <symbol>%</symbol></div>
 	<div id="cart_total_price">Celková cena: <price></price> <symbol>&euro;</symbol></div>
 
 	<div class="cart_actions">
