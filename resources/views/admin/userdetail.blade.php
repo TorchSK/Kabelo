@@ -202,8 +202,24 @@
 
 					</div>
 
-					<div class="content" data-tab="cart">
+					<div class="content" data-tab="cart" id="cart_detail">
+											
+						<div id="grid">
+							<div class="ui inverted dimmer">
+							    <div class="ui text loader">Prepočítavam</div>
+							 </div>
 
+							@if (sizeof($cart['items']) > 0)
+							
+								@foreach($user->cart->products as $product)
+									@include('cart.row')
+								@endforeach
+							
+							@else
+								<div id="empty_cart_text">Prázdný košík</div>
+							
+							@endif
+						</div>
 					</div>
 		    		
 				</div>
