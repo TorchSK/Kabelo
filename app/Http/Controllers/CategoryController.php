@@ -104,6 +104,16 @@ class CategoryController extends Controller
 
     }
 
+
+    public function deleteParameter($id)
+    {
+        $param = CategoryParameter::find($id);
+        $param->delete();
+
+        return 1;
+
+    }
+
     public function updateParam($id, Request $request)
     {
         $param = CategoryParameter::find($id);

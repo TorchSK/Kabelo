@@ -15,7 +15,7 @@ use Cookie;
 use Crypt;
 use App\User;
 use App\Cart;
-use App\Setting;
+use Config;
 
 class GlobalComposer {
 
@@ -65,7 +65,9 @@ class GlobalComposer {
         //dd($cart);
         
         $view->with('cart', $cart);
-        $view->with('layout', Setting::firstOrCreate(['key' => 'layout'])->value);
+        $view->with('layout', config('app.layout'));
+        $view->with('min_order_price', config('app.min_order_price'));
+        $view->with('min_free_shipping_price', config('app.min_free_shipping_price'));
     }
 
 }

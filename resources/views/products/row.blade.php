@@ -6,13 +6,13 @@
 	<div class="image_div">
 
 	 <div class="labels">
-		@if ($product->sale)
+		@if ($product->sale || Auth::user()->discount > 0)
 		<div class="ui green label">-
 
 			@if(Auth::user()->voc)
-			{{round(1 - ($product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_sale/$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_regular),2)*100}} 
+			{{$product->sale*round(1 - ($product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_sale/$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_regular),2)*100 + Auth::user()->discount}} 
 			@else
-			{{round(1 - ($product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_sale/$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_regular),2)*100}} 
+			{{$product->sale*round(1 - ($product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_sale/$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_regular),2)*100 + Auth::user()->discount}} 
 			@endif
 
 		%</div>

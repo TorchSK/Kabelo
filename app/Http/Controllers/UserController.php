@@ -140,9 +140,11 @@ class UserController extends Controller
     }
 
     public function update($id, Request $request){
-        $user = User::find($id);
 
-        foreach ($request->except(['_token','invoiceAddress', 'deliveryAddress']) as $key => $value)
+        $user = User::find($id);
+        $redirect = $request->get('redirect');
+
+        foreach ($request->except(['_method','redirect','voc','_token','invoiceAddress', 'deliveryAddress']) as $key => $value)
         {
              $user->$key = $value;
         }
@@ -164,7 +166,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return 1;
+        return redirect($redirect);
 
     }   
 

@@ -231,4 +231,8 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
+    'layout' => 1,
+    'min_order_price' => null,
+    'min_free_shipping_price' => null
+
 ];

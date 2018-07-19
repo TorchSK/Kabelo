@@ -94,6 +94,7 @@ Route::get('/categories/all','CategoryController@all');
 
 Route::post('category/parameter/add','CategoryController@addParameter');
 Route::get('category/parameter/{id}/edit','CategoryController@editParameter');
+Route::delete('category/parameter/{id}','CategoryController@deleteParameter');
 Route::put('category/parameter/{id}','CategoryController@updateParam');
 
 Route::put('categories/setorder/','CategoryController@setOrder');

@@ -660,6 +660,8 @@ $(".product_search_input input").keyup(function(e){
 })
 
 
+
+
 $('#settings_submit_btn').click(function(){
   $validation = 1;
 
@@ -2128,7 +2130,7 @@ $('#cart_detail .product').each(function(index,item){
   $cart_price = $cart_price + parseFloat($(item).find('.final_price').text());
 })
 
-$('#cart_total_price').find('price').text($cart_price);
+$('#cart_total_price').find('price').text(parseFloat($cart_price - $cart_price*parseFloat($('#cart_user_discount').find('price').text())/100));
 
 $('.filterbar_handle').mouseover(function(){
   $('#filterbar').show();
@@ -2138,6 +2140,16 @@ $('#product_content #filterbar').mouseleave(function(){
   setTimeout(function(){
     $('#filterbar').hide();
   },600)
+})
+
+$('.admin_delete_category_param_btn').click(function(){
+  $.ajax({
+    method: "DELETE",
+    url: '/category/parameter/'+$(this).data('paramid'),
+    success: function(){
+      location.reload();
+    }
+  })
 })
 
 

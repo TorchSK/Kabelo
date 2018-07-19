@@ -3,6 +3,7 @@
 
 	<div class="user_detail">
 
+
 		<div class="header section">
 
 			<div class="name">
@@ -15,20 +16,27 @@
 		</div>
 
 		<div class="detail section">
-		
+
 		<div class="tabbs">
 
 			<div class="tabs">
 
-			    <div class="tabb ui brown button" data-tab="detail">Údaje a adresy</div>
-			    <div class="tabb ui basic button" data-tab="type">Cenová zaradenie</div>
+			    <div class="tabb ui basic button" data-tab="detail">Údaje a adresy</div>
+			    <div class="tabb ui basic button" data-tab="type">Cenové zaradenie</div>
 			    <div class="tabb ui basic button" data-tab="orders">Objednávky ({{$user->orders->count()}})</div>
+			    <div class="tabb ui basic button" data-tab="cart">Košík ({{$user->cart->products->count()}})</div>
 
 			</div>
 
 		  	<div class="contents">
 
 		    	<div class="content par active" data-tab="detail">
+
+
+					<div id="admin_user_options">
+						<div class="ui green button">Ulož zmeny</div>
+					</div>
+
 
 					<div class="labeled form">
 						<div class="ui header">Základné údaje</div>
@@ -128,21 +136,29 @@
 					</div>
 
 					<div class="content" data-tab="type">
-
-						<form action="/user" method="POST">
+						<form action="/user/{{$user->id}}" method="POST" class="admin_user_form" data-userid="{{$user->id}}">
+						
+           					<input name="_token" hidden value="{!! csrf_token() !!}" />
 							<input name="_method" type="hidden" value="PUT">
+							<input name="redirect" type="hidden" value="admin/user/{{$user->id}}">
 
-							<div class="ui checkbox">
-							  <input type="checkbox" name="voc">
+							<div id="admin_user_options">
+								<button type="submit" class="ui green button">Ulož zmeny</button>
+							</div>
+
+
+
+							<div class="ui checkbox admin_checkbox_onthefly" data-resource="user" data-id="{{$user->id}}">
+							  <input type="checkbox" name="voc" @if($user->voc) checked @endif >
 							  <label>VOC</label>
 							</div>
 
-							<br />
+							<br /> <br />
 							<div class="ui labeled input">
 							  <div class="ui label">
 							    Zľava %
 							  </div>
-							  <input type="text" placeholder="0">
+							  <input type="text" name="discount" placeholder="0" value="{{$user->discount}}">
 							</div>
 						</form>
 
@@ -183,6 +199,10 @@
 						  </tbody>
 						</table>
 
+
+					</div>
+
+					<div class="content" data-tab="cart">
 
 					</div>
 		    		

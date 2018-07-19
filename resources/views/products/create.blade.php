@@ -70,6 +70,10 @@
 
     <div class="right">
     	
+    	@if($errors->any())
+		<h4>{{$errors->first()}}</h4>
+		@endif
+
     	<div class="ui header">Názov</div>
 
         <div class="ui fluid input">

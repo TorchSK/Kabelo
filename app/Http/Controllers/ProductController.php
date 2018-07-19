@@ -45,7 +45,12 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+
+        if (Product::where('code',$request->get('code'))->count() > 0)
+        {
+            return redirect()->back()->withErrors(['msg'=>'Produkt s rovnakým kódom už existuje']);
+        }
 
         $product = new Product();
         $product->name = $request->get('name');

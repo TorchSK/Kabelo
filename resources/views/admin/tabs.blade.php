@@ -27,8 +27,3 @@
 </a>
 
 
-<a href="{{route('admin.layout')}}" class="tab">
-	<i class="big laptop icon"></i>
-	<div class="text">Roloženie</div>
-</a>
-

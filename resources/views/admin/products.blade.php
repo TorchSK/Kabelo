@@ -62,7 +62,8 @@
                 <div class="item">
                   <key>{{$param->key}}</key>
                   <dkey>({{$param->display_key}})</dkey>
-                  <a href="/category/parameter/{{$param->id}}/edit" class="ui small teal button" id="admin_change_category_param_btn">Zmeň</a>
+                  <div class="ui small red button admin_delete_category_param_btn" data-paramid="{{$param->id}}">Zmaž</div>
+                  <a href="/category/parameter/{{$param->id}}/edit" class="ui small teal button admin_change_category_param_btn">Zmeň</a>
                 </div>
               @endforeach
             </div>  
