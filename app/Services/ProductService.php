@@ -256,13 +256,13 @@ class ProductService implements ProductServiceContract {
             {
                 foreach ($category->children as $child)
                 {
-                    $params = $params->combine($child->parameters); 
+                    $params = $params->concat($child->parameters); 
 
                     if($child->children->count() > 0)
                     {
                         foreach ($child->children as $child2)
                         {
-                            $params = $params->combine($child2->parameters); 
+                            $params = $params->concat($child2->parameters); 
                         }
                     }
                 }
