@@ -34,9 +34,10 @@
 		<div class="desc">{{$product->desc}}</div>
 
 	<div class="title">{{$product->name}}</div>
-	 
-
-
+	
+	@if(Auth::user()->admin)
+	<div class="code">{{$product->code}}</div>
+	@endif
 
 
 

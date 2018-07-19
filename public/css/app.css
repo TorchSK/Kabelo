@@ -718,6 +718,10 @@ a:hover {
     font-weight: 800;
   }
 }
+#grid .item .code {
+  font-style: italic;
+  color: #777;
+}
 #grid .item .desc {
   color: #666;
   margin-bottom: 15px;
