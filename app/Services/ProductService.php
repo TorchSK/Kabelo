@@ -211,12 +211,12 @@ class ProductService implements ProductServiceContract {
             foreach($category->children as $child)
             {
                 $categoryParameters = $categoryParameters->merge($child->parameters);
-                $makers = $makers->merge($child->products->unique(['maker']));
+                $makers = $makers->union($child->products->unique(['maker']));
 
                 foreach($child->children as $child2)
                 {
                     $categoryParameters = $categoryParameters->merge($child2->parameters);
-                    $makers = $makers->merge($child2->products->unique(['maker']));
+                    $makers = $makers->union($child2->products->unique(['maker']));
                 }
             }
 
