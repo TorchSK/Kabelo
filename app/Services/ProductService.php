@@ -210,13 +210,13 @@ class ProductService implements ProductServiceContract {
 
             foreach($category->children as $child)
             {
-                $categoryParameters = $categoryParameters->union($child->parameters);
-                $makers = $makers->union($child->products->unique(['maker']));
+                $categoryParameters = $categoryParameters->merge($child->parameters);
+                $makers = $makers->merge($child->products->unique(['maker']));
 
                 foreach($child->children as $child2)
                 {
-                    $categoryParameters = $categoryParameters->union($child2->parameters);
-                    $makers = $makers->union($child2->products->unique(['maker']));
+                    $categoryParameters = $categoryParameters->merge($child2->parameters);
+                    $makers = $makers->merge($child2->products->unique(['maker']));
                 }
             }
 
@@ -256,13 +256,13 @@ class ProductService implements ProductServiceContract {
             {
                 foreach ($category->children as $child)
                 {
-                    $params = $params->union($child->parameters); 
+                    $params = $params->merge($child->parameters); 
 
                     if($child->children->count() > 0)
                     {
                         foreach ($child->children as $child2)
                         {
-                            $params = $params->union($child2->parameters); 
+                            $params = $params->merge($child2->parameters); 
                         }
                     }
                 }
