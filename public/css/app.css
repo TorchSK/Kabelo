@@ -2668,7 +2668,7 @@ h1.header {
 #filterbar .categories .item i.minus {
   font-size: 1.36em;
 }
-#filterbar .categories .item i {
+#filterbar .categories .item i:not(.setting) {
   padding: 10px 14px;
   height: auto;
   margin: auto;
@@ -2676,6 +2676,10 @@ h1.header {
   max-width: 48px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+}
+#filterbar .categories .item i.setting {
+  margin-left: 5px;
+  opacity: 0.7;
 }
 #filterbar .categories .item a {
   padding: 10px;

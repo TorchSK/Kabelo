@@ -16,7 +16,7 @@ $.ajaxSetup({
 var path = window.location.href.split( '/' );
 console.log(path);
 
-if (path[3] != '')
+if (path[3] != '' && path[3]!='admin')
 {
   scrollTo('#grid');
 }
@@ -2152,5 +2152,9 @@ $('.admin_delete_category_param_btn').click(function(){
   })
 })
 
+$('.category i.setting').click(function(e){
+  e.preventDefault();
 
+  location.replace($(this).data('href'));
+})
 });
