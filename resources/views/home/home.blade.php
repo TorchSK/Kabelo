@@ -30,6 +30,9 @@
                     <a class="effect-1" href="/category/{{App\Category::find(Request::get('category'))->parent->url}}">{{App\Category::find(App\Category::find(Request::get('category'))->parent_id)->name}}</a> -
                 @endif
                     <a>{{App\Category::find(Request::get('category'))->name}}</a>
+                    @if (Auth::user()->admin)
+                    <a href="/admin/category/{{App\Category::find(Request::get('category'))->url}}" data-tooltip="Administrácia"><i class="setting teal icon"></i></a>
+                    @endif
                 </div>
 
                 <div class="ui horizontal divider active title"></i>Podkategórie</div>

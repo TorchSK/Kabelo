@@ -40,6 +40,7 @@ class GlobalComposer {
 
             if (!$cart)
             {
+                try { 
                 $cart = new Cart();
                 $cart->user_id = Auth::user()->id;
                 $cart->price  = 0;
@@ -50,9 +51,12 @@ class GlobalComposer {
                 $cart->delivery_address_flag = 0;
 
                 $cart->save();
+                } catch(\Illuminate\Database\QueryException $ex){ 
+                  // do nothing
+                }
             }
 
-            $cart= $this->cartController->getCart();
+            $cart= $this->cartController->getCart($cart->id);
             
 
         }

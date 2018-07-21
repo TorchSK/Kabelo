@@ -77,11 +77,11 @@ class CartController extends Controller
         return view('cart.confirm');
     }
 
-    function getCart()
+    function getCart($id)
     {
-        if (Auth::check())
+        if ($id)
         {
-            $cart = Auth::user()->cart;
+            $cart = Cart::find($id);
             $cart['number'] = $cart->products->count();
             $cart['items'] = $cart->products->pluck('id')->toArray();
 
@@ -189,11 +189,11 @@ class CartController extends Controller
 
     }
 
-    public function addItem($productId, Request $request)
+    public function addItem($cartid, $productId, Request $request)
     {
         $product = Product::find($productId);
 
-        $cart = $this->getCart();
+        $cart = $this->getCart($cartid);
 
         $cartNumber = $cart['number'];
         $cartPrice = $cart['price'];
@@ -230,11 +230,11 @@ class CartController extends Controller
         return $data;
     }
 
-    public function setItem($productid, Request $request)
+    public function setItem($cartid, $productid, Request $request)
     {
         $product = Product::find($productid);
         
-        $cart = $this->getCart();
+        $cart = $this->getCart($cartid);
 
         if (Auth::check())
         {
@@ -248,11 +248,11 @@ class CartController extends Controller
         return $cart;
     }
 
-    public function deleteItem($productId)
+    public function deleteItem($cartid, $productId)
     {
         $product = Product::find($productId);
         
-        $cart = $this->getCart();
+        $cart = $this->getCart($cartid);
 
         $cartNumber = $cart['number'];
         $cartPrice = $cart['price'];

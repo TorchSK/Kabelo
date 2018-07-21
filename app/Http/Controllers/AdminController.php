@@ -129,6 +129,27 @@ class AdminController extends Controller
     
     public function userDetail($id)
     {
+        
+
+        $data = [
+            'user' => User::find($id)
+        ];
+
+        return view('admin.userdetail', $data);
+    }
+
+    public function userPricing($id)
+    {
+        $data = [
+            'user' => User::find($id)
+        ];
+
+        return view('admin.userpricing', $data);
+    }
+
+
+    public function userOrders($id)
+    {
         $userOrdersPrice = 0;
         foreach (User::find($id)->orders as $order){
             $userOrdersPrice =+ $order->products->sum('price');
@@ -139,7 +160,20 @@ class AdminController extends Controller
             'userOrdersPrice' => $userOrdersPrice
         ];
 
-        return view('admin.userdetail', $data);
+        return view('admin.userorders', $data);
+    }
+
+
+    public function userCart($id)
+    {
+        $usercart = User::find($id)->cart;
+
+        $data = [
+            'user' => User::find($id),
+            'usercart' => $usercart
+        ];
+
+        return view('admin.usercart', $data);
     }
 
 

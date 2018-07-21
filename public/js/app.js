@@ -208,10 +208,11 @@ function addToCart(productid, qty){
   var cart = $('#header .cart.item');
   var number = parseFloat(cart.find('text number').text());
   var price = parseFloat(cart.find('price number').text());
+  var cartid = $('.content.cart').data('cartid');
 
   $.ajax({
     method: "POST",
-    url: '/cart/'+productid,
+    url: '/cart/'+cartid+"/"+productid,
     data: {qty: qty},
     global: false,
     success: function(data){
@@ -265,9 +266,11 @@ $('.delete_cart').click(function(){
 
 $('.cart_delete_product').click(function(){
   $productid = $(this).closest('.product').data('productid');
+  $cartid = $('.cart.content').data('cartid');
+
   $.ajax({
     type: "DELETE",
-    url: "/cart/"+$productid,
+    url: "/cart/"+$cartid+"/"+$productid,
     data: {},
     success: function(){
       location.reload();
@@ -1726,7 +1729,7 @@ $('.ui.new.product.search')
         }   
       })
     }
-  });
+  }).unbind('ajaxStart');;
 
 $('#new_product_table').on('click', '.red.button', function(){
   $row = $(this).closest('tr');
@@ -1820,6 +1823,29 @@ $('#inactive_product_table').on('click', '.red.button', function(){
   })
 })
 
+
+
+$('.ui.cart.product.search')
+  .search({
+    apiSettings: {
+      url: '/api/products/search?query={query}',
+    },
+    fields: {
+      results : 'results',
+      title   : 'name',
+    },
+    onSelect: function(result, response){
+       $cartid = $('.cart.content').data('cartid');
+       $.ajax({
+        method: 'POST',
+        url: "/cart/"+$cartid+"/"+result.id,
+        data: {qty: 1}, 
+        success: function(data){
+          location.reload();
+        }   
+      })
+    }
+  });
 
 
 $('.change_cat_img_btn').click(function(){
@@ -1934,6 +1960,7 @@ function initCartProductSlider(){
       $newprice =$prices[$index];
       $($(this)[0].target).closest('.item.product').find('.final_price').html($newprice+ ' &euro;');
      });
+      $cartid = $('.cart.content').data('cartid');
 
       sliders[i].noUiSlider.on('change', function ( values, handle ) {
 
@@ -1941,7 +1968,7 @@ function initCartProductSlider(){
 
       $.ajax({
         type: "PUT",
-        url: "/cart/"+$($(this)[0].target).data('productid'),
+        url: "/cart/"+$cartid+"/"+$($(this)[0].target).data('productid'),
         data: {qty: values[handle]},
         success: function(){
           location.reload();

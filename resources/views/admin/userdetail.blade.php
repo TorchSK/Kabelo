@@ -17,14 +17,13 @@
 
 		<div class="detail section">
 
-		<div class="tabbs">
 
 			<div class="tabs">
 
-			    <div class="tabb ui basic button" data-tab="detail">Údaje a adresy</div>
-			    <div class="tabb ui basic button" data-tab="type">Cenové zaradenie</div>
-			    <div class="tabb ui basic button" data-tab="orders">Objednávky ({{$user->orders->count()}})</div>
-			    <div class="tabb ui basic button" data-tab="cart">Košík ({{$user->cart->products->count()}})</div>
+			    <a href="/admin/user/{{$user->id}}/detail" class="tabb ui blue button" data-tab="detail">Údaje a adresy</a>
+			    <a href="/admin/user/{{$user->id}}/pricing" class="tabb ui basic button" data-tab="type">Cenové zaradenie</a>
+			    <a href="/admin/user/{{$user->id}}/orders" class="tabb ui basic button" data-tab="orders">Objednávky ({{$user->orders->count()}})</a>
+			    <a href="/admin/user/{{$user->id}}/cart" class="tabb ui basic button" data-tab="cart">Košík ({{$user->cart->products->count()}})</a>
 
 			</div>
 
@@ -135,96 +134,10 @@
 						</div>
 					</div>
 
-					<div class="content" data-tab="type">
-						<form action="/user/{{$user->id}}" method="POST" class="admin_user_form" data-userid="{{$user->id}}">
-						
-           					<input name="_token" hidden value="{!! csrf_token() !!}" />
-							<input name="_method" type="hidden" value="PUT">
-							<input name="redirect" type="hidden" value="admin/user/{{$user->id}}">
-
-							<div id="admin_user_options">
-								<button type="submit" class="ui green button">Ulož zmeny</button>
-							</div>
-
-
-
-							<div class="ui checkbox admin_checkbox_onthefly" data-resource="user" data-id="{{$user->id}}">
-							  <input type="checkbox" name="voc" @if($user->voc) checked @endif >
-							  <label>VOC</label>
-							</div>
-
-							<br /> <br />
-							<div class="ui labeled input">
-							  <div class="ui label">
-							    Zľava %
-							  </div>
-							  <input type="text" name="discount" placeholder="0" value="{{$user->discount}}">
-							</div>
-						</form>
-
-					</div>
-
-					<div class="content" data-tab="orders">
-
-						<div class="sum">Ceková suma objednávok: <number>{{$userOrdersPrice}} €</number></div>
-
-						<table class="ui celled selectable sortable table">
-						  <thead>
-						    <tr>
-						    <th>ID</th>
-						    <th>Datum prijatia</th>
-						 	<th>Meno</th>
-						    <th>Suma</th>
-						    <th>Stav</th>
-						    <th>Dodanie</th>
-						   	<th></th>
-
-						  </tr></thead>
-						  <tbody>
-						  	@foreach($user->orders->sortBy('created_at') as $order)
-							<tr>
-						      <td>{{$order->id}}</td>
-						      <td>{{Carbon\Carbon::parse($order->created_at)->format('d.m.Y H:i:s')}}</td>
-						   	  <td>{{$order->invoice_name}}</td>
-						      <td>{{$order->products->sum('price')}}</td>
-						      <td  class="warning">{{$order->status->name}}</td>
-						      <td>{{$order->delivery->name}} / {{$order->payment->name}}</td>
-						      <td class="collapsing">
-						      	<a href="{{route('admin.orderDetail',['order'=>$order->id])}}" class="ui mini icon blue button"><i class="search large icon"></i></a>
-						      </td>
-
-						  	</tr>
-
-							@endforeach
-						  </tbody>
-						</table>
-
-
-					</div>
-
-					<div class="content" data-tab="cart" id="cart_detail">
-											
-						<div id="grid">
-							<div class="ui inverted dimmer">
-							    <div class="ui text loader">Prepočítavam</div>
-							 </div>
-
-							@if (sizeof($cart['items']) > 0)
-							
-								@foreach($user->cart->products as $product)
-									@include('cart.row')
-								@endforeach
-							
-							@else
-								<div id="empty_cart_text">Prázdný košík</div>
-							
-							@endif
-						</div>
-					</div>
+					
 		    		
 				</div>
 		    
-		  </div>
 
 		</div>
 	</div>

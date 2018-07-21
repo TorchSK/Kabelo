@@ -35,7 +35,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::put('/delivery/{id}', 'AdminController@editDeliveryMethod');
 	Route::put('/payment/{id}', 'AdminController@editPaymentMethod');
 	Route::get('/order/{id}', 'AdminController@orderDetail')->name('admin.orderDetail');
-	Route::get('/user/{id}', 'AdminController@userDetail')->name('admin.userDetail');
+
+	Route::get('/user/{id}/detail', 'AdminController@userDetail')->name('admin.userDetail');
+	Route::get('/user/{id}/pricing', 'AdminController@userPricing')->name('admin.userPricing');
+	Route::get('/user/{id}/orders', 'AdminController@userOrders')->name('admin.userOrders');
+	Route::get('/user/{id}/cart', 'AdminController@userCart')->name('admin.userCart');
+
 	Route::post('/deliverypayment', 'AdminController@addDeliveryPayment');
 	Route::delete('/deliverypayment', 'AdminController@removeDeliveryPayment');
 	Route::get('/banner/', 'AdminController@addCover')->name('admin.addCover');
@@ -83,9 +88,9 @@ Route::get('cart/shipping','CartController@shipping');
 Route::get('cart/confirm','CartController@confirm');
 
 Route::delete('cart/all','CartController@delete');
-Route::post('cart/{productId}','CartController@addItem');
-Route::delete('cart/{productid}','CartController@deleteItem');
-Route::put('cart/{productid}','CartController@setItem');
+Route::post('cart/{cartid}/{productId}','CartController@addItem');
+Route::delete('cart/{cartid}/{productid}','CartController@deleteItem');
+Route::put('cart/{cartid}/{productid}','CartController@setItem');
 Route::post('cart','CartController@set');
 
 

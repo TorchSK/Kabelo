@@ -15,7 +15,7 @@
 
 	</div>
 
-    @if (!Auth::user()->cookies)  
+    @if (!Auth::guest() && !Auth::user()->cookies)  
   <div id="cookies_msg">Tento web používa súbory cookies. Prehliadaním webu vyjadrujete súhlas s ich používaním. <a href="/cookies/info">Viac informácií.</a><i class="delete icon" data-user_id="{{Auth::user()->id}}"></i></div>
   @endif  
 
