@@ -442,7 +442,7 @@ class ProductController extends Controller
             if(in_array($row['CISLO_MAS'], $productCodes))
             {
                 $product = Product::where('code',$row['CISLO_MAS'])->first();
-                $product->stock = $row['POCET_MJ'];
+                $product->stock = round($row['POCET_MJ'],2);
                 $product->save();
             }
         };
