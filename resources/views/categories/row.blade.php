@@ -14,7 +14,6 @@
     @endif
 
         <text>{{$category->name}}</text>
-        <i class="setting icon" data-href="/admin/category/{{$category->url}}"></i>
         <count>{{$categoryCounts['categories'][$category->id]}}</count>
     </a>
     </div>
