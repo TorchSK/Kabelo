@@ -153,7 +153,7 @@ class CategoryController extends Controller
 
         Image::make($path)
                  ->widen($w)
-                 ->resizeCanvas($w, $w*0.8)
+                 ->resizeCanvas($w, 280)
                  ->save($destinationPath.'/'.$filename);
 
         $category = Category::find($categoryid);
