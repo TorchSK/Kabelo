@@ -2167,6 +2167,12 @@ a:hover {
 }
 .subcategories .category_image .image {
   overflow: hidden;
+  opacity: 0.7;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.subcategories .category_image .image:hover {
+  opacity: 1;
 }
 .subcategories .category_image .image .options {
   display: none;
