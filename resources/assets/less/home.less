@@ -230,7 +230,7 @@
 			&:hover{
 				box-shadow: 0 0 3px #AAA;
 
-				.buttons{
+				.buttons_div{
 					opacity: 1;
 				}
 			}
@@ -321,8 +321,8 @@
 				}
 			}
 
-			.buttons{
-				opacity: 0;
+			.buttons_div{
+				opacity: 1;
 				transition: all 0.3s;
 				position: absolute;
 				left: 0;
@@ -330,6 +330,10 @@
 				margin: auto;
 				width: 70%;
 				bottom:16px;
+
+				.ui.button:nth-child(2){
+					border-radius: 3px 0 0 3px !important;
+				}
 
 				.button{
 					margin-bottom: 1px;

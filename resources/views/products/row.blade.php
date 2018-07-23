@@ -64,12 +64,13 @@
 	<div class="availability"></div>
 
 	@if((!isset($productOptions) || !$productOptions) && Request::segment(1) != 'admin'  && (!isset($cart_confirm) || !$cart_confirm))
-	<div class="buttons">
+	<div class="buttons_div">
 		@if(Auth::user()->admin)
-		<a href="/{{$product->maker}}/{{$product->code}}/edit" class=" ui blue  fluid icon button"><i class="edit icon"></i> Edituj</a>
-		<a href="/product/create?duplicate={{$product->id}}" class=" ui yellow  fluid icon button"><i class="clone icon"></i> Duplikuj</a>
-		<a class=" ui red fluid icon button product_row_delete_btn"><i class="delete icon"></i> Zmaz</a>
-
+		<div class="ui icon fluid buttons">
+		<a href="/{{$product->maker}}/{{$product->code}}/edit" class=" ui blue  button"><i class="edit icon"></i></a>
+		<a href="/product/create?duplicate={{$product->id}}" class=" ui yellow  button"><i class="clone icon"></i></a>
+		<a class=" ui red button product_row_delete_btn"><i class="delete icon"></i></a>
+		</div>
 		@endif
 
 		<a class="to_cart ui fluid teal icon button"><i class="shop icon"></i> Kúpiť &nbsp;{{$product->priceLevels->min('threshold')}} {{$product->price_unit}}</a>

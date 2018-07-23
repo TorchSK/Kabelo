@@ -720,7 +720,7 @@ a:hover {
   -webkit-box-shadow: 0 0 3px #AAA;
           box-shadow: 0 0 3px #AAA;
 }
-#grid .item.grid:hover .buttons {
+#grid .item.grid:hover .buttons_div {
   opacity: 1;
 }
 #grid .item.grid.inactive {
@@ -806,8 +806,8 @@ a:hover {
     font-weight: 800;
   }
 }
-#grid .item.grid .buttons {
-  opacity: 0;
+#grid .item.grid .buttons_div {
+  opacity: 1;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   position: absolute;
@@ -817,14 +817,17 @@ a:hover {
   width: 70%;
   bottom: 16px;
 }
-#grid .item.grid .buttons .button {
+#grid .item.grid .buttons_div .ui.button:nth-child(2) {
+  border-radius: 3px 0 0 3px !important;
+}
+#grid .item.grid .buttons_div .button {
   margin-bottom: 1px;
 }
-#grid .item.grid .buttons .to_cart {
+#grid .item.grid .buttons_div .to_cart {
   margin-top: 10px;
 }
 @media all and (max-width: 980px) {
-  #grid .item.grid .buttons {
+  #grid .item.grid .buttons_div {
     opacity: 0.7;
     display: block;
     margin: 15px 10px 5px 10px;
