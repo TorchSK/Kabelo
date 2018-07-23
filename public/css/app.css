@@ -824,7 +824,7 @@ a:hover {
   margin-bottom: 1px;
 }
 #grid .item.grid .buttons_div .to_cart {
-  margin-top: 10px;
+  margin-top: 0px;
 }
 @media all and (max-width: 980px) {
   #grid .item.grid .buttons_div {
