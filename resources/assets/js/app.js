@@ -2184,4 +2184,19 @@ $('.category i.setting').click(function(e){
 
   location.replace($(this).data('href'));
 })
+
+
+$('#change_grid_view_btn').click(function(){
+  $('#grid').find('.item').addClass('grid').removeClass('list');
+  $(this).addClass('active');
+  $('#change_list_view_btn').removeClass('active');
+})
+
+
+$('#change_list_view_btn').click(function(){
+  $('#grid').find('.item').addClass('list').removeClass('grid');
+    $(this).addClass('active');
+  $('#change_grid_view_btn').removeClass('active');
+})
+
 });

@@ -1,4 +1,4 @@
-<div class="item product @if($product->active==0) inactive @endif" data-productid={{$product->id}} data-minqty="{{$product->priceLevels->min('threshold')}}">
+<div class="item product grid @if($product->active==0) inactive @endif" data-productid={{$product->id}} data-minqty="{{$product->priceLevels->min('threshold')}}">
 <a href="/{{strtolower($product->maker)}}/{{$product->code}}/detail">
 	
 
@@ -31,7 +31,8 @@
 	@endif
 
 	</div>
-		<div class="desc">{{$product->desc}}</div>
+
+	<div class="desc">{{$product->desc}}</div>
 
 	<div class="title">{{$product->name}}</div>
 	
@@ -41,7 +42,7 @@
 
 
 
-    	<div class="prices">
+    <div class="prices">
     @if(Auth::user()->voc)
 	    @if($product->sale)
 	    <div class="price crossed">{{$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_regular}} &euro; </div>
@@ -63,7 +64,16 @@
 	<div class="availability"></div>
 
 	@if((!isset($productOptions) || !$productOptions) && Request::segment(1) != 'admin'  && (!isset($cart_confirm) || !$cart_confirm))
-	<a class="to_cart ui teal icon button"><i class="shop icon"></i> Kúpiť &nbsp;{{$product->priceLevels->min('threshold')}} {{$product->price_unit}}</a>
+	<div class="buttons">
+		@if(Auth::user()->admin)
+		<a href="/{{$product->maker}}/{{$product->code}}/edit" class=" ui blue  fluid icon button"><i class="edit icon"></i> Edituj</a>
+		<a href="/product/create?duplicate={{$product->id}}" class=" ui yellow  fluid icon button"><i class="clone icon"></i> Duplikuj</a>
+		<a class=" ui red fluid icon button product_row_delete_btn"><i class="delete icon"></i> Zmaz</a>
+
+		@endif
+
+		<a class="to_cart ui fluid teal icon button"><i class="shop icon"></i> Kúpiť &nbsp;{{$product->priceLevels->min('threshold')}} {{$product->price_unit}}</a>
+	</div>
 	@elseif(Request::segment(1) == 'admin')
 		<div class="actions ui fluid icon buttons">
 		<a href="/product/create?duplicate={{$product->id}}" class="ui teal small button"><i class="copy icon"></i></a>
