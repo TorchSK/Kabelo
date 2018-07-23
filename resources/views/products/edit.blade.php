@@ -126,7 +126,12 @@
     <select multiple="true" name="categories[]" id="edit_product_categories_input" class="ui fluid normal dropdown">
     <option value="">Kategória</option>
     @foreach (App\Category::all() as $category)
-    <option value="{{$category->id}}" @if(in_array($category->id, $product->categories->pluck('id')->toArray())) selected="true" @endif>{{$category->name}}</option>
+    <option value="{{$category->id}}" @if(in_array($category->id, $product->categories->pluck('id')->toArray())) selected="true" @endif>
+      {{$category->name}}
+      @if($category->parent)
+     ({{$category->parent->name}})
+      @endif
+    </option>
     @endforeach
     </select>
 
