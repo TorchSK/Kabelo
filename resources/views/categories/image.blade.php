@@ -11,9 +11,11 @@
 			<img src="/img/category.jpg" width="180" />
 		@endif
 
+		@if(Request::segment(1)=='admin')
 		<div class="options">
 			<a class="ui green tiny button change_cat_img_btn">Zmeň obrázok</a>
 		</div>
+		@endif
 	
 	</div>
 
