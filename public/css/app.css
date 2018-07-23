@@ -1113,6 +1113,7 @@ a:hover {
 #product_detail .other_img img {
   cursor: pointer;
   margin-bottom: 1px;
+  display: inline-block;
 }
 #product_detail > .left {
   width: 40%;
