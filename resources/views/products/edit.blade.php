@@ -125,12 +125,13 @@
       <div class="ui header">Kategória</div>
     <select multiple="true" name="categories[]" id="edit_product_categories_input" class="ui fluid normal dropdown">
     <option value="">Kategória</option>
-    @foreach (App\Category::all() as $category)
+    @foreach (App\Category::orderBy('order')->get() as $category)
     <option value="{{$category->id}}" @if(in_array($category->id, $product->categories->pluck('id')->toArray())) selected="true" @endif>
-      {{$category->name}}
-      @if($category->parent)
-     ({{$category->parent->name}})
+           @if($category->parent)
+     {{$category->parent->name}} - 
       @endif
+      {{$category->name}}
+ 
     </option>
     @endforeach
     </select>
