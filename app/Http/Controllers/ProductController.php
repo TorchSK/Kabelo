@@ -140,14 +140,21 @@ class ProductController extends Controller
 
         $success = $file->move($destinationPath, $filename);
         
-        $w = 1000;
-
+        $width = 1000;
+        $height = 800;
+        
         if ($success) 
         {
-          $image = Image::make($destinationPath.'/'.$filename)
-               ->widen($w)
-               ->resizeCanvas($w, $w*0.8)
-               ->save($destinationPath.'/'.$filename);
+            $image = Image::make($destinationPath.'/'.$filename);
+
+            $image->resize($width, $height, function ($constraint) {
+                    $constraint->aspectRatio();
+            });
+
+            $image->resizeCanvas($width, $height, 'center', false, 'ffffff');
+            
+
+            $image->save($destinationPath.'/'.$filename);
 
           return url($destinationPath.'/'.$filename);
         } 
