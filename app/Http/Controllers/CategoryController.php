@@ -154,12 +154,12 @@ class CategoryController extends Controller
 
         $image = Image::make($path);
 
-        $image->width() > $image->height() ? $width=null : $height=null;
         $image->resize($width, $height, function ($constraint) {
-            $constraint->aspectRatio();
+                $constraint->aspectRatio();
         });
 
-        $image->resizeCanvas(400,280,'center', false, 'ffffff');
+        $image->resizeCanvas($width, $height, 'center', false, 'ffffff');
+        
 
         $image->save($destinationPath.'/'.$filename);
 
