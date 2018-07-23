@@ -149,12 +149,19 @@ class CategoryController extends Controller
         $destinationPath = 'uploads/categories';
 
 
-        $w = 400;
+        $width = 400;
+        $height = 280;
 
-        Image::make($path)
-                 ->widen($w)
-                 ->resizeCanvas($w, 280)
-                 ->save($destinationPath.'/'.$filename);
+        $image = Image::make($path);
+
+        $image->width() > $image->height() ? $width=null : $height=null;
+        $image->resize($width, $height, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+
+        $image->resizeCanvas(400,280,'center', false, 'ffffff');
+
+        $image->save($destinationPath.'/'.$filename);
 
         $category = Category::find($categoryid);
 
