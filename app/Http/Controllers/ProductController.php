@@ -82,7 +82,7 @@ class ProductController extends Controller
             $product->categories()->attach($category);
         }
 
-        if ($request->filled('key')[0])
+        if ($request->filled('key'))
         {
             foreach ((array)$request->get('key') as $key => $param)
             {
@@ -90,8 +90,10 @@ class ProductController extends Controller
                 $parameter->category_parameter_id = $param;
                 $parameter->value = $request->get('value')[$key];
                 $parameter->dvalue = $request->get('value')[$key];
-
-                $product->parameters()->save($parameter);
+                if ($param)
+                {
+                    $product->parameters()->save($parameter);
+                }
             }
         }
 
