@@ -71,7 +71,7 @@
     <div class="right">
     	
     	@if($errors->any())
-		<h4>{{$errors->first()}}</h4>
+		<div class="ui negative message">{{$errors->first()}}</div>
 		@endif
 
     	<div class="ui header">Názov</div>
