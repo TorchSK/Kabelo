@@ -51,7 +51,8 @@
           @if ($product->videos->count() > 0)
 
            @foreach($product->videos as $video)
-           <iframe width="180" src="//www.youtube.com/embed/{{explode('v=',$video->path)[1]}}" frameborder="0" allowfullscreen></iframe>
+           <div class="pretty-embed" data-pe-videoid="{{explode('v=',$video->path)[1]}}" data-pe-fitvids="true"></div>
+
            @endforeach
            @endif
 
