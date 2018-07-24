@@ -1722,6 +1722,7 @@ a:hover {
 }
 .pretty-embed {
   width: 200px;
+  display: inline-block;
 }
 .admin_wrapper {
   display: -webkit-box;
