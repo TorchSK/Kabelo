@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Services\Contracts\ProductServiceContract;
+use App\Mail\NewOrder;
 
 use App\Category;
+use App\Order;
+
+use Mail;
 
 class UtilController extends Controller
 {
@@ -34,5 +38,11 @@ class UtilController extends Controller
     public function cookiesInfo()
     {       
         return view('utils/cookiesinfo');
+    }
+
+    public function sendOrderEmail()
+    {       
+        $order = Order::find(11);
+        Mail::to(json_decode($order->invoice_address)->email)->queue(new NewOrder($order));
     }
 }

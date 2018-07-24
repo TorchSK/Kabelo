@@ -27,6 +27,20 @@
             font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
           }
 
+          .product{
+            display: flex;
+            background-color: #FFF;
+          }
+
+          .image{
+            width: 60px
+          }
+
+          .image img{
+            width: 60px;
+          }
+      }
+
         </style>
     </head>
     
@@ -41,8 +55,21 @@
         <div style="margin: 15px 0; font-size: 18px">Ďakujeme za Vašu objednávku</div>
 
         <div style="margin: 15px 0; font-size: 18px; font-weight: 100;" >Objednali ste si:</div>
-        @foreach($order->products as $product)
-            <div style="padding: 10px; background-color: #FFF; border-right: 5px; text-align: left;">{{$product->name}}</div>
+
+        @foreach($products as $key => $product)
+            <div class="product">
+
+                <div class="image">
+                    @if($images[$key]['path'] != null)
+                    <img src="{{ $message->embed($images[$key]['path']) }}">
+                    @else
+                    <img src="{{ $message->embed(public_path().'/img/empty.jpg') }}">
+                    @endif
+                </div>
+
+                <div style="padding: 10px; background-color: #FFF; border-right: 5px; text-align: left;">{{$product->name}}</div>
+
+            </div>
         @endforeach
         <div style="margin: 30px 0; font-size: 14px;">Budeme Vás informovať o stave.</div>
     </div>

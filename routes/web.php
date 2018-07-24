@@ -148,4 +148,4 @@ Route::get('email/send/welcome/{userid}', 'UserController@sendActivationEmail');
 Route::get('cookie', 'AdminController@cookie');
 Route::get('connectors/guide', 'UtilController@connectorsGuide');
 Route::get('cookies/info', 'UtilController@cookiesInfo');
-
+Route::get('email/order', 'UtilController@sendOrderEmail');
