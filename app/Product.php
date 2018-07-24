@@ -42,6 +42,10 @@ class Product extends Model {
     return $this->hasManyThrough('App\Product', 'App\ProductRelation','product_id','id','id','related_product_id');
   }
 
+  public function allfiles() 
+    {
+    return $this->hasMany('App\File');
+  }
 
  	public function image() 
   	{

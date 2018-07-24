@@ -18,7 +18,7 @@
    
 
        <div class="edit_product_images">
-          @foreach($product->files as $image)
+          @foreach($product->allfiles as $image)
             <div class="image_div @if($image->primary) primary @endif" data-fileid="{{$image->id}}">
               @if ($image->type=='image')
               <img src="/{{$image->path}}" width="120px" class="ui image " />
