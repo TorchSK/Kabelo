@@ -271,7 +271,7 @@ class ProductService implements ProductServiceContract {
 
         $data = [
             'makers' => $makers,
-            'filters' => $params->unique(),
+            'filters' => $params,
             'products' => $products,
             'activeFilters' => $activeFilters,
             'filterCounts' => $filterCounts,
