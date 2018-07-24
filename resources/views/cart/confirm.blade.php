@@ -2,9 +2,8 @@
 @section('content')
 	
 
-<div id="cart_detail">
-	<div class="cart_icon ct"><i class="shopping basket huge icon"></i></div>
-	<div class="caption">Nákupný košík <a class="delete_cart" data-tooltip="Vymazať obsah košíku"><i class="delete icon"></i></a></div>
+<div class="flex_content content cart" id="cart_detail" data-cartid="{{Auth::user()->cart->id}}">
+
 	
 
 	@include('cart.steps',['step'=>'4'])
@@ -14,8 +13,8 @@
 		<div id="grid" class="products">
 						<div class="ui horizontal divider">Produkty</div>
 
-			@foreach($cart['items'] as $key => $product)
-				@include('products.row', ['product'=>App\Product::find($product), 'cart_confirm'=> true])
+			@foreach($cart->products as $key => $product)
+				@include('products.row',['cart_confirm'=>true])
 			@endforeach
 		</div>
 
@@ -131,9 +130,12 @@
 
 	</div>
 
+	<div class="ct">
+		<a class="ui huge green button" id="submit_order_btn"><i class="upload icon"></i>Odoslať objednávku</a>
+	</div>
+
 	<div class="ct cart_actions">
 		<a href="/cart/shipping" class="ui button"><i class="arrow left icon"></i>Spať</a>
-		<a class="ui green button" id="submit_order_btn"><i class="upload icon"></i>Odoslať objednávku</a>
 	</div>
 
 </div>

@@ -2199,4 +2199,17 @@ $('#change_list_view_btn').click(function(){
   $('#change_grid_view_btn').removeClass('active');
 })
 
+$('#cart_continue_btn').click(function(){
+  $price = $('#cart_total_price price').text();
+
+   $.ajax({
+    type: "POST",
+    url: "/cart/",
+    data: {price: $price},
+    success: function(){
+      //
+    }
+  });
+}).unbind('ajaxStart');
+
 });

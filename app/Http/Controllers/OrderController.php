@@ -54,6 +54,7 @@ class OrderController extends Controller
 
     	$order->delivery_method_id = $orderData['delivery_method'];
     	$order->payment_method_id = $orderData['payment_method'];
+        $order->price = $orderData['price'];
 
 
     	$order->invoice_address = $orderData['invoice_address'];
@@ -64,18 +65,7 @@ class OrderController extends Controller
 			$order->delivery_address = $orderData['delivery_address'];
 		}
 
-        $price = 0;
-
-
-
-        $order->price = $price;
         $order->save();
-
-        foreach ($orderData['items'] as $productid)
-        {
-            $product = Product::find($productid);
-            $order->products()->attach($product, ['price' => $product->price]);
-        };
 
         $user = Auth::user();
         Mail::to(json_decode($order->invoice_address)->email)->queue(new NewOrder($order));

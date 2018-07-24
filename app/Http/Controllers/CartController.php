@@ -104,7 +104,8 @@ class CartController extends Controller
 
     public function set(Request $request)
     {        
-        $cart = $this->getCart();
+        $userid = Auth::user()->id;
+        $cart = $this->getCart($userid);
 
         foreach ($request->except('_token') as $key => $item) {
           $cart[$key] = $item;
@@ -113,7 +114,6 @@ class CartController extends Controller
         if (Auth::check())
         {
             unset($cart['number']);
-            unset($cart['price']);
             unset($cart['items']);
             $cart->save();
         }

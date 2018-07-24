@@ -2156,8 +2156,7 @@ a:hover {
   background-color: #F7F7F7;
 }
 .cart_confirm .products .item.product {
-  width: 250px !important;
-  padding: 25px 0 !important;
+  width: 230px !important;
 }
 .cart_confirm .products .item.product img {
   width: 200px;

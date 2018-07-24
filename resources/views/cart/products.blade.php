@@ -33,7 +33,7 @@
 	<div class="cart_actions">
 		@if (sizeof($cart['items']) > 0)
 		<a href="/#eshop" class="ui blue button"><i class="icon arrow left"></i>Do eshopu</a>
-		<a href="/cart/delivery" class="ui green button">Pokračovať</a>
+		<a href="/cart/delivery" class="ui green button" id="cart_continue_btn">Pokračovať</a>
 
 		@else
 		<a href="/" class="ui green button">Do eshopu</a>
