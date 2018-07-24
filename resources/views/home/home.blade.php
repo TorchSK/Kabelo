@@ -11,6 +11,9 @@
       &nbsp;
     </div>
 
+    <div class="content cart hidden" data-cartid="{{Auth::user()->cart->id}}"></div>
+
+
     <div id="eshop">
     <div class="flex flex_content" id="home_content">
 
