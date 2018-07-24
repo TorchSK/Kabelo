@@ -18,9 +18,14 @@
    
 
        <div class="edit_product_images">
-          @foreach($product->images as $image)
+          @foreach($product->files as $image)
             <div class="image_div @if($image->primary) primary @endif" data-fileid="{{$image->id}}">
+              @if ($image->type=='image')
               <img src="/{{$image->path}}" width="120px" class="ui image " />
+              @else
+              <i class="icon huge brown file pdf outline" ></i>
+
+              @endif
               <div class="edit_product_images_actions">
                 <a class="ui circular red label delete_img"><i class="remove icon"></i> Zmaž</a>
                 <a class="ui circular blue icon label make_primary_img"><i class="star icon"></i> Primárny</a>
