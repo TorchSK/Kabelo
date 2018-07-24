@@ -1440,6 +1440,9 @@ a:hover {
 #create_product_sale_flag {
   margin-top: 10px;
 }
+#create_product_active_flag {
+  margin-top: 10px;
+}
 .edit_product_images .image_div {
   position: relative;
   margin-bottom: 5px;
@@ -1518,6 +1521,12 @@ a:hover {
 }
 #product_catalogue_dropzone {
   padding: 0px;
+}
+#video_inputs {
+  margin-bottom: 25px;
+}
+#video_inputs .input {
+  margin-bottom: 3px;
 }
 .admin_wrapper {
   display: -webkit-box;

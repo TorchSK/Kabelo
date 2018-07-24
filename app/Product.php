@@ -62,6 +62,11 @@ class Product extends Model {
     return $this->hasMany('App\File')->where('type','image');
   }
 
+  public function videos() 
+    {
+    return $this->hasMany('App\File')->where('type','video');
+  }
+
   public function files() 
     {
     return $this->hasMany('App\File')->where('type','file');

@@ -39,12 +39,20 @@
            <div action="/file/upload" class="dropzone" id="product_detail_dropzone">
             <input name="_token" hidden value="{!! csrf_token() !!}" />
             <div class="dz-message">Klikni pre nahranie obrázkov/súborov</div>
-
           </div>
          </div>
        </div>
 
-    <div class="ui grid three column">
+       <div id="video_inputs">
+         @foreach($product->videos as $video)
+          <div class="ui large fluid left icon input"><i class="youtube icon"></i><input type="text" name="videos[]" value="{{$video->path}}"></div>
+         @endforeach
+          <div class="ui large fluid left icon input"><i class="youtube icon"></i><input type="text" name="videos[]"></div>
+          <div class="ui large fluid left icon input"><i class="youtube icon"></i><input type="text" name="videos[]"></div>
+          <div class="ui large fluid left icon input"><i class="youtube icon"></i><input type="text" name="videos[]"></div>
+       </div>
+
+    <div class="ui grid four column">
 
     <div class="column">
     <div id="create_product_new_flag">

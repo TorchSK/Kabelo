@@ -40,14 +40,23 @@
            @endif
         </div>
         
+          <div class="other_img">
           @if ($product->images->count() > 1)
 
-          <div class="other_img">
           @foreach($product->images as $image)
            <img src="/{{$image->path}}" class="ui image" width="200px" />
            @endforeach
-        </div>
            @endif
+
+          @if ($product->videos->count() > 0)
+
+           @foreach($product->videos as $video)
+           <iframe width="180" src="//www.youtube.com/embed/{{explode('v=',$video->path)[1]}}" frameborder="0" allowfullscreen></iframe>
+           @endforeach
+           @endif
+
+
+        </div>
 
 
     </div>

@@ -401,6 +401,31 @@ class ProductController extends Controller
             }
         }
 
+
+        foreach ($product->videos as $video)
+        {
+            $video->delete();
+        }
+
+        if ($request->filled('videos'))
+        {
+            foreach ((array)$request->get('videos') as $key => $video)
+            {
+                $productFile = new ProductFile();
+
+                $productFile->product_id = $product->id;
+                $productFile->type='video';
+                $productFile->path = $video;
+
+                if ($video)
+                {
+                    $productFile->save();
+                }
+            }
+        }
+
+
+
         if ($product->sale)
         {
             $product->moc_sort_price = $product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_sale;
