@@ -1319,6 +1319,9 @@ a:hover {
   text-align: left;
   margin-bottom: 50px;
 }
+#product_tabs #product_detail_params table {
+  margin-bottom: 35px !important;
+}
 #product_tabs .divider {
   margin-bottom: 70px;
 }
@@ -1512,6 +1515,9 @@ a:hover {
 }
 .product_price_level .grid {
   margin-top: 5px;
+}
+#product_catalogue_dropzone {
+  padding: 0px;
 }
 .admin_wrapper {
   display: -webkit-box;

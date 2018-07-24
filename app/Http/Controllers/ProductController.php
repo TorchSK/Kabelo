@@ -145,16 +145,23 @@ class ProductController extends Controller
         
         if ($success) 
         {
-            $image = Image::make($destinationPath.'/'.$filename);
+            if (in_array($extension, ['jpg','jpeg','gif','png']))
+            {
+                $image = Image::make($destinationPath.'/'.$filename);
 
-            $image->resize($width, $height, function ($constraint) {
-                    $constraint->aspectRatio();
-            });
+                $image->resize($width, $height, function ($constraint) {
+                        $constraint->aspectRatio();
+                });
 
-            $image->resizeCanvas($width, $height, 'center', false, 'ffffff');
-            
+                $image->resizeCanvas($width, $height, 'center', false, 'ffffff');
+                
 
-            $image->save($destinationPath.'/'.$filename);
+                $image->save($destinationPath.'/'.$filename);
+            }
+            else
+            {
+
+            }
 
           return url($destinationPath.'/'.$filename);
         } 
@@ -231,12 +238,21 @@ class ProductController extends Controller
             foreach ($files as $key => $file)
             {
                 $filename = explode("/", $file)[1];
+                $ext = explode(".", $file)[1];
 
                 $productFile = new ProductFile();
 
                 $productFile->product_id = $product->id;
                 $productFile->path = 'uploads/'.$filename;
-                $productFile->type = 'image';
+
+                if (in_array($ext,['jpg','jpeg','gif','png']))
+                {
+                    $productFile->type = 'image';
+                }
+                else
+                {
+                    $productFile->type = 'file';
+                }
 
                 if ($key==0)
                 {

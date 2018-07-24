@@ -33,7 +33,7 @@
         <div class="edit_images">
            <div action="/file/upload" class="dropzone" id="product_detail_dropzone">
             <input name="_token" hidden value="{!! csrf_token() !!}" />
-            <div class="dz-message">Klikni pre nahranie súboru</div>
+            <div class="dz-message">Klikni pre nahranie obrázkov/súborov</div>
 
           </div>
          </div>

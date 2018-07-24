@@ -58,6 +58,11 @@ class Product extends Model {
     return $this->hasMany('App\File')->where('type','image');
   }
 
+  public function files() 
+    {
+    return $this->hasMany('App\File')->where('type','file');
+  }
+
   public function priceLevels() 
     {
     return $this->hasMany('App\PriceLevel');
