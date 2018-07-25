@@ -46,4 +46,15 @@
     <link media="all" type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
 
     <script src="/js/app.js"></script>
+
+    <!-- Global site tag (gtag.js) - AdWords: 795715349 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-795715349"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-795715349');
+    </script>
+
 </head>
