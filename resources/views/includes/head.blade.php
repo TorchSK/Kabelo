@@ -57,4 +57,16 @@
       gtag('config', 'AW-795715349');
     </script>
 
+    <script>
+      gtag('event', 'page_view', {
+        'send_to': 'AW-795715349',
+        'dynx_itemid': 'replace with value',
+        'dynx_itemid2': 'replace with value',
+        'dynx_pagetype': 'replace with value',
+        'dynx_totalvalue': 'replace with value',
+        'user_id': 'replace with value'
+      });
+    </script>
+
+
 </head>
