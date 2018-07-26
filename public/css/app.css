@@ -2213,13 +2213,14 @@ a:hover {
   border-right: 1px solid #DDD;
   padding: 30px;
 }
-#admin_params #categories .category.item {
+#admin_params #categories .category.item a {
   padding: 10px 20px;
   margin-bottom: 1px;
   border-radius: 4px;
   cursor: pointer;
+  display: block;
 }
-#admin_params #categories .category.item:hover {
+#admin_params #categories .category.item a:hover {
   background-color: #FFF;
 }
 #admin_params #categories .category.item.sub {
@@ -2228,32 +2229,25 @@ a:hover {
 #admin_params #categories .category.item.sub2 {
   margin-left: 20px;
 }
-#admin_params #active_params {
+#admin_params #params_list {
   border-right: 1px solid #DDD;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   padding: 30px;
 }
-#admin_params #active_params .caption {
+#admin_params #params_list .caption {
   font-size: 2em;
   font-weight: 100;
   margin-bottom: 30px;
 }
-#admin_params #active_params .list {
-  background-color: #FFF;
-  height: 90%;
-  border: 1px dashed #CCC;
-}
-#admin_params #all_params {
-  padding: 30px;
-}
-#admin_params #all_params .arrow {
+#admin_params #params_list .arrow {
   display: inline-block;
   cursor: pointer;
 }
-#admin_params #all_params .param.item {
-  background-color: #B5CC18;
+#admin_params #params_list .param.item {
+  color: #FFF;
+  background-color: #CCC;
   padding: 10px 20px;
   margin-bottom: 1px;
   border-radius: 4px;
@@ -2261,27 +2255,32 @@ a:hover {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  color: #FFF;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   width: 300px;
   font-weight: 900;
+  position: relative;
+  overflow: hidden;
 }
-#admin_params #all_params .param.item .name {
+#admin_params #params_list .param.item.active {
+  background-color: #B5CC18;
+  color: #FFF;
+}
+#admin_params #params_list .param.item .name {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
-#admin_params #all_params .param.item .actions {
+#admin_params #params_list .param.item .actions {
   -ms-flex-item-align: center;
       align-self: center;
 }
-#admin_params #all_params .param.item .actions i.icon:hover {
+#admin_params #params_list .param.item .actions i.icon:hover {
   color: #1B1C1D;
 }
-#admin_params #all_params .param.item .actions i.icon.delete {
+#admin_params #params_list .param.item .actions i.icon.delete {
   margin-top: -2px;
 }
 #cart_detail {

@@ -6,15 +6,7 @@ Pridaj parameter
 
 <div class="content">
 
-    <div class="label">Kód</div>
-
-  <div class="ui fluid input">
-    <input type="text"  name="key"/>
-  </div>
-
-
-
-  <div class="label">Zobrazenie</div>
+  <div class="label">Názov parametru</div>
 
   <div class="ui fluid input">
     <input type="text" name="display_key" />

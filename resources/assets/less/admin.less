@@ -554,13 +554,17 @@
 		padding: 30px;
 
 		.category.item{
-			padding: 10px 20px;
-			margin-bottom: 1px;
-			border-radius: 4px;
-			cursor: pointer;
 
-			&:hover{
-				background-color: #FFF;
+			a{
+				padding: 10px 20px;
+				margin-bottom: 1px;
+				border-radius: 4px;
+				cursor: pointer;
+				display: block;
+
+				&:hover{
+					background-color: #FFF;
+				}
 			}
 
 			&.sub{
@@ -573,7 +577,7 @@
 		}
 	}
 
-	#active_params{
+	#params_list{
 		border-right: 1px solid #DDD;
 		flex:1;
 		padding: 30px;
@@ -585,15 +589,8 @@
 		}
 
 		.list{
-			background-color: #FFF;
-			height: 90%;
-			border: 1px dashed #CCC;
+
 		}
-
-	}
-
-	#all_params{
-		padding: 30px;
 
 		.arrow{
 			display: inline-block;
@@ -601,17 +598,24 @@
 		}
 
 		.param.item{
-			background-color: @olive;
+			color: #FFF;
+			background-color: #CCC;
 			padding: 10px 20px;
 			margin-bottom: 1px;
 			border-radius: 4px;
 			cursor: pointer;
 			display: inline-flex;
-			color: #FFF;
 			user-select: none;
 			width: 300px;
 			font-weight: 900;
+			position: relative;
+			overflow: hidden;
+			
+			&.active{
+				background-color: @olive;
+							color: #FFF;
 
+			}
 
 			&:hover{
 			}

@@ -11,11 +11,11 @@
 
 					@foreach ($category->children->sortBy('order') as $child)
 				    	<li class="item category @if($child->parent_id) sub @endif" data-id={{$child->id}}>
-							{{$child->name}}
+							<a href="/admin/params/category/{{$child->id}}">{{$child->name}}</a>
 
 								@foreach ($child->children->sortBy('order') as $child2)
 							    	<li class="item category @if($child->parent_id) sub2 @endif" data-id={{$child2->id}}>
-										{{$child2->name}}
+										<a href="/admin/params/category/{{$child2->id}}">{{$child2->name}}</a>
 									</li>
 								@endforeach
 						</li>
@@ -23,32 +23,30 @@
 			@endforeach
 		</ul>
 
-		<div id="active_params">
+		<div id="params_list">
 			@if (isset($activecategory))
 				<div class="caption">{{$activecategory->name}}</div>
 				<div class="list">
+					@foreach(App\Parameter::all() as $param)	
+			    		<div class="param item @if($activecategory->parameters->contains($param->id)) active @endif" data-paramid="{{$param->id}}" data-categoryid="{{$activecategory->id}}">
+			    			  <div class="ui inverted dimmer">
+							    <div class="ui loader"></div>
+							  </div>
 
+			    			<div class="name">
+			    			    <div><i class="eye icon"></i> {{$param->display_key}}</div>
+			    			   </div>
+			    			<div class="actions"><i class="edit large icon edit_param_btn"></i><i class="delete large icon delete_param_btn"></i></div>
+
+			    		</div>
+			    	@endforeach
+
+	    			<div class="ui green button" id="add_param_btn">Nový parameter</div>
 
 				</div>
 			@endif
 		</div>		
 
-	    <div id="all_params">
-	    	@foreach(App\Parameter::all() as $param)
-
-	    		<div class="arrow"><i class="icon large brown chevron left"></i></div>
-	    		<div class="param item" data-paramid="{{$param->id}}">
-	    			<div class="name">
-	    				<div><i class="key icon"></i> {{$param->key}}</div> 
-	    			    <div><i class="eye icon"></i> {{$param->display_key}}</div>
-	    			   </div>
-	    			<div class="actions"><i class="edit large icon edit_param_btn"></i><i class="delete large icon delete_param_btn"></i></div>
-
-	    		</div>
-	    	@endforeach
-
-	    	<div class="ui green fluid button" id="add_param_btn">Nový parameter</div>
-		</div>
 	
 	</div>
 

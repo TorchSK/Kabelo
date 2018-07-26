@@ -17,7 +17,7 @@ class Category extends Model {
 
  	public function parameters() 
   	{
- 		return $this->hasMany('App\CategoryParameter');
+ 		return $this->belongsToMany('App\Parameter');
  	}
 
  	public function children() 

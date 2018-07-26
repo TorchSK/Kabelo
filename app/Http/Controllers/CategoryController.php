@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
-use App\CategoryParameter;
+use App\Parameter;
 
 use Session;
 use Image;
@@ -76,22 +76,13 @@ class CategoryController extends Controller
 
     public function addParameter(Request $request)
     {   
-        if($request->get('keys')[0]){
-        foreach ($request->get('keys') as $index => $key)
-        {
-            $param = new CategoryParameter();
-            $param->category_id = $request->get('category_id');
-            $param->key = $key;
-            $param->display_key = $request->get('dkeys')[$index];
-            $param->is_filter = 1;
+       
+        $param = Parameter::find($request->get('parameter_id'));
+        $category = Category::find($request->get('category_id'));
 
-        }
+        $category->parameters()->syncWithoutDetaching($param);
 
-        $param->save();
-        }
-
-        return redirect('/admin/category/'.$request->get('category_url'));
-
+        return 1;
     }
 
     public function editParameter($id, Request $request)
@@ -105,11 +96,12 @@ class CategoryController extends Controller
     }
 
 
-    public function deleteParameter($id)
+    public function deleteParameter($id, Request $request)
     {
-        $param = CategoryParameter::find($id);
-        $param->delete();
+        $param = Parameter::find($id);
+        $category = Category::find($request->get('category_id'));
 
+        $category->parameters()->detach($param);
         return 1;
 
     }
