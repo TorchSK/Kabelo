@@ -22,6 +22,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/import/', 'AdminController@import')->name('admin.import');
 	Route::post('/import/', 'AdminController@postImport')->name('admin.postImport');
 
+	Route::get('/params', 'AdminController@manageParams')->name('admin.params');
+	Route::get('/params/category/{categoryid}', 'AdminController@manageCategoryParams')->name('admin.categoryParams');
+
+
 	Route::get('/import/json', 'AdminController@importJson')->name('admin.importJson');
 	Route::post('/import/json', 'AdminController@postImportJson')->name('admin.postImportJson');
 
@@ -138,6 +142,10 @@ Route::get('order/success','OrderController@success');
 Route::get('orders/mine','OrderController@myhistory');
 
 Route::resource('order','OrderController');
+
+
+//Parameter
+Route::resource('param','ParamController');
 
 
 // Settings

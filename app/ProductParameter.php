@@ -4,7 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Parameter extends Model {
+class ProductParameter extends Model {
+
+  protected $table = "product_parameters";
+	public $timestamps = false;
 
   	public function product() 
   	{
@@ -13,6 +16,6 @@ class Parameter extends Model {
 
   	public function categoryParameter() 
   	{
- 		return $this->belongsToMany('App\CategoryParameter');
+ 		return $this->belongsTo('App\CategoryParameter');
  	}
 }

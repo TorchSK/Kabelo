@@ -10,6 +10,7 @@ use App\Order;
 use App\Cover;
 use App\Setting;
 use App\Color;
+use App\Parameter;
 
 use Auth;
 use Excel;
@@ -114,6 +115,24 @@ class AdminController extends Controller
         ];
 
         return view('admin.orders', $data);
+    }
+
+    public function manageParams()
+    {
+        $data = [
+            'params' => Parameter::all()
+        ];
+
+        return view('admin.params', $data);
+    }
+
+    public function manageCategoryParams($categoryid)
+    {
+        $data = [
+            'activecategory' => Category::find($categoryid)
+        ];
+
+        return view('admin.params', $data);
     }
 
 

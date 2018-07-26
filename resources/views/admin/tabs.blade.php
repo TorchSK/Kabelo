@@ -8,6 +8,10 @@
 	<div class="text">Produkty</div>
 </a>
 
+<a href="{{route('admin.params')}}" class="tab">
+	<i class="big tasks icon"></i>
+	<div class="text">Parametre</div>
+</a>
 
 
 <a href="{{route('admin.users')}}" class="tab">
@@ -25,5 +29,4 @@
 	<i class="big setting icon"></i>
 	<div class="text">Nastavenia</div>
 </a>
-
 

@@ -2320,5 +2320,45 @@ $(document).on('click', '.pretty-embed', function(){
   var lightbox = lity('//www.youtube.com/watch?v='+$(this).data('pe-videoid'));
 });
 
+$('#add_param_btn').click(function(){
+	$('#add_param_modal').modal('setting', {
+    autofocus: false,
+    onApprove : function() {
+    	$key = $('#add_param_modal input[name="key"]').val();
+        $display_key = $('#add_param_modal input[name="display_key"]').val();
+
+    	$.ajax({
+    		type: "POST",
+    		url: "/param/",
+    		data: {key: $key, display_key:$display_key},
+    		success: function(){
+    			location.reload();
+    		}
+    	})
+    }
+  }).modal('show');
+})
+
+$('.edit_param_btn').click(function(){
+	 $id = $(this).closest('.param.item').data('paramid');
+
+	$('#edit_param_modal').modal('setting', {
+    autofocus: false,
+    onApprove : function() {
+    	$key = $('#edit_param_modal input[name="key"]').val();
+        $display_key = $('#edit_param_modal input[name="display_key"]').val();
+
+    	$.ajax({
+    		type: "PUT",
+    		url: "/param/"+$id,
+    		data: {key: $key, display_key:$display_key},
+    		success: function(){
+    			location.reload();
+    		}
+    	})
+    }
+  }).modal('show');
+})
+
 
 });
