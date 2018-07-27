@@ -1242,7 +1242,7 @@ a:hover {
   top: 40%;
   left: 64%;
 }
-#auth_popup .row {
+#auth_popup .row:not(.button) {
   display: block;
   font-size: 1.1em;
   padding: 10px;
@@ -1250,7 +1250,7 @@ a:hover {
   border-radius: 3px;
   cursor: pointer;
 }
-#auth_popup .row:hover {
+#auth_popup .row:not(.button):hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 #auth_popup .msgs {
@@ -2299,7 +2299,6 @@ a:hover {
       align-self: center;
 }
 #admin_params #params_list .param.item .actions i.icon:hover {
-  color: #1B1C1D;
 }
 #admin_params #params_list .param.item .actions i.icon.delete {
   margin-top: -4px;

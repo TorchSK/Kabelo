@@ -2360,6 +2360,26 @@ $('.edit_param_btn').click(function(){
   }).modal('show');
 })
 
+
+$('.delete_param_btn').click(function(){
+	 $id = $(this).closest('.param.item').data('paramid');
+
+	$('#delete_param_modal').modal('setting', {
+    autofocus: false,
+    onApprove : function() {
+
+    	$.ajax({
+    		type: "DELETE",
+    		url: "/param/"+$id,
+    		success: function(){
+    			location.reload();
+    		}
+    	})
+    }
+  }).modal('show');
+});
+
+
 $(document).on('click', '#params_list .param.item:not(.manage)', function(e){
    if( e.target == this ||  $(e.target).hasClass('name')  ||  $(e.target).hasClass('eye') ) 
    {

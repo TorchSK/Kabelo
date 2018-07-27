@@ -40,7 +40,7 @@
                 @if(Auth::check() && Auth::user()->admin)
                   <div class="ui horizontal divider"><i class="caret down icon"></i> Admin <i class="caret down icon"></i></div>
 
-                  <a href="{{route('admin.dashboard')}}" class="row"><i class="setting icon"></i> Administrácia</a>
+                  <a href="{{route('admin.dashboard')}}" class="row ui blue fluid button"><i class="setting icon"></i> Administrácia</a>
 
                 @endif
 

@@ -113,6 +113,26 @@
     </div>
   </div>
 
+    <div class="ui mini modal" id="delete_param_modal">
+            
+    <div class="header">
+      Zmazať parameter
+    </div>
+    <div class="content">
+       Naozaj chcete vymazať parameter
+    </div>
+    <div class="actions">
+      <div class="ui red deny button">
+        Níe
+      </div>
+      <div class="ui positive right labeled icon button">
+        Áno
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>
+
+
 
   <div class="ui mini modal" id="new_rating_modal">
             
