@@ -197,7 +197,7 @@
        <tbody>
           @foreach ($product->parameters as $parameter)
               <tr>
-                <td class="collapsing"><b>{{$parameter->categoryParameter->display_key}}</b></td>
+                <td class="collapsing"><b>{{$parameter->definition->display_key}}</b></td>
                 <td> {{$parameter->value}}</td>
               </tr>
           @endforeach

@@ -1,1 +1,1 @@
-<div class="item @if(isset($parameter) && $parameter->categoryParameter->key == $param->key) active selected @endif" data-value="{{$param->id}}">{{$param->display_key}}</div>
+<div class="item @if(isset($parameter) && $parameter->defintion->key == $param->key) active selected @endif" data-value="{{$param->id}}">{{$param->display_key}}</div>

@@ -34,7 +34,7 @@ class Product extends Model {
 
   	public function parameters() 
   	{
- 		return $this->hasMany('App\Parameter');
+ 		return $this->hasMany('App\ProductParameter');
  	}
 
     public function relatedProducts() 

@@ -101,7 +101,7 @@ class ProductService implements ProductServiceContract {
                         else
                         {
                             $query->whereHas('parameters', function ($query) use ($categoryParameter, $value) {
-                                $query->whereIn('value',(array)$value)->whereHas('categoryParameter', function ($query)  use ($categoryParameter, $value){
+                                $query->whereIn('value',(array)$value)->whereHas('definition', function ($query)  use ($categoryParameter, $value){
                                        $query->where('key', $categoryParameter);
                                 });
                             }); 

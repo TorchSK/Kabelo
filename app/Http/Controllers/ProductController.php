@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
-use App\Parameter;
+use App\ProductParameter;
 use App\File as ProductFile;
 use App\Rating;
 use App\ProductRelation;
@@ -375,8 +375,8 @@ class ProductController extends Controller
         {
             foreach ((array)$request->get('key') as $key => $param)
             {
-                $parameter = new Parameter();
-                $parameter->category_parameter_id = $param;
+                $parameter = new ProductParameter();
+                $parameter->parameter_id = $param;
                 $parameter->value = $request->get('value')[$key];
                 $parameter->dvalue = $request->get('value')[$key];
 
