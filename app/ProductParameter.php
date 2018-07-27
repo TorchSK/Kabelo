@@ -14,8 +14,4 @@ class ProductParameter extends Model {
  		return $this->belongsTo('App\Product');
  	}
 
-  	public function categoryParameter() 
-  	{
- 		return $this->belongsTo('App\CategoryParameter');
- 	}
 }

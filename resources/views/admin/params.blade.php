@@ -34,7 +34,7 @@
 							  </div>
 
 			    			<div class="name">
-			    			    <div><i class="eye icon"></i> {{$param->display_key}}</div>
+			    			    <div class="name"><i class="eye icon"></i> {{$param->display_key}}</div>
 			    			   </div>
 			    			<div class="actions"><i class="edit large icon edit_param_btn"></i><i class="delete large icon delete_param_btn"></i></div>
 

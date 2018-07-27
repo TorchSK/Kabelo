@@ -11,8 +11,8 @@ class Parameter extends Model {
  		return $this->belongsTo('App\Product');
  	}
 
-  	public function categoryParameter() 
+ 	public function productParameters() 
   	{
- 		return $this->belongsToMany('App\CategoryParameter');
+ 		return $this->hasMany('App\ProductParameter');
  	}
 }

@@ -58,34 +58,14 @@
             <div class="admin_filters">
 
               <div class="active">
-              @foreach (App\CategoryParameter::where('category_id', $category->id)->get() as $param)
-                <div class="item">
-                  <key>{{$param->key}}</key>
-                  <dkey>({{$param->display_key}})</dkey>
-                  <div class="ui small red button admin_delete_category_param_btn" data-paramid="{{$param->id}}">Zmaž</div>
-                  <a href="/category/parameter/{{$param->id}}/edit" class="ui small teal button admin_change_category_param_btn">Zmeň</a>
-                </div>
+              <select class="ui fluid search dropdown" multiple="">
+              @foreach (App\Category::find($category->id)->parameters as $param)
+                <option value="{{$param->key}}" @if(App\Category::find($category->id)->parameters->contains($param->id)) selected @endif>{{$param->display_key}}</option>
               @endforeach
+              </select>
             </div>  
 
-              <form action="/category/parameter/add" method="POST">
-                <input name="_token" hidden value="{!! csrf_token() !!}" />
-                <input name="category_url" hidden value="{!! $category->url !!}" />
-                <input name="category_id" hidden value="{!! $category->id !!}" />
-
-                <div id="admin_filters_div">
-                <div class="row">
-                <div class="ui input"><input type="text" placeholder="Kluc" name="keys[]" /></div>
-                <div class="ui input"><input type="text" placeholder="Zobrazenie" name="dkeys[]" /></div>
-                </div>
-                </div>
-
-                <br/>
-
-                <div class="ui blue button" id="admin_add_category_param_btn">Pridaj parameter</div>
-                <button type="submit" class="ui green button" id="admin_submit_category_param_btn">Ulož</button>
-              </form>
-
+            
             </div>
             @endif
 

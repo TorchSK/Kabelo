@@ -2360,40 +2360,42 @@ $('.edit_param_btn').click(function(){
   }).modal('show');
 })
 
-$(document).on('click', '#params_list .param.item', function(){
+$(document).on('click', '#params_list .param.item', function(e){
+   if( e.target == this ||  $(e.target).hasClass('name')  ||  $(e.target).hasClass('eye') ) 
+   {
+		$paramid = $(this).data('paramid');
+		$catid = $(this).data('categoryid');
+		$this = $(this);
+		$this.find('.dimmer').addClass('active');
+		if ($this.hasClass('active'))
+		{
+			$.ajax({
+				type: "DELETE",
+				url: "/category/parameter/"+$paramid,
+				data: {category_id: $catid},
+				success: function(){
+					$this.removeClass('active');
+						$this.find('.dimmer').removeClass('active');
 
-	$paramid = $(this).data('paramid');
-	$catid = $(this).data('categoryid');
-	$this = $(this);
-	$this.find('.dimmer').addClass('active');
-	if ($this.hasClass('active'))
-	{
-		$.ajax({
-			type: "DELETE",
-			url: "/category/parameter/"+$paramid,
-			data: {category_id: $catid},
-			success: function(){
-				$this.removeClass('active');
-					$this.find('.dimmer').removeClass('active');
+				}
+			})	
+		}
+		else
+		{
+			$.ajax({
+				type: "POST",
+				url: "/category/parameter/add",
+				data: {parameter_id: $paramid, category_id: $catid},
+				success: function(){
+					$this.addClass('active');
+										$this.find('.dimmer').removeClass('active');
 
-			}
-		})	
+				}
+			})	
+		}
 	}
-	else
-	{
-		$.ajax({
-			type: "POST",
-			url: "/category/parameter/add",
-			data: {parameter_id: $paramid, category_id: $catid},
-			success: function(){
-				$this.addClass('active');
-									$this.find('.dimmer').removeClass('active');
-
-			}
-		})	
-	}
-
 });
+
 
 
 });

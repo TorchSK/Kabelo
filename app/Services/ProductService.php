@@ -42,8 +42,8 @@ class ProductService implements ProductServiceContract {
         $result = Product::leftjoin('product_parameters',function($leftjoin){
             $leftjoin->on('product_parameters.product_id', '=', 'products.id');
         })
-        ->leftjoin('category_parameters',function($leftjoin){
-            $leftjoin->on('category_parameters.id', '=', 'product_parameters.category_parameter_id');
+        ->leftjoin('parameters',function($leftjoin){
+            $leftjoin->on('parameters.id', '=', 'product_parameters.parameter_id');
         })
         ->where('active',1)
         ->where(function($query) use ($filters, $except){
@@ -241,7 +241,7 @@ class ProductService implements ProductServiceContract {
                 $filterCounts['parameters'][$categoryParameter->id] = [];
                 $filterCountFilters = $filters;
 
-                foreach ($categoryParameter->parameters as $productParameter)
+                foreach ($categoryParameter->productParameters as $productParameter)
                 {   
                     $filterCountFilters['parameters'][$categoryParameter->key] = $productParameter->value;
                     array_push($temp, $filterCountFilters);
