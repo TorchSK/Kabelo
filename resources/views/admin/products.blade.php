@@ -58,9 +58,9 @@
             <div class="admin_filters">
 
               <div class="active">
-              <select class="ui fluid search dropdown" multiple="">
-              @foreach (App\Category::find($category->id)->parameters as $param)
-                <option value="{{$param->key}}" @if(App\Category::find($category->id)->parameters->contains($param->id)) selected @endif>{{$param->display_key}}</option>
+              <select class="ui fluid search dropdown" multiple="" id="admin_category_params_selection">
+              @foreach (App\Parameter::all() as $param)
+                <option value="{{$param->id}}" @if(App\Category::find($category->id)->parameters->contains($param->id)) selected @endif>{{$param->display_key}}</option>
               @endforeach
               </select>
             </div>  

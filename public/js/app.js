@@ -2388,7 +2388,7 @@ $(document).on('click', '#params_list .param.item:not(.manage)', function(e){
 				data: {parameter_id: $paramid, category_id: $catid},
 				success: function(){
 					$this.addClass('active');
-										$this.find('.dimmer').removeClass('active');
+					$this.find('.dimmer').removeClass('active');
 
 				}
 			})	
@@ -2396,6 +2396,32 @@ $(document).on('click', '#params_list .param.item:not(.manage)', function(e){
 	}
 });
 
+if ($('#admin_category_params_selection').length > 0)
+{
+$('.dropdown').dropdown({
+	onAdd: function(addedValue, addedText, $addedChoice){
+		$catid = $('#category_image_div').data('categoryid');
+		$.ajax({
+			type: "POST",
+			url: "/category/parameter/add",
+			data: {parameter_id: addedValue, category_id: $catid},
+			success: function(){
 
+			}
+		})
+	},
+	onRemove: function(removedValue, removedText, $removedChoice){
+		$catid = $('#category_image_div').data('categoryid');
+		$.ajax({
+			type: "DELETE",
+			url: "/category/parameter/"+removedValue,
+			data: {category_id: $catid},
+			success: function(){
+
+			}
+		})	
+	}
+})
+}
 
 });

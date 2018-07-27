@@ -2287,7 +2287,7 @@ a:hover {
 #admin_params #params_list .param.item.manage {
   background-color: #A5673F;
   color: #FFF;
-  width: 300px;
+  width: 350px;
 }
 #admin_params #params_list .param.item .name {
   -webkit-box-flex: 1;
