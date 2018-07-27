@@ -553,6 +553,13 @@
 		border-right: 1px solid #DDD;
 		padding: 30px;
 
+		.button{
+			margin-bottom: 25px;
+			a{
+				color: #FFF !important;
+			}
+		}
+
 		.category.item{
 
 			a{
@@ -604,17 +611,37 @@
 			margin-bottom: 1px;
 			border-radius: 4px;
 			cursor: pointer;
-			display: inline-flex;
+			display: inline-block;
 			user-select: none;
-			width: 300px;
-			font-weight: 900;
+			font-weight: 700;
 			position: relative;
 			overflow: hidden;
+
+			.upper{
+				display: flex;
+
+			}
+
+			.lower{
+				margin-top: 15px;
+				font-weight: 400;
+
+				.info{
+					border-top: 1px solid rgba(255,255,255,0.2);
+					padding-top: 10px;
+				}
+			}
 
 			&.active{
 				background-color: @olive;
 							color: #FFF;
 
+			}
+
+			&.manage{
+				background-color: @brown;
+							color: #FFF;
+								width: 300px;
 			}
 
 			&:hover{
@@ -633,10 +660,14 @@
 					}
 
 					&.delete{
-						margin-top: -2px;
+						margin-top: -4px;
 					}
 				}
 			}
 		}
+	}
+
+	#add_param_btn{
+		margin-top: 25px;
 	}
 }

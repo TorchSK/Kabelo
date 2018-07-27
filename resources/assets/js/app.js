@@ -2360,7 +2360,7 @@ $('.edit_param_btn').click(function(){
   }).modal('show');
 })
 
-$(document).on('click', '#params_list .param.item', function(e){
+$(document).on('click', '#params_list .param.item:not(.manage)', function(e){
    if( e.target == this ||  $(e.target).hasClass('name')  ||  $(e.target).hasClass('eye') ) 
    {
 		$paramid = $(this).data('paramid');

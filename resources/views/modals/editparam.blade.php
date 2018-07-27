@@ -6,15 +6,7 @@ Pridaj parameter
 
 <div class="content">
 
-    <div class="label">Kód</div>
-
-  <div class="ui fluid input">
-    <input type="text"  name="key" @if(isset($param))value="{{$param->key}}"  @endif/ >
-  </div>
-
-
-
-  <div class="label">Zobrazenie</div>
+  <div class="label">Parameter</div>
 
   <div class="ui fluid input">
     <input type="text" name="display_key" @if(isset($param))value="{{$param->display_key}}"  @endif/>

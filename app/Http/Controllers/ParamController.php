@@ -58,12 +58,19 @@ class ParamController extends Controller
     public function update($id, Request $request)
     {   
         $param = Parameter::find($id);
-        $param->key = $request->get('key');
+        $param->key =  $this->createUrlName($request->get('display_key'));
         $param->display_key = $request->get('display_key');
         $param->save();
 
         return $param;
     }   
 
+    public function destroy($id)
+    {   
+        $param = Parameter::find($id);
+        $param->delete();
+
+        return $param;
+    }   
 
 }

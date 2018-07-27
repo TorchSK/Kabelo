@@ -2,7 +2,13 @@
 @section('content')
 	
 	<div id="admin_params">
+
+
 		<ul id="categories">
+
+			<li class="ui blue fluid button">
+				<a href="/admin/params">Parametre</a>
+			</li>
 
 			@foreach (App\Category::whereNull('parent_id')->orderBy('order')->get() as $category)
 			    	<li class="item category @if($category->parent_id) sub @endif" data-id={{$category->id}}>
@@ -27,23 +33,12 @@
 			@if (isset($activecategory))
 				<div class="caption">{{$activecategory->name}}</div>
 				<div class="list">
-					@foreach(App\Parameter::all() as $param)	
-			    		<div class="param item @if($activecategory->parameters->contains($param->id)) active @endif" data-paramid="{{$param->id}}" data-categoryid="{{$activecategory->id}}">
-			    			  <div class="ui inverted dimmer">
-							    <div class="ui loader"></div>
-							  </div>
-
-			    			<div class="name">
-			    			    <div class="name"><i class="eye icon"></i> {{$param->display_key}}</div>
-			    			   </div>
-			    			<div class="actions"><i class="edit large icon edit_param_btn"></i><i class="delete large icon delete_param_btn"></i></div>
-
-			    		</div>
-			    	@endforeach
-
-	    			<div class="ui green button" id="add_param_btn">Nový parameter</div>
-
+					@include('params.all',['category'=>$activecategory])
 				</div>
+					    			<div class="ui green button" id="add_param_btn">Nový parameter</div>
+
+			@else
+					@include('params.all',['manage'=>true])
 			@endif
 		</div>		
 

@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Parameter extends Model {
 
-  	public function product() 
+  	public function categories() 
   	{
- 		return $this->belongsTo('App\Product');
+ 		return $this->belongsToMany('App\Category');
  	}
 
  	public function productParameters() 

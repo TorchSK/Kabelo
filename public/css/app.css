@@ -2213,6 +2213,12 @@ a:hover {
   border-right: 1px solid #DDD;
   padding: 30px;
 }
+#admin_params #categories .button {
+  margin-bottom: 25px;
+}
+#admin_params #categories .button a {
+  color: #FFF !important;
+}
 #admin_params #categories .category.item a {
   padding: 10px 20px;
   margin-bottom: 1px;
@@ -2252,21 +2258,36 @@ a:hover {
   margin-bottom: 1px;
   border-radius: 4px;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: inline-block;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  width: 300px;
-  font-weight: 900;
+  font-weight: 700;
   position: relative;
   overflow: hidden;
+}
+#admin_params #params_list .param.item .upper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#admin_params #params_list .param.item .lower {
+  margin-top: 15px;
+  font-weight: 400;
+}
+#admin_params #params_list .param.item .lower .info {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 10px;
 }
 #admin_params #params_list .param.item.active {
   background-color: #B5CC18;
   color: #FFF;
+}
+#admin_params #params_list .param.item.manage {
+  background-color: #A5673F;
+  color: #FFF;
+  width: 300px;
 }
 #admin_params #params_list .param.item .name {
   -webkit-box-flex: 1;
@@ -2281,7 +2302,10 @@ a:hover {
   color: #1B1C1D;
 }
 #admin_params #params_list .param.item .actions i.icon.delete {
-  margin-top: -2px;
+  margin-top: -4px;
+}
+#admin_params #add_param_btn {
+  margin-top: 25px;
 }
 #cart_detail {
   padding: 4%;
