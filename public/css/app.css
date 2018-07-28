@@ -2247,6 +2247,11 @@ a:hover {
   font-weight: 100;
   margin-bottom: 30px;
 }
+#admin_params #params_list .setting.icon {
+  margin-left: 15px;
+  top: -3px;
+  position: relative;
+}
 #admin_params #params_list .arrow {
   display: inline-block;
   cursor: pointer;
@@ -2299,6 +2304,7 @@ a:hover {
       align-self: center;
 }
 #admin_params #params_list .param.item .actions i.icon:hover {
+  color: rgba(255, 255, 255, 0.7);
 }
 #admin_params #params_list .param.item .actions i.icon.delete {
   margin-top: -4px;

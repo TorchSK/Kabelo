@@ -30,15 +30,23 @@
 		</ul>
 
 		<div id="params_list">
+
 			@if (isset($activecategory))
-				<div class="caption">{{$activecategory->name}}</div>
+				<div class="caption">{{$activecategory->name}}<a href="/admin/category/{{$activecategory->url}}" data-tooltip="Administrácia"><i class="setting teal icon"></i></a>
+				</div>
+				            <div class="ui horizontal divider active title"></i>Parametre</div>
+
 				<div class="list">
 					@include('params.all',['category'=>$activecategory])
 				</div>
-					    			<div class="ui green button" id="add_param_btn">Nový parameter</div>
 
 			@else
+					<div>
 					@include('params.all',['manage'=>true])
+					</div>
+					
+					<div class="ui green button" id="add_param_btn">Nový parameter</div>
+
 			@endif
 		</div>		
 
