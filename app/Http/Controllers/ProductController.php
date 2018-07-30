@@ -10,6 +10,7 @@ use App\File as ProductFile;
 use App\Rating;
 use App\ProductRelation;
 use App\PriceLevel;
+use App\Parameter;
 
 use Image;
 use File;
