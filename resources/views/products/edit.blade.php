@@ -175,6 +175,7 @@
     <div class="ui header">Parametre</div>
 
     <div id="edit_product_params">
+
       @if ($product->parameters->count() == 0)
         <div class="row">
         <div class="ui search selection dropdown">
@@ -196,9 +197,9 @@
       @foreach ($product->parameters as $parameter)
       <div class="row">
         <div class="ui search selection dropdown">
-          <input type="hidden" name="key[]" value="{{$parameter->categoryParameter->id}}">
+          <input type="hidden" name="key[]" value="{{$parameter->definition->id}}">
           <i class="dropdown icon"></i>
-          <div class="text">{{$parameter->categoryParameter->display_key}}</div>
+          <div class="text">{{$parameter->definition->display_key}}</div>
 
           <div class="menu">
             @foreach (App\Category::find($product->categories->first()->id)->parameters as $param)
