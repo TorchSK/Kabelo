@@ -87,12 +87,12 @@ class ProductController extends Controller
         {
             foreach ((array)$request->get('key') as $key => $param)
             {
-                $parameter = new Parameter();
-                $parameter->category_parameter_id = $param;
+                $parameter = new ProductParameter();
+                $parameter->parameter_id = $param;
                 $parameter->value = $request->get('value')[$key];
                 $parameter->dvalue = $request->get('value')[$key];
-                if ($param)
-                {
+
+                if ($param){
                     $product->parameters()->save($parameter);
                 }
             }
