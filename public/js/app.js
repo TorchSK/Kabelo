@@ -2341,17 +2341,21 @@ $('#add_param_btn').click(function(){
 
 $('.edit_param_btn').click(function(){
 	 $id = $(this).closest('.param.item').data('paramid');
+	 $val = $(this).closest('.param.item').data('val');
 
 	$('#edit_param_modal').modal('setting', {
     autofocus: false,
+    onShow: function(){
+    	$('#edit_param_modal input[name="display_key"]').val($val);
+    },
     onApprove : function() {
-    	$key = $('#edit_param_modal input[name="key"]').val();
+
         $display_key = $('#edit_param_modal input[name="display_key"]').val();
 
     	$.ajax({
     		type: "PUT",
     		url: "/param/"+$id,
-    		data: {key: $key, display_key:$display_key},
+    		data: {display_key:$display_key},
     		success: function(){
     			location.reload();
     		}

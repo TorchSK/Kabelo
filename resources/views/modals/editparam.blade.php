@@ -1,4 +1,4 @@
-<div class="ui mini modal" id="edit_param_modal" @if(isset($param))data-paramid="{{$param->id}}" @endif>
+<div class="ui mini modal" id="edit_param_modal">
 
 <div class="header">
 Pridaj parameter
@@ -9,7 +9,7 @@ Pridaj parameter
   <div class="label">Parameter</div>
 
   <div class="ui fluid input">
-    <input type="text" name="display_key" @if(isset($param))value="{{$param->display_key}}"  @endif/>
+    <input type="text" name="display_key" />
   </div>
 
 

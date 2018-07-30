@@ -1,4 +1,4 @@
-<div class="param item @if(isset($category) && $category->parameters->contains($param->id)) active @endif  @if (isset($manage) && $manage==true) manage @endif" data-paramid="{{$param->id}}" data-categoryid="{{$category->id}}">
+<div class="param item @if(isset($category) && $category->parameters->contains($param->id)) active @endif  @if (isset($manage) && $manage==true) manage @endif" data-paramid="{{$param->id}}" data-categoryid="{{$category->id}}" data-val="{{$param->display_key}}">
 	  <div class="ui inverted dimmer">
 	    <div class="ui loader"></div>
 	  </div>
