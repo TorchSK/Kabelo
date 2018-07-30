@@ -7,7 +7,7 @@
 		<ul id="categories">
 
 			<li class="ui blue fluid button">
-				<a href="/admin/params">Parametre</a>
+				<a href="/admin/params">Zoznam parametrov</a>
 			</li>
 
 			@foreach (App\Category::whereNull('parent_id')->orderBy('order')->get() as $category)

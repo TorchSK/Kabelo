@@ -1,7 +1,7 @@
 <div class="ui mini modal" id="edit_param_modal">
 
 <div class="header">
-Pridaj parameter
+Zmeň parameter
 </div>
 
 <div class="content">
