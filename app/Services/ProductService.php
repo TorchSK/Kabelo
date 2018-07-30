@@ -204,7 +204,25 @@ class ProductService implements ProductServiceContract {
         }
         else
         {
-            $makers = $products->unique(['maker']); 
+            
+            $makers = $category->products->unique(['maker']); 
+
+            if($category->children->count() > 0)
+            {
+                foreach ($category->children as $child)
+                {
+                    $makers = $makers->merge($child->products->unique(['maker'])); 
+
+                    if($child->children->count() > 0)
+                    {
+                        foreach ($child->children as $child2)
+                        {
+                            $makers = $makers->merge($child2->products->unique(['maker'])); 
+                        }
+                    }
+                }
+            }
+
 
             $categoryParameters = $category->parameters;
 
