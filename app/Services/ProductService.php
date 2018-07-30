@@ -204,7 +204,7 @@ class ProductService implements ProductServiceContract {
         }
         else
         {
-            $makers = $category->products->unique(['maker']); 
+            $makers = $products->unique(['maker']); 
 
             $categoryParameters = $category->parameters;
 
