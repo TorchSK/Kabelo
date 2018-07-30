@@ -2735,37 +2735,43 @@ a:hover {
   margin-top: 100px;
 }
 footer {
-  background-color: #2B2D2D   ;
-  padding: 90px 100px 80px 100px;
+  background-color: #2B2D2D;
+  padding: 90px 100px 100px 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #CCC;
 }
 @media all and (max-width: 980px) {
   footer {
     padding: 40px;
   }
 }
-footer .column {
-  display: inline-block;
+footer a:hover {
+  color: #CCC !important;
 }
-@media all and (max-width: 980px) {
-  footer .column {
-    display: block;
-    text-align: center;
-  }
+footer .stretch {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-footer .column:last-child {
-  float: right;
-  margin-top: 15px;
-}
-@media all and (max-width: 980px) {
-  footer .column:last-child {
-    float: none;
-  }
-}
-footer .logo {
-  padding: 20px;
+footer .stretch .column {
+  margin: 0 1%;
 }
 footer .logo img {
   margin-right: 15px;
+  position: relative;
+  top: -15px;
   display: inline-block;
 }
 @media all and (max-width: 980px) {
@@ -2776,7 +2782,6 @@ footer .logo img {
 footer .logo text {
   font-family: "hwt-artz";
   vertical-align: top;
-  margin-top: 15px;
   letter-spacing: 10px;
   display: inline-block;
   font-size: 1.7em;
@@ -2790,6 +2795,20 @@ footer .logo text {
 footer .social {
   color: #CCC;
   font-size: 2em;
+  text-align: right;
+}
+footer .social .icon {
+  cursor: pointer;
+  color: #CCC;
+}
+footer .social .facebook:hover {
+  color: #2185D0;
+}
+footer #td {
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: right;
+  font-weight: 200;
 }
 #welcome {
   -webkit-text-fill-color: #DDD !important;

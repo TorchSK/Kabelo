@@ -1,4 +1,5 @@
 <footer>
+
 	<div class="column">
 		 <a class="logo item" href="/">
           <img src="/img/logo.png" width="36"/>
@@ -6,14 +7,19 @@
         </a>
 
 	</div>
-	<div class="column"></div>
-	<div class="column"></div>
-	<div class="column social">
-		<i class="facebook square icon"></i>
-		<i class="twitter square icon"></i>
-		<i class="instagram square icon"></i>
 
-	</div>
+  <div class="stretch">
+	<div class="column"><a href="#" class="effect-1">Obchodné podmienky</a></div>
+	<div class="column"><a href="#" class="effect-1">O spoločnosti</a></div>
+  <div class="column"><a href="#" class="effect-1">Kontakt</a></div>
+  </div>
+
+	<div class="column social">
+		<a href="https://www.facebook.com/kabeloshop/" target="_blank"><i class="facebook square icon"></i></a>
+		<a href="/" target="_blank"><i class="twitter square icon"></i></a>
+		<a href="/" target="_blank"><i class="instagram square icon"></i></a>
+   <div id="td">Made by &copy; <a class="effect-1" href="mailto:jan.krnac@seznam.cz" target="_top">Ján Krnáč</a></div>
+	</div> 
 
     @if (!Auth::guest() && !Auth::user()->cookies)  
   <div id="cookies_msg">Tento web používa súbory cookies. Prehliadaním webu vyjadrujete súhlas s ich používaním. <a href="/cookies/info">Viac informácií.</a><i class="delete icon" data-user_id="{{Auth::user()->id}}"></i></div>

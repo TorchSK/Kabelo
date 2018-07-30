@@ -1,35 +1,35 @@
 footer{
-	background-color: #2B2D2D   ;
-	padding: 90px 100px 80px 100px;
+	background-color: #2B2D2D;
+	padding: 90px 100px 100px 100px;
+	display: flex;
+	justify-content: space-between;
+	color: #CCC;
 
 	@media @break3{
 		padding: 40px;
 	}
 
-	.column{
-		display: inline-block;
-		
-		@media @break3{
-			display: block;
-			text-align: center;
-		}
+	a:hover{
+		color: #CCC !important;
+	}
 
-		&:last-child{
-			float: right;
-			margin-top: 15px;
+	.stretch{
+		flex: 1;
+		text-align: center;
+		display: flex;
+		justify-content: center;
 
-
-			@media @break3{
-				float: none;
-			}
+		.column{
+			margin: 0 1%;
 		}
 	}
 
 	.logo{
-		padding: 20px;
 
 		img{
 			margin-right: 15px;
+			position: relative;
+			top: -15px;
 			display: inline-block;
 
 			@media @break3{
@@ -40,7 +40,6 @@ footer{
 		text{
 			font-family: "hwt-artz";
 			vertical-align: top;
-			margin-top: 15px;
 			letter-spacing: 10px;
 			display: inline-block;
 			font-size: 1.7em;
@@ -55,6 +54,23 @@ footer{
 	.social{
 		color: #CCC;
 		font-size: 2em;
+		text-align: right;
+
+		.icon{
+			cursor: pointer;
+			color: #CCC;
+		}
+
+		.facebook:hover{
+			color: @blue;
+		}
+	}
+
+	#td{
+		font-size: 14px;
+		margin-top: 5px;
+		text-align: right;
+		font-weight: 200;
 	}
 	
 }
