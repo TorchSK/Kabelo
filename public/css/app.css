@@ -676,6 +676,30 @@ a:hover {
 .lity-hide {
   display: none;
 }
+.c_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: center;
+      align-self: center;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 2em;
+  font-weight: 200;
+  line-height: 1.5em;
+  font-style: italic;
+  color: #555;
+}
+.c_header div {
+  width: 80%;
+}
 .covers {
   opacity: 0;
 }

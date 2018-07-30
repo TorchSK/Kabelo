@@ -32,13 +32,19 @@
 		<div id="params_list">
 
 			@if (isset($activecategory))
-				<div class="caption">{{$activecategory->name}}<a href="/admin/category/{{$activecategory->url}}" data-tooltip="Administrácia"><i class="setting teal icon"></i></a>
-				</div>
-				            <div class="ui horizontal divider active title"></i>Parametre</div>
+				@if($activecategory->children->count() == 0)
+					<div class="caption">{{$activecategory->name}}<a href="/admin/category/{{$activecategory->url}}" data-tooltip="Administrácia"><i class="setting teal icon"></i></a>
+					</div>
+					            <div class="ui horizontal divider active title"></i>Parametre</div>
 
-				<div class="list">
-					@include('params.all',['category'=>$activecategory])
-				</div>
+					<div class="list">
+						@include('params.all',['category'=>$activecategory])
+					</div>
+				@else
+					<div class="c_header">
+						<div>Na nadradenú kategóriu nie je možné zadať parameter. Prosim zadajte parameter až na poslednú úroveň kategórií.</div>
+					</div>
+				@endif
 
 			@else
 					<div>
