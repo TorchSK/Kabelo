@@ -3,6 +3,7 @@
 
 
 <div class="flex_content">
+    <div class="content cart hidden" data-cartid="{{Auth::user()->cart->id}}"></div>
 
 <div class="flex flex_content @if($product->active==0) inactive @endif" id="product_content">
 
