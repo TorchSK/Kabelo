@@ -9,7 +9,7 @@
           <i class="icon content"></i>
         </a>
 
-        <a class="cart item" href="/cart/products">
+        <a class="cart item hvr-curl-top-left" href="/cart/products">
           <div id="cart_icon"><i class="shop big icon"></i></div>
           <div id="cart_text">
               <text>Nákupný košík (<number>{{$cart['number']}}</number>)</text>
