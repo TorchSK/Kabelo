@@ -223,6 +223,7 @@ class ProductService implements ProductServiceContract {
                 }
             }
 
+            $makers = $makers->unique(['maker']);
 
             $categoryParameters = $category->parameters;
 
