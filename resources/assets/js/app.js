@@ -2448,4 +2448,14 @@ $('.dropdown').dropdown({
 })
 }
 
+$('#admin_order_params_save').click(function(){
+	$data = {};
+	$data['min_order_price'] = $('input[name="min_order_price"]').val();
+	$data['min_free_shipping_price'] = $('input[name="min_free_shipping_price"]').val();
+
+	$.post('/set/config', $data, function(){
+
+	})
+})
+
 });

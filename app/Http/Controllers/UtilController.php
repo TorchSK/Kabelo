@@ -45,4 +45,12 @@ class UtilController extends Controller
         $order = Order::find(11);
         Mail::to(json_decode($order->invoice_address)->email)->queue(new NewOrder($order));
     }
+
+     public function setConfig(Request $request)
+    {      
+        foreach ($request->all() as $key => $value)
+        {
+        config(['app.'.$key => $value]);
+        }
+    }
 }

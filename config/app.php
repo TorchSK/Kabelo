@@ -232,7 +232,8 @@ return [
     ],
 
     'layout' => 1,
-    'min_order_price' => null,
-    'min_free_shipping_price' => null
+    'min_order_price' => 0,
+    'min_free_shipping_price' => 30,
+    'ppp' => 24
 
 ];
