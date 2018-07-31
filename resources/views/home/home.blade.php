@@ -100,9 +100,11 @@
                
             </grid>
 
+             @if(Request::get('category') || Route::currentRouteName()=='maker.products')
             <div class="ct">
                 <div class="ui large teal button" id="more_button">Viac produktov</div>
             </div>
+            @endif
 
         </div>
 
