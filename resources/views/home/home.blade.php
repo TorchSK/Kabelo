@@ -86,6 +86,8 @@
            <div id="active_filters"></div>
            
 
+           <grid>
+
                 @if(Request::get('category') || Route::currentRouteName()=='maker.products')
 
                     @include('products.list')
@@ -96,7 +98,9 @@
 
                 @endif
                
- 
+            </grid>
+
+    
 
         </div>
 

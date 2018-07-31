@@ -1,8 +1,7 @@
-<grid>
+
 @foreach($products as $product)
 	@include('products.row')
 @endforeach
-</grid>
 
 @if(Request::get('category') || Route::currentRouteName()=='maker.products')
 
