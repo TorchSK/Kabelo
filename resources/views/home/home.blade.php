@@ -86,8 +86,6 @@
            <div id="active_filters"></div>
            
 
-           <grid>
-
                 @if(Request::get('category') || Route::currentRouteName()=='maker.products')
 
                     @include('products.list')
@@ -98,13 +96,7 @@
 
                 @endif
                
-            </grid>
-
-             @if(Request::get('category') || Route::currentRouteName()=='maker.products')
-            <div class="ct">
-                <div class="ui large teal button" id="more_button">Viac produktov</div>
-            </div>
-            @endif
+ 
 
         </div>
 

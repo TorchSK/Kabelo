@@ -1827,7 +1827,35 @@ a:hover {
   display: inline-block !important;
 }
 #more_button {
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+#pag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-top: 25px;
+}
+#pag li {
+  display: inline-block;
+  font-size: 1.3em;
+  margin-right: 5px;
+}
+#pag li.active {
+  font-weight: 900;
+  color: #2185D0;
+}
+#pag li a:hover {
+  color: #2185D0;
+}
+#pag .middle {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .admin_wrapper {
   display: -webkit-box;

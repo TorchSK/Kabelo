@@ -560,5 +560,36 @@
 }
 
 #more_button{
+	align-self: center;
+}
+
+
+#pag{
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
 	margin-top: 25px;
+
+	li{
+		display: inline-block;
+			font-size: 1.3em;
+			margin-right: 5px;
+
+			&.active{
+				font-weight: 900;
+				color: @blue;
+
+			}
+
+		a{
+
+			&:hover{
+				color: @blue;
+			}
+		}
+	}
+
+	.middle{
+		flex:1;
+	}
 }
