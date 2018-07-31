@@ -36,6 +36,6 @@ class NewOrder extends Mailable
     {
         $this->products = Order::where('id', $this->order['id'])->first()->products;
         $this->images = Order::where('id', $this->order['id'])->first()->products->pluck('image');
-        return $this->view('emails.neworder');
+        return $this->from('kabelo@kabelo.sk')->subject('Objednávka')->view('emails.neworder');
     }
 }

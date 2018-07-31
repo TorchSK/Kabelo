@@ -28,16 +28,36 @@
           }
 
           .product{
-            display: flex;
+            text-align: left;
+            display:-webkit-flex;
+            display:-ms-flexbox;
+            display:flex;
             background-color: #FFF;
+            padding: 7px;
+            margin-bottom: 4px;
+            border-radius: 3px;
+            align-content: center;
+            align-items: center;   
           }
 
           .image{
-            width: 60px
+            width: 60px;
+            margin-right: 15px;
           }
 
           .image img{
             width: 60px;
+          }
+
+          .name{
+            margin-right: 15px;
+            padding-top: 15px;
+            font-weight: 900;
+          }
+
+          .desc{
+            display: inline-block;
+            padding-top: 15px;
           }
       }
 
@@ -46,11 +66,11 @@
     
     <body style="max-width: 1000px; color: #000;">
     
-    <div style="background-color: #2B2D2D; border: 1px solid #EEE; padding: 10px; color: #FFF; text-align: center; border-radius: 6px 6px 0 0;">
+    <div style="background-color: #2B2D2D; border: 1px solid #EEE; padding: 10px; color: #FFF; border-radius: 6px 6px 0 0;  text-align: center;">
         <img src="<?php echo $message->embed(public_path().'/img/email_logo.jpg'); ?>" width="191">
     </div>
 
-    <div style="background-color: rgba(0,0,0,0.04); padding: 50px; text-align: center;border-radius: 0 0 6px 6px;">
+    <div style="background-color: rgba(0,0,0,0.04); padding: 50px;border-radius: 0 0 6px 6px;">
 
         <div style="margin: 15px 0; font-size: 18px">Ďakujeme za Vašu objednávku</div>
 
@@ -67,11 +87,19 @@
                     @endif
                 </div>
 
-                <div style="padding: 10px; background-color: #FFF; border-right: 5px; text-align: left;">{{$product->name}}</div>
+                <div class="name">{{$product->name}}</div>
+               
+                <div class="desc">{{substr($product->desc,0,100)}}</div>
 
             </div>
         @endforeach
-        <div style="margin: 30px 0; font-size: 14px;">Budeme Vás informovať o stave.</div>
+        <div style="margin: 30px 0;">
+            <span>Budeme Vás informovať o stave.</span>
+            <span style="font-size: 14px; float: right">Celková cena: <span style="font-weight: 900">{{$order->price}}</span> &euro;</span>
+        </div>
+
+        <div style="margin: 30px 0; font-size: 14px;">Stav objednávky si možte skontrolovat aj po kliknuti na</div>
+
     </div>
 
 
