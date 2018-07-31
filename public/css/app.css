@@ -3146,7 +3146,7 @@ h1.header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  font-weight: 700;
+  font-weight: 600;
 }
 #filterbar .categories .item .caption {
   -webkit-box-flex: 1;
@@ -3155,6 +3155,10 @@ h1.header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  color: #1B1C1D;
+}
+#filterbar .categories .item .caption a {
+  color: #1B1C1D;
 }
 #filterbar .categories .item .caption:hover {
   background-color: #FFFFFF;
@@ -3178,6 +3182,12 @@ h1.header {
 }
 #filterbar .categories .item.sub {
   font-weight: 400;
+}
+#filterbar .categories .item.sub .caption {
+  color: #1B1C1D;
+}
+#filterbar .categories .item.sub a {
+  color: #1B1C1D;
 }
 #filterbar .categories .item i.plus,
 #filterbar .categories .item i.minus {

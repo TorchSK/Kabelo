@@ -95,11 +95,16 @@
 			overflow: hidden;
 			display: flex;
 			flex-direction: column;
-			font-weight: 700;
+				font-weight: 600;
 
 			.caption{
 				flex: 1;
 				display: flex;
+					color: @black;
+
+				a{
+					color: @black;
+				}
 
 				&:hover{
 					background-color: @white;
@@ -130,6 +135,14 @@
 
 			&.sub{
 				font-weight: 400;
+
+				.caption{
+					color: @black;
+				}
+
+				a{
+					color: @black;
+				}
 			}
 
 			i.plus,
