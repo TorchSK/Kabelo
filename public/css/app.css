@@ -1826,6 +1826,9 @@ a:hover {
   width: 200px;
   display: inline-block !important;
 }
+#more_button {
+  margin-top: 25px;
+}
 .admin_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3143,6 +3146,7 @@ h1.header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  font-weight: 700;
 }
 #filterbar .categories .item .caption {
   -webkit-box-flex: 1;
@@ -3171,6 +3175,9 @@ h1.header {
 #filterbar .categories .item.selected > .caption > a {
   background-color: #A5673F;
   color: #FFFFFF;
+}
+#filterbar .categories .item.sub {
+  font-weight: 400;
 }
 #filterbar .categories .item i.plus,
 #filterbar .categories .item i.minus {

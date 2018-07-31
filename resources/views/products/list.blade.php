@@ -2,4 +2,4 @@
 	@include('products.row')
 @endforeach
 
-{{ $products->links() }}
+<a href="{{ $products->nextPageUrl()}}" class="hidden" id="next_page" data-next="{{$products->hasMorePages()}}"></a>

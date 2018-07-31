@@ -187,7 +187,7 @@ class ProductService implements ProductServiceContract {
         $activeFilters = collect($filters);
 
         // set products
-        $products = $this->query($filters)->orderBy($sortBy,$sortOrder)->paginate(24);
+        $products = $this->query($filters)->orderBy($sortBy,$sortOrder)->paginate(28);
         // set price range
         $priceRangeFilters = $filters;
         unset($priceRangeFilters['price']);

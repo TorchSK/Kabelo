@@ -100,6 +100,10 @@
                
             </grid>
 
+            <div class="ct">
+                <div class="ui large teal button" id="more_button">Viac produktov</div>
+            </div>
+
         </div>
 
     </div>
