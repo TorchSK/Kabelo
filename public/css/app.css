@@ -1808,6 +1808,11 @@ a:hover {
 .product_price_level .grid {
   margin-top: 5px;
 }
+@media all and (max-width: 1690px) {
+  .product_price_level .grid .column {
+    width: 100% !important;
+  }
+}
 #product_catalogue_dropzone {
   padding: 0px;
 }
