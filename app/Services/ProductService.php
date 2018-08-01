@@ -13,6 +13,7 @@ use Session;
 use Auth;
 use Cookie;
 use Response;
+use DB;
 
 class ProductService implements ProductServiceContract {
 
@@ -187,7 +188,7 @@ class ProductService implements ProductServiceContract {
         $activeFilters = collect($filters);
 
         // set products
-        $products = $this->query($filters)->orderBy($sortBy,$sortOrder)->paginate(2);
+        $products = $this->query($filters)->orderBy($sortBy,$sortOrder)->paginate(28);
         // set price range
         $priceRangeFilters = $filters;
         unset($priceRangeFilters['price']);
@@ -288,13 +289,14 @@ class ProductService implements ProductServiceContract {
             }
         }
 
+
         $data = [
             'makers' => $makers,
             'filters' => $params,
             'products' => $products,
             'activeFilters' => $activeFilters,
             'filterCounts' => $filterCounts,
-            'priceRange' => $priceRange
+            'priceRange' => $priceRange,
         ];
 
         return $data;
