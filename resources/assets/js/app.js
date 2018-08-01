@@ -536,7 +536,6 @@ function doSort(){
   $.get('/product/list',{category: $categoryid, sortBy: $sortBy, sortOrder: $sortOrder, filters: $filters}, function(data){
     $grid.html(data.products);
 	
-	initInfiniteScroll();
 
     $filtersDiv.html(data.filters);
     filtersInit();
