@@ -252,7 +252,7 @@ class ProductService implements ProductServiceContract {
                 
                 $filterCountFilters['parameters']['makers'] = [$maker->maker];
                 
-                $filterCounts['parameters']['makers'][$maker->maker] = $this->query($filterCountFilters)->get()->count();
+                $filterCounts['parameters']['makers'][$maker->maker] = 1;
                 
             }
 
@@ -265,7 +265,7 @@ class ProductService implements ProductServiceContract {
                 {   
                     $filterCountFilters['parameters'][$categoryParameter->key] = $productParameter->value;
                     array_push($temp, $filterCountFilters);
-                    $filterCounts['parameters'][$categoryParameter->id][$productParameter->value] = $this->query($filterCountFilters, [$categoryParameter->key])->get()->count();
+                    $filterCounts['parameters'][$categoryParameter->id][$productParameter->value] = 1;
                     unset($filterCountFilters['parameters'][$categoryParameter->key]);
                 }
             }
