@@ -63,14 +63,16 @@ class ProductService implements ProductServiceContract {
                     $query->whereHas('categories', function($query) use ($filters){
                         $query->where('category_id', $filters['category']);
 
-                        if (Category::find($filters['category'])->children->count() > 0)
+                        $children = Category::find($filters['category'])->children;
+
+                        if ($children->count() > 0)
                         {
-                            $query->orWhereIn('category_id', Category::find($filters['category'])->children->pluck('id'));
+                            $query->orWhereIn('category_id', $children->pluck('id'));
                         }
 
-                        if (Category::find($filters['category'])->children->count() > 0)
+                        if ($children->count() > 0)
                         {
-                            foreach(Category::find($filters['category'])->children as $child)
+                            foreach($children as $child)
                             {
                                 $query->orWhereIn('category_id', Category::find($child->id)->children->pluck('id'));
                             }
@@ -308,7 +310,7 @@ class ProductService implements ProductServiceContract {
         $categoryCounts = [];
         $categoryCounts['categories'] = [];
 
-        foreach (Category::all() as $category)
+        foreach (Category::with(['children','products','children.products','children.children.products'])->get() as $category)
         {
             $categoryCounts['categories'][$category->id] = $category->products->where('active',1)->count();
 
