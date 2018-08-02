@@ -173,7 +173,8 @@ class ProductService implements ProductServiceContract {
             $filters['search'] = '';
         }
 
-        $category = Category::find($request->get('category'));
+        $category = Category::with(['products','children','children.products'])->find($request->get('category'));
+
         $sortBy = $request->get('sortBy');
         $sortOrder = $request->get('sortOrder');    
 
@@ -191,6 +192,8 @@ class ProductService implements ProductServiceContract {
 
         // set products
         $products = $this->query($filters)->orderBy($sortBy,$sortOrder)->paginate(28);
+
+
         // set price range
         $priceRangeFilters = $filters;
         unset($priceRangeFilters['price']);

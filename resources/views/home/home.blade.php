@@ -29,12 +29,12 @@
             @if (Request::has('category'))
 
                 <div class="caption">
-                @if(App\Category::find(Request::get('category'))->parent_id)
-                    <a class="effect-1" href="/category/{{App\Category::find(Request::get('category'))->parent->url}}">{{App\Category::find(App\Category::find(Request::get('category'))->parent_id)->name}}</a> -
+                @if($requestCategory->parent_id)
+                    <a class="effect-1" href="/category/{{$requestCategory->parent->url}}">{{App\Category::find($requestCategory->parent_id)->name}}</a> -
                 @endif
-                    <a>{{App\Category::find(Request::get('category'))->name}}</a>
+                    <a>{{$requestCategory->name}}</a>
                     @if (Auth::user()->admin)
-                    <a href="/admin/category/{{App\Category::find(Request::get('category'))->url}}" data-tooltip="Administrácia"><i class="setting teal icon"></i></a>
+                    <a href="/admin/category/{{$requestCategory->url}}" data-tooltip="Administrácia"><i class="setting teal icon"></i></a>
                     @endif
                 </div>
 
@@ -43,9 +43,9 @@
             @endif
 
 
-            @if(Request::get('category') && App\Category::find(Request::get('category'))->children->count() > 0)
+            @if(Request::get('category') && $requestCategory->children->count() > 0)
             <div class="subcategories">
-                @foreach(App\Category::find(Request::get('category'))->children->sortBy('order') as $child)
+                @foreach($requestCategory->children->sortBy('order') as $child)
                     @include('categories.image',['category'=>$child])
                 @endforeach         
             </div>
