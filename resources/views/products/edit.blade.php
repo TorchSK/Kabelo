@@ -190,6 +190,9 @@
           </div>
         </div>
         <div class="ui input value"><input type="text" name="value[]" /></div>
+
+        <div class="ui icon red button delete_product_param"><i class="delete icon"></i></div>
+
       </div>
 
       @else
@@ -207,7 +210,11 @@
             @endforeach
           </div>
         </div>
+
         <div class="ui input value"><input type="text" name="value[]" value="{{$parameter->value}}"/></div>
+
+        <div class="ui icon red button delete_product_param"><i class="delete icon"></i></div>
+
       </div>
       @endforeach
       @endif

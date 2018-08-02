@@ -394,12 +394,16 @@
 	.row{
 		display: flex;
 		margin-bottom: 15px;
+
+		&:first-child .ui.button{
+			display: none;
+		}
 		
 		.ui.dropdown:first-child{
 			margin-right: 15px;
 		}
 
-		.ui.input:last-child{
+		.ui.input:nth-child(2){
 			flex:1;
 		}
 	}

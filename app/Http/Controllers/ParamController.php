@@ -68,6 +68,12 @@ class ParamController extends Controller
     public function destroy($id)
     {   
         $param = Parameter::find($id);
+
+        foreach ($param->productParameters as $p)
+        {
+            $p->delete();
+        }
+
         $param->delete();
 
         return $param;

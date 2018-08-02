@@ -2458,6 +2458,8 @@ $('#admin_order_params_save').click(function(){
 	})
 })
 
-
+$(document).on('click', '.delete_product_param', function(){
+	$(this).closest('.row').remove();
+})
 
 });
