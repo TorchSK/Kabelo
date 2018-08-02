@@ -157,6 +157,7 @@ class ProductService implements ProductServiceContract {
         }
 
         $category = Category::with(['products','children','children.products'])->find($request->get('category'));
+        $children = $category->children;
 
         $sortBy = $request->get('sortBy');
         $sortOrder = $request->get('sortOrder');    
@@ -196,9 +197,9 @@ class ProductService implements ProductServiceContract {
             
             $makers = $category->products->unique(['maker']); 
 
-            if($category->children->count() > 0)
+            if($children->count() > 0)
             {
-                foreach ($category->children as $child)
+                foreach ($children as $child)
                 {
                     $makers = $makers->merge($child->products->unique(['maker'])); 
 
@@ -216,7 +217,7 @@ class ProductService implements ProductServiceContract {
 
             $categoryParameters = $category->parameters;
 
-            foreach($category->children as $child)
+            foreach($children as $child)
             {
                 $categoryParameters = $categoryParameters->merge($child->parameters);
                 $makers = $makers->union($child->products->unique(['maker']));
