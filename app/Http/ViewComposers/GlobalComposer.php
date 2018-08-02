@@ -69,7 +69,6 @@ class GlobalComposer {
         //dd($cart);
         
         $view->with('cart', $cart);
-        $view->with('layout', config('app.layout'));
         $view->with('min_order_price', config('app.min_order_price'));
         $view->with('min_free_shipping_price', config('app.min_free_shipping_price'));
     }
