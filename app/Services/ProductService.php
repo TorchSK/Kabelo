@@ -135,7 +135,7 @@ class ProductService implements ProductServiceContract {
             $sortBy = $this->getUserPriceType();
         }
         
-        $products = $this->query($filters)->orderBy($sortBy,$sortOrder)->get();
+        $products = $this->query($filters)->orderBy($sortBy,$sortOrder)->paginate(28);
 
         // set price range
         $priceRangeFilters = $filters;
