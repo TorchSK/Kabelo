@@ -156,7 +156,7 @@ class ProductService implements ProductServiceContract {
             $filters['search'] = '';
         }
 
-        $category = Category::with(['products','children','children.products'])->find($request->get('category'));
+        $category = Category::with(['children.products'])->find($request->get('category'));
         $children = $category->children;
 
         $sortBy = $request->get('sortBy');
