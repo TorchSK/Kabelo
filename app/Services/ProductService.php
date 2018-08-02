@@ -61,24 +61,7 @@ class ProductService implements ProductServiceContract {
                 {
 
                     $query->whereHas('categories', function($query) use ($filters){
-                        $query->where('category_id', $filters['category']);
-
-                        $children = Category::find($filters['category'])->children;
-
-                        if ($children->count() > 0)
-                        {
-                            $query->orWhereIn('category_id', $children->pluck('id'));
-                        }
-
-                        if ($children->count() > 0)
-                        {
-                            foreach($children as $child)
-                            {
-                                $query->orWhereIn('category_id', Category::find($child->id)->children->pluck('id'));
-                            }
-                        }
-
-                        //dd(Category::find($filters['category'])->parent->id);
+                        $query->where('category_id', $filters['category'])->orWhereIn('category_id', Category::find($filters['category'])->children->pluck('id'));
                     });
                 }
                 elseif($key=='price')
