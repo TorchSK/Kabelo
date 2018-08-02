@@ -2255,7 +2255,7 @@ $('#cart_detail .product').each(function(index,item){
   $cart_price = $cart_price + parseFloat($(item).find('.final_price').text());
 })
 
-$('#cart_total_price').find('price').text(parseFloat($cart_price - $cart_price*parseFloat($('#cart_user_discount').find('price').text())/100));
+$('#cart_total_price').find('price').text(parseFloat($cart_price - $cart_price*parseFloat($('#cart_user_discount').find('price').text())/100).toFixed(2));
 
 $('.filterbar_handle').mouseover(function(){
   $('#filterbar').show();
