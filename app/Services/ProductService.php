@@ -230,7 +230,7 @@ class ProductService implements ProductServiceContract {
             $makers = $makers->unique(['maker']);
 
             $categoryParameters = $category->parameters;
-            $categoryChildren = $category->children()->with(['children','children.products']);
+            $categoryChildren = $category->children;
 
             foreach($categoryChildren as $child)
             {
