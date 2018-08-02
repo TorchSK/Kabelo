@@ -1697,10 +1697,6 @@ a:hover {
   display: flex;
   margin-bottom: 15px;
 }
-#create_product_params .row:first-child .ui.button,
-#edit_product_params .row:first-child .ui.button {
-  display: none;
-}
 #create_product_params .row .ui.dropdown:first-child,
 #edit_product_params .row .ui.dropdown:first-child {
   margin-right: 15px;
@@ -1710,6 +1706,9 @@ a:hover {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+#param_template {
+  display: none;
 }
 #product_options {
   padding: 19px 0;

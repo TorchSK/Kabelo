@@ -201,7 +201,7 @@ $('#create_product_add_param_row').click(function(){
 })
 
 $('#edit_product_add_param_row').click(function(){
-  $html = $('#edit_product_params .row:first-child').html();
+  $html = $('#param_template .row').html();
   $('#edit_product_params').append('<div class="row">'+$html+'</div>');
   $('.ui.dropdown').dropdown();
 })

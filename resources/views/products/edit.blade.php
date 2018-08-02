@@ -1,6 +1,29 @@
 @extends('layouts.admin')
 @section('content')
 
+    <div id="param_template">
+
+        <div class="row">
+        <div class="ui search selection dropdown">
+          <input type="hidden" name="key[]">
+          <i class="dropdown icon"></i>
+            <div class="default text">Parameter</div>
+
+          <div class="menu">
+            @foreach (App\Category::find($product->categories->first()->id)->parameters as $param)
+              @include('products.paramoptions')
+            @endforeach
+          </div>
+        </div>
+        <div class="ui input value"><input type="text" name="value[]" /></div>
+
+        <div class="ui icon red button delete_product_param"><i class="delete icon"></i></div>
+
+      </div>
+
+    </div>
+
+
 <form action="/product/{{$product->id}}" method="POST">
 
   <input name="_method" type="hidden" value="PUT">
@@ -174,26 +197,13 @@
 
     <div class="ui header">Parametre</div>
 
+
+
+
     <div id="edit_product_params">
 
       @if ($product->parameters->count() == 0)
-        <div class="row">
-        <div class="ui search selection dropdown">
-          <input type="hidden" name="key[]">
-          <i class="dropdown icon"></i>
-            <div class="default text">Parameter</div>
 
-          <div class="menu">
-            @foreach (App\Category::find($product->categories->first()->id)->parameters as $param)
-              @include('products.paramoptions')
-            @endforeach
-          </div>
-        </div>
-        <div class="ui input value"><input type="text" name="value[]" /></div>
-
-        <div class="ui icon red button delete_product_param"><i class="delete icon"></i></div>
-
-      </div>
 
       @else
 
