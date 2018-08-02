@@ -14,7 +14,7 @@ class ComposerServiceProvider extends ServiceProvider {
      */
     public function boot(ViewFactory $view)
     {
-        $view->composer('*', 'App\Http\ViewComposers\GlobalComposer');
+        $view->composer(['includes/header', 'cart.*'], 'App\Http\ViewComposers\GlobalComposer');
         $view->composer('includes/filterbar', 'App\Http\ViewComposers\CountComposer');
     }
 

@@ -2,7 +2,7 @@
 <html>
     @include('includes.head')
 
-    <body @if (isset($bodyid)) id="{{$bodyid}}" @endif data-layout="{{$layout}}">
+    <body @if (isset($bodyid)) id="{{$bodyid}}" @endif data-layout="1">
 
     @include('includes.sidebar')
     @include('includes.catbar')
