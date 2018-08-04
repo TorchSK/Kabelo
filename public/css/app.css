@@ -1542,6 +1542,11 @@ a:hover {
   width: 90%;
   font-weight: 300;
 }
+@media all and (max-width: 980px) {
+  #product_detail #desc {
+    font-size: 1em;
+  }
+}
 #product_detail #final_price {
   color: #F2711C;
   font-weight: 900;
