@@ -8,7 +8,7 @@
     		@foreach ($category->children->sortBy('order') as $child)
     		    <a class="item sub" href="/category/{{$child->url}}">
     			 <text>{{$child->name}}</text>
-    			 <count>{{$categoryCounts['categories'][$category->id]}}</count>
+    			 <count>{{$categoryCounts['categories'][$child->id]}}</count>
     			</a>
 
     		@endforeach
