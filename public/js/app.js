@@ -1084,10 +1084,6 @@ $("#catbar_handle").click(function(){
   $('#catbar').sidebar('toggle');
 })
 
-$('#catbar .categories .item').click(function(){
-  $('#catbar').sidebar('hide');
-})
-
 $("#parambarbar_handle").click(function(){
   $('#parambar').sidebar('toggle');
 })
