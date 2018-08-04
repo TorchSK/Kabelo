@@ -4,9 +4,7 @@
 
     <body @if (isset($bodyid)) id="{{$bodyid}}" @endif data-layout="1">
 
-    @include('includes.sidebar')
     @include('includes.catbar')
-    @include('includes.parambar')   
 
     <div class="pusher">
     @include('includes.header')
