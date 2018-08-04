@@ -15,6 +15,12 @@
   Zobrazit katalóg
 </div>
 
+
+<div id="m_categories_btn">
+    <div class="ui brown  small fluid button" id="catbar_handle">Kategorie</div>
+</div>
+
+
 @include('includes/filterbar')
 
 @if (Auth::check() && Auth::user()->admin)
@@ -110,7 +116,7 @@
       Všetky ceny sú maloobchodné
       @endif
       </div>
-      <table class="ui table">
+      <table class="ui unstackable table">
         <thead>
           <tr>
             <th>

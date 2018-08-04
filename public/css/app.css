@@ -235,6 +235,11 @@ body {
 .pad.wrapper {
   padding: 60px 0;
 }
+@media all and (max-width: 980px) {
+  .pad.wrapper {
+    padding: 35px 0;
+  }
+}
 .dark.wrapper {
   background-color: #F7F7F7;
 }
@@ -1372,7 +1377,7 @@ a:hover {
         -ms-flex-direction: column;
             flex-direction: column;
     display: block;
-    padding: 10px;
+    padding: 20px;
   }
 }
 #product_detail .other_img img {
@@ -1452,6 +1457,12 @@ a:hover {
   margin-top: 50px;
 }
 @media all and (max-width: 980px) {
+  #product_detail #parameters {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+@media all and (max-width: 980px) {
   #product_detail #parameters .header {
     display: none;
   }
@@ -1487,6 +1498,11 @@ a:hover {
   font-size: 1.7em;
   font-weight: 700;
 }
+@media all and (max-width: 980px) {
+  #product_detail .threshold {
+    font-size: 1em;
+  }
+}
 #product_detail #product_buy_qty_m_slider {
   margin-top: 45px;
 }
@@ -1498,6 +1514,11 @@ a:hover {
   font-size: 1.5em;
   font-weight: 400;
 }
+@media all and (max-width: 980px) {
+  #product_detail #product_buy_qty_value {
+    font-size: 1em;
+  }
+}
 #product_detail #product_buy_qty_value price {
   font-weight: 900;
 }
@@ -1508,6 +1529,11 @@ a:hover {
   display: inline-block;
   position: relative;
   margin-right: 15px;
+}
+@media all and (max-width: 980px) {
+  #product_detail #price {
+    font-size: 1em;
+  }
 }
 #product_detail #desc {
   padding: 45px 0;
@@ -1522,6 +1548,11 @@ a:hover {
   font-size: 2em;
   display: inline-block;
   position: relative;
+}
+@media all and (max-width: 980px) {
+  #product_detail #final_price {
+    font-size: 1em;
+  }
 }
 #product_detail .stock {
   font-weight: 900;
@@ -1584,6 +1615,11 @@ a:hover {
   text-align: left;
   margin-bottom: 50px;
 }
+@media all and (max-width: 980px) {
+  #product_tabs #product_detail_params .container {
+    text-align: center;
+  }
+}
 #product_tabs #product_detail_params table {
   margin-bottom: 35px !important;
 }
@@ -1630,6 +1666,16 @@ a:hover {
   margin-right: 25px;
   padding-right: 25px;
   border-right: 1px solid #CCC;
+}
+@media all and (max-width: 980px) {
+  #product_tabs .overall_rating {
+    display: block;
+    text-align: center;
+    margin-right: 0px;
+    border-right: none;
+    padding-right: 0;
+    margin-bottom: 25px;
+  }
 }
 #product_tabs .my_rating {
   display: inline-block;
@@ -1697,7 +1743,7 @@ a:hover {
 @media all and (max-width: 980px) {
   #product_detail_tocart_btn {
     margin-top: 15px;
-    margin-bottom: 85px;
+    margin-bottom: 15px;
     display: inline-block;
     margin-left: 0;
   }
@@ -3268,6 +3314,11 @@ h1.header {
   background-color: rgba(255, 255, 255, 0.5);
   border: none;
   border-radius: 0;
+}
+@media all and (max-width: 980px) {
+  .filterbar_handle {
+    display: none !important;
+  }
 }
 .admin_add_cover {
   padding: 50px;

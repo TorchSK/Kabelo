@@ -39,7 +39,7 @@
 	@media @break3{
 		flex-direction: column;
 		display: block;
-		padding: 10px;
+		padding: 20px;
 	}
 	
 
@@ -131,6 +131,11 @@
 		margin-bottom: 50px;
 		margin-top: 50px;
 
+		@media @break3{
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
 		.header{
 			@media @break3{
 				display: none;
@@ -170,6 +175,10 @@
 	.threshold{
 		font-size: 1.7em;
 		font-weight: 700;
+
+		@media @break3{
+			font-size: 1em;
+		}
 	}
 
 	#product_buy_qty_m_slider{
@@ -184,7 +193,9 @@
 		margin-top: 55px;
 		font-size: 1.5em;
 		font-weight: 400;
-
+		@media @break3{
+			font-size: 1em;
+		}
 		price{
 			font-weight: 900;
 		}
@@ -197,6 +208,11 @@
 		display: inline-block;
 		position: relative;
 		margin-right: 15px;
+
+				@media @break3{
+			font-size: 1em;
+		}
+
 	}
 
 	#desc{
@@ -214,6 +230,10 @@
 		font-size: 2em;
 		display: inline-block;
 		position: relative;
+
+				@media @break3{
+			font-size: 1em;
+		}
 	}
 
 	.stock{
@@ -289,6 +309,14 @@
 	}
 
 	#product_detail_params{
+
+		@media @break3{
+
+			.container{
+				text-align: center;
+			}
+		}
+
 		table{
 			margin-bottom: 35px !important;
 		}
@@ -342,6 +370,15 @@
 		margin-right: 25px;
 		padding-right: 25px;
 		border-right: 1px solid #CCC;
+
+		@media @break3{
+			display: block;
+			text-align: center;
+			margin-right: 0px;
+			border-right: none;
+			padding-right: 0;
+			margin-bottom: 25px;
+		}
 	}
 
 	.my_rating{
@@ -423,7 +460,7 @@
 
 	@media @break3{
 		margin-top: 15px;
-		margin-bottom: 85px;
+		margin-bottom: 15px;
 		display: inline-block;
 		margin-left: 0;
 
