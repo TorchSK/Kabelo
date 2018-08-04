@@ -1,4 +1,4 @@
-<div class="ui sidebar inverted vertical menu" id="catbar">
+<div class="ui sidebar inverted vertical left menu" id="catbar">
 	@foreach (App\Category::whereNull('parent_id')->orderBy('order')->get() as $category)
     <a class="item" href="/category/{{$category->url}}">
      <text>{{$category->name}}</text>
