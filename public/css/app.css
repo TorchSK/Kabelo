@@ -2992,7 +2992,7 @@ footer #td {
   background-color: rgba(255, 255, 255, 0.3);
 }
 #catbar .item.sub {
-  margin-left: 15px;
+  padding-left: 25px;
   font-weight: 300;
 }
 count {
