@@ -2982,6 +2982,10 @@ footer #td {
 #welcome #cover #login_div .ui.input input {
   background-color: rgba(255, 255, 255, 0.3);
 }
+#catbar .item.sub {
+  margin-left: 15px;
+  font-weight: 300;
+}
 count {
   float: right;
   margin-right: 5px;

@@ -1,11 +1,14 @@
 <div class="ui sidebar inverted vertical menu" id="catbar">
-    <a class="item">
-      1
+	@foreach (App\Category::whereNull('parent_id')->orderBy('order')->get() as $category)
+    <a class="item" href="/category/{{$category->url}}">
+     {{$category->name}}
     </a>
-    <a class="item">
-      2
-    </a>
-    <a class="item">
-      3
-    </a>
+
+    		@foreach ($category->children->sortBy('order') as $child)
+    		    <a class="item sub" href="/category/{{$child->url}}">
+    			 {{$child->name}}
+    			</a>
+    		@endforeach
+
+    @endforeach
   </div>
