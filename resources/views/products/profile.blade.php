@@ -200,7 +200,7 @@
 
       @if ($product->parameters->count() > 0)
 
-      <table class="ui celled table">
+      <table class="ui celled unstackable table">
        <tbody>
           @foreach ($product->parameters as $parameter)
               <tr>
