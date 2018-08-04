@@ -1081,7 +1081,7 @@ $("#sidebar_handle").click(function(){
 })
 
 $("#catbar_handle").click(function(){
-  $('#catbar').sidebar('toggle');
+  $('#catbar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');
 })
 
 $("#parambarbar_handle").click(function(){
