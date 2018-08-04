@@ -2649,8 +2649,21 @@ a:hover {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
+@media all and (max-width: 736px) {
+  .subcategories {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
 .subcategories .category_image {
   margin: 0px 8px 15px 8px;
+  width: 10%;
+}
+@media all and (max-width: 980px) {
+  .subcategories .category_image {
+    width: 45%;
+  }
 }
 .subcategories .category_image .image {
   overflow: hidden;
@@ -2665,11 +2678,7 @@ a:hover {
 }
 .subcategories .category_image .image img {
   border-radius: 6px;
-}
-@media all and (max-width: 980px) {
-  .subcategories .category_image .image img {
-    width: 100px;
-  }
+  width: 100%;
 }
 .subcategories .category_image .name {
   text-align: center;

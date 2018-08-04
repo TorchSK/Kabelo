@@ -6,9 +6,9 @@
 	@endif
 	<div class="image @if (Request::segment(1)!='admin') btn-4  @endif">
 		@if($category->image)
-			<img src="/{{$category->image}}" width="180"/>
+			<img src="/{{$category->image}}" />
 		@else
-			<img src="/img/category.jpg" width="180" />
+			<img src="/img/category.jpg" />
 		@endif
 
 		@if(Request::segment(1)=='admin')

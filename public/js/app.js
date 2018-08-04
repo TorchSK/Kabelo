@@ -114,7 +114,7 @@ $.ajaxSetup({
 var path = window.location.href.split( '/' );
 console.log(path);
 
-if (path[3] != '' && path[3]!='admin')
+if (path[3] != '' && path[3]!='admin' && $( window ).width() > 680)
 {
   scrollTo('#grid');
 }

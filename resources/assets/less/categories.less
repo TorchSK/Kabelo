@@ -32,8 +32,17 @@
 	display: flex;
 	flex-wrap: wrap;
 
+	@media @break2{
+		justify-content: space-between;
+	}
+
 	.category_image{
 		margin: 0px 8px 15px 8px;
+		width: 10%;
+
+		@media @break3{
+			width: 45%;
+		}
 
 		.image{
 			overflow: hidden;
@@ -49,11 +58,7 @@
 
 			img{
 				border-radius: 6px;
-
-				@media @break3{
-					width: 100px;
-				}
-
+				width: 100%;
 			}
 		}
 
