@@ -8,13 +8,18 @@ body {
   background-color: transparent;
   display: flex;
   flex-direction: column;
+}
 
-  &[data-layout="1"]{
-	  width: 100%;
+ .covers{
 
-	  .covers .cover{
-	  	height: 55vh;
+    @media @break2{
+      display: none !important;
+    }
+
+    .cover{
+	  	height: 55vh !important;
 	  }
+  }
 
 	  #nav{
 	  	background-color: black;
@@ -27,69 +32,7 @@ body {
 	  		background-color: rgba(0,0,0,0.4);
 	  	}
 	  }
-	}
 
-  &[data-layout="2"]{
-	  width: 100%;
-	  max-width: 1360px;
-	  margin: 0 auto;
-
-	  .cover{
-	  	height: 35vh;
-	  }
-
-	  #nav{
-	  	padding-top: 25px;
-	  	padding-bottom: 10px;
-  		background: transparent;
-
-	  	.item{
-	  		color: #333;
-	  		font-weight: 500;
-
-
-	  		&:hover{
-	  			text-shadow: none;
-	  		}
-	  	}
-	  }
-
-
-	#header{
-	  background-color: #2B2D2D;
-	  border-radius: 10px 10px 0 0;
-
-	  	.item{
-			color: #DDD;
-		}
-
-		.cart{
-			background-color: transparent;
-		}
-	  }
-
-	  #grid{
-		.item{
-				width: @ccw7;
-
-				.image_div{
-					padding: 15px;
-				}
-			}
-		}
-		footer{
-			margin-bottom: 50px;
-				  border-radius: 0px 0px 10px 10px;
-
-		}
-		.container{
-			width: 95%;
-		}
-
-	}
-
-
-}
 
 .wrapper{
 	  background-color: #F7F7F7;

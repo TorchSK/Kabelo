@@ -7,6 +7,8 @@ footer{
 
 	@media @break3{
 		padding: 40px;
+		display: block;
+		text-align: center;
 	}
 
 	a:hover{
@@ -18,6 +20,11 @@ footer{
 		text-align: center;
 		display: flex;
 		justify-content: center;
+
+		@media @break3{
+			display: block;
+			margin: 25px 0;
+		}
 
 		.column{
 			margin: 0 1%;
@@ -56,6 +63,11 @@ footer{
 		font-size: 2em;
 		text-align: right;
 
+
+		@media @break3{
+			text-align: center;
+		}
+
 		.icon{
 			cursor: pointer;
 			color: #CCC;
@@ -71,6 +83,10 @@ footer{
 		margin-top: 5px;
 		text-align: right;
 		font-weight: 200;
+
+		@media @break3{
+			text-align: center;
+		}
 	}
 	
 }
