@@ -6,13 +6,15 @@
 
     @include('includes.sidebar')
     @include('includes.catbar')
-    @include('includes.parambar')
-	
+    @include('includes.parambar')   
+
+    <div class="pusher">
     @include('includes.header')
 
     @yield('content')
 
 	@include('includes.footer')
+    </div>
 
     </body>
 </html>
