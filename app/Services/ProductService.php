@@ -254,7 +254,10 @@ class ProductService implements ProductServiceContract {
                 {   
                     $filterCountFilters['parameters'][$categoryParameter->key] = $productParameter->value;
                     array_push($temp, $filterCountFilters);
-                    $filterCounts['parameters'][$categoryParameter->id][$productParameter->value] = $this->query($filterCountFilters, [$categoryParameter->key])->get()->count();
+                    if ($aa = $this->query($filterCountFilters, [$categoryParameter->key])->get()->count() > 0)
+                    {
+                        $filterCounts['parameters'][$categoryParameter->id][$productParameter->value] = $aa;
+                    }
                     unset($filterCountFilters['parameters'][$categoryParameter->key]);
                 }
             }
