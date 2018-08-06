@@ -67,6 +67,7 @@
               </div>
 
               <button type="submit" class="ui green fluid button" id="login_btn">Prihlásiť</button>
+              <a href="">Zabudnuté heslo</a>
 
             </form>
 

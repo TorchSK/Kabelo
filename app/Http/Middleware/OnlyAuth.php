@@ -16,10 +16,12 @@ class OnlyAuth
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
-    {
+    {   
+        
         if (!Auth::guard($guard)->check() && env('APP_ENV')=='production') {
             return redirect('/welcome');
         }
+        
 
         return $next($request);
     }
