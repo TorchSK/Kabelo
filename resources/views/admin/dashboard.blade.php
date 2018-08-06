@@ -24,7 +24,7 @@
 			    <th>Dodanie</th>
 			  </tr></thead>
 			  <tbody>
-			  	@foreach(App\Order::orderBy('created_at','desc')->get() as $order)
+			  	@foreach(App\Order::orderBy('created_at','desc')->take(10)->get() as $order)
 				<tr>
 			      <td>{{$order->id}}</td>
 			      <td>{{Carbon\Carbon::parse($order->created_at)->format('j.n.Y H:i:s')}}</td>
@@ -57,9 +57,9 @@
 			    <th>Akcie</th>
 			  </tr></thead>
 			  <tbody>
-			  	@foreach(App\Product::orderBy('created_at','desc')->get() as $product)
+			  	@foreach(App\Product::orderBy('created_at','desc')->take(10)->get() as $product)
 				<tr>
-			      <td>{{$product->id}}</td>
+			      <td><a href="/{{$product->maker}}/{{$product->code}}/detail">{{$product->id}}</a></td>
 			      <td>{{Carbon\Carbon::parse($product->created_at)->format('d.m.Y H:i:s')}}</td>
 			   	  <td>{{$product->name}}</td>
 			   	  <td>{{$product->categories->first()->name}}</td>
@@ -90,7 +90,7 @@
 			    <th>Akcie</th>
 			  </tr></thead>
 			  <tbody>
-			  	@foreach(App\User::orderBy('created_at','desc')->get() as $user)
+			  	@foreach(App\User::orderBy('created_at','desc')->take(10)->get() as $user)
 				<tr>
 			      <td>{{$user->id}}</td>
 			      <td>{{Carbon\Carbon::parse($user->created_at)->format('d.m.Y H:i:s')}}</td>
@@ -171,9 +171,9 @@
 			    <th>Suma objednávok</th>
 			  </tr></thead>
 			  <tbody>
-			  	@foreach(App\Product::with('orders')->get()->sortByDesc(function($q){return $q->orders->count();}); as $product)
+			  	@foreach(App\Product::with('orders')->take(10)->get()->sortByDesc(function($q){return $q->orders->count();}); as $product)
 				<tr>
-			      <td>{{$product->id}}</td>
+			      <td><a href="/product/{{$product->maker}}/{{$product->code}}">{{$product->id}}</a></td>
 			      <td>{{$product->name}}</td>
 			      <td>{{$product->orders->count()}}</td>
 			      <td>{{$product->orders->count()*$product->price}} €</td>
