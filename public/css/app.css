@@ -3178,6 +3178,9 @@ h1.header {
   margin-right: 15px;
   margin-left: 5px;
 }
+#filterbar .ui.accordion {
+  padding-bottom: 50px;
+}
 #filterbar .ui.divider.horizontal {
   width: 330px;
 }
