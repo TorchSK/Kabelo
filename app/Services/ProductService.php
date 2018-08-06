@@ -148,6 +148,18 @@ class ProductService implements ProductServiceContract {
 
     public function list(Request $request)
     {
+        $category = Category::with(['children.products'])->find($request->get('category'));
+        $children = $category->children;
+
+        // get all products without any filters for category and all children
+        $unfilteredProducts = $category->products;
+        foreach ($children as $child)
+        {
+             $unfilteredProducts = $unfilteredProducts->merge($child->products); 
+        }
+
+        // get all parameters for category and all children 
+
         $filters = $request->get('filters');
         $filters['category'] = $request->get('category');
 
@@ -156,8 +168,6 @@ class ProductService implements ProductServiceContract {
             $filters['search'] = '';
         }
 
-        $category = Category::with(['children.products'])->find($request->get('category'));
-        $children = $category->children;
 
         $sortBy = $request->get('sortBy');
         $sortOrder = $request->get('sortOrder');    
@@ -215,6 +225,8 @@ class ProductService implements ProductServiceContract {
 
             $makers = $makers->unique(['maker']);
 
+            // Parameters for category and all children categories
+
             $categoryParameters = $category->parameters;
 
             foreach($children as $child)
@@ -229,6 +241,16 @@ class ProductService implements ProductServiceContract {
                 }
             }
 
+            // get all parameter values
+            $filterValuesAll = [];
+            foreach ($unfilteredProducts as $unfilteredProduct)
+            {   
+                foreach($unfilteredProduct->parameters as $temp)
+                {
+                    array_push($filterValuesAll, $temp->value);
+                }
+            }
+            $filterValues = array_unique($filterValuesAll);
 
             $temp = [];
             $filterCounts['parameters'] = [];
@@ -265,6 +287,7 @@ class ProductService implements ProductServiceContract {
         $data = [
             'makers' => $makers,
             'filters' => $categoryParameters,
+            'filterValues' => $filterValues,
             'products' => $products,
             'activeFilters' => $activeFilters,
             'filterCounts' => $filterCounts,
