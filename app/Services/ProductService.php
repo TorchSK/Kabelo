@@ -308,7 +308,7 @@ class ProductService implements ProductServiceContract {
         $categoryCounts = [];
         $categoryCounts['categories'] = [];
 
-        foreach (Category::with(['children','products','children.products','children.children.products'])->withCount(['products'=>function($query){
+        foreach (Category::with(['children','children.products'])->withCount(['products'=>function($query){
              $query->where('active', '1');
         }])->get() as $category)
         {
