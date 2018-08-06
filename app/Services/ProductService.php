@@ -241,16 +241,7 @@ class ProductService implements ProductServiceContract {
                 }
             }
 
-            // get all parameter values
-            $filterValuesAll = [];
-            foreach ($unfilteredProducts as $unfilteredProduct)
-            {   
-                foreach($unfilteredProduct->parameters as $temp)
-                {
-                    array_push($filterValuesAll, $temp->value);
-                }
-            }
-            $filterValues = array_unique($filterValuesAll);
+ 
 
             $temp = [];
             $filterCounts['parameters'] = [];
@@ -267,9 +258,11 @@ class ProductService implements ProductServiceContract {
                 
             }
 
+            $filterValues = [];
             foreach ($categoryParameters as $categoryParameter)
             {
                 $filterCounts['parameters'][$categoryParameter->id] = [];
+                $filterValues[$categoryParameter->id] = [];
                 $filterCountFilters = $filters;
 
                 foreach ($categoryParameter->productParameters as $productParameter)
@@ -278,6 +271,15 @@ class ProductService implements ProductServiceContract {
                     array_push($temp, $filterCountFilters);
                     $filterCounts['parameters'][$categoryParameter->id][$productParameter->value] = $this->query($filterCountFilters, [$categoryParameter->key])->get()->count();
                     unset($filterCountFilters['parameters'][$categoryParameter->key]);
+                }
+            }
+
+            // get all parameter values
+            foreach ($unfilteredProducts as $unfilteredProduct)
+            {   
+                foreach($unfilteredProduct->parameters as $temp)
+                {
+                    array_push($filterValues[$temp->parameter_id], $temp->value);
                 }
             }
 
