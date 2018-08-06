@@ -6,13 +6,18 @@
 	<div class="image_div">
 
 	 <div class="labels">
-		@if ($product->sale || Auth::user()->discount > 0)
+		@if ($product->sale || (Auth::check() && Auth::user()->discount > 0))
 		<div class="ui green label">-
+
+			@if(Auth::check())
 
 			@if(Auth::user()->voc)
 			{{$product->sale*round(1 - ($product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_sale/$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_regular),2)*100 + Auth::user()->discount}} 
 			@else
 			{{$product->sale*round(1 - ($product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_sale/$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_regular),2)*100 + Auth::user()->discount}} 
+			@endif
+			@else
+			{{$product->sale*round(1 - ($product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_sale/$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_regular),2)*100}} 
 			@endif
 
 		%</div>
@@ -36,14 +41,14 @@
 
 	<div class="title">{{$product->name}}</div>
 	
-	@if(Auth::user()->admin)
+	@if(Auth::check() && Auth::user()->admin)
 	<div class="code">{{$product->code}}</div>
 	@endif
 
 
 
     <div class="prices">
-    @if(Auth::user()->voc)
+    @if(Auth::check() && Auth::user()->voc)
 	    @if($product->sale)
 	    <div class="price crossed">{{$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_regular}} &euro; </div>
 	    <div class="final_price">{{$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_sale}} &euro; </div>
@@ -65,7 +70,7 @@
 
 	@if((!isset($productOptions) || !$productOptions) && Request::segment(1) != 'admin'  && (!isset($cart_confirm) || !$cart_confirm))
 	<div class="buttons_div">
-		@if(Auth::user()->admin)
+		@if(Auth::check() && Auth::user()->admin)
 		<div class="ui icon fluid buttons">
 		<a href="/{{$product->maker}}/{{$product->code}}/edit" class=" ui blue  button"><i class="edit icon"></i></a>
 		<a href="/product/create?duplicate={{$product->id}}" class=" ui yellow  button"><i class="clone icon"></i></a>

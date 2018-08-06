@@ -25,7 +25,7 @@ class ProductService implements ProductServiceContract {
 
   public function getUserPriceType()
   {
-    if(Auth::user()->voc)
+    if(Auth::check() && Auth::user()->voc)
     {
         $price = "voc_sort_price";
 
@@ -118,7 +118,7 @@ class ProductService implements ProductServiceContract {
             $sortBy = $this->getUserPriceType();
         }
         
-        $products = $this->query($filters,[], $children)->orderBy($sortBy,$sortOrder)->paginate(28);
+        $products = $this->query($filters,[], [])->orderBy($sortBy,$sortOrder)->paginate(28);
 
         // set price range
         $priceRangeFilters = $filters;

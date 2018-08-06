@@ -3,8 +3,9 @@
 
 
 <div class="flex_content">
+  @if (Auth::check())
     <div class="content cart hidden" data-cartid="{{Auth::user()->cart->id}}"></div>
-
+    @endif
 <div class="flex flex_content @if($product->active==0) inactive @endif" id="product_content">
 
 
@@ -110,7 +111,7 @@
 
     <div id="prices">
       <div id="price_type_info">
-      @if(Auth::user()->voc)
+      @if(Auth::check() && Auth::user()->voc)
       Všetky ceny sú veľkoobchodné
       @else
       Všetky ceny sú maloobchodné
@@ -135,7 +136,7 @@
           <tr @if($key==0) class="positive" @endif>
             <td class="threshold" data-value="{{$priceLevel->threshold}}">{{$priceLevel->threshold}}</td>
             <td>
-              @if(Auth::user()->voc)
+              @if(Auth::check() && Auth::user()->voc)
                 @if($product->sale)
                 <div id="price" class="crossed">{{$priceLevel->voc_regular}} &euro; </div>
                 <div id="final_price">{{$priceLevel->voc_sale}} &euro; </div>
@@ -170,7 +171,7 @@
       <div id="product_buy_qty_m_slider" data-min="{{$product->priceLevels->min('threshold')}}" data-max="200"></div>
       <div id="product_buy_qty_value">Kupujete: <qty>{{$product->priceLevels->min('threshold')}}</qty> {{$product->price_unit}} za 
         <price>
-          @if(Auth::user()->voc)
+          @if(Auth::check() && Auth::user()->voc)
             @if($product->sale)
             {{$product->priceLevels->min('threshold')*$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_sale}}
             @else
@@ -251,12 +252,14 @@
           </div>
         </div>
 
+        @if(Auth::check() )
         <div class="my_rating">
           <div class="rating_number"><number>@if(App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->count() >0) {{App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value}}</number> @else 0 @endif <span>(Moje hodnotenie)</span></div>
 
            <div class="my rating" @if(App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->count() >0) data-rating="{{App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value}}" @else data-rating="0" @endif>
           </div>
         </div>
+        @endif
 
         <div class="ratings_list">
           @foreach($product->ratings as $rating)
@@ -272,8 +275,9 @@
           @endforeach
         </div>
   </div>
+  @if(Auth::check())
   <div id="myrating" @if(App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->count() >0) data-rating="{{App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value}}" @else data-rating="0" @endif></div>
-
+  @endif
 
 </div>
 </div>
