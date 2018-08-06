@@ -2723,6 +2723,11 @@ a:hover {
     width: 45%;
   }
 }
+@media all and (max-width: 1690px) {
+  .subcategories .category_image {
+    width: 20%;
+  }
+}
 .subcategories .category_image .image {
   overflow: hidden;
   -webkit-transition: all 0.3s;
