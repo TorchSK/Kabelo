@@ -40,7 +40,7 @@ class ProductService implements ProductServiceContract {
 	public function query($filters, $except=[])
     {
         $children = Category::find($filters['category'])->children;
-        
+
         $result = Product::leftjoin('product_parameters',function($leftjoin){
             $leftjoin->on('product_parameters.product_id', '=', 'products.id');
         })
@@ -61,7 +61,7 @@ class ProductService implements ProductServiceContract {
                 elseif($key=='category')
                 {
 
-                    $query->whereHas('categories', function($query) use ($filters){
+                    $query->whereHas('categories', function($query) use ($filters, $children){
                         $query->where('category_id', $filters['category'])->orWhereIn('category_id', $children->pluck('id'));
                     });
                 }
