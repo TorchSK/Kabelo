@@ -2716,16 +2716,11 @@ a:hover {
 }
 .subcategories .category_image {
   margin: 0px 8px 15px 8px;
-  width: 10%;
+  width: 200px;
 }
 @media all and (max-width: 980px) {
   .subcategories .category_image {
     width: 45%;
-  }
-}
-@media all and (max-width: 1690px) {
-  .subcategories .category_image {
-    width: 20%;
   }
 }
 .subcategories .category_image .image {
