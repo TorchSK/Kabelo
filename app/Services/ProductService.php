@@ -48,7 +48,7 @@ class ProductService implements ProductServiceContract {
             $leftjoin->on('parameters.id', '=', 'product_parameters.parameter_id');
         })
         ->where('active',1)
-        ->where(function($query) use ($filters, $except){
+        ->where(function($query) use ($filters, $except, $children){
             foreach ((array)$filters as $key => $temp){
               if ($filters[$key])
               {
