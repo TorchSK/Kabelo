@@ -2905,6 +2905,8 @@ footer {
       -ms-flex-pack: justify;
           justify-content: space-between;
   color: #CCC;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 @media all and (max-width: 980px) {
   footer {
