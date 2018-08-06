@@ -265,10 +265,9 @@ class ProductService implements ProductServiceContract {
                 $filterValues[$categoryParameter->id] = [];
                 $filterCountFilters = $filters;
 
-                foreach ($categoryParameter->productParameters as $productParameter)
+                foreach ($categoryParameter->productParameters->unique('parameter_id') as $productParameter)
                 {   
                     $filterCountFilters['parameters'][$categoryParameter->key] = $productParameter->value;
-                    array_push($temp, $filterCountFilters);
                     $filterCounts['parameters'][$categoryParameter->id][$productParameter->value] = $this->query($filterCountFilters, [$categoryParameter->key], $children)->get()->count();
                     unset($filterCountFilters['parameters'][$categoryParameter->key]);
                 }
@@ -286,8 +285,6 @@ class ProductService implements ProductServiceContract {
                         array_push($filterValues[$temp->parameter_id], $temp->value);
                     }
             }
-
-
         }
 
 
