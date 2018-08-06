@@ -277,19 +277,16 @@ class ProductService implements ProductServiceContract {
             // get all parameter values
 
             $unfilteredProductsIds = $unfilteredProducts->pluck('id');
-            $unfilteredProductsIds = ProductParameter::whereIn('product_id', $unfilteredProductsIds);
-
-
-            foreach ($unfilteredProducts as $unfilteredProduct)
-            {   
-                foreach($unfilteredProduct->parameters as $temp)
-                {
-                    if(!in_array($temp->value, $filterValues[$temp->parameter_id]))
+            $unfilteredParameters = ProductParameter::whereIn('product_id', $unfilteredProductsIds)->get();
+            
+            foreach($unfilteredParameters as $temp)
+            {
+                  if(!in_array($temp->value, $filterValues[$temp->parameter_id]))
                     {
                         array_push($filterValues[$temp->parameter_id], $temp->value);
                     }
-                }
             }
+
 
         }
 
