@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Category;
 use App\Product;
+use App\ProductParameter;
 
 use Hash;
 use Session;
@@ -274,16 +275,15 @@ class ProductService implements ProductServiceContract {
             }
 
             // get all parameter values
-            foreach ($unfilteredProducts as $unfilteredProduct)
-            {   
-                foreach($unfilteredProduct->parameters as $temp)
-                {
-                    if(!in_array($temp->value, $filterValues[$temp->parameter_id]))
-                    {
-                        array_push($filterValues[$temp->parameter_id], $temp->value);
-                    }
-                }
+
+            $unfilteredProductsIds = $unfilteredProducts->pluck('id');
+            $unfilteredParameters = ProductParameter::whereIn('product_id', $unfilteredProductsIds)->get();
+            
+            foreach($unfilteredParameters as $temp)
+            {
+                $filterValues[$temp->parameter_id] = $temp->value;
             }
+
 
         }
 
