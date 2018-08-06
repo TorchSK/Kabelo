@@ -279,7 +279,7 @@ class ProductService implements ProductServiceContract {
             {   
                 foreach($unfilteredProduct->parameters as $temp)
                 {
-                    if(in_array($temp->value, $filterValues[$temp->parameter_id]))
+                    if(!in_array($temp->value, $filterValues[$temp->parameter_id]))
                     {
                         array_push($filterValues[$temp->parameter_id], $temp->value);
                     }
