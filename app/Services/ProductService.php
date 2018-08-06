@@ -37,10 +37,8 @@ class ProductService implements ProductServiceContract {
     return $price;   
   }
 
-	public function query($filters, $except=[])
+	public function query($filters, $except=[], $children)
     {
-        $children = Category::find($filters['category'])->children;
-
         $result = Product::leftjoin('product_parameters',function($leftjoin){
             $leftjoin->on('product_parameters.product_id', '=', 'products.id');
         })
@@ -119,7 +117,7 @@ class ProductService implements ProductServiceContract {
             $sortBy = $this->getUserPriceType();
         }
         
-        $products = $this->query($filters)->orderBy($sortBy,$sortOrder)->paginate(28);
+        $products = $this->query($filters,[], $children)->orderBy($sortBy,$sortOrder)->paginate(28);
 
         // set price range
         $priceRangeFilters = $filters;
@@ -186,7 +184,7 @@ class ProductService implements ProductServiceContract {
         $activeFilters = collect($filters);
 
         // set products
-        $products = $this->query($filters)->orderBy($sortBy,$sortOrder)->paginate(28);
+        $products = $this->query($filters,[], $children)->orderBy($sortBy,$sortOrder)->paginate(28);
 
 
         // set price range
@@ -255,7 +253,7 @@ class ProductService implements ProductServiceContract {
                 
                 $filterCountFilters['parameters']['makers'] = [$maker->maker];
                 
-                $filterCounts['parameters']['makers'][$maker->maker] = $this->query($filterCountFilters)->get()->count();
+                $filterCounts['parameters']['makers'][$maker->maker] = $this->query($filterCountFilters,[], $children)->get()->count();
                 
             }
 
@@ -270,7 +268,7 @@ class ProductService implements ProductServiceContract {
                 {   
                     $filterCountFilters['parameters'][$categoryParameter->key] = $productParameter->value;
                     array_push($temp, $filterCountFilters);
-                    $filterCounts['parameters'][$categoryParameter->id][$productParameter->value] = $this->query($filterCountFilters, [$categoryParameter->key])->get()->count();
+                    $filterCounts['parameters'][$categoryParameter->id][$productParameter->value] = $this->query($filterCountFilters, [$categoryParameter->key], $children)->get()->count();
                     unset($filterCountFilters['parameters'][$categoryParameter->key]);
                 }
             }
