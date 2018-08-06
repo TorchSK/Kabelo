@@ -17,7 +17,10 @@
       <input type="checkbox" name="example" @if($activeFilters->has('parameters') && isset($activeFilters->get('parameters')[$filter->key]) && in_array($parameter, $activeFilters->get('parameters')[$filter->key])) checked @endif>
 
       <label>{{$parameter}}</label>
-      <count>{{$filterCounts['parameters'][$filter->id][$parameter]}}</count>
+      <count>
+        @if(isset($filterCounts['parameters'][$filter->id][$parameter]))
+        {{$filterCounts['parameters'][$filter->id][$parameter]}}</count>
+        @endif
     </div>
     @endforeach 
     </div>
