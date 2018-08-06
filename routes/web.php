@@ -73,7 +73,7 @@ Route::any('/logout', 'UserController@logout')->name('logout');
 Route::get('/register/success', 'UserController@registerSuccess')->name('registerSuccess');
 Route::get('/user/activate/{token}', 'UserController@activate')->name('activateUser');
 
-Route::group(['middleware' => 'onlyAuth'], function()
+Route::group([], function()
 {
 
 Route::get('/', 'HomeController@index')->name('home');
