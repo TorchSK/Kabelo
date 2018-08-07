@@ -4,10 +4,13 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Auth\Passwords\CanResetPassword;
 
-class User extends Authenticatable
+use App\Notifications\Reminder;
+
+class User extends Authenticatable implements \Illuminate\Contracts\Auth\CanResetPassword
 {
-    use Notifiable;
+    use Notifiable, CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
@@ -53,6 +56,11 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany('App\Order');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new Reminder($token));
     }
 
 }

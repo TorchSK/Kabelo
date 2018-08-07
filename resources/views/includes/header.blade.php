@@ -67,7 +67,7 @@
               </div>
 
               <button type="submit" class="ui green fluid button" id="login_btn">Prihlásiť</button>
-              <a href="">Zabudnuté heslo</a>
+              <a href="/password/reset" id="reset_pwd_link"><i class="lock icon"></i> Zabudnuté heslo</a>
 
             </form>
 

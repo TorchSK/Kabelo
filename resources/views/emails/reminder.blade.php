@@ -19,16 +19,16 @@
     
     <body style="max-width: 1000px;">
     
-    <div style="background-color: #FFF; border: 1px solid #EEE; padding: 10px; color: #FFF; text-align: center; border-radius: 4px 4px 0 0;">
-        <img src="<?php echo $message->embed(public_path().'/img/logo_small.png'); ?>" width="100">
+    <div style="background-color: #2B2D2D; border: 1px solid #EEE; padding: 10px; color: #FFF; text-align: center; border-radius: 4px 4px 0 0;">
+        <img src="<?php echo $message->embed(public_path().'/img/email_logo.jpg'); ?>" width="191">
     </div>
 
     <div style="background-color: rgba(0,0,0,0.04); padding: 50px; text-align: center;">
-    <h1>Password Reset</h1>
-	<div>To reset your password, click this button</div>
+    <h1>Reset hesla na stránke Kabelo.sk</h1>
+	<div>Pre reset svojho hesla kliknite na tlačítko nižšie</div>
 	<br /><br />
     <div> 
-    <a href={!! url("/reset").'/'.$token !!} style="padding: 10px 30px; background-color: rgba(0,0,0,0.4); margin-top: 35px; text-decoration: none; color: white; font-weight: 900; border-radius: 5px;">Reset password</a>
+    <a href={!! url("/password/reset").'/'.$token !!} style="padding: 10px 30px; background-color: #5E88BF; margin-top: 35px; text-decoration: none; color: white; font-weight: 900; border-radius: 5px;">Reset hesla</a>
 	</div>
 
     </div>

@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
  
 class AuthRequest extends FormRequest {
  
-    protected $redirectRoute = 'getLogin';
+    protected $redirectRoute = 'login';
 
     public function rules()
     {

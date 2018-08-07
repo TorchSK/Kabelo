@@ -1339,6 +1339,19 @@ a:hover {
   margin-bottom: 10px;
   color: #DB2828;
 }
+#login_btn {
+  margin-bottom: 10px;
+}
+#register_div {
+  vertical-align: top;
+}
+#reset_pwd_link {
+  color: #666;
+}
+#reminder_msg_ok {
+  width: 350px;
+  margin: 0 auto;
+}
 #product_content {
   position: relative;
 }

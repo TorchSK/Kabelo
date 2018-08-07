@@ -66,12 +66,18 @@ Route::get('/stock/', 'ProductController@setStock')->name('setStock');
 
 Route::get('/welcome', 'HomeController@welcome')->name('welcome');
 Route::post('/login', 'UserController@postLogin')->name('postLogin');
-Route::get('/login', 'UserController@getLogin')->name('getLogin');
+Route::get('/login', 'UserController@getLogin')->name('login');
 Route::get('/register', 'UserController@getRegister')->name('getRegister');
 Route::post('/register', 'UserController@postRegister')->name('register');
 Route::any('/logout', 'UserController@logout')->name('logout');
 Route::get('/register/success', 'UserController@registerSuccess')->name('registerSuccess');
 Route::get('/user/activate/{token}', 'UserController@activate')->name('activateUser');
+
+
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');;
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.request');
 
 Route::group([], function()
 {
@@ -158,3 +164,4 @@ Route::get('connectors/guide', 'UtilController@connectorsGuide');
 Route::get('cookies/info', 'UtilController@cookiesInfo');
 Route::get('email/order', 'UtilController@sendOrderEmail');
 Route::post('set/config', 'UtilController@setConfig');
+

@@ -2458,4 +2458,8 @@ $(document).on('click', '.delete_product_param', function(){
 	$(this).closest('.row').remove();
 })
 
+$('#send_remider_btn').click(function(){
+	$(this).addClass('loading');
+})
+
 });
