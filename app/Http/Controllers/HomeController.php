@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Services\Contracts\ProductServiceContract;
 
 use App\Category;
-
+use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
@@ -18,15 +16,8 @@ class HomeController extends Controller
     public function __construct(ProductServiceContract $productService)
     {
         $this->productService = $productService;
-
     }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($category=null, Request $request)
+ public function index($category=null, Request $request)
     {   
         if (isset($category))
         {
