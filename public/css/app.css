@@ -420,17 +420,6 @@ a:hover {
   -webkit-transform: none !important;
           transform: none !important;
 }
-.covers .cover {
-  left: 0 !important;
-  opacity: 0;
-  -webkit-transition: opacity 0.6s ease-in-out;
-  transition: opacity 0.6s ease-in-out;
-  z-index: -1;
-}
-.covers .cover.is-selected {
-  opacity: 1;
-  z-index: 0;
-}
 /*----- button 4 -----*/
 .btn-4::after {
   right: 0;
@@ -2570,6 +2559,9 @@ a:hover {
 }
 #admin_order_params_list .item {
   margin-bottom: 15px;
+}
+.admin_add_cover .cover {
+  height: 55vh;
 }
 #cart_detail {
   padding: 4%;
