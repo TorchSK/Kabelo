@@ -758,7 +758,6 @@ function doSearch($query){
   	$grid.hide();
     $searchGrid.show();
     $searchGrid.find('grid').html(data);
-	
 
     $filtersDiv.html(data.filters);
     filtersInit();
@@ -781,7 +780,7 @@ $(".product_search_input input").keyup(function(e){
   if ($query!='') 
   {
     addFilter('search',$query,'hľadaj: '+$query);
-      doSearch($query);
+     doSearch($query);
 
   }
   else
