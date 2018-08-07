@@ -455,7 +455,7 @@ class ProductController extends Controller
         if($query)
         {
             $data['products'] = Product::where('name','like','%'.$query.'%')->orWhere('desc','like','%'.$query.'%')->paginate(28);
-            return view('products.searchList', $data)->render();
+            return view('products.searchlist', $data)->render();
         }
 
     }
