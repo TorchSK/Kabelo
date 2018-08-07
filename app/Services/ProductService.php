@@ -54,7 +54,7 @@ class ProductService implements ProductServiceContract {
                 if ($key=='search')
                 {   
                     $query->where(function($query)  use ($filters, $except){
-                          $query->where("name", "like", "%".$filters['search']."%")->orWhere("desc", "like", "%".$filters['search']."%");
+                          $query->where("name", "like", "%".$filters['search']."%")->orWhere("desc", "like", "%".$filters['search']."%")->orWhere("code", "like", "%".$filters['search']."%");
                     });
                 }
                 elseif($key=='category')
@@ -148,26 +148,9 @@ class ProductService implements ProductServiceContract {
 
     public function list(Request $request)
     {
-        $category = Category::with(['children.products'])->find($request->get('category'));
-        $children = $category->children;
-
-        // get all products without any filters for category and all children
-        $unfilteredProducts = $category->products;
-        foreach ($children as $child)
-        {
-             $unfilteredProducts = $unfilteredProducts->merge($child->products); 
-        }
-
-        // get all parameters for category and all children 
 
         $filters = $request->get('filters');
         $filters['category'] = $request->get('category');
-
-        if (!isset($filters['search']))
-        {
-            $filters['search'] = '';
-        }
-
 
         $sortBy = $request->get('sortBy');
         $sortOrder = $request->get('sortOrder');    
@@ -180,31 +163,71 @@ class ProductService implements ProductServiceContract {
             $sortBy = $this->getUserPriceType();
         }
 
-        
-        // set active filters
-        $activeFilters = collect($filters);
 
-        // set products
-        $products = $this->query($filters,[], $children)->orderBy($sortBy,$sortOrder)->paginate(28);
-
-
-        // set price range
-        $priceRangeFilters = $filters;
-        unset($priceRangeFilters['price']);
-
-        $priceRange = [];
-        $priceRange[0] = $products->pluck($this->getUserPriceType())->min();
-        $priceRange[1] = $products->pluck($this->getUserPriceType())->max();
-
-        if ($filters['search'] && !$filters['category'])
+        if (isset($filters['search']))
         {
-            $makers = [];
-            $params = [];
-            $filterCounts = [];
+
+            $searchFilters['search'] = $filters['search'];
+
+            $products = $this->query($searchFilters,[], [])->orderBy($sortBy,$sortOrder)->paginate(28);
+
+            $makers = $products->unique(['maker']); 
+
+            $temp = [];
+            $filterCounts['parameters'] = [];
+
+            $filterCounts['parameters']['makers'] = [];
+            $filterCountFilters['parameters']['makers'] = [];
+
+            foreach ($makers as $maker)
+            {
+                $filterCountFilters = $searchFilters;
+                
+                $filterCountFilters['parameters']['makers'] = [$maker->maker];
+                
+                $filterCounts['parameters']['makers'][$maker->maker] = $this->query($filterCountFilters,[], [])->get()->count();
+                
+            }
+
+            $categoryParameters = [];
+            $filterValues = [];
+
+            $activeFilters = collect($searchFilters);
+            
+            $priceRange = [];
+
         }
         else
         {
+
+            $category = Category::with(['children.products'])->find($request->get('category'));
+            $children = $category->children;
+
+            // get all products without any filters for category and all children
+            $unfilteredProducts = $category->products;
+            foreach ($children as $child)
+            {
+                 $unfilteredProducts = $unfilteredProducts->merge($child->products); 
+            }
+
+            // get all parameters for category and all children 
+
             
+            // set active filters
+            $activeFilters = collect($filters);
+
+            // set products
+            $products = $this->query($filters,[], $children)->orderBy($sortBy,$sortOrder)->paginate(28);
+
+
+            // set price range
+            $priceRangeFilters = $filters;
+            unset($priceRangeFilters['price']);
+
+            $priceRange = [];
+            $priceRange[0] = $products->pluck($this->getUserPriceType())->min();
+            $priceRange[1] = $products->pluck($this->getUserPriceType())->max();
+
             $makers = $category->products->unique(['maker']); 
 
             if($children->count() > 0)
@@ -241,7 +264,7 @@ class ProductService implements ProductServiceContract {
                 }
             }
 
- 
+
 
             $temp = [];
             $filterCounts['parameters'] = [];
@@ -285,8 +308,8 @@ class ProductService implements ProductServiceContract {
                         array_push($filterValues[$temp->parameter_id], $temp->value);
                     }
             }
-        }
 
+        }
 
         $data = [
             'makers' => $makers,
