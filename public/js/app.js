@@ -2462,4 +2462,8 @@ $('#send_remider_btn').click(function(){
 	$(this).addClass('loading');
 })
 
+$(document).on('click','.delete_price_level_btn', function(){
+	$(this).closest('.product_price_level').remove();
+});
+
 });

@@ -33,8 +33,8 @@
 		 		<input type="text" name="voc_sales[]" placeholder="" @if(isset($priceLevel)) value="{{$priceLevel->voc_sale}}" @endif>
 			</div>
 		</div>
-
-	
 	</div>
+
+	<div class="ui small red button delete_price_level_btn">Zmaž cenovú úrověn</div>
 
 </div>

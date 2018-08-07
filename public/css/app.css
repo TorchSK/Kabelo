@@ -1907,6 +1907,13 @@ a:hover {
       -ms-flex: 1;
           flex: 1;
 }
+.ui.button.delete_price_level_btn {
+  margin-top: 15px;
+  opacity: 0.7;
+}
+#product_price_levels_list .product_price_level:first-child .delete_price_level_btn {
+  display: none;
+}
 .admin_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
