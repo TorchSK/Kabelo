@@ -742,21 +742,56 @@ $(document).ajaxStart(function() {
   $('#grid').find('.dimmer').addClass('active');
 });
 
+function doSearch($query){
+
+  //console.log(getPriceFilter('price'));
+  
+  $grid = $('#grid');
+  $searchGrid = $('#search_grid');
+  $filtersDiv = $('#filterbar').find('.params');
+
+  $sortBy = getDesiredSortBy();
+  $sortOrder = getDesiredSortOrder();
+
+
+  $.get('/product/search/'+$query, function(data){
+  	$grid.hide();
+    $searchGrid.show();
+    $searchGrid.find('grid').html(data);
+	
+
+    $filtersDiv.html(data.filters);
+    filtersInit();
+    $('#grid').find('.dimmer').removeClass('active');
+    $('.sorts').show();
+    $('#price_slider').show();
+    
+    initPriceSlider();
+    
+   
+  })
+};
+
 
 $(".product_search_input input").keyup(function(e){
 
   $query = $(this).val();
   removeFilter('search');
+
   if ($query!='') 
   {
-    addFilter('search',$query,'hľadaj: '+$query)
+    addFilter('search',$query,'hľadaj: '+$query);
+      doSearch($query);
+
   }
   else
   {
-    removeFilter('search')
+    removeFilter('search');
+    $('#grid').show();
+    $('#search_grid').hide();
 
   };
-  doSort();
+
 
 })
 

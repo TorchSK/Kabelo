@@ -126,7 +126,7 @@ Route::post('/category/image/upload','CategoryController@uploadImage');
 Route::post('/category/{categoryid}/image/confirmCrop','CategoryController@confirmCrop');
 
 // Products
-Route::get('product/search/{query}','ProductController@search');
+Route::get('product/search/{query?}','ProductController@search');
 Route::get('product/{id}/parameters/options','ProductController@paramOptions');
 Route::get('product/list','ProductController@list');
 Route::post('product/{productid}/change/category/{categoryid}','ProductController@changeCategory');

@@ -166,6 +166,7 @@ class ProductService implements ProductServiceContract {
 
         if (isset($filters['search']))
         {
+            $search = 'true';
 
             $searchFilters['search'] = $filters['search'];
 
@@ -193,13 +194,13 @@ class ProductService implements ProductServiceContract {
             $filterValues = [];
 
             $activeFilters = collect($searchFilters);
-            
+
             $priceRange = [];
 
         }
         else
         {
-
+            $search = 'false';
             $category = Category::with(['children.products'])->find($request->get('category'));
             $children = $category->children;
 
@@ -319,6 +320,7 @@ class ProductService implements ProductServiceContract {
             'activeFilters' => $activeFilters,
             'filterCounts' => $filterCounts,
             'priceRange' => $priceRange,
+            'search' => $search
         ];
 
         return $data;
