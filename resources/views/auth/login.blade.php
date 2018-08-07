@@ -28,7 +28,7 @@
   <input type="submit" class="ui brown big fluid button" value="Login">
 
   <div class="ui horizontal divider">Alebo</div>  
-  <div class="inline field"><a href="/password/reset" id="reset_pwd_link"><i class="lock icon"></i> Zabudnuté heslo</a></div>
+  <div class="inline field"><a href="/password/reset" id="reset_pwd_link">Zabudnuté heslo</a></div>
 
 </form>
 
