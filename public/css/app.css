@@ -2563,6 +2563,9 @@ a:hover {
 .admin_add_cover .cover {
   height: 55vh;
 }
+.admin_add_cover .slogan {
+  margin-bottom: -20px;
+}
 #cart_detail {
   padding: 4%;
 }
