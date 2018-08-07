@@ -106,6 +106,9 @@
         </div>
 
         <div id="search_grid">
+                <div class="ui inverted dimmer">
+                <div class="ui text loader">Loading</div>
+              </div>
             <div class="caption">Vyhľadávanie</div>
 
             <grid>

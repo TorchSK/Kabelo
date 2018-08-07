@@ -758,6 +758,7 @@ function doSearch($query){
   	$grid.hide();
     $searchGrid.show();
     $searchGrid.find('grid').html(data);
+  	$searchGrid.find('.dimmer').removeClass('active');
 
     $filtersDiv.html(data.filters);
     filtersInit();
@@ -776,6 +777,8 @@ $(".product_search_input input").keyup(function(e){
 
   $query = $(this).val();
   removeFilter('search');
+  $('#search_grid').find('.dimmer').addClass('active');
+
 
   if ($query!='') 
   {
