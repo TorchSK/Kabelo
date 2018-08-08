@@ -28,6 +28,8 @@ class CreateCartCookie
                     'number' => 0,
                     'price' => 0,
                     'items' => [],
+                    'counts' => [],
+                    'price_levels' => [], 
                     'delivery_method' => '',
                     'payment_method' => '',
                     'invoice_address' => '',

@@ -79,7 +79,7 @@ class CartController extends Controller
 
     function getCart($id)
     {
-        if ($id)
+        if ($id!='undefined')
         {
             $cart = Cart::find($id);
             $cart['number'] = $cart->products->count();
@@ -139,7 +139,7 @@ class CartController extends Controller
             }
         }
     
-        if ($user->voc)
+        if (Auth::check() && $user->voc)
         {
             if ($product->sale)
             {
@@ -194,34 +194,53 @@ class CartController extends Controller
         $product = Product::find($productId);
 
         $cart = $this->getCart($cartid);
-
-        $cartNumber = $cart['number'];
-        $cartPrice = $cart['price'];
-        $cartItems = $cart['items'];
-
-        array_push($cartItems,$product->id);
-
-        $cartData = $cart;
-
-        $price = $this->getUserProductPrice($productId, $request->get('qty'));
-        $cartData['number'] = $cartNumber + 1;
-        $cartData['price'] = $cartPrice + $price;
-        $cartData['items'] = $cartItems;
         
         if (Auth::check())
         {   
             if (! $cart->products->contains($product->id))
             {
-                $cart->products()->attach($product, ['qty'=>$request->get('qty'), 'price_level_id' => $this->getPriceLevel($productId, $request->get('qty'))]);
+                $cart->products()->attach($product, ['qty'=>$request->get('qty'), 'price_level_id'=>$this->getPriceLevel($productId, $request->get('qty'))]);
             }
             else
             {
-                $oldQty = $cart->products->where('id',$productId)->first()->qty;
-                $cart->products()->updateExistingPivot($product->id, ['qty'=>$oldQty + $request->get('qty'), 'price_level_id' => $this->getPriceLevel($productId, $request->get('qty'))]);
+                $oldQty = $cart->products->where('id',$productId)->first()->pivot->qty;
+                $cart->products()->updateExistingPivot($product->id, ['qty'=>$oldQty + $request->get('qty'), 'price_level_id' => $this->getPriceLevel($productId, $oldQty + $request->get('qty'))]);
             }
         }
         else
         {
+
+            $cartNumber = $cart['number'];
+            $cartPrice = $cart['price'];
+            $cartItems = $cart['items'];
+            $cartCounts = $cart['counts'];
+            $cartPriceLevels = $cart['price_levels'];
+
+
+            $cartData = $cart;
+
+            if (!in_array($productId, $cart['items']))
+            {
+                array_push($cartItems,$productId);
+                $cartData['number'] = $cartNumber + 1;
+                $cartCounts[$productId]=$request->get('qty');
+                $cartPriceLevels[$productId]=$this->getPriceLevel($productId, $request->get('qty'));
+
+            }
+            else
+            {
+                $oldQty = $cartCounts[$productId];
+                $cartData['number'] = $cartNumber ;
+                $cartCounts[$productId]=$oldQty + $request->get('qty');
+                $cartPriceLevels[$productId] = $this->getPriceLevel($productId, $oldQty+ $request->get('qty'));
+            }
+
+            $price = $this->getUserProductPrice($productId, $request->get('qty'));
+            $cartData['price'] = $cartPrice + $price;
+            $cartData['items'] = $cartItems;
+            $cartData['counts'] = $cartCounts;
+            $cartData['price_levels'] = $cartPriceLevels;
+
             Cookie::queue('cart', $cartData, 0);
         }
 

@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('content')
-	
-<div class="flex_content content cart" id="cart_detail" data-cartid="{{Auth::user()->cart->id}}">
-	
+
+<div class="flex_content content cart" id="cart_detail" @if(Auth::check())data-cartid="{{Auth::user()->cart->id}}" @endif>
+
 	@include('cart.steps',['step'=>'1'])
 
 
@@ -12,11 +12,17 @@
 		 </div>
 
 		@if (sizeof($cart['items']) > 0)
-		
-			@foreach($cart->products as $product)
-				@include('cart.row')
-			@endforeach
-		
+			
+			@if (Auth::check())
+				@foreach($cart->products as $product)
+					@include('cart.row')
+				@endforeach
+			@else
+				@foreach($cart['items'] as $productid)
+					@include('cart.row', ['product' => App\Product::find($productid)])
+				@endforeach
+			@endif
+			
 		@else
 			<div id="empty_cart_text">Prázdný košík</div>
 		
