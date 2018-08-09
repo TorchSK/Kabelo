@@ -194,7 +194,8 @@ class CartController extends Controller
         $product = Product::find($productId);
 
         $cart = $this->getCart($cartid);
-        
+        $price = $this->getUserProductPrice($productId, $request->get('qty'));
+
         if (Auth::check())
         {   
             if (! $cart->products->contains($product->id))
@@ -235,7 +236,6 @@ class CartController extends Controller
                 $cartPriceLevels[$productId] = $this->getPriceLevel($productId, $oldQty+ $request->get('qty'));
             }
 
-            $price = $this->getUserProductPrice($productId, $request->get('qty'));
             $cartData['price'] = $cartPrice + $price;
             $cartData['items'] = $cartItems;
             $cartData['counts'] = $cartCounts;

@@ -2,7 +2,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateSettingsTable extends Migration {
+class CreateSettingsTable1 extends Migration {
   /**
    * Run the migrations.
    *
@@ -12,7 +12,8 @@ class CreateSettingsTable extends Migration {
   {
     Schema::create('settings', function(Blueprint $table)
     {
-      $table->string('key')->unique();
+      $table->increments('id');
+      $table->string('name');
       $table->string('value');
 
     });

@@ -25,7 +25,7 @@
 	<div class="text">Objednávky</div>
 </a>
 
-<a href="{{route('admin.settings')}}" class="tab">
+<a href="{{route('admin.settingsBanners')}}" class="tab">
 	<i class="big setting icon"></i>
 	<div class="text">Nastavenia</div>
 </a>

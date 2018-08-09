@@ -196,15 +196,20 @@ class AdminController extends Controller
     }
 
 
-    public function settings()
+    public function settingsBanners()
     {
-        $data = [
-            'orders' => Order::all()
-        ];
-
-        return view('admin.settings', $data);
+        return view('admin.settings');
     }
 
+    public function settingsEshop()
+    {
+        return view('admin.settingseshop');
+    }
+
+    public function settingsInvoice()
+    {
+        return view('admin.settingsinvoice');
+    }
 
     public function import()
     {

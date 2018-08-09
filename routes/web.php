@@ -30,7 +30,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::post('/import/json', 'AdminController@postImportJson')->name('admin.postImportJson');
 
 	Route::get('/category/{category}', 'AdminController@categoryProducts')->name('admin.category');
-	Route::get('/settings/', 'AdminController@settings')->name('admin.settings');
+
+	Route::get('/settings/banners', 'AdminController@settingsBanners')->name('admin.settingsBanners');
+	Route::get('/settings/eshop', 'AdminController@settingsEshop')->name('admin.settingsEshop');
+	Route::get('/settings/invoice', 'AdminController@settingsInvoice')->name('admin.settingsInvoice');
+
 	Route::post('/delivery', 'AdminController@addDeliveryMethod');
 	Route::post('/payment', 'AdminController@addPaymentMethod');
 
