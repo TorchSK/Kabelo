@@ -2577,6 +2577,9 @@ a:hover {
 .admin_add_cover .slogan {
   margin-bottom: -20px;
 }
+.ui.button.settings_save {
+  margin-top: 25px;
+}
 #cart_detail {
   padding: 4%;
 }
@@ -2707,6 +2710,7 @@ a:hover {
   background-color: #F7F7F7;
   padding: 50px 0;
   text-align: right;
+  clear: both;
 }
 #cart_delivery {
   background-color: #F7F7F7;
@@ -2761,6 +2765,19 @@ a:hover {
 }
 .noUi-active .noUi-tooltip {
   display: block;
+}
+#cart_min_price {
+  float: right;
+  margin-top: 15px;
+  font-style: italic;
+  font-weight: 300;
+}
+#cart_free_shipping_price {
+  float: right;
+  margin-top: 5px;
+  clear: right;
+  color: #21BA45;
+  font-weight: 700;
 }
 #category_options {
   background-color: rgba(0, 0, 0, 0.03);

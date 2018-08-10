@@ -147,44 +147,48 @@
 	@include('modals.newpayment')
 
 	<div class="ui horizontal divider">Parametre objednávky</div>
-	
-	<div id="admin_order_params_list">
-	<div class="ct">
-		<div class="ui green button" id="admin_order_params_save">Ulož zmeny</div>
-	</div>
 
-	<div class="item">
-		<div>Minimálna objednávka</div>
-		<div class="ui right labeled input">
-		  <input type="text" name="min_order_price" value="{{config('app.min_order_price')}}">
-		    <div class="ui basic label">&euro;</div>
-		</div>	
-	</div>
+<form method="POST" action="/admin/settings/eshop/save">
+        {{ csrf_field() }}
 
-	<div class="item">
-		<div>Minimálna cena pre dopravu zdarma</div>
-		<div class="ui right labeled input">
-		  <input type="text" name="min_free_shipping_price" value="{{config('app.min_free_shipping_price')}}">
-		  <div class="ui basic label">&euro;</div>
+		<div id="admin_order_params_list">
+
+
+		<div class="item">
+			<div>Minimálna objednávka</div>
+			<div class="ui right labeled input">
+			  <input type="text" name="min_order_price" value="{{App\Setting::where('name','min_order_price')->first()->value}}">
+			    <div class="ui basic label">&euro;</div>
+			</div>	
 		</div>
-	</div>
-	</div>
 
-	<div class="ui horizontal divider">Parametre eshopu</div>
+		<div class="item">
+			<div>Minimálna cena pre dopravu zdarma</div>
+			<div class="ui right labeled input">
+			  <input type="text" name="min_free_shipping_price" value="{{App\Setting::where('name','min_free_shipping_price')->first()->value}}">
+			  <div class="ui basic label">&euro;</div>
+			</div>
+		</div>
+		</div>
 
-	<div id="admin_eshop_params_list">
-	<div class="ct">
-		<div class="ui green button" id="admin_eshop_params_save">Ulož zmeny</div>
-	</div>
+		<div class="ui horizontal divider">Parametre eshopu</div>
 
-	<div class="item">
-		<div>Počet produktov na stránku</div>
-		<div class="ui input">
-		  <input type="text" name="ppp" value="{{config('app.ppp')}}">
+		<div id="admin_eshop_params_list">
+
+
+		<div class="item">
+			<div>Počet produktov na stránku</div>
+			<div class="ui input">
+			  <input type="text" name="ppp" value="{{App\Setting::where('name','ppp')->first()->value}}">
+			</div>	
+		</div>
+
 		</div>	
-	</div>
 
-	</div>
+	<button type="submit" class="ui green button settings_save">Ulož</button>
+
+	</form>
+
 
 </div>
 </div>

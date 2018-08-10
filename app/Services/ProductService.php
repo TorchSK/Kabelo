@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 use App\ProductParameter;
+use App\Setting;
 
 use Hash;
 use Session;
@@ -118,7 +119,7 @@ class ProductService implements ProductServiceContract {
             $sortBy = $this->getUserPriceType();
         }
         
-        $products = $this->query($filters,[], [])->orderBy($sortBy,$sortOrder)->paginate(28);
+        $products = $this->query($filters,[], [])->orderBy($sortBy,$sortOrder)->paginate(Setting::where('name','ppp')->first()->value);
 
         // set price range
         $priceRangeFilters = $filters;
@@ -170,7 +171,7 @@ class ProductService implements ProductServiceContract {
 
             $searchFilters['search'] = $filters['search'];
 
-            $products = $this->query($searchFilters,[], [])->orderBy($sortBy,$sortOrder)->paginate(28);
+            $products = $this->query($searchFilters,[], [])->orderBy($sortBy,$sortOrder)->paginate(Setting::where('name','ppp')->first()->value);
 
             $makers = $products->unique(['maker']); 
 
@@ -218,7 +219,7 @@ class ProductService implements ProductServiceContract {
             $activeFilters = collect($filters);
 
             // set products
-            $products = $this->query($filters,[], $children)->orderBy($sortBy,$sortOrder)->paginate(28);
+            $products = $this->query($filters,[], $children)->orderBy($sortBy,$sortOrder)->paginate(Setting::where('name','ppp')->first()->value);
 
 
             // set price range

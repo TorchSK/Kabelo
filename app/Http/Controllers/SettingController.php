@@ -20,24 +20,27 @@ class SettingController extends Controller
     }
 
 
-	public function update($id, Request $request)
+	public function update($id, $value)
 	{
 		$setting = Setting::find($id);
 
-		if ($setting){
-			$setting->name = $request->get('name');
-			$setting->value = $request->get('value');
+		$setting->value = $value;
 
-			$setting->save();
-		}
-		else
+		$setting->save();
+	}
+
+	public function bulkUpdate(Request $request)
+	{
+		foreach($request->except('_token') as $key => $item)
 		{
-			$setting = new Setting();
-			$setting->name = $request->get('name');
-			$setting->value = $request->get('value');
-
-			$setting->save();
+			$setting = Setting::where('name', $key)->first();
+			if($setting)
+			{
+				$this->update($setting->id, $item);		
+			}
 		}
+
+		return redirect('admin/settings/eshop');
 	}
 
 }

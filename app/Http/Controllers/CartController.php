@@ -9,6 +9,7 @@ use App\Parameter;
 use App\Cart;
 use App\File as ProductFile;
 use App\PriceLevel;
+use App\Setting;
 
 use App\Services\Contracts\CartServiceContract;
 
@@ -66,8 +67,20 @@ class CartController extends Controller
     }
 
     public function shipping(){
-   
+        if (Auth::check())
+        {
+            $cart = $this->getCart(Auth::user()->cart->id);
+        }
+        else
+        {
+            $cart = $this->getCart('undefined');
+        }
 
+        if ($cart['price'] < Setting::whereName('min_order_price')->first()->value)
+        {
+             return redirect('cart/products');
+
+        }
         return view('cart.shipping');
     }
 

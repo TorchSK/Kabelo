@@ -2294,6 +2294,14 @@ $('#cart_detail .product').each(function(index,item){
 
 $('#cart_total_price').find('price').text(parseFloat($cart_price - $cart_price*parseFloat($('#cart_user_discount').find('price').text())/100).toFixed(2));
 
+if(parseFloat($('#cart_total_price').find('price').text()) < parseFloat($('#cart_min_price').find('price').text()))
+{
+	$('#cart_continue_btn').addClass('disabled');
+}
+
+$('#cart_free_shipping_price').find('price').text(parseFloat($('#cart_free_shipping_price').data('price')) - parseFloat($('#cart_total_price').find('price').text()));
+
+
 $('.filterbar_handle').mouseover(function(){
   $('#filterbar').show();
 })
