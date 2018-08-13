@@ -15,11 +15,15 @@ use App\Parameter;
 use Auth;
 use Excel;
 use Image;
+use Storage;
 
 use App\DeliveryMethod;
 use App\PaymentMethod;
 
 use App\Services\Contracts\ProductServiceContract;
+
+use Orchestra\Parser\Xml\Facade as XmlParser;
+
 
 class AdminController extends Controller
 {
@@ -32,6 +36,26 @@ class AdminController extends Controller
     {        
         $this->middleware('auth');
         $this->productService = $productService;
+    }
+
+    public function xmlImport()
+    {
+        
+        $contents = Storage::get('dedra.xml');
+        $xml = XmlParser::extract($contents);
+
+        $products = $xml->parse([
+            'products' => ['uses' => 'product[product_id,text1,text2,text3,detail,picture1,price_skk,stav_skladu,kategorie]'],
+        ]);
+
+
+        foreach($products['products'] as $key => $item)
+        {
+            $product = new Product();
+            $product->desc = $item['detail'];
+            $product->save();
+        }   
+         
     }
 
 

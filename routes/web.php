@@ -15,6 +15,10 @@
 // Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 {
+
+	Route::get('/xml/import', 'AdminController@xmlImport')->name('admin.xmlImport');
+
+
 	Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
 	Route::get('/products', 'AdminController@manageProducts')->name('admin.products');
 	Route::get('/orders/', 'AdminController@manageOrders')->name('admin.orders');

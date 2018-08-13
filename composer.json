@@ -13,6 +13,7 @@
         "league/flysystem-aws-s3-v3": "~1.0",
         "maatwebsite/excel": "^2.1",
         "nesbot/carbon": "~1.21",
+        "orchestra/parser": "~3.5",
         "rap2hpoutre/fast-excel": "^0.6.0"
     },
     "require-dev": {
