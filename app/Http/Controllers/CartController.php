@@ -208,10 +208,11 @@ class CartController extends Controller
 
         $cart = $this->getCart($cartid);
         $price = $this->getUserProductPrice($productId, $request->get('qty'));
-        $cartCount = $cart->products->count();
 
         if (Auth::check())
         {   
+            $cartCount = $cart->products->count();
+
             if (! $cart->products->contains($product->id))
             {
                 $cart->products()->attach($product, ['qty'=>$request->get('qty'), 'price_level_id'=>$this->getPriceLevel($productId, $request->get('qty'))]);
@@ -235,6 +236,7 @@ class CartController extends Controller
             $cartItems = $cart['items'];
             $cartCounts = $cart['counts'];
             $cartPriceLevels = $cart['price_levels'];
+            $cartCount = count($cartCounts);
 
 
             $cartData = $cart;
@@ -245,6 +247,7 @@ class CartController extends Controller
                 $cartData['number'] = $cartNumber + 1;
                 $cartCounts[$productId]=$request->get('qty');
                 $cartPriceLevels[$productId]=$this->getPriceLevel($productId, $request->get('qty'));
+                $cartCount = $cartCount + 1;
 
             }
             else
@@ -253,7 +256,6 @@ class CartController extends Controller
                 $cartData['number'] = $cartNumber ;
                 $cartCounts[$productId]=$oldQty + $request->get('qty');
                 $cartPriceLevels[$productId] = $this->getPriceLevel($productId, $oldQty+ $request->get('qty'));
-                $cartCount = count($cartCounts);
 
             }
 
