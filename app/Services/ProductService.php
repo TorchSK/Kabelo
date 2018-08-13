@@ -108,7 +108,7 @@ class ProductService implements ProductServiceContract {
         
         $filters = $request->get('filters');
 
-        if(count($filters['parameters']['makers']) > 0)
+        if(isset($filters['parameters']['makers']) && count($filters['parameters']['makers']) > 0)
         {
             array_push($filters['parameters']['makers'], $request->get('maker'));  
         }
