@@ -100,7 +100,7 @@
 
    </div>
 
-    <div id="routename" class="hidden">{{Route::currentRouteName()}}</div>
+    <div id="routename" class="hiden">{{Route::currentRouteName()}}</div>
 
 
   </div>

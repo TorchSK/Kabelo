@@ -227,6 +227,9 @@ body .pusher {
 .wrapper {
   background-color: #F7F7F7;
 }
+.hiden {
+  display: none !important;
+}
 .flex_content {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
