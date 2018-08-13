@@ -278,14 +278,21 @@ class CartController extends Controller
         $product = Product::find($productid);
         
         $cart = $this->getCart($cartid);
+        $price = $this->getUserProductPrice($productid, $request->get('qty'));
 
         if (Auth::check())
         {
-            $cart->products()->updateExistingPivot($product->id, ['qty'=>$request->get('qty'), 'price_level_id' => $this->getPriceLevel($productid, $request->get('qty'))]);
+            $cart->products()->updateExistingPivot($product->id, ['qty'=>$request->get('qty'), 'price_level_id' => $price = $this->getPriceLevel($productid, $request->get('qty'))]);
         }
         else
-        {
-            Cookie::queue('cart', $cartData, 0);
+        {   
+            $oldPrice =$this->getUserProductPrice($productid, $cart['counts'][$productid]);
+
+            $cart['counts'][$productid] = $request->get('qty');
+            $cart['price_levels'][$productid] = $this->getPriceLevel($productid, $request->get('qty'));
+            $cart['price'] = $cart['price'] - $oldPrice + $price;
+
+            Cookie::queue('cart', $cart, 0);
         }
 
         return $cart;
@@ -296,29 +303,27 @@ class CartController extends Controller
         $product = Product::find($productId);
         
         $cart = $this->getCart($cartid);
-
-        $cartNumber = $cart['number'];
-        $cartPrice = $cart['price'];
-        $cartItems = $cart['items'];
-
-        $itemCount = array_count_values($cartItems)[$productId];
-
-        foreach (array_keys($cartItems, $productId) as $key) {
-            unset($cartItems[$key]);
-        }
-
-        $cartData =  $cart ;
-        $cartData['number'] = $cartNumber - $itemCount;
-        $cartData['price'] = $cartPrice - $itemCount*$product->price;
-        $cartData['items'] = $cartItems;
         
+
+
         if (Auth::check())
         {
             $cart->products()->detach($product);
         }
         else
         {
-            Cookie::queue('cart', $cartData, 0);
+            $price = $this->getUserProductPrice($productId, $cart['counts'][$productId]);
+            
+            if (($key = array_search($productId, $cart['items'])) !== false) {
+                unset($cart['items'][$key]);
+            }
+            
+            $cart['number'] = $cart['number']-1;
+            $cart['price'] = $cart['price'] - $price;
+            unset($cart['counts'][$productId]);
+            unset($cart['price_levels'][$productId]);
+
+            Cookie::queue('cart', $cart, 0);
         }
 
         // return price for FE
