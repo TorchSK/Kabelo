@@ -7,7 +7,7 @@
 		@endif
 	</div>
 
-	<div class="name"><a href="/product/{{$product->code}}/detail">{{$product->name}}</a></div>
+	<div class="name"><a href="/{{$product->maker}}/{{$product->code}}/detail">{{$product->name}}</a></div>
 	<div class="delete cart_delete_product" data-tooltip="Zmazat"><i class="icon red large delete"></i></div>
 
 	@if(!isset($cart_confirm) || !$cart_confirm)

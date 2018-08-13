@@ -320,7 +320,7 @@ function addToCart(productid, qty){
     global: false,
     success: function(data){
       cart.find('text number').text(number+1);
-      cart.find('price number').text(price+parseFloat(data.price));
+      cart.find('price number').text(price+parseFloat(data.price).toFixed(2));
     }
   })
 }
