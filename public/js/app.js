@@ -318,6 +318,7 @@ function addToCart(productid, qty){
     data: {qty: qty},
     global: false,
     success: function(data){
+    	console.log(data);
       cart.find('text number').text(data.count);
       cart.find('price number').text(parseFloat(price+parseFloat(data.price)).toFixed(2));
     }

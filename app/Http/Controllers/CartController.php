@@ -208,12 +208,15 @@ class CartController extends Controller
 
         $cart = $this->getCart($cartid);
         $price = $this->getUserProductPrice($productId, $request->get('qty'));
+        $cartCount = $cart->products->count();
 
         if (Auth::check())
         {   
             if (! $cart->products->contains($product->id))
             {
                 $cart->products()->attach($product, ['qty'=>$request->get('qty'), 'price_level_id'=>$this->getPriceLevel($productId, $request->get('qty'))]);
+                                 $cartCount =  $cartCount +1;
+
             }
             else
             {
@@ -221,7 +224,7 @@ class CartController extends Controller
                 $cart->products()->updateExistingPivot($product->id, ['qty'=>$oldQty + $request->get('qty'), 'price_level_id' => $this->getPriceLevel($productId, $oldQty + $request->get('qty'))]);
             }
 
-            $cartCount = $cart->products->count();
+            
 
         }
         else
