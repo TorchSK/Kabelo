@@ -191,19 +191,6 @@ class UserController extends Controller
 
     public function logout()
     {
-        $cookieData = [
-                'number' => 0,
-                'price' => 0,
-                'items' => [],
-                'delivery_method' => '',
-                'payment_method' => '',
-                'invoice_address' => '',
-                'delivery_address' => '',
-                'delivery_address_flag' => 0
-
-        ];
-
-        Cookie::queue('cart', $cookieData, 0);  
 
         Auth::logout();
         return redirect('/');
