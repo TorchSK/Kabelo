@@ -8,7 +8,11 @@
 
 <div class="ct" id="pag">
 	<div></div>
+	
+	<!--
     <div class="middle"><div class="ui large teal button" id="more_button">Viac produktov</div></div>
+	-->
+
     <div>{{$products->links()}}</div>
 </div>
 @endif
