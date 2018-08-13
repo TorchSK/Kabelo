@@ -220,6 +220,9 @@ class CartController extends Controller
                 $oldQty = $cart->products->where('id',$productId)->first()->pivot->qty;
                 $cart->products()->updateExistingPivot($product->id, ['qty'=>$oldQty + $request->get('qty'), 'price_level_id' => $this->getPriceLevel($productId, $oldQty + $request->get('qty'))]);
             }
+
+            $cartCounts = $cart->products->count();
+
         }
         else
         {
