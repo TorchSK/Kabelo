@@ -11,7 +11,7 @@ class DeliveryMethod extends Model {
 
   	public function paymentMethods() 
   	{
- 		return $this->belongsToMany('App\PaymentMethod');
+ 		return $this->belongsToMany('App\PaymentMethod')->withPivot(['price']);
  	}
 
 }

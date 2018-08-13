@@ -18,6 +18,7 @@ use App\Address;
 use App\Activation;
 use App\Cart;
 use Carbon\Carbon;
+use App\Product;
 
 class UserController extends Controller
 {
@@ -129,6 +130,19 @@ class UserController extends Controller
 
         if ($auth = Auth::attempt($credentials, true))
         {
+            $cookieCart = Cookie::get('cart');
+            $dbCart = Auth::user()->cart;
+
+            foreach($cookieCart['items'] as $key=>$item)
+            {   
+                $product = Product::find($item);
+                $dbCart->products()->attach($product,['qty' => $cookieCart['counts'][$product->id], 'price_level_id' => $cookieCart['price_levels'][$product->id]]);
+            }
+
+            $dbCart->save();
+
+
+
             return redirect('/');
         }
         else

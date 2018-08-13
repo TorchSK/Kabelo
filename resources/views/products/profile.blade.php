@@ -264,7 +264,17 @@
         <div class="ratings_list">
           @foreach($product->ratings as $rating)
             <div class="rating_div">
-              <div class="user">{{$rating->user->email}}</div>
+              <div class="user">
+                @if ($rating->user->first_name)
+                {{$rating->user->first_name}} {{$rating->user->last_name}} 
+                @else
+                  Zákazník
+                @endif
+
+                <div class="text"> {{$rating->text}}</div>
+
+              </div>
+
               <div class="value">
 
                   <div class="disabled rating" data-rating="{{$rating->value}}">

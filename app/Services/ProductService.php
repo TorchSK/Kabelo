@@ -106,7 +106,16 @@ class ProductService implements ProductServiceContract {
 
     public function makerList(Request $request){
         
-        $filters['parameters']['makers'] = [$request->get('maker')];  
+        $filters = $request->get('filters');
+
+        if(count($filters['parameters']['makers']) > 0)
+        {
+            array_push($filters['parameters']['makers'], $request->get('maker'));  
+        }
+        else
+        {
+            $filters['parameters']['makers'] = [$request->get('maker')];
+        }
 
         $sortBy = $request->get('sortBy');
         $sortOrder = $request->get('sortOrder');    
@@ -140,7 +149,9 @@ class ProductService implements ProductServiceContract {
             'products' => $products,
             'priceRange' => $priceRange,
             'categories' => array_unique($categories),
-            'maker' => $request->get('maker')
+            'maker' => $request->get('maker'),
+            'makers' => Product::where('maker',[$request->get('maker')])->get(),
+            'filters' => []
         ];
 
         return $data;

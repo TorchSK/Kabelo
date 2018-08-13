@@ -206,6 +206,11 @@ class AdminController extends Controller
         return view('admin.settingseshop');
     }
 
+    public function settingsDelivery()
+    {
+        return view('admin.settingsdelivery');
+    }
+
     public function settingsInvoice()
     {
         return view('admin.settingsinvoice');
@@ -305,6 +310,15 @@ class AdminController extends Controller
 
     }
 
+    public function changeDeliveryPayment(Request $request)
+    {
+        $delivery = DeliveryMethod::find($request->get('delivery_method_id'));
+        $payment = PaymentMethod::find($request->get('payment_method_id'));
+        $price = $request->get('price');
+
+        return $delivery->paymentMethods()->updateExistingPivot($payment->id,['price'=>$price]);
+
+    }
 
     public function addColor(Request $request)
     {

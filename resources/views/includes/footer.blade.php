@@ -150,7 +150,7 @@
         <h4 class="ui dividing header">Napíšte krátky komentár</h4>
         <div class="field">
           <label>Komentár</label>
-          <textarea></textarea>
+          <textarea name="text"></textarea>
         </div>
         </div>
       </div>

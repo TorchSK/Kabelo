@@ -35,6 +35,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/settings/eshop', 'AdminController@settingsEshop')->name('admin.settingsEshop');
 	Route::get('/settings/invoice', 'AdminController@settingsInvoice')->name('admin.settingsInvoice');
 	Route::post('/settings/eshop/save', 'SettingController@bulkUpdate')->name('settings.blukUpdate');
+	Route::get('/settings/delivery', 'AdminController@settingsDelivery')->name('admin.settingsDelivery');
 
 
 	Route::post('/delivery', 'AdminController@addDeliveryMethod');
@@ -53,6 +54,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
 	Route::post('/deliverypayment', 'AdminController@addDeliveryPayment');
 	Route::delete('/deliverypayment', 'AdminController@removeDeliveryPayment');
+	Route::put('/deliverypayment', 'AdminController@changeDeliveryPayment');
+
 	Route::get('/banner/', 'AdminController@addCover')->name('admin.addCover');
 	Route::post('/cover/', 'AdminController@storeCover')->name('admin.storeCover');
 	Route::post('/cover/upload', 'AdminController@uploadCover')->name('admin.uploadCover');
@@ -135,6 +138,8 @@ Route::post('/category/{categoryid}/image/confirmCrop','CategoryController@confi
 Route::get('product/search/{query?}','ProductController@search');
 Route::get('product/{id}/parameters/options','ProductController@paramOptions');
 Route::get('product/list','ProductController@list');
+Route::get('makerproduct/list','ProductController@makerlist');
+
 Route::post('product/{productid}/change/category/{categoryid}','ProductController@changeCategory');
 Route::post('product/{productid}/rating/','ProductController@addRating');
 

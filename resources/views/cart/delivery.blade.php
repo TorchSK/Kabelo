@@ -46,6 +46,9 @@
 
 	</div>
 
+		@include('cart.prices')
+
+
 	<div class="ct cart_actions">
 		<a href="/cart/products" class="ui button"><i class="arrow left icon"></i>Spať</a>
 

@@ -228,6 +228,16 @@ class ProductController extends Controller
     }
 
 
+    public function makerlist(Request $request){
+
+        $data = $this->productService->makerList($request);
+
+        return Response::json(['products' => view('products.list', $data)->render(), 'filters' => view('home.makers', $data)->render(), 'data' => $data]);   
+     
+
+    }
+
+
     public function uploadImages(Product $product)
     {
         $directory = 'temp';
@@ -454,7 +464,7 @@ class ProductController extends Controller
     {   
         if($query)
         {
-            $data['products'] = Product::where('name','like','%'.$query.'%')->orWhere('desc','like','%'.$query.'%')->paginate(28);
+            $data['products'] = Product::where('name','like','%'.$query.'%')->orWhere('desc','like','%'.$query.'%')->orWhere('code','like','%'.$query.'%')->paginate(28);
             return view('products.searchlist', $data)->render();
         }
 
@@ -463,12 +473,26 @@ class ProductController extends Controller
     public function addRating($id, Request $request)
     {
         $product = Product::find($id);
-        $rating = new Rating();
-        $rating->value = $request->get('value');
-        $rating->text = $request->get('text');
-        $rating->user_id = Auth::user()->id;
+        $existing = Rating::where('ratingable_id', $id)->where('user_id', Auth::user()->id);
 
-        $product->ratings()->save($rating);
+        if ($existing->count())
+        {
+            $rating = $existing->first();
+            $rating->value = $request->get('value');
+            $rating->text = $request->get('text');
+            $rating->user_id = Auth::user()->id;
+
+            $product->ratings()->save($rating);
+        }
+        else
+        {
+            $rating = new Rating();
+            $rating->value = $request->get('value');
+            $rating->text = $request->get('text');
+            $rating->user_id = Auth::user()->id;
+
+            $product->ratings()->save($rating);
+        }
 
         return 1;
     }

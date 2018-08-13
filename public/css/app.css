@@ -1798,6 +1798,11 @@ a:hover {
 }
 #product_tabs .ratings_list .rating_div .user {
   font-size: 14px;
+  font-weight: 800;
+}
+#product_tabs .ratings_list .rating_div .user .text {
+  font-weight: 300;
+  font-style: italic;
 }
 #create_product_params .row,
 #edit_product_params .row {
@@ -2706,9 +2711,12 @@ a:hover {
   width: 150px;
 }
 .delete_cart {
-  opacity: 0.7;
+  font-weight: 300;
+  font-size: 1.2em;
   cursor: pointer;
   color: #DB2828;
+  margin-bottom: 25px;
+  text-align: left;
 }
 .cart_actions {
   background-color: #F7F7F7;

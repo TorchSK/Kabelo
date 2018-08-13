@@ -100,5 +100,7 @@
 
    </div>
 
+    <div id="routename" class="ui hidden">{{Route::currentRouteName()}}</div>
+
 
   </div>

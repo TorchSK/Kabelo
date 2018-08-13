@@ -22,7 +22,7 @@ class CreateCartCookie
         {
             $cart = Cookie::get('cart');
 
-            if(!$cart)
+            if(!$cart || !array_key_exists('counts', $cart))
             {
                 $cookieData = [
                     'number' => 0,

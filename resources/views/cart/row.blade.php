@@ -1,13 +1,13 @@
 <div class="product" data-productid={{$product->id}} data-minqty="{{$product->priceLevels->min('threshold')}}">
 	<div class="image_div">
 		@if ($product->images->count() == 0)
-			<img src="/img/empty.jpg" class="ui image" />
+			<a href="/{{$product->maker}}/{{$product->code}}/detail"><img src="/img/empty.jpg" class="ui image" /></a>
 		@elseif ($product->image)
-           <img src="/{{$product->image->path}}" class="ui image" />
+           <a href="/{{$product->maker}}/{{$product->code}}/detail"><img src="/{{$product->image->path}}" class="ui image" /></a>
 		@endif
 	</div>
 
-	<div class="name">{{$product->name}}</div>
+	<div class="name"><a href="/product/{{$product->code}}/detail">{{$product->name}}</a></div>
 	<div class="delete cart_delete_product" data-tooltip="Zmazat"><i class="icon red large delete"></i></div>
 
 	@if(!isset($cart_confirm) || !$cart_confirm)
@@ -57,20 +57,21 @@
 
     <div class="price">
     @if(Auth::check())
+    
     @if(Auth::user()->voc)
 	    @if($product->sale)
-	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->voc_sale*$product->pivot->qty}} &euro; </div>
+	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->voc_sale*$product->pivot->qty*(1-Auth::user()->discount/100)}} &euro; </div>
 	    @else
-	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->voc_regular*$product->pivot->qty}} &euro;</div>
+	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->voc_regular*$product->pivot->qty*(1-Auth::user()->discount/100)}} &euro;</div>
 	    @endif
 	  	@else
 	    @if($product->sale)
-	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->moc_sale*$product->pivot->qty}} &euro;</div>
+	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->moc_sale*$product->pivot->qty*(1-Auth::user()->discount/100)}} &euro;</div>
 	    @else
-	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->moc_regular*$product->pivot->qty}} &euro;</div>
+	    <div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->moc_regular*$product->pivot->qty*(1-Auth::user()->discount/100)}} &euro;</div>
 	    @endif
 	  @endif
-	 @else
+	@else
   	
   	@if($product->sale)
 	    <div class="final_price">{{App\PriceLevel::find($cart['price_levels'][$product->id])->moc_sale*$cart['counts'][$product->id]}} &euro; </div>

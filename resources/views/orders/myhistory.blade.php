@@ -20,7 +20,7 @@
 	@endforeach
 	</div>
 
-	<div class="ui horizontal divider">Odbavené objednávky</div>
+	<div class="ui horizontal divider">Vybavené objednávky</div>
 
 	@foreach(Auth::user()->orders->where('status_id',3) as $order)
 		<div class="item">
