@@ -309,7 +309,6 @@ function flyToElement(flyer, flyingTo) {
 
 function addToCart(productid, qty){
   var cart = $('#header .cart.item');
-  var number = parseFloat(cart.find('text number').text());
   var price = parseFloat(cart.find('price number').text());
   var cartid = $('.content.cart').data('cartid');
 
@@ -319,7 +318,7 @@ function addToCart(productid, qty){
     data: {qty: qty},
     global: false,
     success: function(data){
-      cart.find('text number').text(number+1);
+      cart.find('text number').text(data.count);
       cart.find('price number').text(parseFloat(price+parseFloat(data.price)).toFixed(2));
     }
   })

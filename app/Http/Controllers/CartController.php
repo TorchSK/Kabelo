@@ -259,6 +259,7 @@ class CartController extends Controller
 
         // return price for FE
         $data['price'] = $price;
+        $data['count'] = count($cartCounts);
         return $data;
     }
 
