@@ -250,6 +250,8 @@ class CartController extends Controller
                 $cartData['number'] = $cartNumber ;
                 $cartCounts[$productId]=$oldQty + $request->get('qty');
                 $cartPriceLevels[$productId] = $this->getPriceLevel($productId, $oldQty+ $request->get('qty'));
+                $cartCount = count($cartCounts);
+
             }
 
             $cartData['price'] = $cartPrice + $price;
@@ -257,7 +259,6 @@ class CartController extends Controller
             $cartData['counts'] = $cartCounts;
             $cartData['price_levels'] = $cartPriceLevels;
 
-            $cartCount = count($cartCounts);
             Cookie::queue('cart', $cartData, 0);
         }
 
