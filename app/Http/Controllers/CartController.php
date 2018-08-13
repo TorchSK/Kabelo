@@ -221,7 +221,7 @@ class CartController extends Controller
                 $cart->products()->updateExistingPivot($product->id, ['qty'=>$oldQty + $request->get('qty'), 'price_level_id' => $this->getPriceLevel($productId, $oldQty + $request->get('qty'))]);
             }
 
-            $cartCounts = $cart->products->count();
+            $cartCount = $cart->products->count();
 
         }
         else
@@ -257,12 +257,13 @@ class CartController extends Controller
             $cartData['counts'] = $cartCounts;
             $cartData['price_levels'] = $cartPriceLevels;
 
+            $cartCount = count($cartCounts);
             Cookie::queue('cart', $cartData, 0);
         }
 
         // return price for FE
         $data['price'] = $price;
-        $data['count'] = count($cartCounts);
+        $data['count'] = $cartCount;
         return $data;
     }
 
