@@ -1388,6 +1388,7 @@ $(document).on('click','.admin_method_list i.action', function(){
   $key = $row.find('td:first-child').text();
   $name = $row.find('td:nth-child(2)').text();
   $desc = $row.find('td:nth-child(3)').text();
+  $price = $row.find('td:nth-child(3)').text();
   $icon = $row.find('.ui.dropdown').dropdown('get value');
 
 
@@ -2341,9 +2342,12 @@ if($('body').attr('id')=='cartproducts')
 		$('#cart_continue_btn').addClass('disabled');
 	}
 
-	$freeShippingPrice = parseFloat($('#cart_free_shipping_price').data('price')) - parseFloat($('#cart_total_price').find('price').text());
+	$freeShippingPrice = parseFloat($('#cart_free_shipping_price').data('price')) - parseFloat($('#cart_total_price').find('price').text()).toFixed(2);
+	
 	if ($freeShippingPrice > 0)
 	{
+		$freeShippingPrice = parseFloat($freeShippingPrice).toFixed(2);
+		console.log($freeShippingPrice);
 		$('#cart_free_shipping_price').find('price').text($freeShippingPrice);
 	}
 	else
