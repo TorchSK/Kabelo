@@ -1388,6 +1388,7 @@ $(document).on('click','.admin_method_list i.action', function(){
   $key = $row.find('td:first-child').text();
   $name = $row.find('td:nth-child(2)').text();
   $desc = $row.find('td:nth-child(3)').text();
+  $price = $row.find('td:nth-child(3)').text();
   $icon = $row.find('.ui.dropdown').dropdown('get value');
 
 
@@ -2344,7 +2345,7 @@ if($('body').attr('id')=='cartproducts')
 	$freeShippingPrice = parseFloat($('#cart_free_shipping_price').data('price')) - parseFloat($('#cart_total_price').find('price').text()).toFixed(2);
 	if ($freeShippingPrice > 0)
 	{
-		$('#cart_free_shipping_price').find('price').text($freeShippingPrice);
+		$('#cart_free_shipping_price').find('price').text($freeShippingPrice.toFixed(2));
 	}
 	else
 	{

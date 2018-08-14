@@ -34,8 +34,16 @@
 	<tbody class="admin_method_list" data-type="delivery">
 	@foreach(App\DeliveryMethod::all() as $method)
 		<tr data-id={{$method->id}}>
-			<td>{{$method->key}}</td>
-			<td>{{$method->name}}</td>
+			<td>
+				<div class="ui fluid input">
+					<input type="text" class="delivery_price" value="{{$method->key}}">
+				</div>	
+			</td>
+			<td>
+				<div class="ui fluid input">
+					<input type="text" class="delivery_price" value="{{$method->name}}">
+				</div>
+			</td>
 			<td>{{$method->desc}}</td>
 			<td>
 				<div class="ui fluid input">
