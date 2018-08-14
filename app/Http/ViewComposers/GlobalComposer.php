@@ -56,7 +56,7 @@ class GlobalComposer {
                 }
             }
 
-            $cart= $this->cartController->getCart($cart->id);
+            $cart = $this->cartController->getCart($cart->id);
             
 
         }

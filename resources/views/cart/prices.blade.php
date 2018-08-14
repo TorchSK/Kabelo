@@ -8,5 +8,5 @@
 
 	@if(App\Setting::whereName('min_order_price')->first()->value > 0)
 	<div id="cart_min_price">Minimálna výška objednávky je <price>{{App\Setting::whereName('min_order_price')->first()->value }}</price>&euro;</div>
-	<div id="cart_free_shipping_price" data-price="{{App\Setting::whereName('min_order_price')->first()->value }}">Už len <price></price>&euro; a máte dopravu zdarma</div>
+	<div id="cart_free_shipping_price" data-price="{{App\Setting::whereName('min_free_shipping_price')->first()->value }}">Už len <price></price>&euro; a máte dopravu zdarma</div>
 		@endif

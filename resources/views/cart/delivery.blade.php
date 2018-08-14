@@ -18,6 +18,7 @@
 			    <div class="content">
 			      <div class="title">{{$delivery->name}}</div>
 			      <div class="description">{{$delivery->desc}}</div>
+			      <div class="price">{{$delivery}}</div>
 			    </div>
 			  </a>
 			</div>
@@ -46,7 +47,11 @@
 
 	</div>
 
-		@include('cart.prices')
+
+
+	<div id="cart_total_price">Celková cena: <price>{{$cart['price']}}</price> <symbol>&euro;</symbol></div>
+
+
 
 
 	<div class="ct cart_actions">

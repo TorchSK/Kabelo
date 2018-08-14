@@ -33,7 +33,9 @@ class CartController extends Controller
     }
 
     public function products(){
-        return view('cart.products');
+        $data['bodyid'] = 'cartproducts';
+        return view('cart.products', $data);
+
     }
 
     public function delivery(){
@@ -99,6 +101,7 @@ class CartController extends Controller
             $cart['items'] = $cart->products->pluck('id')->toArray();
 
             $price = 0;
+
             foreach($cart->products as $product)
             {
                 $price = $price + $this->getUserProductPrice($product->id, $product->pivot->qty);
@@ -152,27 +155,41 @@ class CartController extends Controller
             }
         }
     
-        if (Auth::check() && $user->voc)
+        if (Auth::check())
         {
-            if ($product->sale)
+            if($user->voc)
             {
-                $price = $product->priceLevels->where('threshold', $closest)->first()->voc_sale;
+                if ($product->sale)
+                {
+                    $price = $product->priceLevels->where('threshold', $closest)->first()->voc_sale * (1-$user->discount/100);
+                }
+                else
+                {
+                    $price = $product->priceLevels->where('threshold', $closest)->first()->voc_regular * (1-$user->discount/100);;
+                }
             }
             else
             {
-                $price = $product->priceLevels->where('threshold', $closest)->first()->voc_regular;
+                if ($product->sale)
+                {
+                    $price = $product->priceLevels->where('threshold', $closest)->first()->moc_sale * (1-$user->discount/100);;
+                }
+                else
+                {
+                    $price = $product->priceLevels->where('threshold', $closest)->first()->moc_regular * (1-$user->discount/100);
+                }   
             }
         }
         else
         {
-            if ($product->sale)
-            {
-                $price = $product->priceLevels->where('threshold', $closest)->first()->moc_sale;
-            }
-            else
-            {
-                $price = $product->priceLevels->where('threshold', $closest)->first()->moc_regular;
-            }   
+                if ($product->sale)
+                {
+                    $price = $product->priceLevels->where('threshold', $closest)->first()->moc_sale;
+                }
+                else
+                {
+                    $price = $product->priceLevels->where('threshold', $closest)->first()->moc_regular;
+                }   
         }
 
         return $price*$qty;     

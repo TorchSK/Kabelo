@@ -2326,27 +2326,31 @@ $('#cookies_msg i').click(function(){
 });
 
 
-$cart_price = 0;
-
-$('#cart_detail .product').each(function(index,item){
-  $cart_price = $cart_price + parseFloat($(item).find('.final_price').text());
-})
-
-$('#cart_total_price').find('price').text(parseFloat($cart_price).toFixed(2));
-
-if(parseFloat($('#cart_total_price').find('price').text()) < parseFloat($('#cart_min_price').find('price').text()))
+if($('body').attr('id')=='cartproducts')
 {
-	$('#cart_continue_btn').addClass('disabled');
-}
+	$cart_price = 0;
 
-$freeShippingPrice = parseFloat($('#cart_free_shipping_price').data('price')) - parseFloat($('#cart_total_price').find('price').text());
-if ($freeShippingPrice > 0)
-{
-	$('#cart_free_shipping_price').find('price').text($freeShippingPrice);
-}
-else
-{
-	$('#cart_free_shipping_price').hide();
+	$('#cart_detail .product').each(function(index,item){
+	  $cart_price = $cart_price + parseFloat($(item).find('.final_price').text());
+	})
+
+	$('#cart_total_price').find('price').text(parseFloat($cart_price).toFixed(2));
+
+	if(parseFloat($('#cart_total_price').find('price').text()) < parseFloat($('#cart_min_price').find('price').text()))
+	{
+		$('#cart_continue_btn').addClass('disabled');
+	}
+
+	$freeShippingPrice = parseFloat($('#cart_free_shipping_price').data('price')) - parseFloat($('#cart_total_price').find('price').text());
+	if ($freeShippingPrice > 0)
+	{
+		$('#cart_free_shipping_price').find('price').text($freeShippingPrice);
+	}
+	else
+	{
+		$('#cart_free_shipping_price').hide();
+	}
+
 }
 
 $('.filterbar_handle').mouseover(function(){
