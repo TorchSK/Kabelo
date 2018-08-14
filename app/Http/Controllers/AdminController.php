@@ -296,6 +296,7 @@ class AdminController extends Controller
         $delivery->key = $request->get('key');
         $delivery->desc = $request->get('desc');
         $delivery->icon = $request->get('icon');
+        $delivery->price = $request->get('price');
         $delivery->save();
 
         return $delivery;
@@ -320,6 +321,7 @@ class AdminController extends Controller
         $payment->key = $request->get('key');
         $payment->desc = $request->get('desc');
         $payment->icon = $request->get('icon');
+        $payment->price = $request->get('price');
         $payment->save();
 
         return $payment;

@@ -36,27 +36,27 @@
 		<tr data-id={{$method->id}}>
 			<td>
 				<div class="ui fluid input">
-					<input type="text" class="delivery_price" value="{{$method->key}}">
+					<input type="text" name="key" value="{{$method->key}}">
 				</div>	
 			</td>
 			<td>
 				<div class="ui fluid input">
-					<input type="text" class="delivery_price" value="{{$method->name}}">
+					<input type="text" name="name" value="{{$method->name}}">
 				</div>
 			</td>
 			<td>
 				<div class="ui fluid input">
-					<input type="text" class="delivery_price" value="{{$method->desc}}">
+					<input type="text" name="desc" value="{{$method->desc}}">
 				</div>
 			</td>
 			<td>
 				<div class="ui fluid input">
-				<input type="text" class="delivery_price" value="{{$method->price}}">
+				<input type="text" name="price" value="{{$method->price}}">
 				</div>			
 			</td>
 			<td data-val="{{$method->icon}}" class="collapsing">				  
 			  <div class="ui fluid selection big dropdown">
-			    <input type="hidden" name="icon">
+			    <input type="hidden" name="icon" value="{{$method->icon}}">
 			    <i class="dropdown icon"></i>
 			    <div class="default text"><i class="icon {{$method->icon}}"></i></div>
 			    <div class="menu">
@@ -71,9 +71,10 @@
 				<div>
 			</td>
 			<td class="collapsing">
-				<i class="delete circle red large icon"></i>
+				<i class="check square green large icon"></i>
 				<i class="chevron circle down large icon"></i>
 				<i class="chevron circle up large icon"></i>
+				<i class="delete circle red large icon"></i>
 			</td>
 
 		</tr>
@@ -92,6 +93,7 @@
 		    <th>Kód</th>
 		    <th>Názov</th>
 		   	<th>Popis</th>
+		   	<th>Cena (&euro;)</th>
 		    <th>Ikona</th>
 		   	<th>Akcie</th>
 
@@ -100,16 +102,32 @@
 	<tbody class="admin_method_list" data-type="payment">
 	@foreach(App\PaymentMethod::all() as $method)
 		<tr data-id={{$method->id}}>
-			<td>{{$method->key}}</td>
-			<td>{{$method->name}}</td>
-			<td>{{$method->desc}}</td>
-			<td data-val="{{$method->icon}}">
-				<i class="{{$method->icon}} big icon"></i>
-				  
-			  <div class="ui selection big dropdown">
-			    <input type="hidden" name="gender">
+			<td>
+				<div class="ui fluid input">
+					<input type="text" name="key" value="{{$method->key}}">
+				</div>	
+			</td>
+			<td>
+				<div class="ui fluid input">
+					<input type="text" name="name" value="{{$method->name}}">
+				</div>
+			</td>
+			<td>
+				<div class="ui fluid input">
+					<input type="text" name="desc" value="{{$method->desc}}">
+				</div>
+			</td>
+			<td>
+				<div class="ui fluid input">
+				<input type="text" name="price" value="{{$method->price}}">
+				</div>			
+			</td>
+			<td data-val="{{$method->icon}}" class="collapsing">  
+		  
+			  <div class="ui selection fluid big dropdown">
+			    <input type="hidden" name="icon" value="{{$method->icon}}">
 			    <i class="dropdown icon"></i>
-			    <div class="default text">Ikona</div>
+			    <div class="default text"><i class="icon {{$method->icon}}"></i></div>
 			    <div class="menu">
 			      <div class="item" data-value="money"><i class="big icon money"></i></div>
 			      <div class="item" data-value="user"><i class="big icon user"></i></div>
@@ -122,10 +140,10 @@
 				<div>
 			</td>
 			<td class="collapsing">
-				<i class="edit large icon action"></i>
-				<i class="delete circle red large icon"></i>
+				<i class="check square green large icon"></i>
 				<i class="chevron circle down large icon"></i>
 				<i class="chevron circle up large icon"></i>
+				<i class="delete circle red large icon"></i>
 			</td>
 
 		</tr>

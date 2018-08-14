@@ -127,24 +127,34 @@ class CartController extends Controller
 
     public function set(Request $request)
     {        
-        $userid = Auth::user()->id;
-        $cart = $this->getCart($userid);
+ 
 
-        foreach ($request->except('_token') as $key => $item) {
-          $cart[$key] = $item;
-        }        
-
+   
         if (Auth::check())
         {
+            $user = Auth::user();
+            $cart = $this->getCart($user->cart->id);
+
+            foreach ($request->except('_token') as $key => $item) {
+                 $cart[$key] = $item;
+            }        
+
             unset($cart['number']);
             unset($cart['items']);
             $cart->save();
         }
         else
         {
+            $cart = $this->getCart('undefined');
+
+            foreach ($request->except('_token') as $key => $item) {
+                 $cart[$key] = $item;
+            }        
+
             Cookie::queue('cart', $cart, 0);
         }
     }
+
 
     public function getUserProductPrice($productId, $qty)
     {

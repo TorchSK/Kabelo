@@ -661,41 +661,139 @@ $('.categories .item .icon.minus').click(function(e){
 
 
 
-$('#cart_delivery_options .step').click(function(){
-  $('#cart_delivery_options .step').removeClass('completed').removeClass('active');
-  $(this).addClass('completed active');
-  $delivery_method_id = $(this).data('delivery_method');
 
-  $('#cart_payment_options .step').each(function(index, element){
+$(".cart_delivery").click(function(){
+  $this = $(this);
+
+  if(!$this.hasClass('completed'))
+  {
+  $delivery = $(this).data('delivery_method');
+
+
+  $('.cart_payment').each(function(index, element){
     $(element).removeClass('disabled completed active');
-    if ($.inArray($delivery_method_id, $(element).data('delivery_methods'))==-1)
+    if ($.inArray($delivery, $(element).data('delivery_methods'))==-1)
     {
       $(element).addClass('disabled');
     }
   });
 
-  if ($('#cart_payment_options .step.completed').length > 0)
+
+  $shipping_price = parseFloat($(this).data('price'));
+
+  $data = {delivery_method: $delivery};
+
+  if ($('.cart_payment.completed.active').length && $(".cart_delivery.completed.active").length)
   {
-    $('.cart_next').removeClass('disabled');
+  	$shipping_price = parseFloat($(this).data('price'));
+  	$data['payment_method'] = '';
+  	$data['shipping_price'] = $shipping_price;
+  	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
   }
-   else
+
+
+  if ($('.cart_payment.completed.active').length && !$(".cart_delivery.completed.active").length)
   {
-    $('.cart_next').addClass('disabled');
+  	$data['shipping_price'] = $shipping_price + parseFloat($('.cart_delivery.completed.active').data('price'));
+  	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
   }
+
+
+  if (!$('.cart_payment.completed.active').length && $(".cart_delivery.completed.active").length)
+  {
+  	$shipping_price = parseFloat($(this).data('price'));
+  	$data['payment_method'] = '';
+  	$(".cart_payment").removeClass('completed active');
+  	$data['shipping_price'] = $shipping_price;
+  	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
+  }
+
+  if (!$('.cart_payment.completed.active').length && !$(".cart_delivery.completed.active").length)
+  {
+  	$shipping_price = parseFloat($(this).data('price'));
+  	$data['payment_method'] = '';
+  	  	$(".cart_payment").removeClass('completed active');
+
+  	$data['shipping_price'] = $shipping_price;
+  	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
+  }
+
+   $(".cart_delivery").removeClass('completed active');
+
+  $.ajax({
+    method: "POST",
+    url: '/cart',
+    data: $data,
+    success: function(){
+    	if (!$this.hasClass('completed'))
+    	{
+    		$this.addClass('completed active');
+    	}
+    
+    }
+  });
+}
+
 })
 
-$('#cart_payment_options .step').click(function(){
-  $('#cart_payment_options .step').removeClass('completed').removeClass('active');
-  $(this).addClass('completed active');
-  if ($('#cart_delivery_options .step.completed').length > 0)
+$(".cart_payment").click(function(){
+  $this = $(this);
+  if(!$this.hasClass('completed'))
   {
-    $('.cart_next').removeClass('disabled');
-  }
-  else
+  $payment = $(this).data('payment_method');
+  
+  $shipping_price = parseFloat($(this).data('price'));
+
+  $data = {payment_method: $payment};
+
+  if ($('.cart_payment.completed.active').length && $(".cart_delivery.completed.active").length)
   {
-    $('.cart_next').addClass('disabled');
+  	$shipping_price = parseFloat($(this).data('price'));
+  	$data['delivery_method'] = '';
+  	$data['shipping_price'] = $shipping_price;
+  	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
   }
+
+
+  if ($('.cart_payment.completed.active').length && !$(".cart_delivery.completed.active").length)
+  {
+  	$shipping_price = parseFloat($(this).data('price'));
+  	$data['shipping_price'] = $shipping_price;
+  	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
+  }
+
+
+  if (!$('.cart_payment.completed.active').length && $(".cart_delivery.completed.active").length)
+  {
+  	$shipping_price = $shipping_price + parseFloat($('.cart_delivery.completed.active').data('price'));
+  	$data['shipping_price'] = $shipping_price;
+  	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
+  }
+
+  if (!$('.cart_payment.completed.active').length && !$(".cart_delivery.completed.active").length)
+  {
+  	$shipping_price = parseFloat($(this).data('price'));
+  	$data['shipping_price'] = $shipping_price;
+  	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
+  }
+
+
+
+  $.ajax({
+    method: "POST",
+    url: '/cart',
+    data: $data,
+    success: function(){
+    	if (!$this.hasClass('completed'))
+    	{
+    		  $this.addClass('completed active');
+    	}
+    }
+  })
+}
 })
+
+
 
 $('#view_goods_btn').click(function(){
   scrollTo('#home_content');
@@ -912,26 +1010,6 @@ $('#settings_submit_btn').click(function(){
       }
     })
   } 
-})
-
-$(".cart_delivery").click(function(){
-  $delivery = $(this).data('delivery_method');
-
-  $.ajax({
-    method: "POST",
-    url: '/cart',
-    data: {delivery_method: $delivery}
-  })
-})
-
-$(".cart_payment").click(function(){
-  $payment = $(this).data('payment_method');
-
-  $.ajax({
-    method: "POST",
-    url: '/cart',
-    data: {payment_method: $payment}
-  })
 })
 
 $('#use_delivery_address_input').checkbox({
@@ -1380,43 +1458,26 @@ $('.add_payment_method_btn').click(function(){
 
 
 
-$(document).on('click','.admin_method_list i.action', function(){
+$(document).on('click','.admin_method_list i.check', function(){
   $row = $(this).closest('tr');
   $type = $(this).closest('tbody').data('type');
   $id = $row.data('id');
   $this = $(this);
-  $key = $row.find('td:first-child').text();
-  $name = $row.find('td:nth-child(2)').text();
-  $desc = $row.find('td:nth-child(3)').text();
-  $price = $row.find('td:nth-child(3)').text();
+  $key = $row.find('input[name="key"]').val();
+  $name = $row.find('input[name="name"]').val();
+  $desc = $row.find('input[name="desc"]').val();
+  $price = $row.find('input[name="price"]').val();
   $icon = $row.find('.ui.dropdown').dropdown('get value');
 
+  $.ajax({
+    type: "PUT",
+    url: "/admin/"+$type+"/"+$id,
+    data: {name:$name, key: $key, desc:$desc, icon: $icon, price: $price},
+    success: function(){
+      
+    }
+  })
 
-  if ($(this).hasClass('edit'))
-  {
-      $row.find('i.red').css('display','inline-block');
-      $(this).toggleClass('edit check square green');
-
-      $row.find('td:not(:last-child):not(:nth-child(4))').prop('contenteditable',true).addClass('editable');
-      $row.find('.ui.dropdown').show();
-      $row.find('td:nth-child(4)>i.icon').hide();
-  }
-  else
-  {
-      $.ajax({
-        type: "PUT",
-        url: "/admin/"+$type+"/"+$id,
-        data: {name:$name, key: $key, desc:$desc, icon: $icon},
-        success: function(){
-            $this.toggleClass('edit check square green');
-            isEditable=$row.is('.editable');
-            $row.find('td:not(:last-child)').prop('contenteditable',false).removeClass('editable');
-            $row.find('i.red').hide();
-            $row.find('.ui.dropdown').hide();
-            $row.find('td:nth-child(4)>i.icon').attr('class','').addClass('big icon '+$icon).show();
-        }
-      })
-  };
 })
 
 $('.admin_method_list i.red').click(function(){
