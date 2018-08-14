@@ -113,6 +113,13 @@ class CartController extends Controller
         else
         {
             $cart = Cookie::get('cart');
+            $price = 0;
+            foreach($cart['items'] as $productid)
+            {
+                $price = $price + $this->getUserProductPrice($productid, $cart['counts'][$productid]);
+            }
+
+            $cart['price'] = $price;
         }
         
         return $cart;
@@ -144,12 +151,13 @@ class CartController extends Controller
         $user = Auth::user();
         $product = Product::find($productId);
 
-        $levels = $product->priceLevels->pluck('threshold');
+        $levels = $product->priceLevels->pluck('threshold')->toArray();
 
-        $closest = null;
-        foreach ($levels as $level) 
+        foreach ($levels as $key => $level) 
         {
-            if ($closest === null || abs($qty - $closest) > abs($level - $qty)) 
+            if(!isset($levels[$key+1])) $levels[$key+1] = '999999';
+            
+            if ($qty >= $level && $qty < $levels[$key+1]) 
             {
                 $closest = $level;
             }
@@ -303,11 +311,9 @@ class CartController extends Controller
         }
         else
         {   
-            $oldPrice =$this->getUserProductPrice($productid, $cart['counts'][$productid]);
 
             $cart['counts'][$productid] = $request->get('qty');
             $cart['price_levels'][$productid] = $this->getPriceLevel($productid, $request->get('qty'));
-            $cart['price'] = $cart['price'] - $oldPrice + $price;
 
             Cookie::queue('cart', $cart, 0);
         }

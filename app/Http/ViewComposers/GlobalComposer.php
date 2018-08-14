@@ -63,7 +63,8 @@ class GlobalComposer {
         else
         {
             //if user is in guest mode, get cart from Cookie
-            $cart = Cookie::get('cart');
+            $cart = $this->cartController->getCart('undefined');
+
         }   
 
         //dd($cart);
