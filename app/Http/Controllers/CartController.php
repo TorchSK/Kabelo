@@ -337,6 +337,9 @@ class CartController extends Controller
             
             $cart['number'] = $cart['number']-1;
             $cart['price'] = $cart['price'] - $price;
+
+            if ($cart['price'] < 0.0001) $cart['price'] = 0;
+
             unset($cart['counts'][$productId]);
             unset($cart['price_levels'][$productId]);
 
