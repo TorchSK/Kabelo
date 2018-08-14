@@ -2343,9 +2343,10 @@ if($('body').attr('id')=='cartproducts')
 	}
 
 	$freeShippingPrice = parseFloat($('#cart_free_shipping_price').data('price')) - parseFloat($('#cart_total_price').find('price').text()).toFixed(2);
+	
 	if ($freeShippingPrice > 0)
 	{
-		$('#cart_free_shipping_price').find('price').text($freeShippingPrice.toFixed(2));
+		$('#cart_free_shipping_price').find('price').text(parseFloat($freeShippingPrice).toFixed(2));
 	}
 	else
 	{
