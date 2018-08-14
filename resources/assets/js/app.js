@@ -2347,6 +2347,7 @@ if($('body').attr('id')=='cartproducts')
 	if ($freeShippingPrice > 0)
 	{
 		$freeShippingPrice = parseFloat($freeShippingPrice).toFixed(2);
+		console.log($freeShippingPrice);
 		$('#cart_free_shipping_price').find('price').text($freeShippingPrice);
 	}
 	else
