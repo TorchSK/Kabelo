@@ -44,19 +44,21 @@
 					<input type="text" class="delivery_price" value="{{$method->name}}">
 				</div>
 			</td>
-			<td>{{$method->desc}}</td>
+			<td>
+				<div class="ui fluid input">
+					<input type="text" class="delivery_price" value="{{$method->desc}}">
+				</div>
+			</td>
 			<td>
 				<div class="ui fluid input">
 				<input type="text" class="delivery_price" value="{{$method->price}}">
 				</div>			
 			</td>
-			<td data-val="{{$method->icon}}">
-				<i class="{{$method->icon}} big icon"></i>
-				  
-			  <div class="ui selection big dropdown">
-			    <input type="hidden" name="gender">
+			<td data-val="{{$method->icon}}" class="collapsing">				  
+			  <div class="ui fluid selection big dropdown">
+			    <input type="hidden" name="icon">
 			    <i class="dropdown icon"></i>
-			    <div class="default text">Ikona</div>
+			    <div class="default text"><i class="icon {{$method->icon}}"></i></div>
 			    <div class="menu">
 			      <div class="item" data-value="money"><i class="big icon money"></i></div>
 			      <div class="item" data-value="user"><i class="big icon user"></i></div>
@@ -69,7 +71,6 @@
 				<div>
 			</td>
 			<td class="collapsing">
-				<i class="edit large icon action"></i>
 				<i class="delete circle red large icon"></i>
 				<i class="chevron circle down large icon"></i>
 				<i class="chevron circle up large icon"></i>

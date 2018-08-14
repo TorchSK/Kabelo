@@ -2326,12 +2326,6 @@ a:hover {
 .admin_method_list i.icon {
   cursor: pointer;
 }
-.admin_method_list i.icon.red {
-  display: none;
-}
-.admin_method_list .ui.dropdown {
-  display: none;
-}
 .order_detail {
   padding: 2%;
   -webkit-box-flex: 1;

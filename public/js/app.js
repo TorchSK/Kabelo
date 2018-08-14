@@ -2112,7 +2112,7 @@ function initCartProductSlider(){
 
      $qty = $(sliders[i]).data('qty');
      $thresholds = $(sliders[i]).data('thresholds');
-
+     
      $prices = JSON.parse($(sliders[i]).data('prices'));
 
      noUiSlider.create(sliders[i], {
