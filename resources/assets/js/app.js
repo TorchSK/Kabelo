@@ -2341,7 +2341,7 @@ if($('body').attr('id')=='cartproducts')
 		$('#cart_continue_btn').addClass('disabled');
 	}
 
-	$freeShippingPrice = parseFloat($('#cart_free_shipping_price').data('price')) - parseFloat($('#cart_total_price').find('price').text());
+	$freeShippingPrice = parseFloat($('#cart_free_shipping_price').data('price')) - parseFloat($('#cart_total_price').find('price').text()).toFixed(2);
 	if ($freeShippingPrice > 0)
 	{
 		$('#cart_free_shipping_price').find('price').text($freeShippingPrice);

@@ -26,6 +26,7 @@
 		    <th>Kód</th>
 		    <th>Názov</th>
 		   	<th>Popis</th>
+		  	<th>Cena (&euro;)</th>
 		    <th>Ikona</th>
 		    <th>Akcie</th>
 	  	</tr>
@@ -36,6 +37,11 @@
 			<td>{{$method->key}}</td>
 			<td>{{$method->name}}</td>
 			<td>{{$method->desc}}</td>
+			<td>
+				<div class="ui fluid input">
+				<input type="text" class="delivery_price" value="{{$method->price}}">
+				</div>			
+			</td>
 			<td data-val="{{$method->icon}}">
 				<i class="{{$method->icon}} big icon"></i>
 				  
@@ -127,26 +133,18 @@
 		    <th>Doprava</th>
 		    <th>Platba</th>
 		   	<th>Povolené</th>
-		   	<th>Cena (&euro;)</th>
 	  	</tr>
 	</thead>
 	<tbody class="admin_method_list" data-type="payment">
 	@foreach(App\DeliveryMethod::all() as $deliveryMethod)
 	@foreach(App\PaymentMethod::all() as $paymentMethod)
-		<tr data-delivery_method_id={{$deliveryMethod->id}} data-payment_method_id={{$paymentMethod->id}}>
+		<tr data-delivery_method_id="{{$deliveryMethod->id}}" data-payment_method_id="{{$paymentMethod->id}}">
 			<td>{{$deliveryMethod->name}}</td>
 			<td>{{$paymentMethod->name}}</td>
 			<td>
 				<div class="ui checkbox delivery_payment_checkbox @if(in_array($paymentMethod->id, $deliveryMethod->paymentMethods->pluck('id')->toArray())) checked @endif">
 				  <input type="checkbox" @if(in_array($paymentMethod->id, $deliveryMethod->paymentMethods->pluck('id')->toArray())) checked @endif>
 				</div>
-			</td>
-			<td>
-				@if(in_array($paymentMethod->id, $deliveryMethod->paymentMethods->pluck('id')->toArray()))
-				<div class="ui fluid input">
-				<input type="text" class="delivery_price" value="{{$deliveryMethod->paymentMethods()->wherePivot('payment_method_id',$paymentMethod->id)->first()->pivot->price}}">
-				</div>
-				@endif
 			</td>
 		</tr>
 	@endforeach
