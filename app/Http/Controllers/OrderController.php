@@ -40,16 +40,18 @@ class OrderController extends Controller
         {
             $orderData = Auth::user()->cart;
             $orderData['items'] =  Auth::user()->cart->products->pluck('id');
-            $orderData['counts'] = [];
+            $orderCounts = [];
 
             foreach (Auth::user()->cart->products as $product)
             {
-                $orderData['counts'] =  $product->pivot->qty;
+                $orderCounts[$product->id] =  $product->pivot->qty;
             }
         }
         else
         {
             $orderData = Cookie::get('cart');
+            $orderCounts =  $orderData['counts'];
+
         }
 
     	$order = new Order();
@@ -79,7 +81,7 @@ class OrderController extends Controller
 
         foreach($orderData['items'] as $key => $productid)
         {
-            $order->products()->attach($productid, ['price' => $this->productService->getUserProductPrice($productid, $orderData['counts'][$productid])]);
+            $order->products()->attach($productid, ['price' => $this->productService->getUserProductPrice($productid, $orderCounts[$productid])]);
         }
     
 

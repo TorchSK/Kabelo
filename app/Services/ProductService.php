@@ -54,7 +54,7 @@ class ProductService implements ProductServiceContract {
         $product = Product::find($productId);
 
         $levels = $product->priceLevels->pluck('threshold')->toArray();
-
+        
         foreach ($levels as $key => $level) 
         {
             if(!isset($levels[$key+1])) $levels[$key+1] = '999999';
