@@ -115,7 +115,7 @@ class CartController extends Controller
             $cart = Cookie::get('cart');
             $price = 0;
 
-            if ($cart['items'])
+            if ($cart)
             {
                 foreach($cart['items'] as $productid)
                 {
@@ -123,10 +123,13 @@ class CartController extends Controller
                 }
 
                 $cart['price'] = $price;
+
+                return $cart;
+
             }
             else
             {
-                $cart['price'] = 0;
+                return null;
             }
         }
         
