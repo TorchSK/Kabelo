@@ -17,12 +17,37 @@ use Cookie;
 use Response;
 use DB;
 
+
 class ProductService implements ProductServiceContract {
 
 
   public function __construct ()
   {
   }
+
+    public function getPriceLevel($productId, $qty)
+    {
+        $user = Auth::user();
+        $product = Product::find($productId);
+
+        $levels = $product->priceLevels->pluck('threshold')->toArray();
+        sort($levels);
+
+        $index=0;
+        foreach($levels as $key => $level) 
+        {
+          if($qty >= $level) 
+          {
+            $index = $key;
+          }
+        }
+        
+        $id = $product->priceLevels()->where('threshold',$levels[$index])->first()->id;
+
+        return $id;   
+
+    }
+
 
   public function getUserPriceType()
   {

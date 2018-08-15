@@ -20,6 +20,9 @@ use App\Cart;
 use Carbon\Carbon;
 use App\Product;
 
+use App\Services\Contracts\ProductServiceContract;
+
+
 class UserController extends Controller
 {
     /**
@@ -27,9 +30,9 @@ class UserController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ProductServiceContract $productService)
     {
-        
+        $this->productService = $productService;
     }
 
     public function sendActivationEmail($userid)
@@ -143,7 +146,7 @@ class UserController extends Controller
                 else
                 {
                     $oldQty = $dbCart->products->where('id',$item)->first()->pivot->qty;
-                    $dbCart->products()->updateExistingPivot($item, ['qty'=>$oldQty + $request->get('qty'), 'price_level_id' => $this->getPriceLevel($item, $oldQty + $request->get('qty'))]);
+                    $dbCart->products()->updateExistingPivot($item, ['qty'=>$oldQty + $request->get('qty'), 'price_level_id' => $this->productService->etPriceLevel($item, $oldQty + $request->get('qty'))]);
                 }
             }
 
