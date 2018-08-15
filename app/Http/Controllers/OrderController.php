@@ -67,6 +67,9 @@ class OrderController extends Controller
 
         $order->save();
 
+        $order->products()->sync($orderData['items']);
+    
+
         $user = Auth::user();
         Mail::to(json_decode($order->invoice_address)->email)->queue(new NewOrder($order));
 
