@@ -685,7 +685,6 @@ $(".cart_delivery").click(function(){
 
   if ($('.cart_payment.completed.active').length && $(".cart_delivery.completed.active").length)
   {
-  	console.log(1);
   	$shipping_price = parseFloat($(this).data('price'));
   	$data['payment_method'] = '';
   	$data['shipping_price'] = $shipping_price;
@@ -709,6 +708,8 @@ $(".cart_delivery").click(function(){
   	$(".cart_payment").removeClass('completed active');
   	$data['shipping_price'] = $shipping_price;
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
+  	  	$('.cart_next').addClass('disabled');
+
   }
 
   if (!$('.cart_payment.completed.active').length && !$(".cart_delivery.completed.active").length)
