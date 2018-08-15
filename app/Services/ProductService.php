@@ -48,6 +48,63 @@ class ProductService implements ProductServiceContract {
 
     }
 
+  public function getUserProductPrice($productId, $qty)
+    {
+        $user = Auth::user();
+        $product = Product::find($productId);
+
+        $levels = $product->priceLevels->pluck('threshold')->toArray();
+
+        foreach ($levels as $key => $level) 
+        {
+            if(!isset($levels[$key+1])) $levels[$key+1] = '999999';
+            
+            if ($qty >= $level && $qty < $levels[$key+1]) 
+            {
+                $closest = $level;
+            }
+        }
+    
+        if (Auth::check())
+        {
+            if($user->voc)
+            {
+                if ($product->sale)
+                {
+                    $price = $product->priceLevels->where('threshold', $closest)->first()->voc_sale * (1-$user->discount/100);
+                }
+                else
+                {
+                    $price = $product->priceLevels->where('threshold', $closest)->first()->voc_regular * (1-$user->discount/100);;
+                }
+            }
+            else
+            {
+                if ($product->sale)
+                {
+                    $price = $product->priceLevels->where('threshold', $closest)->first()->moc_sale * (1-$user->discount/100);;
+                }
+                else
+                {
+                    $price = $product->priceLevels->where('threshold', $closest)->first()->moc_regular * (1-$user->discount/100);
+                }   
+            }
+        }
+        else
+        {
+                if ($product->sale)
+                {
+                    $price = $product->priceLevels->where('threshold', $closest)->first()->moc_sale;
+                }
+                else
+                {
+                    $price = $product->priceLevels->where('threshold', $closest)->first()->moc_regular;
+                }   
+        }
+
+        return $price*$qty;     
+
+    }
 
   public function getUserPriceType()
   {

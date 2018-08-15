@@ -40,6 +40,11 @@ class OrderController extends Controller
         {
             $orderData = Auth::user()->cart;
             $orderData['items'] =  Auth::user()->cart->products->pluck('id');
+
+            foreach (Auth::user()->cart->products as $product)
+            {
+                $orderData['counts'][$product->id] =  $product->pivot->qty;
+            }
         }
         else
         {
@@ -73,7 +78,7 @@ class OrderController extends Controller
 
         foreach($orderData['items'] as $key => $productid)
         {
-            $order->products()->attach($productid, ['price' => ]);
+            $order->products()->attach($productid, ['price' => $this->productService->getUserProductPrice($productid, $orderData['counts'][$productid])]);
         }
     
 
