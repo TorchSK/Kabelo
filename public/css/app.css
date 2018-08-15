@@ -2753,9 +2753,18 @@ a:hover {
   display: inline-block;
 }
 .cart_address #use_delivery_address_input {
-  margin: 45px 0;
+  margin-bottom: 25px;
+}
+.cart_address #use_ico_input {
+  margin: 45px 0 20px 0;
 }
 .cart_address .delivery:not(.active) {
+  display: none;
+}
+.cart_address .ico {
+  margin-bottom: 50px;
+}
+.cart_address .ico:not(.active) {
   display: none;
 }
 #empty_cart_text {

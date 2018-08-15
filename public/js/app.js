@@ -1038,15 +1038,41 @@ $('#use_delivery_address_input').checkbox({
 })
 
 
+$('#use_ico_input').checkbox({
+  onChecked: function(){
+    $('.cart_address .ico').fadeIn();
+
+    $.ajax({
+      method: "POST",
+      url: '/cart',
+      data: {ico_flag: 1}
+    })
+
+  },
+  onUnchecked: function(){
+    $('.cart_address .ico').fadeOut();
+
+    $.ajax({
+      method: "POST",
+      url: '/cart',
+      data: {ico_flag: 0}
+    })
+  },
+})
+
 $('#cart_shipping_next_btn').click(function(e){
     $validation = 1;
 
     $invoiceAddress = {};
     $deliveryAddress = {};
+    $ico = {};
+
     $button = $(this);
     $button.addClass('loading');
     
     $invoiceAddressInputs = $('.cart_address').find('.invoice').find('.input');
+
+
     $invoiceAddressInputs.each(function(index, item){
       $type = $(item).data('column');
       $invoiceAddress[$type] = $(item).find('input').val();
@@ -1058,7 +1084,8 @@ $('#cart_shipping_next_btn').click(function(e){
     })
 
     $deliveryAdressFlag = $('#use_delivery_address_input').checkbox('is checked');
-    
+    $icoFlag = $('#use_ico_input').checkbox('is checked');
+
     if ($deliveryAdressFlag)
     {
       $deliveryAddressInputs = $('.cart_address').find('.delivery').find('.input');
@@ -1073,6 +1100,19 @@ $('#cart_shipping_next_btn').click(function(e){
       })
     }
 
+    if ($icoFlag)
+    {
+    	$icoInputs = $('.cart_address').find('.ico').find('.input');
+        $icoInputs.each(function(index, item){
+        $type = $(item).data('column');
+        $ico[$type] = $(item).find('input').val();
+        if ($(item).find('input').val() == '')
+        {
+          $validation = 0;
+          $(item).addClass('error');
+        }
+      })
+    }
 
     console.log($validation);
 
@@ -1080,6 +1120,8 @@ $('#cart_shipping_next_btn').click(function(e){
 
     if ($validation)
     { 
+	   $.extend($invoiceAddress, $ico);
+
       $.ajax({
         method: "POST",
         url: '/cart',

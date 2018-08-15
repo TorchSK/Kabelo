@@ -13,7 +13,7 @@
 			<div class="invoice">
 
 				<div class="labels">
-	       			<div class="item">Meno *</div>
+	       			<div class="item">Meno *<br />(Firma)</div>
 	       			<div class="item">Ulica *</div>
 	       			<div class="item">Mesto *</div>
 	       			<div class="item">PSČ *</div>
@@ -45,6 +45,36 @@
        			</div>
 
        		</div>
+
+
+		<div class="ui checkbox @if($cart['ico_flag']) checked @endif item" id="use_ico_input">
+		  <input type="checkbox" name="example" @if($cart['ico_flag']) checked @endif>
+		  <label>Chcem doplniť firemné údaje</label>
+		</div>
+		<br />
+
+		   <div class="ico  @if($cart['ico_flag']) active @endif">
+   				<div class="labels">
+	       			<div class="item">ICO *</div>
+	       			<div class="item">DIC *</div>
+	       			<div class="item">IC DPH *</div>
+				</div>
+
+				<div class="inputs">
+				
+			       	<div class="ui large input" data-column="ico">
+			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->name}}" @endif />
+			      	</div><br/>
+			      	<div class="ui large input" data-column="dic">
+			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1)  value="{{json_decode($cart['delivery_address'])->street}}"  @endif />
+			      	</div><br/>
+			      	<div class="ui large input" data-column="icdph">
+			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->city}}" @endif />
+			      	</div><br/>
+
+
+       			</div>
+       	</div>
 
 
 		<div class="ui checkbox @if($cart['delivery_address_flag']) checked @endif item" id="use_delivery_address_input">
