@@ -22,11 +22,12 @@ class CreateCartCookie
         {
             $cart = Cookie::get('cart');
 
-            if(!$cart || !array_key_exists('counts', $cart))
+            if(!$cart || !array_key_exists('counts', $cart) || !array_key_exists('shipping_price', $cart))
             {
                 $cookieData = [
                     'number' => 0,
                     'price' => 0,
+                    'shipping_price' => 0,
                     'items' => [],
                     'counts' => [],
                     'price_levels' => [], 
