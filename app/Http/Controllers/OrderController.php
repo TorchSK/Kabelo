@@ -9,6 +9,7 @@ use App\Product;
 use App\Mail\NewOrder;
 
 use App\Services\Contracts\CartServiceContract;
+use App\Services\Contracts\ProductServiceContract;
 
 use DB;
 use Cookie;
@@ -24,10 +25,13 @@ class OrderController extends Controller
      * @return void
      */
     public function __construct(
-        CartServiceContract $cartService
+        CartServiceContract $cartService,
+        ProductsServiceContract $productService
     )
     {
         $this->cartService = $cartService;
+        $this->productService = $productService;
+
     }
 
     public function store()
@@ -67,7 +71,10 @@ class OrderController extends Controller
 
         $order->save();
 
-        $order->products()->sync($orderData['items']);
+        foreach($orderData['items'] as $key => $productid)
+        {
+            $order->products()->attach($productid, ['price' => ]);
+        }
     
 
         $user = Auth::user();
