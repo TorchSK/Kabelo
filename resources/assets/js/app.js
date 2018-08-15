@@ -689,8 +689,7 @@ $(".cart_delivery").click(function(){
   	$data['payment_method'] = '';
   	$data['shipping_price'] = $shipping_price;
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
-  	  	$('.cart_next').addClass('disabled');
-
+  	$('.cart_next').addClass('disabled');
   }
 
 
