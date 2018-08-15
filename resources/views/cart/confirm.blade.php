@@ -92,6 +92,32 @@
 
        		</div>
 
+   		<div class="ico @if($cart['ico_flag']) active @endif">
+   				<div class="ui horizontal divider">Dodacie údaje</div>
+
+   				<div class="labels">
+	       			<div class="item">IČO *</div>
+	       			<div class="item">DIČ *</div>
+	       			<div class="item">IČ DPH *</div>
+				</div>
+
+				<div class="inputs">
+				
+			       	<div class="ui large disabled input">
+			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['invoice_address'])['ico']}}" @endif />
+			      	</div><br/>
+			      	<div class="ui large disabled input">
+			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->dic}}"  @endif />
+			      	</div><br/>
+			      	<div class="ui large disabled input">
+			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->icdph}}" @endif />
+			      	</div><br/>
+
+
+       			</div>
+       	</div>
+
+
    		<div class="delivery @if($cart['delivery_address_flag']) active @endif">
    				<div class="ui horizontal divider">Dodacie údaje</div>
 
