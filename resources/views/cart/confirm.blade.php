@@ -22,17 +22,15 @@
 
 			<div class="ui horizontal divider">Sposob dopravy a platba</div>
 
-			@foreach(App\DeliveryMethod::all() as $delivery)
 			<div class="ui steps">
-			  <a class="step cart_delivery @if ($cart['delivery_method']==$delivery->id) completed active @endif" data-delivery_method="{{$delivery->id}}">
-			    <i class="{{$delivery->icon}} icon"></i>
+			  <a class="step cart_delivery">
+			    <i class="{{App\Delivery::find($cart['delivery_method'])->icon}} icon"></i>
 			    <div class="content">
-			      <div class="title">{{$delivery->name}}</div>
-			      <div class="description">{{$delivery->desc}}</div>
+			      <div class="title">{{App\Delivery::find($cart['delivery_method'])->name}}</div>
+			      <div class="description">{{App\Delivery::find($cart['delivery_method'])->desc}}</div>
 			    </div>
 			  </a>
 			</div>
-			@endforeach
 
 			
 			@foreach(App\PaymentMethod::all() as $payment)
