@@ -685,6 +685,7 @@ $(".cart_delivery").click(function(){
 
   if ($('.cart_payment.completed.active').length && $(".cart_delivery.completed.active").length)
   {
+  	console.log(1);
   	$shipping_price = parseFloat($(this).data('price'));
   	$data['payment_method'] = '';
   	$data['shipping_price'] = $shipping_price;
