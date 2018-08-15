@@ -36,11 +36,6 @@
 							<input name="_method" type="hidden" value="PUT">
 							<input name="redirect" type="hidden" value="admin/user/{{$user->id}}">
 
-							<div id="admin_user_options">
-								<button type="submit" class="ui green button">Ulož zmeny</button>
-							</div>
-
-
 
 							<div class="ui checkbox admin_checkbox_onthefly" data-resource="user" data-id="{{$user->id}}">
 							  <input type="checkbox" name="voc" @if($user->voc) checked @endif >
@@ -70,6 +65,12 @@
 		    
 
 		</div>
+
+		
+							<div id="admin_user_options">
+								<button type="submit" class="ui green button">Ulož zmeny</button>
+							</div>
+
 	</div>
 
 @stop

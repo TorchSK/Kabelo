@@ -32,11 +32,6 @@
 		    	<div class="content par active" data-tab="detail">
 
 
-					<div id="admin_user_options">
-						<div class="ui green button">Ulož zmeny</div>
-					</div>
-
-
 					<div class="labeled form">
 						<div class="ui header">Základné údaje</div>
 
@@ -140,6 +135,12 @@
 		    
 
 		</div>
+
+
+		<div id="admin_user_options">
+			<div class="ui green button">Ulož zmeny</div>
+		</div>
+		
 	</div>
 
 @stop
