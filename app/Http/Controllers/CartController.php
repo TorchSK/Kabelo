@@ -114,12 +114,20 @@ class CartController extends Controller
         {
             $cart = Cookie::get('cart');
             $price = 0;
-            foreach($cart['items'] as $productid)
-            {
-                $price = $price + $this->getUserProductPrice($productid, $cart['counts'][$productid]);
-            }
 
-            $cart['price'] = $price;
+            if ($cart['items'])
+            {
+                foreach($cart['items'] as $productid)
+                {
+                    $price = $price + $this->getUserProductPrice($productid, $cart['counts'][$productid]);
+                }
+
+                $cart['price'] = $price;
+            }
+            else
+            {
+                $cart['price'] = 0;
+            }
         }
         
         return $cart;
