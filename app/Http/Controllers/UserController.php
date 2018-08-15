@@ -135,8 +135,16 @@ class UserController extends Controller
 
             foreach($cookieCart['items'] as $key=>$item)
             {   
-                $product = Product::find($item);
-                $dbCart->products()->attach($product,['qty' => $cookieCart['counts'][$product->id], 'price_level_id' => $cookieCart['price_levels'][$product->id]]);
+                if (! $dbCart->products->contains($item))
+                {
+                    $product = Product::find($item);
+                    $dbCart->products()->attach($product,['qty' => $cookieCart['counts'][$product->id], 'price_level_id' => $cookieCart['price_levels'][$product->id]]);
+                }
+                else
+                {
+                    $oldQty = $dbCart->products->where('id',$item)->first()->pivot->qty;
+                    $dbCart->products()->updateExistingPivot($item, ['qty'=>$oldQty + $request->get('qty'), 'price_level_id' => $this->getPriceLevel($item, $oldQty + $request->get('qty'))]);
+                }
             }
 
             $dbCart->save();
