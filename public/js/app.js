@@ -696,6 +696,7 @@ $(".cart_delivery").click(function(){
   {
   	$data['shipping_price'] = $shipping_price + parseFloat($('.cart_delivery.completed.active').data('price'));
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
+  	$('.cart_next').removeClass('disabled');
   }
 
 
@@ -768,6 +769,8 @@ $(".cart_payment").click(function(){
   	$shipping_price = $shipping_price + parseFloat($('.cart_delivery.completed.active').data('price'));
   	$data['shipping_price'] = $shipping_price;
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
+  	  	$('.cart_next').removeClass('disabled');
+
   }
 
   if (!$('.cart_payment.completed.active').length && !$(".cart_delivery.completed.active").length)
@@ -778,6 +781,7 @@ $(".cart_payment").click(function(){
   }
 
 
+  $(".cart_payment").removeClass('completed active');
 
   $.ajax({
     method: "POST",

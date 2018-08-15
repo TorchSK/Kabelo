@@ -781,6 +781,7 @@ $(".cart_payment").click(function(){
   }
 
 
+  $(".cart_payment").removeClass('completed active');
 
   $.ajax({
     method: "POST",
