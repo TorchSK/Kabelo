@@ -2,7 +2,7 @@
 @section('content')
 	
 
-<div class="flex_content content cart" id="cart_detail" data-cartid="{{Auth::user()->cart->id}}">
+<div class="flex_content content cart" id="cart_detail" @if(Auth::check())data-cartid="{{Auth::user()->cart->id}}" @endif>
 
 	
 
