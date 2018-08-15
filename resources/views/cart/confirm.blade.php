@@ -104,13 +104,13 @@
 				<div class="inputs">
 				
 			       	<div class="ui large disabled input">
-			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['invoice_address'])['ico']}}" @endif />
+			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>1) value="{{json_decode($cart['invoice_address'])['ico']}}" @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->dic}}"  @endif />
+			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>1) value="{{json_decode($cart['delivery_address'])->dic}}"  @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->icdph}}" @endif />
+			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>1) value="{{json_decode($cart['delivery_address'])->icdph}}" @endif />
 			      	</div><br/>
 
 
