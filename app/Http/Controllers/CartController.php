@@ -138,9 +138,7 @@ class CartController extends Controller
 
     public function set(Request $request)
     {        
- 
 
-   
         if (Auth::check())
         {
             $user = Auth::user();

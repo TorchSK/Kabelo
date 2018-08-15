@@ -11,10 +11,10 @@
 	<div class="cart_confirm">
 
 		<div id="grid" class="products">
-						<div class="ui horizontal divider">Produkty</div>
+			<div class="ui horizontal divider">Produkty</div>
 
-			@foreach($cart->products as $key => $product)
-				@include('products.row',['cart_confirm'=>true])
+			@foreach($cart['items'] as $productid)
+				@include('products.row',['product'=> App\Product::find($productid), 'cart_confirm'=>true])
 			@endforeach
 		</div>
 
@@ -98,13 +98,13 @@
 				<div class="inputs">
 				
 			       	<div class="ui large disabled input">
-			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>1) value="{{json_decode($cart['invoice_address'])->ico}}" @endif />
+			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>6) value="{{json_decode($cart['invoice_address'])->ico}}" @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>1) value="{{json_decode($cart['invoice_address'])->dic}}"  @endif />
+			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>6) value="{{json_decode($cart['invoice_address'])->dic}}"  @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>1) value="{{json_decode($cart['invoice_address'])->icdph}}" @endif />
+			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>6) value="{{json_decode($cart['invoice_address'])->icdph}}" @endif />
 			      	</div><br/>
 
 
