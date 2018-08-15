@@ -750,7 +750,6 @@ $(".cart_payment").click(function(){
   if ($('.cart_payment.completed.active').length && $(".cart_delivery.completed.active").length)
   {
   	$shipping_price = parseFloat($(this).data('price'));
-  	$data['delivery_method'] = '';
   	$data['shipping_price'] = $shipping_price;
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
   }
