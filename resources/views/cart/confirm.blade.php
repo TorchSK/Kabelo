@@ -23,7 +23,7 @@
 			<div class="ui horizontal divider">Sposob dopravy a platba</div>
 
 			<div class="ui steps">
-			  <a class="step cart_delivery">
+			  <a class="step">
 			    <i class="{{App\DeliveryMethod::find($cart['delivery_method'])->icon}} icon"></i>
 			    <div class="content">
 			      <div class="title">{{App\DeliveryMethod::find($cart['delivery_method'])->name}}</div>
@@ -34,7 +34,7 @@
 
 			
 			<div class="ui steps">
-			  <a class="step cart_payment">
+			  <a class="step">
 			    <i class="{{App\PaymentMethod::find($cart['delivery_method'])->icon}} icon"></i>
 			    <div class="content">
 			      <div class="title">{{App\PaymentMethod::find($cart['delivery_method'])->name}}</div>
