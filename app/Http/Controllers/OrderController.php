@@ -67,6 +67,7 @@ class OrderController extends Controller
     	$order->delivery_method_id = $orderData['delivery_method'];
     	$order->payment_method_id = $orderData['payment_method'];
         $order->price = $orderData['price'];
+        $order->shipping_price = $orderData['shipping_price'];
 
 
     	$order->invoice_address = $orderData['invoice_address'];

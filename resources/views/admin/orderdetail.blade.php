@@ -73,13 +73,41 @@
 					      <td>Sposob platby</td>
 					      <td>{{$order->payment->name}}</td>
 					    </tr>
-					    <tr>
-					      <td>Cena</td>
-					      <td>{{$order->price}} €</td>
+					        <tr>
+					      <td>Cenové zaradenie</td>
+					      <td>
+					      	@if($order->user->voc)
+					      	VOC
+					      	@else
+					      	MOC
+					      	@endif
+					      </td>
 					    </tr>
 					  </tbody>
 					</table>
 					
+
+		    		<table class="ui very basic collapsing unstackable table">
+		    			<thead >
+					    <tr><th colspan="2">
+					      &nbsp;
+					    </th>
+					  </tr></thead>
+					  <tbody>
+					    <tr>
+					      <td>Cena za tovar</td>
+					      <td>{{$order->price}} €</td>
+					    </tr>
+					    <tr>
+					      <td>Cena za dopravu</td>
+					      <td>{{$order->shipping_price}} €</td>
+					    </tr>
+					    <tr>
+					      <td>Celková cena</td>
+					      <td>{{$order->price + $order->shipping_price}} €</td>
+					    </tr>
+					  </tbody>
+					</table>
 
 				</div>
 
