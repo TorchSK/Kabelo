@@ -44,7 +44,6 @@ class OrderController extends Controller
 
             foreach (Auth::user()->cart->products as $product)
             {
-                dd( $product->pivot->qty);
                 $orderData['counts'][$product->id] =  $product->pivot->qty;
             }
         }
