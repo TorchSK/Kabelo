@@ -24,26 +24,24 @@
 
 			<div class="ui steps">
 			  <a class="step cart_delivery">
-			    <i class="{{App\Delivery::find($cart['delivery_method'])->icon}} icon"></i>
+			    <i class="{{App\DeliveryMethod::find($cart['delivery_method'])->icon}} icon"></i>
 			    <div class="content">
-			      <div class="title">{{App\Delivery::find($cart['delivery_method'])->name}}</div>
-			      <div class="description">{{App\Delivery::find($cart['delivery_method'])->desc}}</div>
+			      <div class="title">{{App\DeliveryMethod::find($cart['delivery_method'])->name}}</div>
+			      <div class="description">{{App\DeliveryMethod::find($cart['delivery_method'])->desc}}</div>
 			    </div>
 			  </a>
 			</div>
 
 			
-			@foreach(App\PaymentMethod::all() as $payment)
 			<div class="ui steps">
-			  <a class="step cart_payment @if ($cart['payment_method']==$payment->id) completed active @endif @if ($cart['delivery_method'] && !in_array($cart['delivery_method'], $payment->deliveryMethods->pluck('id')->toArray())) disabled @endif" data-payment_method="{{$payment->id}}" data-delivery_methods="{{$payment->deliveryMethods->pluck('id')}}">
-			    <i class="{{$payment->icon}} icon"></i>
+			  <a class="step cart_payment">
+			    <i class="{{App\PaymentMethod::find($cart['delivery_method'])->icon}} icon"></i>
 			    <div class="content">
-			      <div class="title">{{$payment->name}}</div>
-			      <div class="description">{{$payment->desc}}</div>
+			      <div class="title">{{App\PaymentMethod::find($cart['delivery_method'])->icon->name}}</div>
+			      <div class="description">{{App\PaymentMethod::find($cart['delivery_method'])->icon->desc}}</div>
 			    </div>
 			  </a>
 			</div>
-			@endforeach
 			
 		</div>	
 
