@@ -89,8 +89,6 @@
        		</div>
 
    		<div class="ico @if($cart['ico_flag']) active @endif">
-   				<div class="ui horizontal divider">Dodacie údaje</div>
-
    				<div class="labels">
 	       			<div class="item">IČO *</div>
 	       			<div class="item">DIČ *</div>
