@@ -146,7 +146,7 @@ class UserController extends Controller
                 else
                 {
                     $oldQty = $dbCart->products->where('id',$item)->first()->pivot->qty;
-                    $dbCart->products()->updateExistingPivot($item, ['qty'=>$oldQty + $request->get('qty'), 'price_level_id' => $this->productService->etPriceLevel($item, $oldQty + $request->get('qty'))]);
+                    $dbCart->products()->updateExistingPivot($item, ['qty'=>$oldQty + $request->get('qty'), 'price_level_id' => $this->productService->getPriceLevel($item, $oldQty + $request->get('qty'))]);
                 }
             }
 
