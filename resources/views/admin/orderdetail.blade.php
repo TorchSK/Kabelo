@@ -80,32 +80,21 @@
 					  </tbody>
 					</table>
 					
-					<table class="ui very basic collapsing unstackable table">
-		    			<thead >
-					    <tr><th colspan="2">
-					      &nbsp;
-					    </th>
-					  </tr></thead>
-					  <tbody>
-					    <tr>
-					      <td>Uhradená</td>
-					      <td>{{$order->delivery->name}}</td>
-					    </tr>
-					    <tr>
-					      <td>Sposob platby</td>
-					      <td>{{$order->payment->name}}</td>
-					    </tr>
-					    <tr>
-					      <td>Cena</td>
-					      <td>{{$order->price}} €</td>
-					    </tr>
-					  </tbody>
-					</table>
+
+				</div>
+
+
+				<div id="order_detail_prodcuts" class="order_products_list">
+					@foreach($order->products as $product)
+						@include('orders.product')
+					@endforeach
+
 				</div>
 		    
 		  </div>
 
 		</div>
+	</div>
 	</div>
 
 @stop

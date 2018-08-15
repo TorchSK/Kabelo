@@ -3024,6 +3024,59 @@ a:hover {
 .order_history .divider {
   margin-top: 100px;
 }
+.order_products_list {
+  margin-top: 35px;
+}
+.order_products_list .product {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  text-align: left;
+  background-color: #FFF;
+  padding: 10px 30px 10px 30px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+.order_products_list .product .count {
+  margin-right: 25px;
+  width: 40px;
+}
+.order_products_list .product .image_div {
+  width: 100px;
+  display: inline-block;
+  margin-right: 25px;
+}
+.order_products_list .product .name {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-right: 25px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.order_products_list .product .delete {
+  cursor: pointer;
+}
+.order_products_list .product .actions {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-color: #FFF;
+  margin-right: 25px;
+}
+.order_products_list .product .level {
+  white-space: nowrap;
+  margin-right: 125px;
+}
+.order_products_list .product .price {
+  font-size: 1.2em;
+  font-weight: 900;
+}
 footer {
   background-color: #2B2D2D;
   padding: 90px 100px 60px 100px;

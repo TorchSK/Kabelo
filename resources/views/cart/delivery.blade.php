@@ -33,6 +33,7 @@
 			
 			@foreach(App\PaymentMethod::all() as $payment)
 
+			@if (Auth::check() && $payment->key == 'faktura' && Auth::user()->invoice_eligible==1)
 			<div class="ui steps">
 			  <a class="step cart_payment @if ($cart['payment_method']==$payment->id) completed active @endif @if ($cart['delivery_method'] && !in_array($cart['delivery_method'], $payment->deliveryMethods->pluck('id')->toArray())) disabled @endif" data-payment_method="{{$payment->id}}" data-delivery_methods="{{$payment->deliveryMethods->pluck('id')}}" data-price="{{$payment->price}}">
 			    <i class="{{$payment->icon}} icon"></i>
@@ -45,6 +46,7 @@
 
 			  </a>
 			</div>
+			@endif
 			@endforeach
 
 		</div>

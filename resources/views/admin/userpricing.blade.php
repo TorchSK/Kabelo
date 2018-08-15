@@ -47,6 +47,12 @@
 							  <label>VOC</label>
 							</div>
 
+							<br />
+							<div class="ui checkbox admin_checkbox_onthefly" data-resource="user" data-id="{{$user->id}}">
+							  <input type="checkbox" name="invoice_eligible" @if($user->invoice_eligible) checked @endif >
+							  <label>Nákup na faktúru</label>
+							</div>
+
 							<br /> <br />
 							<div class="ui labeled input">
 							  <div class="ui label">

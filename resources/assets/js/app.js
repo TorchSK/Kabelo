@@ -2679,4 +2679,24 @@ $(document).on('click','.delete_price_level_btn', function(){
 	$(this).closest('.product_price_level').remove();
 });
 
+
+$('.delete_order_btn').click(function(){
+	$orderid = $(this).closest('tr').data('order_id');
+
+	$('#delete_order_modal').modal('setting', {
+
+    onApprove : function() {
+		$.ajax({
+			type: "DELETE",
+			url: "/order/"+$orderid,
+			success: function(){
+				location.reload();
+			}
+		})
+	}
+	}).modal('show');
+  
+  })
+
+
 });

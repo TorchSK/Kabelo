@@ -81,7 +81,7 @@ class OrderController extends Controller
 
         foreach($orderData['items'] as $key => $productid)
         {
-            $order->products()->attach($productid, ['price' => $this->productService->getUserProductPrice($productid, $orderCounts[$productid])]);
+            $order->products()->attach($productid, ['price' => $this->productService->getUserProductPrice($productid, $orderCounts[$productid]), 'qty' => $orderCounts[$productid]]);
         }
     
 
@@ -111,6 +111,12 @@ class OrderController extends Controller
             ->get();
 
         return $orders;
+    }
+
+    public function destroy($id)
+    {
+        $order = Order::find($id);
+        $order->delete();
     }
 
 }
