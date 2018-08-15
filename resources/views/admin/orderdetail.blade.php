@@ -53,7 +53,13 @@
 					    </tr>
 					    <tr>
 					      <td>Zákazník</td>
-					      <td>{{$order->user->email}}</td>
+					      <td>
+					      	@if($order->user)
+					      	{{$order->user->email}}
+					      	@else
+					      	{{json_decode($order->invoice_address)->email}}
+					      	@endif
+					      </td>
 					    </tr>
 					  </tbody>
 					</table>
@@ -76,7 +82,7 @@
 					        <tr>
 					      <td>Cenové zaradenie</td>
 					      <td>
-					      	@if($order->user->voc)
+					      	@if($order->user && $order->user->voc)
 					      	VOC
 					      	@else
 					      	MOC
