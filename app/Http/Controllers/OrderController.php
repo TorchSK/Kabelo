@@ -26,7 +26,7 @@ class OrderController extends Controller
      */
     public function __construct(
         CartServiceContract $cartService,
-        ProductsServiceContract $productService
+        ProductServiceContract $productService
     )
     {
         $this->cartService = $cartService;
