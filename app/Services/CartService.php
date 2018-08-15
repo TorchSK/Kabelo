@@ -45,8 +45,8 @@ class CartService implements CartServiceContract {
         'items' => [],
         'delivery_method' => '',
         'payment_method' => '',
-        'invoiceAddress' => '',
-        'deliveryAddress' => '',
+        'invoiceAddress' => '{}',
+        'deliveryAddress' => '{}',
         'deliveryAddressFlag' => 0
       ];
 

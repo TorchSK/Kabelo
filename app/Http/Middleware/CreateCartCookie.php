@@ -22,7 +22,7 @@ class CreateCartCookie
         {
             $cart = Cookie::get('cart');
 
-            if(!$cart || !array_key_exists('counts', $cart) || !array_key_exists('shipping_price', $cart))
+            if(!$cart || !array_key_exists('counts', $cart) || !array_key_exists('shipping_price', $cart) || $cart['invoice_address']!="{}")
             {
                 $cookieData = [
                     'number' => 0,
@@ -33,8 +33,8 @@ class CreateCartCookie
                     'price_levels' => [], 
                     'delivery_method' => '',
                     'payment_method' => '',
-                    'invoice_address' => '',
-                    'delivery_address' => '',
+                    'invoice_address' => '{}',
+                    'delivery_address' => '{}',
                     'delivery_address_flag' => 0,
                 ];
 
