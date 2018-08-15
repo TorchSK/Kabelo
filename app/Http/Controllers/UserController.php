@@ -143,11 +143,7 @@ class UserController extends Controller
                     $product = Product::find($item);
                     $dbCart->products()->attach($product,['qty' => $cookieCart['counts'][$product->id], 'price_level_id' => $cookieCart['price_levels'][$product->id]]);
                 }
-                else
-                {
-                    $oldQty = $dbCart->products->where('id',$item)->first()->pivot->qty;
-                    $dbCart->products()->updateExistingPivot($item, ['qty'=>$oldQty + $request->get('qty'), 'price_level_id' => $this->productService->getPriceLevel($item, $oldQty + $request->get('qty'))]);
-                }
+
             }
 
             $dbCart->save();
