@@ -90,7 +90,7 @@ class OrderController extends Controller
         Mail::to(json_decode($order->invoice_address)->email)->queue(new NewOrder($order));
 
         //delete the cart
-        //$this->cartService->delete();  
+        $this->cartService->delete();  
 
 
     }
