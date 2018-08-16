@@ -49,7 +49,7 @@
 
 	<div class="ui horizontal divider">Vybavené objednávky</div>
 	
-	<table class="ui celled selectable table">
+	<table class="ui celled selectable table orders_table">
 	  <thead>
 	    <tr>
 	   	<th></th>
