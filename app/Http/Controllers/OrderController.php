@@ -106,6 +106,13 @@ class OrderController extends Controller
         $order->save();
     }
 
+    public function show($id)
+    {
+        $data['order'] = Order::find($id);
+
+        return view('orders.profile', $data);
+    }
+
     public function success()
     {
     	return view('orders.success');

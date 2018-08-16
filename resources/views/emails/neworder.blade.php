@@ -59,6 +59,15 @@
             display: inline-block;
             padding-top: 15px;
           }
+
+          #detail_btn{
+            padding: 15px 25px;
+            background-color: #235299;
+            border-radius: 3px;
+            text-decoration: none;
+            color: #FFF;
+            font-weight: 900;
+          }
       }
 
         </style>
@@ -93,6 +102,35 @@
 
             </div>
         @endforeach
+
+        <div style="margin: 30px 0;">
+            <div><b>Fakturačné údaje</b></div>
+            <div>{{json_decode($order->invoice_address)->name}}</div>
+            <div>{{json_decode($order->invoice_address)->street}}</div>
+            <div>{{json_decode($order->invoice_address)->city}}</div>
+            <div>{{json_decode($order->invoice_address)->zip}}</div>
+            <div>{{json_decode($order->invoice_address)->email}}</div>
+            <br />
+            @if(isset(json_decode($order->invoice_address)->ico))
+            <div><b>IČO: </b>{{json_decode($order->invoice_address)->ico}}</div>
+            @endif
+            @if(isset(json_decode($order->invoice_address)->dic))
+            <div><b>DIČ: </b>{{json_decode($order->invoice_address)->dic}}</div>
+            @endif
+            @if(isset(json_decode($order->invoice_address)->icdph))
+            <div><b>IČ DPH: </b>{{json_decode($order->invoice_address)->icdph}}</div>
+            @endif
+        </div>
+        @if(isset(json_decode($order->delivery_address)->street))
+        <div style="margin: 30px 0;">
+            <div><b>Doručovacie údaje</b></div>
+            <div>{{json_decode($order->delivery_address)->name}}</div>
+            <div>{{json_decode($order->delivery_address)->street}}</div>
+            <div>{{json_decode($order->delivery_address)->city}}</div>
+            <div>{{json_decode($order->delivery_address)->zip}}</div>
+        </div>
+        @endif
+
         <div style="margin: 30px 0;">
             <span>Budeme Vás informovať o stave.</span>
             <span style="font-size: 14px; float: right">Celková cena: <span style="font-weight: 900">{{$order->price}}</span> &euro;</span>
@@ -100,6 +138,7 @@
 
         <div style="margin: 30px 0; font-size: 14px;">Stav objednávky si možte skontrolovat aj po kliknuti na</div>
 
+        <a id="detail_btn" target="_blank" href="{!! url("/order").'/'.$order->id !!}">Detail objednávky</a>
     </div>
 
 

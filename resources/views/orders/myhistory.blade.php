@@ -1,8 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="pad dark wrapper ct">
-<div class="order_history container ct">
+<div class="order_history flex_content ct">
 	
 	<div class="header">Moje objednávky</div>
 
@@ -31,8 +30,7 @@
 
 		</div>
 	@endforeach
-	</div>
 
 </div>
-</div>
+
 @stop

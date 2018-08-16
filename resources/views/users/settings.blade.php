@@ -36,11 +36,6 @@
 
 <div class="wrapper" id="right">
 
-	<div class="settings_action ct">
-		<div class="ui green button" id="settings_submit_btn">Uložiť zmeny</div>
-	</div>
-
-
 	<div class="settings_account_div">
 	<div class="ui header">Základné údáje</div>
 
@@ -138,7 +133,12 @@
         </div>
 
 	</div>
+
+		<div class="ui green button" id="settings_submit_btn">Uložiť zmeny</div>
+
 </div>
+
+
 
 </div>
 </div>

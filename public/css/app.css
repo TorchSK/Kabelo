@@ -2980,16 +2980,13 @@ a:hover {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding-bottom: 50px;
+  padding: 50px 0;
 }
 .settings_account_div {
   padding-left: 80px;
 }
-.settings_action {
-  padding: 25px 0;
-  background-color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 50px;
-  border-bottom: 1px solid #EEE;
+#settings_submit_btn {
+  margin-top: 25px;
 }
 .lander {
   height: 65vh;
@@ -3032,6 +3029,9 @@ a:hover {
   font-weight: 100;
   margin-top: 50px;
   display: block;
+}
+.order_history {
+  padding: 4%;
 }
 .order_history .header {
   font-weight: 100;
@@ -3136,6 +3136,9 @@ a:hover {
 }
 .order_change_status_btn {
   cursor: pointer;
+}
+.order_detail {
+  background-color: #F7F7F7;
 }
 footer {
   background-color: #2B2D2D;
