@@ -151,19 +151,19 @@
 				    </tr>
 				    @if(isset(json_decode($order->invoice_address)->ico))
 				    <tr>
-				      <td>email</td>
+				      <td>IČO</td>
 				      <td>{{json_decode($order->invoice_address)->ico}}</td>
 				    </tr>
 				    @endif
 				    @if(isset(json_decode($order->invoice_address)->dic))
 				    <tr>
-				      <td>email</td>
+				      <td>DIČ</td>
 				      <td>{{json_decode($order->invoice_address)->dic}}</td>
 				    </tr>
 				    @endif
 				    @if(isset(json_decode($order->invoice_address)->icdph))
 				    <tr>
-				      <td>email</td>
+				      <td>IČDPH</td>
 				      <td>{{json_decode($order->invoice_address)->icdph}}</td>
 				    </tr>
 				    @endif
