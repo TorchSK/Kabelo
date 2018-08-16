@@ -1372,11 +1372,14 @@ $('#category_image_dropzone').dropzone({
   } 
 });
 
-$('.covers').flickity({
+$carousel = $('.covers').flickity({
   autoPlay: 4000,
   adaptiveHeight: true
 });
 
+$carousel.on( 'pointerUp.flickity', function(){
+	$('#search_results').hide();
+} );
 
 $('.admin_wrapper .categories').nestedSortable({
   handle: 'div',
@@ -2719,6 +2722,7 @@ $('.order_change_status_btn').click(function(){
   })
 
 $('#main_search input').keyup(function(){
+	$(document).unbind('ajaxStart');
 	$query = $(this).val();
 	$.ajax({
 		type: "GET",
@@ -2726,12 +2730,13 @@ $('#main_search input').keyup(function(){
 		success: function(data){
 			$('#search_results').show();
 			$('#search_results').find('.products').html(data.products);
+			$(document).bind('ajaxStart');
 		}
 	})
 })
 
 
-$(document).mouseup(function(e) 
+$('body').mouseup(function(e) 
 {
     var container = $("#search_results");
 
