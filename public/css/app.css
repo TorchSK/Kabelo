@@ -3056,7 +3056,7 @@ a:hover {
   margin-top: 100px;
 }
 .order_products_list {
-  margin-top: 35px;
+  margin: 35px 0;
 }
 .order_products_list .product {
   display: -webkit-box;
