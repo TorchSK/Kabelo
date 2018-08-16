@@ -20,18 +20,6 @@
 			@endif
 		</div>
 
-		<div class="links">
-			<div class="item">
-				<div class="ui teal fluid button"><i class="user icon"></i> Účet</div>
-			</div>
-			
-			<div class="item">
-				<div class="ui brown fluid button"><i class="archive icon"></i> Fakturačné údaje</div>
-			</div>
-			<div class="item">
-				<div class="ui brown fluid button"><i class="shipping icon"></i> Doručovacie adresy</div>
-			</div>
-		</div>
 </div>
 
 <div class="wrapper" id="right">
