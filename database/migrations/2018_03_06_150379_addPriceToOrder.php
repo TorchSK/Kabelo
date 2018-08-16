@@ -13,7 +13,7 @@ class AddPriceToOrder extends Migration {
 	{
 		Schema::table('orders', function($table)
 		{
-			$table->integer('price');
+			$table->float('price');
 
 		});
 	}

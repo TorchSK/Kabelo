@@ -115,15 +115,16 @@
 					  </tbody>
 					</table>
 
-				</div>
-
-
-				<div id="order_detail_prodcuts" class="order_products_list">
+			<div id="order_detail_prodcuts" class="order_products_list">
 					@foreach($order->products as $product)
 						@include('orders.product')
 					@endforeach
 
 				</div>
+				</div>
+
+
+	
 		    
 		  </div>
 
