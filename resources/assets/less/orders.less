@@ -39,6 +39,18 @@
 	}
 }
 
+.orders_table{
+	td{
+		&.new{
+			background-color: rgba(0,0,0,0.05);
+		}
+
+		&.sent{
+			background-color: rgba(0,255,0,0.1);
+		}
+	}
+}
+
 .order_products_list{
 	margin: 35px 0;
 	
@@ -91,4 +103,8 @@
 			font-weight: 900;		
 		}
 	}
+}
+
+.order_change_status_btn{
+	cursor: pointer;
 }

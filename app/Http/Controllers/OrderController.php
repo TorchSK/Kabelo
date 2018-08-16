@@ -95,6 +95,17 @@ class OrderController extends Controller
 
     }
 
+    public function update($id, Request $request)
+    {
+        $order = Order::find($id);
+
+        foreach ($request->except('_token') as $key => $item) {
+            $order[$key] = $item;
+        }    
+
+        $order->save();
+    }
+
     public function success()
     {
     	return view('orders.success');

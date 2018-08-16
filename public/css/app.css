@@ -3055,6 +3055,12 @@ a:hover {
 .order_history .divider {
   margin-top: 100px;
 }
+.orders_table td.new {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.orders_table td.sent {
+  background-color: rgba(0, 255, 0, 0.1);
+}
 .order_products_list {
   margin: 35px 0;
 }
@@ -3107,6 +3113,9 @@ a:hover {
 .order_products_list .product .price {
   font-size: 1.2em;
   font-weight: 900;
+}
+.order_change_status_btn {
+  cursor: pointer;
 }
 footer {
   background-color: #2B2D2D;

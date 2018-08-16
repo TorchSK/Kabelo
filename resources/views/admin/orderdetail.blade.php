@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-	<div class="order_detail">
+	<div class="order_detail" data-orderid="{{$order->id}}">
 
 		<div class="header section">
 
@@ -14,7 +14,7 @@
 				<text>Zmeň stav na: </text>
 				@foreach(App\OrderStatus::all() as $newstatus)
 					@if($newstatus->name != $order->status->name)
-						<div class="ui big label status" data-statusid="{{$newstatus->id}}">{{$newstatus->name}}</div>
+						<div class="ui big label status order_change_status_btn" data-statusid="{{$newstatus->id}}">{{$newstatus->name}}</div>
 					@endif
 				@endforeach
 			</div>
@@ -57,7 +57,7 @@
 					      	@if($order->user)
 					      	{{$order->user->email}}
 					      	@else
-					      	{{json_decode($order->invoice_address)->email}}
+					      	<i>Neprihlásený</i>
 					      	@endif
 					      </td>
 					    </tr>
