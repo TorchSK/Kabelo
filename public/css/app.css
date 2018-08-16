@@ -3044,8 +3044,7 @@ a:hover {
   opacity: 0.7;
   -webkit-box-shadow: inset 0px 0px 5px 5px #FFF;
           box-shadow: inset 0px 0px 5px 5px #FFF;
-  padding-left: 25px;
-  padding-right: 20px;
+  padding: 0 25px;
 }
 .orders_table td[data-statusid="0"] {
   background-color: #FBBD08;
