@@ -115,12 +115,63 @@
 					  </tbody>
 					</table>
 
-			<div id="order_detail_prodcuts" class="order_products_list">
+				<div id="order_detail_prodcuts" class="order_products_list">
 					@foreach($order->products as $product)
 						@include('orders.product')
 					@endforeach
 
 				</div>
+
+	    		<table class="ui very basic collapsing unstackable table">
+	    			<thead >
+				    <tr><th colspan="2">
+				      Fakturačné údaje
+				    </th>
+				  </tr></thead>
+				  <tbody>
+				    <tr>
+				      <td>Meno</td>
+				      <td>{{json_decode($order->invoice_address)->name}}</td>
+				    </tr>
+				    <tr>
+				      <td>Ulica</td>
+				      <td>{{json_decode($order->invoice_address)->street}}</td>
+				    </tr>
+				    <tr>
+				      <td>Mesto</td>
+				      <td>{{json_decode($order->invoice_address)->city}}</td>
+				    </tr>
+				    <tr>
+				      <td>PSČ</td>
+				      <td>{{json_decode($order->invoice_address)->zip}}</td>
+				    </tr>
+					<tr>
+				      <td>email</td>
+				      <td>{{json_decode($order->invoice_address)->email}}</td>
+				    </tr>
+				    @if(isset(json_decode($order->invoice_address)->ico))
+				    <tr>
+				      <td>email</td>
+				      <td>{{json_decode($order->invoice_address)->ico}}</td>
+				    </tr>
+				    @endif
+				    @if(isset(json_decode($order->invoice_address)->dic))
+				    <tr>
+				      <td>email</td>
+				      <td>{{json_decode($order->invoice_address)->dic}}</td>
+				    </tr>
+				    @endif
+				    @if(isset(json_decode($order->invoice_address)->icdph))
+				    <tr>
+				      <td>email</td>
+				      <td>{{json_decode($order->invoice_address)->icdph}}</td>
+				    </tr>
+				    @endif
+				  </tbody>
+				</table>
+
+
+				
 				</div>
 
 
