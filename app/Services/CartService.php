@@ -28,6 +28,8 @@ class CartService implements CartServiceContract {
       $cart->invoice_address = '{}';
       $cart->delivery_address = '{}';
       $cart->delivery_address_flag = 0;
+      $cart->ico_flag = 0;
+      $cart->shipping_price  = 0;
 
       $cart->save();
 
@@ -42,12 +44,16 @@ class CartService implements CartServiceContract {
       $cookieData = [
         'number' => 0,
         'price' => 0,
+        'shipping_price' => 0,
         'items' => [],
+        'counts' => [],
+        'price_levels' => [], 
         'delivery_method' => '',
         'payment_method' => '',
-        'invoiceAddress' => '{}',
-        'deliveryAddress' => '{}',
-        'deliveryAddressFlag' => 0
+        'invoice_address' => '{}',
+        'delivery_address' => '{}',
+        'delivery_address_flag' => 0,
+        'ico_flag' => 0
       ];
 
       Cookie::queue('cart', $cookieData, 0);  
