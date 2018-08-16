@@ -5,10 +5,12 @@
           <text>Kabelo</text>
         </a>
 
+        @if(Auth::check() && Auth::user()->admin)
         <a class="item orders" href="/admin/orders">
           <div>Otvorené objednávky <count> {{App\Order::whereIn('status_id',[0,1,2])->count()}}</count></div>
         </a>
-
+        @endif
+        
         <a class="item" id="sidebar_handle">
           <i class="icon content"></i>
         </a>
