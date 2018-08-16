@@ -35,7 +35,7 @@
 	      </td>
 	   	  <td>{{json_decode($order->invoice_address)->name}}</td>
 	      <td>{{$order->price}}</td>
-	      <td  @if($order->status_id==0) class="new" @else  class="sent" @endif>{{$order->status->name}}</td>
+	      <td  class="status" data-statusid="{{$order->status_id}}">{{$order->status->name}}</td>
 	      <td>{{$order->delivery->name}} / {{$order->payment->name}}</td>
 	      <td class="collapsing">
 	      	<div class="ui icon red button delete_order_btn"><i class="delete icon"></i></div>

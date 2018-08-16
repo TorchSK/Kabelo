@@ -41,12 +41,30 @@
 
 .orders_table{
 	td{
-		&.new{
-			background-color: rgba(0,0,0,0.05);
-		}
 
-		&.sent{
-			background-color: rgba(0,255,0,0.1);
+		&.status{
+			opacity: 0.7;
+		}
+		
+		&[data-statusid="0"]{
+			background-color: @yellow;
+			color: @white;
+		}
+		&[data-statusid="1"]{
+			background-color: @teal;
+			color: @white;
+		}
+		&[data-statusid="2"]{
+			background-color: @blue;
+			color: @white;
+		}
+		&[data-statusid="3"]{
+			background-color: @green;
+			color: @white;
+		}
+		&[data-statusid="4"]{
+			background-color: @red;
+			color: @white;
 		}
 	}
 }
