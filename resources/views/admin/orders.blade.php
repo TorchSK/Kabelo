@@ -10,6 +10,7 @@
 	   	<th>ID</th>
 	    <th>ID</th>
 	    <th>Datum prijatia</th>
+	    <th>Registrovany</th>
 	 	<th>Meno</th>
 	    <th>Suma</th>
 	    <th>Stav</th>
@@ -25,7 +26,14 @@
 	      </td>
 	      <td>{{$order->id}}</td>
 	      <td>{{Carbon\Carbon::parse($order->created_at)->format('d.m.Y H:i:s')}}</td>
-	   	  <td>{{$order->invoice_name}}</td>
+	      <td class="collapsing">
+	      	@if($order->user_id)
+	      	Ano
+	      	@else
+	      	Nie
+	      	@endif
+	      </td>
+	   	  <td>{{json_decode($order->invoice_address)->name}}</td>
 	      <td>{{$order->price}}</td>
 	      <td  class="warning">{{$order->status->name}}</td>
 	      <td>{{$order->delivery->name}} / {{$order->payment->name}}</td>
