@@ -19,3 +19,5 @@ Route::get('products/search', 'ProductController@inputSearch');
 Route::put('product/{id}', 'ProductController@apiUpdate');
 
 Route::get('view/pricelevel', 'ProductController@viewPriceLevel');
+
+Route::get('search/{query}', 'UtilController@searchAll');

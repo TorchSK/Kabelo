@@ -2718,5 +2718,28 @@ $('.order_change_status_btn').click(function(){
   
   })
 
+$('#main_search input').keyup(function(){
+	$query = $(this).val();
+	$.ajax({
+		type: "GET",
+		url: "/api/search/"+$query,
+		success: function(data){
+			$('#search_results').show();
+			$('#search_results').find('.products').html(data.products);
+		}
+	})
+})
+
+
+$(document).mouseup(function(e) 
+{
+    var container = $("#search_results");
+
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        container.hide();
+    }
+});
 
 });

@@ -9,6 +9,8 @@ use App\Mail\NewOrder;
 
 use App\Category;
 use App\Order;
+use App\Product;
+use App\User;
 
 use Mail;
 
@@ -52,5 +54,11 @@ class UtilController extends Controller
         {
         config(['app.'.$key => $value]);
         }
+    }
+
+    public function searchAll($query)
+    {
+        $data['products'] = Product::where('name', 'like', '%'.$query.'%')->take(5)->get();
+        return response()->json(['products'=>view('search.products', $data)->render()]);
     }
 }

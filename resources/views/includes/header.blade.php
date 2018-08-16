@@ -5,12 +5,22 @@
           <text>Kabelo</text>
         </a>
 
-        @if(Auth::check() && Auth::user()->admin && App\Order::whereIn('status_id',[0])->count() > 0)
-        <a class="item orders" href="/admin/orders">
-          <div>Nové objednávky <count> {{App\Order::whereIn('status_id',[0])->count()}}</count></div>
-        </a>
-        @endif
+    
         
+        <div class="item search">
+          <div class="ui input" id="main_search">
+            <input type="text" placeholder="Hľadať produkty..." />
+          </div>
+          <div id="search_results">
+           <div class="ui horizontal divider active title">Produkty</div>
+           <div class="products"></div>
+
+           <div class="ui horizontal divider active title">Uživatelia</div>
+           <div class="users"></div>
+
+          </div>
+        </div>
+
         <a class="item" id="sidebar_handle">
           <i class="icon content"></i>
         </a>
@@ -23,6 +33,14 @@
           </div>
         </a>
 
+   
+      @if(Auth::check() && Auth::user()->admin && App\Order::whereIn('status_id',[0])->count() > 0)
+        <div class="item orders">
+        <a href="/admin/orders">
+         <i class="shopping basket icon"></i> <count> {{App\Order::whereIn('status_id',[0])->count()}}</count>
+        </a>
+      </div>
+        @endif
 
         <div class="account item">
           @if (Auth::check())
