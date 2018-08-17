@@ -1318,6 +1318,30 @@ a:hover {
 #header #search_results .products .row .name {
   display: inline-block;
 }
+#header #search_results .users {
+  margin-bottom: 25px;
+}
+#header #search_results .users .row {
+  background-color: #FFF;
+  margin-bottom: 1px;
+  padding: 10px;
+  border-radius: 5px;
+  display: block;
+}
+#header #search_results .users .row .image {
+  display: inline-block;
+  width: 50px;
+  margin-right: 15px;
+}
+#header #search_results .users .row .image i.icon {
+  color: #666;
+}
+#header #search_results .users .row .name {
+  display: inline-block;
+}
+#header #search_results .users .row .email {
+  display: inline-block;
+}
 #header .orders {
   float: right;
   margin-right: 15px;

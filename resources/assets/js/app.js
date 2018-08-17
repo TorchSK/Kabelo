@@ -2730,6 +2730,7 @@ $('#main_search input').keyup(function(){
 		success: function(data){
 			$('#search_results').show();
 			$('#search_results').find('.products').html(data.products);
+			$('#search_results').find('.users').html(data.users);
 			$(document).bind('ajaxStart');
 		}
 	})

@@ -11,13 +11,16 @@
           <div class="ui input" id="main_search">
             <input type="text" placeholder="Hľadať produkty..." />
           </div>
+
           <div id="search_results">
            <div class="ui horizontal divider active title">Produkty</div>
            <div class="products"></div>
 
+           @if(Auth::user()->admin)
            <div class="ui horizontal divider active title">Uživatelia</div>
            <div class="users"></div>
-
+           @endif
+           
           </div>
         </div>
 
