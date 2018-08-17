@@ -11,7 +11,7 @@
     @endif
 
     <div class="ui accordion">
-        @if (Route::currentRouteName()!='product.detail')
+        @if (Route::currentRouteName()!='product.detail' && Route::currentRouteName()!='home')
 
         <div id="product_search">
             <div class="ui left icon huge fluid input product_search_input" >

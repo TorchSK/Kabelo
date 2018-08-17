@@ -460,15 +460,6 @@ class ProductController extends Controller
         $product->categories()->attach($category);
     }
 
-    public function search($query=null)
-    {   
-        if($query)
-        {
-            $data['products'] = Product::where('name','like','%'.$query.'%')->orWhere('desc','like','%'.$query.'%')->orWhere('code','like','%'.$query.'%')->paginate(28);
-            return view('products.searchlist', $data)->render();
-        }
-
-    }
 
     public function addRating($id, Request $request)
     {
