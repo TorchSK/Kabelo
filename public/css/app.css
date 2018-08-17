@@ -1320,7 +1320,7 @@ a:hover {
   display: block;
 }
 #header #search_results .products .row:hover {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 #header #search_results .products .row .image {
   display: inline-block;
@@ -1341,7 +1341,7 @@ a:hover {
   display: block;
 }
 #header #search_results .users .row:hover {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 #header #search_results .users .row .image {
   display: inline-block;
