@@ -11,6 +11,7 @@ use App\Cover;
 use App\Setting;
 use App\Color;
 use App\Parameter;
+use App\File as ProductFile;
 
 use Auth;
 use Excel;
@@ -44,18 +45,114 @@ class AdminController extends Controller
         $contents = Storage::get('dedra.xml');
         $xml = XmlParser::extract($contents);
 
-        $products = $xml->parse([
-            'products' => ['uses' => 'product[product_id,text1,text2,text3,detail,picture1,price_skk,stav_skladu,kategorie]'],
+        $items = $xml->parse([
+            'categories' => ['uses' => 'product[kategorie]'],
+            'products' => ['uses' => 'product[product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variant_image]'],
         ]);
+    
+        $categories = [];
+
+        foreach(Category::all() as $temp)
+        {
+            $temp->delete();
+        }
+        
+        foreach(ProductFile::all() as $temp)
+        {
+            $temp->delete();
+        }
+        
+        foreach(Product::all() as $temp)
+        {
+            $temp->delete();
+        }
+
+        foreach($items['categories'] as $key => $item)
+        {   
+
+            $cat_array = explode(" / ", $item['kategorie']);
+
+            if(isset($cat_array[0]))
+            {
+                $categories[$key][1] = $cat_array[0];
+            }
+
+            if(isset($cat_array[1]))
+            {
+                $categories[$key][2] = $cat_array[1];
+            }
+
+            if(isset($cat_array[2]))
+            {
+                $categories[$key][3] = $cat_array[2];
+            }
+
+            if(isset($cat_array[3]))
+            {
+                $categories[$key][4] = $cat_array[3];
+            }
+        }
 
 
-        foreach($products['products'] as $key => $item)
+        foreach($categories as $key => $item)
+        {
+            $cat = new Category();
+            $cat->name = $item[1];
+            $cat->url = str_slug($item[1]);
+            if (Category::where('name', $item[1])->count() == 0) $cat->save();
+        
+ 
+            if(isset($item[2])){
+                $cat = new Category();
+                $cat->name = $item[2];
+                $cat->url = str_slug($item[2]);
+                $cat->parent_id = Category::where('name',$categories[$key][1])->first()->id;
+                if (Category::where('name', $item[2])->count() == 0) $cat->save();
+            }
+   
+
+    
+            if(isset($item[3])){
+                $cat = new Category();
+                $cat->name = $item[3];
+                $cat->url = str_slug($item[3]);
+                $cat->parent_id = Category::where('name',$categories[$key][2])->first()->id;
+                if (Category::where('name', $item[3])->count() == 0) $cat->save();
+            }
+ 
+
+   
+            if(isset($item[4])){
+                $cat = new Category();
+                $cat->name = $item[4];
+                $cat->url = str_slug($item[4]);
+                $cat->parent_id = Category::where('name',$categories[$key][3])->first()->id;
+                if (Category::where('name', $item[4])->count() == 0) $cat->save();
+            }
+        }
+
+        foreach($items['products'] as $key => $item)
         {
             $product = new Product();
+            $product->name = $item['text1'];
             $product->desc = $item['detail'];
+            $product->code = $item['product_id'];
+            $product->price = $item['price_skk'];
+            $product->price_unit = 'ks';
+            $product->maker = '';
+            $product->moc_sort_price = $item['price_skk'];
+            $product->voc_sort_price = $item['price_skk'];
             $product->save();
-        }   
-         
+
+            $image = new ProductFile();
+            $image->product_id = $product->id;
+            $image->path = $item['picture1']; 
+            $image->type = 'image';
+            $image->primary = 1;
+            $image->save();
+
+            $product->categories()->attach(Category::where('name', end($categories[$key]))->first()->id);
+        }
     }
 
 

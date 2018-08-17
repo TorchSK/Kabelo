@@ -16,6 +16,7 @@ use Crypt;
 use App\User;
 use App\Cart;
 use Config;
+use Request;
 
 class GlobalComposer {
 
@@ -68,8 +69,16 @@ class GlobalComposer {
         }   
 
         //dd($cart);
+        $appname = env('APP_NAME');
+
+        if($appname == 'Laravel')
+        {
+            $appname = ucfirst(explode(".", Request::getHost())[0]);
+        }
+
         
         $view->with('cart', $cart);
+        $view->with('appname', $appname);
         $view->with('min_order_price', config('app.min_order_price'));
         $view->with('min_free_shipping_price', config('app.min_free_shipping_price'));
     }
