@@ -1300,6 +1300,15 @@ a:hover {
 #header #search_results .divider {
   margin: 10px;
 }
+#header #search_results .search_view_all_btn {
+  display: block;
+  width: 100%;
+  background-color: #2185D0;
+  padding: 5px;
+  border-radius: 3px;
+  text-align: center;
+  color: #FFF;
+}
 #header #search_results .products {
   margin-bottom: 25px;
 }
@@ -1309,6 +1318,9 @@ a:hover {
   padding: 5px;
   border-radius: 5px;
   display: block;
+}
+#header #search_results .products .row:hover {
+  background-color: rgba(0, 0, 0, 0.02);
 }
 #header #search_results .products .row .image {
   display: inline-block;
@@ -1327,6 +1339,9 @@ a:hover {
   padding: 10px;
   border-radius: 5px;
   display: block;
+}
+#header #search_results .users .row:hover {
+  background-color: rgba(0, 0, 0, 0.02);
 }
 #header #search_results .users .row .image {
   display: inline-block;

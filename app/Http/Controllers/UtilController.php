@@ -63,4 +63,12 @@ class UtilController extends Controller
 
         return response()->json(['products'=>view('search.products', $data)->render(), 'users'=>view('search.users', $data)->render()]);
     }
+
+    public function search($query)
+    {
+        $data['products'] = Product::where('name', 'like', '%'.$query.'%')->orWhere("desc", "like", "%".$query."%")->orWhere("code", "like", "%".$query."%")->take(5)->paginate(100);
+        $data['users'] = User::where('name', 'like', '%'.$query.'%')->orWhere("email", "like", "%".$query."%")->take(5)->paginate(100);
+
+        return view('search.all', $data);
+    }
 }

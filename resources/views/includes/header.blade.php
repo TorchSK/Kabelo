@@ -20,7 +20,8 @@
            <div class="ui horizontal divider active title">Uživatelia</div>
            <div class="users"></div>
            @endif
-           
+
+           <a class="search_view_all_btn" href="#">Všetky výsledky</a>
           </div>
         </div>
 

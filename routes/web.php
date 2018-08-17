@@ -180,3 +180,4 @@ Route::get('cookies/info', 'UtilController@cookiesInfo');
 Route::get('email/order', 'UtilController@sendOrderEmail');
 Route::post('set/config', 'UtilController@setConfig');
 
+Route::get('search/{query}', 'UtilController@search');

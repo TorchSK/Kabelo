@@ -2724,6 +2724,7 @@ $('.order_change_status_btn').click(function(){
 $('#main_search input').keyup(function(){
 	$(document).unbind('ajaxStart');
 	$query = $(this).val();
+	$('.search_view_all_btn').attr('href', '/search/'+$query);
 	$.ajax({
 		type: "GET",
 		url: "/api/search/"+$query,
