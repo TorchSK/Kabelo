@@ -16,7 +16,7 @@
            <div class="ui horizontal divider active title">Produkty</div>
            <div class="products"></div>
 
-           @if(Auth::user()->admin)
+           @if(Auth::check() && Auth::user()->admin)
            <div class="ui horizontal divider active title">Uživatelia</div>
            <div class="users"></div>
            @endif
