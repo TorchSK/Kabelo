@@ -561,7 +561,7 @@ class AdminController extends Controller
 
         $cover->save();
 
-        return redirect('/admin/settings');
+        return redirect('/admin/settings/banners');
     }
 
 
