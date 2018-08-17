@@ -171,20 +171,9 @@
       <div id="product_buy_qty_m_slider" data-min="{{$product->priceLevels->min('threshold')}}" data-max="200"></div>
       <div id="product_buy_qty_value">Kupujete: <qty>{{$product->priceLevels->min('threshold')}}</qty> {{$product->price_unit}} za 
         <price>
-          @if(Auth::check() && Auth::user()->voc)
-            @if($product->sale)
-            {{$product->priceLevels->min('threshold')*$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_sale}}
-            @else
-            {{$product->priceLevels->min('threshold')*$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->voc_regular}}
-            @endif
-          @else
-            @if($product->sale)
-            {{$product->priceLevels->min('threshold')*$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_sale}}
-            @else
-            {{$product->priceLevels->min('threshold')*$product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_regular}}
-            @endif
-          @endif
-        </price> &euro;</div>
+          {{$product->price}}
+        </price> &euro;
+      </div>
 
     <div id="product_detail_tocart_btn" class="ui large brown labeled icon button" data-qty="{{$product->priceLevels->min('threshold')}}"><i class="add to cart icon"></i>Kúpiť</div>
 
