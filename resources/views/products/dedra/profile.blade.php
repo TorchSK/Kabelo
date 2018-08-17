@@ -52,7 +52,7 @@
           @if ($product->images->count() > 1)
 
           @foreach($product->images as $image)
-           <img src="/{{$image->path}}" class="ui image" width="200px" />
+           <img src="{{$image->path}}" class="ui image" width="200px" />
            @endforeach
            @endif
 
