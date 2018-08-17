@@ -122,7 +122,7 @@
 
 	</div>
 
-		<div class="ui green button" id="settings_submit_btn">Uložiť zmeny</div>
+		<div class="ui green button" id="settings_submit_btn" data-redirect="/seettings/account">Uložiť zmeny</div>
 
 </div>
 

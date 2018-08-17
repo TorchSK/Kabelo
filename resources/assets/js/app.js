@@ -957,6 +957,8 @@ $('#settings_submit_btn').click(function(){
   $data.invoiceAddress = JSON.stringify($data.invoiceAddress);
   $data.deliveryAddress = JSON.stringify($data.deliveryAddress);
 
+  $data['redirect'] = $(this).data('redirect');
+  
   if ($validation)
   {
     $.ajax({

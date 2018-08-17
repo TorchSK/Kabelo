@@ -187,7 +187,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect($redirect);
+        return 1;
 
     }   
 
