@@ -423,20 +423,70 @@ class ProductService implements ProductServiceContract {
 
      public function categoryCounts()
      {
-        $categoryCounts = [];
-        $categoryCounts['categories'] = [];
-
-        foreach (Category::with(['children','children.products'])->withCount(['products'=>function($query){
-             $query->where('active', '1');
-        }])->get() as $category)
+        if (env('DB_DATABASE_DEDRA')=='dedra')
         {
-            $categoryCounts['categories'][$category->id] = $category->products_count;
+            $categoryCounts = [];
+            $categoryCounts['categories'] = [];
 
-            if ($category->children->count() > 0)
+            foreach (Category::with(['children','children.products'])->withCount(['products'=>function($query){
+                 $query->where('active', '1');
+            }])->get() as $category)
             {
-                foreach ($category->children as $child)
+                $categoryCounts['categories'][$category->id] = $category->products_count;
+
+                if ($category->children->count() > 0)
                 {
-                    $categoryCounts['categories'][$category->id] += $child->products->where('active',1)->count();
+                    foreach ($category->children as $child)
+                    {
+                        $categoryCounts['categories'][$category->id] += $child->products->where('active',1)->count();
+
+                        if ($child->children->count() > 0)
+                        {
+                            foreach ($child->children as $child2)
+                            {
+                                $categoryCounts['categories'][$category->id] += $child2->products->where('active',1)->count();
+                            }
+
+                             if ($child2->children->count() > 0)
+                            {
+                                foreach ($child2->children as $child3)
+                                {
+                                    $categoryCounts['categories'][$category->id] += $child3->products->where('active',1)->count();
+                                }
+
+                                   if ($child3->children->count() > 0)
+                                {
+                                    foreach ($child3->children as $child4)
+                                    {
+                                        $categoryCounts['categories'][$category->id] += $child4->products->where('active',1)->count();
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+                }
+            }
+        }
+        else
+        {
+
+            $categoryCounts = [];
+            $categoryCounts['categories'] = [];
+
+            foreach (Category::with(['children','children.products'])->withCount(['products'=>function($query){
+                 $query->where('active', '1');
+            }])->get() as $category)
+            {
+                $categoryCounts['categories'][$category->id] = $category->products_count;
+
+                if ($category->children->count() > 0)
+                {
+                    foreach ($category->children as $child)
+                    {
+                        $categoryCounts['categories'][$category->id] += $child->products->where('active',1)->count();
+                    }
                 }
             }
         }
