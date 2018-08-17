@@ -44,7 +44,7 @@
            @if ($product->images->count() == 0)
            <img src="/img/empty.jpg" class="ui image" />
            @elseif ($product->image)
-           <img src="/{{$product->image->path}}" class="ui image" />
+           <img src="{{$product->image->path}}" class="ui image" />
            @endif
         </div>
         
