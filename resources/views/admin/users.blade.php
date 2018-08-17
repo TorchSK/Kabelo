@@ -13,6 +13,7 @@
 	    <th>Email</th>
 	    <th>Admin</th>
 	   	<th>VOC</th>
+	   	<th>Faktura</th>
 	   	<th>Datum registrácie</th>
 	   	<th>Počet objednávok</th>
 
@@ -27,10 +28,21 @@
 	      <td>{{$user->id}}</td>
 	   	  <td>{{$user->name}}</td>
 	      <td>{{$user->email}}</td>
-	      <td>{{$user->admin}}</td>
+		  <td>
+	      	<div class="ui checkbox admin_checkbox_onthefly" data-resource="user" data-id="{{$user->id}}" >
+			  <input type="checkbox" name="admin" @if($user->admin) checked @endif>
+			  <label></label>
+			</div>
+		  </td>
 	      <td>
 	      	<div class="ui checkbox admin_checkbox_onthefly" data-resource="user" data-id="{{$user->id}}" >
 			  <input type="checkbox" name="voc" @if($user->voc) checked @endif>
+			  <label></label>
+			</div>
+		  </td>
+		  <td>
+	      	<div class="ui checkbox admin_checkbox_onthefly" data-resource="user" data-id="{{$user->id}}" >
+			  <input type="checkbox" name="invoice_eligible" @if($user->invoice_eligible) checked @endif>
 			  <label></label>
 			</div>
 		  </td>
