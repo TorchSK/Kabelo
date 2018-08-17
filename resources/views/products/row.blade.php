@@ -1,1 +1,1 @@
-@include('products.'.$appname.'.row')
+@include('products.'.strtolower($appname).'.row')
