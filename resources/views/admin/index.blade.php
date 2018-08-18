@@ -33,7 +33,10 @@
 		@foreach ($category->children->sortBy('order') as $child)
 	    	<li class="item category @if($child->parent_id) sub @endif" data-id={{$child->id}}>
 				<a class="name" href="{{route('admin.category',['category'=>$child->url])}}">{{$child->name}}</a>
+				@if(env('DB_DATABASE_KABELO')=='kabelo')
+
 				<div class="no_of_items">produktov: {{$categoryCounts['categories'][$child->id]}}</div>
+				@endif
 
 
 				<a class="admin_delete_category_btn ui red label">Zmaž</a>
@@ -41,7 +44,10 @@
 					@foreach ($child->children->sortBy('order') as $child2)
 				    	<li class="item category @if($child->parent_id) sub2 @endif" data-id={{$child2->id}}>
 							<a class="name" href="{{route('admin.category',['category'=>$child2->url])}}">{{$child2->name}}</a>
+				@if(env('DB_DATABASE_KABELO')=='kabelo')
+
 							<div class="no_of_items">produktov: {{$categoryCounts['categories'][$child2->id]}}</div>
+						@endif
 
 
 							<a class="admin_delete_category_btn ui red label">Zmaž</a>
