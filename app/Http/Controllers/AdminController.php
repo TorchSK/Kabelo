@@ -140,7 +140,7 @@ class AdminController extends Controller
             $product->code = $item['product_id'];
             $product->price = $item['price_skk'];
             $product->price_unit = 'ks';
-            $product->maker = '';
+            $product->maker = 'Dedra';
             $product->moc_sort_price = $item['price_skk'];
             $product->voc_sort_price = $item['price_skk'];
             $product->save();

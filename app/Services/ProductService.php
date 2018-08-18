@@ -159,7 +159,7 @@ class ProductService implements ProductServiceContract {
                     //$query->whereBetween('price', $array);
 
                 }
-                elseif($key=='parameters')
+                elseif($key=='parameters' && env('DB_DATABASE_KABELO')=="kabelo")
                 {
                     foreach ((array)$filters['parameters'] as $categoryParameter => $value)
                     {
@@ -241,6 +241,19 @@ class ProductService implements ProductServiceContract {
     }
 
     public function list(Request $request)
+    {
+        if(env('DB_DATABASE_KABELO')=='kabelo')
+        {
+            return $this->list_kabelo($request);
+        }
+
+        if(env('DB_DATABASE_DEDRA')=='dedra')
+        {
+            return $this->list_dedra($request);
+        }
+    }
+
+    public function list_kabelo(Request $request)
     {
 
         $filters = $request->get('filters');
@@ -420,6 +433,82 @@ class ProductService implements ProductServiceContract {
         return $data;
     }
 
+    public function list_dedra(Request $request)
+    {
+        $filters = $request->get('filters');
+        $filters['category'] = $request->get('category');
+        
+        $sortBy = $request->get('sortBy');
+        $sortOrder = $request->get('sortOrder');    
+
+        if (!$sortBy) {$sortBy = 'name';};
+        if (!$sortOrder) {$sortOrder = 'asc';};
+
+        if ($sortBy == 'price')
+        {
+            $sortBy = $this->getUserPriceType();
+        }
+
+
+        $category = Category::find($request->get('category'));
+        $children = $category->children;
+        
+        if ($category->children->count() > 0)
+        {
+            foreach ($category->children as $child)
+            {
+                $children = $children->merge($child->children);
+
+                if ($child->children->count() > 0)
+                {
+                    foreach ($child->children as $child2)
+                    {
+                         $children = $children->merge($child2->children);
+                    }
+
+                     if ($child2->children->count() > 0)
+                    {
+                        foreach ($child2->children as $child3)
+                        {
+                            $children = $children->merge($child3->children);
+                        }
+
+                           if ($child3->children->count() > 0)
+                        {
+                            foreach ($child3->children as $child4)
+                            {
+                                    $children = $children->merge($child4->children);
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+        //dd($children);
+
+        $products = $this->query($filters,[], $children)->orderBy($sortBy,$sortOrder)->paginate(Setting::where('name','ppp')->first()->value);
+
+        // set price range
+        $priceRangeFilters = $filters;
+        unset($priceRangeFilters['price']);
+
+        $priceRange = [];
+        $priceRange[0] = $products->pluck($this->getUserPriceType())->min();
+        $priceRange[1] = $products->pluck($this->getUserPriceType())->max();
+        
+        $search = 'false';
+        
+        $data = [
+            'products' => $products,
+            'priceRange' => $priceRange,
+            'search' => $search,
+            'makers' => collect([''])
+        ];
+
+        return $data;
+    }
 
      public function categoryCounts()
      {
@@ -428,7 +517,7 @@ class ProductService implements ProductServiceContract {
             $categoryCounts = [];
             $categoryCounts['categories'] = [];
 
-            foreach (Category::with(['children','children.products'])->withCount(['products'=>function($query){
+            foreach (Category::with(['children','children.products','children.children','children.children.products', 'children.children.children','children.children.children.products','children.children.children.children','children.children.children.children.products'])->withCount(['products'=>function($query){
                  $query->where('active', '1');
             }])->get() as $category)
             {

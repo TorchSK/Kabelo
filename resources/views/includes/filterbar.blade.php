@@ -44,7 +44,7 @@
         </div>
 
          <div class="params">
-             @if(Request::get('category') && Request::segment(1)!='admin')  
+             @if(Request::get('category') && Request::segment(1)!='admin' && env('DB_DATABASE_KABELO')=='kabelo')  
                 @include('home.makers')
              @endif
         </div>
