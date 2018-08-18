@@ -2,8 +2,8 @@
 
 	<div class="column">
 		 <a class="logo item" href="/">
-          <img src="/img/logo.png" width="36"/>
-          <text>Kabelo.sk</text>
+         <img src="/img/logo_{{strtolower($appname)}}.png" height="50"/>
+          <text>{{ucfirst($appname)}}</text>
         </a>
 
 	</div>

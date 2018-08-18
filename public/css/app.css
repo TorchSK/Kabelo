@@ -1224,7 +1224,12 @@ a:hover {
 }
 #header .logo img {
   margin-right: 15px;
+}
+#header .logo img.kabelo {
   width: 35px;
+}
+#header .logo img.dedra {
+  width: 50px;
 }
 @media all and (max-width: 980px) {
   #header .logo img {

@@ -1,8 +1,8 @@
   <div id="header">
       <div class="container">
         <a class="logo item" href="/">
-          <div class="image"><img src="/img/logo.png" /></div>
-          <text>Kabelo</text>
+          <div class="image {{strtolower($appname)}}"><img src="/img/logo_{{strtolower($appname)}}.png" /></div>
+          <text>{{$appname}}</text>
         </a>
 
     
