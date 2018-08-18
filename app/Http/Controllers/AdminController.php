@@ -152,6 +152,15 @@ class AdminController extends Controller
             $image->save();
 
             $product->categories()->attach(Category::where('name', end($categories[$key]))->first()->id);
+
+            $pricelevel = new PriceLevel();
+            $pricelevel->threshold = 1;
+            $pricelevel->moc_regular = $item['price_skk'];
+            $pricelevel->moc_sale = $item['price_skk'];
+            $pricelevel->voc_regular = $item['price_skk'];
+            $pricelevel->voc_sale = $item['price_skk'];
+
+            $product->priceLevels()->save($pricelevel);
         }
     }
 
