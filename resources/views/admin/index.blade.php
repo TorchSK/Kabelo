@@ -22,8 +22,9 @@
 		@foreach (App\Category::whereNull('parent_id')->orderBy('order')->get() as $category)
     	<li class="item category @if($category->parent_id) sub @endif" data-id={{$category->id}}>
 			<a class="name" href="{{route('admin.category',['category'=>$category->url])}}">{{$category->name}}</a>
+			@if(env('DB_DATABASE_KABELO')=='kabelo')
 			<div class="no_of_items">produktov: {{$categoryCounts['categories'][$category->id] }}</div>
-
+			@endif
 
 			<a class="admin_delete_category_btn ui red label">Zmaž</a>
 
