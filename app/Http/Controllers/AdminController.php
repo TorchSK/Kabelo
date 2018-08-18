@@ -12,6 +12,7 @@ use App\Setting;
 use App\Color;
 use App\Parameter;
 use App\File as ProductFile;
+use App\PriceLevel;
 
 use Auth;
 use Excel;
