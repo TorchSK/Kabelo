@@ -1,7 +1,7 @@
   <div id="header">
       <div class="container">
         <a class="logo item" href="/">
-          <div class="image {{strtolower($appname)}}"><img src="/img/logo_{{strtolower($appname)}}.png" /></div>
+          <div class="image"><img class="{{strtolower($appname)}}" src="/img/logo_{{strtolower($appname)}}.png" /></div>
           <text>{{$appname}}</text>
         </a>
 
