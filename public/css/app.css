@@ -192,9 +192,16 @@ body {
   height: 100%;
   background-color: transparent;
 }
+body[data-layout="2"] {
+  background-color: #F1F1F1;
+  margin: 25px 0;
+}
 body[data-layout="2"] .pusher {
   width: 1330px;
   margin: 0 auto;
+}
+body[data-layout="2"] footer {
+  margin-bottom: 50px;
 }
 body .pusher {
   height: 100%;
