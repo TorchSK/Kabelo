@@ -515,7 +515,7 @@ class ProductService implements ProductServiceContract {
         if (env('DB_DATABASE_DEDRA')=='dedra')
         {   
             $categoryCounts['categories'] = [];
-            $categories = Category::with('descendants','products')->get();
+            $categories = Category::with('descendants','products','descendants.products')->get();
 
             foreach($categories as $category)
             {
