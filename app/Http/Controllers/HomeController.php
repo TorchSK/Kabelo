@@ -19,6 +19,8 @@ class HomeController extends Controller
     }
  public function index($category=null, Request $request)
     {   
+        Category::fixTree();
+
         if (isset($category))
         {
             $cat = Category::whereUrl($category)->first();
