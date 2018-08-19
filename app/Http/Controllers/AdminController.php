@@ -47,11 +47,12 @@ class AdminController extends Controller
         {
             $sourceLanguage = 'cs';
             $name = $client->translate($product->name, 'sk', $sourceLanguage);
-            
+
             if ($product->desc)
+            {
                 $desc = $client->translate($product->desc, 'sk', $sourceLanguage);
                 $product->desc = $desc;
-            @endif
+            }
 
             $product->name = $name;
             $product->save();
