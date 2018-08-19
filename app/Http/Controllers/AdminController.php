@@ -40,6 +40,18 @@ class AdminController extends Controller
         $this->productService = $productService;
     }
 
+    public function translate()
+    {
+        $client = new \GoogleTranslate\Client('AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI');
+        foreach(Product::all() as $product)
+        {
+            $sourceLanguage = 'cs';
+            $sk = $client->translate($product->name, 'sk', $sourceLanguage);
+            $product->name = $sk;
+            $product->save();
+        }
+
+    }
     public function xmlImport()
     {
         

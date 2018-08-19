@@ -17,6 +17,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 {
 
 	Route::get('/xml/import', 'AdminController@xmlImport')->name('admin.xmlImport');
+	Route::get('/translate/', 'AdminController@translate')->name('admin.translate');
 
 
 	Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
