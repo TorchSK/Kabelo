@@ -131,7 +131,7 @@ class AdminController extends Controller
                 if (Category::where('name', $item[4])->count() == 0) $cat->save();
             }
         }
-
+https://translation.googleapis.com/language/translate/v2?q=ahoj&key=AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI&source=cs&target=sk
         foreach($items['products'] as $key => $item)
         {
             $product = new Product();

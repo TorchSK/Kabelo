@@ -14,9 +14,7 @@
     @endif
 
         <text>{{$category->name}}</text>
-        @if (env('DB_DATABASE_KABELO')=='kabelo')
         <count>{{$categoryCounts['categories'][$category->id]}}</count>
-        @endif
     </a>
     </div>
 
