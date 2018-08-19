@@ -16,7 +16,7 @@ use Auth;
 use Cookie;
 use Response;
 use DB;
-
+use Cache;
 
 class ProductService implements ProductServiceContract {
 
@@ -514,18 +514,26 @@ class ProductService implements ProductServiceContract {
      {
         if (env('DB_DATABASE_DEDRA')=='dedra')
         {   
-            $categoryCounts['categories'] = [];
-            $categories = Category::with('descendants','products','descendants.products')->get();
-
-            foreach($categories as $category)
+            if(!Cache::has('category_counts'))
             {
-                $categoryCounts['categories'][$category->id] = $category->products->count();
-                foreach($category->descendants as $descendant)
+                $categoryCounts['categories'] = [];
+                $categories = Category::with('descendants','products','descendants.products')->get();
+                //dd($categories);
+                foreach($categories as $category)
                 {
-                  $categoryCounts['categories'][$category->id] = $categoryCounts['categories'][$category->id] + $descendant->products->count();  
+                    $categoryCounts['categories'][$category->id] = $category->products->count();
+                    foreach($category->descendants as $descendant)
+                    {
+                      $categoryCounts['categories'][$category->id] = $categoryCounts['categories'][$category->id] + $descendant->products->count();  
+                    }
                 }
+                Cache::put('category_counts', $categoryCounts['categories'], 60);
             }
-           
+            else
+            {
+                $categoryCounts['categories'] = Cache::get('category_counts');
+            }
+
     
             
         }
