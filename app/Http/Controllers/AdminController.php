@@ -46,8 +46,10 @@ class AdminController extends Controller
         foreach(Product::all() as $product)
         {
             $sourceLanguage = 'cs';
-            $sk = $client->translate($product->name, 'sk', $sourceLanguage);
-            $product->name = $sk;
+            $name = $client->translate($product->name, 'sk', $sourceLanguage);
+            $detail = $client->translate($product->detail, 'sk', $sourceLanguage);
+            $product->name = $name;
+            $product->detail = $detail;
             $product->save();
         }
 
