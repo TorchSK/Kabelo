@@ -192,6 +192,10 @@ body {
   height: 100%;
   background-color: transparent;
 }
+body[data-layout="2"] .pusher {
+  width: 1330px;
+  margin: 0 auto;
+}
 body .pusher {
   height: 100%;
   display: -webkit-box;

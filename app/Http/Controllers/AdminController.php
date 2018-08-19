@@ -635,7 +635,7 @@ https://translation.googleapis.com/language/translate/v2?q=ahoj&key=AIzaSyCEYe59
     public function setLayout(Request $request)
     {
 
-        $setting = Setting::firstOrNew(['key' => 'layout']);
+        $setting = Setting::firstOrNew(['name' => 'layout']);
         $setting->value = $request->get('layout');
         $setting->save();
 

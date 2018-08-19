@@ -30,3 +30,8 @@
 	<div class="text">Nastavenia</div>
 </a>
 
+<a href="{{route('admin.layout')}}" class="tab">
+	<i class="big tv icon"></i>
+	<div class="text">Layout</div>
+</a>
+
