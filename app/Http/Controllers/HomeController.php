@@ -6,6 +6,7 @@ use App\Services\Contracts\ProductServiceContract;
 
 use App\Category;
 use Illuminate\Http\Request;
+
 class HomeController extends Controller
 {
     /**
