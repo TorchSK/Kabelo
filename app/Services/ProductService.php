@@ -23,6 +23,7 @@ class ProductService implements ProductServiceContract {
 
   public function __construct ()
   {
+
   }
 
     public function getPriceLevel($productId, $qty)
@@ -512,7 +513,8 @@ class ProductService implements ProductServiceContract {
 
      public function categoryCounts()
      {
-        if (env('DB_DATABASE_DEDRA')=='dedra')
+
+        if (config('database.default')=='dedra')
         {   
             if(!Cache::has('category_counts'))
             {
@@ -539,7 +541,6 @@ class ProductService implements ProductServiceContract {
         }
         else
         {
-
             $categoryCounts = [];
             $categoryCounts['categories'] = [];
 

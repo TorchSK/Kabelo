@@ -76,6 +76,7 @@ class GlobalComposer {
             $appname = ucfirst(explode(".", Request::getHost())[0]);
         }
         
+
         $view->with('cart', $cart);
         $view->with('appname', $appname);
         $view->with('min_order_price', config('app.min_order_price'));
