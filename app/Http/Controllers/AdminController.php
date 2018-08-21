@@ -118,8 +118,6 @@ class AdminController extends Controller
         foreach($categories as $key => $item)
         {
 
-            $ids[$key] = $cat->id;
-
             try{
                 $cat = new Category();
                 $cat->name = $item[1];
