@@ -36,36 +36,11 @@ class GlobalComposer {
     {
         if (Auth::check())
         {   
-            //if user is authenticated, get cart from DB
-            $cart = Auth::user()->cart;
-
-            if (!$cart)
-            {
-                try { 
-                $cart = new Cart();
-                $cart->user_id = Auth::user()->id;
-                $cart->price  = 0;
-                $cart->delivery_method = '';
-                $cart->payment_method = '';
-                $cart->invoice_address = '{}';
-                $cart->delivery_address = '{}';
-                $cart->delivery_address_flag = 0;
-
-                $cart->save();
-                } catch(\Illuminate\Database\QueryException $ex){ 
-                  // do nothing
-                }
-            }
-
             $cart = $this->cartController->getCart($cart->id);
-            
-
         }
         else
         {
-            //if user is in guest mode, get cart from Cookie
             $cart = $this->cartController->getCart('undefined');
-
         }   
 
         //dd($cart);
