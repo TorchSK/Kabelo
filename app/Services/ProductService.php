@@ -518,6 +518,7 @@ class ProductService implements ProductServiceContract {
         {   
             if(!Cache::has('category_counts'))
             {
+                Category::fixTree();
                 $categoryCounts['categories'] = [];
                 $categories = Category::with('descendants','products','descendants.products')->get();
                 //dd($categories);
