@@ -252,11 +252,6 @@ https://translation.googleapis.com/language/translate/v2?q=ahoj&key=AIzaSyCEYe59
         return view('admin.products', $data);
     }
 
-    public function cookie(){
-        $cart = Cookie::get('cart');
-        dd($cart);
-    }
-
     
     public function manageOrders()
     {

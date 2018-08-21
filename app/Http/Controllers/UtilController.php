@@ -13,6 +13,7 @@ use App\Product;
 use App\User;
 
 use Mail;
+use Cookie;
 
 class UtilController extends Controller
 {
@@ -26,6 +27,13 @@ class UtilController extends Controller
         $this->productService = $productService;
 
     }
+
+
+    public function cookie(){
+        $cart = Cookie::get('cart');
+        dd($cart);
+    }
+
 
     /**
      * Show the application dashboard.
