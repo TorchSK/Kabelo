@@ -136,7 +136,6 @@ class AdminController extends Controller
                     $cat->parent_id = Category::where('name',$categories[$key][1])->first()->id;
                     $cat->save();
                     $categories[$key]['id'] = $cat->id;
-
                 }
        
 
@@ -187,7 +186,9 @@ class AdminController extends Controller
             $image->primary = 1;
             $image->save();
 
-            $product->categories()->attach($categories[$key]['id']);
+
+            $category = Category::where('name', end($categories[$key]))->last()->id;
+            $product->categories()->attach($category);
 
             $pricelevel = new PriceLevel();
             $pricelevel->threshold = 1;
