@@ -117,6 +117,9 @@ class AdminController extends Controller
 
         foreach($categories as $key => $item)
         {
+
+            $ids[$key] = $cat->id;
+
             try{
                 $cat = new Category();
                 $cat->name = $item[1];
@@ -125,6 +128,7 @@ class AdminController extends Controller
                 {
                     $cat->save();
                     $lastid =   $item[1];
+                    $ids[$key] = $cat->id;
                 }
         
      
@@ -134,6 +138,7 @@ class AdminController extends Controller
                     $cat->url = str_slug($item[2]);
                     $cat->parent_id = Category::where('name',$categories[$key][1])->first()->id;
                     $cat->save();
+                    $ids[$key] = $cat->id;
                 }
        
 
@@ -144,6 +149,7 @@ class AdminController extends Controller
                     $cat->url = str_slug($item[3]);
                     $cat->parent_id = Category::where('name',$categories[$key][2])->first()->id;
                     $cat->save();
+                    $ids[$key] = $cat->id;
 
                 }
      
@@ -155,11 +161,12 @@ class AdminController extends Controller
                     $cat->url = str_slug($item[4]);
                     $cat->parent_id = Category::where('name',$categories[$key][3])->first()->id;
                     $cat->save();
+                    $ids[$key] = $cat->id;
 
                 }
             }
             catch(\Illuminate\Database\QueryException $e){
-                  $categories[$key][1] = $lastid;
+                dd($e)
             }
         }
 
@@ -183,19 +190,7 @@ class AdminController extends Controller
             $image->primary = 1;
             $image->save();
 
-
-            $categoryQ = Category::where('name', end($categories[$key]));
-
-            if($categoryQ->count() == 0)
-            {
-                $category = Category::where('name', $categories[0][1])->first()->id;
-            }   
-            else
-            {
-                $category = $categoryQ->first()->id;
-            }
-
-            $product->categories()->attach($category);
+            $product->categories()->attach($ids[$key]);
 
             $pricelevel = new PriceLevel();
             $pricelevel->threshold = 1;
