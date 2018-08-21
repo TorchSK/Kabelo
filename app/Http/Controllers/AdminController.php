@@ -120,6 +120,7 @@ class AdminController extends Controller
             $cat->name = $item[1];
             $cat->url = str_slug($item[1]);
             if (Category::where('name', $item[1])->count() == 0) $cat->save();
+            $categories[$key]['id'] = $cat->id;
         
  
             if(isset($item[2])){
@@ -127,7 +128,8 @@ class AdminController extends Controller
                 $cat->name = $item[2];
                 $cat->url = str_slug($item[2]);
                 $cat->parent_id = Category::where('name',$categories[$key][1])->first()->id;
-                if (Category::where('name', $item[2])->count() == 0) $cat->save();
+                if (Category::where('name', $item[2])->where('parent_id',$categories[$key]['id'])->count() == 0) $cat->save();
+                $categories[$key]['id'] = $cat->id;
             }
    
 
@@ -137,7 +139,8 @@ class AdminController extends Controller
                 $cat->name = $item[3];
                 $cat->url = str_slug($item[3]);
                 $cat->parent_id = Category::where('name',$categories[$key][2])->first()->id;
-                if (Category::where('name', $item[3])->count() == 0) $cat->save();
+                if (Category::where('name', $item[3])->where('parent_id',$categories[$key]['id'])->count() == 0) $cat->save();
+                $categories[$key]['id'] = $cat->id;
             }
  
 
@@ -147,10 +150,11 @@ class AdminController extends Controller
                 $cat->name = $item[4];
                 $cat->url = str_slug($item[4]);
                 $cat->parent_id = Category::where('name',$categories[$key][3])->first()->id;
-                if (Category::where('name', $item[4])->count() == 0) $cat->save();
+                if (Category::where('name', $item[4])->where('parent_id',$categories[$key]['id'])->count() == 0) $cat->save();
+                $categories[$key]['id'] = $cat->id;
             }
         }
-https://translation.googleapis.com/language/translate/v2?q=ahoj&key=AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI&source=cs&target=sk
+
         foreach($items['products'] as $key => $item)
         {
             $product = new Product();
@@ -171,7 +175,7 @@ https://translation.googleapis.com/language/translate/v2?q=ahoj&key=AIzaSyCEYe59
             $image->primary = 1;
             $image->save();
 
-            $product->categories()->attach(Category::where('name', end($categories[$key]))->first()->id);
+            $product->categories()->attach($categories[$key]['id']);
 
             $pricelevel = new PriceLevel();
             $pricelevel->threshold = 1;
