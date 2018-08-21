@@ -121,7 +121,7 @@ class AdminController extends Controller
                 $cat = new Category();
                 $cat->name = $item[1];
                 $cat->url = str_slug($item[1]);
-                $cat->save();
+                if (Category::where('name', $item[1])->count() == 0) $cat->save();
             
      
                 if(isset($item[2])){
