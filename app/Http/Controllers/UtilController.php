@@ -47,7 +47,9 @@ class UtilController extends Controller
 
     public function contactPage()
     {       
-        return view('pages/contact');
+        $data['bodyid'] = 'body_contact';
+
+        return view('pages/contact', $data);
     }
 
     public function termsPage()

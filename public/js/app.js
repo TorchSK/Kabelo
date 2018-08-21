@@ -2720,6 +2720,9 @@ function initMap() {
   var marker = new google.maps.Marker({position: uluru, map: map});
 }
 
-initMap();
+if($('body').attr('id') == 'body_contact')
+{
+	initMap();
+}
 
 });
