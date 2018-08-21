@@ -132,7 +132,7 @@ class AdminController extends Controller
 
                 $existing = Category::where('name', $item[2])->first();
 
-                if (Category::where('name', $item[2])->where('parent_id',$existing->parent_id)->count() == 0) $cat->save();
+                if ($existing && Category::where('name', $item[2])->where('parent_id',$existing->parent_id)->count() == 0) $cat->save();
 
                 $categories[$key]['id'] = $cat->id;
             }
@@ -147,7 +147,7 @@ class AdminController extends Controller
 
                 $existing = Category::where('name', $item[3])->first();
 
-                if (Category::where('name', $item[3])->where('parent_id',$existing->parent_id)->count() == 0) $cat->save();
+                if ($existing && Category::where('name', $item[3])->where('parent_id',$existing->parent_id)->count() == 0) $cat->save();
                 $categories[$key]['id'] = $cat->id;
             }
  
@@ -161,7 +161,7 @@ class AdminController extends Controller
 
                 $existing = Category::where('name', $item[4])->first();
 
-                if (Category::where('name', $item[4])->where('parent_id',$existing->parent_id)->count() == 0) $cat->save();
+                if ($existing && Category::where('name', $item[4])->where('parent_id',$existing->parent_id)->count() == 0) $cat->save();
                 $categories[$key]['id'] = $cat->id;
             }
         }
