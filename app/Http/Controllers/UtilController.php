@@ -45,6 +45,31 @@ class UtilController extends Controller
         return view('pages/connectorsguide');
     }
 
+    public function contactPage()
+    {       
+        return view('pages/contact');
+    }
+
+    public function termsPage()
+    {       
+        return view('pages/terms');
+    }
+
+    public function gdprPage()
+    {       
+        return view('pages/gdpr');
+    }
+
+    public function setCookie(Request $request)
+    {       
+        $name = $request->get('name');
+        $value = $request->get('value');
+        $expiry = $request->get('expiry');
+
+        return Cookie::queue($name,$value, $expiry);
+    }
+
+
     public function cookiesInfo()
     {       
         return view('utils/cookiesinfo');

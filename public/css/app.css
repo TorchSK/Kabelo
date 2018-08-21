@@ -418,8 +418,9 @@ a:hover {
   position: fixed;
   bottom: 0;
   left: 0;
-  padding: 12px;
+  padding: 9px;
   background-color: #A5673F;
+  opacity: 0.85;
   color: #FFF;
   text-align: center;
 }
@@ -432,6 +433,9 @@ a:hover {
 #cookies_msg i.icon {
   margin-left: 15px;
   cursor: pointer;
+}
+#cookies_consent_btn {
+  margin-left: 10px;
 }
 #cookies_info {
   padding: 4% 25%;
@@ -696,6 +700,32 @@ a:hover {
 }
 .c_header div {
   width: 80%;
+}
+#terms_div {
+  text-align: center;
+  padding: 3%;
+  margin: 0 auto;
+}
+#terms_div pre {
+  background-color: #FFF;
+  display: inline-block;
+  text-align: center;
+  white-space: pre-line;
+  max-width: 800px;
+  padding: 50px;
+}
+#gdpr_div {
+  text-align: center;
+  padding: 3%;
+  margin: 0 auto;
+}
+#gdpr_div pre {
+  background-color: #FFF;
+  display: inline-block;
+  text-align: center;
+  white-space: pre-line;
+  max-width: 800px;
+  padding: 50px;
 }
 .covers {
   opacity: 0;
