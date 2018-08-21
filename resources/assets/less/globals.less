@@ -609,9 +609,15 @@ a{
 
   .box{
     display: flex;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
     font-weight: 300;
     font-size: 1.1em;
+    border-bottom: 1px dashed #CCC;
+    padding-bottom: 30px;
+
+    &:last-child{
+      border-bottom: none;
+    }
 
     b{
       display: inline-block;
