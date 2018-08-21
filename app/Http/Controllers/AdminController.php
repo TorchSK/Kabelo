@@ -129,7 +129,7 @@ class AdminController extends Controller
                 $cat->name = $item[2];
                 $cat->url = str_slug($item[2]);
                 $cat->parent_id = Category::where('name',$categories[$key][1])->first()->id;
-                if (Category::where('name', $item[2])->where('parent_id',$categories[$key]['id'])->count() == 0) $cat->save();
+                if (Category::where('name', $item[2])->count() == 0) $cat->save();
                 $categories[$key]['id'] = $cat->id;
             }
    
@@ -140,7 +140,7 @@ class AdminController extends Controller
                 $cat->name = $item[3];
                 $cat->url = str_slug($item[3]);
                 $cat->parent_id = Category::where('name',$categories[$key][2])->first()->id;
-                if (Category::where('name', $item[3])->where('parent_id',$categories[$key]['id'])->count() == 0) $cat->save();
+                if (Category::where('name', $item[3])->count() == 0) $cat->save();
                 $categories[$key]['id'] = $cat->id;
             }
  
@@ -151,7 +151,7 @@ class AdminController extends Controller
                 $cat->name = $item[4];
                 $cat->url = str_slug($item[4]);
                 $cat->parent_id = Category::where('name',$categories[$key][3])->first()->id;
-                if (Category::where('name', $item[4])->where('parent_id',$categories[$key]['id'])->count() == 0) $cat->save();
+                if (Category::where('name', $item[4])->count() == 0) $cat->save();
                 $categories[$key]['id'] = $cat->id;
             }
         }
