@@ -33,7 +33,9 @@ class GlobalComposer {
      * @return void
      */
     public function compose(View $view)
-    {
+    {   
+        $cart = Auth::user()->cart;
+
         if (Auth::check())
         {   
             $cart = $this->cartController->getCart($cart->id);
