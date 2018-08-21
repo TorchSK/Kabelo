@@ -21,7 +21,6 @@ class CreateCartCookie
         if (!Auth::guard($guard)->check()) 
         {
             $cart = Cookie::get('cart');
-            json_decode($cart['invoice_address']);
 
             if(!$cart)
             {
@@ -42,6 +41,7 @@ class CreateCartCookie
 
                 // create cookie
                 $cookie = Cookie::queue('cart',$cookieData,555555);
+                $cart = Cookie::get('cart');
             }
         }
 
