@@ -23,7 +23,7 @@ class CreateCartCookie
             $cart = Cookie::get('cart');
             json_decode($cart['invoice_address']);
 
-            if(!$cart || !array_key_exists('counts', $cart) || !array_key_exists('shipping_price', $cart) || json_last_error() != JSON_ERROR_NONE || !array_key_exists('ico_flag', $cart))
+            if(!$cart)
             {
                 $cookieData = [
                     'number' => 0,
