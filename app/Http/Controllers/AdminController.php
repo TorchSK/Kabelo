@@ -117,38 +117,42 @@ class AdminController extends Controller
 
         foreach($categories as $key => $item)
         {
-            $cat = new Category();
-            $cat->name = $item[1];
-            $cat->url = str_slug($item[1]);
-            $cat->save();
+            try{
+                $cat = new Category();
+                $cat->name = $item[1];
+                $cat->url = str_slug($item[1]);
+                $cat->save();
+            
+     
+                if(isset($item[2])){
+                    $cat = new Category();
+                    $cat->name = $item[2];
+                    $cat->url = str_slug($item[2]);
+                    $cat->parent_id = Category::where('name',$categories[$key][1])->first()->id;
+                    $cat->save();
+                }
+       
+
         
- 
-            if(isset($item[2])){
-                $cat = new Category();
-                $cat->name = $item[2];
-                $cat->url = str_slug($item[2]);
-                $cat->parent_id = Category::where('name',$categories[$key][1])->first()->id;
-                $cat->save();
-            }
-   
+                if(isset($item[3])){
+                    $cat = new Category();
+                    $cat->name = $item[3];
+                    $cat->url = str_slug($item[3]);
+                    $cat->parent_id = Category::where('name',$categories[$key][2])->first()->id;
+                    $cat->save();
+                }
+     
 
-    
-            if(isset($item[3])){
-                $cat = new Category();
-                $cat->name = $item[3];
-                $cat->url = str_slug($item[3]);
-                $cat->parent_id = Category::where('name',$categories[$key][2])->first()->id;
-                $cat->save();
+       
+                if(isset($item[4])){
+                    $cat = new Category();
+                    $cat->name = $item[4];
+                    $cat->url = str_slug($item[4]);
+                    $cat->parent_id = Category::where('name',$categories[$key][3])->first()->id;
+                    $cat->save();
+                }
             }
- 
-
-   
-            if(isset($item[4])){
-                $cat = new Category();
-                $cat->name = $item[4];
-                $cat->url = str_slug($item[4]);
-                $cat->parent_id = Category::where('name',$categories[$key][3])->first()->id;
-                $cat->save();
+            catch(\Illuminate\Database\QueryException $e){
             }
         }
 
