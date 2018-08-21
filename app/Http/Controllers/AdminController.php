@@ -188,7 +188,7 @@ class AdminController extends Controller
 
             if($categoryQ->count() == 0)
             {
-                $category = $categories[0][1];
+                $category = Category::where('name', $categories[0][1])->first()->id;
             }   
             else
             {
