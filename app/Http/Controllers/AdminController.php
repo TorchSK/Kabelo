@@ -164,7 +164,7 @@ class AdminController extends Controller
                 }
             }
             catch(\Illuminate\Database\QueryException $e){
-                dd($e->getBindings());
+                $ids[$key] = Category::where('name',$e->getBindings()[0])->where('parent_id',$e->getBindings()[2])->first()->id;
             }
         }
 
