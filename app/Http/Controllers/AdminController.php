@@ -121,8 +121,12 @@ class AdminController extends Controller
                 $cat = new Category();
                 $cat->name = $item[1];
                 $cat->url = str_slug($item[1]);
-                if (Category::where('name', $item[1])->count() == 0) $cat->save();
-            
+                if (Category::where('name', $item[1])->count() == 0) 
+                {
+                    $cat->save();
+                    $categories[$key]['id'] = $cat->id;
+                }
+        
      
                 if(isset($item[2])){
                     $cat = new Category();
@@ -130,6 +134,8 @@ class AdminController extends Controller
                     $cat->url = str_slug($item[2]);
                     $cat->parent_id = Category::where('name',$categories[$key][1])->first()->id;
                     $cat->save();
+                    $categories[$key]['id'] = $cat->id;
+
                 }
        
 
@@ -140,6 +146,8 @@ class AdminController extends Controller
                     $cat->url = str_slug($item[3]);
                     $cat->parent_id = Category::where('name',$categories[$key][2])->first()->id;
                     $cat->save();
+                    $categories[$key]['id'] = $cat->id;
+
                 }
      
 
@@ -150,6 +158,8 @@ class AdminController extends Controller
                     $cat->url = str_slug($item[4]);
                     $cat->parent_id = Category::where('name',$categories[$key][3])->first()->id;
                     $cat->save();
+                    $categories[$key]['id'] = $cat->id;
+
                 }
             }
             catch(\Illuminate\Database\QueryException $e){
