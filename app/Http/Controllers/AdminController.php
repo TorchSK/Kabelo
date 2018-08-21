@@ -125,8 +125,7 @@ class AdminController extends Controller
                 if (Category::where('name', $item[1])->count() == 0) 
                 {
                     $cat->save();
-                    $categories[$key]['id'] = $cat->id;
-                    $lastid = $cat->id;
+                    $lastid =   $item[1];
                 }
         
      
@@ -136,9 +135,6 @@ class AdminController extends Controller
                     $cat->url = str_slug($item[2]);
                     $cat->parent_id = Category::where('name',$categories[$key][1])->first()->id;
                     $cat->save();
-                    $categories[$key]['id'] = $cat->id;
-                    $lastid = $cat->id;
-
                 }
        
 
@@ -149,8 +145,6 @@ class AdminController extends Controller
                     $cat->url = str_slug($item[3]);
                     $cat->parent_id = Category::where('name',$categories[$key][2])->first()->id;
                     $cat->save();
-                    $categories[$key]['id'] = $cat->id;
-                    $lastid = $cat->id;
 
                 }
      
@@ -162,13 +156,11 @@ class AdminController extends Controller
                     $cat->url = str_slug($item[4]);
                     $cat->parent_id = Category::where('name',$categories[$key][3])->first()->id;
                     $cat->save();
-                    $categories[$key]['id'] = $cat->id;
-                    $lastid = $cat->id;
 
                 }
             }
             catch(\Illuminate\Database\QueryException $e){
-                  $categories[$key]['id'] = $lastid;
+                  $categories[$key][1] = $lastid;
             }
         }
 
