@@ -117,7 +117,6 @@ class AdminController extends Controller
 
         foreach($categories as $key => $item)
         {
-
             try{
                 $cat = new Category();
                 $cat->name = $item[1];
@@ -188,7 +187,14 @@ class AdminController extends Controller
             $image->primary = 1;
             $image->save();
 
-            $product->categories()->attach($ids[$key]);
+            if (isset($ids[$key]))
+            {
+                $product->categories()->attach($ids[$key]);
+            }
+            else
+            {
+                $product->categories()->attach(Category::first()->id);
+            }
 
             $pricelevel = new PriceLevel();
             $pricelevel->threshold = 1;
