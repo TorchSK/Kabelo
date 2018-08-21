@@ -18,6 +18,7 @@ use Auth;
 use Excel;
 use Image;
 use Storage;
+use Cookie;
 
 use App\DeliveryMethod;
 use App\PaymentMethod;
@@ -252,8 +253,7 @@ https://translation.googleapis.com/language/translate/v2?q=ahoj&key=AIzaSyCEYe59
     }
 
     public function cookie(){
-        $cart = Auth::user()->cart;
-        $cart['items'] = $cart->products->pluck('id');
+        $cart = Cookie::get('cart');
         dd($cart);
     }
 

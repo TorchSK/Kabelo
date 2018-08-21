@@ -21,7 +21,7 @@ class CreateCartCookie
         if (!Auth::guard($guard)->check()) 
         {
             $cart = Cookie::get('cart');
-            dd($cart);
+    
             if($cart == null)
             {
                 $cookieData = [
