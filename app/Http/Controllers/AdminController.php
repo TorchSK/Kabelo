@@ -114,7 +114,8 @@ class AdminController extends Controller
             }
         }
 
-
+    $categories[$key]['id'] = '';
+    
         foreach($categories as $key => $item)
         {
             $cat = new Category();
