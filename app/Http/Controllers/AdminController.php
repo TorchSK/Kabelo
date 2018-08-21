@@ -187,7 +187,7 @@ class AdminController extends Controller
             $image->save();
 
 
-            $category = Category::where('name', end($categories[$key]))->last()->id;
+            $category = Category::where('name', end($categories[$key]))->first()->id;
             $product->categories()->attach($category);
 
             $pricelevel = new PriceLevel();
