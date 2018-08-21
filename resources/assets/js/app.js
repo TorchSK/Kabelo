@@ -2384,14 +2384,20 @@ $('#bulk_save_btn').click(function(){
     })
 })
 
-$('#cookies_msg i').click(function(){
+
+$('#cookies_consent_btn').click(function(){
+	$(document).unbind('ajaxStart');
   $('#cookies_msg').hide();
   $.ajax({
-    method: "PUT",
-    url: '/user/'+$(this).data('user_id'),
-    data: {cookies: 1}
+    method: "POST",
+    url: '/cookies',
+    data: {name: 'cookies_consent',value: 1, expiry: 9999999},
+    success: function(){
+    	$(document).bind('ajaxStart');
+    }
   })
 });
+
 
 
 if($('body').attr('id')=='cartproducts')
@@ -2703,5 +2709,20 @@ $('body').mouseup(function(e)
         container.hide();
     }
 });
+
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: 48.736600, lng:19.154185};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 17, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+
+if($('body').attr('id') == 'body_contact')
+{
+	initMap();
+}
 
 });

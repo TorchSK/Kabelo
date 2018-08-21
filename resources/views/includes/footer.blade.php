@@ -9,9 +9,9 @@
 	</div>
 
   <div class="stretch">
-	<div class="column"><a href="#" class="effect-1">Obchodné podmienky</a></div>
-	<div class="column"><a href="#" class="effect-1">O spoločnosti</a></div>
-  <div class="column"><a href="#" class="effect-1">Kontakt</a></div>
+	<div class="column"><a href="/obchodne-podmienky" class="effect-1">Obchodné podmienky</a></div>
+  <div class="column"><a href="/gdpr" class="effect-1">Ochrana osobných údajov</a></div>
+  <div class="column"><a href="/kontakt" class="effect-1">Kontakt</a></div>
   </div>
 
 	<div class="column social">
@@ -21,9 +21,11 @@
    <div id="td">Made by &copy; <a class="effect-1" href="mailto:jan.krnac@seznam.cz" target="_top">Ján Krnáč</a></div>
 	</div> 
 
-    @if (!Auth::guest() && !Auth::user()->cookies)  
-  <div id="cookies_msg">Tento web používa súbory cookies. Prehliadaním webu vyjadrujete súhlas s ich používaním. <a href="/cookies/info">Viac informácií.</a><i class="delete icon" data-user_id="{{Auth::user()->id}}"></i></div>
-  @endif  
+
+      @if(Cookie::get('cookies_consent')==null)  
+      <div id="cookies_msg">Tento web používa súbory cookies. Prehliadaním webu vyjadrujete súhlas s ich používaním. <a href="/cookies/info">Viac informácií.</a><button class="ui blue mini button" id="cookies_consent_btn">OK</button></div>
+      @endif
+
 
 </footer>	
 

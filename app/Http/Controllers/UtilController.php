@@ -13,6 +13,7 @@ use App\Product;
 use App\User;
 
 use Mail;
+use Cookie;
 
 class UtilController extends Controller
 {
@@ -27,6 +28,13 @@ class UtilController extends Controller
 
     }
 
+
+    public function cookie(){
+        $cart = Cookie::get('cart');
+        dd($cart);
+    }
+
+
     /**
      * Show the application dashboard.
      *
@@ -36,6 +44,33 @@ class UtilController extends Controller
     {       
         return view('pages/connectorsguide');
     }
+
+    public function contactPage()
+    {       
+        $data['bodyid'] = 'body_contact';
+
+        return view('pages/contact', $data);
+    }
+
+    public function termsPage()
+    {       
+        return view('pages/terms');
+    }
+
+    public function gdprPage()
+    {       
+        return view('pages/gdpr');
+    }
+
+    public function setCookie(Request $request)
+    {       
+        $name = $request->get('name');
+        $value = $request->get('value');
+        $expiry = $request->get('expiry');
+
+        return Cookie::queue($name,$value, $expiry);
+    }
+
 
     public function cookiesInfo()
     {       

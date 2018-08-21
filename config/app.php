@@ -234,9 +234,5 @@ return [
         'XmlParser' => Orchestra\Parser\Xml\Facade::class,
     ],
 
-    'layout' => 1,
-    'min_order_price' => 0,
-    'min_free_shipping_price' => 30,
-    'ppp' => 24
-
+    'cartCookieExpire' => 555555
 ];

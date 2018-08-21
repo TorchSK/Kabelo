@@ -68,5 +68,6 @@
       });
     </script>
 
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdqx8xXl2sxDke485SNJXjXXd2UZu_ofc"></script>
 
 </head>

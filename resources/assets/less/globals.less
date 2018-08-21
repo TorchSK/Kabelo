@@ -278,8 +278,9 @@ a{
 	position: fixed;
 	bottom: 0;
 	left:0;
-	padding: 12px;
+	padding: 9px;
 	background-color: @brown;
+  opacity: 0.85;
 	color: #FFF;
 	text-align: center;
 
@@ -294,6 +295,10 @@ a{
 		margin-left: 15px;
 		cursor: pointer;
 	}
+}
+
+#cookies_consent_btn{
+  margin-left: 10px;
 }
 
 #cookies_info{
@@ -566,3 +571,65 @@ a{
     width: 80%;
   }
 }
+
+#terms_div{
+  text-align: center;
+  padding: 3%;
+        margin: 0 auto;
+
+  pre{
+    background-color: #FFF;
+    display: inline-block;
+    text-align: center;
+      white-space: pre-line;
+      max-width: 800px;
+      padding: 50px;
+  }
+}
+
+
+#gdpr_div{
+  text-align: center;
+  padding: 3%;
+        margin: 0 auto;
+
+  pre{
+    background-color: #FFF;
+    display: inline-block;
+    text-align: center;
+      white-space: pre-line;
+      max-width: 800px;
+      padding: 50px;
+  }
+}
+
+#contact_left{
+  padding: 60px;
+  margin-right: 20px;
+
+  .box{
+    display: flex;
+    margin-bottom: 30px;
+    font-weight: 300;
+    font-size: 1.1em;
+    border-bottom: 1px dashed #CCC;
+    padding-bottom: 30px;
+
+    &:last-child{
+      border-bottom: none;
+    }
+
+    b{
+      display: inline-block;
+      min-width: 100px;
+    }
+
+    i.icon{
+      margin-right: 15px;
+    }
+  }
+}
+
+  #map{
+    flex:1;
+  }

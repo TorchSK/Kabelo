@@ -21,9 +21,8 @@ class CreateCartCookie
         if (!Auth::guard($guard)->check()) 
         {
             $cart = Cookie::get('cart');
-            json_decode($cart['invoice_address']);
-
-            if(!$cart || !array_key_exists('counts', $cart) || !array_key_exists('shipping_price', $cart) || json_last_error() != JSON_ERROR_NONE || !array_key_exists('ico_flag', $cart))
+    
+            if($cart == null)
             {
                 $cookieData = [
                     'number' => 0,
@@ -41,7 +40,8 @@ class CreateCartCookie
                 ];
 
                 // create cookie
-                $cookie = Cookie::queue('cart',$cookieData,0);
+                $cookie = Cookie::queue('cart',$cookieData,555555);
+                $cart = Cookie::get('cart');
             }
         }
 

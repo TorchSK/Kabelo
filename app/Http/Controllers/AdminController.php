@@ -18,6 +18,7 @@ use Auth;
 use Excel;
 use Image;
 use Storage;
+use Cookie;
 
 use App\DeliveryMethod;
 use App\PaymentMethod;
@@ -253,12 +254,6 @@ class AdminController extends Controller
         }
 
         return view('admin.products', $data);
-    }
-
-    public function cookie(){
-        $cart = Auth::user()->cart;
-        $cart['items'] = $cart->products->pluck('id');
-        dd($cart);
     }
 
     
