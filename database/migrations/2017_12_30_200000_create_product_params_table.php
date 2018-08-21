@@ -18,7 +18,6 @@ class CreateProductParamsTable extends Migration
             $table->integer('product_id')->index()->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');;
             $table->integer('parameter_id')->index()->unsigned()->nullable();
-            $table->foreign('parameter_id')->references('id')->on('parameters')->onDelete('cascade')->onUpdate('cascade');
             $table->string('value');
             $table->string('dvalue');
         });

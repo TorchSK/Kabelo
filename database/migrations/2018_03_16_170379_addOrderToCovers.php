@@ -13,7 +13,7 @@ class AddOrderToCovers extends Migration {
 	{
 		Schema::table('covers', function($table)
 		{
-			$table->string('order');
+			$table->string('order')->default(0);
 		});
 	}
 
