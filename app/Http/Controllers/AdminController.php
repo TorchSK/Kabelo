@@ -164,7 +164,7 @@ class AdminController extends Controller
                 }
             }
             catch(\Illuminate\Database\QueryException $e){
-                dd($e);
+                dd($e->bindings[2]);
             }
         }
 
