@@ -1,54 +1,78 @@
 @extends('layouts.master')
 @section('content')
 
-COPPER, spol. s r.o.
-Československej armády 16
-974 01 Banská Bystrica 
-Slovensko
+<div class="flex_content flex">
 
-IČO: 31588158
-IčDPH: SK2020453908
+<div id="contact_left">
 
-Zápis v OR Okresného súdu B.Bystrica
-Oddiel sro, vložka 1294/S
+<div id="address" class="box">
+	<div>
+		<i class="home huge teal icon"></i>
+	</div>
+	<div>
+		<div>COPPER, spol. s r.o.</div>
+		<div>Československej armády 16</div>
+		<div>974 01 Banská Bystrica </div>
+		<div>Slovensko</div>
+	</div>
+</div>
 
-Tel: +421(0) 48 / 411 38 90
-Fax:+421(0) 48 / 411 58 87
-Mobil: 0908903170 
+<div id="legal" class="box">
+	<div>
+		<i class="legal huge teal icon"></i>
+	</div>
+	<div>
+		<div><b>IČO:</b> 31588158</div>
+		<div><b>IČ DPH:</b> SK2020453908</div>
+		<br/>
+		<div>Zápis v OR Okresného súdu B.Bystrica</div>
+		<div>Oddiel sro, vložka 1294/S</div>
+	</div>
+</div>
 
-E-maily:
- copper@copper.sk
- elektro@copper.sk
+<div id="phones" class="box">
+	<div>
+		<i class="phone huge teal icon"></i>
+	</div>
+	<div>
+		<div><b>Tel:</b> +421(0) 48 / 411 38 90</div>
+		<div><b>Fax:</b> +421(0) 48 / 411 58 87</div>
+		<div><b>Mobil</b> +421 0908 903 170 </div>
+	</div>
+</div>
+
+<div id="emails" class="box">
+	<div>
+		<i class="mail huge teal icon"></i>
+	</div>
+	<div>
+		 <div>copper@copper.sk</div>
+		 <div>elektro@copper.sk</div>
+	</div>
+</div>
+
+<div id="hours" class="box">
+	<div>
+		<i class="clock huge teal icon"></i>
+	</div>
+	<div>
+		<div><b>pondelok</b>8:00-12:30   13:00-17:00</div>
+		<div><b>utorok</b>8:00-12:30   13:00-17:00</div>
+		<div><b>streda</b>8:00-12:30   13:00-17:00</div>
+		<div><b>štvrtok</b>8:00-12:30   13:00-17:00</div>  
+		<div><b>piatok</b>8:00-12:30   13:00-17:00</div>  
+		<div><b>sobota</b>ZATVORENÉ</div>
+		<div><b>nedeľa</b>ZATVORENÉ</div>
+	</div>
+</div>
 
 
-
-E-mail pre zaslanie dopytu:
-dopyt@copper.sk
-
-www.copper.sk
-www.velleman.be
-
- 
-
-Otváracie hodiny: 
+</div>
 
 
+<div id="map">asdas</div>
 
-pondelok 8:00-12:30   13:00-17:00 hodiny
-utorok     8:00-12:30   13:00-17:00 hodiny  
-streda     8:00-12:30   13:00-17:00 hodiny  
-štvrtok    8:00-12:30   13:00-17:00 hodiny  
-piatok      8:00-12:30   13:00-17:00 hodiny  
-sobota-nedeľa    ZATVORENÉ
 
-Orgán dozoru:
-Inšpektorát SOI pre Banskobystrický kraj 
-Dolná 46,
-974 01 Banská Bystrica 
-odbor technickej kontroly výrobkov a ochrany 
-spotrebiteľa 
-tel: 048/412 49 69, 415 18 71 
-fax: 048/4124 693 
-email: bb@soi.sk
+</div>
 
 @stop
