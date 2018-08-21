@@ -34,10 +34,10 @@ class GlobalComposer {
      */
     public function compose(View $view)
     {   
-        $cart = Auth::user()->cart;
 
         if (Auth::check())
         {   
+         $cart = Auth::user()->cart;
             $cart = $this->cartController->getCart($cart->id);
         }
         else
