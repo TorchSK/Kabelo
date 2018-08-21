@@ -43,7 +43,7 @@
 
 <div id="emails" class="box">
 	<div>
-		<i class="mail huge teal icon"></i>
+		<i class="at huge teal icon"></i>
 	</div>
 	<div>
 		 <div>copper@copper.sk</div>
