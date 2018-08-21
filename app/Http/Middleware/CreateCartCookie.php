@@ -41,7 +41,7 @@ class CreateCartCookie
                 ];
 
                 // create cookie
-                $cookie = Cookie::queue('cart',$cookieData,0);
+                $cookie = Cookie::queue('cart',$cookieData,555555);
             }
         }
 
