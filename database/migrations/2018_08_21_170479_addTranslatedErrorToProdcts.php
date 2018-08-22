@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddTranslatedToProdcts extends Migration {
+class AddTranslatedErrorToProdcts extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,7 +13,7 @@ class AddTranslatedToProdcts extends Migration {
 	{
 		Schema::table('products', function($table)
 		{
-			$table->boolean('translated')->nullable();	
+			$table->boolean('translate_error')->nullable();	
 		});
 
 	}
@@ -27,7 +27,7 @@ class AddTranslatedToProdcts extends Migration {
 	{
 		Schema::table('products', function($table)
 		{
-			$table->dropColumn('translated');	
+			$table->dropColumn('translate_error');	
 		});
 	}
 

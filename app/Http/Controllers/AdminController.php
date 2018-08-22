@@ -45,20 +45,28 @@ class AdminController extends Controller
     {
         $client = new \GoogleTranslate\Client('AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI');
         foreach(Product::whereNull('translated')->get() as $product)
-        {
-            $sourceLanguage = 'cs';
-            $name = $client->translate($product->name, 'sk', $sourceLanguage);
-
-            if ($product->desc)
+        {   
+            try
             {
-                $desc = $client->translate($product->desc, 'sk', $sourceLanguage);
-                $product->desc = $desc;
+                $sourceLanguage = 'cs';
+                $name = $client->translate($product->name, 'sk', $sourceLanguage);
+
+                if ($product->desc)
+                {
+                    $desc = $client->translate($product->desc, 'sk', $sourceLanguage);
+                    $product->desc = $desc;
+                }
+
+                $product->name = $name;
+                $product->translated = 1;
+
+                $product->save();
             }
-
-            $product->name = $name;
-            $product->translated = 1;
-
-            $product->save();
+            catch (GuzzleException $e)
+            {
+                $product->translate_error = 1;
+                $product->save();
+            }
         }
 
     }
