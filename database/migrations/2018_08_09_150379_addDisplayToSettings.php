@@ -13,7 +13,7 @@ class AddDisplayToSettings extends Migration {
 	{
 		Schema::table('settings', function($table)
 		{
-			$table->string('display_name');	
+			$table->string('display_name')->nullable();	
 			$table->timestamps();
 
 		});

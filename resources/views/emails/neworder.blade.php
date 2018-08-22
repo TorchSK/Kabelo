@@ -60,6 +60,13 @@
             padding-top: 15px;
           }
 
+
+          .price{
+            display: inline-block;
+            padding-top: 15px;
+            float: right;
+          }
+
           #detail_btn{
             padding: 15px 25px;
             background-color: #235299;
@@ -99,6 +106,9 @@
                 <div class="name">{{$product->name}}</div>
                
                 <div class="desc">{{substr($product->desc,0,100)}}</div>
+
+                <div class="price">{{$product->price}}</div>
+
 
             </div>
         @endforeach

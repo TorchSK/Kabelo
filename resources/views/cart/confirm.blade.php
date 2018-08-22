@@ -1,4 +1,4 @@
-	@extends('layouts.master')
+@extends('layouts.master')
 @section('content')
 	
 
@@ -126,7 +126,7 @@
 				<div class="inputs">
 				
 			       	<div class="ui large disabled input">
-			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])['name']}}" @endif />
+			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->name}}" @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
 			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->street}}"  @endif />
