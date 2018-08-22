@@ -2718,7 +2718,7 @@ $('body').mouseup(function(e)
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(-34.397, 150.644);
     var mapOptions = {
-      zoom: 17,
+      zoom: 18,
       center: latlng
     }
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
