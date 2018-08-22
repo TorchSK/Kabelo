@@ -60,6 +60,7 @@ class AdminController extends Controller
 
                 $product->name = $name;
                 $product->translated = 1;
+                $product->translate_error = null;
 
                 $product->save();
             }
