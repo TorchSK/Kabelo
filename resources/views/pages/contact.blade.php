@@ -48,7 +48,7 @@
 		<i class="at huge teal icon"></i>
 	</div>
 	<div>
-		 <div>{{App\Setting::firstOrCreate(['name'=>'email1'])->value}}</div>
+		 <div><a href="mailto:{{App\Setting::firstOrCreate(['name'=>'email1'])->value}}">{{App\Setting::firstOrCreate(['name'=>'email1'])->value}}</div>
 		 <div>{{App\Setting::firstOrCreate(['name'=>'email2'])->value}}</div>
 	</div>
 </div>

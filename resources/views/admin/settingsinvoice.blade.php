@@ -84,14 +84,14 @@
 		<div class="item setting">
 		<div class="label">Email 1</div>
 		<div class="ui input">
-		  <input type="text" name="email1" value="{{App\Setting::firstOrCreate(['name'=>'email11'])->value}}">
+		  <input type="text" name="email1" value="{{App\Setting::firstOrCreate(['name'=>'email1'])->value}}">
 		</div>	
 		</div>
 	
 		<div class="item setting">
 			<div class="label">Email 2</div>
 			<div class="ui input">
-			  <input type="text" name="email2" value="{{App\Setting::firstOrCreate(['name'=>'email12'])->value}}">
+			  <input type="text" name="email2" value="{{App\Setting::firstOrCreate(['name'=>'email2'])->value}}">
 			</div>	
 		</div>
 		
