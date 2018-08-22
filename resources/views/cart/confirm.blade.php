@@ -151,9 +151,11 @@
 	</div>
 
 	<div class="ct">
+		<div>
 		<div class="ui checkbox" id="agreements_checkbox">
 		  <input type="checkbox" name="example">
 		  <label>Suhlasím s <a href="/obchodne-podmienky" target="_blank">obchodnými podmienkami</a> a <a href="/gdpr" target="_blank">ochranou osobných údajov</a></label>
+		</div>
 		</div>
 		<a class="ui huge disabled green button" id="submit_order_btn"><i class="upload icon"></i>Odoslať objednávku</a>
 	</div>
