@@ -39,9 +39,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/settings/banners', 'AdminController@settingsBanners')->name('admin.settingsBanners');
 	Route::get('/settings/eshop', 'AdminController@settingsEshop')->name('admin.settingsEshop');
 	Route::get('/settings/invoice', 'AdminController@settingsInvoice')->name('admin.settingsInvoice');
-	Route::post('/settings/eshop/save', 'SettingController@bulkUpdate')->name('settings.blukUpdate');
+	Route::post('/settings/eshop/save', 'SettingController@bulkUpdate')->name('settings.bulkUpdate');
 	Route::get('/settings/delivery', 'AdminController@settingsDelivery')->name('admin.settingsDelivery');
 
+	Route::post('/settings/invoice/save', 'SettingController@bulkUpdate')->name('settings.bulkUpdate');
 
 	Route::post('/delivery', 'AdminController@addDeliveryMethod');
 	Route::post('/payment', 'AdminController@addPaymentMethod');

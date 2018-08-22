@@ -40,7 +40,7 @@ class SettingController extends Controller
 			}
 		}
 
-		return redirect('admin/settings/eshop');
+		return redirect()->back();
 	}
 
 }

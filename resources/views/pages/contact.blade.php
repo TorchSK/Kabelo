@@ -3,6 +3,8 @@
 
 <div class="flex_content flex">
 
+<div class="ui hiden" id="address_map">{{App\Setting::firstOrCreate(['name'=>'street'])->value}} {{App\Setting::firstOrCreate(['name'=>'zip'])->value}},{{App\Setting::firstOrCreate(['name'=>'city'])->value}}, {{App\Setting::firstOrCreate(['name'=>'state'])->value}}</div>
+
 <div id="contact_left">
 
 <div id="address" class="box">
@@ -10,10 +12,10 @@
 		<i class="home huge teal icon"></i>
 	</div>
 	<div>
-		<div>COPPER, spol. s r.o.</div>
-		<div>Československej armády 16</div>
-		<div>974 01 Banská Bystrica </div>
-		<div>Slovensko</div>
+		<div>{{App\Setting::firstOrCreate(['name'=>'company_name'])->value}}</div>
+		<div>{{App\Setting::firstOrCreate(['name'=>'street'])->street}}</div>
+		<div>{{App\Setting::firstOrCreate(['name'=>'zip'])->value}} {{App\Setting::firstOrCreate(['name'=>'city'])->value}}</div>
+		<div>{{App\Setting::firstOrCreate(['name'=>'state'])->value}}</div>
 	</div>
 </div>
 
@@ -22,8 +24,8 @@
 		<i class="legal huge teal icon"></i>
 	</div>
 	<div>
-		<div><b>IČO:</b> 31588158</div>
-		<div><b>IČ DPH:</b> SK2020453908</div>
+		<div><b>IČO:</b> {{App\Setting::firstOrCreate(['name'=>'ico'])->value}}</div>
+		<div><b>IČ DPH:</b> {{App\Setting::firstOrCreate(['name'=>'icdph'])->value}}</div>
 		<br/>
 		<div>Zápis v OR Okresného súdu B.Bystrica</div>
 		<div>Oddiel sro, vložka 1294/S</div>
@@ -35,9 +37,9 @@
 		<i class="phone huge teal icon"></i>
 	</div>
 	<div>
-		<div><b>Tel:</b> +421(0) 48 / 411 38 90</div>
-		<div><b>Fax:</b> +421(0) 48 / 411 58 87</div>
-		<div><b>Mobil</b> +421 0908 903 170 </div>
+		<div><b>Tel:</b> {{App\Setting::firstOrCreate(['name'=>'phone1'])->value}}</div>
+		<div><b>Fax:</b>  {{App\Setting::firstOrCreate(['name'=>'fax'])->value}}</div>
+		<div><b>Mobil</b>  {{App\Setting::firstOrCreate(['name'=>'phone2'])->value}}</div>
 	</div>
 </div>
 
@@ -46,8 +48,8 @@
 		<i class="at huge teal icon"></i>
 	</div>
 	<div>
-		 <div>copper@copper.sk</div>
-		 <div>elektro@copper.sk</div>
+		 <div>{{App\Setting::firstOrCreate(['name'=>'email1'])->value}}</div>
+		 <div>{{App\Setting::firstOrCreate(['name'=>'email2'])->value}}</div>
 	</div>
 </div>
 
