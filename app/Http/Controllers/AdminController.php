@@ -44,7 +44,7 @@ class AdminController extends Controller
     public function translate()
     {
         $client = new \GoogleTranslate\Client('AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI');
-        foreach(Product::all() as $product)
+        foreach(Product::whereNull('translated')->get() as $product)
         {
             $sourceLanguage = 'cs';
             $name = $client->translate($product->name, 'sk', $sourceLanguage);
@@ -56,6 +56,8 @@ class AdminController extends Controller
             }
 
             $product->name = $name;
+            $product->translated = 1;
+
             $product->save();
         }
 
