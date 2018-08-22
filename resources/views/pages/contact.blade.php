@@ -13,7 +13,7 @@
 	</div>
 	<div>
 		<div>{{App\Setting::firstOrCreate(['name'=>'company_name'])->value}}</div>
-		<div>{{App\Setting::firstOrCreate(['name'=>'street'])->street}}</div>
+		<div>{{App\Setting::firstOrCreate(['name'=>'street'])->value}}</div>
 		<div>{{App\Setting::firstOrCreate(['name'=>'zip'])->value}} {{App\Setting::firstOrCreate(['name'=>'city'])->value}}</div>
 		<div>{{App\Setting::firstOrCreate(['name'=>'state'])->value}}</div>
 	</div>
