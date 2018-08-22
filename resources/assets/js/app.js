@@ -2725,4 +2725,14 @@ if($('body').attr('id') == 'body_contact')
 	initMap();
 }
 
+
+$('#agreements_checkbox').checkbox({
+  onChecked: function(){
+    $('#submit_order_btn').removeClass('disabled');
+  },
+  onUnchecked: function(){
+    $('#submit_order_btn').addClass('disabled');
+  },
+})
+
 });
