@@ -67,8 +67,7 @@ class AdminController extends Controller
         $xml = XmlParser::extract($contents);
 
         $items = $xml->parse([
-            'categories' => ['uses' => 'product[kategorie]'],
-            'products' => ['uses' => 'product[product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variant_image]'],
+            'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variant_image]'],
         ]);
     
         $categories = [];
@@ -88,87 +87,78 @@ class AdminController extends Controller
             $temp->delete();
         }
 
-        foreach($items['categories'] as $key => $item)
-        {   
 
-            $cat_array = explode(" / ", $item['kategorie']);
-
-            if(isset($cat_array[0]))
-            {
-                $categories[$key][1] = $cat_array[0];
-            }
-
-            if(isset($cat_array[1]))
-            {
-                $categories[$key][2] = $cat_array[1];
-            }
-
-            if(isset($cat_array[2]))
-            {
-                $categories[$key][3] = $cat_array[2];
-            }
-
-            if(isset($cat_array[3]))
-            {
-                $categories[$key][4] = $cat_array[3];
-            }
-        }
-
-
-        foreach($categories as $key => $item)
-        {
-            try{
-                $cat = new Category();
-                $cat->name = $item[1];
-                $cat->url = str_slug($item[1]);
-                if (Category::where('name', $item[1])->count() == 0) 
-                {
-                    $cat->save();
-                    $lastid =   $item[1];
-                    $ids[$key] = $cat->id;
-                }
-        
-     
-                if(isset($item[2])){
-                    $cat = new Category();
-                    $cat->name = $item[2];
-                    $cat->url = str_slug($item[2]);
-                    $cat->parent_id = Category::where('name',$categories[$key][1])->first()->id;
-                    $cat->save();
-                    $ids[$key] = $cat->id;
-                }
-       
-
-        
-                if(isset($item[3])){
-                    $cat = new Category();
-                    $cat->name = $item[3];
-                    $cat->url = str_slug($item[3]);
-                    $cat->parent_id = Category::where('name',$categories[$key][2])->first()->id;
-                    $cat->save();
-                    $ids[$key] = $cat->id;
-
-                }
-     
-
-       
-                if(isset($item[4])){
-                    $cat = new Category();
-                    $cat->name = $item[4];
-                    $cat->url = str_slug($item[4]);
-                    $cat->parent_id = Category::where('name',$categories[$key][3])->first()->id;
-                    $cat->save();
-                    $ids[$key] = $cat->id;
-
-                }
-            }
-            catch(\Illuminate\Database\QueryException $e){
-                $ids[$key] = Category::where('name',$e->getBindings()[0])->where('parent_id',$e->getBindings()[2])->first()->id;
-            }
-        }
+        $cat_unique = [];
 
         foreach($items['products'] as $key => $item)
+        {   
+            if(!in_array($item['kategorie'], $cat_unique))
+            {
+                array_push($cat_unique, $item['kategorie']);
+            }
+        }
+
+        foreach($cat_unique as $key => $item)
+        {   
+            $category_array = explode(" / ", $item);
+
+            if(count($category_array) > 1)
+            {
+                $popped = $category_array;
+                array_pop($popped);
+                $temp = implode(" / ", $popped);
+                if (!in_array($temp, $cat_unique)) 
+                {
+                    array_push($cat_unique, $temp);
+                }
+
+                if(count($popped) > 1)
+                {
+                    $popped2 = $popped;
+                    array_pop($popped2);
+                    $temp = implode(" / ", $popped2);
+                    if (!in_array($temp, $cat_unique)) 
+                    {
+                        array_push($cat_unique, $temp);
+                    }
+                }
+
+
+            }
+
+        }
+
+        usort($cat_unique, function($a, $b) {return strlen($b) - strlen($a);});
+        
+        //dd(array_reverse($cat_unique));
+
+        foreach(array_reverse($cat_unique) as $category_path)
         {
+            $category_array = explode(" / ", $category_path);
+            $popped =  $category_array;
+
+            $pop = array_pop($popped);
+            $temp = implode(" / ", $popped);
+
+            $cat = new Category();
+            $cat->name = $pop;
+            $cat->url = str_slug($pop);
+
+            if(count($category_array) > 1)
+            {
+                $cat->parent_id = $category_ids[$temp];
+            }
+
+            $cat->save();
+
+            $category_ids[$category_path] = $cat->id;
+        }
+
+        
+
+        foreach($items['products'] as $key => $item)
+        {      
+        
             $product = new Product();
             $product->name = $item['text1'];
             $product->desc = $item['detail'];
@@ -187,14 +177,7 @@ class AdminController extends Controller
             $image->primary = 1;
             $image->save();
 
-            if (isset($ids[$key]))
-            {
-                $product->categories()->attach($ids[$key]);
-            }
-            else
-            {
-                $product->categories()->attach(Category::first()->id);
-            }
+            $product->categories()->attach($category_ids[$item['kategorie']]);
 
             $pricelevel = new PriceLevel();
             $pricelevel->threshold = 1;
@@ -205,6 +188,7 @@ class AdminController extends Controller
 
             $product->priceLevels()->save($pricelevel);
         }
+        
     }
 
 
