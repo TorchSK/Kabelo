@@ -19,6 +19,7 @@ use Excel;
 use Image;
 use Storage;
 use Cookie;
+use Exception;
 
 use App\DeliveryMethod;
 use App\PaymentMethod;
@@ -62,7 +63,7 @@ class AdminController extends Controller
 
                 $product->save();
             }
-            catch (GuzzleException $e)
+            catch (Exception $e)
             {
                 $product->translate_error = 1;
                 $product->save();
