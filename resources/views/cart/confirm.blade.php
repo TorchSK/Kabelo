@@ -150,6 +150,10 @@
 
 	</div>
 
+	<div id="cart_product_price">Cena za tovar: <price>{{$cart['price'] }}</price> <symbol>&euro;</symbol></div>	
+	<div id="cart_shipping_price">Cena za prepravu: <price>{{$cart['shipping_price']}}</price> <symbol>&euro;</symbol></div>
+	<div id="cart_total_price">Celková cena: <price>{{$cart['price'] + $cart['shipping_price']}}</price> <symbol>&euro;</symbol></div>
+
 	<div class="ct">
 		<div>
 		<div class="ui checkbox" id="agreements_checkbox">
