@@ -45,7 +45,7 @@ class AdminController extends Controller
     public function translate()
     {
         $client = new \GoogleTranslate\Client('AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI');
-        foreach(Product::whereNull('translated')->whereNull('translate_error')->get() as $product)
+        foreach(Product::where('translate_error',1)->get() as $product)
         {   
             try
             {
