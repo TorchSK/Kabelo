@@ -3,7 +3,7 @@
 
 <div class="flex_content flex">
 
-<div class="ui hiden" id="address_map">{{App\Setting::firstOrCreate(['name'=>'street'])->value}} {{App\Setting::firstOrCreate(['name'=>'zip'])->value}},{{App\Setting::firstOrCreate(['name'=>'city'])->value}}, {{App\Setting::firstOrCreate(['name'=>'state'])->value}}</div>
+<div class="ui hiden" id="address_map">{{App\Setting::firstOrCreate(['name'=>'street'])->value}}, {{App\Setting::firstOrCreate(['name'=>'zip'])->value}},{{App\Setting::firstOrCreate(['name'=>'city'])->value}}, {{App\Setting::firstOrCreate(['name'=>'state'])->value}}</div>
 
 <div id="contact_left">
 
@@ -48,7 +48,7 @@
 		<i class="at huge teal icon"></i>
 	</div>
 	<div>
-		 <div><a href="mailto:{{App\Setting::firstOrCreate(['name'=>'email1'])->value}}">{{App\Setting::firstOrCreate(['name'=>'email1'])->value}}</div>
+		 <div><a href="mailto:{{App\Setting::firstOrCreate(['name'=>'email1'])->value}}">{{App\Setting::firstOrCreate(['name'=>'email1'])->value}}</a></div>
 		 <div>{{App\Setting::firstOrCreate(['name'=>'email2'])->value}}</div>
 	</div>
 </div>
