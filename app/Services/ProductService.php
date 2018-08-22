@@ -514,9 +514,7 @@ class ProductService implements ProductServiceContract {
      public function categoryCounts()
      {
 
-        if (config('database.default')=='dedra')
-        {   
-            if(!Cache::has('category_counts'))
+        if(!Cache::has('category_counts'))
             {
                 Category::fixTree();
                 $categoryCounts['categories'] = [];
@@ -536,29 +534,6 @@ class ProductService implements ProductServiceContract {
                 $categoryCounts['categories'] = Cache::get('category_counts');
             }
 
-    
-            
-        }
-        else
-        {
-            $categoryCounts = [];
-            $categoryCounts['categories'] = [];
-
-            foreach (Category::with(['children','children.products'])->withCount(['products'=>function($query){
-                 $query->where('active', '1');
-            }])->get() as $category)
-            {
-                $categoryCounts['categories'][$category->id] = $category->products_count;
-
-                if ($category->children->count() > 0)
-                {
-                    foreach ($category->children as $child)
-                    {
-                        $categoryCounts['categories'][$category->id] += $child->products->where('active',1)->count();
-                    }
-                }
-            }
-        }
 
         return $categoryCounts;
      }
