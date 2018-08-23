@@ -3,7 +3,7 @@
 	
 
 
-	<div class="image_div ct" style="height: 210px;">
+	<div class="image_div ct" style="height: 220px;">
 
 	 <div class="labels">
 		@if ($product->sale || (Auth::check() && Auth::user()->discount > 0))
@@ -33,7 +33,7 @@
 		@if ($product->images->count() == 0)
 			<img src="/img/empty.jpg" class="ui image"/>
 		@elseif ($product->image)
-           <img src="{{$product->image->path}}" class="ui image" style="max-height: 187px; display: inline-block;"/>
+           <img src="{{$product->image->path}}" class="ui image" style="position: absolute; margin: auto; left:0; right:0; top: 0; bottom: 0; display: inline-block; "/>
 	@endif
 
 	</div>
