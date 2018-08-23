@@ -9,6 +9,7 @@ use App\Parameter;
 
 use Session;
 use Image;
+use Cache;
 
 use App\Services\Contracts\ProductServiceContract;
 
@@ -47,6 +48,8 @@ class CategoryController extends Controller
         $category->parent_id = $request->get('parent_id');
 
         $category->save();
+
+        Cache::forget('category_counts');
 
         return 1;
     }

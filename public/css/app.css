@@ -1336,10 +1336,16 @@ a:hover {
     font-size: 1em;
   }
 }
-#header .search {
+#header .search.item {
   width: 30%;
   padding: 0;
   position: relative;
+}
+#header .search.item i.icon {
+  color: #EEE;
+  display: inline-block;
+  margin-top: -1px;
+  font-size: 1.1em;
 }
 #header #main_search {
   width: 100%;

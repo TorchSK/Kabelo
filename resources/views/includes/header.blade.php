@@ -8,8 +8,10 @@
     
         
         <div class="item search">
-          <div class="ui input" id="main_search">
+          <div class="ui left icon input" id="main_search">
             <input type="text" placeholder="Hľadať produkty..." />
+                        <i class="search icon"></i>
+
           </div>
 
           <div id="search_results">
