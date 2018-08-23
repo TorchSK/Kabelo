@@ -224,7 +224,9 @@ class ProductService implements ProductServiceContract {
         $categories = [];
         foreach ($products as $product)
         {
-            array_push($categories, $product->categories->first()->id);
+            if ($product->categories->count()){
+                array_push($categories, $product->categories->first()->id);
+            }
         }
 
 
