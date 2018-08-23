@@ -40,7 +40,7 @@
 
 
 
-        <div class="img ct" style="height: 80vh;">
+        <div class="img ct" style="height: 70vh;">
            @if ($product->images->count() == 0)
            <img src="/img/empty.jpg" class="ui image" />
            @elseif ($product->image)
