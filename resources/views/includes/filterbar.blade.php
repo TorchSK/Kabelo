@@ -1,7 +1,7 @@
 <!-- desktop/tablet -->
 <div id="filterbar">
     
-    @if (Request::segment(1)!='admin' && Route::currentRouteName()!='product.detail')
+    @if (Request::segment(1)!='admin' && Route::currentRouteName()!='product.detail' && $appname=='Kabelo')
     <div class="tabs">
         <div class="category tab @if(!Request::get('category')) active @endif">Kategórie</div>
         @if (Route::currentRouteName()!='product.detail')
