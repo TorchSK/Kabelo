@@ -3,7 +3,7 @@
 	
 
 
-	<div class="image_div ct">
+	<div class="image_div ct" style="height: 193px;">
 
 	 <div class="labels">
 		@if ($product->sale || (Auth::check() && Auth::user()->discount > 0))
