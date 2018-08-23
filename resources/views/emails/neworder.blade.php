@@ -58,6 +58,7 @@
           .desc{
             display: inline-block;
             padding-top: 15px;
+            width:80%;
           }
 
 
@@ -107,7 +108,7 @@
                
                 <div class="desc">{{substr($product->desc,0,100)}}</div>
 
-                <div class="price">{{$product->price}}</div>
+                <div class="price">{{$product->pivot->price}} &euro;</div>
 
 
             </div>

@@ -2325,6 +2325,9 @@ a:hover {
 .admin_dashboard .boxes.hidden {
   display: none;
 }
+.admin_dashboard .boxes.overall {
+  min-height: 1200px;
+}
 .admin_dashboard .boxes.overall .box {
   max-height: 30vh;
   margin-bottom: 100px;

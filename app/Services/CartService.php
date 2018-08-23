@@ -30,9 +30,10 @@ class CartService implements CartServiceContract {
       $cart->delivery_address_flag = 0;
       $cart->ico_flag = 0;
       $cart->shipping_price  = 0;
+      unset($cart['items']);
 
       $cart->save();
-
+      
       foreach ($cart->products as $product)
       {
         $cart->products()->detach($product);
