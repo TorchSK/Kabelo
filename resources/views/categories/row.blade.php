@@ -2,7 +2,6 @@
    
     <div class="caption title">
         <i class="@if(Request::has('category') && (Request::get('category') == $category->id || ($requestCategory->parent && $requestCategory->parent->parent_id == $category->id) || in_array(Request::get('category'), (array)$category->descendants->pluck('id')->toArray())) || (isset($product) && in_array($category->id, $product->parentCategories->pluck('id')->toArray())) || (isset($product) && in_array($category->id, $product->parentBaseCategories->pluck('id')->toArray()))) minus @else plus @endif square outline icon"></i>
-        @else
 
     @if (Request::segment(1)=='admin')
     <a href="{{route('admin.category',['category'=>$category->url])}}" class="filter">
