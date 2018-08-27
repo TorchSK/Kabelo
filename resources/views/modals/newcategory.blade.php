@@ -26,11 +26,11 @@ Pridaj kategóriu
 
         @if($cat->children->count() > 0)
           @foreach($cat->children as $sub1)
-            <div class="sub item">{{$sub1->name}}</div>
+            <div class="sub item" data-value="{{$sub1->id}}">{{$sub1->name}}</div>
 
                  @if($sub1->children->count() > 0)
                   @foreach($sub1->children as $sub2)
-                    <div class="sub2 item">{{$sub2->name}}</div>
+                    <div class="sub2 item" data-value="{{$sub2->id}}">{{$sub2->name}}</div>
                   @endforeach
                 @endif
           @endforeach
