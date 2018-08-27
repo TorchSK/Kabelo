@@ -32,13 +32,13 @@ class Product extends Model {
         return $result;
     }
 
-  	public function parameters() 
-  	{
+  public function parameters() 
+  {
  		return $this->hasMany('App\ProductParameter');
  	}
 
-    public function relatedProducts() 
-    {
+  public function relatedProducts() 
+  {
     return $this->hasManyThrough('App\Product', 'App\ProductRelation','product_id','id','id','related_product_id');
   }
 
