@@ -17,7 +17,7 @@ class Product extends Model {
     public function getParentCategoriesAttribute() {
         $result = collect();
         $parents = function($categories) use(&$result, &$parents) {
-            $result = $result->merge($categories->pluck('ancestors')->flatten());
+            $result = $result->merge($categories->pluck('parent'));
         };
         $parents($this->categories);
         return $result;
@@ -26,19 +26,19 @@ class Product extends Model {
       public function getParentBaseCategoriesAttribute() {
         $result = collect();
         $parents = function($parentCategories) use(&$result, &$parents) {
-            $result = $result->merge($parentCategories->pluck('ancestors')->flatten());
+            $result = $result->merge($parentCategories->pluck('parent'));
         };
         $parents($this->parentCategories);
         return $result;
     }
 
-  public function parameters() 
-  {
+  	public function parameters() 
+  	{
  		return $this->hasMany('App\ProductParameter');
  	}
 
-  public function relatedProducts() 
-  {
+    public function relatedProducts() 
+    {
     return $this->hasManyThrough('App\Product', 'App\ProductRelation','product_id','id','id','related_product_id');
   }
 
