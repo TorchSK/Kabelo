@@ -3160,6 +3160,9 @@ a:hover {
 #admin_invoice_settings_div {
   margin-top: 25px;
 }
+.short {
+  max-width: 1300px;
+}
 .short .setting {
   display: -webkit-box;
   display: -ms-flexbox;

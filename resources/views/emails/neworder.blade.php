@@ -41,7 +41,7 @@
           }
 
           .image{
-            width: 60px;
+            width: 10%;
             margin-right: 15px;
           }
 
@@ -53,12 +53,13 @@
             margin-right: 15px;
             padding-top: 15px;
             font-weight: 900;
+            width: 10%;
           }
 
           .desc{
             display: inline-block;
             padding-top: 15px;
-            width:80%;
+            width:70%;
           }
 
 
@@ -66,6 +67,7 @@
             display: inline-block;
             padding-top: 15px;
             float: right;
+            width: 10%;
           }
 
           #detail_btn{
@@ -76,6 +78,18 @@
             color: #FFF;
             font-weight: 900;
           }
+
+          #invoice_data div{
+            font-size: 15px;
+          }
+      
+        #delivery_data div{
+            font-size: 15px;
+          }
+
+        #invoice_data div b{
+            width: 100px;   
+        }
       }
 
         </style>
@@ -108,13 +122,13 @@
                
                 <div class="desc">{{substr($product->desc,0,100)}}</div>
 
-                <div class="price">{{$product->pivot->price}} &euro;</div>
+                <div class="price">{{$product->pivot->qty}}{{$product->price_unit}} / {{$product->pivot->price}} &euro;</div>
 
 
             </div>
         @endforeach
 
-        <div style="margin: 30px 0;">
+        <div style="margin: 30px 0;" id="invoice_data">
             <div><b>Fakturačné údaje</b></div>
             <div>{{json_decode($order->invoice_address)->name}}</div>
             <div>{{json_decode($order->invoice_address)->street}}</div>
@@ -122,6 +136,9 @@
             <div>{{json_decode($order->invoice_address)->zip}}</div>
             <div>{{json_decode($order->invoice_address)->email}}</div>
             <br />
+            @if(isset(json_decode($order->invoice_address)->company))
+            <div><b>Firma: </b>{{json_decode($order->invoice_address)->company}}</div>
+            @endif
             @if(isset(json_decode($order->invoice_address)->ico))
             <div><b>IČO: </b>{{json_decode($order->invoice_address)->ico}}</div>
             @endif
@@ -133,7 +150,7 @@
             @endif
         </div>
         @if(isset(json_decode($order->delivery_address)->street))
-        <div style="margin: 30px 0;">
+        <div style="margin: 30px 0;" id="delivery_data">
             <div><b>Doručovacie údaje</b></div>
             <div>{{json_decode($order->delivery_address)->name}}</div>
             <div>{{json_decode($order->delivery_address)->street}}</div>
@@ -142,9 +159,20 @@
         </div>
         @endif
 
+        <div style="margin: 30px 0;" id="shipping_data">
+            <div><b>Sposob dopravy: </b>{{$delivery_method->name}}</div>
+            <div><b>Sposob platby: </b>{{$payment_method->name}}</div>
+        </div>
+
         <div style="margin: 30px 0;">
+
             <span>Budeme Vás informovať o stave.</span>
-            <span style="font-size: 14px; float: right">Celková cena: <span style="font-weight: 900">{{$order->price}}</span> &euro;</span>
+            
+            <div style="font-size: 14px; float: right; text-align: right;">
+                <div style="font-size: 14px;">Cena za tovar: <span style="font-weight: 900">{{$order->price}}</span> &euro;</div>
+                <div style="font-size: 14px;">Cena za prepravu: <span style="font-weight: 900">{{$order->shipping_price}}</span> &euro;</div>
+                <div style="font-size: 14px;">Celková cena: <span style="font-weight: 900">{{$order->price + $order->shipping_price}}</span> &euro;</div>
+            </div>
         </div>
 
         <div style="margin: 30px 0; font-size: 14px;">Stav objednávky si možte skontrolovat aj po kliknuti na</div>

@@ -13,8 +13,8 @@ class AddSortPriceToProducts extends Migration {
 	{
 		Schema::table('products', function($table)
 		{
-			$table->float('moc_sort_price');	
-			$table->float('voc_sort_price');	
+			$table->float('moc_sort_price')->default(0);	
+			$table->float('voc_sort_price')->default(0);	
 		});
 
 	}

@@ -79,7 +79,7 @@ class UtilController extends Controller
 
     public function sendOrderEmail()
     {       
-        $order = Order::find(10);
+        $order = Order::find(2);
         Mail::to(json_decode($order->invoice_address)->email)->queue(new NewOrder($order));
     }
 

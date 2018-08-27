@@ -13,7 +13,7 @@
 			<div class="invoice">
 
 				<div class="labels">
-	       			<div class="item">Meno *<br />(Firma)</div>
+	       			<div class="item">Meno *</div>
 	       			<div class="item">Ulica *</div>
 	       			<div class="item">Mesto *</div>
 	       			<div class="item">PSČ *</div>
@@ -55,13 +55,16 @@
 
 		   <div class="ico  @if($cart['ico_flag']) active @endif">
    				<div class="labels">
+   					<div class="item">Firma *</div>
 	       			<div class="item">ICO *</div>
 	       			<div class="item">DIC *</div>
 	       			<div class="item">IC DPH *</div>
 				</div>
 
 				<div class="inputs">
-				
+				    <div class="ui large input" data-column="company">
+			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>6) value="{{json_decode($cart['invoice_address'])->company}}" @endif />
+			      	</div><br/>
 			       	<div class="ui large input" data-column="ico">
 			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>6) value="{{json_decode($cart['invoice_address'])->ico}}" @endif />
 			      	</div><br/>

@@ -553,7 +553,7 @@ class AdminController extends Controller
         $cover->h2_text = $request->get('h2_text');
         $cover->save();
 
-        return redirect('/admin/settings');
+        return redirect('/admin/settings/banners');
     }
 
     public function updateCover($id, Request $request)

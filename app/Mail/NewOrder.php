@@ -16,6 +16,8 @@ class NewOrder extends Mailable
     public $order;
     public $products;
     public $images;
+    public $delivery_method;
+    public $payment_method;
 
     /**
      * Create a new message instance.
@@ -36,6 +38,10 @@ class NewOrder extends Mailable
     {
         $this->products = Order::where('id', $this->order['id'])->first()->products;
         $this->images = Order::where('id', $this->order['id'])->first()->products->pluck('image');
+
+        $this->delivery_method = Order::where('id', $this->order['id'])->first()->delivery;
+        $this->payment_method = Order::where('id', $this->order['id'])->first()->payment;
+
         return $this->from('kabelo@kabelo.sk')->subject('Objednávka')->view('emails.neworder');
     }
 }

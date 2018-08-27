@@ -17,7 +17,6 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('code');
-            $table->string('price');
             $table->string('price_unit');
             $table->string('desc')->nullable();
             $table->string('link')->nullable();
