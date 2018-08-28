@@ -197,11 +197,14 @@ body[data-layout="2"] {
   margin: 25px 0;
 }
 body[data-layout="2"] .pusher {
-  width: 1330px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 body[data-layout="2"] #header {
   border-radius: 5px 5px 0 0;
+}
+body[data-layout="2"] #header .container {
+  width: 90%;
 }
 @media all and (max-width: 736px) {
   body[data-layout="2"] .covers {
@@ -1267,6 +1270,7 @@ a:hover {
 #header {
   width: 100%;
   text-align: center;
+  white-space: nowrap;
 }
 #header .item {
   padding: 27px 18px;
@@ -1520,6 +1524,7 @@ a:hover {
   float: right;
   font-size: 1.2em;
   cursor: pointer;
+  overflow: hidden;
 }
 @media all and (max-width: 980px) {
   #header .account {
