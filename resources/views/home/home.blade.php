@@ -6,11 +6,16 @@
             @include('home.cover')
         @endforeach
     </div>
-
+    
+    @if($layout == 1)
     <div class="under_cover">               
       &nbsp;
     </div>  
+    @endif
 
+    @if($layout == 2)
+    @include('includes/filterbar_horizontal')
+    @endif
 
     @if(Auth::check())
     <div class="content cart hidden" data-cartid="{{Auth::user()->cart->id}}"></div>
@@ -24,7 +29,9 @@
             <div class="ui brown  small fluid button" id="catbar_handle">Kategorie</div>
         </div>
 
+        @if($layout == 1)
         @include('includes/filterbar')
+        @endif
 
         <div id="grid">
 
