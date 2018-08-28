@@ -225,7 +225,7 @@ body[data-layout="2"] #filterbar count {
   display: none;
 }
 body[data-layout="2"] #grid .item.grid {
-  width: 25%;
+  width: 24%;
 }
 body[data-layout="2"] footer {
   margin-bottom: 50px;
