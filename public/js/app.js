@@ -2340,9 +2340,10 @@ $('.admin_checkbox_onthefly').checkbox({
 
 
  $('#bulk_products_table').DataTable({
-  paging: false,
+  paging: true,
   info: false,
   lengthChange: false,
+   "orderClasses": false
  });
 
 
