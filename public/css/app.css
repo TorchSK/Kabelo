@@ -871,6 +871,9 @@ a:hover {
     padding-top: 0px;
   }
 }
+#home_content .ui.horizontal.divider {
+  margin-bottom: 25px;
+}
 .flex {
   display: -webkit-box;
   display: -ms-flexbox;
