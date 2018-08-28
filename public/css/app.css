@@ -224,6 +224,9 @@ body[data-layout="2"] #filterbar .ui.divider {
 body[data-layout="2"] #filterbar count {
   display: none;
 }
+body[data-layout="2"] #grid .item.grid {
+  width: 25%;
+}
 body[data-layout="2"] footer {
   margin-bottom: 50px;
 }
@@ -994,7 +997,7 @@ a:hover {
 @media all and (max-width: 2100px) {
   #grid .item.grid,
   #search_grid .item.grid {
-    width: 17.85%;
+    width: 25%;
   }
 }
 @media all and (max-width: 1690px) {
