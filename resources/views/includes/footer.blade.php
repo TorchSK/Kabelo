@@ -18,7 +18,7 @@
 		<a href="https://www.facebook.com/kabeloshop/" target="_blank"><i class="facebook square icon"></i></a>
 		<a href="/" target="_blank"><i class="twitter square icon"></i></a>
 		<a href="/" target="_blank"><i class="instagram square icon"></i></a>
-   <div id="td">Made by &copy; <a class="effect-1" href="mailto:jan.krnac@seznam.cz" target="_top">Ján Krnáč</a></div>
+   <div id="td">Made with <o>love</o> by &copy; <a class="effect-1" href="mailto:jan.krnac@seznam.cz" target="_top">Ján Krnáč</a></div>
 	</div> 
 
 

@@ -3433,6 +3433,14 @@ footer #td {
     text-align: center;
   }
 }
+footer #td a {
+  position: relative;
+  top: -1px;
+}
+footer #td o {
+  color: #F2711C;
+  font-weight: 700;
+}
 #welcome {
   -webkit-text-fill-color: #DDD !important;
 }
