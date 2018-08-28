@@ -185,16 +185,14 @@
 /*---  Dark Tones  ---*/
 /*---  Light Tones  ---*/
 html {
-  height: 100%;
   background-repeat: repeat, no-repeat;
 }
 body {
-  height: 100%;
   background-color: transparent;
 }
 body[data-layout="2"] {
-  background-color: #F1F1F1;
   margin: 25px 0;
+  background-color: #F1F1F1;
 }
 body[data-layout="2"] .pusher {
   max-width: 1300px;
@@ -206,6 +204,9 @@ body[data-layout="2"] #header {
 body[data-layout="2"] #header .container {
   width: 90%;
 }
+body[data-layout="2"] .under_cover {
+  height: 8px;
+}
 @media all and (max-width: 736px) {
   body[data-layout="2"] .covers {
     display: none !important;
@@ -213,6 +214,15 @@ body[data-layout="2"] #header .container {
 }
 body[data-layout="2"] .covers .cover {
   height: 35vh !important;
+}
+body[data-layout="2"] #filterbar .tabs {
+  display: none;
+}
+body[data-layout="2"] #filterbar .ui.divider {
+  max-width: 300px;
+}
+body[data-layout="2"] #filterbar count {
+  display: none;
 }
 body[data-layout="2"] footer {
   margin-bottom: 50px;

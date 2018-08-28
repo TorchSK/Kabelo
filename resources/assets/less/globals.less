@@ -1,16 +1,14 @@
 html {
-  height: 100%;
   background-repeat: repeat, no-repeat;
 }
 
 body {
-  height: 100%;
   background-color: transparent;
-
   &[data-layout="2"]
   {
-    background-color: #F1F1F1;
     margin: 25px 0;
+    background-color: #F1F1F1;
+
 
     .pusher{
       max-width: 1300px;
@@ -25,6 +23,9 @@ body {
       }
     }
 
+    .under_cover{
+      height: 8px;
+    }
     .covers{
 
       @media @break2{
@@ -36,10 +37,30 @@ body {
       }
     }
 
+    #filterbar{
+      .tabs{
+        display: none;
+      }
+
+      .ui.divider{
+        max-width: 300px;
+      }
+
+      count{
+        display: none;
+      }
+    }
+
     footer{
       margin-bottom: 50px;
     }
   }
+
+
+
+
+
+
 
   .pusher{
       height: 100%;
@@ -50,6 +71,7 @@ body {
   @media @break2{
     display: block;
   }
+
 }
 
  .covers{

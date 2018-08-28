@@ -17,6 +17,7 @@ use App\User;
 use App\Cart;
 use Config;
 use Request;
+use App\Setting;
 
 class GlobalComposer {
 
@@ -53,9 +54,11 @@ class GlobalComposer {
             $appname = ucfirst(explode(".", Request::getHost())[0]);
         }
         
+        $layout = Setting::whereName('layout')->first()->value;
 
         $view->with('cart', $cart);
         $view->with('appname', $appname);
+        $view->with('layout', $layout);
         $view->with('min_order_price', config('app.min_order_price'));
         $view->with('min_free_shipping_price', config('app.min_free_shipping_price'));
     }
