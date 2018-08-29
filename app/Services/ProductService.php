@@ -313,6 +313,7 @@ class ProductService implements ProductServiceContract {
             $search = 'false';
             $category = Category::with(['children.products'])->find($request->get('category'));
             $children = $category->children;
+            $descendants = $category->descendants;
 
             // get all products without any filters for category and all children
             $unfilteredProducts = $category->products;
@@ -328,7 +329,7 @@ class ProductService implements ProductServiceContract {
             $activeFilters = collect($filters);
 
             // set products
-            $products = $this->query($filters,[], $children)->orderBy($sortBy,$sortOrder)->paginate(Setting::where('name','ppp')->first()->value);
+            $products = $this->query($filters,[], $descendants)->orderBy($sortBy,$sortOrder)->paginate(Setting::where('name','ppp')->first()->value);
 
 
             // set price range
