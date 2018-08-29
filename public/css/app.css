@@ -199,7 +199,7 @@ body[data-layout="2"] .pusher {
   margin: 0 auto;
 }
 body[data-layout="2"] #header {
-  background-color: transparent;
+  background-color: #FFF;
 }
 body[data-layout="2"] #header .item {
   color: #555;
