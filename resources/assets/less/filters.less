@@ -215,11 +215,20 @@
 
 
 #filterbar_h{
-	background-color: #1F1F1F;
+	background-color: #f1f1f1;
 	display: flex;
+	min-height: 70px;
+	justify-content: center;
 
 	.item{
-		color: #CCC;
-		padding: 15px;
+		color: #444;
+		padding: 25px 15px;
+		border-right: 1px solid rgba(255,255,255,0.2);
+		font-size: 1.2em;
+		font-weight: 400;
+
+		&:last-child{
+			border-right:none;
+		}
 	}
 }
