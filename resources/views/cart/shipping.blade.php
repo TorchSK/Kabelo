@@ -63,13 +63,13 @@
 
 				<div class="inputs">
 				    <div class="ui large mandatory input" data-column="company">
-			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>6) value="{{json_decode($cart['invoice_address'])->company}}" @endif />
+			            <input type="text" @if(isset(json_decode($cart['invoice_address'])->company)) value="{{json_decode($cart['invoice_address'])->company}}" @endif />
 			      	</div><br/>
 			       	<div class="ui large mandatory input" data-column="ico">
-			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>6) value="{{json_decode($cart['invoice_address'])->ico}}" @endif />
+			            <input type="text" @if(isset(json_decode($cart['invoice_address'])->ico)) value="{{json_decode($cart['invoice_address'])->ico}}" @endif />
 			      	</div><br/>
 			      	<div class="ui large mandatory input" data-column="dic">
-			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>6)  value="{{json_decode($cart['invoice_address'])->dic}}"  @endif />
+			            <input type="text" @if(isset(json_decode($cart['invoice_address'])->dic))  value="{{json_decode($cart['invoice_address'])->dic}}"  @endif />
 			      	</div><br/>
 			      	<div class="ui large input" data-column="icdph">
 			            <input type="text" @if(isset(json_decode($cart['invoice_address'])->icdph)) value="{{json_decode($cart['invoice_address'])->icdph}}" @endif />
