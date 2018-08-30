@@ -104,7 +104,7 @@
 			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>6) value="{{json_decode($cart['invoice_address'])->dic}}"  @endif />
 			      	</div><br/>
 			      	<div class="ui large disabled input">
-			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>6) value="{{json_decode($cart['invoice_address'])->icdph}}" @endif />
+			            <input type="text" @if(isset(json_decode($cart['invoice_address'])->icdph)) value="{{json_decode($cart['invoice_address'])->icdph}}" @endif />
 			      	</div><br/>
 
 
