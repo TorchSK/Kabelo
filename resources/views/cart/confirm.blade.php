@@ -90,13 +90,16 @@
 
    		<div class="ico @if($cart['ico_flag']) active @endif">
    				<div class="labels">
+   					<div class="item">Firma *</div>
 	       			<div class="item">IČO *</div>
 	       			<div class="item">DIČ *</div>
-	       			<div class="item">IČ DPH *</div>
+	       			<div class="item">IČ DPH</div>
 				</div>
 
 				<div class="inputs">
-				
+				   	<div class="ui large disabled input">
+			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>6) value="{{json_decode($cart['invoice_address'])->company}}" @endif />
+			      	</div><br/>
 			       	<div class="ui large disabled input">
 			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>6) value="{{json_decode($cart['invoice_address'])->ico}}" @endif />
 			      	</div><br/>
