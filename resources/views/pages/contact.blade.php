@@ -16,6 +16,8 @@
 		<div>{{App\Setting::firstOrCreate(['name'=>'street'])->value}}</div>
 		<div>{{App\Setting::firstOrCreate(['name'=>'zip'])->value}} {{App\Setting::firstOrCreate(['name'=>'city'])->value}}</div>
 		<div>{{App\Setting::firstOrCreate(['name'=>'state'])->value}}</div>
+		<div>{{App\Setting::firstOrCreate(['name'=>'text1'])->value}}</div>
+
 	</div>
 </div>
 
@@ -27,8 +29,7 @@
 		<div><b>IČO:</b> {{App\Setting::firstOrCreate(['name'=>'ico'])->value}}</div>
 		<div><b>IČ DPH:</b> {{App\Setting::firstOrCreate(['name'=>'icdph'])->value}}</div>
 		<br/>
-		<div>Zápis v OR Okresného súdu B.Bystrica</div>
-		<div>Oddiel sro, vložka 1294/S</div>
+		<div>{{App\Setting::firstOrCreate(['name'=>'invoice_additional_1'])->value}}</div>
 	</div>
 </div>
 

@@ -18,7 +18,7 @@
         {{ csrf_field() }}
 
 	<div id="admin_invoice_settings_div">
-	<div class="ui header">Fakturačné údaje</div>
+	<div class="ui header">Všeobecné údaje</div>
 
 	<div class="item setting">
 		<div class="label">Názov spoločnosti (na faktúre)</div>
@@ -26,6 +26,46 @@
 		  <input type="text" name="company_name" value="{{App\Setting::firstOrCreate(['name'=>'company_name'])->value}}">
 		</div>	
 	</div>
+
+	<div class="item setting">
+		<div class="label">Text1</div>
+		<div class="ui input">
+		  <input type="text" name="text1" value="{{App\Setting::firstOrCreate(['name'=>'text1'])->value}}">
+		</div>	
+	</div>
+
+	<div class="ui header">Kontaktná adresa</div>
+
+
+		<div class="item setting">
+		<div class="label">Ulica</div>
+		<div class="ui input">
+		  <input type="text" name="street" value="{{App\Setting::firstOrCreate(['name'=>'street'])->value}}">
+		</div>	
+	</div>
+
+		<div class="item setting">
+		<div class="label">Mesto</div>
+		<div class="ui input">
+		  <input type="text" name="city" value="{{App\Setting::firstOrCreate(['name'=>'city'])->value}}">
+		</div>	
+	</div>
+
+		<div class="item setting">
+		<div class="label">PSČ</div>
+		<div class="ui input">
+		  <input type="text" name="zip" value="{{App\Setting::firstOrCreate(['name'=>'zip'])->value}}">
+		</div>	
+	</div>
+
+		<div class="item setting">
+		<div class="label">Štát</div>
+		<div class="ui input">
+		  <input type="text" name="state" value="{{App\Setting::firstOrCreate(['name'=>'state'])->value}}">
+		</div>	
+	</div>
+
+	<div class="ui header">Fakturačné údaje</div>
 
 	<div class="item setting">
 		<div class="label">IČO</div>
@@ -45,6 +85,13 @@
 		<div class="label">IČ DPH</div>
 		<div class="ui input">
 		  <input type="text" name="icdph" value="{{App\Setting::firstOrCreate(['name'=>'icdph'])->value}}">
+		</div>	
+	</div>
+
+	<div class="item setting">
+		<div class="label">Ďaľšie údaje</div>
+		<div class="ui input">
+		  <input type="text" name="text1" value="{{App\Setting::firstOrCreate(['name'=>'invoice_additional_1'])->value}}">
 		</div>	
 	</div>
 
