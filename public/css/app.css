@@ -186,8 +186,10 @@
 /*---  Light Tones  ---*/
 html {
   background-repeat: repeat, no-repeat;
+  1height: 100%;
 }
 body {
+  height: 100%;
   background-color: transparent;
 }
 body[data-layout="2"] {
@@ -265,8 +267,8 @@ body .pusher {
 }
 .flex_content {
   -webkit-box-flex: 1;
-      -ms-flex: 1 0 100%;
-          flex: 1 0 100%;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
   background-color: #F7F7F7;
 }
 .pad.wrapper {
