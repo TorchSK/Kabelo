@@ -1060,7 +1060,7 @@ $('#cart_shipping_next_btn').click(function(e){
 
     if ($icoFlag)
     {
-    	$icoInputs = $('.cart_address').find('.ico').find('.input');
+    	$icoInputs = $('.cart_address').find('.ico').find('.input.mandatory');
         $icoInputs.each(function(index, item){
         $type = $(item).data('column');
         $ico[$type] = $(item).find('input').val();
