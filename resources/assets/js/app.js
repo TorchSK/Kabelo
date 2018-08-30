@@ -893,17 +893,18 @@ $('#settings_submit_btn').click(function(){
   $userid = $('#settings_user').data('userid');
 
   $container = $('#settings_user').find('#right');
-
-  $data = {
+  $data = {};
+  
+  $rawdata = {
     first_name: $container.find('input[name="first_name"]').val(),
     last_name: $container.find('input[name="last_name"]').val(),
     phone: $container.find('input[name="phone"]').val(),
-    invoiceAddress: {
+    invoice_address: {
       street: $container.find('input[name="invoice_address_street"]').val(),
       zip: $container.find('input[name="invoice_address_zip"]').val(),
       city: $container.find('input[name="invoice_address_city"]').val(),
     },
-    deliveryAddress: {
+    delivery_address: {
       name: $container.find('input[name="delivery_address_name"]').val(),
       street: $container.find('input[name="delivery_address_street"]').val(),
       city: $container.find('input[name="delivery_address_city"]').val(),
@@ -914,29 +915,6 @@ $('#settings_submit_btn').click(function(){
   };
 
   /*
-  if ($data.invoiceAddress.street && (!$data.invoiceAddress.zip || !$data.invoiceAddress.city))
-  {
-    $validation = 0;
-    $container.find('input[name="invoice_address_zip"]').closest('.input').addClass('error');
-    $container.find('input[name="invoice_address_city"]').closest('.input').addClass('error');
-  }
-
-  if ($data.invoiceAddress.zip && (!$data.invoiceAddress.street || !$data.invoiceAddress.city))
-  {
-    $validation = 0;
-    $container.find('input[name="invoice_address_street"]').closest('.input').addClass('error');
-    $container.find('input[name="invoice_address_city"]').closest('.input').addClass('error');
-  }
-
-  if ($data.invoiceAddress.city && (!$data.invoiceAddress.zip || !$data.invoiceAddress.street))
-  {
-    $validation = 0;
-    $container.find('input[name="invoice_address_zip"]').closest('.input').addClass('error');
-    $container.find('input[name="invoice_address_street"]').closest('.input').addClass('error');
-  }
-
-  */
-  
   $deliveryInputsLength = $('.delivery_address.inputs .input').length;
   $deliveryAddressEmpty = [];
 
@@ -953,9 +931,10 @@ $('#settings_submit_btn').click(function(){
       $validation = 0;
     });
   }
+  */
 
-  $data.invoiceAddress = JSON.stringify($data.invoiceAddress);
-  $data.deliveryAddress = JSON.stringify($data.deliveryAddress);
+  $data.invoice_address = JSON.stringify($rawdata.invoice_address);
+  $data.delivery_address = JSON.stringify($rawdata.delivery_address);
 
   $data['redirect'] = $(this).data('redirect');
   

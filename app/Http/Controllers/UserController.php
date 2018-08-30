@@ -165,7 +165,7 @@ class UserController extends Controller
         $user = User::find($id);
         $redirect = $request->get('redirect');
 
-        foreach ($request->except(['_method','redirect','voc','_token','invoiceAddress', 'deliveryAddress']) as $key => $value)
+        foreach ($request->except(['_method','redirect','_token','invoice_address', 'delivery_address']) as $key => $value)
         {
              $user->$key = $value;
         }
@@ -173,13 +173,13 @@ class UserController extends Controller
         if ($user->invoiceAddress)
         {
             $address = $user->invoiceAddress;
-            $address->address =  $request->get('invoiceAddress');
+            $address->address =  $request->get('invoice_address');
             $address->save();
         }
         else
         {
             $address = new Address();
-            $address->address =  $request->get('invoiceAddress');
+            $address->address =  $request->get('invoice_address');
             $address->type =  'invoice';
             $user->invoiceAddress()->save($address);
         }
