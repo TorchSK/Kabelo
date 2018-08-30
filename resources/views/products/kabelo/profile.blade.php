@@ -259,6 +259,9 @@
            <div class="my rating" @if(App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->count() >0) data-rating="{{App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value}}" @else data-rating="0" @endif>
           </div>
         </div>
+        @else
+          <div class="my_rating"><a class="ui teal button" href="/login">Prihláste sa</a></div>
+
         @endif
 
         <div class="ratings_list">
