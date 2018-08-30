@@ -2191,18 +2191,22 @@ function initCartProductSlider(){
 
 	  	if ( values[handle] < $min[i] ) {
 	      sliders[i].noUiSlider.set($min[i]);
+	    }
+	    else
+	    {
+	      $.ajax({
+	        type: "PUT",
+	        url: "/cart/"+$cartid+"/"+$($(this)[0].target).data('productid'),
+	        data: {qty: values[handle]},
+	        success: function(){
+	          location.reload();
+	        }
+	      })
 	    };
 
       $('#grid .dimmer').addClass('active');
 
-      $.ajax({
-        type: "PUT",
-        url: "/cart/"+$cartid+"/"+$($(this)[0].target).data('productid'),
-        data: {qty: values[handle]},
-        success: function(){
-          location.reload();
-        }
-      })
+
      });
 
   }
