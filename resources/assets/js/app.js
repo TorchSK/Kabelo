@@ -2191,6 +2191,7 @@ function initCartProductSlider(){
       	console.log($min);
       	console.log(values[handle] < $min[i]);
       	console.log($min[i]);
+      	console.log(i);
 
 	  	if ( values[handle] < $min[i] ) {
 	      sliders[i].noUiSlider.set($min[i]);
