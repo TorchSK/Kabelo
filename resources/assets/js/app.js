@@ -2158,6 +2158,7 @@ function initCartProductSlider(){
 
      $qty = $(sliders[i]).data('qty');
      $thresholds = $(sliders[i]).data('thresholds');
+     #min = [];
      
      $prices = JSON.parse($(sliders[i]).data('prices'));
      $min[i] = $(sliders[i]).data('min');
