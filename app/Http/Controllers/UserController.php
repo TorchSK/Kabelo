@@ -150,7 +150,7 @@ class UserController extends Controller
 
 
 
-            return redirect('/');
+            return redirect()->back();
         }
         else
         {
