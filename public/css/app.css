@@ -191,8 +191,7 @@ body {
   background-color: transparent;
 }
 body[data-layout="2"] {
-  background-color: #F1F1F1;
-  background-image: url('/img/crossword.png');
+  background-color: #FFF;
 }
 body[data-layout="2"] .pusher {
   max-width: 1300px;
@@ -266,8 +265,8 @@ body .pusher {
 }
 .flex_content {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+      -ms-flex: 1 0 100%;
+          flex: 1 0 100%;
   background-color: #F7F7F7;
 }
 .pad.wrapper {
@@ -1217,11 +1216,6 @@ a:hover {
     width: 47%;
     margin-right: 5px;
   }
-}
-#grid .item.grid:hover,
-#search_grid .item.grid:hover {
-  -webkit-box-shadow: 0 0 3px #AAA;
-          box-shadow: 0 0 3px #AAA;
 }
 #grid .item.grid:hover .buttons_div,
 #search_grid .item.grid:hover .buttons_div {
