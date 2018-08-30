@@ -935,6 +935,9 @@ $('#settings_submit_btn').click(function(){
 
   $data.invoice_address = JSON.stringify($rawdata.invoice_address);
   $data.delivery_address = JSON.stringify($rawdata.delivery_address);
+  $data.first_name = $rawdata.first_name;
+  $data.last_name = $rawdata.last_name;
+  $data.phone = $rawdata.phone;
 
   $data['redirect'] = $(this).data('redirect');
   

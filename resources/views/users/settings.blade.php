@@ -95,26 +95,25 @@
        			<div class="item">Doplňujúce údaje</div>
        			<div class="item">Telefón *</div>
 			</div>
-
 			<div class="inputs delivery_address">
 			
 		      	<div class="ui large input">
-		            <input type="text" name="delivery_address_name" value="@if(Auth::user()->deliveryAddress){{Auth::user()->deliveryAddress->name}}@endif" />
+		            <input type="text" name="delivery_address_name" value="@if(isset(json_decode(Auth::user()->deliveryAddresses->first()->address)->name)){{json_decode(Auth::user()->deliveryAddresses->first()->address)->name}}@endif" />
 		      	</div><br/>
 		      	<div class="ui large input">
-		            <input type="text" name="delivery_address_street" value="@if(Auth::user()->deliveryAddress){{Auth::user()->deliveryAddress->street}}@endif" />
+		            <input type="text" name="delivery_address_street" value="@if(isset(json_decode(Auth::user()->deliveryAddresses->first()->address)->street)){{json_decode(Auth::user()->deliveryAddresses->first()->address)->street}}@endif" />
 		      	</div><br/>
 		      	<div class="ui large input">
-		            <input type="text" name="delivery_address_city" value="@if(Auth::user()->deliveryAddress){{Auth::user()->deliveryAddress->city}}@endif" />
+		            <input type="text" name="delivery_address_city" value="@if(isset(json_decode(Auth::user()->deliveryAddresses->first()->address)->city)){{json_decode(Auth::user()->deliveryAddresses->first()->address)->city}}@endif" />
 		      	</div><br/>
 		      	<div class="ui large input">
-		            <input type="text" name="delivery_address_zip" value="@if(Auth::user()->deliveryAddress){{Auth::user()->deliveryAddress->zip}}@endif" />
+		            <input type="text" name="delivery_address_zip" value="@if(isset(json_decode(Auth::user()->deliveryAddresses->first()->address)->zip)){{json_decode(Auth::user()->deliveryAddresses->first()->address)->zip}}@endif" />
 		      	</div><br/>
 		      	<div class="ui large input">
-		            <input type="text" name="delivery_address_additional" value="@if(Auth::user()->deliveryAddress){{Auth::user()->deliveryAddress->additional}}@endif" />
+		            <input type="text" name="delivery_address_additional" value="@if(isset(json_decode(Auth::user()->deliveryAddresses->first()->address)->additional)){{json_decode(Auth::user()->deliveryAddresses->first()->address)->additional}}@endif" />
 		      	</div><br/>
 		      	<div class="ui large input">
-		            <input type="text" name="delivery_address_phone" value="@if(Auth::user()->deliveryAddress){{Auth::user()->deliveryAddress->phone}}@endif" />
+		            <input type="text" name="delivery_address_phone" value="@if(isset(json_decode(Auth::user()->deliveryAddresses->first()->address)->phone)){{json_decode(Auth::user()->deliveryAddresses->first()->address)->phone}}@endif" />
 		      	</div><br/>
 
 

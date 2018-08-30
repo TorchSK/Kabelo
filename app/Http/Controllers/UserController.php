@@ -184,6 +184,21 @@ class UserController extends Controller
             $user->invoiceAddress()->save($address);
         }
 
+        if ($user->deliveryAddresses->count() > 0)
+        {
+            $address = $user->deliveryAddresses->first();
+            $address->address =  $request->get('delivery_address');
+            $address->save();
+        }
+        else
+        {
+            $address = new Address();
+            $address->address =  $request->get('invoice_address');
+            $address->type =  'delivery';
+            $user->deliveryAddresses()->save($address);
+        }
+
+
 
         $user->save();
 
