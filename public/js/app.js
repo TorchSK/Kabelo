@@ -2154,6 +2154,7 @@ function initCartProductSlider(){
 
   var sliders = document.getElementsByClassName('cart_length_slider');
     $min = [];
+    $old = [];
   for ( var i = 0; i < sliders.length; i++ ) {
 
      $qty = $(sliders[i]).data('qty');
@@ -2187,11 +2188,13 @@ function initCartProductSlider(){
      });
 
       $cartid = $('.cart.content').data('cartid');
+      
+      $old[i] = sliders[i-i].noUiSlider.get();
 
       sliders[i].noUiSlider.on('change', function ( values, handle ) {
-
+      	console.log($old);
 	  	if ( values[handle] < $min[i-1] ) {
-	      sliders[i-1].noUiSlider.set($min[i-1]);
+	      sliders[i-1].noUiSlider.set($old[i-1]);
 	    }
 	    else
 	    {
