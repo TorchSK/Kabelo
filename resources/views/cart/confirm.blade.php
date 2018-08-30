@@ -35,10 +35,10 @@
 			
 			<div class="ui steps">
 			  <a class="step">
-			    <i class="{{App\PaymentMethod::find($cart['delivery_method'])->icon}} icon"></i>
+			    <i class="{{App\PaymentMethod::find($cart['payment_method'])->icon}} icon"></i>
 			    <div class="content">
-			      <div class="title">{{App\PaymentMethod::find($cart['delivery_method'])->name}}</div>
-			      <div class="description">{{App\PaymentMethod::find($cart['delivery_method'])->desc}}</div>
+			      <div class="title">{{App\PaymentMethod::find($cart['payment_method'])->name}}</div>
+			      <div class="description">{{App\PaymentMethod::find($cart['payment_method'])->desc}}</div>
 			    </div>
 			  </a>
 			</div>
