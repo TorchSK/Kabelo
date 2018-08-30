@@ -894,7 +894,7 @@ $('#settings_submit_btn').click(function(){
 
   $container = $('#settings_user').find('#right');
   $data = {};
-  
+
   $rawdata = {
     first_name: $container.find('input[name="first_name"]').val(),
     last_name: $container.find('input[name="last_name"]').val(),
@@ -2160,6 +2160,8 @@ function initCartProductSlider(){
      $thresholds = $(sliders[i]).data('thresholds');
      
      $prices = JSON.parse($(sliders[i]).data('prices'));
+     $min[i] = $(sliders[i]).data('min');
+
 
      noUiSlider.create(sliders[i], {
           start: $qty,
@@ -2185,6 +2187,10 @@ function initCartProductSlider(){
       $cartid = $('.cart.content').data('cartid');
 
       sliders[i].noUiSlider.on('change', function ( values, handle ) {
+
+	  	if ( values[handle] < $min[i] ) {
+	      sliders[i].noUiSlider.set($min[i]);
+	    };
 
       $('#grid .dimmer').addClass('active');
 

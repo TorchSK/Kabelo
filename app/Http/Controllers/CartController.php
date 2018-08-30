@@ -181,11 +181,6 @@ class CartController extends Controller
                 $closest = $level;
             }
         }
-
-        if (!isset($closest))
-        {
-            $closest = $levels[0];
-        }
     
         if (Auth::check())
         {
