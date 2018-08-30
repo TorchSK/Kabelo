@@ -2153,12 +2153,12 @@ $('.product_color.choosable')
 function initCartProductSlider(){
 
   var sliders = document.getElementsByClassName('cart_length_slider');
-  
+    $min = [];
   for ( var i = 0; i < sliders.length; i++ ) {
 
      $qty = $(sliders[i]).data('qty');
      $thresholds = $(sliders[i]).data('thresholds');
-     $min = [];
+   
 
      $prices = JSON.parse($(sliders[i]).data('prices'));
      $min[i] = $(sliders[i]).data('min');
