@@ -2188,7 +2188,7 @@ function initCartProductSlider(){
       $cartid = $('.cart.content').data('cartid');
 
       sliders[i].noUiSlider.on('change', function ( values, handle ) {
-
+      	console.log($min);
 	  	if ( values[handle] < $min[i] ) {
 	      sliders[i].noUiSlider.set($min[i]);
 	    }
