@@ -2159,6 +2159,7 @@ function initCartProductSlider(){
     $min = [];
     $old = [];
   for ( var i = 0; i < sliders.length; i++ ) {
+     $ii = i;
 
      $qty = $(sliders[i]).data('qty');
      $thresholds = $(sliders[i]).data('thresholds');
@@ -2192,12 +2193,11 @@ function initCartProductSlider(){
 
       $cartid = $('.cart.content').data('cartid');
       
-      $old[i] = sliders[i-i].noUiSlider.get();
+      $old[i] = sliders[i].noUiSlider.get();
 
       sliders[i].noUiSlider.on('change', function ( values, handle ) {
-      	console.log($old);
-	  	if ( values[handle] < $min[i-1] ) {
-	      sliders[i-1].noUiSlider.set($old[i-1]);
+	  	if ( values[handle] < $($(this)[0].target).data('min') ) {
+	      sliders[$ii].noUiSlider.set($old[$ii]);
 	    }
 	    else
 	    {
@@ -2211,9 +2211,7 @@ function initCartProductSlider(){
 	          location.reload();
 	        }
 	      })
-	    };
-
-
+	  };
 
      });
 
