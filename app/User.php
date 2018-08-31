@@ -63,4 +63,29 @@ class User extends Authenticatable implements \Illuminate\Contracts\Auth\CanRese
         $this->notify(new Reminder($token));
     }
 
+        public function setVocAttribute($value)
+    {
+      if ($value == 'on' || $value == 1)
+      {
+        $this->attributes['voc'] = 1;
+      }
+      else
+      {
+        $this->attributes['voc'] = 0;
+      }
+    }
+
+
+  public function setInvoiceEligibleAttribute($value)
+    {
+      if ($value == 'on' || $value == 1)
+      {
+        $this->attributes['invoice_eligible'] = 1;
+      }
+      else
+      {
+        $this->attributes['invoice_eligible'] = 0;
+      }
+    }
+
 }
