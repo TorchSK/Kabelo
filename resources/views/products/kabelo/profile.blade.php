@@ -127,7 +127,7 @@
               Minimálny počet kusov
               @endif
               </th>
-            <th>Cena za {{$product->price_unit}}</th>
+            <th>Cena za {{$product->price_unit}} s DPH</th>
   
           </tr>
         </thead>
