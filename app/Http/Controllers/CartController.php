@@ -83,7 +83,10 @@ class CartController extends Controller
              return redirect('cart/products');
 
         }
-        return view('cart.shipping');
+
+        $data['bodyid'] = 'cart_shipping';
+        
+        return view('cart.shipping',$data);
     }
 
 
