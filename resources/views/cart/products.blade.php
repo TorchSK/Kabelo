@@ -22,7 +22,7 @@
 				@endforeach
 			@else
 				@foreach($cart['items'] as $productid)
-					@if(isset($cart['price_levels'][$product->id]))
+					@if(isset($cart['price_levels'][$productid]))
 						@include('cart.row', ['product' => App\Product::find($productid)])
 					@endif
 				@endforeach
