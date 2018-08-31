@@ -46,7 +46,7 @@ class GlobalComposer {
             $cart = $this->cartController->getCart('undefined');
         }   
 
-        dd($cart);
+        //dd($cart);
         $appname = env('APP_NAME');
 
         if($appname == 'Laravel')
