@@ -1,5 +1,7 @@
 <div class="product_price_level">
 
+ 		<input type="hidden" name="ids[]" placeholder="Min. počet kusov" @if(isset($priceLevel)) value="{{$priceLevel->id}}"  value="na" @else  @endif >
+
 	<div class="ui labeled fluid input">
   		<div class="ui label">ks</div>
  		<input type="text" name="thresholds[]" placeholder="Min. počet kusov" @if(isset($priceLevel)) value="{{$priceLevel->threshold}}" @endif >

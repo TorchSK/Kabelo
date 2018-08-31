@@ -202,7 +202,14 @@ class UserController extends Controller
 
         $user->save();
 
-        return 1;
+        if($request->ajax())
+        {
+            return 1;
+        }
+        else
+        {
+            return redirect()->back();
+        }
 
     }   
 

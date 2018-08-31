@@ -338,21 +338,36 @@ class ProductController extends Controller
 
         $product->update($request->except('_token'));
 
+        /*
         foreach ($product->priceLevels as $priceLevel)
         {
             $priceLevel->delete();
         }
+        */
 
         foreach ((array)$request->get('thresholds') as $key=>$threshold)
         {
-            $pricelevel = new PriceLevel();
-            $pricelevel->threshold = $threshold;
-            $pricelevel->moc_regular = $request->get('mocs')[$key];
-            $pricelevel->moc_sale = $request->get('moc_sales')[$key];
-            $pricelevel->voc_regular = $request->get('vocs')[$key];
-            $pricelevel->voc_sale = $request->get('voc_sales')[$key];
+            if ($request->get('ids')[$key] == 'na')
+            {
+                $pricelevel = new PriceLevel();
+                $pricelevel->threshold = $threshold;
+                $pricelevel->moc_regular = $request->get('mocs')[$key];
+                $pricelevel->moc_sale = $request->get('moc_sales')[$key];
+                $pricelevel->voc_regular = $request->get('vocs')[$key];
+                $pricelevel->voc_sale = $request->get('voc_sales')[$key];
 
-            $product->priceLevels()->save($pricelevel);
+                $product->priceLevels()->save($pricelevel);
+            }
+            else
+            {
+                $pricelevel = PriceLevel::find($request->get('ids')[$key]);
+                $pricelevel->threshold = $threshold;
+                $pricelevel->moc_regular = $request->get('mocs')[$key];
+                $pricelevel->moc_sale = $request->get('moc_sales')[$key];
+                $pricelevel->voc_regular = $request->get('vocs')[$key];
+                $pricelevel->voc_sale = $request->get('voc_sales')[$key];
+                $pricelevel->save();
+            }
         }
 
         if ($request->has('categories'))
@@ -372,6 +387,12 @@ class ProductController extends Controller
                 if (!in_array($category->id,$request->get('categories')))
                 {
                     $product->categories()->detach($category);
+                    $params = $product->parameters;
+
+                    foreach($params as $param)
+                    {
+                        $param->delete();
+                    }
                 }
             }
         }

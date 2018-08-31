@@ -55,6 +55,11 @@
 							  </div>
 							  <input type="text" name="discount" placeholder="0" value="{{$user->discount}}">
 							</div>
+
+							<div id="admin_user_options">
+								<button type="submit" class="ui green button">Ulož zmeny</button>
+							</div>
+
 						</form>
 
 					</div>
@@ -67,9 +72,6 @@
 		</div>
 
 		
-							<div id="admin_user_options">
-								<button type="submit" class="ui green button">Ulož zmeny</button>
-							</div>
 
 	</div>
 
