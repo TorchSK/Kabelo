@@ -689,7 +689,7 @@ $(".cart_delivery").click(function(){
   	$data['payment_method'] = '';
   	$data['shipping_price'] = $shipping_price;
 
-  	$('#cart_shipping_price').find('price').text(parseFloat($('#cart_shipping_price').data('price')) + $shipping_price);
+  	$('#cart_shipping_price').find('price').text(parseFloat($data['shipping_price']));
 
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
   	$('.cart_next').addClass('disabled');
@@ -699,6 +699,9 @@ $(".cart_delivery").click(function(){
   if ($('.cart_payment.completed.active').length && !$(".cart_delivery.completed.active").length)
   {
   	$data['shipping_price'] = $shipping_price + parseFloat($('.cart_delivery.completed.active').data('price'));
+  	 
+  	 $('#cart_shipping_price').find('price').text(parseFloat($data['shipping_price']));
+
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
   	$('.cart_next').removeClass('disabled');
   }
@@ -710,6 +713,9 @@ $(".cart_delivery").click(function(){
   	$data['payment_method'] = '';
   	$(".cart_payment").removeClass('completed active');
   	$data['shipping_price'] = $shipping_price;
+  	
+  	$('#cart_shipping_price').find('price').text(parseFloat($data['shipping_price']));
+
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
   	  	$('.cart_next').addClass('disabled');
 
@@ -719,9 +725,12 @@ $(".cart_delivery").click(function(){
   {
   	$shipping_price = parseFloat($(this).data('price'));
   	$data['payment_method'] = '';
-  	  	$(".cart_payment").removeClass('completed active');
+  	$(".cart_payment").removeClass('completed active');
 
   	$data['shipping_price'] = $shipping_price;
+
+	 $('#cart_shipping_price').find('price').text(parseFloat($data['shipping_price']));
+
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
   }
 
