@@ -52,6 +52,14 @@
 			<div class="ui input">
 			  <input type="text" name="ppp" value="{{App\Setting::where('name','ppp')->first()->value}}">
 			</div>	
+		</div><br />
+
+		<div class="item">
+			<div>Výška DPH</div>
+			<div class="ui right labeled input">
+			  <input type="text" name="vat" value="{{App\Setting::firstOrCreate(['name'=>'vat'])->value}}">
+			    <div class="ui basic label">%</div>
+			</div>	
 		</div>
 
 		</div>	

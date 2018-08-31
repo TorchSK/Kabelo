@@ -140,15 +140,20 @@
                 @if($product->sale)
                 <div id="price" class="crossed">{{$priceLevel->voc_regular}} &euro; </div>
                 <div id="final_price">{{$priceLevel->voc_sale}} &euro; </div>
+                <div class="without_vac">{{round($priceLevel->voc_regular/1.2,2)}} &euro; bez dph</div>
                 @else
                 <div id="final_price">{{$priceLevel->voc_regular}} &euro;</div>
+                <div class="without_vac">{{round($priceLevel->voc_regular/1.2,2)}} &euro; bez dph</div>
                 @endif
               @else
                 @if($product->sale)
                 <div id="price" class="crossed">{{$priceLevel->moc_regular}} &euro; </div>
                 <div id="final_price">{{$priceLevel->moc_sale}} &euro;</div>
+                <div class="without_vac">{{round($priceLevel->moc_sale/1.2,2)}} &euro; bez dph</div>
+
                 @else
                 <div id="final_price">{{$priceLevel->moc_regular}} &euro;</div>
+                <div class="without_vac">{{round($priceLevel->moc_regular/1.2,2)}} &euro; bez dph</div>
                 @endif
               @endif
             </td>

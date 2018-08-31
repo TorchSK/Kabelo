@@ -688,6 +688,9 @@ $(".cart_delivery").click(function(){
   	$shipping_price = parseFloat($(this).data('price'));
   	$data['payment_method'] = '';
   	$data['shipping_price'] = $shipping_price;
+
+  	$('#cart_shipping_price').find('price').text(parseFloat($('#cart_shipping_price').data('price')) + $shipping_price);
+
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
   	$('.cart_next').addClass('disabled');
   }
@@ -2421,13 +2424,14 @@ $('#cookies_consent_btn').click(function(){
 
 if($('body').attr('id')=='cartproducts')
 {
+	/*
 	$cart_price = 0;
 
 	$('#cart_detail .product').each(function(index,item){
 	  $cart_price = $cart_price + parseFloat($(item).find('.final_price').text());
 	})
 
-	$('#cart_total_price').find('price').text(parseFloat($cart_price).toFixed(2));
+	//$('#cart_total_price').find('price').text(parseFloat($cart_price).toFixed(2));
 
 	if(parseFloat($('#cart_total_price').find('price').text()) < parseFloat($('#cart_min_price').find('price').text()))
 	{
@@ -2444,9 +2448,9 @@ if($('body').attr('id')=='cartproducts')
 	}
 	else
 	{
-		$('#cart_free_shipping_price').hide();
+		//$('#cart_free_shipping_price').hide();
 	}
-
+	*/
 }
 
 $('.filterbar_handle').mouseover(function(){
