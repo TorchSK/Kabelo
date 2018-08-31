@@ -127,7 +127,7 @@
               Minimálny počet kusov
               @endif
               </th>
-            <th>Cena za {{$product->price_unit}} s DPH</th>
+            <th>Cena za {{$product->price_unit}}</th>
   
           </tr>
         </thead>
@@ -140,7 +140,7 @@
                 @if($product->sale)
                 <div id="price" class="crossed">{{$priceLevel->voc_regular}} &euro; </div>
                 <div id="final_price">{{$priceLevel->voc_sale}} &euro; </div>
-                <div class="without_vac">{{round($priceLevel->voc_regular/1.2,2)}} &euro; bez dph</div>
+                <div class="without_vac">{{round($priceLevel->voc_sale/1.2,2)}} &euro; bez dph</div>
                 @else
                 <div id="final_price">{{$priceLevel->voc_regular}} &euro;</div>
                 <div class="without_vac">{{round($priceLevel->voc_regular/1.2,2)}} &euro; bez dph</div>
