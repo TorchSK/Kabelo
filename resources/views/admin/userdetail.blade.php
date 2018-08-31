@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 
+<div id="settings_user" data-userid="{{$user->id}}"></div>
+
 	<div class="user_detail">
 
 
@@ -27,7 +29,7 @@
 
 			</div>
 
-		  	<div class="contents">
+		  	<div class="contents" id="right">
 
 		    	<div class="content par active" data-tab="detail">
 
@@ -74,16 +76,17 @@
 								<div class="inputs">
 								
 							      
-							      	<div class="ui large input">
-							            <input type="text" name="invoice_address_street" value="@if(Auth::user()->invoiceAddress){{json_decode(Auth::user()->invoiceAddress->address, true)['street']}}@endif" />
-							      	</div><br/>
-							      	<div class="ui large input">
-							            <input type="text"  name="invoice_address_city" value="@if(Auth::user()->invoiceAddress){{json_decode(Auth::user()->invoiceAddress->address, true)['city']}}@endif" />
-							      	</div><br/>
-							      	<div class="ui large input">
-							            <input type="text"  name="invoice_address_zip" value="@if(Auth::user()->invoiceAddress){{json_decode(Auth::user()->invoiceAddress->address, true)['zip']}}@endif" />
-							      	</div><br/>
-						
+					      
+					      	<div class="ui large input">
+					            <input type="text" name="invoice_address_street" value="@if($user->invoiceAddress && isset(json_decode($user->invoiceAddress->address)->street)){{json_decode($user->invoiceAddress->address)->street}}@endif" />
+					      	</div><br/>
+					      	<div class="ui large input">
+					            <input type="text"  name="invoice_address_city" value="@if($user->invoiceAddress && isset(json_decode($user->invoiceAddress->address)->city)){{json_decode($user->invoiceAddress->address)->city}}@endif" />
+					      	</div><br/>
+					      	<div class="ui large input">
+					            <input type="text"  name="invoice_address_zip" value="@if($user->invoiceAddress && isset(json_decode($user->invoiceAddress->address)->zip)){{json_decode($user->invoiceAddress->address)->zip}}@endif" />
+					      	</div><br/>
+									
 
 					        </div>
 
@@ -104,24 +107,24 @@
 
 								<div class="inputs delivery_address">
 								
-							      	<div class="ui large input">
-							            <input type="text" name="delivery_address_name" value="@if(Auth::user()->deliveryAddress){{Auth::user()->deliveryAddress->name}}@endif" />
-							      	</div><br/>
-							      	<div class="ui large input">
-							            <input type="text" name="delivery_address_street" value="@if(Auth::user()->deliveryAddress){{Auth::user()->deliveryAddress->street}}@endif" />
-							      	</div><br/>
-							      	<div class="ui large input">
-							            <input type="text" name="delivery_address_city" value="@if(Auth::user()->deliveryAddress){{Auth::user()->deliveryAddress->city}}@endif" />
-							      	</div><br/>
-							      	<div class="ui large input">
-							            <input type="text" name="delivery_address_zip" value="@if(Auth::user()->deliveryAddress){{Auth::user()->deliveryAddress->zip}}@endif" />
-							      	</div><br/>
-							      	<div class="ui large input">
-							            <input type="text" name="delivery_address_additional" value="@if(Auth::user()->deliveryAddress){{Auth::user()->deliveryAddress->additional}}@endif" />
-							      	</div><br/>
-							      	<div class="ui large input">
-							            <input type="text" name="delivery_address_phone" value="@if(Auth::user()->deliveryAddress){{Auth::user()->deliveryAddress->phone}}@endif" />
-							      	</div><br/>
+						      	<div class="ui large input">
+						            <input type="text" name="delivery_address_name" value="@if($user->deliveryAddresses->count() > 0 && isset(json_decode($user->deliveryAddresses->first()->address)->name)){{json_decode($user->deliveryAddresses->first()->address)->name}}@endif" />
+						      	</div><br/>
+						      	<div class="ui large input">
+						            <input type="text" name="delivery_address_street" value="@if($user->deliveryAddresses->count() > 0 && isset(json_decode($user->deliveryAddresses->first()->address)->street)){{json_decode($user->deliveryAddresses->first()->address)->street}}@endif" />
+						      	</div><br/>
+						      	<div class="ui large input">
+						            <input type="text" name="delivery_address_city" value="@if($user->deliveryAddresses->count() > 0 && isset(json_decode($user->deliveryAddresses->first()->address)->city)){{json_decode($user->deliveryAddresses->first()->address)->city}}@endif" />
+						      	</div><br/>
+						      	<div class="ui large input">
+						            <input type="text" name="delivery_address_zip" value="@if($user->deliveryAddresses->count() > 0 && isset(json_decode($user->deliveryAddresses->first()->address)->zip)){{json_decode($user->deliveryAddresses->first()->address)->zip}}@endif" />
+						      	</div><br/>
+						      	<div class="ui large input">
+						            <input type="text" name="delivery_address_additional" value="@if($user->deliveryAddresses->count() > 0 && isset(json_decode($user->deliveryAddresses->first()->address)->additional)){{json_decode($user->deliveryAddresses->first()->address)->additional}}@endif" />
+						      	</div><br/>
+						      	<div class="ui large input">
+						            <input type="text" name="delivery_address_phone" value="@if($user->deliveryAddresses->count() > 0 && isset(json_decode($user->deliveryAddresses->first()->address)->phone)){{json_decode($user->deliveryAddresses->first()->address)->phone}}@endif" />
+						      	</div><br/>
 
 
 					        </div>
@@ -138,7 +141,7 @@
 
 
 		<div id="admin_user_options">
-			<div class="ui green button">Ulož zmeny</div>
+			<div class="ui green button" id="settings_submit_btn">Ulož zmeny</div>
 		</div>
 		
 	</div>

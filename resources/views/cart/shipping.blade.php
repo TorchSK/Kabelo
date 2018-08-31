@@ -79,6 +79,7 @@
        			</div>
        	</div>
 
+       	@if($cart['delivery_method'] != 1)
 
 		<div class="ui checkbox @if($cart['delivery_address_flag']) checked @endif item" id="use_delivery_address_input">
 		  <input type="checkbox" name="example" @if($cart['delivery_address_flag']) checked @endif>
@@ -115,7 +116,8 @@
 
        			</div>
        	</div>
-
+       	@endif
+       	
 	</div>
 
 	</div>

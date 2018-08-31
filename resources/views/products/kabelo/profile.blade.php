@@ -217,7 +217,7 @@
 </table>
 
 @foreach($product->files as $file)
-<a href={{ asset($file->path) }} target="_blank"><i class="icon huge brown file pdf outline" ></i> Katalogový list</a>
+<a href={{ asset($file->path) }} target="_blank"><i class="icon huge brown file pdf outline" ></i> Katalógový list</a>
 @endforeach
 
 </div>

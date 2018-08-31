@@ -892,7 +892,8 @@ $('#settings_submit_btn').click(function(){
 
   $userid = $('#settings_user').data('userid');
 
-  $container = $('#settings_user').find('#right');
+  $container = $('#right');
+
   $data = {};
 
   $rawdata = {
@@ -1000,6 +1001,11 @@ $('#use_ico_input').checkbox({
   },
 })
 
+function isEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}
+
 $('#cart_shipping_next_btn').click(function(e){
     $validation = 1;
 
@@ -1025,6 +1031,22 @@ $('#cart_shipping_next_btn').click(function(e){
 
     $deliveryAdressFlag = $('#use_delivery_address_input').checkbox('is checked');
     $icoFlag = $('#use_ico_input').checkbox('is checked');
+    $email = $('input[type="email"]').val();
+
+    if (!isEmail($email))
+    {
+    	$validation = 0;
+    	$('input[type="email"]').parent().addClass('error');
+    }
+
+    $phone = $('.input[data-column="phone"] input').val();
+
+    if (!$.isNumeric($phone))
+    {
+    	$validation = 0;
+    	$('.input[data-column="phone"]').addClass('error');
+    }
+
 
     if ($deliveryAdressFlag)
     {

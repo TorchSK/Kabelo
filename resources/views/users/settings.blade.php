@@ -69,13 +69,13 @@
 			
 		      
 		      	<div class="ui large input">
-		            <input type="text" name="invoice_address_street" value="@if(Auth::user()->invoiceAddress){{json_decode(Auth::user()->invoiceAddress->address, true)['street']}}@endif" />
+		            <input type="text" name="invoice_address_street" value="@if(Auth::user()->invoiceAddress && isset(json_decode(Auth::user()->invoiceAddress->address)->street)){{json_decode(Auth::user()->invoiceAddress->address)->street}}@endif" />
 		      	</div><br/>
 		      	<div class="ui large input">
-		            <input type="text"  name="invoice_address_city" value="@if(Auth::user()->invoiceAddress){{json_decode(Auth::user()->invoiceAddress->address, true)['city']}}@endif" />
+		            <input type="text"  name="invoice_address_city" value="@if(Auth::user()->invoiceAddress && isset(json_decode(Auth::user()->invoiceAddress->address)->city)){{json_decode(Auth::user()->invoiceAddress->address)->city}}@endif" />
 		      	</div><br/>
 		      	<div class="ui large input">
-		            <input type="text"  name="invoice_address_zip" value="@if(Auth::user()->invoiceAddress){{json_decode(Auth::user()->invoiceAddress->address, true)['zip']}}@endif" />
+		            <input type="text"  name="invoice_address_zip" value="@if(Auth::user()->invoiceAddress && isset(json_decode(Auth::user()->invoiceAddress->address)->zip)){{json_decode(Auth::user()->invoiceAddress->address)->zip}}@endif" />
 		      	</div><br/>
 	
 
