@@ -6,7 +6,7 @@
 	<div class="image_div">
 
 	 <div class="labels">
-		@if ($product->sale || (Auth::check() && Auth::user()->discount > 0))
+		@if ($product->sale)
 		<div class="ui green label">-
 
 			@if(Auth::check())
