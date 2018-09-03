@@ -11,6 +11,7 @@ use App\Category;
 use App\Order;
 use App\Product;
 use App\User;
+use App\Text;
 
 use Mail;
 use Cookie;
@@ -105,5 +106,10 @@ class UtilController extends Controller
         $data['users'] = User::where('name', 'like', '%'.$query.'%')->orWhere("email", "like", "%".$query."%")->take(5)->paginate(100);
 
         return view('search.all', $data);
+    }
+
+    public function setText(Request $request)
+    {      
+        Text::updateOrCreate(['key' => $request->get('key')], ['text' => $request->get('text')]);
     }
 }

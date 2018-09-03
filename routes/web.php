@@ -186,6 +186,8 @@ Route::get('cookies/info', 'UtilController@cookiesInfo');
 Route::get('email/order', 'UtilController@sendOrderEmail');
 Route::post('set/config', 'UtilController@setConfig');
 
+Route::post('text', 'UtilController@setText');
+
 Route::post('cookies', 'UtilController@setCookie');
 
 Route::get('search/{query}', 'UtilController@search');

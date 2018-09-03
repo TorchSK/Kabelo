@@ -717,13 +717,13 @@ a:hover {
   padding: 3%;
   margin: 0 auto;
 }
-#terms_div pre {
+#terms_div .richtext {
   background-color: #FFF;
   display: inline-block;
   text-align: center;
-  white-space: pre-line;
-  max-width: 800px;
   padding: 50px;
+  margin-top: 50px;
+  width: 1000px;
 }
 #gdpr_div {
   text-align: center;

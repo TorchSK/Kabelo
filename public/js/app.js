@@ -2872,8 +2872,25 @@ if($('body').attr('id') == 'cart_shipping')
 
 
 tinymce.init({
-	selector: '.richtext'
+	selector: '.richtext.editable',
+    menubar: false,
+    inline: true,
+    theme: 'inlite',
+    insert_toolbar: 'undo redo',
+    selection_toolbar: 'bold italic | quicklink h2 h3',
 });
 
 
+$('#text_save_btn').click(function(){
+	$key = $(this).data('key');
+	$text = $('.richtext').html();
+		$.ajax({
+			type: "POST",
+			url: "/text",
+			data:{key: $key, text: $text},
+			success: function(data){
+				location.reload();
+			}
+		})	
+})
 });
