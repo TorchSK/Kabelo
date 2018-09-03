@@ -20,7 +20,7 @@ class ChangeCategoryParameters extends Migration {
       		$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
       		$table->integer('parameter_id')->unsigned()->index();
       		$table->foreign('parameter_id')->references('id')->on('parameters')->onDelete('cascade')->onUpdate('cascade');
-      		$table->boolean('is_filter');
+      		$table->boolean('is_filter')->default(1);
 	    });
 
 	   	 Schema::create('parameters', function(Blueprint $table)

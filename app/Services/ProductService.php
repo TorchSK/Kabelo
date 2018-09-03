@@ -421,6 +421,8 @@ class ProductService implements ProductServiceContract {
                     }
             }
 
+            asort($filterValues);
+
         }
 
         $data = [
