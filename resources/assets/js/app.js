@@ -2310,7 +2310,7 @@ function initProductQtySlider(){
       slider.noUiSlider.set($min);
       $('#product_buy_qty_value').find('qty').text($min);
       $price = $min * parseFloat($('#product_price_thresholds').find('.threshold').next().find('#final_price').text()).toFixed(2); 
-      $('#product_buy_qty_value').find('price').text($price.toFixed(2));
+      $('#product_buy_qty_value').find('price').text(parseFloat($price.toFixed(2)));
 
     };
   });
