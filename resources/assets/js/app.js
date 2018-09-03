@@ -2871,4 +2871,9 @@ if($('body').attr('id') == 'cart_shipping')
 
 
 
+tinymce.init({
+	selector: '.richtext'
+});
+
+
 });

@@ -7,7 +7,7 @@
 
 <div class="ui header ct">Obchodné podmienky</div>
 
-<pre>
+<pre class="richtext">
 Objednávky
 
 Objednávky prijímame jedným z nasledovných spôsobov
