@@ -916,6 +916,11 @@ $('#settings_submit_btn').click(function(){
       street: $container.find('input[name="invoice_address_street"]').val(),
       zip: $container.find('input[name="invoice_address_zip"]').val(),
       city: $container.find('input[name="invoice_address_city"]').val(),
+      
+      company: $container.find('input[name="invoice_address_company"]').val(),
+      ico: $container.find('input[name="invoice_address_ico"]').val(),
+      dic: $container.find('input[name="invoice_address_dic"]').val(),
+      icdph: $container.find('input[name="invoice_address_icdph"]').val(),
     },
     delivery_address: {
       name: $container.find('input[name="delivery_address_name"]').val(),
@@ -1066,7 +1071,7 @@ $('#cart_shipping_next_btn').click(function(e){
       $deliveryAddressInputs.each(function(index, item){
         $type = $(item).data('column');
         $deliveryAddress[$type] = $(item).find('input').val();
-        if ($(item).find('input').val() == '')
+        if ($(item).filter('.mandatory').find('input').val() == '')
         {
           $validation = 0;
           $(item).addClass('error');
@@ -1076,11 +1081,11 @@ $('#cart_shipping_next_btn').click(function(e){
 
     if ($icoFlag)
     {
-    	$icoInputs = $('.cart_address').find('.ico').find('.input.mandatory');
+    	$icoInputs = $('.cart_address').find('.ico').find('.input');
         $icoInputs.each(function(index, item){
         $type = $(item).data('column');
         $ico[$type] = $(item).find('input').val();
-        if ($(item).find('input').val() == '')
+        if ($(item).filter('.mandatory').find('input').val() == '')
         {
           $validation = 0;
           $(item).addClass('error');
@@ -2304,7 +2309,7 @@ function initProductQtySlider(){
     if ( values[handle] < $min ) {
       slider.noUiSlider.set($min);
       $('#product_buy_qty_value').find('qty').text($min);
-      $price = $min * parseFloat($('#product_price_thresholds').find('.threshold').next().find('#final_price').text()); 
+      $price = $min * parseFloat($('#product_price_thresholds').find('.threshold').next().find('#final_price').text()).toFixed(2); 
       $('#product_buy_qty_value').find('price').text($price);
 
     };

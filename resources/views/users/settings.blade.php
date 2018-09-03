@@ -25,6 +25,7 @@
 <div class="wrapper" id="right">
 
 	<div class="settings_account_div">
+
 	<div class="ui header">Základné údáje</div>
 
 		<div class="labeled form">
@@ -51,9 +52,39 @@
 		            <input name="last_name" type="text"  value="{{Auth::user()->last_name}}"/>
 		      	</div>
 
-        </div>
+       		 </div>
 
-	</div>
+		</div>
+
+			<div class="ui header">Firemné údáje</div>
+
+		<div class="labeled form">
+
+			<div class="labels">
+				<div class="item">Firma</div>
+       			<div class="item">IČO</div>
+       			<div class="item">DIČ</div>
+       			<div class="item">IČ DPH</div>
+
+			</div>
+
+			<div class="inputs">
+				<div class="ui large input">
+		            <input type="text" name="invoice_address_company" value="@if(Auth::user()->invoiceAddress && isset(json_decode(Auth::user()->invoiceAddress->address)->company)){{json_decode(Auth::user()->invoiceAddress->address)->company}}@endif" />
+		      	</div><br/>
+		      	<div class="ui large input">
+		            <input type="text" name="invoice_address_ico" value="@if(Auth::user()->invoiceAddress && isset(json_decode(Auth::user()->invoiceAddress->address)->ico)){{json_decode(Auth::user()->invoiceAddress->address)->ico}}@endif" />
+		      	</div><br/>
+		      	<div class="ui large input">
+		            <input type="text"  name="invoice_address_dic" value="@if(Auth::user()->invoiceAddress && isset(json_decode(Auth::user()->invoiceAddress->address)->dic)){{json_decode(Auth::user()->invoiceAddress->address)->dic}}@endif" />
+		      	</div><br/>
+		      	<div class="ui large input">
+		            <input type="text"  name="invoice_address_icdph" value="@if(Auth::user()->invoiceAddress && isset(json_decode(Auth::user()->invoiceAddress->address)->icdph)){{json_decode(Auth::user()->invoiceAddress->address)->icdph}}@endif" />
+		      	</div><br/>
+
+       		 </div>
+
+		</div>
 
 	<div class="ui header">Fakturačná adresa</div>
 
