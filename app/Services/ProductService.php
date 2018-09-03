@@ -418,10 +418,12 @@ class ProductService implements ProductServiceContract {
                   if(!in_array($temp->value, $filterValues[$temp->parameter_id]))
                     {
                         array_push($filterValues[$temp->parameter_id], $temp->value);
-                    }
-            }
 
-            asort($filterValues);
+                    }
+
+                    asort($filterValues[$temp->parameter_id]);
+
+            }
 
         }
 
