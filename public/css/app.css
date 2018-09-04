@@ -724,6 +724,10 @@ a:hover {
   padding: 50px;
   margin-top: 50px;
   width: 1000px;
+  font-weight: 300;
+}
+#terms_div .richtext a {
+  text-decoration: underline !important;
 }
 #gdpr_div {
   text-align: center;
