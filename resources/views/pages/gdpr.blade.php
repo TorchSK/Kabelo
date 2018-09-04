@@ -9,7 +9,11 @@
 
 @if(Auth::check() && Auth::user()->admin)
 <div>
-<div class="ui green button" data-key="gdpr" id="text_save_btn">Ulož</div>
+@if($editmode==1)
+<div class="ui green button" data-key="terms" id="text_save_btn">Ulož</div>
+@else
+<a class="ui teal button" href="{{url()->current()}}/edit" id="text_save_btn">Edituj</a>
+@endif
 </div>
 @endif
 

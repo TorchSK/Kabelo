@@ -75,9 +75,20 @@ class UtilController extends Controller
         return view('pages/terms',$data);
     }
 
-    public function gdprPage()
+    public function gdprPage(Request $request)
     {       
-        return view('pages/gdpr');
+        $data['bodyid'] = 'body_gdpr';
+
+        if ($request->segment(2)=='edit')
+        {
+            $data['editmode'] =1;
+        }
+        else
+        {
+            $data['editmode'] = 0;
+        }
+
+        return view('pages/gdpr', $data);
     }
 
     public function setCookie(Request $request)
