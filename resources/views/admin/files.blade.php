@@ -7,8 +7,10 @@
 
 		<div id="files_list">
 			@foreach($files as $file)
-				<i class="huge file outline icon"></i>
-				{{$file->path}}
+				<div>
+					<i class="huge file outline icon"></i>
+					<div class="ui action input"><input value="{{$file->path}}" />  <button class="ui icon teal button" data-tooltip="Kopíruj cestu"><i class="copy icon copy_to_clipboard_btn"></i></button></div>
+				</div>
 			@endforeach
 		</div>
 	

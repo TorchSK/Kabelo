@@ -2924,4 +2924,19 @@ $('#text_save_btn').click(function(){
 			}
 		})	
 })
+
+$('.copy_to_clipboard_btn').click(function(){
+
+	var copyText = $(this).closest('.input').find('input');
+
+	/* Select the text field */
+	copyText.select();
+
+	/* Copy the text inside the text field */
+	document.execCommand("copy");
+
+	$(this).closest('.button').toggleClass('teal green');
+	$(this).toggleClass('copy checkmark');
+})
+
 });

@@ -3406,6 +3406,9 @@ a:hover {
 #files_list {
   padding: 50px 0;
 }
+#files_list .input input {
+  width: 500px;
+}
 .lander {
   height: 65vh;
   display: -webkit-box;
