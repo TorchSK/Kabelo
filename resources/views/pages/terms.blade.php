@@ -13,6 +13,9 @@
 </div>
 @endif
 
+{!!App\Text::firstOrCreate(['key'=>'terms'])->first()->text!!}
+
+
 <div class="richtext @if(Auth::check() && Auth::user()->admin) editable @endif">
 {!!App\Text::firstOrCreate(['key'=>'terms'])->first()->text!!}
 </div>
