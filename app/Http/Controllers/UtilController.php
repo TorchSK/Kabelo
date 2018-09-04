@@ -46,7 +46,7 @@ class UtilController extends Controller
         return view('pages/connectorsguide');
     }
 
-    public function contactPage()
+    public function contactPage(Request $request)
     {       
         $data['bodyid'] = 'body_contact';
 
