@@ -15,7 +15,7 @@
 		
 		<div class="cart_slider" >
 			@if (Auth::check())
-			<div class="cart_length_slider" data-productid="{{$product->id}}" data-qty="{{$product->pivot->qty}}" data-min="{{$product->priceLevels->min('threshold')}}" data-thresholds="{{$product->priceLevels->pluck('threshold')}}" data-prices="@if(Auth::user()->voc)@if($product->sale){{$product->priceLevels->pluck('voc_sale')}}@else{{$product->priceLevels->pluck('voc_regular')}}@endif @else @if($product->sale) {{$product->priceLevels->pluck('moc_sale')}} @else {{$product->priceLevels->pluck('moc_regular') }} @endif @endif"></div>
+			<div class="cart_length_slider" data-productid="{{$product->id}}" data-step="{{$product->step}}" data-qty="{{$product->pivot->qty}}" data-min="{{$product->priceLevels->min('threshold')}}" data-thresholds="{{$product->priceLevels->pluck('threshold')}}" data-prices="@if(Auth::user()->voc)@if($product->sale){{$product->priceLevels->pluck('voc_sale')}}@else{{$product->priceLevels->pluck('voc_regular')}}@endif @else @if($product->sale) {{$product->priceLevels->pluck('moc_sale')}} @else {{$product->priceLevels->pluck('moc_regular') }} @endif @endif"></div>
 			@else
 			<div class="cart_length_slider" data-productid="{{$product->id}}" data-qty="{{$cart['counts'][$product->id]}}" data-min="{{$product->priceLevels->min('threshold')}}" data-thresholds="{{$product->priceLevels->pluck('threshold')}}" data-prices=" @if($product->sale){{$product->priceLevels->pluck('moc_sale')}}@else{{$product->priceLevels->pluck('moc_regular')}}@endif "></div>
 			@endif

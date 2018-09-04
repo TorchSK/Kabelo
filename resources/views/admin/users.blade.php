@@ -16,11 +16,12 @@
 	   	<th>Faktura</th>
 	   	<th>Datum registrácie</th>
 	   	<th>Počet objednávok</th>
+	   	<th></th>
 
 	  </tr></thead>
 	  <tbody>
 	  	@foreach(App\User::orderBy('created_at','desc')->get() as $user)
-		<tr>
+		<tr data-user_id="{{$user->id}}">
 		  <td class="collapsing">
 	      	<a href="{{route('admin.userDetail',['user'=>$user->id])}}" class="ui mini icon blue button"><i class="search large icon"></i></a>
 	      </td>
@@ -49,7 +50,9 @@
 	      <td>{{Carbon\Carbon::parse($user->created_at)->format('d.m.Y H:i:s')}}</td>
 	      <td>{{$user->orders->count()}}</td>
 
-
+	      <td class="collapsing">
+	      	<div class="ui icon red button delete_user_btn"><i class="delete icon"></i></div>
+	      </td>
 
 	  	</tr>
 

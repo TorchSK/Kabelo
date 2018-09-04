@@ -60,7 +60,24 @@
   </div>
 </div>
 
-
+<div class="ui mini modal" id="delete_user_modal">
+          
+  <div class="header">
+    Uživalte
+  </div>
+  <div class="content">
+     Naozaj chcete vymazať uživateľa?
+  </div>
+  <div class="actions">
+    <div class="ui red deny button">
+      Níe
+    </div>
+    <div class="ui positive right labeled icon button">
+      Áno
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
 
 <div class="ui mini modal" id="delete_order_modal">
           

@@ -228,6 +228,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        
         if (isset($user->cart))
         {
             $user->cart->delete();

@@ -2201,6 +2201,7 @@ function initCartProductSlider(){
      $ii = i;
 
      $qty = $(sliders[i]).data('qty');
+     $step = $(sliders[i]).data('step');
      $thresholds = $(sliders[i]).data('thresholds');
    
 
@@ -2210,12 +2211,13 @@ function initCartProductSlider(){
 
      noUiSlider.create(sliders[i], {
           start: $qty,
+          step: $step,
           connect: "lower",
           orientation: "horizontal",
           tooltips: true,
           range: {
-              'min': 1,
-              'max': 200
+              'min': 0,
+              'max': 500
           },
         
           format: wNumb({
@@ -2692,6 +2694,24 @@ $('.delete_order_btn').click(function(){
 		$.ajax({
 			type: "DELETE",
 			url: "/order/"+$orderid,
+			success: function(){
+				location.reload();
+			}
+		})
+	}
+	}).modal('show');
+  
+  })
+
+$('.delete_user_btn').click(function(){
+	$userid = $(this).closest('tr').data('user_id');
+
+	$('#delete_user_modal').modal('setting', {
+
+    onApprove : function() {
+		$.ajax({
+			type: "DELETE",
+			url: "/user/"+$userid,
 			success: function(){
 				location.reload();
 			}
