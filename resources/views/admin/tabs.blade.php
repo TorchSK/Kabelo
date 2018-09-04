@@ -30,6 +30,12 @@
 	<div class="text">Nastavenia</div>
 </a>
 
+<a href="{{route('admin.files')}}" class="tab">
+	<i class="big file outline icon"></i>
+	<div class="text">Súbory</div>
+</a>
+
+
 <a href="{{route('admin.layout')}}" class="tab">
 	<i class="big tv icon"></i>
 	<div class="text">Layout</div>

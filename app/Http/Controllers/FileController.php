@@ -8,6 +8,7 @@ use App\File as ProductFile;
 use App\Product;
 
 use File;
+use App\File as FileDB;
 
 class FileController extends Controller
 {
@@ -44,6 +45,27 @@ class FileController extends Controller
         $file->save();
 
         return $file;
+    }
+
+    public function store(Request $request)
+    {
+        $file = $request->file('file');
+        $destinationPath = 'uploads/files';
+        $extension = $file->getClientOriginalExtension(); 
+        $filename = $file->getClientOriginalName().'.'.$extension;
+        $fullpath = $destinationPath.'/'.$filename;
+
+        $success = $file->move($destinationPath, $filename);
+
+        if ($success)
+        {
+            $fileDB = new FileDB();
+            $fileDB->type = "system";
+            $fileDB->path = $fullpath;
+
+            $fileDB->save();
+        }
+        return 1;
     }
 
     public function destroy($id)

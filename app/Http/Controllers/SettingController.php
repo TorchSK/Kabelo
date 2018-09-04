@@ -34,6 +34,7 @@ class SettingController extends Controller
 		foreach($request->except('_token') as $key => $item)
 		{
 			$setting = Setting::where('name', $key)->first();
+			
 			if($setting)
 			{
 				$this->update($setting->id, $item);		

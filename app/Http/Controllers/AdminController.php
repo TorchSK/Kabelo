@@ -13,6 +13,8 @@ use App\Color;
 use App\Parameter;
 use App\File as ProductFile;
 use App\PriceLevel;
+use App\File;
+
 
 use Auth;
 use Excel;
@@ -233,6 +235,14 @@ class AdminController extends Controller
         return view('admin.users', $data);
     }
 
+    public function files()
+    {
+        $data = [
+            'files' => File::where('type','system')->get()
+        ];
+
+        return view('admin.files', $data);
+    }
 
     public function categoryProducts($category, Request $request)
     {

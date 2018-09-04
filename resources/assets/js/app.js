@@ -1288,6 +1288,15 @@ $('#product_detail_dropzone').dropzone({
     }
 });
 
+$('#file_dropzone').dropzone({
+    params: {
+      '_token': $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function(file, response){
+        location.reload();
+    }
+});
+
 $('#import_dropzone').dropzone({
     success: function(param, data){
       $table = $('#admin_import_results').find('table');
@@ -2911,7 +2920,7 @@ $('#text_save_btn').click(function(){
 			url: "/text",
 			data:{key: $key, text: $text},
 			success: function(data){
-				location.reload();
+				location.replace('/obchodne-podmienky');
 			}
 		})	
 })

@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/users/', 'AdminController@manageUsers')->name('admin.users');
 	Route::get('/import/', 'AdminController@import')->name('admin.import');
 	Route::post('/import/', 'AdminController@postImport')->name('admin.postImport');
+	Route::get('/files/', 'AdminController@files')->name('admin.files');
 
 	Route::get('/params', 'AdminController@manageParams')->name('admin.params');
 	Route::get('/params/category/{categoryid}', 'AdminController@manageCategoryParams')->name('admin.categoryParams');
@@ -180,6 +181,7 @@ Route::get('connectors/guide', 'UtilController@connectorsGuide');
 
 Route::get('kontakt', 'UtilController@contactPage');
 Route::get('obchodne-podmienky', 'UtilController@termsPage');
+Route::get('obchodne-podmienky/edit', 'UtilController@termsPage');
 Route::get('gdpr', 'UtilController@gdprPage');
 
 Route::get('cookies/info', 'UtilController@cookiesInfo');

@@ -13,7 +13,7 @@
 </div>
 @endif
 
-<div class="richtext @if(Auth::check() && Auth::user()->admin) editable @endif">
+<div class="richtext @if(Auth::check() && Auth::user()->admin && $editmode==1) editable @endif">
 {!!App\Text::firstOrCreate(['key'=>'gdpr'])->text!!}
 </div>
 </div>

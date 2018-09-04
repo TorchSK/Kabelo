@@ -50,12 +50,29 @@ class UtilController extends Controller
     {       
         $data['bodyid'] = 'body_contact';
 
+        if ($request->segment(2)=='edit')
+        {
+            $data['editmode'] =1;
+        }
+        else
+        {
+            $data['editmode'] = 0;
+        }
+
         return view('pages/contact', $data);
     }
 
-    public function termsPage()
+    public function termsPage(Request $request)
     {       
-        return view('pages/terms');
+        if ($request->segment(2)=='edit')
+        {
+            $data['editmode'] = 1;
+        }
+        else
+        {
+            $data['editmode'] = 0;
+        }
+        return view('pages/terms',$data);
     }
 
     public function gdprPage()
