@@ -120,6 +120,18 @@
 
   </div>
 
+
+    <div class="ui grid two column">
+
+    <div class="column">
+        <div class="ui fluid labeled input">
+          <div class="ui label">Balenie po (m)</div>
+          <input type="text" name="step" placeholder="" value="{{$product->step}}">
+       </div>
+    </div>
+   </div>
+
+
     <div id="product_price_levels_list">
       @foreach($product->priceLevels as $priceLevel)
        @include('products.pricelevel')

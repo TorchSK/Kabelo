@@ -173,7 +173,7 @@
   </div>
 
 
-      <div id="product_buy_qty_m_slider" data-min="{{$product->priceLevels->min('threshold')}}" data-max="200"></div>
+      <div id="product_buy_qty_m_slider" data-min="{{$product->priceLevels->min('threshold')}}" data-max="500" data-step="{{$product->step}}"></div>
       <div id="product_buy_qty_value">Kupujete: <qty>{{$product->priceLevels->min('threshold')}}</qty> {{$product->price_unit}} za 
         <price>
           @if(Auth::check() && Auth::user()->voc)

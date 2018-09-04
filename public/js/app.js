@@ -2276,6 +2276,8 @@ function initProductQtySlider(){
   var slider = document.getElementById('product_buy_qty_m_slider');
     if ($(slider).length)
     {
+   	$step = $(slider).data('step');
+
     $min = $(slider).data('min');
     $max = $(slider).data('max');
     $thresholds = [];
@@ -2288,7 +2290,7 @@ function initProductQtySlider(){
 
      noUiSlider.create(slider, {
           start: $min,
-          step: 1,
+          step: $step,
           orientation: "horizontal",
           connect: [true, false],
           range: {
