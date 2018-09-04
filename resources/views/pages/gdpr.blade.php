@@ -14,7 +14,7 @@
 @endif
 
 <div class="richtext @if(Auth::check() && Auth::user()->admin) editable @endif">
-{!!App\Text::firstOrCreate(['key'=>'gdpr'])->first()->text!!}
+{!!App\Text::firstOrCreate(['key'=>'gdpr'])->text!!}
 </div>
 </div>
 </div>
