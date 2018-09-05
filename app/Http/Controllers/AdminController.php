@@ -68,7 +68,7 @@ class AdminController extends Controller
         }
 
     }
-    public function xmlImport()
+    public function xmlIamport()
     {
         
         $contents = Storage::get('dedra.xml');
