@@ -278,7 +278,7 @@ var sticky = $('#cat_div .sticky_div').offset();
 var div = $('#cat_div .sticky_div');
 
 console.log(sticky);
-console.log($('#cat_div .sticky_div'));
+console.log($('#cat_div .sticky_div')[0]);
 
 function myFunction() {
 
