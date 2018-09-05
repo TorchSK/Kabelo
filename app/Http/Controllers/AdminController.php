@@ -77,21 +77,13 @@ class AdminController extends Controller
         $items = $xml->parse([
             'products' => ['uses' => 'product[product_id,picture1,picture2,picture3,picture4,picture5,picture6]'],
         ]);
-    
-    $input = $items['products'];
 
-    $len = count($input);
-
-    $firsthalf = array_slice($input, $len / 5, $len / 4);
-    $secondhalf = array_slice($input, $len / 2);
-
-
-        foreach($firsthalf as $key => $item)
+        foreach($items['products'] as $key => $item)
         {   
 
-            $product = Product::where('code',$item['product_id'])->first(); 
+            $product = Product::where('code',$item['product_id'])->where('temp',0)->first(); 
 
-            if($item['picture2'] != '')
+            if($product && $item['picture2'] != '')
             {
                 if(ProductFile::where('path', $item['picture2'])->count() == 0)
                 {
@@ -104,7 +96,7 @@ class AdminController extends Controller
                 }
             }
 
-            if($item['picture3'] != '')
+            if($product && $item['picture3'] != '')
             {
                 if(ProductFile::where('path', $item['picture3'])->count() == 0)
                 {
@@ -117,7 +109,7 @@ class AdminController extends Controller
                 }
             }
 
-            if($item['picture4'] != '')
+            if($product && $item['picture4'] != '')
             {
                 if(ProductFile::where('path', $item['picture4'])->count() == 0)
                 {
@@ -130,7 +122,7 @@ class AdminController extends Controller
                 }
             }
 
-            if($item['picture5'] != '')
+            if($product && $item['picture5'] != '')
             {
 
                 if(ProductFile::where('path', $item['picture5'])->count() == 0)
@@ -144,7 +136,7 @@ class AdminController extends Controller
                 }
             }
 
-            if($item['picture6'] != '')
+            if($product &&  $item['picture6'] != '')
             {
                 $image = new ProductFile();
                 $image->product_id = $product->id;
@@ -157,6 +149,10 @@ class AdminController extends Controller
                     $image->save();
                 }
             }
+
+            $product->temp = 1;
+            $product->save();
+
         }
     }
 
