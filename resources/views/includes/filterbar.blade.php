@@ -32,7 +32,8 @@
         </div>
         @endif
         
-        <div class="sticky_div">
+
+        <div @if($appname=='Dedra') class="sticky_div" @endif>
 
         <div id="cat_div">
 
