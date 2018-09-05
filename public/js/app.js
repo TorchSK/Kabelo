@@ -2947,7 +2947,7 @@ var sticky;
 var div;
 
 $(window).on('load', function(){
-	sticky = $('.sticky_div').offset().top;
+	sticky = $('.sticky_div').offset().top - 20;
 	window.onscroll = function() {myFunction()};
 
 function myFunction() {
