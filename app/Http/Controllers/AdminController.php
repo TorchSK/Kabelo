@@ -69,11 +69,21 @@ class AdminController extends Controller
 
     }
 
-    public function changeImagePath()
+    public function changeDesc()
     {
-        foreach(ProductFile::all() as $product)
+        $contents = Storage::get('dedra.xml');
+        $xml = XmlParser::extract($contents);
+
+        $items = $xml->parse([
+            'products' => ['uses' => 'product[product_id,detail]'],
+        ]);
+
+        foreach($items['products'] as $key => $item)
         {
-            
+            $product = Product::where('code',$item['product_id'])->first(); 
+            $product->desc = substr($item['detail'], 0 200);
+            $product->desc = $item['detail'];
+            $product->save();
         }
 
     }

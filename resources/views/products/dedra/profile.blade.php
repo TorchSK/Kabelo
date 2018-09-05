@@ -108,7 +108,11 @@
 
 		<div class="ui divider"></div>
     <div id="desc">
-    {{$product->desc}}
+      @if (strlen($product->desc)>800)
+        {!!substr($product->desc, 0, 800)!!} ... <a href="#product_detail_wrapper" class="load_more"><b>Viac info</b></a>
+        @else
+        {{$product->desc}}
+        @endif
     </div>
 
     <div class="ui divider"></div>
@@ -187,6 +191,16 @@
 
 
 <div id="product_tabs">
+
+
+<div class="pad wrapper ct" id="product_detail_wrapper">
+
+  <div class="container">
+    <div class="ui header">Detailný popis</div>
+     <p>{{trim($product->desc)}}</p>
+   
+  </div>
+</div>
 
 
 <div class="pad wrapper ct" id="product_detail_suggested_wrapper">

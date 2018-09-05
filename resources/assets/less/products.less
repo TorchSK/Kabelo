@@ -204,7 +204,7 @@
 	#price{
 		color: @orange;
 		font-weight: 900;
-		font-size: 2em;
+		font-size: 1.8em;
 		display: inline-block;
 		position: relative;
 		margin-right: 15px;
@@ -220,7 +220,13 @@
 		font-size: 1.4em;
 		line-height: 2em;
 		width: 90%;
-		font-weight: 300;
+	    font-weight: 300;
+
+	    a{
+	    	top: -2px;
+	    	font-weight: 400;
+	    	position: relative;
+	    }
 
 		@media @break3{
 			padding: 30px 0;
@@ -316,6 +322,19 @@
 		.ui.header{
 			text-align: left;
 			margin-bottom: 50px;
+		}
+	}
+
+	#product_detail_wrapper{
+
+		.ui.header{
+			margin-bottom: 35px;
+		}
+
+		p{
+			font-size: 1.2em;
+			font-weight: 300;
+			line-height: 2.5em;
 		}
 	}
 
