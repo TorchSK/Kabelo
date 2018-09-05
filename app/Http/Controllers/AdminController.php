@@ -69,6 +69,16 @@ class AdminController extends Controller
 
     }
 
+    public function changeImagePath()
+    {
+        foreach(ProductFile::all() as $product)
+        {
+            
+        }
+
+    }
+
+
     public function addMoreImages()
     {
         $contents = Storage::get('dedra.xml');
