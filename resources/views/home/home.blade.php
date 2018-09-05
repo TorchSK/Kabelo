@@ -33,7 +33,7 @@
         @include('includes/filterbar', ['sticky'=> true])
         @endif
 
-        <div id="grid">
+        <div id="grid" class="main">
 
             @if (Request::has('category'))
 

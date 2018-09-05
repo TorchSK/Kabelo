@@ -116,7 +116,7 @@ console.log(path);
 
 if (path[3] != '' && path[3]!='admin' && $( window ).width() > 680)
 {
-  scrollTo('#grid');
+  scrollTo('#grid.main');
 }
 
 // scrolTo smooth 
