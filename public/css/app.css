@@ -3864,6 +3864,7 @@ h1.header {
 }
 #filterbar .ui.accordion {
   padding-bottom: 50px;
+  width: 330px;
 }
 #filterbar .ui.divider.horizontal {
   width: 330px;
