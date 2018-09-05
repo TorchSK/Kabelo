@@ -189,15 +189,14 @@
 <div id="product_tabs">
 
 
-@if($product->relatedProducts->count() > 0)
 <div class="pad wrapper ct" id="product_detail_suggested_wrapper">
 
   <div class="container">
-    <div class="ui header">Doporučené výrobky</div>
+    <div class="ui header">Ďalšie súvisiace produkty</div>
 
       <div id="grid">
 
-      @foreach($product->relatedProducts as $relprod)
+      @foreach(App\Product::inRandomOrder()->whereHas('categories', function ($query) use ($product) {$query->whereIn('id', $product->categories->pluck('id'));})->where('id','!=',$product->id)->take(14)->get() as $relprod)
         @include('products.row',['product'=>$relprod])
       @endforeach
 
@@ -205,7 +204,6 @@
 </div>
 </div>
 
-@endif
 
 </div>
 </div>
