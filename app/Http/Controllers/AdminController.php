@@ -78,63 +78,68 @@ class AdminController extends Controller
             'products' => ['uses' => 'product[product_id,picture1,picture2,picture3,picture4,picture5,picture6]'],
         ]);
     
-        foreach($items['products'] as $key => $item)
+    $input = $items['products']
+
+    $len = count($input);
+
+    $firsthalf = array_slice($input, 0, $len / 2);
+    $secondhalf = array_slice($input, $len / 2);
+
+
+        foreach($firsthalf as $key => $item)
         {   
 
             $product = Product::where('code',$item['product_id'])->first(); 
 
             if($item['picture2'] != '')
             {
-                $image = new ProductFile();
-                $image->product_id = $product->id;
-                $image->path = $item['picture2']; 
-                $image->type = 'image';
-                $image->primary = 0;
-
                 if(ProductFile::where('path', $item['picture2'])->count() == 0)
                 {
+                    $image = new ProductFile();
+                    $image->product_id = $product->id;
+                    $image->path = $item['picture2']; 
+                    $image->type = 'image';
+                    $image->primary = 0;
                     $image->save();
                 }
             }
 
             if($item['picture3'] != '')
             {
-                $image = new ProductFile();
-                $image->product_id = $product->id;
-                $image->path = $item['picture3']; 
-                $image->type = 'image';
-                $image->primary = 0;
-
                 if(ProductFile::where('path', $item['picture3'])->count() == 0)
                 {
+                    $image = new ProductFile();
+                    $image->product_id = $product->id;
+                    $image->path = $item['picture3']; 
+                    $image->type = 'image';
+                    $image->primary = 0;
                     $image->save();
                 }
             }
 
             if($item['picture4'] != '')
             {
-                $image = new ProductFile();
-                $image->product_id = $product->id;
-                $image->path = $item['picture4']; 
-                $image->type = 'image';
-                $image->primary = 0;
-
                 if(ProductFile::where('path', $item['picture4'])->count() == 0)
                 {
+                    $image = new ProductFile();
+                    $image->product_id = $product->id;
+                    $image->path = $item['picture4']; 
+                    $image->type = 'image';
+                    $image->primary = 0;
                     $image->save();
                 }
             }
 
             if($item['picture5'] != '')
             {
-                $image = new ProductFile();
-                $image->product_id = $product->id;
-                $image->path = $item['picture5']; 
-                $image->type = 'image';
-                $image->primary = 0;
 
                 if(ProductFile::where('path', $item['picture5'])->count() == 0)
                 {
+                    $image = new ProductFile();
+                    $image->product_id = $product->id;
+                    $image->path = $item['picture5']; 
+                    $image->type = 'image';
+                    $image->primary = 0;
                     $image->save();
                 }
             }
