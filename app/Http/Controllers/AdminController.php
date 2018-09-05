@@ -68,18 +68,104 @@ class AdminController extends Controller
         }
 
     }
-    public function xmlIamport()
+
+    public function addMoreImages()
     {
-        
+        $contents = Storage::get('dedra.xml');
+        $xml = XmlParser::extract($contents);
+
+        $items = $xml->parse([
+            'products' => ['uses' => 'product[product_id,picture1,picture2,picture3,picture4,picture5,picture6]'],
+        ]);
+    
+        foreach($items['products'] as $key => $item)
+        {   
+
+            $product = Product::where('code',$item['product_id'])->first(); 
+
+            if($item['picture2'] != '')
+            {
+                $image = new ProductFile();
+                $image->product_id = $product->id;
+                $image->path = $item['picture2']; 
+                $image->type = 'image';
+                $image->primary = 0;
+
+                if(ProductFile::where('path', $item['picture2'])->count() == 0)
+                {
+                    $image->save();
+                }
+            }
+
+            if($item['picture3'] != '')
+            {
+                $image = new ProductFile();
+                $image->product_id = $product->id;
+                $image->path = $item['picture3']; 
+                $image->type = 'image';
+                $image->primary = 0;
+
+                if(ProductFile::where('path', $item['picture3'])->count() == 0)
+                {
+                    $image->save();
+                }
+            }
+
+            if($item['picture4'] != '')
+            {
+                $image = new ProductFile();
+                $image->product_id = $product->id;
+                $image->path = $item['picture4']; 
+                $image->type = 'image';
+                $image->primary = 0;
+
+                if(ProductFile::where('path', $item['picture4'])->count() == 0)
+                {
+                    $image->save();
+                }
+            }
+
+            if($item['picture5'] != '')
+            {
+                $image = new ProductFile();
+                $image->product_id = $product->id;
+                $image->path = $item['picture5']; 
+                $image->type = 'image';
+                $image->primary = 0;
+
+                if(ProductFile::where('path', $item['picture5'])->count() == 0)
+                {
+                    $image->save();
+                }
+            }
+
+            if($item['picture6'] != '')
+            {
+                $image = new ProductFile();
+                $image->product_id = $product->id;
+                $image->path = $item['picture6']; 
+                $image->type = 'image';
+                $image->primary = 0;
+
+                if(ProductFile::where('path', $item['picture6'])->count() == 0)
+                {
+                    $image->save();
+                }
+            }
+        }
+    }
+
+
+    public function xmlImport()
+    {
         $contents = Storage::get('dedra.xml');
         $xml = XmlParser::extract($contents);
 
         $items = $xml->parse([
             'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variant_image]'],
         ]);
-    
         $categories = [];
-
+        
         foreach(Category::all() as $temp)
         {
             $temp->delete();
@@ -171,7 +257,6 @@ class AdminController extends Controller
             $product->name = $item['text1'];
             $product->desc = $item['detail'];
             $product->code = $item['product_id'];
-            $product->price = $item['price_skk'];
             $product->price_unit = 'ks';
             $product->maker = 'Dedra';
             $product->moc_sort_price = $item['price_skk'];
