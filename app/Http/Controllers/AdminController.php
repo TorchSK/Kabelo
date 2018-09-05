@@ -78,7 +78,7 @@ class AdminController extends Controller
             'products' => ['uses' => 'product[product_id,picture1,picture2,picture3,picture4,picture5,picture6]'],
         ]);
     
-    $input = $items['products']
+    $input = $items['products'];
 
     $len = count($input);
 
