@@ -32,12 +32,12 @@
         </div>
         @endif
         
-        
+        <div class="sticky_div">
+
         <div id="cat_div">
 
             <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Kategórie</div>
 
-            <div class="sticky_div">
             <div class="active content">
                 @include('categories.categories')
             </div>
@@ -49,8 +49,7 @@
                 @include('home.makers')
              @endif
         </div>
-                    </div>
-
+        </div>
         @if (Request::segment(1)=='admin')
            <div class="ui horizontal divider">Nezaradane produkty</div>
                 <div class="sidebar_btn">

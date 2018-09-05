@@ -2947,11 +2947,11 @@ var sticky;
 var div;
 
 $(window).on('load', function(){
-	sticky = $('#cat_div .sticky_div').offset().top;
+	sticky = $('.sticky_div').offset().top;
 	window.onscroll = function() {myFunction()};
 
 function myFunction() {
-	div = $('#cat_div .sticky_div');
+	div = $('.sticky_div');
 
 	if (window.pageYOffset >= sticky) {
 	div.addClass("sticky")
