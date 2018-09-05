@@ -52,7 +52,11 @@
           @if ($product->images->count() > 1)
 
           @foreach($product->images as $image)
-           <img src="{{$image->path}}" class="ui image" width="200px" />
+            @if($appname=='Dedra')
+             <img src="{{$image->thumb}}" class="ui image" style="max-height: 100%; max-width: 100%; display: inline-block;"/>
+            @else
+             <img src="{{$image->path}}" class="ui image" width="200px" />
+           @endif
            @endforeach
            @endif
 
