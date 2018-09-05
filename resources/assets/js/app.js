@@ -274,10 +274,11 @@ $('#edit_category_submit').click(function(){
 
 window.onscroll = function() {myFunction()};
 
-var sticky = $('#cat_div .sticky_div').position().top - 15;
+var sticky = $('#cat_div .sticky_div').offset();
 var div = $('#cat_div .sticky_div');
 
 console.log(sticky);
+console.log($('#cat_div .sticky_div'));
 
 function myFunction() {
 
