@@ -33,7 +33,7 @@
         @endif
         
 
-        <div @if($appname=='Dedra') class="sticky_div" @endif>
+        <div @if($appname=='Dedra' && (isset($sticky) && $sticky)) class="sticky_div" @endif>
 
         <div id="cat_div">
 

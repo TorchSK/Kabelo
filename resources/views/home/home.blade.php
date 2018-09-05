@@ -30,7 +30,7 @@
         </div>
 
         @if($layout == 1)
-        @include('includes/filterbar')
+        @include('includes/filterbar', ['sticky'=> true])
         @endif
 
         <div id="grid">
