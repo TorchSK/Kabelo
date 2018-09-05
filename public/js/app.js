@@ -276,6 +276,9 @@ window.onscroll = function() {myFunction()};
 
 var sticky = $('#cat_div .sticky_div').offset().top - 15;
 var div = $('#cat_div .sticky_div');
+
+console.log(sticky);
+
 function myFunction() {
 
 	if (window.pageYOffset >= sticky) {
