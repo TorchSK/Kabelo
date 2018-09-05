@@ -149,9 +149,10 @@ class AdminController extends Controller
                     $image->save();
                 }
             }
-
-            $product->temp = 1;
-            $product->save();
+            if($product){
+                $product->temp = 1;
+                $product->save();
+            }
 
         }
     }
