@@ -273,7 +273,7 @@ $('#edit_category_submit').click(function(){
 });
 
 $('.other_img img').click(function(){
-  $('#product_detail .img img').attr('src', $(this).attr('src'));
+  $('#product_detail .img img').attr('src', $(this).data('full'));
 })
 
 

@@ -53,7 +53,7 @@
 
           @foreach($product->images as $image)
             @if($appname=='Dedra')
-             <img src="{{$image->thumb}}" class="ui image" style="max-height: 100px; max-width: 100px; display: inline-block;"/>
+             <img src="{{$image->thumb}}" class="ui image" data-full="{{$image->path}}" style="max-height: 130px; max-width: 130px; display: inline-block;"/>
             @else
              <img src="{{$image->path}}" class="ui image" width="200px" />
            @endif
