@@ -41,7 +41,6 @@
             <div class="active content">
                 @include('categories.categories')
             </div>
-            </div>
 
         </div>
 
@@ -50,7 +49,8 @@
                 @include('home.makers')
              @endif
         </div>
-        
+                    </div>
+
         @if (Request::segment(1)=='admin')
            <div class="ui horizontal divider">Nezaradane produkty</div>
                 <div class="sidebar_btn">
