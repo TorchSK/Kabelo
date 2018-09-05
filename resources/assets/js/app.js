@@ -275,8 +275,18 @@ $('#edit_category_submit').click(function(){
 
 
 $('.other_img img').click(function(){
-  $('#product_detail .img img').attr('src', $(this).data('full'));
-})
+  $('#product_detail .img img').attr('src', '/img/loader.gif');
+
+  var img = new Image() 
+  var src = $(this).data('full');
+  img.src = src;
+
+  img.onload = function() {
+  	$('#product_detail .img img').attr('src', src);
+  };
+
+
+});
 
 
 
@@ -2947,8 +2957,10 @@ var sticky;
 var div;
 
 $(window).on('load', function(){
+	if($('.sticky_div').length){
 	sticky = $('.sticky_div').offset().top - 20;
 	window.onscroll = function() {myFunction()};
+	}
 
 function myFunction() {
 	div = $('.sticky_div');
