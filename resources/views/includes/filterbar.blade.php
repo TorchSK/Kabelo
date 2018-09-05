@@ -33,12 +33,14 @@
         @endif
         
         
-        <div id="cat_div" class="">
+        <div id="cat_div">
 
             <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Kategórie</div>
 
+            <div class="sticky_div">
             <div class="active content">
                 @include('categories.categories')
+            </div>
             </div>
 
         </div>

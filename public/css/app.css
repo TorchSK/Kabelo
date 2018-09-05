@@ -227,6 +227,12 @@ body[data-layout="2"] #grid .item.grid {
   margin-bottom: 15px;
   margin-right: 15px;
 }
+body .sticky {
+  position: fixed;
+  top: 0;
+  width: 330px;
+  padding-top: 15px;
+}
 body .pusher {
   height: 100%;
   display: -webkit-box;

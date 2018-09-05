@@ -272,6 +272,20 @@ $('#edit_category_submit').click(function(){
     })
 });
 
+window.onscroll = function() {myFunction()};
+
+var sticky = $('#cat_div .sticky_div').offset().top - 15;
+var div = $('#cat_div .sticky_div');
+function myFunction() {
+
+	if (window.pageYOffset >= sticky) {
+	div.addClass("sticky")
+	} else {
+	div.removeClass("sticky");
+	}
+
+}
+
 $('.other_img img').click(function(){
   $('#product_detail .img img').attr('src', $(this).data('full'));
 })
