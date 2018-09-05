@@ -2943,10 +2943,25 @@ $('.copy_to_clipboard_btn').click(function(){
 
 });
 
+var sticky;
+var div;
 
-$(window).on('load', function(){ 
-	var sticky = document.getElementById('cat_div').offsetTop;
+$(window).on('load', function(){
+	sticky = $('#cat_div .sticky_div').offset().top;
+	window.onscroll = function() {myFunction()};
 
-	console.log(sticky);
+function myFunction() {
+	div = $('#cat_div .sticky_div');
+
+	if (window.pageYOffset >= sticky) {
+	div.addClass("sticky")
+	} else {
+	div.removeClass("sticky");
+	}
+
+}
 });
+
+
+
 
