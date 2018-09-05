@@ -156,7 +156,7 @@ class AdminController extends Controller
     }
 
 
-    public function xmlImport()
+    public function xmlImpaort()
     {
         $contents = Storage::get('dedra.xml');
         $xml = XmlParser::extract($contents);
@@ -165,7 +165,7 @@ class AdminController extends Controller
             'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variant_image]'],
         ]);
         $categories = [];
-        
+
         foreach(Category::all() as $temp)
         {
             $temp->delete();
