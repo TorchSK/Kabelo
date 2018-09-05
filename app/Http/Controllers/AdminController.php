@@ -78,7 +78,7 @@ class AdminController extends Controller
             'products' => ['uses' => 'product[product_id,picture1,picture2,picture3,picture4,picture5,picture6]'],
         ]);
 
-        foreach($items['products'] as $key => $item)
+        foreach(array_reverse($items['products']) as $key => $item)
         {   
 
             $product = Product::where('code',$item['product_id'])->where('temp',0)->first(); 
