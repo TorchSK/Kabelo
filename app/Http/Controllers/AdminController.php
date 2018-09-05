@@ -82,7 +82,7 @@ class AdminController extends Controller
 
     $len = count($input);
 
-    $firsthalf = array_slice($input, 0, $len / 2);
+    $firsthalf = array_slice($input, 0, $len / 3);
     $secondhalf = array_slice($input, $len / 2);
 
 
