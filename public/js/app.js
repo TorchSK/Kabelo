@@ -272,9 +272,6 @@ $('#edit_category_submit').click(function(){
     })
 });
 
-var sticky = document.getElementById('cat_div').offsetTop;
-
-console.log(sticky);
 
 
 $('.other_img img').click(function(){
@@ -2945,3 +2942,11 @@ $('.copy_to_clipboard_btn').click(function(){
 })
 
 });
+
+
+$(window).on('load', function(){ 
+	var sticky = document.getElementById('cat_div').offsetTop;
+
+	console.log(sticky);
+});
+
