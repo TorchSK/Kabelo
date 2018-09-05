@@ -275,19 +275,9 @@ $('#edit_category_submit').click(function(){
 window.onscroll = function() {myFunction()};
 
 var sticky = document.getElementById('cat_div').offsetTop;
-var div = $('#cat_div .sticky_div');
 
 console.log(sticky);
 
-function myFunction() {
-
-	if (window.pageYOffset >= sticky) {
-	div.addClass("sticky")
-	} else {
-	div.removeClass("sticky");
-	}
-
-}
 
 $('.other_img img').click(function(){
   $('#product_detail .img img').attr('src', $(this).data('full'));
