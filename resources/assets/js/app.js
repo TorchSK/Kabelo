@@ -272,8 +272,6 @@ $('#edit_category_submit').click(function(){
     })
 });
 
-window.onscroll = function() {myFunction()};
-
 var sticky = document.getElementById('cat_div').offsetTop;
 
 console.log(sticky);
