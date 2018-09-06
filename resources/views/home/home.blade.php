@@ -81,8 +81,9 @@
             
         
 
-
+            @if($appname=='Kabelo')
             <div id="price_slider"></div>
+            @endif
 
             @endif
 
