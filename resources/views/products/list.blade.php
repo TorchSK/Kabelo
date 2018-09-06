@@ -4,7 +4,7 @@
 
 @if(Request::get('category') || Route::currentRouteName()=='maker.products')
 
-<div class="ct @if($appname=="Dedra") hidden @endif" id="pag" style="position: absolute;">
+<div class="ct @if($appname=="Dedra") hiden @endif" id="pag" style="position: absolute;">
 	<div></div>
 	
 	<!--
