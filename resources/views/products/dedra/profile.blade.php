@@ -76,7 +76,7 @@
 
     <div class="right">
     	
-    	<div id="name">{{$product->name}}</div>
+    	<div id="name" style="font-weight: 600; font-size: 30px;">{{$product->name}}</div>
 
 		<div id="code">{{$product->code}} </div>
       @if ($product->sale)
