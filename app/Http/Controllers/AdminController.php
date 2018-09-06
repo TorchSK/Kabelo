@@ -69,7 +69,44 @@ class AdminController extends Controller
 
     }
 
+    public function updateXML()
+    {
+        $contents = Storage::get('dedra.xml');
+        $xml = XmlParser::extract($contents);
 
+        $items = $xml->parse([
+            'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variant_image]'],
+        ]);
+
+        foreach($items['products'] as $key => $item)
+        {
+            $count = Product::where('code',$item['product_id'])->count();
+
+            // novy produkt ktory je v XML ale nie je v DB
+            if($count==0)
+            {
+
+            }
+
+        }
+
+    }
+
+    public function addCategoryPath()
+    {
+        foreach(Category::all() as $category)
+        {
+            $path = $category->name;
+
+            foreach($category->ancestors as $child)
+            {
+                $path = $child->name.' / '.$path;
+            }
+
+            $category->path = $path;
+            $category->save();
+        }
+    }
 
 
     public function addMoreImages()
