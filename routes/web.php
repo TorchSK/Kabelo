@@ -19,7 +19,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/xml/import', 'AdminController@xmlImport')->name('admin.xmlImport');
 	Route::get('/translate/', 'AdminController@translate')->name('admin.translate');
 	Route::get('/xml/addMoreImages', 'AdminController@addMoreImages')->name('admin.addMoreImages');
-	Route::get('/xml/update', 'AdminController@updateXML')->name('admin.updateXML');
+	Route::get('/xml/updateXML', 'AdminController@updateXML')->name('admin.updateXML');
 	Route::get('/xml/addCategoryPath', 'AdminController@addCategoryPath')->name('admin.addCategoryPath');
 
 

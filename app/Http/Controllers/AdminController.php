@@ -85,7 +85,13 @@ class AdminController extends Controller
             // novy produkt ktory je v XML ale nie je v DB
             if($count==0)
             {
+                $productCategory = $item['kategorie'];
+                $dbCategoryCount = Category::where('path',$productCategory)->count();
 
+                if($dbCategoryCount==0)
+                {
+                    dd($productCategory);
+                }
             }
 
         }
