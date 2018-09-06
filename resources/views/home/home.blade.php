@@ -96,7 +96,7 @@
            <div id="active_filters"></div>
            
 
-           <grid>
+           <grid @if($appname=="Dedra") class="infinite" @endif>
 
                 @if(Request::get('category') || Route::currentRouteName()=='maker.products')
 
