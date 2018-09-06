@@ -1477,6 +1477,9 @@ a:hover {
   text-align: center;
   white-space: nowrap;
 }
+#header .container {
+  white-space: normal;
+}
 #header .item {
   padding: 27px 18px;
   display: inline-block;
