@@ -118,17 +118,10 @@
     <div class="ui divider"></div>
 
     <div id="prices">
+        <span style="font-size: 1.6em; color: #F2711C; font-weight: 700; margin-right: 10px;">Cena:</span> 
         <div id="price" class="crossed">{{$product->price*1.25}} &euro; </div>
         <div id="final_price">{{$product->price}} &euro;</div>
     </div>
-
-
-      <div id="product_buy_qty_m_slider" data-min="{{$product->priceLevels->min('threshold')}}" data-max="200"></div>
-      <div id="product_buy_qty_value">Kupujete: <qty>{{$product->priceLevels->min('threshold')}}</qty> {{$product->price_unit}} za 
-        <price>
-          {{$product->price}}
-        </price> &euro;
-      </div>
 
     <div id="product_detail_tocart_btn" class="ui large brown labeled icon button" data-qty="{{$product->priceLevels->min('threshold')}}"><i class="add to cart icon"></i>Kúpiť</div>
 
