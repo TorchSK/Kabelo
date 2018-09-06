@@ -118,62 +118,9 @@
     <div class="ui divider"></div>
 
     <div id="prices">
-      <div id="price_type_info">
-      @if(Auth::check() && Auth::user()->voc)
-      Všetky ceny sú veľkoobchodné
-      @else
-      Všetky ceny sú maloobchodné
-      @endif
-      </div>
-      <table class="ui unstackable table">
-        <thead>
-          <tr>
-            <th>
-              @if($product->price_unit=='m')
-              Minimálny počet metrov
-              @else
-              Minimálny počet kusov
-              @endif
-              </th>
-            <th>Cena za {{$product->price_unit}}</th>
-  
-          </tr>
-        </thead>
-        <tbody id="product_price_thresholds">
-          @foreach($product->priceLevels as $key=>$priceLevel)
-          <tr @if($key==0) class="positive" @endif>
-            <td class="threshold" data-value="{{$priceLevel->threshold}}">{{$priceLevel->threshold}}</td>
-            <td>
-              @if(Auth::check() && Auth::user()->voc)
-                @if($product->sale)
-                <div id="price" class="crossed">{{$priceLevel->voc_regular}} &euro; </div>
-                <div id="final_price">{{$priceLevel->voc_sale}} &euro; </div>
-                @else
-                <div id="final_price">{{$priceLevel->voc_regular}} &euro;</div>
-                @endif
-              @else
-                @if($product->sale)
-                <div id="price" class="crossed">{{$priceLevel->moc_regular}} &euro; </div>
-                <div id="final_price">{{$priceLevel->moc_sale}} &euro;</div>
-                @else
-                <div id="final_price">{{$priceLevel->moc_regular}} &euro;</div>
-                @endif
-              @endif
-            </td>
-          </tr>
-          @endforeach
-
-        </tbody>
-      </table>
-      </div>
-
-  <div class="stock @if($product->stock >0) instock @else outstock @endif">
-    @if($product->stock > 0)
-    Skladom     {{$product->stock}} {{$product->price_unit}}
-    @else
-    Na objednávku 
-    @endif
-  </div>
+        <div id="price" class="crossed">{{$product->price*1.25}} &euro; </div>
+        <div id="final_price">{{$product->price}} &euro;</div>
+    </div>
 
 
       <div id="product_buy_qty_m_slider" data-min="{{$product->priceLevels->min('threshold')}}" data-max="200"></div>

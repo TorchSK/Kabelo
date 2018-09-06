@@ -33,7 +33,7 @@
 	display: flex; 
 	background-color: #FFF;
 	width: 100%;
-	padding: 100px; 
+	padding: 4% 100px; 
 
 
 	@media @break3{
@@ -216,14 +216,18 @@
 	}
 
 	#desc{
-		padding: 45px 0;
+		margin: 45px 0;
 		font-size: 1.4em;
 		line-height: 2em;
-		width: 90%;
+		text-align: justify;
 	    font-weight: 300;
+		  display: -webkit-box;
+		  -webkit-line-clamp: 3;
+		  -webkit-box-orient: vertical;  
+		  overflow: hidden;
 
 	    a{
-	    	top: -2px;
+	    	top: -2px; 
 	    	font-weight: 400;
 	    	position: relative;
 	    }
