@@ -5,7 +5,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="google-site-verification" content="CY9IwgJZGjaR_icVxrolcCKFZUjWhHfx9QDnJ32_MLE" />
 
-    <title>Kabelo.sk</title>
+    <title>{{$appname}}.sk</title>
 
     <link rel="icon" type="image/png" href="https://kabelo.sk/img/favico.png" />
 
