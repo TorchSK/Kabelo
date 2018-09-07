@@ -208,7 +208,7 @@ class AdminController extends Controller
                 $image->primary = 1;
                 $image->save();
 
-                $a = $product->categories()->attach($categoryID);
+                $product->categories()->attach($categoryID);
 
                 $pricelevel = new PriceLevel();
                 $pricelevel->threshold = 1;
@@ -218,8 +218,6 @@ class AdminController extends Controller
                 $pricelevel->voc_sale = $item['price_skk'];
 
                 $product->priceLevels()->save($pricelevel);
-
-                dd($a);
 
             }
 
