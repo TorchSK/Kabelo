@@ -40,7 +40,7 @@
 
 
 
-        <div class="img ct" style="height: 50vh;">
+        <div class="img ct" style="height: 40vh;">
            @if ($product->images->count() == 0)
            <img src="/img/empty.jpg" class="ui image" />
            @elseif ($product->image)
@@ -79,12 +79,9 @@
     	<div id="name" style="font-weight: 600; font-size: 30px;">{{$product->name}}</div>
 
 		<div id="code">{{$product->code}} </div>
-      @if ($product->sale)
-    <div id="sale" class="ui green large label"><i class="money icon"></i> Zľava</div>
-    @endif
 
     @if ($product->new)
-    <div id="new" class="ui blue large label"><i class="star icon"></i> Novinka</div>
+    <div id="new" class="ui blue large label" style="margin-left: 15px;"><i class="star icon"></i> Novinka</div>
     @endif
 
    		<div class="ui header" id="product_categories">
@@ -115,7 +112,6 @@
 
     <div id="prices">
         <span style="font-size: 1.6em; color: #F2711C; font-weight: 700; margin-right: 10px;">Cena:</span> 
-        <div id="price" class="crossed">{{$product->price*1.25}} &euro; </div>
         <div id="final_price">{{$product->price}} &euro;</div>
     </div>
 
@@ -133,7 +129,7 @@
 
   <div class="container">
     <div class="ui header">Detailný popis</div>
-     <p>{{trim($product->desc)}}</p>
+     <p style="text-align: justify;">{{trim($product->desc)}}</p>
    
   </div>
 </div>

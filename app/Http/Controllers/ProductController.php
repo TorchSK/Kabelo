@@ -347,7 +347,7 @@ class ProductController extends Controller
 
         foreach ((array)$request->get('thresholds') as $key=>$threshold)
         {
-            if ($request->get('ids')[$key] == 'na')
+            if ($request->get('ids')[$key] == 'na' || $request->get('ids')[$key] == '')
             {
                 $pricelevel = new PriceLevel();
                 $pricelevel->threshold = $threshold;
