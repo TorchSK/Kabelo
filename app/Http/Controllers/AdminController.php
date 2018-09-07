@@ -189,7 +189,6 @@ class AdminController extends Controller
                     }
                 }
 
-                dd($categoryID);
 
                 $product = new Product();
                 $product->name = $item['text1'];
@@ -209,7 +208,7 @@ class AdminController extends Controller
                 $image->primary = 1;
                 $image->save();
 
-                $product->categories()->attach($categoryID);
+                $a = $product->categories()->attach($categoryID);
 
                 $pricelevel = new PriceLevel();
                 $pricelevel->threshold = 1;
@@ -219,6 +218,9 @@ class AdminController extends Controller
                 $pricelevel->voc_sale = $item['price_skk'];
 
                 $product->priceLevels()->save($pricelevel);
+
+                dd($a);
+
             }
 
         }
