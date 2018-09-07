@@ -2007,9 +2007,14 @@ a:hover {
   text-align: justify;
   font-weight: 300;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+@media all and (max-width: 2100px) {
+  #product_detail #desc {
+    -webkit-line-clamp: 4;
+  }
 }
 #product_detail #desc a {
   top: -2px;

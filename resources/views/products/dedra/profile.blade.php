@@ -108,11 +108,7 @@
 
 		<div class="ui divider"></div>
     <div id="desc">
-      @if (strlen($product->desc)>800)
-        {!!substr($product->desc, 0, 800)!!} ... <a href="#product_detail_wrapper" class="load_more"><b>Viac info</b></a>
-        @else
         {{$product->desc}}
-        @endif
     </div>
 
     <div class="ui divider"></div>

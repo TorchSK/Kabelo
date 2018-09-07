@@ -86,11 +86,30 @@ class AdminController extends Controller
             if($count==0)
             {
                 $productCategory = $item['kategorie'];
+
+                //check if category exists (each path part)
+                foreach (explode(' / ',$item['kategorie']) as $part)
+                {
+                    $dbCategoryCount = Category::where('path',$productCategory)->count();
+
+                }
+
+
                 $dbCategoryCount = Category::where('path',$productCategory)->count();
 
                 if($dbCategoryCount==0)
                 {
-                    dd($productCategory);
+                    $name = array_pop(explode(' / ',$item['kategorie']);
+                    $cat = new Category();
+                    $cat->name = $name;
+                    $cat->url = str_slug($name);
+
+                    if(count($category_array) > 1)
+                    {
+                        $cat->parent_id = $category_ids[$temp];
+                    }
+
+                    $cat->save();
                 }
             }
 
@@ -104,7 +123,7 @@ class AdminController extends Controller
         {
             $path = $category->name;
 
-            foreach($category->ancestors as $child)
+            foreach($category->ancestors->reverse() as $child)
             {
                 $path = $child->name.' / '.$path;
             }
