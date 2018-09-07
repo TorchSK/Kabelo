@@ -189,6 +189,8 @@ class AdminController extends Controller
                     }
                 }
 
+                dd($categoryID);
+
                 $product = new Product();
                 $product->name = $item['text1'];
                 $product->desc = $item['detail'];
