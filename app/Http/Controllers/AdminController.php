@@ -70,7 +70,8 @@ class AdminController extends Controller
     }
 
     public function updateXML()
-    {
+    {   
+
         $contents = Storage::get('dedra.xml');
         $xml = XmlParser::extract($contents);
 
@@ -87,30 +88,135 @@ class AdminController extends Controller
             {
                 $productCategory = $item['kategorie'];
 
-                //check if category exists (each path part)
-                foreach (explode(' / ',$item['kategorie']) as $part)
-                {
-                    $dbCategoryCount = Category::where('path',$productCategory)->count();
+                $productCategoryArray = explode(' / ',$item['kategorie']);
 
+
+                $dbCategory1 = Category::where('path',$productCategoryArray[0])->first();
+
+                if(isset($productCategoryArray[1]))
+                {
+                    $dbCategory2 = Category::where('path',$productCategoryArray[0].' / '.$productCategoryArray[1])->first();
                 }
 
-
-                $dbCategoryCount = Category::where('path',$productCategory)->count();
-
-                if($dbCategoryCount==0)
+                if(isset($productCategoryArray[2]))
                 {
-                    $name = array_pop(explode(' / ',$item['kategorie']);
+                    $dbCategory3 = Category::where('path',$productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2])->first();
+                }
+
+                if(isset($productCategoryArray[3]))
+                {
+                    $dbCategory4 = Category::where('path',$productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2].' / '.$productCategoryArray[3])->first();
+                }
+
+                if(!$dbCategory1)
+                {
                     $cat = new Category();
-                    $cat->name = $name;
-                    $cat->url = str_slug($name);
-
-                    if(count($category_array) > 1)
-                    {
-                        $cat->parent_id = $category_ids[$temp];
-                    }
-
+                    $cat->name = $productCategoryArray[0];
+                    $cat->url = str_slug($productCategoryArray[0]);
+                    $cat->path = $productCategoryArray[0];
                     $cat->save();
+                    $parent = $cat->id;
+
+                    $categoryID = $cat->id;
                 }
+                else
+                {
+                    $parent = $dbCategory1->id;
+                    $categoryID = $dbCategory1->id;
+                }
+
+                if(isset($productCategoryArray[1]))
+                {
+                    if(!$dbCategory2)
+                    {
+                        $cat = new Category();
+                        $cat->name = $productCategoryArray[1];
+                        $cat->url = str_slug($productCategoryArray[1]);
+                        $cat->parent_id = $parent;
+                        $cat->path = $productCategoryArray[0].' / '.$productCategoryArray[1];
+                        $cat->save();
+                        $parent = $cat->id;
+
+                        $categoryID = $cat->id;
+                    }
+                    else
+                    {
+                        $parent = $dbCategory2->id;
+                        $categoryID = $dbCategory2->id;
+                    }
+                }
+
+                if(isset($productCategoryArray[2]))
+                {
+                    if(!$dbCategory3)
+                    {
+                        $cat = new Category();
+                        $cat->name = $productCategoryArray[2];
+                        $cat->url = str_slug($productCategoryArray[2]);
+                        $cat->parent_id = $parent;
+                        $cat->path = $productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2];
+                        $cat->save();
+                        $parent = $cat->id;
+
+                        $categoryID = $cat->id;
+                    }
+                    else
+                    {
+                        $parent = $dbCategory3->id;
+                        $categoryID = $dbCategory3->id;
+                    }
+                }
+
+                if(isset($productCategoryArray[3]))
+                {
+                    if(!$dbCategory4)  
+                    {
+                        $cat = new Category();
+                        $cat->name = $productCategoryArray[3];
+                        $cat->url = str_slug($productCategoryArray[3]);
+                        $cat->parent_id = $parent;
+                        $cat->path = $productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2].' / '.$productCategoryArray[3];
+                        $cat->save();
+                        $parent = $cat->id;
+
+                        $categoryID = $cat->id;
+
+                    }
+                    else
+                    {
+                        $parent = $dbCategory4->id;
+                        $categoryID = $dbCategory4->id;
+                    }
+                }
+
+                $product = new Product();
+                $product->name = $item['text1'];
+                $product->desc = $item['detail'];
+                $product->code = $item['product_id'];
+                $product->price = $item['price_skk'];
+                $product->price_unit = 'ks';
+                $product->maker = 'Dedra';
+                $product->moc_sort_price = $item['price_skk'];
+                $product->voc_sort_price = $item['price_skk'];
+                $product->save();
+
+                $image = new ProductFile();
+                $image->product_id = $product->id;
+                $image->path = $item['picture1']; 
+                $image->type = 'image';
+                $image->primary = 1;
+                $image->save();
+
+                $product->categories()->attach($categoryID);
+
+                $pricelevel = new PriceLevel();
+                $pricelevel->threshold = 1;
+                $pricelevel->moc_regular = $item['price_skk'];
+                $pricelevel->moc_sale = $item['price_skk'];
+                $pricelevel->voc_regular = $item['price_skk'];
+                $pricelevel->voc_sale = $item['price_skk'];
+
+                $product->priceLevels()->save($pricelevel);
             }
 
         }
