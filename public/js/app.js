@@ -288,15 +288,22 @@ $('#edit_category_submit').click(function(){
 
 
 
-$('.other_img img').click(function(){
-  $('#product_detail .img img').attr('src', '/img/loader.gif');
+$('.other_img img').click(function(e){
+	e.preventDefault();
+  $('#product_detail .img.main img').attr('src', '/img/loader.gif');
+  $('#product_detail .img.main img').attr('src', '/img/loader.gif');
+
+  $index = $(this).data('index');
+
+  $('#product_detail').data('index', $index);
 
   var img = new Image() 
   var src = $(this).data('full');
   img.src = src;
 
   img.onload = function() {
-  	$('#product_detail .img img').attr('src', src);
+  	$('#product_detail .img.main img').attr('src', src);
+  	 $('#product_detail .img.main').attr('href', src);
   };
 
 
@@ -2973,7 +2980,37 @@ $('#grid grid.infinite').infiniteScroll({
   history: false,
 });
 
+
+
+$('.related_products_carousel').flickity({
+    cellAlign: 'left',
+    contain: true,
+    pageDots: false,
+    imagesLoaded: true,
+    autoPlay: 1500,
 });
+
+
+
+var mobx = $.ModuloBox({
+	mediaSelector: '.mobx',
+	history: true,
+	controls: ['zoom', 'play', 'fullScreen', 'download', 'share', 'close'],
+	loop : 1
+});
+
+mobx.init();
+
+$('#product_detail .main').click(function(e){
+	e.preventDefault();
+	$gallery = $('#product_detail').data('gallery');
+	$index = $('#product_detail').data('index');
+	mobx.open($gallery,$index);
+	mobx.play();
+})
+
+})
+
 
 var sticky;
 var div;

@@ -23,6 +23,7 @@
     <script src="/js/rating.js"></script>
     <script src="/js/spectrum.js"></script>
     <script src="/js/tablesorter.js"></script>
+    <script src="/js/modulobox.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
@@ -33,12 +34,12 @@
     <link rel="stylesheet" href="https://use.typekit.net/nnc8ofe.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/flickity.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/nouislider.css">
-
     <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
         <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/app.css">
     <script src="/js/dropzone.js"></script>
-    
+    <link media="all" type="text/css" rel="stylesheet" href="/css/modulobox.min.css">
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
     <script src="/js/nestedsortable.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>

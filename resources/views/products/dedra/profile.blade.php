@@ -33,27 +33,39 @@
 </div>
   @endif
 
-<div id="product_detail" data-id={{$product->id}}>
+<div id="product_detail" data-id="{{$product->id}}" data-gallery="{{$product->code}}" data-index="0">
 
 
     <div class="left">
 
+        <div class="hiden">
+          @foreach($product->images as $key => $image)
+            @if($appname=='Dedra')
+            <a class="img ct mobx" href="{{$image->path}}" style="display: inline-block;"  data-rel="{{$product->code}}" data-index="{{$key}}">
+             <img src="{{$image->thumb}}" class="ui image" data-full="{{$image->path}}" style="max-height: 130px; max-width: 130px; display: inline-block;"/>
+             </a>
+            @else
+             <img src="{{$image->path}}" class="ui image" width="200px" />
+           @endif
+           @endforeach
+         </div>
 
-
-        <div class="img ct" style="height: 40vh;">
+        <a class="img ct main" href="{{$product->image->path}}" style="height: 40vh; display: block;" data-rel="{{$product->code}}">
            @if ($product->images->count() == 0)
            <img src="/img/empty.jpg" class="ui image" />
            @elseif ($product->image)
            <img src="{{$product->image->path}}" class="ui image" style="max-height: 100%; max-width: 100%; width: auto; display: inline-block;"/>
            @endif
-        </div>
+        </a>
         
-          <div class="other_img">
+          <div class="other_img ct">
           @if ($product->images->count() > 1)
 
-          @foreach($product->images as $image)
+          @foreach($product->images as $key => $image)
             @if($appname=='Dedra')
-             <img src="{{$image->thumb}}" class="ui image" data-full="{{$image->path}}" style="max-height: 130px; max-width: 130px; display: inline-block;"/>
+            <a class="img ct" href="{{$image->path}}" style="display: inline-block;" >
+             <img src="{{$image->thumb}}" class="ui image" data-full="{{$image->path}}" data-index="{{$key}}" style="max-height: 130px; max-width: 130px; display: inline-block;"/>
+             </a>
             @else
              <img src="{{$image->path}}" class="ui image" width="200px" />
            @endif
@@ -104,7 +116,7 @@
    		</div>
 
 		<div class="ui divider"></div>
-    <div id="desc">
+    <div id="desc" style="line-height: 2.5em;">
         {{$product->desc}}
     </div>
 
@@ -125,7 +137,7 @@
 <div id="product_tabs">
 
 
-<div class="pad wrapper ct" id="product_detail_wrapper">
+<div class="pad wrapper ct" id="product_detail_wrapper" style="border-top: 1px dashed #EEE;">
 
   <div class="container">
     <div class="ui header">Detailný popis</div>
@@ -140,9 +152,9 @@
   <div class="container">
     <div class="ui header">Ďalšie súvisiace produkty</div>
 
-      <div id="grid">
+      <div id="grid" class="related_products_carousel" style="margin-right: 50px;">
 
-      @foreach(App\Product::inRandomOrder()->whereHas('categories', function ($query) use ($product) {$query->whereIn('id', $product->categories->pluck('id'));})->where('id','!=',$product->id)->take(14)->get() as $relprod)
+      @foreach(App\Product::inRandomOrder()->whereHas('categories', function ($query) use ($product) {$query->whereIn('id', $product->categories->first->parent->pluck('id'));})->where('id','!=',$product->id)->take(50)->get() as $relprod)
         @include('products.row',['product'=>$relprod])
       @endforeach
 
