@@ -91,7 +91,7 @@
 	<div class="item setting">
 		<div class="label">Ďaľšie údaje</div>
 		<div class="ui input">
-		  <input type="text" name="text1" value="{{App\Setting::firstOrCreate(['name'=>'invoice_additional_1'])->value}}">
+		  <input type="text" name="invoice_additional_1" value="{{App\Setting::firstOrCreate(['name'=>'invoice_additional_1'])->value}}">
 		</div>	
 	</div>
 
