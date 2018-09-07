@@ -225,6 +225,20 @@
 		  -webkit-line-clamp: 6;
 		  -webkit-box-orient: vertical;  
 		  overflow: hidden;
+		    position: relative;
+  			height: 15.5em; /* exactly three lines */
+
+
+		  &:after {
+		  content: "";
+		  text-align: right;
+		  position: absolute;
+		  bottom: 0;
+		  right: 0;
+		  width: 70%;
+		  height: 1.2em;
+		  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 100%);
+		}
 
 		 @media @break6{
 			-webkit-line-clamp: 4;
@@ -326,7 +340,7 @@
 	}
 
 	#product_detail_suggested_wrapper{
-		background-color: #FAFAFA !important;
+		background-color: #F8F8F8 !important;
 
 		.ui.header{
 			text-align: left;

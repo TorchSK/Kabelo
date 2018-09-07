@@ -233,6 +233,11 @@ body .sticky {
   width: 330px;
   padding-top: 15px;
 }
+body .stickyy {
+  position: fixed !important;
+  top: 0;
+  padding-top: 15px;
+}
 body .pusher {
   height: 100%;
   display: -webkit-box;
@@ -374,7 +379,6 @@ a:hover {
   display: inline-block;
 }
 .effect-1 {
-  padding-top: 10px;
   position: relative;
   color: inherit;
   text-decoration: none;
@@ -2010,6 +2014,20 @@ a:hover {
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  position: relative;
+  height: 15.5em;
+  /* exactly three lines */
+}
+#product_detail #desc:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 1.2em;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(#ffffff));
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff 100%);
 }
 @media all and (max-width: 2100px) {
   #product_detail #desc {
@@ -2099,7 +2117,7 @@ a:hover {
   background-color: transparent;
 }
 #product_tabs #product_detail_suggested_wrapper {
-  background-color: #FAFAFA !important;
+  background-color: #F8F8F8 !important;
 }
 #product_tabs #product_detail_suggested_wrapper .ui.header {
   text-align: left;

@@ -12,7 +12,7 @@
 
 <div id="product_right">
 
-<div class="ui button filterbar_handle">
+<div class="ui button filterbar_handle sticky_div">
   Zobrazit katalóg
 </div>
 
@@ -137,7 +137,7 @@
 <div id="product_tabs">
 
 
-<div class="pad wrapper ct" id="product_detail_wrapper" style="border-top: 1px dashed #EEE;">
+<div class="pad wrapper ct" id="product_detail_wrapper" style="border-top: 1px dashed #EEE; background-color: rgba(0,0,0,0.01) !important;">
 
   <div class="container">
     <div class="ui header">Detailný popis</div>

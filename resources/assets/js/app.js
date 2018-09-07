@@ -3016,18 +3016,19 @@ var sticky;
 var div;
 
 $(window).on('load', function(){
-	if($('.sticky_div').length){
-	sticky = $('.sticky_div').offset().top - 20;
-	window.onscroll = function() {myFunction()};
+	if($('.sticky_div').length)
+	{
+		sticky = $('.sticky_div').offset().top - 20;
+		window.onscroll = function() {myFunction()};
 	}
 
 function myFunction() {
 	div = $('.sticky_div');
 
 	if (window.pageYOffset >= sticky) {
-	div.addClass("sticky")
+	div.addClass("stickyy")
 	} else {
-	div.removeClass("sticky");
+	div.removeClass("stickyy");
 	}
 
 }
