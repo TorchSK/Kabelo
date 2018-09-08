@@ -21,6 +21,7 @@ use Excel;
 use Rap2hpoutre\FastExcel\FastExcel;
 
 use App\Services\Contracts\ProductServiceContract;
+use App\Services\Contracts\CategoryServiceContract;
 
 
 class ProductController extends Controller
@@ -30,9 +31,10 @@ class ProductController extends Controller
      *
      * @return void
      */
-    public function __construct(ProductServiceContract $productService)
+    public function __construct(ProductServiceContract $productService, CategoryServiceContract $categoryService)
     {
         $this->productService = $productService;
+        $this->categoryService = $categoryService;
 
     }
 
@@ -181,7 +183,8 @@ class ProductController extends Controller
         
         $data = [
            'product' => $product,
-           'bodyid' => 'body_product_detail'
+           'bodyid' => 'body_product_detail',
+           'categories' => $this->categoryService->getCategories()
         ];
 
         return view('products.profile', $data);
