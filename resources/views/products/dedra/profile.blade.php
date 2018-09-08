@@ -22,7 +22,6 @@
 </div>
 
 
-@include('includes/filterbar')
 
 @if (Auth::check() && Auth::user()->admin)
 <div id="product_options" class="ct">
