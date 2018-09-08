@@ -3041,9 +3041,11 @@ function myFunction() {
 	div = $('.sticky_div');
 
 	if (window.pageYOffset >= sticky) {
-	div.addClass("stickyy")
+		div.addClass("stickyy");
+		$('#product_content #filterbar').css('position','fixed');
 	} else {
-	div.removeClass("stickyy");
+		div.removeClass("stickyy");
+		$('#product_content #filterbar').css('position','absolute');
 	}
 
 }
