@@ -3015,6 +3015,7 @@ $('#product_detail .main').click(function(e){
 var sticky;
 var div;
 
+/*
 $(document).on("scroll", function(){
 	if($(document).scrollTop() > 100)
 	{
@@ -3025,12 +3026,15 @@ $(document).on("scroll", function(){
 		$("#header").removeClass("shrink");
 	}
 });
+*/
 
 $(window).on('load', function(){
 	if($('.sticky_div').length)
 	{
 		sticky = $('.sticky_div').offset().top - 20;
-		window.onscroll = function() {myFunction()};
+		window.onscroll = function() {
+			myFunction()
+		};
 	}
 
 function myFunction() {

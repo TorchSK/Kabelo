@@ -1,6 +1,7 @@
 html {
   background-repeat: repeat, no-repeat;1
   height: 100%;
+
 }
 
 body {
@@ -66,7 +67,9 @@ body {
   }
 
 
-
+.sticky_div{
+  max-height: 100vh;
+}
 
 
 .sticky {
@@ -80,6 +83,11 @@ body {
   position: fixed !important;
   top: 0;
   padding-top: 15px;
+  overflow-y: auto;
+
+    #cat_div{
+      margin-bottom: 230px;
+    }
 }
 
 
@@ -96,7 +104,6 @@ body {
 }
 
  .covers{
-  margin-top: 93px;
 
     @media @break2{
       display: none !important;

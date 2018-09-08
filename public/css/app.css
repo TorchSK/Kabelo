@@ -227,6 +227,9 @@ body[data-layout="2"] #grid .item.grid {
   margin-bottom: 15px;
   margin-right: 15px;
 }
+body .sticky_div {
+  max-height: 100vh;
+}
 body .sticky {
   position: fixed;
   top: 0;
@@ -237,6 +240,10 @@ body .stickyy {
   position: fixed !important;
   top: 0;
   padding-top: 15px;
+  overflow-y: auto;
+}
+body .stickyy #cat_div {
+  margin-bottom: 230px;
 }
 body .pusher {
   height: 100%;
@@ -252,9 +259,6 @@ body .pusher {
   body {
     display: block;
   }
-}
-.covers {
-  margin-top: 93px;
 }
 @media all and (max-width: 736px) {
   .covers {
@@ -1483,7 +1487,6 @@ a:hover {
   width: 100%;
   text-align: center;
   white-space: nowrap;
-  position: fixed;
   z-index: 9999;
 }
 #header.shrink .item {
@@ -3658,6 +3661,8 @@ footer {
   color: #CCC;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  position: relative;
+  z-index: 999;
 }
 @media all and (max-width: 980px) {
   footer {
@@ -3915,12 +3920,17 @@ h1.header {
   display: -ms-flexbox;
   display: flex;
   overflow-y: auto;
-  max-height: 100vh;
+  width: 340px;
 }
 @media all and (max-width: 980px) {
   #filterbar {
     display: none;
   }
+}
+#filterbar #cat_div {
+  height: 100%;
+  overflow-y: auto;
+  width: 330px;
 }
 #filterbar #cat_div.hidden {
   display: none;
@@ -3941,10 +3951,7 @@ h1.header {
 }
 #filterbar .ui.accordion {
   padding-bottom: 50px;
-  width: 330px;
-}
-#filterbar .ui.divider.horizontal {
-  width: 330px;
+  width: 100%;
 }
 #filterbar .pad.item {
   margin: 0 10px;
