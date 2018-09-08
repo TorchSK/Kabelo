@@ -99,6 +99,13 @@ class CategoryController extends Controller
     }
 
 
+    public function filterbar()
+    {
+        return view('includes/filterbar_content')->render();
+
+    }
+
+
     public function deleteParameter($id, Request $request)
     {
         $param = Parameter::find($id);

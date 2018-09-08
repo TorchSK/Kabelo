@@ -126,6 +126,9 @@ Route::post('cart','CartController@set');
 // Categories
 Route::get('/categories/all','CategoryController@all');
 
+Route::get('/filterbar', 'CategoryController@filterbar');
+
+
 Route::post('category/parameter/add','CategoryController@addParameter');
 Route::get('category/parameter/{id}/edit','CategoryController@editParameter');
 Route::delete('category/parameter/{id}','CategoryController@deleteParameter');
