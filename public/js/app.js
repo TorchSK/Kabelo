@@ -3015,6 +3015,17 @@ $('#product_detail .main').click(function(e){
 var sticky;
 var div;
 
+$(document).on("scroll", function(){
+	if($(document).scrollTop() > 100)
+	{
+	  	$("#header").addClass("shrink");
+	}
+	else
+	{
+		$("#header").removeClass("shrink");
+	}
+});
+
 $(window).on('load', function(){
 	if($('.sticky_div').length)
 	{
