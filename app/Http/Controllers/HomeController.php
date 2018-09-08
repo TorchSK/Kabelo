@@ -29,6 +29,7 @@ class HomeController extends Controller
             $data = $this->productService->list($request);
 
             $data['requestCategory'] = Category::find($request->get('category'));
+        $data['categories'] = $this->categoryService->getCategories();
 
             return view('home/home', $data);
         }
