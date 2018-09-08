@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\Contracts\ProductServiceContract;
+use App\Services\Contracts\CategoryServiceContract;
 
 use App\Category;
 use Illuminate\Http\Request;
@@ -14,9 +15,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(ProductServiceContract $productService)
+    public function __construct(ProductServiceContract $productService, CategoryServiceContract $categoryService)
     {
         $this->productService = $productService;
+        $this->categoryService = $categoryService;
     }
  public function index($category=null, Request $request)
     {   
@@ -34,6 +36,8 @@ class HomeController extends Controller
         {
             $data['categoryCounts'] = $this->productService->categoryCounts();
         }
+        
+        $data['categories'] = $this->categoryService->getCategories();
 
         return view('home/home', $data);
 

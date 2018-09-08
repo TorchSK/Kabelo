@@ -31,7 +31,7 @@ class CategoryService implements CategoryServiceContract {
       {
         $categories = Cache::get('categories');
       }
-      return collect($categories);
+      return $categories;
   }
  
 }
