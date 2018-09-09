@@ -24,12 +24,12 @@ class CategoryService implements CategoryServiceContract {
 
       if(!Cache::has('categories'))
       {
-        $categories = Category::orderBy('order')->get()->toTree();
+        $categories = Category::with('descendants')->orderBy('order')->get()->toTree();
         Cache::put('categories', $categories, 60);
       }
       else
       {
-        $categories = Cache::get('categories');
+        $categories = Category::with('descendants')->orderBy('order')->get()->toTree();
       }
       return $categories;
   }
