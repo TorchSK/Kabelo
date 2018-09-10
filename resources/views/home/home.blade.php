@@ -6,7 +6,8 @@
             @include('home.cover')
         @endforeach
     </div>
-    
+
+ 
     @if($layout == 1)
     <div class="under_cover">               
       &nbsp;

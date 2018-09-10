@@ -46,6 +46,7 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <link media="all" type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
 
+
     <script src="/js/app.js"></script>
 
     <!-- Global site tag (gtag.js) - AdWords: 795715349 -->

@@ -182,6 +182,9 @@ Route::get('email/send/welcome/{userid}', 'UserController@sendActivationEmail');
 });
 
 
+Route::get('katalog/{id}', 'UtilController@catalogue');
+
+
 Route::get('cookie', 'UtilController@cookie');
 Route::get('connectors/guide', 'UtilController@connectorsGuide');
 

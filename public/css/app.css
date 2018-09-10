@@ -1496,6 +1496,13 @@ a:hover {
 #search_grid {
   display: none;
 }
+#home_catalaogue_div {
+  text-align: center;
+}
+#home_catalaogue_div img {
+  display: inline-block;
+  margin-right: 25px;
+}
 #header {
   width: 100%;
   text-align: center;

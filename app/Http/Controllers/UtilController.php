@@ -92,6 +92,11 @@ class UtilController extends Controller
         return view('pages/gdpr', $data);
     }
 
+    public function catalogue($id)
+    {       
+        return view('pages/catalogue/'.$id.'/ui');
+    }
+
     public function setCookie(Request $request)
     {       
         $name = $request->get('name');
