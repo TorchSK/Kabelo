@@ -220,8 +220,15 @@ class AdminController extends Controller
                 $product->priceLevels()->save($pricelevel);
 
             }
+            else
+            {
+                $product = Product::where('code',$item['product_id'])->first();
+                $product->name = $item['text1'].' '.$item['text2'];
+                $product->save();
+            }
 
         }
+
 
     }
 
