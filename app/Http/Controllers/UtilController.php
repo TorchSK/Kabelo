@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Services\Contracts\ProductServiceContract;
 use App\Mail\NewOrder;
+use App\Services\Contracts\CategoryServiceContract;
 
 use App\Category;
 use App\Order;
@@ -23,12 +24,12 @@ class UtilController extends Controller
      *
      * @return void
      */
-    public function __construct(ProductServiceContract $productService)
+    public function __construct(ProductServiceContract $productService, CategoryServiceContract $categoryService)
     {
         $this->productService = $productService;
+        $this->categoryService = $categoryService;
 
     }
-
 
     public function cookie(){
         $cart = Cookie::get('cart');
@@ -132,6 +133,8 @@ class UtilController extends Controller
     {
         $data['products'] = Product::where('name', 'like', '%'.$query.'%')->orWhere("desc", "like", "%".$query."%")->orWhere("code", "like", "%".$query."%")->take(5)->paginate(100);
         $data['users'] = User::where('name', 'like', '%'.$query.'%')->orWhere("email", "like", "%".$query."%")->take(5)->paginate(100);
+        $data['categories']  => $this->categoryService->getCategories();
+
 
         return view('search.all', $data);
     }
