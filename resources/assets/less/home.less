@@ -195,6 +195,18 @@
 				position: relative;
 			}
 		}
+
+		.flickity-slider{
+			.item.grid{
+				width: @cw_flickity7;
+
+				@media @break6{
+					width: @cw_flickity6;
+				}
+			}
+		}
+
+
 		
 		.item.grid{
 			display: inline-block;
@@ -278,6 +290,7 @@
 			}
 
 			.desc{
+				text-align: justify !important;
 				color: #666;
 				margin-bottom: 15px;
 				padding: 0 15px;

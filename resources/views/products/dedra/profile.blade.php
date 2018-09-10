@@ -50,7 +50,7 @@
            @endforeach
          </div>
 
-        <a class="img ct main" href="{{$product->image->path}}" style="height: 40vh; display: block;" data-rel="{{$product->code}}">
+        <a class="img ct main" href="{{$product->image->path}}" style="height: 45vh; display: block;" data-rel="{{$product->code}}">
            @if ($product->images->count() == 0)
            <img src="/img/empty.jpg" class="ui image" />
            @elseif ($product->image)
@@ -116,7 +116,7 @@
    		</div>
 
 		<div class="ui divider"></div>
-    <div id="desc" style="line-height: 2.5em;">
+    <div id="desc">
         {{$product->desc}}
     </div>
 

@@ -1294,6 +1294,7 @@ $('.close_btn').click(function(){
   $('.ui.sidebar').sidebar('hide');
 })
 
+
 $('#home_sales_div').flickity({
     cellAlign: 'left',
     contain: true,
