@@ -27,6 +27,7 @@ use App\DeliveryMethod;
 use App\PaymentMethod;
 
 use App\Services\Contracts\ProductServiceContract;
+use App\Services\Contracts\CategoryServiceContract;
 
 use Orchestra\Parser\Xml\Facade as XmlParser;
 
@@ -38,10 +39,12 @@ class AdminController extends Controller
      *
      * @return void
      */
-    public function __construct(ProductServiceContract $productService)
+    public function __construct(ProductServiceContract $productService, CategoryServiceContract $categoryService)
     {        
         $this->middleware('auth');
         $this->productService = $productService;
+                $this->categoryService = $categoryService;
+
     }
 
     public function translate()
@@ -485,7 +488,7 @@ class AdminController extends Controller
     {
         $data = [
             'makers' => Product::groupBy('maker'),
-            'categories' => Category::orderBy('order','asc')->get(),
+           'categories' => $this->categoryService->getCategories(),
             'categoryCounts' => $this->productService->categoryCounts()
 
         ];

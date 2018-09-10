@@ -1278,6 +1278,8 @@ a:hover {
 #search_grid .item.grid .title {
   font-weight: 900;
   font-size: 1.1em;
+  min-height: 38.86px;
+  padding: 0 15px;
 }
 @media all and (max-width: 980px) {
   #grid .item.grid .title,
