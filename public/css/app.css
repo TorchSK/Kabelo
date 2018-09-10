@@ -1882,8 +1882,9 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   background-color: #FFF;
-  width: 100%;
+  width: 90%;
   padding: 3% 100px 1% 100px;
+  margin: 0 auto;
 }
 @media all and (max-width: 980px) {
   #product_detail {
@@ -2056,9 +2057,6 @@ a:hover {
   line-height: 1.6em;
   text-align: justify;
   font-weight: 300;
-  display: -webkit-box;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
   overflow: hidden;
   position: relative;
   height: 9.3em;
