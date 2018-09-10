@@ -524,7 +524,7 @@ class AdminController extends Controller
             $data = [
                 'products' => $cat->products,
                 'category' => $cat,
-                'categories' => Category::orderBy('order','asc')->get(),
+           'categories' => $this->categoryService->getCategories(),
                 'categoryCounts' => $this->productService->categoryCounts()
             ];
 
@@ -535,7 +535,7 @@ class AdminController extends Controller
         {
             $data = [
                 'products' => Product::doesntHave('categories')->get(),
-                'categories' => Category::orderBy('order','asc')->get(),
+           'categories' => $this->categoryService->getCategories(),
                 'category' => 'unknown',
                 'categoryCounts' => $this->productService->categoryCounts()
 
