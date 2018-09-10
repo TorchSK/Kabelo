@@ -152,7 +152,7 @@
   <div class="container">
     <div class="ui header">Ďalšie súvisiace produkty</div>
 
-      <div id="grid" class="related_products_carousel" style="margin-right: 50px;">
+      <div id="grid" class="related_products_carousel">
 
       @foreach(App\Product::inRandomOrder()->whereHas('categories', function ($query) use ($product) {$query->whereIn('id', $product->categories->pluck('id'));})->where('id','!=',$product->id)->take(50)->get() as $relprod)
         @include('products.row',['product'=>$relprod])
