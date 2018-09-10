@@ -84,7 +84,9 @@ class AdminController extends Controller
 
         foreach($items['products'] as $key => $item)
         {
-            $count = Product::where('code',$item['product_id'])->count();
+            $query = Product::where('code',$item['product_id']);
+            $count = $query->count();
+            $product = $query->first();
 
             // novy produkt ktory je v XML ale nie je v DB
             if($count==0)
@@ -225,7 +227,6 @@ class AdminController extends Controller
             }
             else
             {
-                $product = Product::where('code',$item['product_id'])->first();
                 $product->name = $item['text1'].' '.$item['text2'];
                 $product->save();
             }
