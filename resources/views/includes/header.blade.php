@@ -46,7 +46,22 @@
          <i class="shopping basket icon"></i> <count> {{App\Order::whereIn('status_id',[0])->count()}}</count>
         </a>
       </div>
+
         @endif
+
+        <div class="catalogues item" data-tooltip="Katalógy" data-position="bottom center">
+          @if (Auth::check())
+            {{Auth::user()->email}}
+          @endif
+          <i class="big file text icon"></i>
+        </div>
+
+        <div class="ui basic popup transition" id="catalogues_popup">
+            <a class="cat" href="/img/cat9.pdf" target="_blank"><img src="/img/catalogue9.jpg" width="100" /></a>
+            <a class="cat" href="/img/cat8.pdf" target="_blank"><img src="/img/catalogue8.jpg" width="100" /></a>
+            <a class="cat" href="/img/cat7.pdf" target="_blank"><img src="/img/catalogue7.jpg" width="100" /></a>
+
+        </div>
 
         <div class="account item">
           @if (Auth::check())

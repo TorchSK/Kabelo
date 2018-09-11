@@ -977,6 +977,8 @@ a:hover {
 }
 .covers {
   opacity: 0;
+  padding-top: 94px;
+  background-color: #1F1F1F;
 }
 @media all and (max-width: 980px) {
   .covers {
@@ -1508,6 +1510,7 @@ a:hover {
   text-align: center;
   white-space: nowrap;
   z-index: 9999;
+  position: fixed;
 }
 #header.shrink .item {
   padding: 10px 18px 6px 18px;
@@ -1531,8 +1534,8 @@ a:hover {
   height: 35px;
   width: 40px !important;
   margin-top: -2px;
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
 }
 #header .container {
   white-space: normal;
@@ -1541,8 +1544,8 @@ a:hover {
   padding: 27px 18px;
   display: inline-block;
   color: #DDD;
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
 }
 @media all and (max-width: 980px) {
   #header .item {
@@ -1576,8 +1579,8 @@ a:hover {
 }
 #header .logo img {
   margin-right: 15px;
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
 }
 #header .logo img.kabelo {
   width: 35px;
@@ -1760,6 +1763,23 @@ a:hover {
   height: 30px;
   text-align: center;
 }
+#header .catalogues {
+  float: right;
+  margin-top: 3px;
+  cursor: pointer;
+}
+#header #catalogues_popup {
+  width: 370px !important;
+  max-width: 500px;
+  margin-left: -140px;
+}
+#header #catalogues_popup .cat {
+  display: inline-block;
+  margin-right: 10px;
+}
+#header #catalogues_popup .cat:hover {
+  opacity: 0.7;
+}
 #header .cart {
   float: right;
   background-color: rgba(0, 0, 0, 0.4);
@@ -1799,7 +1819,7 @@ a:hover {
   }
 }
 #header .account i.icon.user {
-  margin-left: 15px;
+  margin-left: 10px;
 }
 #auth_popup {
   width: 510px;

@@ -153,6 +153,12 @@ $('#header .account.item').popup({
 	on    : 'click'
 });
 
+$('#header .catalogues.item').popup({
+	popup : $('#catalogues_popup'),
+	on    : 'click'
+});
+
+
 $('.ui.accordion').accordion({
   exclusive: false
 }); 
@@ -3017,18 +3023,20 @@ $('#product_detail .main').click(function(e){
 var sticky;
 var div;
 
-/*
+
 $(document).on("scroll", function(){
 	if($(document).scrollTop() > 100)
 	{
 	  	$("#header").addClass("shrink");
+	  	$(".covers").addClass("shrink");
 	}
 	else
 	{
 		$("#header").removeClass("shrink");
+		$(".covers").removeClass("shrink");
 	}
 });
-*/
+
 
 $(window).on('load', function(){
 	if($('.sticky_div').length)

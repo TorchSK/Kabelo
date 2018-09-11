@@ -3,9 +3,11 @@
 	text-align: center;
 	white-space: nowrap;
 	z-index: 9999;
+	position: fixed;
 
 	&.shrink
 	{
+
 		.item{
 			padding: 10px 18px 6px 18px;
 			font-size: 13px !important;
@@ -33,7 +35,7 @@
 			height: 35px;
 			width: 40px !important;
 			margin-top: -2px;
-					transition: 0.5s ease;
+					transition: 0.2s ease;
 
 		}
 	}
@@ -46,7 +48,7 @@
 		padding: 27px 18px;
 		display: inline-block;
 		color: #DDD;
-		transition: 0.5s ease;
+		transition: 0.2s ease;
 
 		@media @break3{
 			padding: 24px 18px;
@@ -74,7 +76,7 @@
 
 		img{
 			margin-right: 15px;
-		transition: 0.5s ease;
+		transition: 0.2s ease;
 
 			&.kabelo{
 				width: 35px;
@@ -282,6 +284,27 @@
 		}
 	}
 
+	.catalogues{
+		float: right;
+		margin-top: 3px;
+		cursor: pointer;
+	}
+
+	#catalogues_popup{
+		width: 370px !important;
+		max-width: 500px;	
+		margin-left: -140px;
+
+		.cat{
+			display: inline-block;
+			margin-right: 10px;
+
+			&:hover{
+				opacity: 0.7;
+			}
+
+		}
+	}
 
 	.cart{
 		float: right;
@@ -324,7 +347,7 @@
 		}
 
 		i.icon.user{
-			margin-left: 15px;
+			margin-left: 10px;
 		}
 	}
 } 
