@@ -191,6 +191,7 @@ html {
 body {
   height: 100%;
   background-color: transparent;
+  padding-top: 94px;
 }
 body[data-layout="2"] {
   background-color: #FFF;
@@ -977,7 +978,6 @@ a:hover {
 }
 .covers {
   opacity: 0;
-  padding-top: 94px;
   background-color: #1F1F1F;
 }
 @media all and (max-width: 980px) {
@@ -1511,6 +1511,7 @@ a:hover {
   white-space: nowrap;
   z-index: 9999;
   position: fixed;
+  top: 0;
 }
 #header.shrink .item {
   padding: 10px 18px 6px 18px;
