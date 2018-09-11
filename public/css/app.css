@@ -4146,6 +4146,9 @@ h1.header {
 #filterbar_h .item:last-child {
   border-right: none;
 }
+#catalogue_btn {
+  margin-top: 20px;
+}
 .admin_add_cover {
   padding: 50px;
   width: 100%;

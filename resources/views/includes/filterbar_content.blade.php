@@ -18,7 +18,13 @@
         </div>
 
         @endif
-        
+
+        @if($appname=="Dedra")
+            <div class="sidebar_btn" id="catalogue_btn">
+                <a href="/img/cat9.pdf" target="_blank" class="ui fluid brown button"><i class="cloud download icon"></i>Stiahnuť katalóg</a>
+            </div>
+        @endif
+
         @if (Request::segment(1)=='admin')
         <div class="sidebar_btn">
             <a href="/admin/bulk" class="ui fluid green button"><i class="cloud upload icon"></i>Hromadné zmeny</a>

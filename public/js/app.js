@@ -3010,14 +3010,6 @@ $('#product_detail .main').click(function(e){
 	mobx.play();
 })
 
-var catalogueCarousel = $.ModuloBox({
-	mediaSelector: '.cat_img',
-	history: true,
-	controls: ['zoom', 'play', 'fullScreen', 'download', 'share', 'close'],
-	loop : 0
-});
-
-catalogueCarousel.init();
 
 })
 
