@@ -50,8 +50,9 @@
         @endif
 
       @if($appname=='Dedra')
-        <div class="catalogues item" data-tooltip="Katalógy" data-position="bottom center">
-          <i class="big file text icon"></i>
+        <div class="catalogues item ct">
+          <div>Katalóg</div>
+          <div>Dedra</div>
         </div>
 
         <div class="ui basic popup transition" id="catalogues_popup">

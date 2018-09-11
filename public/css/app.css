@@ -1766,8 +1766,8 @@ a:hover {
 }
 #header .catalogues {
   float: right;
-  margin-top: 3px;
   cursor: pointer;
+  margin-right: 5px;
 }
 #header #catalogues_popup {
   width: 370px !important;
