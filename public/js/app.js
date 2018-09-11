@@ -155,7 +155,9 @@ $('#header .account.item').popup({
 
 $('#header .catalogues.item').popup({
 	popup : $('#catalogues_popup'),
-	on    : 'hover'
+	on    : 'hover',
+	hoverable: true
+
 });
 
 
