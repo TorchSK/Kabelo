@@ -978,7 +978,6 @@ a:hover {
 }
 .covers {
   opacity: 0;
-  background-color: #1F1F1F;
 }
 @media all and (max-width: 980px) {
   .covers {
