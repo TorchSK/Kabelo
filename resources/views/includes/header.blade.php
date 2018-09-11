@@ -50,9 +50,6 @@
         @endif
 
         <div class="catalogues item" data-tooltip="Katalógy" data-position="bottom center">
-          @if (Auth::check())
-            {{Auth::user()->email}}
-          @endif
           <i class="big file text icon"></i>
         </div>
 
