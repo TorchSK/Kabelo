@@ -49,6 +49,7 @@
 
         @endif
 
+      @if($appname=='Dedra')
         <div class="catalogues item" data-tooltip="Katalógy" data-position="bottom center">
           <i class="big file text icon"></i>
         </div>
@@ -59,6 +60,7 @@
             <a class="cat" href="/img/cat7.pdf" target="_blank"><img src="/img/catalogue7.jpg" width="100" /></a>
 
         </div>
+        @endif
 
         <div class="account item">
           @if (Auth::check())
