@@ -2492,6 +2492,9 @@ a:hover {
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
 }
+.admin_wrapper #product_detail {
+  width: 100%;
+}
 @media all and (max-width: 980px) {
   .admin_wrapper {
     -webkit-box-orient: vertical;
