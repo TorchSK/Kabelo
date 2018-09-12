@@ -83,6 +83,15 @@ class CategoryController extends Controller
         
         $category->update($request->all());
 
+        if($request->has('active'))
+        {
+            foreach($category->products as $product)
+            {
+                $product->active = $request->get('active');
+                $product->save();
+            }
+        }
+
         return 1;
     }
 
