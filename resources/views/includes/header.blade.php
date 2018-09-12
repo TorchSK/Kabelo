@@ -51,8 +51,8 @@
 
       @if($appname=='Dedra')
         <div class="catalogues item ct">
-          <div>Katalóg</div>
-          <div>Dedra</div>
+                    <i class="big file text icon"></i>
+
         </div>
 
         <div class="ui basic popup transition" id="catalogues_popup">
