@@ -127,6 +127,7 @@ Route::post('cart','CartController@set');
 Route::get('/categories/all','CategoryController@all');
 
 Route::get('/filterbar', 'CategoryController@filterbar');
+Route::put('/category/set/{id}','CategoryController@set');
 
 
 Route::post('category/parameter/add','CategoryController@addParameter');

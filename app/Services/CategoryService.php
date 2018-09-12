@@ -33,5 +33,21 @@ class CategoryService implements CategoryServiceContract {
       }
       return $categories;
   }
+
+    public function getCategoriesRaw()
+  { 
+
+      if(!Cache::has('categories'))
+      {
+        $categories = Category::with('descendants')->withDepth()->orderBy('order')->get();
+        Cache::put('categories', $categories, 60);
+      }
+      else
+      {
+        $categories = Category::with('descendants')->withDepth()->orderBy('order')->get();
+      }
+      return $categories;
+  }
+ 
  
 }

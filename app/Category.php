@@ -10,7 +10,7 @@ class Category extends Model {
     use NodeTrait;
 
   	protected $table = "categories";
-  	protected $fillable = [];
+  	protected $fillable = ['active'];
 	public $timestamps = false;
  
  	public function products() 

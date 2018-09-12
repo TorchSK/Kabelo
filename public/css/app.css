@@ -2742,13 +2742,8 @@ a:hover {
   margin-bottom: 3px;
   border-radius: 5px;
 }
-.admin_categories_list .item.sub {
-  margin-left: 10px;
-  background-color: rgba(0, 0, 0, 0.05);
-}
-.admin_categories_list .item.sub2 {
+.admin_categories_list li ul {
   margin-left: 20px;
-  background-color: rgba(0, 0, 0, 0.03);
 }
 .admin_categories_list .name {
   display: inline-block;
@@ -3469,6 +3464,11 @@ a:hover {
 }
 #edit_category_submit {
   margin-top: 20px;
+}
+.active_flag {
+  display: inline-block;
+  margin-right: 5px;
+  cursor: pointer;
 }
 #settings_user {
   display: -webkit-box;

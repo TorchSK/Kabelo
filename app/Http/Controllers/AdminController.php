@@ -490,7 +490,8 @@ class AdminController extends Controller
         $data = [
             'makers' => Product::groupBy('maker'),
            'categories' => $this->categoryService->getCategories(),
-            'categoryCounts' => $this->productService->categoryCounts()
+            'categoryCounts' => $this->productService->categoryCounts(),
+           'categoriesRaw' => $this->categoryService->getCategoriesRaw(),
 
         ];
 

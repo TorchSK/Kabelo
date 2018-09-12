@@ -4,6 +4,7 @@
 
     @include('admin.sidebar')
 
+
 <div class="admin_right">
 
 	<div class="tabbs">
@@ -19,43 +20,8 @@
 	  	<div class="content active" data-tab="categories">
 
 		<ul class="admin_categories_list">
-		@foreach (App\Category::whereNull('parent_id')->orderBy('order')->get() as $category)
-    	<li class="item category @if($category->parent_id) sub @endif" data-id={{$category->id}}>
-			<a class="name" href="{{route('admin.category',['category'=>$category->url])}}">{{$category->name}}</a>
-			@if(env('DB_DATABASE_KABELO')=='kabelo')
-			<div class="no_of_items">produktov: {{$categoryCounts['categories'][$category->id] }}</div>
-			@endif
-
-			<a class="admin_delete_category_btn ui red label">Zmaž</a>
-
-		</li>
-
-		@foreach ($category->children->sortBy('order') as $child)
-	    	<li class="item category @if($child->parent_id) sub @endif" data-id={{$child->id}}>
-				<a class="name" href="{{route('admin.category',['category'=>$child->url])}}">{{$child->name}}</a>
-				@if(env('DB_DATABASE_KABELO')=='kabelo')
-
-				<div class="no_of_items">produktov: {{$categoryCounts['categories'][$child->id]}}</div>
-				@endif
-
-
-				<a class="admin_delete_category_btn ui red label">Zmaž</a>
-
-					@foreach ($child->children->sortBy('order') as $child2)
-				    	<li class="item category @if($child->parent_id) sub2 @endif" data-id={{$child2->id}}>
-							<a class="name" href="{{route('admin.category',['category'=>$child2->url])}}">{{$child2->name}}</a>
-				@if(env('DB_DATABASE_KABELO')=='kabelo')
-
-							<div class="no_of_items">produktov: {{$categoryCounts['categories'][$child2->id]}}</div>
-						@endif
-
-
-							<a class="admin_delete_category_btn ui red label">Zmaž</a>
-
-						</li>
-					@endforeach
-			</li>
-		@endforeach
+		@foreach ($categories as $category)
+			@include('admin.categoryRow')
 		@endforeach
 		</ul>
 

@@ -77,6 +77,15 @@ class CategoryController extends Controller
     }
 
 
+    public function set($id, Request $request)
+    {
+        $category = Category::find($id);
+        
+        $category->update($request->all());
+
+        return 1;
+    }
+
     public function addParameter(Request $request)
     {   
        

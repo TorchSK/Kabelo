@@ -3019,6 +3019,35 @@ $('#product_detail .main').click(function(e){
 })
 
 
+$('.active_flag').click(function(){
+	$icon = $(this).find('i');
+	$id = $(this).closest('.category').data('id');
+	$state = $(this).closest('.category').data('active');
+
+	if($state == 1)
+	{
+		$.ajax({
+			type: "PUT",
+			url: "/category/set/"+$id,
+			data: {active: 0},
+			success: function(data){
+				$icon.toggleClass('red green');s
+			}
+		})	
+	}
+	else
+	{
+		$.ajax({
+			type: "PUT",
+			url: "/category/set/"+$id,
+			data: {active: 1},
+			success: function(data){
+				$icon.toggleClass('red green');s
+			}
+		})	
+	}
+})
+
 })
 
 
