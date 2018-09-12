@@ -174,9 +174,7 @@ class CategoryController extends Controller
 
         $image = Image::make($path);
 
-        $image->resize($width, $height, function ($constraint) {
-                $constraint->aspectRatio();
-        });
+        $image->fit($width, $height);
 
         $image->resizeCanvas($width, $height, 'center', false, 'ffffff');
         
