@@ -16,10 +16,17 @@ class File extends Model {
 
     public function getThumbAttribute()
     {
-		$array = explode('/', $this->path);
+		  $array = explode('/', $this->path);
 
+
+      try{
     	$path = 'https://dedra.blob.core.windows.net/imagehandler/dedra.blob.core.windows.net/cms/ContentItems/'.$array[5].'/images/m_max__w_480__h_480__a_middlecenter__o__x_bottomright__r_30/'.explode('.',$array[7])[0].'.jpeg';
-        return $path;
+      }
+      catch (ErrorException $e) {
+        return $this->path;
+      }
+      
+      return $path;
 
     }
 }
