@@ -44,7 +44,7 @@
           @foreach($product->allfiles as $image)
             <div class="image_div @if($image->primary) primary @endif" data-fileid="{{$image->id}}">
               @if ($image->type=='image')
-              <img src="/{{$image->path}}" width="120px" class="ui image " />
+              <img src="{{url($image->path)}}" width="120px" class="ui image " />
               @elseif ($image->type!='video')
               <i class="icon huge brown file pdf outline" ></i>
 
