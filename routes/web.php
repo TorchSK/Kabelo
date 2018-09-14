@@ -69,6 +69,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/banner/', 'AdminController@addCover')->name('admin.addCover');
 	Route::post('/cover/', 'AdminController@storeCover')->name('admin.storeCover');
 	Route::post('/cover/upload', 'AdminController@uploadCover')->name('admin.uploadCover');
+	
+	Route::post('/banner/upload', 'AdminController@uploadAndStoreBanner')->name('admin.uploadAndStoreBanner');
+
 	Route::put('/cover/setorder', 'AdminController@setCoverOrder')->name('admin.setCoverOrder');
 	Route::get('/cover/edit/{id}', 'AdminController@editCover')->name('admin.editcover');
 	Route::put('/cover/{id}', 'AdminController@updatecover')->name('admin.updatecover');

@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
     @include('includes.head')
 
-    <body @if (isset($bodyid)) id="{{$bodyid}}" @endif data-layout="{{App\Setting::whereName('layout')->first()->value}}">
+    <body @if (isset($bodyid)) id="{{$bodyid}}" @endif class="eshop" data-layout="{{App\Setting::whereName('layout')->first()->value}}">
 
     @include('includes.sidebar')
     @include('includes.catbar')

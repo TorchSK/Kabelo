@@ -2,7 +2,7 @@
 <html>
     @include('includes.head')
 
-    <body @if (isset($bodyid)) id="{{$bodyid}}" @endif data-layout="1">
+    <body @if (isset($bodyid)) id="{{$bodyid}}" @endif class="admin" data-layout="1">
 
     <div class="pusher">
 

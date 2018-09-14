@@ -185,37 +185,15 @@
 /*---  Dark Tones  ---*/
 /*---  Light Tones  ---*/
 html {
-  background-repeat: repeat, no-repeat;
-  1height: 100%;
+  height: 100%;
 }
 body {
   height: 100%;
   background-color: transparent;
-  padding-top: 92px;
-}
-body[data-layout="2"] {
-  background-color: #FFF;
-}
-body[data-layout="2"] .pusher {
-  max-width: 1300px;
-  margin: 0 auto;
-}
-body[data-layout="2"] #header {
-  max-width: 1300px;
-}
-body[data-layout="2"] #header .container {
-  width: 90%;
+  padding-top: 85px;
 }
 body[data-layout="2"] .under_cover {
   display: none;
-}
-@media all and (max-width: 736px) {
-  body[data-layout="2"] .covers {
-    display: none !important;
-  }
-}
-body[data-layout="2"] .covers .cover {
-  height: 40vh !important;
 }
 body[data-layout="2"] #filterbar .tabs {
   display: none;
@@ -258,11 +236,17 @@ body .pusher {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 @media all and (max-width: 736px) {
   body {
     display: block;
   }
+}
+.covers {
+  width: 100%;
 }
 @media all and (max-width: 736px) {
   .covers {
@@ -270,7 +254,7 @@ body .pusher {
   }
 }
 .covers .cover {
-  height: 55vh !important;
+  height: 410px !important;
 }
 #nav {
   background-color: black;
@@ -476,21 +460,6 @@ a:hover {
 }
 #cookies_info img {
   display: inline-block;
-}
-.covers .flickity-slider {
-  -webkit-transform: none !important;
-          transform: none !important;
-}
-.covers .cover {
-  left: 0 !important;
-  opacity: 0;
-  -webkit-transition: opacity 0.6s ease-in-out;
-  transition: opacity 0.6s ease-in-out;
-  z-index: -1;
-}
-.covers .cover.is-selected {
-  opacity: 1;
-  z-index: 0;
 }
 /*----- button 4 -----*/
 .btn-4::after {
@@ -1059,6 +1028,7 @@ a:hover {
   background-image: url('/img/diag.jpg');
   height: 13px;
   text-align: center;
+  width: 100%;
 }
 @media all and (max-width: 736px) {
   .under_cover {
@@ -1098,6 +1068,7 @@ a:hover {
       -ms-flex: 1;
           flex: 1;
   background-color: #FFF;
+  width: 100%;
 }
 .flex {
   display: -webkit-box;
@@ -1514,41 +1485,29 @@ a:hover {
   z-index: 9999;
   position: fixed;
   top: 0;
+  padding: 0 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 #header.shrink .item {
-  padding: 10px 18px 6px 18px;
-  font-size: 13px !important;
+  font-size: 13px;
+  font-weight: 400;
 }
-#header.shrink #cart_icon {
-  font-size: 15px !important;
-  margin-top: 2px;
-}
-#header.shrink .cart {
-  font-weight: 600;
-  font-size: 13px !important;
-}
-#header.shrink .cart price {
-  margin-top: -2px;
-}
-#header.shrink .account {
-  margin-top: 4px;
+#header.shrink .logo {
+  padding: 10px;
+  height: 20px;
 }
 #header.shrink .logo img {
-  height: 35px;
-  width: 40px !important;
-  margin-top: -2px;
-  -webkit-transition: 0.2s ease;
-  transition: 0.2s ease;
-}
-#header .container {
-  white-space: normal;
+  width: 30px !important;
 }
 #header .item {
-  padding: 27px 18px;
-  display: inline-block;
+  -ms-flex-item-align: center;
+      align-self: center;
   color: #DDD;
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
+  padding: 0 10px;
 }
 @media all and (max-width: 980px) {
   #header .item {
@@ -1616,6 +1575,9 @@ a:hover {
   }
 }
 #header .search.item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   width: 30%;
   padding: 0;
   position: relative;
@@ -1729,7 +1691,6 @@ a:hover {
   display: inline-block;
 }
 #header .orders {
-  float: right;
   margin-right: 15px;
 }
 #header .orders a {
@@ -1767,7 +1728,6 @@ a:hover {
   text-align: center;
 }
 #header .catalogues {
-  float: right;
   cursor: pointer;
   margin-right: 5px;
   margin-top: 3px;
@@ -1784,9 +1744,16 @@ a:hover {
   opacity: 0.7;
 }
 #header .cart {
-  float: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   background-color: rgba(0, 0, 0, 0.4);
   font-weight: 900;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 #header .cart:hover {
   -webkit-box-shadow: inset 0 0 0 -5px #53a7ea;
@@ -1811,7 +1778,6 @@ a:hover {
   display: block;
 }
 #header .account {
-  float: right;
   font-size: 1.2em;
   cursor: pointer;
   overflow: hidden;
@@ -2494,6 +2460,7 @@ a:hover {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
+  width: 100%;
 }
 .admin_wrapper #product_detail {
   width: 100%;
@@ -3710,6 +3677,7 @@ footer {
       flex-shrink: 0;
   position: relative;
   z-index: 999;
+  width: 100%;
 }
 @media all and (max-width: 980px) {
   footer {
@@ -4157,20 +4125,21 @@ h1.header {
   }
 }
 #filterbar_h {
-  background-color: #FFF;
+  background-color: #F66270;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 70px;
+  min-height: 60px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 100%;
 }
 #filterbar_h .item {
-  color: #444;
-  padding: 25px;
+  color: #EEE;
+  padding: 20px;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 400;
 }
 #filterbar_h .item:last-child {
@@ -4196,7 +4165,6 @@ h1.header {
   display: none;
 }
 .admin_add_cover .cover_image {
-  height: 55vh;
   overflow: hidden;
   width: 100%;
   margin-bottom: 20px;
@@ -4272,6 +4240,13 @@ h1.header {
   width: 300px;
   margin-left: 25px;
 }
+#banner_dropzone {
+  display: inline-block;
+  width: 300px;
+  height: 80px;
+  min-height: 130px;
+  padding: 0;
+}
 .tablesorter-header-inner {
   display: inline-block;
 }
@@ -4296,4 +4271,19 @@ canvas {
   margin-top: 25px;
   width: 100%;
   max-height: 100% !important;
+}
+.covers .flickity-slider {
+  -webkit-transform: none !important;
+          transform: none !important;
+}
+.covers .cover {
+  left: 0 !important;
+  opacity: 0;
+  -webkit-transition: opacity 0.6s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
+  z-index: -1;
+}
+.covers .cover.is-selected {
+  opacity: 1;
+  z-index: 0;
 }

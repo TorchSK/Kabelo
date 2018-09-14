@@ -782,7 +782,6 @@ class AdminController extends Controller
 
     public function addCover()
     {
-
         return view('admin.addcover');
     }
 
@@ -797,6 +796,29 @@ class AdminController extends Controller
         ];
 
         return view('admin.addcover', $data);
+    }
+
+    public function uploadAndStoreBanner(Request $request)
+    {
+        $file = $request->file('file');
+
+        $destinationPath = 'uploads/covers';
+
+        $extension = $file->getClientOriginalExtension(); 
+        $filename = $file->getClientOriginalName().'.'.$extension;
+        $fullpath = $destinationPath.'/'.$filename;
+
+        $success = $file->move($destinationPath, $filename);
+
+        if ($success)
+        {
+            $cover = new Cover();
+            $cover->image = $destinationPath.'/'.$filename;
+            $cover->save();
+        }
+
+        return redirect('/admin/settings/banners');
+
     }
 
     public function storeCover(Request $request)

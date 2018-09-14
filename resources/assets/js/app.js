@@ -1325,10 +1325,16 @@ $('#admin_add_category_param_btn').click(function(){
 })
 
 $('#product_detail_dropzone').dropzone({
+	
+});
+
+$('#banner_dropzone').dropzone({
     params: {
       '_token': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+
 
 $('#file_dropzone').dropzone({
     params: {

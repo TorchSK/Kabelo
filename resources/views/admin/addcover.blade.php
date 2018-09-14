@@ -13,7 +13,10 @@
 			<div class="editable cover"></div>
 		</div>
 
-		<form action="/admin/cover/upload" class="dropzone" id="cover_dropzone"> <input name="_token" hidden value="{!! csrf_token() !!}" /></form>
+		<form action="/admin/cover/upload" class="dropzone" id="cover_dropzone"> 
+			<input name="_token" hidden value="{!! csrf_token() !!}" />
+			 <div class="dz-message">Klikni pre nahranie obrázkov/súborov</div>
+		</form>
 		@endif
 		
 		<div class="admin_add_cover_under">
