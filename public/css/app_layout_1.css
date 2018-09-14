@@ -4130,8 +4130,9 @@ h1.header {
   display: -ms-flexbox;
   display: flex;
   min-height: 80px;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
   padding-top: 30px;
 }
