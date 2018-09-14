@@ -1303,7 +1303,7 @@ $('.close_btn').click(function(){
 })
 
 
-$('#home_sales_div').flickity({
+$('#home_sales_div .items').flickity({
     cellAlign: 'left',
     contain: true,
     pageDots: false,
@@ -1311,7 +1311,7 @@ $('#home_sales_div').flickity({
     imagesLoaded: true
 });
 
-$('#home_news_div').flickity({
+$('#home_news_div .items').flickity({
     cellAlign: 'left',
     contain: true,
     pageDots: false,
