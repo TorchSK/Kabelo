@@ -4287,6 +4287,9 @@ body.eshop #grid {
 body.eshop #header {
   max-width: 1400px;
 }
+body.eshop #header .search.item {
+  margin-right: 5%;
+}
 body.eshop footer {
   max-width: 1400px;
   padding: 50px;
