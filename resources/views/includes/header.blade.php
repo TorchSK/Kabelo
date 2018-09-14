@@ -41,19 +41,6 @@
 
         @endif
 
-      @if($appname=='Dedra')
-        <div class="catalogues item ct">
-                    <i class="big file text icon"></i>
-
-        </div>
-
-        <div class="ui basic popup transition" id="catalogues_popup">
-            <a class="cat" href="/img/cat9.pdf" target="_blank"><img src="/img/catalogue9.jpg" width="100" /></a>
-            <a class="cat" href="/img/cat8.pdf" target="_blank"><img src="/img/catalogue8.jpg" width="100" /></a>
-            <a class="cat" href="/img/cat7.pdf" target="_blank"><img src="/img/catalogue7.jpg" width="100" /></a>
-
-        </div>
-        @endif
 
         <div class="account item">
           @if (Auth::check())
