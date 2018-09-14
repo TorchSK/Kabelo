@@ -4281,6 +4281,7 @@ body.eshop #eshop {
 }
 body.eshop #grid {
   background-color: #FFF;
+  padding-top: 10px;
 }
 body.eshop #header {
   max-width: 1400px;
