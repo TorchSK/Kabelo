@@ -19,7 +19,7 @@
 			      <div class="title">{{$delivery->name}}</div>
 			      <div class="description">{{$delivery->desc}}</div>
 			    </div>
-			   	<div class="price">@if(App\Setting::whereName('min_free_shipping_price')->first()->value!=0 && $cart['price'] < App\Setting::whereName('min_free_shipping_price')->first()->value){{$delivery->price}}@else 0 @endif &euro;</div>
+			   	<div class="price">@if(App\Setting::whereName('min_free_shipping_price')->first()->value==0 && $cart['price'] < App\Setting::whereName('min_free_shipping_price')->first()->value){{$delivery->price}}@else 0 @endif &euro;</div>
 
 			  </a>
 			</div>
@@ -42,7 +42,7 @@
 			      <div class="description">{{$payment->desc}}</div>
 			    </div>
 
-			   	<div class="price">@if(App\Setting::whereName('min_free_shipping_price')->first()->value!=0 && $cart['price'] < App\Setting::whereName('min_free_shipping_price')->first()->value){{$payment->price}} @else 0 @endif &euro;</div>
+			   	<div class="price">@if(App\Setting::whereName('min_free_shipping_price')->first()->value==0 && $cart['price'] < App\Setting::whereName('min_free_shipping_price')->first()->value){{$payment->price}} @else 0 @endif &euro;</div>
 
 			  </a>
 			</div>
