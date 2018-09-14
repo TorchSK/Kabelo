@@ -200,6 +200,9 @@ body[data-layout="2"] .pusher {
   max-width: 1300px;
   margin: 0 auto;
 }
+body[data-layout="2"] #header {
+  max-width: 1300px;
+}
 body[data-layout="2"] #header .container {
   width: 90%;
 }
