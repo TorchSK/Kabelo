@@ -4135,13 +4135,14 @@ h1.header {
           justify-content: center;
   width: 100%;
   padding-top: 30px;
+  text-transform: uppercase;
 }
 #filterbar_h .item {
   color: #555;
   padding: 20px 40px;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 1.1em;
-  font-weight: 400;
+  font-size: 1.3em;
+  font-weight: 700;
 }
 #filterbar_h .item:last-child {
   border-right: none;
@@ -4281,7 +4282,7 @@ body.eshop #eshop {
 }
 body.eshop #grid {
   background-color: #FFF;
-  padding-top: 10px;
+  padding-top: 10px !important;
 }
 body.eshop #header {
   max-width: 1400px;
