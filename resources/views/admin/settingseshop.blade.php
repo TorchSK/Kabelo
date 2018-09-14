@@ -50,14 +50,14 @@
 		<div class="item">
 			<div>Počet produktov na stránku</div>
 			<div class="ui input">
-			  <input type="text" name="ppp" value="{{App\Setting::where('name','ppp')->first()->value}}">
+			  <input type="text" name="ppp" value="{{App\Setting::firstOrCreate(['name'=>'ppp','value'=> 28])->value}}">
 			</div>	
 		</div><br />
 
 		<div class="item">
 			<div>Výška DPH</div>
 			<div class="ui right labeled input">
-			  <input type="text" name="vat" value="{{App\Setting::firstOrCreate(['name'=>'vat'])->value}}">
+			  <input type="text" name="vat" value="{{App\Setting::firstOrCreate(['name'=>'vat','value'=> 20])->value}}">
 			    <div class="ui basic label">%</div>
 			</div>	
 		</div>
