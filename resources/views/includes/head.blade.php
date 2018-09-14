@@ -35,8 +35,13 @@
     <link media="all" type="text/css" rel="stylesheet" href="/css/flickity.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/nouislider.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
-        <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
-    <link media="all" type="text/css" rel="stylesheet" href="/css/app.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
+
+    @if(App\Setting::where('name','layout')->first()->value == 1)
+    <link media="all" type="text/css" rel="stylesheet" href="/css/app_layout_1.css">
+    @else
+    <link media="all" type="text/css" rel="stylesheet" href="/css/app_layout_2.css">
+    @endif
     <script src="/js/dropzone.js"></script>
     <link media="all" type="text/css" rel="stylesheet" href="/css/modulobox.min.css">
 
