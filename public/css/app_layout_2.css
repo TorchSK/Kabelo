@@ -205,7 +205,7 @@ body[data-layout="2"] #filterbar count {
   display: none;
 }
 body[data-layout="2"] #grid .item.grid {
-  width: 23.4%;
+  width: 18.4%;
   margin-bottom: 15px;
   margin-right: 15px;
 }
@@ -4290,18 +4290,8 @@ body.eshop #grid {
   padding: 5px !important;
   padding-top: 10px !important;
 }
-body.eshop #home_news_div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
 body.eshop #home_news_div .caption {
   font-size: 1.5em;
-  -webkit-writing-mode: vertical-rl;
-      -ms-writing-mode: tb-rl;
-          writing-mode: vertical-rl;
-  text-orientation: upright;
-  background-color: rgba(0, 0, 0, 0.05);
   padding: 5px;
 }
 body.eshop #home_news_div .items {
@@ -4311,6 +4301,9 @@ body.eshop #home_news_div .items {
 }
 body.eshop #header {
   max-width: 1400px;
+}
+body.eshop #header .item {
+  text-align: left;
 }
 body.eshop #header .search.item {
   margin-right: 5%;
