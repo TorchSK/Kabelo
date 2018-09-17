@@ -12,6 +12,7 @@ use Image;
 use Cache;
 
 use App\Services\Contracts\ProductServiceContract;
+use App\Services\Contracts\CategoryServiceContract;
 
 class CategoryController extends Controller
 {
@@ -20,9 +21,10 @@ class CategoryController extends Controller
      *
      * @return void
      */
-    public function __construct(ProductServiceContract $productService)
+    public function __construct(ProductServiceContract $productService, CategoryServiceContract $categoryService)
     {        
         $this->productService = $productService;
+        $this->categoryService = $categoryService;
     }
 
 
@@ -33,6 +35,21 @@ class CategoryController extends Controller
         ];
 
         return view('categories.all', $data);
+    }
+
+
+    public function products($category=null, Request $request)
+    {   
+             $cat = Category::whereUrl($category)->first();
+            $request['category'] = $cat->id;
+            $data = $this->productService->list($request);
+
+            $data['requestCategory'] = Category::find($request->get('category'));
+            $data['categories'] = $this->categoryService->getCategories();
+
+            return view('home/home', $data);
+
+
     }
 
     /**

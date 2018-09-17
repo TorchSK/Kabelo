@@ -50,7 +50,7 @@ class GlobalComposer {
         $appname = env('APP_NAME');
         if($appname == 'Laravel')
         {
-            $appname = ucfirst(explode(".", Request::getHost())[0]);
+            $appname = explode(".", Request::getHost())[0];
         }
             
         $layout = Setting::whereName('layout')->first()->value;

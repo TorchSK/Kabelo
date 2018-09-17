@@ -29,18 +29,7 @@
 
 </footer>	
 
-
-
-
-
-
-
-
-
-
-
-
-
+<div class="modals">
 <div class="ui mini modal" id="delete_cart_modal">
 				  
   <div class="header">
@@ -225,3 +214,4 @@
       </div>
     </div>
   </div>
+</div>

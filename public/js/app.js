@@ -3057,7 +3057,7 @@ $('.active_flag').click(function(){
 })
 
 
-$('#filterbar_h .item').each(function() {
+$('#filterbar.horizontal .item').each(function() {
   var $el = $(this);
   $el.popup({    
     popup: '#cat_popup_'+$el.data('cat'),

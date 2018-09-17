@@ -9,11 +9,11 @@
     @include('includes.parambar')   
 
     <div class="pusher">
-    @include('includes.header')
-
-    @yield('content')
-
-	@include('includes.footer')
+        <div class="flex_column">
+            @include('includes.header')
+            @yield('content')
+    	    @include('includes.footer')
+        </div>
     </div>
 
     </body>

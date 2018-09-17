@@ -6,43 +6,28 @@ body {
   height: 100%;
   background-color: transparent;
   padding-top: 85px;
+}
 
-  &[data-layout="2"]
-  {
+.pusher{
+  height: 100%;
+  width: 100%;
+}
 
+.flex_column{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
-    .under_cover{
-      display: none;
-    }
+.wrapper{
+  width: 100%;
+  text-align: center;
 
-
-    #filterbar{
-      .tabs{
-        display: none;
-      }
-
-      .ui.divider{
-        max-width: 300px;
-      }
-
-      count{
-        display: none;
-      }
-    }
-
-    #grid{
-      .item.grid{
-        width: @ccw7;
-        margin-bottom: 15px;
-        margin-right: 15px;
-      }
-    }
-
-
-
-
+  >.container{
+    margin: 0 auto;
   }
-
+}
 
 .sticky_div{
   max-height: 100vh;
@@ -68,18 +53,7 @@ body {
 }
 
 
-  .pusher{
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-  }
 
-  @media @break2{
-    display: block;
-  }
-
-}
 
  .covers{
   width: 100%;

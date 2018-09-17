@@ -104,7 +104,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::group([], function()
 {
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home.index');
 
 Route::get('/home/eshop', 'HomeController@index')->name('home.eshop');
 
@@ -142,7 +142,9 @@ Route::put('categories/setorder/','CategoryController@setOrder');
 
 Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
-Route::get('/category/{category}', 'HomeController@index')->name('home.category');
+
+Route::get('/{category}', 'CategoryController@products')->name('category.products');
+
 Route::get('/maker/{maker}', 'HomeController@makerProducts')->name('maker.products');
 
 Route::get('/{maker}/{code}/detail','ProductController@profile')->name('product.detail');

@@ -7,7 +7,7 @@
 
     <title>{{$appname}}.sk</title>
 
-    <link rel="icon" type="image/png" href="https://kabelo.sk/img/favico.png" />
+    <link rel="icon" type="image/png" href="{{url('img/'.$appname)}}_favico.png" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -24,32 +24,31 @@
     <script src="/js/spectrum.js"></script>
     <script src="/js/tablesorter.js"></script>
     <script src="/js/modulobox.min.js"></script>
+    <script src="/js/nestedsortable.js"></script>
+    <script src="/js/dropzone.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/rateyo.css">
-
     <link media="all" type="text/css" rel="stylesheet" href="/css/spectrum.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/semantic.css">
-    <link rel="stylesheet" href="https://use.typekit.net/nnc8ofe.css">
+    <link media="all" type="text/css" rel="stylesheet" href="https://use.typekit.net/nnc8ofe.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/flickity.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/nouislider.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/css/modulobox.min.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
 
     @if(App\Setting::where('name','layout')->first()->value == 1)
     <link media="all" type="text/css" rel="stylesheet" href="/css/app_layout_1.css">
     @else
     <link media="all" type="text/css" rel="stylesheet" href="/css/app_layout_2.css">
     @endif
-    <script src="/js/dropzone.js"></script>
-    <link media="all" type="text/css" rel="stylesheet" href="/css/modulobox.min.css">
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-    <script src="/js/nestedsortable.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <link media="all" type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
 
 
     <script src="/js/app.js"></script>
