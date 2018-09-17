@@ -4310,6 +4310,15 @@ body.eshop #header .item {
 body.eshop #header .search.item {
   margin-right: 5%;
 }
+#product_content {
+  max-width: 1400px;
+}
+#product_content .container {
+  width: 90%;
+}
+#product_detail {
+  width: 100%;
+}
 body.eshop footer {
   max-width: 1400px;
   padding: 50px;
