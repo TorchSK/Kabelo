@@ -1,5 +1,10 @@
   <div id="header">
+    <div class="container">
 
+    @if(Auth::check())
+    <div class="content cart hidden" data-cartid="{{Auth::user()->cart->id}}"></div>
+    @endif
+    
         <a class="logo item" href="/">
           <div class="image"><img class="{{strtolower($appname)}}" src="/img/logo_{{strtolower($appname)}}.png" /></div>
           <text>{{$appname}}</text>
@@ -136,4 +141,4 @@
 
   </div>
 
-  
+</div>

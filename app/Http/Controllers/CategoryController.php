@@ -47,7 +47,7 @@ class CategoryController extends Controller
             $data['requestCategory'] = Category::find($request->get('category'));
             $data['categories'] = $this->categoryService->getCategories();
 
-            return view('home/home', $data);
+            return view('categories/products', $data);
 
 
     }

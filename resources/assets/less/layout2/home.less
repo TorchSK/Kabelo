@@ -12,9 +12,41 @@ body.eshop{
 
 	#home_news_div, #home_sales_div{
 		
+		.container{
+			background-color: #FFF;
+			padding: 15px;
+		}
+
 		.caption{
-  			font-size: 1.5em;
-  			padding: 5px;
+			display: flex;
+			justify-content: space-between;
+
+			name{
+	  			font-size: 1.3em;
+	  			padding: 5px;
+	  			margin-bottom: 10px;
+	  			font-weight: 700;
+	  			color: #444;
+
+	  			i{
+	  				font-size: 0.8em;
+	  				position: relative;
+	  				top:-1px;
+	  				color:#888;
+	  			}
+  			}
+
+  			arrows{
+	  			font-size: 1.3em;
+	  			padding: 5px;
+	  			margin-bottom: 10px;
+	  			font-weight: 700;
+
+	  			i.icon{
+		  			color: #BBB;
+		  			font-size: 1.2em;
+	  			}
+  			}
 		}
 
 		.items{
@@ -23,6 +55,8 @@ body.eshop{
 	}
 
 	#home_sales_div{
-		margin-top: 1px;
+		.container{
+			margin-top: 1px;
+		}
 	}
 }

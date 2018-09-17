@@ -1,5 +1,5 @@
 <footer>
-
+<div class="container">
 	<div class="column">
 		 <a class="logo item" href="/">
          <img src="/img/logo_{{strtolower($appname)}}.png" height="50"/>
@@ -26,7 +26,7 @@
       <div id="cookies_msg">Tento web používa súbory cookies. Prehliadaním webu vyjadrujete súhlas s ich používaním. <a href="/cookies/info">Viac informácií.</a><button class="ui blue mini button" id="cookies_consent_btn">OK</button></div>
       @endif
 
-
+</div>
 </footer>	
 
 <div class="modals">

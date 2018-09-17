@@ -18,10 +18,6 @@
     @include('includes/filterbar_horizontal')
     @endif
 
-    @if(Auth::check())
-    <div class="content cart hidden" data-cartid="{{Auth::user()->cart->id}}"></div>
-    @endif
-
     <div id="eshop">
     <div class="flex flex_content" id="home_content">
 

@@ -1,5 +1,5 @@
 <div id="filterbar" class="horizontal">
-
+	<div class="container">
     @foreach(App\Category::orderBy('order')->get()->toTree() as $category)
 
     	<a href="{{route('category.products',['category'=>$category->url])}}" class="item" data-cat="{{$category->id}}">{{$category->name}}</a>
@@ -23,7 +23,5 @@
 
 	@endforeach
 
-
-
-
+</div>
 </div>

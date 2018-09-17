@@ -29,8 +29,9 @@
 
     <div id="home_news_div" class="wrapper">
         <div class="container">
-            <div class="caption ct">
-                Novinky
+            <div class="caption">
+                <name>Novinky</name>
+                <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
             </div>
             <div class="items">
             @foreach(App\Product::where('new',1)->get() as $product)
@@ -43,9 +44,11 @@
     <div id="home_sales_div" class="wrapper">
         <div class="container">
 
-            <div class="caption ct">
-                Akcie
+            <div class="caption">
+                <name>Akcie</name>
+                <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
             </div>
+
             <div class="items">
             @foreach(App\Product::where('sale',1)->get() as $product)
                 @include('products.row')
@@ -55,12 +58,10 @@
     </div>
 
 
-               
-
-
-        <div class="under_cover">               
+    @if($layout == 1)
+    <div class="stripes divider">               
       &nbsp;
-    </div>
-
+    </div>  
+    @endif
 
 @stop
