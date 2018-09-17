@@ -142,7 +142,7 @@ Route::put('categories/setorder/','CategoryController@setOrder');
 
 Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
-Route::get('/category/{category}', 'HomeController@index');
+Route::get('/category/{category}', 'HomeController@index')->name('home.category');
 Route::get('/maker/{maker}', 'HomeController@makerProducts')->name('maker.products');
 
 Route::get('/{maker}/{code}/detail','ProductController@profile')->name('product.detail');

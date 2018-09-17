@@ -4140,11 +4140,16 @@ h1.header {
   text-transform: uppercase;
   margin-bottom: 1px;
   text-align: center;
+  position: relative;
+}
+#filterbar_h .popup {
+  left: 0 !important;
+  top: 50px !important;
 }
 #filterbar_h .item {
   display: inline-block;
   color: #555;
-  padding: 30px 40px;
+  padding: 25px 40px;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   font-size: 1em;
   font-weight: 600;

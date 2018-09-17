@@ -3,7 +3,7 @@
 @endif
 
 <div id="home_news_div">
-<div class="caption">
+<div class="caption ct">
 	Novinky
 </div>
 <div class="items">
@@ -18,7 +18,7 @@
 @endif
 
 <div id="home_sales_div">
-<div class="caption">
+<div class="caption ct">
 	Akcie
 </div>
 <div class="items">

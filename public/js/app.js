@@ -3056,8 +3056,22 @@ $('.active_flag').click(function(){
 	}
 })
 
-})
 
+$('#filterbar_h .item').each(function() {
+  var $el = $(this);
+  $el.popup({    
+    popup: '#cat_popup_'+$el.data('cat'),
+    on: 'hover',
+    hoverable: true,
+    exclusive: true,
+    position: 'bottom left'
+  });
+});
+
+
+
+
+});
 
 var sticky;
 var div;
