@@ -4146,7 +4146,7 @@ h1.header {
   color: #555;
   padding: 30px 40px;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 600;
 }
 #filterbar_h .item:last-child {
@@ -4290,11 +4290,13 @@ body.eshop #grid {
   padding: 5px !important;
   padding-top: 10px !important;
 }
-body.eshop #home_news_div .caption {
+body.eshop #home_news_div .caption,
+body.eshop #home_sales_div .caption {
   font-size: 1.5em;
   padding: 5px;
 }
-body.eshop #home_news_div .items {
+body.eshop #home_news_div .items,
+body.eshop #home_sales_div .items {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;

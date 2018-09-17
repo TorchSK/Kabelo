@@ -2047,6 +2047,7 @@ $('.ui.new.product.search')
           $row.find('td:nth-child(2)').text(result.name);
           $row.data('id',result.id);
           $('#new_product_table tbody tr:last-child').before($row);
+          $('.ui.new.product.search input').val('');
         }   
       })
     }
@@ -2086,6 +2087,7 @@ $('.ui.sale.product.search')
           $row.find('td:nth-child(2)').text(result.name);
           $row.data('id',result.id);
           $('#sale_product_table tbody tr:last-child').before($row);
+          $('.ui.sale.product.search input').val('');
         }   
       })
     }

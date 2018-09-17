@@ -3,7 +3,9 @@
 @endif
 
 <div id="home_news_div">
-<div class="caption">Novinky</div>
+<div class="caption">
+	Novinky
+</div>
 <div class="items">
 @foreach(App\Product::where('new',1)->get() as $product)
     @include('products.row')
@@ -16,8 +18,14 @@
 @endif
 
 <div id="home_sales_div">
+<div class="caption">
+	Akcie
+</div>
+<div class="items">
 @foreach(App\Product::where('sale',1)->get() as $product)
     @include('products.row')
 @endforeach
+</div>
+
 </div>
 
