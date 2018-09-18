@@ -47,7 +47,8 @@ class GlobalComposer {
         }   
 
         //dd($cart);
-        $appname = env('APP_NAME');
+        $appname = strtolower(env('APP_NAME'));
+
         if($appname == 'Laravel')
         {
             $appname = explode(".", Request::getHost())[0];
