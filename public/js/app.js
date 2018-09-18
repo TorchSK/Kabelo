@@ -3064,7 +3064,9 @@ $('#filterbar.horizontal .item').each(function() {
     on: 'hover',
     hoverable: true,
     exclusive: true,
-    position: 'bottom left'
+    position: 'bottom left',
+    duration: 0,
+    lastResort: 'bottom left'
   });
 });
 

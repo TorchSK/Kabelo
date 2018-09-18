@@ -2,7 +2,7 @@
 	<div class="container">
     @foreach(App\Category::orderBy('order')->get()->toTree() as $category)
 
-    	<a href="{{route('category.products',['category'=>$category->url])}}" class="item" data-cat="{{$category->id}}">{{$category->name}}</a>
+    	<a href="{{route('category.products',['category'=>$category->url])}}" class="item @if(isset($requestCategory) && $category->id==$requestCategory->id) active @endif" data-cat="{{$category->id}}">{{$category->name}}</a>
 
     	<div class="ui fluid basic popup bottom left transition hidden" id="cat_popup_{{$category->id}}">
 

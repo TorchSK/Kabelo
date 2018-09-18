@@ -249,16 +249,32 @@
 		justify-content: space-around;
 		text-align: left;
 
+		.name{
+			transition: 0.1s all ease;
+
+			&:hover{
+				background-color: @brown;
+				color: #FFF
+			}
+		}
+
 		.sub1{
 			>.name{
 				border-bottom: 1px solid #CCC;
 				font-weight: 700;
+				padding: 4px;
+				border-radius: 3px;
 			}
 		}
 
 		.sub2{
+			margin: 5px 0;
+
 			>.name{
 				font-weight: 300;
+				padding: 4px;
+				border-radius: 3px;
+
 			}
 		}
 	}
@@ -274,6 +290,12 @@
 		&:last-child{
 			border-right:none;
 		}
+
+		&.active{
+			background-color: @brown;
+			color: #FFF;
+		}
+
 	}
 }
 
