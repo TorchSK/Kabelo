@@ -42,18 +42,17 @@
         </div>
     </div>
 
+    @if($requestCategory->children->count() > 0)
     <div id="subcategories_wrapper" class="wrapper">
         <div class="container">
-
-        @if($requestCategory->children->count() > 0)
-        <div class="subcategories">
-            @foreach($requestCategory->children->sortBy('order') as $child)
-                @include('categories.image',['category'=>$child])
-            @endforeach         
-        </div>
-        @endif
+            <div class="subcategories">
+                @foreach($requestCategory->children->sortBy('order') as $child)
+                    @include('categories.image',['category'=>$child])
+                @endforeach         
+            </div>
     </div>
     </div>
+    @endif
 
     <div id="grid_wrapper" class="wrapper">
         <div class="container">
