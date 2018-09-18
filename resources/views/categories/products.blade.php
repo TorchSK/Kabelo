@@ -29,9 +29,15 @@
 
     <div id="category_path_wrapper" class="wrapper">
         <div class="container">
-        @if($requestCategory->parent_id)
-            <a class="effect-1" href="/category/{{$requestCategory->parent->url}}">{{App\Category::find($requestCategory->parent_id)->name}}</a> -
+        
+        @if(App\Category::find($requestCategory->parent_id)->parent_id)
+            <a class="effect-1" href="{{route('category.products',['path'=> App\Category::find(App\Category::find($requestCategory->parent_id)->parent_id)->full_url])}}">{{App\Category::find(App\Category::find($requestCategory->parent_id)->parent_id)->name}}</a> -
         @endif
+
+        @if($requestCategory->parent_id)
+            <a class="effect-1" href="{{route('category.products',['path'=> App\Category::find($requestCategory->parent_id)->full_url])}}">{{App\Category::find($requestCategory->parent_id)->name}}</a> -
+        @endif
+
             <a>{{$requestCategory->name}}</a>
         </div>
     </div>
