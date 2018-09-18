@@ -2990,7 +2990,7 @@ $('.copy_to_clipboard_btn').click(function(){
 })
 
 
-$('#grid grid.infinite').infiniteScroll({
+$('grid.infinite').infiniteScroll({
   // options
   path: '#next_page',
   append: '.item.product.grid',

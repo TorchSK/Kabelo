@@ -208,6 +208,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  min-height: 100%;
 }
 .flex_row {
   display: -webkit-box;

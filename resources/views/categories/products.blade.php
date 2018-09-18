@@ -83,15 +83,7 @@
 
            <grid @if($appname=="dedra") class="infinite" @endif>
 
-                @if(Request::get('category') || Route::currentRouteName()=='maker.products')
-
-                    @include('products.list')
-
-                @else
-
-                    @include('home.initial')
-
-                @endif
+                @include('products.list')
                
             </grid>
 
