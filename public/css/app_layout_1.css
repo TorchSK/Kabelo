@@ -209,6 +209,12 @@ body {
           align-items: center;
   width: 100%;
 }
+.flex_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
 .wrapper {
   width: 100%;
   text-align: center;
@@ -284,6 +290,10 @@ body {
 }
 .ct {
   text-align: center;
+}
+.am {
+  margin: 0 auto;
+  width: 100%;
 }
 a {
   color: #1B1C1D;
@@ -1220,7 +1230,6 @@ a:hover {
   z-index: 9999;
   position: fixed;
   top: 0;
-  padding: 0 25px;
 }
 #header .container {
   display: -webkit-box;
@@ -4254,6 +4263,12 @@ canvas {
   margin-top: 25px;
   width: 100%;
   max-height: 100% !important;
+}
+#header {
+  background-color: #1F1F1F;
+}
+#header > .container {
+  width: 80%;
 }
 .covers .flickity-slider {
   -webkit-transform: none !important;

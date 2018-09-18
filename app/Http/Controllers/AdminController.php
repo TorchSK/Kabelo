@@ -43,7 +43,7 @@ class AdminController extends Controller
     {        
         $this->middleware('auth');
         $this->productService = $productService;
-                $this->categoryService = $categoryService;
+        $this->categoryService = $categoryService;
 
     }
 

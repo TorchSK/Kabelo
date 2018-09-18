@@ -44,7 +44,7 @@
 
     <link media="all" type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
 
-    @if(App\Setting::where('name','layout')->first()->value == 1)
+    @if(App\Setting::where('name','layout')->first()->value == 1 || Request::segment(1)=='admin')
     <link media="all" type="text/css" rel="stylesheet" href="/css/app_layout_1.css">
     @else
     <link media="all" type="text/css" rel="stylesheet" href="/css/app_layout_2.css">
