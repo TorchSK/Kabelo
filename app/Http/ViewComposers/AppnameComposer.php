@@ -34,10 +34,10 @@ class AppnameComposer {
 
         if($appname == 'Laravel')
         {
-            $appname = ucfirst(explode(".", Request::getHost())[0]);
+            $appname = explode(".", Request::getHost())[0];
         }
 
-        $view->with('appname', $appname);
+        $view->with('appname', strtolower($appname));
     }
 
 }
