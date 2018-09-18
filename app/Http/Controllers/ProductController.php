@@ -176,10 +176,10 @@ class ProductController extends Controller
 
     
 
-    public function profile($maker, $code)
+    public function profile($url)
     {
 
-        $product = Product::where('maker',$maker)->where('code', $code)->first();
+        $product = Product::whereUrl($url)->first();
         
         $data = [
            'product' => $product,

@@ -11,6 +11,21 @@
 |
 */
 
+$app = env('APP_NAME');
+
+if($app == 'Laravel')
+{
+    $app = ucfirst(explode(".", Request::getHost())[0]);
+}
+
+if($app == 'Kabelo')
+{
+    Config::set('database.default', 'kabelo');
+}
+elseif($app == 'Dedra')
+{
+    Config::set('database.default', 'dedra');
+}
 
 // Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
@@ -22,6 +37,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/xml/updateXML', 'AdminController@updateXML')->name('admin.updateXML');
 	Route::get('/xml/addCategoryPath', 'AdminController@addCategoryPath')->name('admin.addCategoryPath');
 	Route::get('/addCategoryFullurl', 'AdminController@addCategoryFullurl')->name('admin.addCategoryFullurl');
+	Route::get('/addProductUrl', 'AdminController@addProductUrl')->name('admin.addProductUrl');
 
 
 	Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
@@ -126,6 +142,17 @@ Route::delete('cart/{cartid}/{productid}','CartController@deleteItem');
 Route::put('cart/{cartid}/{productid}','CartController@setItem');
 Route::post('cart','CartController@set');
 
+// Products
+Route::get('product/{id}/parameters/options','ProductController@paramOptions');
+Route::get('product/list','ProductController@list');
+Route::get('makerproduct/list','ProductController@makerlist');
+
+Route::post('product/{productid}/change/category/{categoryid}','ProductController@changeCategory');
+Route::post('product/{productid}/rating/','ProductController@addRating');
+Route::resource('product','ProductController');
+Config::set('database.default', 'dedra');
+
+Route::get('/{url}', 'ProductController@profile')->where('url','('.App\Product::all()->implode('url', '|').')')->name('product.detail');
 
 // Categories
 Route::get('/categories/all','CategoryController@all');
@@ -144,25 +171,16 @@ Route::put('categories/setorder/','CategoryController@setOrder');
 Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
 
-Route::get('/{path}', 'CategoryController@products')->where('path', '(.*)')->name('category.products');
+Route::get('/{path}', 'CategoryController@products')->where('path','(.*)')->name('category.products');
 
 Route::get('/maker/{maker}', 'HomeController@makerProducts')->name('maker.products');
 
-Route::get('/{maker}/{code}/detail','ProductController@profile')->name('product.detail');
 Route::get('/{maker}/{code}/edit','ProductController@edit');
 
 Route::post('/category/image/upload','CategoryController@uploadImage');
 Route::post('/category/{categoryid}/image/confirmCrop','CategoryController@confirmCrop');
 
-// Products
-Route::get('product/{id}/parameters/options','ProductController@paramOptions');
-Route::get('product/list','ProductController@list');
-Route::get('makerproduct/list','ProductController@makerlist');
 
-Route::post('product/{productid}/change/category/{categoryid}','ProductController@changeCategory');
-Route::post('product/{productid}/rating/','ProductController@addRating');
-
-Route::resource('product','ProductController');
 
 // Upload
 Route::post('{type}/upload', 'ProductController@upload');

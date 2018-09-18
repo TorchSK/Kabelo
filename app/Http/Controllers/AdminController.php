@@ -261,6 +261,14 @@ class AdminController extends Controller
         }
     }
 
+    public function addProductUrl()
+    {
+        foreach(Product::all() as $product)
+        {
+            $product->url = str_slug($product->code."-".$product->name);
+            $product->save();
+        }
+    }
 
 
     public function addMoreImages()
