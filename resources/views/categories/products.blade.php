@@ -30,7 +30,7 @@
     <div id="category_path_wrapper" class="wrapper">
         <div class="container">
         
-        @if(App\Category::find($requestCategory->parent_id)->parent_id)
+        @if($requestCategory->parent_id && App\Category::find($requestCategory->parent_id)->parent_id)
             <a class="effect-1" href="{{route('category.products',['path'=> App\Category::find(App\Category::find($requestCategory->parent_id)->parent_id)->full_url])}}">{{App\Category::find(App\Category::find($requestCategory->parent_id)->parent_id)->name}}</a> -
         @endif
 
