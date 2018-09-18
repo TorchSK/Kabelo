@@ -1466,7 +1466,7 @@ a:hover {
 }
 .item.product.grid {
   display: inline-block;
-  width: 17.4%;
+  width: 18.28%;
   text-align: center;
   margin-bottom: 25px;
   margin-right: 25px;
@@ -1733,7 +1733,7 @@ a:hover {
 }
 #grid_wrapper > .container {
   background-color: #FFF;
-  padding: 35px;
+  padding: 30px;
 }
 #grid_wrapper .flickity-slider .item.grid {
   width: 12.9%;
@@ -4330,6 +4330,21 @@ body.eshop #header .item {
 }
 body.eshop #header .search.item {
   margin-right: 5%;
+}
+.item.product.grid {
+  display: inline-block;
+  width: 18.28%;
+  text-align: center;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  padding-bottom: 25px;
+  position: relative;
+}
+.item.product.grid:nth-child(5n) {
+  margin-right: 0;
 }
 #product_content {
   max-width: 1400px;

@@ -1,3 +1,20 @@
+.item.product.grid{
+	display: inline-block;
+	width: @cw7;
+	text-align: center;
+	margin-bottom: 25px;
+	margin-right: 25px;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: @white;
+	padding-bottom: 25px;
+	position: relative;
+
+	&:nth-child(5n){
+		margin-right: 0;
+	}
+}
+
 #product_content{
 	max-width: @maxwidth;
 
@@ -9,3 +26,4 @@
 #product_detail{
 	width: 100%;
 }
+
