@@ -47,7 +47,7 @@ class GlobalComposer {
         }   
 
         //dd($cart);
-        $appname = strtolower(env('APP_NAME'));
+        $appname = env('APP_NAME');
 
         if($appname == 'Laravel')
         {
@@ -57,7 +57,7 @@ class GlobalComposer {
         $layout = Setting::whereName('layout')->first()->value;
 
         $view->with('cart', $cart);
-        $view->with('appname', $appname);
+        $view->with('appname', strtolower($appname));
         $view->with('layout', $layout);
         $view->with('min_order_price', config('app.min_order_price'));
         $view->with('min_free_shipping_price', config('app.min_free_shipping_price'));
