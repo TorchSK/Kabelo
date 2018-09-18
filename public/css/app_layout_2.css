@@ -1476,9 +1476,6 @@ a:hover {
   padding-bottom: 25px;
   position: relative;
 }
-.item.product.grid:nth-child(6n) {
-  margin-right: 0;
-}
 @media all and (max-width: 2100px) {
   .item.product.grid {
     width: 18.2%;
