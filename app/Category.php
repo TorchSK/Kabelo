@@ -11,13 +11,8 @@ class Category extends Model {
 
 	protected $table = "categories";
 	protected $fillable = ['active'];
-  protected $appends = ['fullurl'];
 
   public $timestamps = false;
-
-  public function getFullurlAttribute() {
-    return str_replace('-','/',str_slug($this->path));
-  }
 
  	public function products() 
   {

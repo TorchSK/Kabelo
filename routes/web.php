@@ -21,6 +21,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/xml/addMoreImages', 'AdminController@addMoreImages')->name('admin.addMoreImages');
 	Route::get('/xml/updateXML', 'AdminController@updateXML')->name('admin.updateXML');
 	Route::get('/xml/addCategoryPath', 'AdminController@addCategoryPath')->name('admin.addCategoryPath');
+	Route::get('/addCategoryFullurl', 'AdminController@addCategoryFullurl')->name('admin.addCategoryFullurl');
 
 
 	Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
@@ -143,7 +144,7 @@ Route::put('categories/setorder/','CategoryController@setOrder');
 Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
 
-Route::get('/{path}', 'CategoryController@products')->name('category.products');
+Route::get('/{path}', 'CategoryController@products')->where('path', '(.*)')->name('category.products');
 
 Route::get('/maker/{maker}', 'HomeController@makerProducts')->name('maker.products');
 

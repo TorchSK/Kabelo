@@ -1476,6 +1476,9 @@ a:hover {
   padding-bottom: 25px;
   position: relative;
 }
+.item.product.grid:nth-child(6n) {
+  margin-right: 0;
+}
 @media all and (max-width: 2100px) {
   .item.product.grid {
     width: 17.85%;
@@ -1676,28 +1679,33 @@ a:hover {
 .item.product.grid .labels .label {
   display: inline-block;
 }
-#category_path {
-  font-size: 3em;
+#category_path_wrapper {
+  margin-bottom: 1px;
+  font-size: 2em;
   font-weight: 100;
 }
-#category_path > .container {
+#category_path_wrapper > .container {
   background-color: #FFF;
   text-align: center;
-  padding: 20px 0 ;
+  padding: 40px 0 50px 0 ;
 }
 @media all and (max-width: 980px) {
-  #category_path {
+  #category_path_wrapper {
     font-size: 2em;
     margin-top: 10px;
     text-align: center;
     margin-bottom: 30px;
   }
 }
-#category_path i.setting.icon:hover {
+#category_path_wrapper i.setting.icon:hover {
   color: #000 !important;
+}
+#subcategories_wrapper {
+  margin-bottom: 1px;
 }
 #subcategories_wrapper > .container {
   background-color: #FFF;
+  padding: 40px 0 ;
 }
 #subcategories_wrapper .subcategories {
   display: -webkit-box;
@@ -3282,7 +3290,6 @@ a:hover {
   }
 }
 .subcategories .category_image {
-  margin: 0px 8px 35px 8px;
   width: 200px;
 }
 @media all and (max-width: 980px) {
@@ -4104,10 +4111,12 @@ h1.header {
 #filterbar.horizontal .item {
   display: inline-block;
   color: #555;
-  padding: 25px 40px;
+  padding: 10px 20px;
+  margin: 15px 20px;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   font-size: 1em;
   font-weight: 600;
+  border-radius: 4px;
 }
 #filterbar.horizontal .item:last-child {
   border-right: none;

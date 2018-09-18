@@ -27,15 +27,12 @@
     @include('includes/filterbar', ['sticky'=> true])
     @endif
 
-    <div id="category_path" class="wrapper">
+    <div id="category_path_wrapper" class="wrapper">
         <div class="container">
         @if($requestCategory->parent_id)
             <a class="effect-1" href="/category/{{$requestCategory->parent->url}}">{{App\Category::find($requestCategory->parent_id)->name}}</a> -
         @endif
             <a>{{$requestCategory->name}}</a>
-            @if (Auth::check() && Auth::user()->admin)
-            <a href="/admin/category/{{$requestCategory->url}}" data-tooltip="Administrácia"><i class="setting teal icon"></i></a>
-            @endif
         </div>
     </div>
 

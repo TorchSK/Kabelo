@@ -2,7 +2,7 @@
 	@if(Request::segment(1)=='admin')
 		<a href="/admin/category/{{$category->url}}">
 	@else
-		<a href="{{route('category.products',['path'=> $category->fullurl])}}">
+		<a href="{{route('category.products',['path'=> $category->full_url])}}">
 	@endif
 	<div class="image @if (Request::segment(1)!='admin') btn-4  @endif">
 		@if($category->image)

@@ -252,6 +252,16 @@ class AdminController extends Controller
         }
     }
 
+    public function addCategoryFullurl()
+    {
+        foreach(Category::all() as $category)
+        {
+            $category->full_url = str_replace("99","-",str_replace("9999", "/", str_slug(str_replace(" ","99", $category->path))));
+            $category->save();
+        }
+    }
+
+
 
     public function addMoreImages()
     {

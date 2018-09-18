@@ -13,6 +13,10 @@
 	padding-bottom: 25px;
 	position: relative;
 
+	&:nth-child(6n){
+		margin-right: 0;
+	}
+
 	@media @break6{
 		width: @cw6;
 
@@ -227,15 +231,16 @@
 
 }
 
-#category_path{
+#category_path_wrapper{
+	margin-bottom: 1px;
 
 	>.container{
 		background-color: #FFF;
 		text-align: center;
-		padding: 20px 0 ;
+		padding: 40px 0 50px 0 ;
 
 	}
-	font-size: 3em;
+	font-size: 2em;
 	font-weight: 100;
 
 	@media @break3{
@@ -251,9 +256,11 @@
 }
 
 #subcategories_wrapper{
+	margin-bottom: 1px;
 
 	>.container{
 		background-color: #FFF;
+		padding: 40px 0 ;
 	}
 
 
