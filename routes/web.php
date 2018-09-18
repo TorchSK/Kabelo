@@ -11,22 +11,6 @@
 |
 */
 
-$app = env('APP_NAME');
-
-if($app == 'Laravel')
-{
-    $app = ucfirst(explode(".", Request::getHost())[0]);
-}
-
-if($app == 'Kabelo')
-{
-    Config::set('database.default', 'kabelo');
-}
-elseif($app == 'Dedra')
-{
-    Config::set('database.default', 'dedra');
-}
-
 // Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 {
