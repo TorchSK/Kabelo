@@ -40,7 +40,7 @@
 
         <div class="hiden">
           @foreach($product->images as $key => $image)
-            @if($appname=='Dedra')
+            @if($appname=='dedra')
             <a class="img ct mobx" href="{{$image->path}}" style="display: inline-block;"  data-rel="{{$product->code}}" data-index="{{$key}}">
              <img src="{{$image->thumb}}" class="ui image" data-full="{{$image->path}}" style="max-height: 130px; max-width: 130px; display: inline-block;"/>
              </a>
@@ -62,7 +62,7 @@
           @if ($product->images->count() > 1)
 
           @foreach($product->images as $key => $image)
-            @if($appname=='Dedra')
+            @if($appname=='dedra')
             <a class="img ct" href="{{$image->path}}" style="display: inline-block;" >
              <img src="{{$image->thumb}}" class="ui image" data-full="{{$image->path}}" data-index="{{$key}}" style="max-height: 130px; max-width: 130px; display: inline-block;"/>
              </a>
