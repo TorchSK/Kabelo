@@ -152,7 +152,7 @@ Route::post('product/{productid}/rating/','ProductController@addRating');
 Route::resource('product','ProductController');
 Config::set('database.default', 'dedra');
 
-Route::get('/{url}', 'ProductController@profile')->where('url','('.App\Product::all()->implode('url', '|').')')->name('product.detail');
+Route::get('p/{url}', 'ProductController@profile')->name('product.detail');
 
 // Categories
 Route::get('/categories/all','CategoryController@all');
