@@ -7,14 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model {
     
-    use NodeTrait;
+  use NodeTrait;
 
-  	protected $table = "categories";
-  	protected $fillable = ['active'];
-	public $timestamps = false;
- 
+	protected $table = "categories";
+	protected $fillable = ['active'];
+  protected $appends = ['fullurl'];
+
+  public $timestamps = false;
+
+  public function getFullurlAttribute() {
+    return str_replace('-','/',str_slug($this->path));
+  }
+
  	public function products() 
-  	{
+  {
  		return $this->belongsToMany('App\Product');
  	}
 

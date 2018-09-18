@@ -109,11 +109,11 @@
         </div>
     </div>
 
-
-
-
+ 
+    @if($layout == 1)
     <div class="stripes divider">               
       &nbsp;
-    </div>
+    </div>  
+    @endif
 
 @stop

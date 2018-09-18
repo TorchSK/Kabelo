@@ -38,9 +38,10 @@ class CategoryController extends Controller
     }
 
 
-    public function products($category=null, Request $request)
+    public function products($path=null, Request $request)
     {   
-             $cat = Category::whereUrl($category)->first();
+            $cat = Category::whereFullurl($path)->first();
+
             $request['category'] = $cat->id;
             $data = $this->productService->list($request);
 
