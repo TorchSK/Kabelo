@@ -140,10 +140,9 @@
     </div>
 
       <div class="related_products_carousel">
-
-      @foreach(App\Product::inRandomOrder()->whereHas('categories', function ($query) use ($product) {$query->whereIn('id', $product->categories->pluck('id'));})->where('id','!=',$product->id)->take(50)->get() as $relprod)
-        @include('products.row',['product'=>$relprod])
-      @endforeach
+        @foreach(App\Product::inRandomOrder()->whereHas('categories', function ($query) use ($product) {$query->whereIn('id', $product->categories->pluck('id'));})->where('id','!=',$product->id)->take(50)->get() as $relprod)
+          @include('products.row',['product'=>$relprod])
+        @endforeach
       </div>
 </div>
 </div>

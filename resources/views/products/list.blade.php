@@ -1,5 +1,5 @@
 @foreach($products as $product)
-	@include('products.row')
+	@include('products.row',['grid'=>1])
 @endforeach
 
 
