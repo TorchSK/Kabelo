@@ -3013,6 +3013,7 @@ $('.related_products_carousel').flickity({
     cellAlign: 'left',
     contain: true,
     pageDots: false,
+    prevNextButtons: false,
     imagesLoaded: true,
     autoPlay: 1500,
 });

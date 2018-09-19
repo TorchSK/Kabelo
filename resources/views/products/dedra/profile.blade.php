@@ -2,41 +2,29 @@
 @section('content')
 
 
-<div class="flex_content">
-  @if (Auth::check())
-    <div class="content cart hidden" data-cartid="{{Auth::user()->cart->id}}"></div>
-    @endif
-<div class="flex flex_content @if($product->active==0) inactive @endif" id="product_content">
-
-
-
-<div id="product_right">
-
-<div class="ui button filterbar_handle sticky_div">
-  Zobrazit katalóg
-</div>
-
-
-<div id="m_categories_btn">
-    <div class="ui brown  small fluid button" id="catbar_handle">Kategorie</div>
-</div>
-
-
-@include('includes/filterbar')
-
 @if (Auth::check() && Auth::user()->admin)
-<div id="product_options" class="ct">
+<div id="product_options_wrapper" class="wrapper">
  <div class="container ct">
   <a href="/{{Request::segment(1)}}/{{Request::segment(2)}}/edit" class="ui teal button">Edituj produkt</a>
   <a class="ui red button" id="product_detail_delete_btn">Zmaž produkt</a>
 </div>
 </div>
-  @endif
-
-<div id="product_detail" data-id="{{$product->id}}" data-gallery="{{$product->code}}" data-index="0">
+@endif
 
 
-    <div class="left">
+<div id="filterbar_absolute">
+  <div class="ui button filterbar_handle sticky_div">Zobrazit katalóg</div>
+  @include('includes/filterbar')
+</div>
+
+<div id="product_main_wrapper" class="wrapper @if($product->active==0) inactive @endif" data-id="{{$product->id}}" data-gallery="{{$product->code}}" data-index="0">
+  <div class="container flex_row">
+    
+
+
+
+
+    <div class="images">
 
         <div class="hiden">
           @foreach($product->images as $key => $image)
@@ -50,11 +38,11 @@
            @endforeach
          </div>
 
-        <a class="img ct main" href="{{$product->image->path}}" style="height: 45vh; display: block;" data-rel="{{$product->code}}">
+        <a class="img ct main" href="{{$product->image->path}}"  data-rel="{{$product->code}}">
            @if ($product->images->count() == 0)
            <img src="/img/empty.jpg" class="ui image" />
            @elseif ($product->image)
-           <img src="{{$product->image->path}}" class="ui image" style="max-height: 100%; max-width: 100%; width: auto; display: inline-block;"/>
+           <img src="{{$product->image->path}}" class="ui image" />
            @endif
         </a>
         
@@ -64,7 +52,7 @@
           @foreach($product->images as $key => $image)
             @if($appname=='dedra')
             <a class="img ct" href="{{$image->path}}" style="display: inline-block;" >
-             <img src="{{$image->thumb}}" class="ui image" data-full="{{$image->path}}" data-index="{{$key}}" style="max-height: 130px; max-width: 130px; display: inline-block;"/>
+             <img src="{{$image->thumb}}" class="ui image" data-full="{{$image->path}}" data-index="{{$key}}"/>
              </a>
             @else
              <img src="{{$image->path}}" class="ui image" width="200px" />
@@ -83,14 +71,13 @@
 
         </div>
 
-
     </div>
 
-    <div class="right">
+    <div class="info">
     	
-    	<div id="name" style="font-weight: 600; font-size: 30px;">{{$product->name}}</div>
+    	 <div id="name" style="font-weight: 600; font-size: 30px;">{{$product->name}}</div>
 
-		<div id="code">{{$product->code}} </div>
+		  <div id="code">Kód produktu: {{$product->code}} </div>
 
     @if ($product->new)
     <div id="new" class="ui blue large label" style="margin-left: 15px;"><i class="star icon"></i> Novinka</div>
@@ -111,7 +98,6 @@
    			@endforeach
         </div>
 
-        <div class="" id="maker">Výrobca: <b><a href="/maker/{{$product->maker}}" class="effect-1">{{$product->maker}}</a></b></div>
 
    		</div>
 
@@ -131,13 +117,12 @@
 
 
  </div>
+
+
+</div>
 </div>
 
-
-<div id="product_tabs">
-
-
-<div class="pad wrapper ct" id="product_detail_wrapper" style="border-top: 1px dashed #EEE; background-color: rgba(0,0,0,0.01) !important;">
+<div id="product_detail_wrapper" class="wrapper">
 
   <div class="container">
     <div class="ui header">Detailný popis</div>
@@ -147,9 +132,12 @@
 </div>
 
 
-<div class="pad wrapper ct" id="product_detail_suggested_wrapper">
+<div class="wrapper ct" id="product_detail_suggested_wrapper">
   <div class="container">
-    <div class="ui header">Ďalšie súvisiace produkty</div>
+    <div class="caption">
+      <div class="ui header">Ďalšie súvisiace produkty</div>
+      <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
+    </div>
 
       <div class="related_products_carousel">
 
