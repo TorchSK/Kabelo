@@ -1,11 +1,12 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="flex_content content cart" id="cart_detail" @if(Auth::check())data-cartid="{{Auth::user()->cart->id}}" @endif>
+<div id="cart_detail" class="hiden" @if(Auth::check()) data-cartid="{{Auth::user()->cart->id}}" @endif></div>
 
-	@include('cart.steps',['step'=>'1'])
+@include('cart.steps',['step'=>'1'])
 
-	<div id="grid">
+<div id="cart_products_wrapper" class="wrapper">
+	<div class="container">
 		@if (sizeof($cart['items']) > 0)
 		<div class="delete_cart">Vymazať košík</div>
 		@endif
@@ -33,21 +34,23 @@
 		
 		@endif
 	</div>
-
-	@include('cart.prices')
-
-
-	<div class="cart_actions">
-		@if (sizeof($cart['items']) > 0)
-		<a href="/#eshop" class="ui blue button"><i class="icon arrow left"></i>Do eshopu</a>
-		<a href="/cart/delivery" class="ui green button @if(App\Setting::whereName('min_order_price')->first()->value > $cart['price']) disabled @endif" id="cart_continue_btn">Pokračovať</a>
-
-		@else
-		<a href="/" class="ui green button">Do eshopu</a>
-		@endif
-	</div>
-
 </div>
+
+@include('cart.prices')
+
+
+<div id="cart_actions_wrapper" class="wrapper">
+	<div class="container">
+	@if (sizeof($cart['items']) > 0)
+	<a href="/#eshop" class="ui blue button"><i class="icon arrow left"></i>Do eshopu</a>
+	<a href="/cart/delivery" class="ui green button @if(App\Setting::whereName('min_order_price')->first()->value > $cart['price']) disabled @endif" id="cart_continue_btn">Pokračovať</a>
+
+	@else
+	<a href="/" class="ui green button">Do eshopu</a>
+	@endif
+</div>
+</div>
+
 
 
 @stop
