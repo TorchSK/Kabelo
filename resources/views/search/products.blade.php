@@ -1,5 +1,5 @@
 @foreach($products as $product)
-	<a class="row" href="/{{$product->maker}}/{{$product->code}}/detail">
+	<a class="row" href="{{route('product.detail',['url'=>$product->url])}}"">
 		<div class="image">
 			@if ($product->images->count() == 0)
 			<img src="/img/empty.jpg" class="ui image" />
