@@ -86,8 +86,10 @@
                 @include('products.list')
                
             </grid>
-
-    
+            
+            <div class="ct">
+            <div class="ui large blue button view-more-button">Viac produktov</div>
+            </div>
 
         </div>
 

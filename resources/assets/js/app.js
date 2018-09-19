@@ -2991,10 +2991,20 @@ $('.copy_to_clipboard_btn').click(function(){
 
 
 $('grid.infinite').infiniteScroll({
-  // options
-  path: '#next_page',
-  append: '.item.product.grid',
-  history: false,
+	path: '#next_page',
+	append: '.item.product.grid',
+	history: false,
+	button: '.view-more-button',
+	scrollThreshold: false,
+});
+
+$('grid.infinite').on( 'request.infiniteScroll', function( event, response, path, items ) {
+  $('.view-more-button').addClass('loading');
+});
+
+
+$('grid.infinite').on( 'append.infiniteScroll', function( event, response, path, items ) {
+  $('.view-more-button').removeClass('loading');
 });
 
 
