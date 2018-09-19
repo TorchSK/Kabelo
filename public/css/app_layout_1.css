@@ -1860,7 +1860,7 @@ a:hover {
   font-size: 3em;
   font-weight: 900;
   margin-bottom: 25px;
-  line-height: 3em;
+  line-height: 1em;
 }
 @media all and (max-width: 980px) {
   #product_detail #name {
