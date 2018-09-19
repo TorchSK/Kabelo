@@ -251,23 +251,23 @@ $('#edit_product_categories_input').dropdown({
 $('#create_product_form').submit(function(e){
   $validation = 1;
 
-  $name = $('#product_detail input[name="name"]').val();
-  $code = $('#product_detail input[name="code"]').val();
-  $maker = $('#product_detail input[name="maker"]').val();
-  $threshold = $('#product_detail input[name^="thresholds"]').val();
-  $moc = $('#product_detail input[name^="mocs"]').val();
-  $mocs = $('#product_detail input[name^="moc_sales"]').val();
-  $voc = $('#product_detail input[name^="vocs"]').val();
-  $vocs = $('#product_detail input[name^="voc_sales"]').val();
+  $name = $('#product_main_wrapper input[name="name"]').val();
+  $code = $('#product_main_wrapper input[name="code"]').val();
+  $maker = $('#product_main_wrapper input[name="maker"]').val();
+  $threshold = $('#product_main_wrapper input[name^="thresholds"]').val();
+  $moc = $('#product_main_wrapper input[name^="mocs"]').val();
+  $mocs = $('#product_main_wrapper input[name^="moc_sales"]').val();
+  $voc = $('#product_main_wrapper input[name^="vocs"]').val();
+  $vocs = $('#product_main_wrapper input[name^="voc_sales"]').val();
 
-  if ($name=='') {$validation=0; $('#product_detail input[name="name"]').parent().addClass('error');}
-  if ($code=='') {$validation=0; $('#product_detail input[name="code"]').parent().addClass('error');}
-  if ($maker=='') {$validation=0; $('#product_detail input[name="maker"]').parent().addClass('error');}
-  if ($threshold=='') {$validation=0; $('#product_detail input[name^="thresholds"]').parent().addClass('error');}
-  if ($moc=='') {$validation=0; $('#product_detail input[name^="moc"]').parent().addClass('error');}
-  if ($mocs=='') {$validation=0; $('#product_detail input[name^="mocs"]').parent().addClass('error');}
-  if ($voc=='') {$validation=0; $('#product_detail input[name^="voc"]').parent().addClass('error');}
-  if ($vocs=='') {$validation=0; $('#product_detail input[name^="vocs"]').parent().addClass('error');}
+  if ($name=='') {$validation=0; $('#product_main_wrapper input[name="name"]').parent().addClass('error');}
+  if ($code=='') {$validation=0; $('#product_main_wrapper input[name="code"]').parent().addClass('error');}
+  if ($maker=='') {$validation=0; $('#product_main_wrapper input[name="maker"]').parent().addClass('error');}
+  if ($threshold=='') {$validation=0; $('#product_main_wrapper input[name^="thresholds"]').parent().addClass('error');}
+  if ($moc=='') {$validation=0; $('#product_main_wrapper input[name^="moc"]').parent().addClass('error');}
+  if ($mocs=='') {$validation=0; $('#product_main_wrapper input[name^="mocs"]').parent().addClass('error');}
+  if ($voc=='') {$validation=0; $('#product_main_wrapper input[name^="voc"]').parent().addClass('error');}
+  if ($vocs=='') {$validation=0; $('#product_main_wrapper input[name^="vocs"]').parent().addClass('error');}
 
  if ($validation==1)
  {
@@ -298,20 +298,20 @@ $('#edit_category_submit').click(function(){
 
 $('.other_img img').click(function(e){
 	e.preventDefault();
-  $('#product_detail .img.main img').attr('src', '/img/loader.gif');
-  $('#product_detail .img.main img').attr('src', '/img/loader.gif');
+  $('#product_main_wrapper .img.main img').attr('src', '/img/loader.gif');
+  $('#product_main_wrapper .img.main img').attr('src', '/img/loader.gif');
 
   $index = $(this).data('index');
 
-  $('#product_detail').data('index', $index);
+  $('#product_main_wrapper').data('index', $index);
 
   var img = new Image() 
   var src = $(this).data('full');
   img.src = src;
 
   img.onload = function() {
-  	$('#product_detail .img.main img').attr('src', src);
-  	 $('#product_detail .img.main').attr('href', src);
+  	$('#product_main_wrapper .img.main img').attr('src', src);
+  	 $('#product_main_wrapper .img.main').attr('href', src);
   };
 
 
@@ -368,11 +368,11 @@ function addToCart(productid, qty){
 
 
 $('#product_detail_tocart_btn').click(function(){
-  $product = $('#product_detail').data('id');
+  $product = $('#product_main_wrapper').data('id');
   $qty = $(this).data('qty');
 
   var cart = $('#header .cart.item');
-  var img = $('#product_detail').find('.img');
+  var img = $('#product_main_wrapper').find('.img');
   flyToElement(img, cart);
   
   addToCart($product, $qty);
@@ -872,7 +872,7 @@ $('#register_password_input').keypress(function(e){
 
 
 $('#product_detail_delete_btn').click(function(){
-  $productid = $('#product_detail').data('id');
+  $productid = $('#product_main_wrapper').data('id');
   $('#delete_product_modal').modal('setting', {
     onApprove : function() {
       $.ajax({
@@ -1456,7 +1456,7 @@ $('.rating:not(.disabled)').rateYo().on("rateyo.set", function(e, data){
         autofocus: true,
         onApprove : function() {
           $text = $('#new_rating_modal textarea').val();
-          $id = $('#product_detail').data('id');
+          $id = $('#product_main_wrapper').data('id');
           $.ajax({
             type: "POST",
             url: "/product/"+$id+"/rating",
@@ -3029,10 +3029,10 @@ var mobx = $.ModuloBox({
 
 mobx.init();
 
-$('#product_detail .main').click(function(e){
+$('#product_main_wrapper .main').click(function(e){
 	e.preventDefault();
-	$gallery = $('#product_detail').data('gallery');
-	$index = $('#product_detail').data('index');
+	$gallery = $('#product_main_wrapper').data('gallery');
+	$index = $('#product_main_wrapper').data('index');
 	mobx.open($gallery,$index);
 	mobx.play();
 })
