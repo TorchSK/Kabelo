@@ -1989,7 +1989,7 @@ a:hover {
   font-weight: 300;
   overflow: hidden;
   position: relative;
-  height: 9.3em;
+  max-height: 9.3em;
   /* exactly three lines */
 }
 #product_main_wrapper #desc:after {
