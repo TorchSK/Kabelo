@@ -3093,13 +3093,11 @@ var div;
 $(document).on("scroll", function(){
 	if($(document).scrollTop() > 100)
 	{
-	  	$("#header").addClass("shrink");
-	  	$(".covers").addClass("shrink");
+	  	$("#header.shrinkable").addClass("shrink");
 	}
 	else
 	{
-		$("#header").removeClass("shrink");
-		$(".covers").removeClass("shrink");
+		$("#header.shrinkable").removeClass("shrink");
 	}
 });
 

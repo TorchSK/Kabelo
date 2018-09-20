@@ -8,12 +8,14 @@
 
     @include('includes.header')
 
-    <div class="admin_wrapper">
-        <div class="admin_tabs">@include('admin.tabs')</div>
-        @yield('content')
+    <div class="flex_row">
+        @include('admin.tabs')
+
+        <div class="flex_column">
+            @yield('content')
+        </div>
     </div>
 
-	@include('includes.footer')
 	</div>
 
     </body>

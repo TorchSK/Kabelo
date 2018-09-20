@@ -1,43 +1,62 @@
-<a href="{{route('admin.dashboard')}}" class="tab">
-	<i class="big chart pie icon"></i>
-	<div class="text">Prehľad</div>
-</a>
+<div id="admin_menu" class="ui vertical menu">
+  <div class="item">
+	<a href="{{route('admin.dashboard')}}" class="header">Prehľad</a>
+    <div class="menu">
+      <a class="item">Najnovšie</a>
+      <a class="item">Súhrnný</a>
+    </div>
+  </div>
+  <div class="item">
+	<a href="{{route('admin.products')}}" class="header">Produkty</a>
+    <div class="menu">
+      <a class="item">Katégorie</a>
+      <a class="item">Novinky</a>
+      <a class="item">Zľavy</a>
+      <a class="item">Neaktívne produkty</a>
+    </div>
+  </div>
+  <div class="item">
+	<a href="{{route('admin.params')}}" class="header">Parametre</a>
+    <div class="menu">
+      <a class="item">Nastavenia</a>
+    </div>
+  </div>
+  <div class="item">
+	<a href="{{route('admin.users')}}" class="header">Produkty</a>
+    <div class="menu">
+      <a class="item">E-mail Support</a>
+      <a class="item">FAQs</a>
+    </div>
+  </div>
+    <div class="item">
+	<a href="{{route('admin.orders')}}" class="header">Produkty</a>
+    <div class="menu">
+      <a class="item">E-mail Support</a>
+      <a class="item">FAQs</a>
+    </div>
+  </div>
+  <div class="item">
+	<a href="{{route('admin.settingsBanners')}}" class="header">Produkty</a>
+    <div class="menu">
+      <a class="item">E-mail Support</a>
+      <a class="item">FAQs</a>
+    </div>
+  </div>
+    <div class="item">
+	<a href="{{route('admin.files')}}" class="header">Produkty</a>
+    <div class="menu">
+      <a class="item">E-mail Support</a>
+      <a class="item">FAQs</a>
+    </div>
+  </div>
+    <div class="item">
+	<a href="{{route('admin.layout')}}" class="header">Produkty</a>
+    <div class="menu">
+      <a class="item">E-mail Support</a>
+      <a class="item">FAQs</a>
+    </div>
+  </div>
+</div>
 
-<a href="{{route('admin.products')}}" class="tab">
-	<i class="big cube icon"></i>
-	<div class="text">Produkty</div>
-</a>
 
-<a href="{{route('admin.params')}}" class="tab">
-	<i class="big tasks icon"></i>
-	<div class="text">Parametre</div>
-</a>
-
-
-<a href="{{route('admin.users')}}" class="tab">
-	<i class="big user icon"></i>
-	<div class="text">Uživatelia</div>
-
-</a>
-
-<a href="{{route('admin.orders')}}" class="tab">
-	<i class="big cart icon"></i>
-	<div class="text">Objednávky</div>
-</a>
-
-<a href="{{route('admin.settingsBanners')}}" class="tab">
-	<i class="big setting icon"></i>
-	<div class="text">Nastavenia</div>
-</a>
-
-<a href="{{route('admin.files')}}" class="tab">
-	<i class="big file outline icon"></i>
-	<div class="text">Súbory</div>
-</a>
-
-
-<a href="{{route('admin.layout')}}" class="tab">
-	<i class="big tv icon"></i>
-	<div class="text">Layout</div>
-</a>
 

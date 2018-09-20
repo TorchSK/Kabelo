@@ -1,4 +1,4 @@
-  <div id="header">
+  <div id="header" @if(Request::segment(1)!='admin') class="shrinkable" @endif>
     <div class="container">
 
     @if(Auth::check())

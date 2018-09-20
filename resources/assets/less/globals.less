@@ -3,13 +3,17 @@ html{
 
 body {
   background-color: transparent;
-  padding-top: 85px;
+
+  &.shrinkable{
+    padding-top: 85px;
+  }
 }
 
 .pusher{
   width: 100%;
   display: flex;
   min-height: 93.5vh;
+  flex-direction: column;
 }
 
 .flex_column{
