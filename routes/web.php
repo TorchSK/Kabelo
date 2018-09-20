@@ -24,8 +24,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/addProductUrl', 'AdminController@addProductUrl')->name('admin.addProductUrl');
 
 
-	Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
-	Route::get('/products', 'AdminController@manageProducts')->name('admin.products');
+	Route::get('/', 'AdminController@dashboardNew')->name('admin.dashboard.new');
+	Route::get('/overall', 'AdminController@dashboardOverall')->name('admin.dashboard.overall');
+
+
+	Route::get('/eshop/categories', 'AdminController@products')->name('admin.eshop.products');
+	Route::get('/eshop/products', 'AdminController@categories')->name('admin.eshop.categories');
+
 	Route::get('/orders/', 'AdminController@manageOrders')->name('admin.orders');
 	Route::get('/users/', 'AdminController@manageUsers')->name('admin.users');
 	Route::get('/import/', 'AdminController@import')->name('admin.import');

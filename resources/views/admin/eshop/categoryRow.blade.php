@@ -1,6 +1,6 @@
 <li>
 	<div class="item category @if($category->parent_id) sub @endif" data-id="{{$category->id}}" data-active="{{$category->active}}">
-		   <div class="active_flag">
+		<div class="active_flag">
 			@if($category->active)
 				<i class="green circle icon"></i>
 			@else	
@@ -8,6 +8,8 @@
 
 			@endif
 		</div>
+		<div class="image"><img src="{{url($category->image)}}" /></div>
+
 	<a class="name" href="{{route('admin.category',['category'=>$category->url])}}">{{$category->name}}</a>
 
 	<div class="no_of_items">produktov: {{$categoryCounts['categories'][$category->id] }}</div>

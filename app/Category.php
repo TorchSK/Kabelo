@@ -34,4 +34,16 @@ class Category extends Model {
   	{
  		return $this->belongsTo('App\Category', 'parent_id');
  	}
+
+ 	
+ 	public function getImageAttribute($value) 
+  	{
+ 		if($value)
+ 		{
+			return $value;
+ 		}
+		else{
+			 return "/img/category.jpg" ;
+		}
+ 	}
 }

@@ -8,13 +8,13 @@
     @include('includes.catbar')
     @include('includes.parambar')   
 
-    <div class="pusher">
-        <div class="flex_column">
-            @include('includes.header')
-            @yield('content')
-    	    @include('includes.footer')
-        </div>
+    <div class="pusher flex_column">
+        @include('includes.header')
+        @yield('content')
     </div>
+
+    @include('includes.footer')
+
 
     </body>
 </html>

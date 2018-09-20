@@ -184,22 +184,29 @@
 /*---  Brand   ---*/
 /*---  Dark Tones  ---*/
 /*---  Light Tones  ---*/
+html {
+  height: 100%;
+}
 body {
   background-color: transparent;
-}
-body.shrinkable {
-  padding-top: 85px;
-}
-.pusher {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 93.5vh;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  height: 100vh;
+  /* Avoid the IE 10-11 `min-height` bug. */
+}
+body.shrinkable {
+  padding-top: 85px;
+}
+body.eshop .pusher {
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
 }
 .flex_column {
   display: -webkit-box;
@@ -213,15 +220,15 @@ body.shrinkable {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
 }
 .flex_row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
 }
 .wrapper {
   width: 100%;
@@ -2384,6 +2391,53 @@ a:hover {
 #product_price_levels_list .product_price_level:first-child .delete_price_level_btn {
   display: none;
 }
+body.admin .pusher {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+#admin_categories {
+  padding: 3%;
+}
+#admin_categories .admin_categories_list .item {
+  background-color: rgba(0, 0, 0, 0.08);
+  padding: 15px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+  text-align: left;
+}
+#admin_categories .admin_categories_list .item .image {
+  display: inline-block;
+  width: 50px;
+  border-radius: 3px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+#admin_categories .admin_categories_list .item .image img {
+  display: inline-block;
+  max-height: 100%;
+  max-width: 100%;
+}
+#admin_categories .admin_categories_list li ul {
+  margin-left: 20px;
+}
+#admin_categories .admin_categories_list .name {
+  display: inline-block;
+}
+#admin_categories .admin_categories_list .admin_edit_category_btn {
+  display: inline-block;
+  float: right;
+}
+#admin_categories .admin_categories_list .admin_delete_category_btn {
+  display: inline-block;
+  float: right;
+}
 .admin_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2461,50 +2515,9 @@ a:hover {
   -webkit-box-shadow: none;
           box-shadow: none;
   border-right: 1px solid #EEE;
-}
-@media all and (max-width: 980px) {
-  #admin_menu {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-}
-#admin_menu .tab {
-  position: relative;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-#admin_menu .tab i.icon {
-  opacity: 0.8;
-  padding: 20px 18px !important;
-  width: 100%;
-  height: 100%;
-}
-#admin_menu .tab i.icon:hover {
-  color: #FFFFFF;
-  background-color: #A5673F;
-}
-#admin_menu .tab i.icon:hover + .text,
-#admin_menu .tab i.icon:hover + i.icon {
-  opacity: 1;
-  z-index: 9999;
-}
-#admin_menu .tab .text {
-  position: absolute;
-  left: 0;
-  margin-left: 68px;
-  top: 0;
-  opacity: 0;
-  padding: 24px 24px 25px 25px;
-  background-color: #A5673F;
-  color: #FFFFFF;
-  border-radius: 0 4px 4px 0;
-  font-size: 1.2em;
-  z-index: -99999;
+  margin-bottom: 0px;
+  background-color: #FAFAFA;
+  font-size: 1.1em;
 }
 .admin_dashboard {
   background-color: rgba(0, 0, 0, 0.01);
@@ -2518,6 +2531,7 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 100%;
   padding-left: 2%;
   padding-top: 2%;
 }
@@ -2644,26 +2658,6 @@ a:hover {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-}
-.admin_categories_list .item {
-  background-color: rgba(0, 0, 0, 0.08);
-  padding: 15px;
-  margin-bottom: 3px;
-  border-radius: 5px;
-}
-.admin_categories_list li ul {
-  margin-left: 20px;
-}
-.admin_categories_list .name {
-  display: inline-block;
-}
-.admin_categories_list .admin_edit_category_btn {
-  display: inline-block;
-  float: right;
-}
-.admin_categories_list .admin_delete_category_btn {
-  display: inline-block;
-  float: right;
 }
 .no_of_items {
   display: inline-block;

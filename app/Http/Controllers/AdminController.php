@@ -489,7 +489,7 @@ class AdminController extends Controller
     }
 
 
-    public function dashboard()
+    public function dashboardNew()
     {
         $data = [
             'makers' => Product::groupBy('maker'),
@@ -499,11 +499,33 @@ class AdminController extends Controller
 
         ];
 
-        return view('admin.dashboard', $data);
+        return view('admin.dashboard.new', $data);
     }
 
+    public function dashboardOverall()
+    {
+        $data = [
+            'makers' => Product::groupBy('maker'),
+            'categories' => Category::orderBy('order','asc')->get(),
+            'categoryCounts' => $this->productService->categoryCounts(),
+            'bodyid' => 'dashboard'
+
+        ];
+
+        return view('admin.dashboard.overall', $data);
+    }
+
+    public function categories()
+    {
+        $data = [
+            'categories' => $this->categoryService->getCategories(),
+            'categoryCounts' => $this->productService->categoryCounts(),
+        ];
+
+        return view('admin.eshop.categories', $data);
+    }
     
-    public function manageProducts()
+    public function products()
     {
         $data = [
             'makers' => Product::groupBy('maker'),
@@ -513,7 +535,7 @@ class AdminController extends Controller
 
         ];
 
-        return view('admin.index', $data);
+        return view('admin.eshop.products', $data);
     }
 
     public function manageUsers()
