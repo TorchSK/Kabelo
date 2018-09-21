@@ -2143,6 +2143,10 @@ a:hover {
 }
 #product_detail_suggested_wrapper #suggested_wrapper_speed {
   font-size: 1em;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 #product_detail_suggested_wrapper #suggested_wrapper_speed i.icon {
   cursor: pointer;
