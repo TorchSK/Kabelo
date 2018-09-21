@@ -98,6 +98,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/bulk/', 'ProductController@bulk')->name('admin.bulk');
 
 	Route::get('p/edit/{url}', 'ProductController@edit')->name('admin.product.edit');
+	
+	Route::put('/setting/', 'SettingController@apiUpdate')->name('admin.setting.apiUpdate');
 
 
 });

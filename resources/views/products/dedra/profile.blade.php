@@ -134,6 +134,11 @@
   <div class="container">
     <div class="caption">
       <div class="ui header">Ďalšie súvisiace produkty</div>
+      <div id="suggested_wrapper_speed">
+          <i class="minus circle icon"></i>
+          <span>Pauza: <value>{{App\Setting::firstOrCreate(['name'=>'suggested_wrapper_speed'])->value}}</value></span>
+          <i class="plus circle icon"></i>
+        </div>
       <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
     </div>
 

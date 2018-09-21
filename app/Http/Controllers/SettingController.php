@@ -29,6 +29,16 @@ class SettingController extends Controller
 		$setting->save();
 	}
 
+	public function apiUpdate(Request $request)
+	{
+		foreach($request->all() as $key => $item)
+		{
+			$setting = Setting::whereName($key)->first();
+			$setting->value = $item;
+			$setting->save();
+		}
+	}
+
 	public function bulkUpdate(Request $request)
 	{
 		foreach($request->except('_token') as $key => $item)

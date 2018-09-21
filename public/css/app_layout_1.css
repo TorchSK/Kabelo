@@ -2141,6 +2141,12 @@ a:hover {
   font-size: 1.5em;
   color: #AAA;
 }
+#product_detail_suggested_wrapper #suggested_wrapper_speed {
+  font-size: 1em;
+}
+#product_detail_suggested_wrapper #suggested_wrapper_speed i.icon {
+  cursor: pointer;
+}
 @media all and (max-width: 980px) {
   #product_detail_params .container {
     text-align: center;

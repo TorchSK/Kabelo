@@ -3008,16 +3008,19 @@ $('grid.infinite').on( 'append.infiniteScroll', function( event, response, path,
 });
 
 
+function initRelatedSlider(speed){
 
-$('.related_products_carousel').flickity({
-    cellAlign: 'left',
-    contain: true,
-    pageDots: false,
-    prevNextButtons: false,
-    imagesLoaded: true,
-    autoPlay: 1500,
-});
+	$('.related_products_carousel').flickity({
+	    cellAlign: 'left',
+	    contain: true,
+	    pageDots: false,
+	    prevNextButtons: false,
+	    imagesLoaded: true,
+	    autoPlay: speed,
+	});
 
+}
+initRelatedSlider(1500);
 
 
 var mobx = $.ModuloBox({
@@ -3082,6 +3085,31 @@ $('#filterbar.horizontal .item').each(function() {
 });
 
 
+$('#suggested_wrapper_speed i').click(function(){
+	$div = $(this).closest('#suggested_wrapper_speed');
+	$this = $(this);
+	$speed = parseInt($div.find('value').html());
+
+	if($this.hasClass('plus'))
+	{
+		$newSpeed = $speed + 100;
+		initRelatedSlider($newSpeed);
+		$div.find('value').html($newSpeed);
+	}
+	else
+	{
+		$newSpeed = $speed - 100;
+		initRelatedSlider($newSpeed);
+		$div.find('value').html($newSpeed);
+	}
+
+	$.ajax({
+		type: "PUT",
+		url: "/admin/setting/",
+		data: {'suggested_wrapper_speed': $newSpeed}
+	})	
+
+})
 
 
 });
