@@ -75,12 +75,16 @@ class AdminController extends Controller
     public function updateXML()
     {   
 
-        $contents = Storage::get('dedra.xml');
-        $xml = XmlParser::extract($contents);
+        $contents = file_get_contents('https://dedra.blob.core.windows.net/cms/xmlexport/cs_xml_export.xml?ppk=133538');
+       
 
+        $xml = XmlParser::extract($contents);
+       
         $items = $xml->parse([
             'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variant_image]'],
         ]);
+
+        dd($items);
 
         foreach($items['products'] as $key => $item)
         {
