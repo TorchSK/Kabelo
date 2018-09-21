@@ -4320,6 +4320,7 @@ body.eshop footer > .container {
 }
 .covers {
   max-width: 1400px;
+  width: 100%;
 }
 @media all and (max-width: 736px) {
   .covers {
