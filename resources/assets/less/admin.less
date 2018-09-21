@@ -62,85 +62,10 @@ body.admin{
 	}
 }
 
-#admin_products_wrapper{
-
+#admin_layouts{
+	display: flex;
 }
 
-#admin_new_wrapper{
-	padding: 3%;
-	height: 100%;
-}
-
-#admin_users{
-	padding: 3%;
-	height: 100%;
-}
-
-#admin_orders{
-		padding: 3%;
-	height: 100%;
-}
-
-.admin_wrapper{
-
-	#product_detail{
-		width: 100%;
-	}
-
-	@media @break3{
-		flex-direction: column;
-	}
-
-	form{
-		width: 100%;
-	}
-
-	.users{
-		padding: 50px;
-		flex: 1;
-
-		.item{
-			background-color: @white;
-			margin-bottom: 3px;
-			overflow: hidden;
-			border-radius: 5px;
-
-			.title{
-				padding: 15px;
-				border-radius: 5px;
-				overflow: hidden;
-
-				&:hover{
-					background-color: @brown;
-					color: @white;
-				}
-			}
-
-			.content{
-				padding: 15px;
-				border-top: 1px dashed #EEE;
-			}
-		}
-	}
-
-	>.right{
-		padding: 25px;
-	}
-
-	.ui.divider{
-		margin: 40px  0;
-
-		&:first-child{
-			margin-top: 15px;
-		}
-	}
-
-	#filterbar{
-		.categories .item{
-			transition: all 0s;
-		}
-	}
-}
 
 #admin_menu{
 	border-radius: 0;

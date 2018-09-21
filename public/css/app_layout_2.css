@@ -2409,69 +2409,10 @@ body.admin .pusher {
   display: inline-block;
   float: right;
 }
-#admin_new_wrapper {
-  padding: 3%;
-  height: 100%;
-}
-#admin_users {
-  padding: 3%;
-  height: 100%;
-}
-#admin_orders {
-  padding: 3%;
-  height: 100%;
-}
-.admin_wrapper #product_detail {
-  width: 100%;
-}
-@media all and (max-width: 980px) {
-  .admin_wrapper {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-}
-.admin_wrapper form {
-  width: 100%;
-}
-.admin_wrapper .users {
-  padding: 50px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-.admin_wrapper .users .item {
-  background-color: #FFFFFF;
-  margin-bottom: 3px;
-  overflow: hidden;
-  border-radius: 5px;
-}
-.admin_wrapper .users .item .title {
-  padding: 15px;
-  border-radius: 5px;
-  overflow: hidden;
-}
-.admin_wrapper .users .item .title:hover {
-  background-color: #A5673F;
-  color: #FFFFFF;
-}
-.admin_wrapper .users .item .content {
-  padding: 15px;
-  border-top: 1px dashed #EEE;
-}
-.admin_wrapper > .right {
-  padding: 25px;
-}
-.admin_wrapper .ui.divider {
-  margin: 40px  0;
-}
-.admin_wrapper .ui.divider:first-child {
-  margin-top: 15px;
-}
-.admin_wrapper #filterbar .categories .item {
-  -webkit-transition: all 0s;
-  transition: all 0s;
+#admin_layouts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 #admin_menu {
   border-radius: 0;
