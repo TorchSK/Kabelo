@@ -2,41 +2,30 @@
 @section('content')
 
 
-<div class="flex_content">
-  @if (Auth::check())
-    <div class="content cart hidden" data-cartid="{{Auth::user()->cart->id}}"></div>
-    @endif
-<div class="flex flex_content @if($product->active==0) inactive @endif" id="product_content">
-
-
-
-<div id="product_right">
-
-<div class="ui button filterbar_handle">
-  Zobrazit katalóg
-</div>
-
-
-<div id="m_categories_btn">
-    <div class="ui brown  small fluid button" id="catbar_handle">Kategorie</div>
-</div>
-
-
-@include('includes/filterbar')
-
 @if (Auth::check() && Auth::user()->admin)
-<div id="product_options" class="ct">
+<div id="product_options_wrapper" class="wrapper">
  <div class="container ct">
-  <a href="/{{Request::segment(1)}}/{{Request::segment(2)}}/edit" class="ui teal button">Edituj produkt</a>
+  <a href="{{route('admin.product.edit',['url'=>$product->url])}}" class="ui teal button">Edituj produkt</a>
   <a class="ui red button" id="product_detail_delete_btn">Zmaž produkt</a>
 </div>
 </div>
-  @endif
-
-<div id="product_detail" data-id={{$product->id}}>
+@endif
 
 
-    <div class="left">
+<div id="product_main_wrapper" class="wrapper @if($product->active==0) inactive @endif" data-id="{{$product->id}}" data-gallery="{{$product->code}}" data-index="0">
+  <div class="container flex_row">
+      
+  <div id="filterbar_absolute">
+    <div class="ui button filterbar_handle sticky_div">Zobrazit katalóg</div>
+    @include('includes/filterbar')
+  </div>
+
+
+
+
+
+
+    <div class="images">
 
 
 
@@ -70,7 +59,7 @@
 
     </div>
 
-    <div class="right">
+    <div class="info">
     	
     	<div id="name">{{$product->name}}</div>
 
@@ -196,13 +185,11 @@
 
  </div>
 </div>
+</div>
 
 
-<div id="product_tabs">
-<div class="pad wrapper ct" id="product_detail_params">
-          <div class="ui horizontal divider">Parametre</div>
-
-<div class="container">
+<div id="product_params_wrapper" class="wrapper">
+  <div class="container">
 
       @if ($product->parameters->count() > 0)
 
@@ -214,12 +201,11 @@
                 <td> {{$parameter->value}}</td>
               </tr>
           @endforeach
-        </div>
         @else
           Žiadne parametre
         @endif
           </tbody>
-</table>
+    </table>
 
 @foreach($product->files as $file)
 <a href={{ asset($file->path) }} target="_blank"><i class="icon huge brown file pdf outline" ></i> Katalógový list</a>
