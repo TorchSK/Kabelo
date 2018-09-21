@@ -3020,7 +3020,7 @@ function initRelatedSlider(speed){
 	});
 
 }
-initRelatedSlider(1500);
+initRelatedSlider(parseInt($('#suggested_wrapper_speed').find('value').html()));
 
 
 var mobx = $.ModuloBox({
