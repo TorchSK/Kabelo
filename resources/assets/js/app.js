@@ -569,7 +569,7 @@ function doSort(){
 
   //console.log(getPriceFilter('price'));
 
-  $grid = $('#grid').find('grid');
+  $grid = $('#grid_wrapper').find('grid');
   $filtersDiv = $('#filterbar').find('.params');
 
   $sortBy = getDesiredSortBy();
@@ -587,8 +587,8 @@ function doSort(){
 
 	    $filtersDiv.html(data.filters);
 	    filtersInit();
-	    $('#grid').find('.dimmer').removeClass('active');
-	    $('#grid').show();
+	    $('#grid_wrapper').find('.dimmer').removeClass('active');
+	    $('#grid_wrapper').show();
 	    $('.sorts').show();
 	    $('#price_slider').show();
 	    
@@ -605,8 +605,8 @@ function doSort(){
 
     $filtersDiv.html(data.filters);
     filtersInit();
-    $('#grid').find('.dimmer').removeClass('active');
-    $('#grid').show();
+    $('#grid_wrapper').find('.dimmer').removeClass('active');
+    $('#grid_wrapper').show();
     $('.sorts').show();
     $('#price_slider').show();
     
@@ -922,7 +922,7 @@ $('.product_row_delete_btn').click(function(){
 
 
 $(document).ajaxStart(function() {
-  $('#grid').find('.dimmer').addClass('active');
+  $('#grid_wrapper').find('.dimmer').addClass('active');
 });
 
 
@@ -2301,7 +2301,7 @@ function initCartProductSlider(){
 	    }
 	    else
 	    {
-	   		$('#grid .dimmer').addClass('active');
+	   		$('#grid_wrapper .dimmer').addClass('active');
 
 	      $.ajax({
 	        type: "PUT",
@@ -2558,14 +2558,14 @@ $('.category i.setting').click(function(e){
 
 
 $('#change_grid_view_btn').click(function(){
-  $('#grid').find('.item').addClass('grid').removeClass('list');
+  $('#grid_wrapper').find('.item').addClass('grid').removeClass('list');
   $(this).addClass('active');
   $('#change_list_view_btn').removeClass('active');
 })
 
 
 $('#change_list_view_btn').click(function(){
-  $('#grid').find('.item').addClass('list').removeClass('grid');
+  $('#grid_wrapper').find('.item').addClass('list').removeClass('grid');
     $(this).addClass('active');
   $('#change_grid_view_btn').removeClass('active');
 })
