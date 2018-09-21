@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 	
-	<div id="admin_orders" class="wrapper">
+	<div id="admin_orders" class="admin_wrapper">
 
 	<div class="ui horizontal divider">Otvorené objednávky</div>
 

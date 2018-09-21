@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-          <div id="admin_products_wrapper" class="wrapper">
+          <div id="admin_products_wrapper" class="admin_wrapper">
 
 
             @if ($category!='unknown')

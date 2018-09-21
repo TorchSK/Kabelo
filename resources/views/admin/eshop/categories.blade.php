@@ -3,7 +3,7 @@
 
 
 
-<div id="admin_categories" class="wrapper">
+<div id="admin_categories" class="admin_wrapper">
 
     <ul class="admin_categories_list">
     @foreach ($categories as $category)

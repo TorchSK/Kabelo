@@ -10,7 +10,7 @@
 		</div>
 		<div class="image"><img src="{{url($category->image)}}" /></div>
 
-	<a class="name" href="{{route('admin.category',['category'=>$category->url])}}">{{$category->name}}</a>
+	<a class="name" href="{{route('admin.eshop.products',['category'=>$category->url])}}">{{$category->name}}</a>
 
 	<div class="no_of_items">produktov: {{$categoryCounts['categories'][$category->id] }}</div>
 

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-    <div id="admin_new_wrapper" class="wrapper">
+    <div id="admin_new_wrapper" class="admin_wrapper">
 		<div class="content" data-tab="inactive">
 
 			<table class="ui celled selectable unstackable sortable table" id="inactive_product_table">

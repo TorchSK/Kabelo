@@ -64,6 +64,16 @@ class CategoryController extends Controller
         $category->name = $request->get('name');
         $category->url = str_slug($request->get('name'));
         $category->parent_id = $request->get('parent_id');
+        
+        $path = $category->name;
+
+        foreach($category->ancestors->reverse() as $child)
+        {
+            $path = $child->name.' / '.$path;
+        }
+
+        $category->path = $path;
+        $category->full_url = str_replace("99","-",str_replace("9999", "/", str_slug(str_replace(" ","99", $category->path))));
 
         $category->save();
 

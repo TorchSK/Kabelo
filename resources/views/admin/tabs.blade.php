@@ -5,25 +5,25 @@
   </div>
 
   <div class="item">
-    <div class="header title">
+    <div class="header title @if(strpos(Route::currentRouteName(),'admin.dashboard')!==false) active @endif">
       <i class="chart pie icon"></i>
       Prehľad
       <i class="dropdown icon"></i>
     </div>
-    <div class="content menu">
-      <a href="{{route('admin.dashboard.new')}}" class="item">Najnovšie</a>
-      <a href="{{route('admin.dashboard.overall')}}" class="item">Súhrnné</a>
+    <div class="content menu @if(strpos(Route::currentRouteName(),'admin.dashboard')!==false) active @endif">
+      <a href="{{route('admin.dashboard.new')}}" class="item @if(Route::currentRouteName()=='admin.dashboard.new') active @endif">Najnovšie</a>
+      <a href="{{route('admin.dashboard.overall')}}" class="item @if(Route::currentRouteName()=='admin.dashboard.overall') active @endif">Súhrnné</a>
     </div>
   </div>
 
   <div class="item">
-	<div class="header title">
+	<div class="header title @if(strpos(Route::currentRouteName(),'admin.eshop')!==false) active @endif">
     <i class="cube icon"></i>
       Eshop
       <i class="dropdown icon"></i>
     </div>
-    <div class="content menu">
-      <a href="{{route('admin.eshop.categories')}}" class="item">Zoznam kategórií</a>
+    <div class="content menu @if(strpos(Route::currentRouteName(),'admin.eshop')!==false) active @endif">
+      <a href="{{route('admin.eshop.categories')}}" class="item @if(Route::currentRouteName()=='admin.eshop.categories') active @endif">Zoznam kategórií</a>
       <a href="{{route('admin.eshop.products',['category'=>App\Category::first()->url])}}" class="item">Kategórie / Produkty</a>
       <a href="{{route('admin.eshop.new')}}" class="item">Novinky</a>
       <a href="{{route('admin.eshop.sale')}}" class="item">Zľavy</a>
@@ -32,12 +32,12 @@
   </div>
 
   <div class="item">
-	<div class="header title">
+	<div class="header title @if(strpos(Route::currentRouteName(),'admin.params')!==false) active @endif">
     <i class="tasks icon"></i>
       <i class="dropdown icon"></i>
       Parametre
     </div>
-    <div class="content menu">
+    <div class="content menu @if(strpos(Route::currentRouteName(),'admin.params')!==false) active @endif">
       <a href="{{route('admin.params.index')}}" class="item">Zoznam parametrov</a>
     </div>
   </div>
