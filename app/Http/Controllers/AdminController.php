@@ -525,26 +525,13 @@ class AdminController extends Controller
         return view('admin.eshop.categories', $data);
     }
     
-    public function products()
-    {
-        $data = [
-            'makers' => Product::groupBy('maker'),
-           'categories' => $this->categoryService->getCategories(),
-            'categoryCounts' => $this->productService->categoryCounts(),
-           'categoriesRaw' => $this->categoryService->getCategoriesRaw(),
-
-        ];
-
-        return view('admin.eshop.products', $data);
-    }
-
-    public function manageUsers()
+    public function users()
     {
         $data = [
             'users' => User::all(),
         ];
 
-        return view('admin.users', $data);
+        return view('admin.users.index', $data);
     }
 
     public function files()
@@ -556,53 +543,53 @@ class AdminController extends Controller
         return view('admin.files', $data);
     }
 
-    public function categoryProducts($category, Request $request)
+    public function products($category, Request $request)
     {
         $cat = Category::where('url',$category)->first();
 
-        if($category != 'unknown')
-        {
-            $data = [
-                'products' => $cat->products,
-                'category' => $cat,
-           'categories' => $this->categoryService->getCategories(),
-                'categoryCounts' => $this->productService->categoryCounts()
-            ];
+        $data = [
+            'products' => $cat->products,
+            'category' => $cat,
+            'categories' => $this->categoryService->getCategories(),
+            'categoryCounts' => $this->productService->categoryCounts()
+        ];
 
-            $request['category'] = $cat->id;
+        $request['category'] = $cat->id;
 
-        }
-        else
-        {
-            $data = [
-                'products' => Product::doesntHave('categories')->get(),
-           'categories' => $this->categoryService->getCategories(),
-                'category' => 'unknown',
-                'categoryCounts' => $this->productService->categoryCounts()
-
-            ];
-        }
-
-        return view('admin.products', $data);
+        return view('admin.eshop.products', $data);
     }
 
+    public function new()
+    {
+        return view('admin.eshop.new');
+    }
+
+    public function sale()
+    {
+        return view('admin.eshop.sale');
+    }
+
+    public function inactive()
+    {
+        return view('admin.eshop.inactive');
+    }
     
-    public function manageOrders()
+    public function orders()
     {
         $data = [
             'orders' => Order::all()
         ];
 
-        return view('admin.orders', $data);
+        return view('admin.orders.index', $data);
     }
 
-    public function manageParams()
+    public function params()
     {
         $data = [
             'params' => Parameter::all()
         ];
 
-        return view('admin.params', $data);
+        return view('admin.params.index', $data);
     }
 
     public function manageCategoryParams($categoryid)
@@ -611,7 +598,7 @@ class AdminController extends Controller
             'activecategory' => Category::find($categoryid)
         ];
 
-        return view('admin.params', $data);
+        return view('admin.params.index', $data);
     }
 
 
@@ -633,7 +620,7 @@ class AdminController extends Controller
             'user' => User::find($id)
         ];
 
-        return view('admin.userdetail', $data);
+        return view('admin.users.userdetail', $data);
     }
 
     public function userPricing($id)
@@ -642,7 +629,7 @@ class AdminController extends Controller
             'user' => User::find($id)
         ];
 
-        return view('admin.userpricing', $data);
+        return view('admin.users.userpricing', $data);
     }
 
 
@@ -658,7 +645,7 @@ class AdminController extends Controller
             'userOrdersPrice' => $userOrdersPrice
         ];
 
-        return view('admin.userorders', $data);
+        return view('admin.users.userorders', $data);
     }
 
 
@@ -671,28 +658,28 @@ class AdminController extends Controller
             'usercart' => $usercart
         ];
 
-        return view('admin.usercart', $data);
+        return view('admin.users.usercart', $data);
     }
 
 
-    public function settingsBanners()
+    public function banners()
     {
-        return view('admin.settings');
+        return view('admin.settings.banners');
     }
 
-    public function settingsEshop()
+    public function eshop()
     {
-        return view('admin.settingseshop');
+        return view('admin.settings.eshop');
     }
 
-    public function settingsDelivery()
+    public function delivery()
     {
-        return view('admin.settingsdelivery');
+        return view('admin.settings.delivery');
     }
 
-    public function settingsInvoice()
+    public function invoice()
     {
-        return view('admin.settingsinvoice');
+        return view('admin.settings.invoice');
     }
 
     public function import()

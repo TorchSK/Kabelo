@@ -1,9 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 	
-	<div class="orders">
-	<div class="ui horizontal divider">Uživatelia</div>
-	
+	<div id="admin_users" class="admin_wrapper">
+
 	<table class="ui celled selectable sortable table">
 	  <thead>
 	    <tr>

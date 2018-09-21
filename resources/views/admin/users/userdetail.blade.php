@@ -3,7 +3,7 @@
 
 <div id="settings_user" data-userid="{{$user->id}}"></div>
 
-	<div class="user_detail">
+	<div class="user_detail admin_wrapper">
 
 
 		<div class="header section">

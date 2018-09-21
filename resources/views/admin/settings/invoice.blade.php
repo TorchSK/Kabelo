@@ -3,13 +3,7 @@
 
 
 
-<div class="admin_settings">
-
-	<div class="tabs">
-
-	    @include('admin.settingstabs',['active'=>4])
-
-	</div>
+<div id="admin_settings_invoice" class="admin_wrapper">
 
 
 

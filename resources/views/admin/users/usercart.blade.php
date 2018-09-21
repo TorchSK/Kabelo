@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-	<div class="user_detail">
+	<div class="user_detail admin_wrapper">
 
 
 		<div class="header section">
@@ -28,9 +28,8 @@
 			</div>
 
 		  	<div class="contents">
-					<div class="content cart" data-cartid="{{$user->cart->id}}">
+					<div id="cart_products_wrapper" class="content cart" data-cartid="{{$user->cart->id}}">
 											
-						<div id="grid">
 							<div class="ui inverted dimmer">
 							    <div class="ui text loader">Prepočítavam</div>
 							 </div>
@@ -46,7 +45,6 @@
 							@endif
 
 					
-						</div>
 								<div class="ui product cart search">
 							  <input class="prompt" type="text" placeholder="Pridaj produkt">
 							  <div class="results"></div>

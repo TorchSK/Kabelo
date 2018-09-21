@@ -28,29 +28,38 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/overall', 'AdminController@dashboardOverall')->name('admin.dashboard.overall');
 
 
-	Route::get('/eshop/categories', 'AdminController@products')->name('admin.eshop.products');
-	Route::get('/eshop/products', 'AdminController@categories')->name('admin.eshop.categories');
+	Route::get('/eshop/products/{category}', 'AdminController@products')->name('admin.eshop.products');
+	Route::get('/eshop/categories', 'AdminController@categories')->name('admin.eshop.categories');
+	Route::get('/eshop/new', 'AdminController@new')->name('admin.eshop.new');
+	Route::get('/eshop/sale', 'AdminController@sale')->name('admin.eshop.sale');
+	Route::get('/eshop/inactive', 'AdminController@inactive')->name('admin.eshop.inactive');
 
 	Route::get('/orders/', 'AdminController@manageOrders')->name('admin.orders');
-	Route::get('/users/', 'AdminController@manageUsers')->name('admin.users');
 	Route::get('/import/', 'AdminController@import')->name('admin.import');
 	Route::post('/import/', 'AdminController@postImport')->name('admin.postImport');
 	Route::get('/files/', 'AdminController@files')->name('admin.files');
 
-	Route::get('/params', 'AdminController@manageParams')->name('admin.params');
+	Route::get('/params', 'AdminController@params')->name('admin.params.index');
+
+	Route::get('/users/', 'AdminController@users')->name('admin.users.index');
+
+	Route::get('/orders/', 'AdminController@orders')->name('admin.orders.index');
+
 	Route::get('/params/category/{categoryid}', 'AdminController@manageCategoryParams')->name('admin.categoryParams');
 
+	Route::get('/layout', 'AdminController@layout')->name('admin.layout');
 
 	Route::get('/import/json', 'AdminController@importJson')->name('admin.importJson');
 	Route::post('/import/json', 'AdminController@postImportJson')->name('admin.postImportJson');
 
 	Route::get('/category/{category}', 'AdminController@categoryProducts')->name('admin.category');
 
-	Route::get('/settings/banners', 'AdminController@settingsBanners')->name('admin.settingsBanners');
-	Route::get('/settings/eshop', 'AdminController@settingsEshop')->name('admin.settingsEshop');
-	Route::get('/settings/invoice', 'AdminController@settingsInvoice')->name('admin.settingsInvoice');
+	Route::get('/settings/banners', 'AdminController@banners')->name('admin.settings.banners');
+	Route::get('/settings/eshop', 'AdminController@eshop')->name('admin.settings.eshop');
+	Route::get('/settings/invoice', 'AdminController@invoice')->name('admin.settings.invoice');
+	Route::get('/settings/delivery', 'AdminController@delivery')->name('admin.settings.delivery');
+	
 	Route::post('/settings/eshop/save', 'SettingController@bulkUpdate')->name('settings.bulkUpdate');
-	Route::get('/settings/delivery', 'AdminController@settingsDelivery')->name('admin.settingsDelivery');
 
 	Route::post('/settings/invoice/save', 'SettingController@bulkUpdate')->name('settings.bulkUpdate');
 
@@ -82,7 +91,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/cover/edit/{id}', 'AdminController@editCover')->name('admin.editcover');
 	Route::put('/cover/{id}', 'AdminController@updatecover')->name('admin.updatecover');
 	Route::delete('/cover/{id}', 'AdminController@deleteCover')->name('admin.deletecover');
+
 	Route::get('/layout', 'AdminController@layout')->name('admin.layout');
+	
 	Route::post('/layout/set', 'AdminController@setLayout')->name('admin.setLayout');
 	Route::get('/bulk/', 'ProductController@bulk')->name('admin.bulk');
 

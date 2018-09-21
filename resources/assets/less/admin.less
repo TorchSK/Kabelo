@@ -7,6 +7,13 @@ body.admin{
   }
 }
 
+.admin_wrapper{
+	width: 100%;
+	background-color: #FDFDFD;
+	padding: 3%;
+	text-align: left;
+}
+
 #admin_categories{
 	padding: 3%;
 
@@ -55,11 +62,26 @@ body.admin{
 	}
 }
 
+#admin_products_wrapper{
+
+}
+
+#admin_new_wrapper{
+	padding: 3%;
+	height: 100%;
+}
+
+#admin_users{
+	padding: 3%;
+	height: 100%;
+}
+
+#admin_orders{
+		padding: 3%;
+	height: 100%;
+}
+
 .admin_wrapper{
-	display: flex;
-	background-color: #F7F7F7;
-	flex: 1 0 auto;
-	width: 100%;
 
 	#product_detail{
 		width: 100%;
@@ -99,11 +121,6 @@ body.admin{
 				border-top: 1px dashed #EEE;
 			}
 		}
-	}
-
-	.orders{
-		padding: 50px;
-		flex: 1;
 	}
 
 	>.right{
@@ -442,6 +459,7 @@ body.admin{
 	.detail.section{
 		.tabs{
 			margin-bottom: 35px;
+			text-align: left;
 		}
 
 		table{
@@ -572,7 +590,7 @@ body.admin{
 	#params_list{
 		border-right: 1px solid #DDD;
 		flex:1;
-		padding: 30px;
+		padding: 3%;
 
 		.caption{
 			font-size: 2em;
@@ -658,9 +676,7 @@ body.admin{
 		}
 	}
 
-	#add_param_btn{
-		margin-top: 25px;
-	}
+
 }
 
 #admin_order_params_save{

@@ -3,16 +3,8 @@
 
 
 
-<div class="admin_settings">
+<div id="admin_settings_banner" class="admin_wrapper">
 
-	<div class="tabs">
-
-	    @include('admin.settingstabs',['active'=>1])
-
-	</div>
-
-
-	<div class="ui horizontal divider">Banery</div>
 
 	<div class="admin_cover_list">
      	@foreach(App\Cover::orderBy('order')->get() as $cover)

@@ -416,9 +416,6 @@ a:hover {
 .ui.table {
   margin: 10px 0  !important;
 }
-.tabbs .tabb {
-  display: inline-block;
-}
 .tabs .contents > .content,
 .tabbs .contents > .content {
   display: none;
@@ -2154,38 +2151,6 @@ a:hover {
 .divider {
   margin-bottom: 70px;
 }
-.tabs {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-.tabs .tabb {
-  display: inline-block;
-  font-size: 1.2em;
-  padding-bottom: 16px;
-  border-bottom: 4px solid transparent;
-  cursor: pointer;
-}
-.tabs .tabb.selected {
-  border-bottom: 4px solid #444;
-}
-.contents {
-  background-color: #F8F8F8;
-  padding: 80px 200px 100px 200px;
-}
-.contents .content {
-  display: none;
-  padding-top: 25px;
-}
-.contents .content #parameters {
-  font-size: 1.2em;
-}
-.contents .content.active {
-  display: block;
-}
 .content.rat {
   font-size: 25px;
 }
@@ -2402,6 +2367,12 @@ body.admin .pusher {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+.admin_wrapper {
+  width: 100%;
+  background-color: #FDFDFD;
+  padding: 3%;
+  text-align: left;
+}
 #admin_categories {
   padding: 3%;
 }
@@ -2438,15 +2409,17 @@ body.admin .pusher {
   display: inline-block;
   float: right;
 }
-.admin_wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: #F7F7F7;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
-  width: 100%;
+#admin_new_wrapper {
+  padding: 3%;
+  height: 100%;
+}
+#admin_users {
+  padding: 3%;
+  height: 100%;
+}
+#admin_orders {
+  padding: 3%;
+  height: 100%;
 }
 .admin_wrapper #product_detail {
   width: 100%;
@@ -2486,12 +2459,6 @@ body.admin .pusher {
 .admin_wrapper .users .item .content {
   padding: 15px;
   border-top: 1px dashed #EEE;
-}
-.admin_wrapper .orders {
-  padding: 50px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
 }
 .admin_wrapper > .right {
   padding: 25px;
@@ -2781,6 +2748,7 @@ body.admin .pusher {
 }
 .order_detail .detail.section .tabs {
   margin-bottom: 35px;
+  text-align: left;
 }
 .order_detail .detail.section table {
   display: inline-block;
@@ -2891,7 +2859,7 @@ body.admin .pusher {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding: 30px;
+  padding: 3%;
 }
 #admin_params #params_list .caption {
   font-size: 2em;
@@ -2959,9 +2927,6 @@ body.admin .pusher {
 }
 #admin_params #params_list .param.item .actions i.icon.delete {
   margin-top: -4px;
-}
-#admin_params #add_param_btn {
-  margin-top: 25px;
 }
 #admin_order_params_save {
   position: relative;

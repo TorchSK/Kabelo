@@ -6,10 +6,6 @@
 
 		<ul id="categories">
 
-			<li class="ui blue fluid button">
-				<a href="/admin/params">Zoznam parametrov</a>
-			</li>
-
 			@foreach (App\Category::whereNull('parent_id')->orderBy('order')->get() as $category)
 			    	<li class="item category @if($category->parent_id) sub @endif" data-id={{$category->id}}>
 						<a href="/admin/params/category/{{$category->id}}">{{$category->name}}</a>

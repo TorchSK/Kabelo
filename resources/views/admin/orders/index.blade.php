@@ -1,9 +1,10 @@
 @extends('layouts.admin')
 @section('content')
 	
-	<div class="orders">
+	<div id="admin_orders" class="wrapper">
+
 	<div class="ui horizontal divider">Otvorené objednávky</div>
-	
+
 	<table class="ui celled selectable table orders_table">
 	  <thead>
 	    <tr>

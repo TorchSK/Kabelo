@@ -1,11 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-       
-
-          @include('admin.sidebar')
-
-          <div class="right">
+          <div id="admin_products_wrapper" class="wrapper">
 
 
             @if ($category!='unknown')
