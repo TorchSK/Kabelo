@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="flex_content flex">
+<div class="flex_row">
 
 <div class="ui hiden" id="address_map">{{App\Setting::firstOrCreate(['name'=>'street'])->value}}, {{App\Setting::firstOrCreate(['name'=>'zip'])->value}},{{App\Setting::firstOrCreate(['name'=>'city'])->value}}, {{App\Setting::firstOrCreate(['name'=>'state'])->value}}</div>
 

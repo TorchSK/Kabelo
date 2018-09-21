@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="flex_content flex" >
 
 <div id="terms_div">
 
@@ -20,7 +19,6 @@
 
 <div class="richtext @if(Auth::check() && Auth::user()->admin && $editmode==1) editable @endif">
 {!!App\Text::firstOrCreate(['key'=>'terms'])->text!!}
-</div>
 </div>
 </div>
 @stop
