@@ -24,10 +24,10 @@
     </div>
     <div class="content menu @if(strpos(Route::currentRouteName(),'admin.eshop')!==false) active @endif">
       <a href="{{route('admin.eshop.categories')}}" class="item @if(Route::currentRouteName()=='admin.eshop.categories') active @endif">Zoznam kategórií</a>
-      <a href="{{route('admin.eshop.products',['category'=>App\Category::first()->url])}}" class="item">Kategórie / Produkty</a>
-      <a href="{{route('admin.eshop.new')}}" class="item">Novinky</a>
-      <a href="{{route('admin.eshop.sale')}}" class="item">Zľavy</a>
-      <a href="{{route('admin.eshop.inactive')}}" class="item">Neaktívne</a>
+      <a href="{{route('admin.eshop.products',['category'=>App\Category::first()->url])}}" class="item @if(Route::currentRouteName()=='admin.eshop.products') active @endif">Kategórie / Produkty</a>
+      <a href="{{route('admin.eshop.new')}}" class="item @if(Route::currentRouteName()=='admin.eshop.new') active @endif">Novinky</a>
+      <a href="{{route('admin.eshop.sale')}}" class="item @if(Route::currentRouteName()=='admin.eshop.sale') active @endif">Zľavy</a>
+      <a href="{{route('admin.eshop.inactive')}}" class="item @if(Route::currentRouteName()=='admin.eshop.inactive') active @endif">Neaktívne</a>
     </div>
   </div>
 
@@ -38,65 +38,65 @@
       Parametre
     </div>
     <div class="content menu @if(strpos(Route::currentRouteName(),'admin.params')!==false) active @endif">
-      <a href="{{route('admin.params.index')}}" class="item">Zoznam parametrov</a>
+      <a href="{{route('admin.params.index')}}" class="item @if(Route::currentRouteName()=='admin.params.index') active @endif">Zoznam parametrov</a>
     </div>
   </div>
 
   <div class="item">
-	<div class="header title">
+	<div class="header title @if(strpos(Route::currentRouteName(),'admin.users')!==false) active @endif">
     <i class="users icon"></i>
       <i class="dropdown icon"></i>
       Uživatelia
     </div>
-    <div class="menu content">
-      <a href="{{route('admin.users.index')}}" class="item">Zoznam uživateľov</a>
+    <div class="menu content @if(strpos(Route::currentRouteName(),'admin.users')!==false) active @endif">
+      <a href="{{route('admin.users.index')}}" class="item @if(Route::currentRouteName()=='admin.users.index') active @endif">Zoznam uživateľov</a>
     </div>
   </div>
 
   <div class="item">
-	<div class="header title">
+	<div class="header title @if(strpos(Route::currentRouteName(),'admin.orders')!==false) active @endif">
     <i class="cart icon"></i>
       <i class="dropdown icon"></i>
       Objednávky
     </div>
-    <div class="menu content">
+    <div class="menu content @if(strpos(Route::currentRouteName(),'admin.orders')!==false) active @endif">
       <a href="{{route('admin.orders.index')}}" class="item">Objednávky</a>
     </div>
   </div>
 
   <div class="item">
-	<div class="header title">
+	<div class="header title @if(strpos(Route::currentRouteName(),'admin.settings')!==false) active @endif">
     <i class="settings icon"></i>
       <i class="dropdown icon"></i>
       Nastavenia
     </div>
-    <div class="menu content">
-      <a href="{{route('admin.settings.banners')}}" class="item">Bannery</a>
-      <a href="{{route('admin.settings.eshop')}}" class="item">Eshop</a>
-      <a href="{{route('admin.settings.delivery')}}" class="item">Doprava</a>
-      <a href="{{route('admin.settings.invoice')}}" class="item">Fakturačné údaje</a>
+    <div class="menu content @if(strpos(Route::currentRouteName(),'admin.settings')!==false) active @endif">
+      <a href="{{route('admin.settings.banners')}}" class="item @if(Route::currentRouteName()=='admin.settings.banners') active @endif">Bannery</a>
+      <a href="{{route('admin.settings.eshop')}}" class="item @if(Route::currentRouteName()=='admin.settings.eshop') active @endif">Eshop</a>
+      <a href="{{route('admin.settings.delivery')}}" class="item @if(Route::currentRouteName()=='admin.settings.delivery') active @endif">Doprava</a>
+      <a href="{{route('admin.settings.invoice')}}" class="item @if(Route::currentRouteName()=='admin.settings.invoice') active @endif">Fakturačné údaje</a>
     </div>
 
   </div>
     <div class="item">
-	<div class="header title">
+	<div class="header title @if(strpos(Route::currentRouteName(),'admin.files')!==false) active @endif">
     <i class="file icon"></i>
       <i class="dropdown icon"></i>
       Súbory
     </div>
-    <div class="menu content">
-      <a href="{{route('admin.files')}}" class="item">Zoznam súborov</a>
+    <div class="menu content @if(strpos(Route::currentRouteName(),'admin.files')!==false) active @endif">
+      <a href="{{route('admin.files')}}" class="item @if(Route::currentRouteName()=='admin.files') active @endif">Zoznam súborov</a>
     </div>
   </div>
 
   <div class="item">
-	<div class="header title">
+	<div class="header title @if(strpos(Route::currentRouteName(),'admin.layout')!==false) active @endif">
     <i class="tv icon"></i>
       <i class="dropdown icon"></i>
       Šáblóna webu
     </div>
-    <div class="content menu">
-      <a href="{{route('admin.layout')}}" class="item">Zoznam šablón</a>
+    <div class="content menu @if(strpos(Route::currentRouteName(),'admin.layout')!==false) active @endif">
+      <a href="{{route('admin.layout')}}" class="item @if(Route::currentRouteName()=='admin.layout') active @endif">Zoznam šablón</a>
     </div>
   </div>
 </div>

@@ -1747,6 +1747,7 @@ a:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-bottom: 45px;
 }
 #grid_wrapper .sorts {
   overflow: hidden;
