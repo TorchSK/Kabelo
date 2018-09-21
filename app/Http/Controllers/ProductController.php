@@ -191,10 +191,9 @@ class ProductController extends Controller
 
     }
 
-    public function edit($maker, $code)
+    public function edit($url)
     {
-
-        $product = Product::where('maker',$maker)->where('code', $code)->first();
+        $product = Product::where('url', $url)->first();
         
         $data = [
            'product' => $product
@@ -473,7 +472,7 @@ class ProductController extends Controller
         }
         $product->save();
 
-        return redirect('/'.$product->maker.'/'.$product->code.'/detail');
+        return redirect()->route('product.detail',['url'=> $product->url]);
     }
 
     public function changeCategory($productid, $categoryid)

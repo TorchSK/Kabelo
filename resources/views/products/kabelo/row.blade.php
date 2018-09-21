@@ -1,5 +1,5 @@
 <div class="item product grid @if($product->active==0) inactive @endif" data-productid={{$product->id}} data-minqty="{{$product->priceLevels->min('threshold')}}">
-<a href="/{{strtolower($product->maker)}}/{{$product->code}}/detail">
+<a href="{{route('product.detail',['url'=>$product->url])}}">
 	
 
 
@@ -33,7 +33,7 @@
 		@if ($product->images->count() == 0)
 			<img src="/img/empty.jpg" class="ui image" />
 		@elseif ($product->image)
-           <img src="/{{$product->image->path}}" class="ui image" />
+           <img src="{{$url($product->image->path)}}" class="ui image" />
 	@endif
 
 	</div>

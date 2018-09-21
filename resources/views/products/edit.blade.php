@@ -24,40 +24,32 @@
     </div>
 
 
-<form action="/product/{{$product->id}}" method="POST">
+<form action="/product/{{$product->id}}" method="POST"  class="admin_wrapper">
 
   <input name="_method" type="hidden" value="PUT">
 
 
-<div id="product_options" class="ct">
- <div class="container ct">
-  <button type="submit" class="ui teal button" id="edit_product_submit">Ulož zmeny</button>
-  <a href="/{{Request::segment(1)}}/{{Request::segment(2)}}/detail" class="ui red button">Zruš editáciu</a>
-
-</div>
-</div>
-
-<div id="product_detail" data-id="{{$product->id}}">
+<div id="product_main_wrapper" class="product_detail flex_row" data-id="{{$product->id}}">
    
+    <div class="images">
+     <div class="edit_product_images">
+        @foreach($product->allfiles as $image)
+          <div class="image_div @if($image->primary) primary @endif" data-fileid="{{$image->id}}">
+            @if ($image->type=='image')
+            <img src="{{url($image->path)}}" class="ui image " />
+            @elseif ($image->type!='video')
+            <i class="icon huge brown file pdf outline" ></i>
 
-       <div class="edit_product_images">
-          @foreach($product->allfiles as $image)
-            <div class="image_div @if($image->primary) primary @endif" data-fileid="{{$image->id}}">
-              @if ($image->type=='image')
-              <img src="{{url($image->path)}}" width="120px" class="ui image " />
-              @elseif ($image->type!='video')
-              <i class="icon huge brown file pdf outline" ></i>
+            @endif
+            <div class="edit_product_images_actions">
+              <a class="ui circular red label delete_img"><i class="remove icon"></i></a>
+              <a class="ui circular blue icon label make_primary_img"><i class="star icon"></i></a>
+            </div>
+         </div>
+         @endforeach 
+      </div>
 
-              @endif
-              <div class="edit_product_images_actions">
-                <a class="ui circular red label delete_img"><i class="remove icon"></i> Zmaž</a>
-                <a class="ui circular blue icon label make_primary_img"><i class="star icon"></i> Primárny</a>
-              </div>
-           </div>
-           @endforeach 
-        </div>
-   <div class="left">
-        <div class="img">
+      <div class="img">
         <div class="edit_images">
            <div action="/file/upload" class="dropzone" id="product_detail_dropzone">
             <input name="_token" hidden value="{!! csrf_token() !!}" />
@@ -66,7 +58,9 @@
          </div>
        </div>
 
-       <div id="video_inputs">
+
+
+  <div id="video_inputs">
          @foreach($product->videos as $video)
           <div class="ui large fluid left icon input"><i class="youtube icon"></i><input type="text" name="videos[]" value="{{$video->path}}"></div>
          @endforeach
@@ -74,7 +68,6 @@
           <div class="ui large fluid left icon input"><i class="youtube icon"></i><input type="text" name="videos[]"></div>
           <div class="ui large fluid left icon input"><i class="youtube icon"></i><input type="text" name="videos[]"></div>
        </div>
-
     <div class="ui grid four column">
 
     <div class="column">
@@ -150,7 +143,7 @@
 
     </div>
 
-    <div class="right">
+    <div class="info">
       
       <div class="ui header">Název</div>
 
@@ -260,6 +253,15 @@
 
 
  </div>
+</div>
+
+
+<div id="product_options">
+ <div class="container">
+  <button type="submit" class="ui green button" id="edit_product_submit">Ulož zmeny</button>
+  <a href="{{route('product.detail',['url'=>$product->url])}}" class="ui red button">Zruš editáciu</a>
+
+</div>
 </div>
 
 </form>

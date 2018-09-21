@@ -97,6 +97,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::post('/layout/set', 'AdminController@setLayout')->name('admin.setLayout');
 	Route::get('/bulk/', 'ProductController@bulk')->name('admin.bulk');
 
+	Route::get('p/edit/{url}', 'ProductController@edit')->name('admin.product.edit');
+
+
 });
 
 Route::post('/bulk/', 'ProductController@postBulk')->name('admin.postBulk');
@@ -150,7 +153,6 @@ Route::get('makerproduct/list','ProductController@makerlist');
 Route::post('product/{productid}/change/category/{categoryid}','ProductController@changeCategory');
 Route::post('product/{productid}/rating/','ProductController@addRating');
 Route::resource('product','ProductController');
-Config::set('database.default', 'dedra');
 
 Route::get('p/{url}', 'ProductController@profile')->name('product.detail');
 
