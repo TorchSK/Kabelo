@@ -175,7 +175,6 @@ Route::put('categories/setorder/','CategoryController@setOrder');
 Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
 
-Route::get('/{path}', 'CategoryController@products')->where('path','(.*)')->name('category.products');
 
 Route::get('/maker/{maker}', 'HomeController@makerProducts')->name('maker.products');
 
@@ -232,3 +231,5 @@ Route::post('text', 'UtilController@setText');
 Route::post('cookies', 'UtilController@setCookie');
 
 Route::get('search/{query}', 'UtilController@search');
+
+Route::get('/{path}', 'CategoryController@products')->where('path','(.*)')->name('category.products');
