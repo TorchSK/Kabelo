@@ -333,7 +333,9 @@
 // DETAIL
 #filterbar_absolute{
 	width: 100%;
-	position: relative;
+	position: absolute;
+	top: 0;
+	left: 0;
 
 	&.inactive{
 		opacity: 0.5;
@@ -367,11 +369,12 @@
 
 }
 
-#product_main_wrapper{
+#product_main_wrapper{	
 	>.container{
 		background-color: #FFF;
 		padding: 3% 100px 1% 100px;
 		justify-content: space-between;
+		position: relative;
 	}
 
 	@media @break3{

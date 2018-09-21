@@ -12,16 +12,14 @@
 @endif
 
 
-<div id="filterbar_absolute">
-  <div class="ui button filterbar_handle sticky_div">Zobrazit katalóg</div>
-  @include('includes/filterbar')
-</div>
-
 <div id="product_main_wrapper" class="wrapper @if($product->active==0) inactive @endif" data-id="{{$product->id}}" data-gallery="{{$product->code}}" data-index="0">
   <div class="container flex_row">
     
 
-
+<div id="filterbar_absolute">
+  <div class="ui button filterbar_handle sticky_div">Zobrazit katalóg</div>
+  @include('includes/filterbar')
+</div>
 
 
     <div class="images">
@@ -88,12 +86,12 @@
    			@foreach ($product->categories as $category)
         <div>
         @if(isset($category->parent) && $category->parent->count() > 0  && isset($category->parent->parent) && $category->parent->has('parent'))
-        <a href="/category/{{$category->parent->parent->url}}#eshop" class="effect-1">{{$category->parent->parent->name}}</a> - 
+        <a href="/category/{{route('category.products',['path'=> $category->parent->parent->full_url])}}" class="effect-1">{{$category->parent->parent->name}}</a> - 
         @endif
         @if(isset($category->parent) && $category->parent->count() > 0)
-        <a href="/category/{{$category->parent->url}}#eshop" class="effect-1">{{$category->parent->name}}</a> - 
+        <a href="{{route('category.products',['path'=> $category->parent->full_url])}}" class="effect-1">{{$category->parent->name}}</a> - 
         @endif
-        <a href="/category/{{$category->url}}#eshop" class="effect-1">{{$category->name}}</a>
+        <a href="{{route('category.products',['path'=> $category->url])}}" class="effect-1">{{$category->name}}</a>
         </div>
    			@endforeach
         </div>

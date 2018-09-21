@@ -2534,7 +2534,7 @@ $('.filterbar_handle').mouseover(function(){
   $('#filterbar').show();
 })
 
-$('#product_content #filterbar').mouseleave(function(){
+$('#filterbar_absolute #filterbar').mouseleave(function(){
   setTimeout(function(){
     $('#filterbar').hide();
   },600)

@@ -1786,7 +1786,9 @@ a:hover {
 }
 #filterbar_absolute {
   width: 100%;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 #filterbar_absolute.inactive {
   opacity: 0.5;
@@ -1819,6 +1821,7 @@ a:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  position: relative;
 }
 @media all and (max-width: 980px) {
   #product_main_wrapper {
