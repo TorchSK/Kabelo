@@ -48,7 +48,9 @@ class SettingController extends Controller
 			$setting->save();
 		}
 
-		return view($request->get('view'))->render();
+		if($request->get('view')!=''){
+			return view($request->get('view'))->render();
+		}
 	}
 
 	public function bulkUpdate(Request $request)

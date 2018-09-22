@@ -10,6 +10,13 @@
 				  <label>Zobrazovať obrázok</label>
 				</div>
 			</div>
+			<div class="item">
+				<input class="admin_page_color_chooser" data-default="#F3F3F3" data-item="filterbar_wrapper" data-property="background-color" data-target="filterbar"> Farba pozadia
+			</div>
+
+			<div class="item">	
+				<input class="admin_page_color_chooser" data-default="#FFF" data-item="filterbar_container" data-property="background-color" data-target="filterbar"> Farba lišty
+			</div>
 
  		</div>
  		<div id="page_preview">

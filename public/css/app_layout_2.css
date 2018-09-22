@@ -2901,6 +2901,14 @@ body.admin .pusher {
 #page_settings_wrapper {
   height: 100%;
 }
+#page_settings_wrapper .item {
+  margin-bottom: 25px;
+}
+#page_settings_wrapper .container {
+  width: 1200px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 #page_settings_wrapper .flex_row {
   height: 100%;
 }

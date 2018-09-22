@@ -3085,6 +3085,24 @@ $('#filterbar.horizontal .item').each(function() {
 });
 
 
+function setSetting($changes, $view ,$load=false, $target){
+	$data = {};
+
+	$data['changes'] = $changes;
+    $data['view'] = $view;
+
+	$.ajax({
+		type: "PUT",
+		url: "/admin/page/setting/",
+		data: $data,
+		success: function(data){
+			if ($load){
+				$('#page_preview').find('#'+$target).html(data);
+			}
+		}
+	});
+}
+
 $('#suggested_wrapper_speed i').click(function(){
 	$div = $(this).closest('#suggested_wrapper_speed');
 	$this = $(this);
@@ -3117,45 +3135,41 @@ $('.admin_page_settings').checkbox({
       $target = $(this).data('target');
       $view = $(this).data('view');
 
-      $data = {};
       $changes = {};
       $changes[$item] = 1;
 
-      $data['changes'] = $changes;
-      $data['view'] = $view;
+	  setSetting($changes, $view, true, $target);
 
-      $.ajax({
-		type: "PUT",
-		url: "/admin/page/setting/",
-		data: $data,
-		success: function(data){
-			$('#page_preview').find('#'+$target).html(data);
-		}
-	  })	
     },
     onUnchecked: function(){
       $item = $(this).data('item');
       $target = $(this).data('target');
       $view = $(this).data('view');
 
-      $data = {};
       $changes = {};
       $changes[$item] = 0;
 
-      $data['changes'] = $changes;
-      $data['view'] = $view;
+	  setSetting($changes, $view, true, $target);
 
-      $.ajax({
-		type: "PUT",
-		url: "/admin/page/setting/",
-		data: $data,
-		success: function(data){
-			$('#page_preview').find('#'+$target).html(data);
-		}
-	  })	
     }
 })
 
+
+$('.admin_page_color_chooser').spectrum({
+  
+});
+
+$(".admin_page_color_chooser").on('dragstop.spectrum', function(e, color) {
+	$element = $(this).data('item');
+	$property = $(this).data('property');
+    $('*[data-item="'+$element+'"]').css($property,color.toRgbString());
+	
+	$changes = {};
+   
+    $changes[$element+"_"+$property] = color.toRgbString();
+	setSetting($changes,'', false, '');
+
+});
 
 
 });
