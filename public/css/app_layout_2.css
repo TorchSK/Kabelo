@@ -4064,7 +4064,6 @@ h1.header {
 }
 #filterbar.horizontal .popup {
   left: 0 !important;
-  top: 50px !important;
   padding: 35px 0;
 }
 #filterbar.horizontal .subcats {
