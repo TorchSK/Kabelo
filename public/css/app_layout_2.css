@@ -4074,10 +4074,6 @@ h1.header {
       justify-content: space-around;
   text-align: left;
 }
-#filterbar.horizontal .subcats .name {
-  -webkit-transition: 0.1s all ease;
-  transition: 0.1s all ease;
-}
 #filterbar.horizontal .subcats .name:hover {
   background-color: #A5673F;
   color: #FFF;
