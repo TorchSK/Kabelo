@@ -90,6 +90,17 @@
   </div>
 
   <div class="item">
+  <div class="header title @if(strpos(Route::currentRouteName(),'admin.layout')!==false) active @endif">
+    <i class="columns icon"></i>
+      <i class="dropdown icon"></i>
+      Nastavenia stránok
+    </div>
+    <div class="content menu @if(strpos(Route::currentRouteName(),'admin.pages')!==false) active @endif">
+      <a href="{{route('admin.pages.filterbar')}}" class="item @if(Route::currentRouteName()=='admin.pages.filterbar') active @endif">Katégórie</a>
+    </div>
+  </div>
+
+  <div class="item">
 	<div class="header title @if(strpos(Route::currentRouteName(),'admin.layout')!==false) active @endif">
     <i class="tv icon"></i>
       <i class="dropdown icon"></i>

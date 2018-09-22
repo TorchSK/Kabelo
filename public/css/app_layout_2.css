@@ -2898,6 +2898,23 @@ body.admin .pusher {
 .ui.button.settings_save {
   margin-top: 25px;
 }
+#page_settings_wrapper {
+  height: 100%;
+}
+#page_settings_wrapper .flex_row {
+  height: 100%;
+}
+#page_settings_wrapper #page_settings {
+  width: 300px;
+  background-color: #F1F1F1;
+  padding: 35px 15px;
+  text-align: left;
+}
+#page_settings_wrapper #page_preview {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
 #order_steps_wrapper {
   background-color: #EEE;
 }
@@ -4081,7 +4098,9 @@ h1.header {
   border-radius: 3px;
 }
 #filterbar.horizontal .item {
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   color: #555;
   padding: 10px 20px;
   margin: 15px 20px;
@@ -4089,6 +4108,25 @@ h1.header {
   font-size: 1em;
   font-weight: 600;
   border-radius: 4px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#filterbar.horizontal .item .image_div {
+  width: 120px;
+  height: 80px;
+  text-align: center;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+#filterbar.horizontal .item .image_div img {
+  max-width: 100%;
+  max-height: 100%;
 }
 #filterbar.horizontal .item:last-child {
   border-right: none;

@@ -39,6 +39,18 @@ class SettingController extends Controller
 		}
 	}
 
+	public function pageUpdate(Request $request)
+	{
+		foreach($request->get('changes') as $key => $item)
+		{
+			$setting = Setting::whereName($key)->first();
+			$setting->value = $item;
+			$setting->save();
+		}
+
+		return view($request->get('view'))->render();
+	}
+
 	public function bulkUpdate(Request $request)
 	{
 		foreach($request->except('_token') as $key => $item)

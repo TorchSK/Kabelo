@@ -59,6 +59,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/settings/invoice', 'AdminController@invoice')->name('admin.settings.invoice');
 	Route::get('/settings/delivery', 'AdminController@delivery')->name('admin.settings.delivery');
 	
+	Route::get('/pages/filterbar', 'AdminController@filterbar')->name('admin.pages.filterbar');
+
 	Route::post('/settings/eshop/save', 'SettingController@bulkUpdate')->name('settings.bulkUpdate');
 
 	Route::post('/settings/invoice/save', 'SettingController@bulkUpdate')->name('settings.bulkUpdate');
@@ -100,6 +102,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('p/edit/{url}', 'ProductController@edit')->name('admin.product.edit');
 	
 	Route::put('/setting/', 'SettingController@apiUpdate')->name('admin.setting.apiUpdate');
+	
+	Route::put('/page/setting/', 'SettingController@pageUpdate')->name('admin.setting.pageUpdate');
 
 
 });

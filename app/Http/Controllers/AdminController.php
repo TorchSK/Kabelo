@@ -983,4 +983,10 @@ class AdminController extends Controller
 
     }
 
+    public function filterbar()
+    {
+
+        return view('admin.pages.filterbar');
+    }
+
 }

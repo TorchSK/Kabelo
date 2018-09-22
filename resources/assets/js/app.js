@@ -3111,6 +3111,52 @@ $('#suggested_wrapper_speed i').click(function(){
 
 })
 
+$('.admin_page_settings').checkbox({
+    onChecked: function(){
+      $item = $(this).data('item');
+      $target = $(this).data('target');
+      $view = $(this).data('view');
+
+      $data = {};
+      $changes = {};
+      $changes[$item] = 1;
+
+      $data['changes'] = $changes;
+      $data['view'] = $view;
+
+      $.ajax({
+		type: "PUT",
+		url: "/admin/page/setting/",
+		data: $data,
+		success: function(data){
+			$('#page_preview').find('#'+$target).html(data);
+		}
+	  })	
+    },
+    onUnchecked: function(){
+      $item = $(this).data('item');
+      $target = $(this).data('target');
+      $view = $(this).data('view');
+
+      $data = {};
+      $changes = {};
+      $changes[$item] = 0;
+
+      $data['changes'] = $changes;
+      $data['view'] = $view;
+
+      $.ajax({
+		type: "PUT",
+		url: "/admin/page/setting/",
+		data: $data,
+		success: function(data){
+			$('#page_preview').find('#'+$target).html(data);
+		}
+	  })	
+    }
+})
+
+
 
 });
 
