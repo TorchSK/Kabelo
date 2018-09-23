@@ -8,7 +8,7 @@
     			<img src="{{url($category->image)}}" />
     		</div>
     		@endif
-    		{{$category->name}}
+    		<name>{{$category->name}}</name>
     	</a>
 
     	<div class="ui fluid basic popup bottom left transition hidden" id="cat_popup_{{$category->id}}">

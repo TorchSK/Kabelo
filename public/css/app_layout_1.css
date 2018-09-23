@@ -4151,7 +4151,7 @@ h1.header {
   display: -ms-inline-flexbox;
   display: inline-flex;
   color: #555;
-  padding: 10px 20px;
+  padding: 5px 20px;
   margin: 15px 20px;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   font-size: 1em;
@@ -4164,6 +4164,10 @@ h1.header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+#filterbar.horizontal .item name {
+  padding: 5px 10px;
+  border-radius: 4px;
 }
 #filterbar.horizontal .item .image_div {
   width: 120px;
@@ -4180,7 +4184,7 @@ h1.header {
 #filterbar.horizontal .item:last-child {
   border-right: none;
 }
-#filterbar.horizontal .item.active {
+#filterbar.horizontal .item.active name {
   background-color: #A5673F;
   color: #FFF;
 }
