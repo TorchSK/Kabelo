@@ -130,7 +130,7 @@
       
       @if($appname=='dedra')
         <div class="catalogues item ct">
-                    <i class="big file text icon"></i>
+          <i class="big file text icon"></i>
 
         </div>
 

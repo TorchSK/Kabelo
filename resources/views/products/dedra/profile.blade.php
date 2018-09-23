@@ -86,7 +86,7 @@
    			@foreach ($product->categories as $category)
         <div>
         @if(isset($category->parent) && $category->parent->count() > 0  && isset($category->parent->parent) && $category->parent->has('parent'))
-        <a href="/category/{{route('category.products',['path'=> $category->parent->parent->full_url])}}" class="effect-1">{{$category->parent->parent->name}}</a> - 
+        <a href="{{route('category.products',['path'=> $category->parent->parent->full_url])}}" class="effect-1">{{$category->parent->parent->name}}</a> - 
         @endif
         @if(isset($category->parent) && $category->parent->count() > 0)
         <a href="{{route('category.products',['path'=> $category->parent->full_url])}}" class="effect-1">{{$category->parent->name}}</a> - 
