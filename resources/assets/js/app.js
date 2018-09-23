@@ -1314,7 +1314,8 @@ $('#home_sales_div .items').flickity({
     contain: true,
     pageDots: false,
     prevNextButtons: false,
-    imagesLoaded: true
+    imagesLoaded: true,
+    autoPlay: 2000,
 });
 
 $('#home_news_div .items').flickity({
@@ -1323,6 +1324,7 @@ $('#home_news_div .items').flickity({
     pageDots: false,
     prevNextButtons: false,
     imagesLoaded: true
+      autoPlay: 2000,
 });
 
 $('#admin_add_category_param_btn').click(function(){
