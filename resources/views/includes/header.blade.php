@@ -128,9 +128,19 @@
 
       </div>
       
+
+
+        <a class="cart item hvr-curl-top-left" href="/cart/products">
+          <div id="cart_icon"><i class="shop big icon"></i></div>
+          <div id="cart_text">
+              <text>Nákupný košík (<number>{{$cart['number']}}</number>)</text>
+              <price><number>{{number_format($cart['price'],2)}}</number> Eur</price>
+          </div>
+        </a>
+
       @if($appname=='dedra')
         <div class="catalogues item ct">
-          <i class="big file text icon"></i>
+          <img src="/img/catalogue9.jpg" width="40" />
 
         </div>
 
@@ -141,15 +151,6 @@
 
         </div>
         @endif
-
-        <a class="cart item hvr-curl-top-left" href="/cart/products">
-          <div id="cart_icon"><i class="shop big icon"></i></div>
-          <div id="cart_text">
-              <text>Nákupný košík (<number>{{$cart['number']}}</number>)</text>
-              <price><number>{{number_format($cart['price'],2)}}</number> Eur</price>
-          </div>
-        </a>
-
 
     <div id="routename" class="hiden">{{Route::currentRouteName()}}</div>
 
