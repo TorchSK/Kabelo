@@ -1,11 +1,9 @@
 @extends('layouts.master')
 @section('content')
-	
-<div class="flex_content content cart" id="cart_detail" @if(Auth::check())data-cartid="{{Auth::user()->cart->id}}" @endif>
-	
-	@include('cart.steps',['step'=>'3'])
 
-	<div class="pad wrapper ct" id="cart_shipping">
+@include('cart.steps',['step'=>'3'])
+
+<div id="cart_shipping_wrapper" class="wrapper">
 	<div class="container ct">
 
 		<div class="cart_address">
@@ -121,15 +119,14 @@
 	</div>
 
 	</div>
-	</div>
+</div>
 
-	<div class="ct cart_actions">
+
+<div id="cart_actions_wrapper" class="wrapper">
+	<div class="container">
 		<a href="/cart/delivery" class="ui button"><i class="arrow left icon"></i>Spať</a>
 		<a href="/cart/confirm" class="ui green button" id="cart_shipping_next_btn">Pokračovať</a>
 	</div>
-
-
 </div>
-
 
 @stop

@@ -3292,6 +3292,21 @@ body.admin .pusher {
 #cart_info_wrapper .payment_note {
   margin-top: 15px;
 }
+#cart_shipping_wrapper > .container {
+  background-color: #FAFAFA;
+  padding: 50px;
+}
+.vop_info a,
+.gdpr_info a {
+  text-decoration: underline;
+}
+.gdpr_info {
+  margin-top: 10px;
+}
+.payment_info {
+  margin-top: 5px;
+  color: #333;
+}
 #category_options {
   background-color: rgba(0, 0, 0, 0.03);
   padding: 15px 0;

@@ -6,10 +6,12 @@
 <div id="cart_user_discount" class="hidden">Vaša zľava: <price>0</price> <symbol>%</symbol></div>
 @endif
 
+@if($appname=="kabelo")
 <div id="cart_without_vat_price">Cena bez dph: <price></price> <symbol>{{ round($cart['price'] / (1 + App\Setting::where('name','vat')->first()->value/100),2)}} &euro;</symbol></div>
 <div id="cart_vat">DPH: <price></price> <symbol>{{$cart['price'] - round($cart['price']/(1 + App\Setting::where('name','vat')->first()->value/100),2)}} &euro;</symbol></div>
-<div id="cart_total_price">Celková cena: <price></price> <symbol>{{$cart['price']}} &euro;</symbol></div>
+@endif
 
+<div id="cart_total_price">Celková cena: <price></price> <symbol>{{$cart['price']}} &euro;</symbol></div>
 
 @if(App\Setting::whereName('min_order_price')->first()->value > 0)
 <div id="cart_min_price">Minimálna výška objednávky je <price>{{App\Setting::whereName('min_order_price')->first()->value }}</price>&euro;</div>

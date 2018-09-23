@@ -1,22 +1,18 @@
 @extends('layouts.master')
 @section('content')
 	
+@include('cart.steps',['step'=>'4'])
 
-<div class="flex_content content cart" id="cart_detail" @if(Auth::check())data-cartid="{{Auth::user()->cart->id}}" @endif>
+<div id="cart_shipping_wrapper" class="cart_confirm wrapper">
+	<div class="container ct">
 
-	
 
-	@include('cart.steps',['step'=>'4'])
-
-	<div class="cart_confirm">
-
-		<div id="grid" class="products">
-			<div class="ui horizontal divider">Produkty</div>
+		<grid>
 
 			@foreach($cart['items'] as $productid)
 				@include('products.row',['product'=> App\Product::find($productid), 'cart_confirm'=>true])
 			@endforeach
-		</div>
+		</grid>
 
 		<div class="delivery ct">
 
@@ -149,42 +145,44 @@
        	</div>
 
 	</div>
-		</div>
-
 	</div>
+</div>
 
+<div id="cart_prices_wrapper" class="wrapper">
+	<div class="container">
+
+	@if($appname=="kabelo")
 	<div id="cart_without_vat_price">Cena bez dph: <price>{{round($cart['price']/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</price><symbol>&euro;</symbol></div>
 	<div id="cart_vat">DPH: <price>{{$cart['price'] - round($cart['price']/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</price><symbol>&euro;</symbol></div>
+	@endif
 	<div id="cart_product_price">Cena za tovar celkovo: <price>{{$cart['price'] }}</price> <symbol>&euro;</symbol></div>	
 	<div id="cart_shipping_price">Cena za prepravu: <price>{{$cart['shipping_price']}}</price> <symbol>&euro;</symbol></div>
 	<div id="cart_total_price">Celková cena: <price>{{$cart['price'] + $cart['shipping_price']}}</price> <symbol>&euro;</symbol></div>
 
+</div>
+</div>
+
+<div id="cart_prices_wrapper" class="wrapper">
+	<div class="container">
+
+
 	<div class="ct">
-		<div>
-		<div class="ui checkbox" id="agreements_checkbox">
-		  <input type="checkbox" name="example">
-		  <label>Oboznámil som sa s <a href="/obchodne-podmienky" target="_blank">obchodnými podmienkami</a></label>
-		</div>
-		</div>
+		 <div class="vop_info">Stlačením „Dokončiť objednávku s povinnosťou platby“ potvrdzujete, že ste sa oboznámili s <a href="/obchodne-podmienky" target="_blank">obchodnými podmienkami</a></div>
+		 <div class="gdpr_info"><a href="/obchodne-podmienky" target="_blank">Info o spracovaní osobných údajov</a></div>
 
-		<div>
-		<div class="ui checkbox" id="agreements_checkbox">
-		  <input type="checkbox" name="example">
-		  <label>Súhlasím so <a href="/obchodne-podmienky" target="_blank">spracovaním osobných údajov</a> pre účely vybavenia objednávky.</label>
-		</div>
-		</div>
-
-		<div>Súhlasím s odoslaním objednávky s povinnosťou platby.</div>
-
-
-		<a class="ui huge disabled green button" id="submit_order_btn"><i class="upload icon"></i>Odoslať objednávku</a>
-	</div>
-
-	<div class="ct cart_actions">
-		<a href="/cart/shipping" class="ui button"><i class="arrow left icon"></i>Spať</a>
+		<a class="ui huge green button" id="submit_order_btn"><i class="upload icon"></i>Dokončiť objednávku</a> 
+		<div class="payment_info">s povinnosťou platby</div>
 	</div>
 
 </div>
+</div>
 
+
+
+<div id="cart_actions_wrapper" class="wrapper">
+	<div class="container">
+		<a href="/cart/shipping" class="ui button"><i class="arrow left icon"></i>Spať</a>
+	</div>
+</div>
 
 @stop
