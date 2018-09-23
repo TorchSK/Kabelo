@@ -1354,6 +1354,7 @@ a:hover {
 #header #catalogues_popup {
   width: 370px !important;
   max-width: 500px;
+  margin-left: -80px;
 }
 #header #catalogues_popup .cat {
   display: inline-block;
