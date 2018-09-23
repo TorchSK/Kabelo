@@ -140,7 +140,7 @@
 
       @if($appname=='dedra')
         <div class="catalogues item ct">
-          <img src="/img/catalogue9.jpg" width="40" />
+          <img src="/img/catalogue9.jpg" width="50" />
 
         </div>
 
