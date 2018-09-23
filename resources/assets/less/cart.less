@@ -285,6 +285,7 @@
 			font-weight: 900;
 			font-size: 1.1em;
 		}
+
 }
 
 #cart_delivery_options{
@@ -379,5 +380,33 @@
 
 	a{
 		text-decoration: underline !important;
+	}
+}
+
+// steps
+.cart_delivery,
+.cart_payment{
+	position: relative;
+
+	&:hover{
+		.options{
+		display: flex;
+		}
+	}
+	.options{
+		display: none;
+		position: absolute;
+		cursor: pointer;
+		top:0;
+		left:0;
+		height: 100%;
+		width: 100%;
+		background-color: rgba(255,255,255,0.8);
+		justify-content: center;
+		align-items: center;
+
+		icons{
+
+		}
 	}
 }

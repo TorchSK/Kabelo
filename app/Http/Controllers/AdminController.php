@@ -748,6 +748,14 @@ class AdminController extends Controller
         return $delivery;
     }
 
+    public function deleteDeliveryMethod($id)
+    {
+        $delivery = DeliveryMethod::find($id);
+        $delivery->delete();
+
+        return 1;
+    }
+
     public function addPaymentMethod(Request $request)
     {
         $payment = new PaymentMethod();
@@ -983,10 +991,10 @@ class AdminController extends Controller
 
     }
 
-    public function filterbar()
+    public function homePageSeetings()
     {
 
-        return view('admin.pages.filterbar');
+        return view('admin.pages.home');
     }
 
 }

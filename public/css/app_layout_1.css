@@ -3246,6 +3246,33 @@ body.admin .pusher {
 #agreements_checkbox a {
   text-decoration: underline !important;
 }
+.cart_delivery,
+.cart_payment {
+  position: relative;
+}
+.cart_delivery:hover .options,
+.cart_payment:hover .options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.cart_delivery .options,
+.cart_payment .options {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 #category_options {
   background-color: rgba(0, 0, 0, 0.03);
   padding: 15px 0;

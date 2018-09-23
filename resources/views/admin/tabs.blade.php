@@ -96,7 +96,7 @@
       Nastavenia stránok
     </div>
     <div class="content menu @if(strpos(Route::currentRouteName(),'admin.pages')!==false) active @endif">
-      <a href="{{route('admin.pages.filterbar')}}" class="item @if(Route::currentRouteName()=='admin.pages.filterbar') active @endif">Katégórie</a>
+      <a href="{{route('admin.pages.home')}}" class="item @if(Route::currentRouteName()=='admin.pages.home') active @endif">Úvodná stránka</a>
     </div>
   </div>
 

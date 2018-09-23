@@ -703,7 +703,7 @@ $('.categories .item .icon.minus').click(function(e){
 
 
 
-$(".cart_delivery").click(function(){
+$(".cart_delivery.eshop").click(function(){
   $this = $(this);
 
   if(!$this.hasClass('completed'))
@@ -793,7 +793,7 @@ $(".cart_delivery").click(function(){
 
 })
 
-$(".cart_payment").click(function(){
+$(".cart_payment.eshop").click(function(){
   $this = $(this);
   if(!$this.hasClass('completed'))
   {
@@ -1564,13 +1564,19 @@ $(document).on('click','.admin_method_list i.check', function(){
 
 })
 
-$('.admin_method_list i.red').click(function(){
-  $(this).hide();
-  $row = $(this).closest('tr');
-  $row.find('td:not(:last-child)').prop('contenteditable',false).removeClass('editable');
-  $('.admin_method_list i.green.square.check').toggleClass('green square check edit');
-              $row.find('.ui.dropdown').hide();
-            $row.find('td:nth-child(4)>i.icon').show();
+$('.admin_method_list i.delete').click(function(){
+  $item = $(this).closest('.step');
+  $id = $(this).closest('.step').data('id');
+  $type = $(this).closest('.step').data('type');
+  
+  $.ajax({
+    type: "DELETE",
+    url: "/admin/"+$type+"/"+$id,
+    success: function(){
+      $item.remove();
+    }
+  })
+
 })
 
 
