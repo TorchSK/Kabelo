@@ -4186,7 +4186,7 @@ h1.header {
 }
 #filterbar.horizontal .item .image_div {
   width: 120px;
-  height: 90px;
+  height: 85px;
   text-align: center;
   margin-bottom: 15px;
   border-radius: 3px;
@@ -4195,6 +4195,7 @@ h1.header {
 #filterbar.horizontal .item .image_div img {
   max-width: 100%;
   max-height: 100%;
+  border-radius: 3px;
 }
 #filterbar.horizontal .item:last-child {
   border-right: none;

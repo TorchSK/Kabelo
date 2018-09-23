@@ -4,6 +4,7 @@ namespace App;
 use Kalnoy\Nestedset\NodeTrait;
 
 use Illuminate\Database\Eloquent\Model;
+use Request;
 
 class Category extends Model {
     
@@ -38,12 +39,19 @@ class Category extends Model {
  	
  	public function getImageAttribute($value) 
   	{
+  		$appname = env('APP_NAME');
+
+        if($appname == 'Laravel')
+        {
+            $appname = explode(".", Request::getHost())[0];
+        }
+
  		if($value)
  		{
 			return $value;
  		}
 		else{
-			 return "/img/category.jpg" ;
+			 return "/img/category_".$appname.".jpg" ;
 		}
  	}
 }
