@@ -44,7 +44,7 @@
 				@endif
 			</div>
 			<div class="payment_note">
-				@if ($cart['delivery_method'])
+				@if ($cart['payment_method'])
 					{{App\PaymentMethod::find($cart['payment_method'])->note}}
 				@endif
 			</div>
