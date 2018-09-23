@@ -39,11 +39,11 @@ class Category extends Model {
  	
  	public function getImageAttribute($value) 
   	{
-  		$appname = env('APP_NAME');
+  		$appname = strtolower(env('APP_NAME'));
 
         if($appname == 'Laravel')
         {
-            $appname = explode(".", Request::getHost())[0];
+            $appname = strtolower(explode(".", Request::getHost())[0]);
         }
 
  		if($value)
