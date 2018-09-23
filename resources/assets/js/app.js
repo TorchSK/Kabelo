@@ -1323,7 +1323,7 @@ $('#home_news_div .items').flickity({
     contain: true,
     pageDots: false,
     prevNextButtons: false,
-    imagesLoaded: true
+    imagesLoaded: true,
       autoPlay: 2000,
 });
 
