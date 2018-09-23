@@ -91,7 +91,7 @@
         @if(isset($category->parent) && $category->parent->count() > 0)
         <a href="{{route('category.products',['path'=> $category->parent->full_url])}}" class="effect-1">{{$category->parent->name}}</a> - 
         @endif
-        <a href="{{route('category.products',['path'=> $category->url])}}" class="effect-1">{{$category->name}}</a>
+        <a href="{{route('category.products',['path'=> $category->full_url])}}" class="effect-1">{{$category->name}}</a>
         </div>
    			@endforeach
         </div>
