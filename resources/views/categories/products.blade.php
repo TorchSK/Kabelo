@@ -43,7 +43,7 @@
     <div id="subcategories_wrapper" class="wrapper">
         <div class="container">
             <div class="subcategories">
-                @foreach($requestCategory->children->sortBy('order') as $child)
+                @foreach($requestCategory->children->where('active',1)->sortBy('order') as $child)
                     @include('categories.image',['category'=>$child])
                 @endforeach         
             </div>
