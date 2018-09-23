@@ -1113,6 +1113,9 @@ a:hover {
   font-size: 13px;
   font-weight: 400;
 }
+#header.shrink .item img {
+  width: 30px;
+}
 #header.shrink .logo {
   padding: 10px;
   height: 20px;
