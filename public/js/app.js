@@ -1568,15 +1568,19 @@ $('.admin_method_list i.delete').click(function(){
   $item = $(this).closest('.step');
   $id = $(this).closest('.step').data('id');
   $type = $(this).closest('.step').data('type');
-  
-  $.ajax({
-    type: "DELETE",
-    url: "/admin/"+$type+"/"+$id,
-    success: function(){
-      $item.remove();
-    }
-  })
 
+   $('#delete_method_modal').modal('setting', {
+    autofocus: false,
+    onApprove : function() {
+      $.ajax({
+	    type: "DELETE",
+	    url: "/admin/"+$type+"/"+$id,
+	    success: function(){
+	      $item.remove();
+	    }
+	  })
+    }
+  }).modal('show');
 })
 
 

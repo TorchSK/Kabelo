@@ -454,7 +454,7 @@ a:hover {
   display: inline-block;
 }
 .ui.steps:first-child {
-  margin-top: 1em !important;
+  margin: 0em !important;
 }
 /*----- button 4 -----*/
 .btn-4::after {

@@ -72,6 +72,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
 	Route::put('/delivery/{id}', 'AdminController@editDeliveryMethod');
 	Route::delete('/delivery/{id}', 'AdminController@deleteDeliveryMethod');
+	Route::delete('/payment/{id}', 'AdminController@deletePaymentMethod');
 
 	Route::put('/payment/{id}', 'AdminController@editPaymentMethod');
 	Route::get('/order/{id}', 'AdminController@orderDetail')->name('admin.orderDetail');

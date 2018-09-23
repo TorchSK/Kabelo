@@ -9,9 +9,9 @@
 
 	  @if($context=='admin')
 	  	<div class="options">
-	  		<icons>
-	  			<i class="big red delete icon"></i>
+	  		<icons>	  			
 	  			<i class="big teal edit icon"></i>
+	  			<i class="big red delete icon"></i>
 	  		</icons>
 	  	</div>
 	  @endif

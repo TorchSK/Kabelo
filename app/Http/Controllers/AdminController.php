@@ -781,6 +781,14 @@ class AdminController extends Controller
         return $payment;
     }
 
+    public function deletePaymentMethod($id)
+    {
+        $payment = PaymentMethod::find($id);
+        $payment->delete();
+
+        return 1;
+    }
+
     public function addDeliveryPayment(Request $request)
     {
         $delivery = DeliveryMethod::find($request->get('delivery_method_id'));

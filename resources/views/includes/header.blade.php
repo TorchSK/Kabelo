@@ -1,6 +1,8 @@
-  <div id="header" @if(Request::segment(1)!='admin') class="shrinkable" @endif>
+<div id="header" @if(Request::segment(1)!='admin') class="shrinkable" @endif>
     <div class="container">
 
+    @include('includes.modals')
+    
     @if(Auth::check())
     <div class="content cart hidden" data-cartid="{{Auth::user()->cart->id}}"></div>
     @endif
