@@ -3288,6 +3288,9 @@ body.admin .pusher {
   background-color: #FFF;
   padding: 50px;
 }
+#cart_info_wrapper .payment_note {
+  margin-top: 15px;
+}
 #category_options {
   background-color: rgba(0, 0, 0, 0.03);
   padding: 15px 0;
