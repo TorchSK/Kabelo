@@ -133,7 +133,7 @@
           <div id="cart_icon"><i class="shop big icon"></i></div>
           <div id="cart_text">
               <text>Nákupný košík (<number>{{$cart['number']}}</number>)</text>
-              <price><number>{{$cart['price']}}</number> Eur</price>
+              <price><number>{{number_format($cart['price'],2)}}</number> Eur</price>
           </div>
         </a>
 

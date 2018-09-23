@@ -53,7 +53,7 @@
 
 
     <div class="prices">
-	    <div class="final_price">{{$product->price}} &euro;</div>
+	    <div class="final_price">{{number_format($product->price,2)}} &euro;</div>
     </div>
 
 

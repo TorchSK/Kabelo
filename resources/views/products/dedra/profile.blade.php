@@ -108,7 +108,7 @@
 
     <div id="prices">
         <span style="font-size: 1.6em; color: #F2711C; font-weight: 700; margin-right: 10px;">Cena:</span> 
-        <div id="final_price">{{$product->price}} &euro;</div>
+        <div id="final_price">{{number_format($product->price,2)}} &euro;</div>
     </div>
 
     <div id="product_detail_tocart_btn" class="ui large brown labeled icon button" data-qty="{{$product->priceLevels->min('threshold')}}"><i class="add to cart icon"></i>Kúpiť</div>
