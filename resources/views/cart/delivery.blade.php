@@ -34,6 +34,25 @@
 	</div>
 </div>
 
+<div id="cart_info_wrapper" class="wrapper">
+	<div class="container">
+
+		<div class="notes_list">
+			<div class="delivery_note">
+				@if ($cart['delivery_method'])
+					{{App\DeliveryMethod::find($cart['delivery_method'])->note}}
+				@endif
+			</div>
+			<div class="payment_note">
+				@if ($cart['delivery_method'])
+					{{App\PaymentMethod::find($cart['payment_method'])->note}}
+				@endif
+			</div>
+		</div>
+
+	</div>
+</div>
+
 <div id="cart_prices_wrapper" class="wrapper">
 	<div class="container">
 

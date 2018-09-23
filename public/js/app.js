@@ -705,6 +705,7 @@ $('.categories .item .icon.minus').click(function(e){
 
 $(".cart_delivery.eshop").click(function(){
   $this = $(this);
+	$deliveryNote = $this.data('note');
 
   if(!$this.hasClass('completed'))
   {
@@ -781,10 +782,11 @@ $(".cart_delivery.eshop").click(function(){
     method: "POST",
     url: '/cart',
     data: $data,
-    success: function(){
+    success: function(data){
     	if (!$this.hasClass('completed'))
     	{
     		$this.addClass('completed active');
+    		$('#cart_info_wrapper').find('.delivery_note').html($deliveryNote);
     	}
     
     }
@@ -795,6 +797,8 @@ $(".cart_delivery.eshop").click(function(){
 
 $(".cart_payment.eshop").click(function(){
   $this = $(this);
+  	$paymentNote = $this.data('note');
+
   if(!$this.hasClass('completed'))
   {
   $payment = $(this).data('payment_method');
@@ -846,6 +850,8 @@ $(".cart_payment.eshop").click(function(){
     	if (!$this.hasClass('completed'))
     	{
     		  $this.addClass('completed active');
+    		  $('#cart_info_wrapper').find('.payment_note').html($deliveryNote);
+
     	}
     }
   })

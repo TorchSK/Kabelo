@@ -3280,6 +3280,14 @@ body.admin .pusher {
       -ms-flex-align: center;
           align-items: center;
 }
+#cart_info_wrapper {
+  margin-bottom: 1px;
+  background-color: #F4F4F4;
+}
+#cart_info_wrapper > .container {
+  background-color: #FFF;
+  padding: 50px;
+}
 #category_options {
   background-color: rgba(0, 0, 0, 0.03);
   padding: 15px 0;
