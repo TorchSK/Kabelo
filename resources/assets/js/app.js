@@ -850,7 +850,7 @@ $(".cart_payment.eshop").click(function(){
     	if (!$this.hasClass('completed'))
     	{
     		  $this.addClass('completed active');
-    		  $('#cart_info_wrapper').find('.payment_note').html($deliveryNote);
+    		  $('#cart_info_wrapper').find('.payment_note').html($paymentNote);
 
     	}
     }
