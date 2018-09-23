@@ -6,7 +6,7 @@
 @include('cart.steps',['step'=>'2'])
 
 <div id="cart_products_wrapper" class="wrapper">
-	<div class="container">
+	<div class="container ct">
 
 
 		<div id="cart_delivery_options">
@@ -19,7 +19,8 @@
 
 
 		</div>
-		<div id="cart_payment_options">
+
+		<div id="cart_payment_options ct">
 			<div class="ui horizontal divider">Sposob plabty</div>
 			
 			@foreach(App\PaymentMethod::all() as $payment)
@@ -35,7 +36,7 @@
 </div>
 
 <div id="cart_info_wrapper" class="wrapper">
-	<div class="container">
+	<div class="container ct">
 
 		<div class="notes_list">
 			<div class="delivery_note">
