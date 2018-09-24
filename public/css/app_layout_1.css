@@ -3147,13 +3147,15 @@ body.admin #filterbar.vertical .categories .item {
           justify-content: space-between;
 }
 #cart_delivery_wrapper #cart_delivery_options {
+  padding: 0 5%;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  margin-right: 5px;
+  margin-right: 25px;
   text-align: left;
 }
 #cart_delivery_wrapper #cart_payment_options {
+  padding: 0 5%;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
