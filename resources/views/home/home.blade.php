@@ -37,7 +37,7 @@
                     <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
                 </div>
                 <div class="items">
-                @foreach(App\Product::where('new',1)->get() as $product)
+                @foreach(App\Product::where('new',1)->orderBy('updated_at','desc')->get() as $product)
                     @include('products.row')
                 @endforeach
                 </div>
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="items">
-                @foreach(App\Product::where('sale',1)->get() as $product)
+                @foreach(App\Product::where('sale',1)->orderBy('updated_at','desc')->get() as $product)
                     @include('products.row')
                 @endforeach
                 </div>
