@@ -727,6 +727,7 @@ a:hover {
 #contact_left {
   padding: 60px;
   margin-right: 20px;
+  text-align: left;
 }
 #contact_left .box {
   display: -webkit-box;
@@ -3585,6 +3586,35 @@ body.admin #filterbar.vertical .categories .item {
 }
 #files_list .input input {
   width: 500px;
+}
+#contact_wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+#contact_wrapper .container {
+  height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#contact_wrapper .flex_row {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .lander {
   height: 65vh;

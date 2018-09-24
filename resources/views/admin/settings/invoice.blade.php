@@ -34,28 +34,28 @@
 		<div class="item setting">
 		<div class="label">Ulica</div>
 		<div class="ui input">
-		  <input type="text" name="street" value="{{App\Setting::firstOrCreate(['name'=>'street'])->value}}">
+		  <input type="text" name="contact_street" value="{{App\Setting::firstOrCreate(['name'=>'contact_street'])->value}}">
 		</div>	
 	</div>
 
 		<div class="item setting">
 		<div class="label">Mesto</div>
 		<div class="ui input">
-		  <input type="text" name="city" value="{{App\Setting::firstOrCreate(['name'=>'city'])->value}}">
+		  <input type="text" name="contact_city" value="{{App\Setting::firstOrCreate(['name'=>'contact_city'])->value}}">
 		</div>	
 	</div>
 
 		<div class="item setting">
 		<div class="label">PSČ</div>
 		<div class="ui input">
-		  <input type="text" name="zip" value="{{App\Setting::firstOrCreate(['name'=>'zip'])->value}}">
+		  <input type="text" name="contact_zip" value="{{App\Setting::firstOrCreate(['name'=>'contact_zip'])->value}}">
 		</div>	
 	</div>
 
 		<div class="item setting">
 		<div class="label">Štát</div>
 		<div class="ui input">
-		  <input type="text" name="state" value="{{App\Setting::firstOrCreate(['name'=>'state'])->value}}">
+		  <input type="text" name="contact_state" value="{{App\Setting::firstOrCreate(['name'=>'contact_state'])->value}}">
 		</div>	
 	</div>
 

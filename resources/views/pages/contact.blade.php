@@ -1,17 +1,19 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="flex_row">
+<div id="contact_wrapper" class="wrapper">
+	<div class="container">
 
 <div class="ui hiden" id="address_map">{{App\Setting::firstOrCreate(['name'=>'street'])->value}}, {{App\Setting::firstOrCreate(['name'=>'zip'])->value}},{{App\Setting::firstOrCreate(['name'=>'city'])->value}}, {{App\Setting::firstOrCreate(['name'=>'state'])->value}}</div>
 
+<div class="flex_row">
 <div id="contact_left">
 
 <div id="address" class="box">
 	<div>
 		<i class="home huge teal icon"></i>
 	</div>
-	<div>
+	<div>W
 		<div>{{App\Setting::firstOrCreate(['name'=>'company_name'])->value}}</div>
 		<div>{{App\Setting::firstOrCreate(['name'=>'street'])->value}}</div>
 		<div>{{App\Setting::firstOrCreate(['name'=>'zip'])->value}} {{App\Setting::firstOrCreate(['name'=>'city'])->value}}</div>
@@ -77,5 +79,6 @@
 
 
 </div>
-
+</div>
+</div>
 @stop
