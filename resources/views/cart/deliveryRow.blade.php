@@ -1,5 +1,5 @@
 <div class="ui fluid steps">
-  <a class="step cart_delivery {{$context}} @if ($cart['delivery_method']==$delivery->id) completed active @endif" data-delivery_method="{{$delivery->id}}" data-id="{{$delivery->id}}" data-type="delivery" @if($cart['price'] < App\Setting::whereName('min_free_shipping_price')->first()->value) data-price="{{$delivery->price}}" @else data-price="0" @endif data-note="{{$delivery->note}}">
+  <a class="step cart_delivery {{$context}} @if ($cart['delivery_method']==$delivery->id) completed active @endif" data-delivery_method="{{$delivery->id}}" data-id="{{$delivery->id}}" data-type="delivery" @if($cart['price'] < App\Setting::whereName('min_free_shipping_price')->first()->value || App\Setting::whereName('min_free_shipping_price')->first()->value==0) data-price="{{$delivery->price}}" @else data-price="0" @endif data-note="{{$delivery->note}}">
     <i class="{{$delivery->icon}} icon"></i>
     <div class="content">
       <div class="title">{{$delivery->name}}</div>
