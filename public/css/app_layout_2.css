@@ -728,6 +728,9 @@ a:hover {
   padding: 60px;
   margin-right: 20px;
   text-align: left;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 #contact_left .box {
   display: -webkit-box;
