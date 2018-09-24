@@ -228,6 +228,7 @@ Route::get('obchodne-podmienky', 'UtilController@termsPage');
 Route::get('obchodne-podmienky/edit', 'UtilController@termsPage');
 Route::get('gdpr', 'UtilController@gdprPage');
 Route::get('gdpr/edit', 'UtilController@gdprPage');
+Route::get('spolupraca', 'UtilController@spolupracaPage');
 
 Route::get('cookies/info', 'UtilController@cookiesInfo');
 Route::get('email/order', 'UtilController@sendOrderEmail');

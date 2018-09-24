@@ -92,6 +92,13 @@ class UtilController extends Controller
         return view('pages/gdpr', $data);
     }
 
+    public function spolupracaPage(Request $request)
+    {       
+  
+
+        return view('pages/spolupraca');
+    }
+
     public function catalogue($id)
     {       
         return view('pages/catalogue/'.$id.'/ui');

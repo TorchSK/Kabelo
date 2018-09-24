@@ -3627,6 +3627,22 @@ body.admin #filterbar.vertical .categories .item {
       -ms-flex: 1;
           flex: 1;
 }
+#spolupraca_wrapper {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+#spolupraca_wrapper .container {
+  background-color: #FFF;
+  padding: 50px;
+}
+#spolupraca_wrapper .image {
+  display: inline-block;
+  margin: 25px 0;
+}
 .lander {
   height: 65vh;
   display: -webkit-box;
@@ -3806,6 +3822,23 @@ footer > .container {
     display: block;
     text-align: center;
   }
+}
+footer > .container:last-child {
+  background-color: #111;
+  padding: 5px !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  color: #CCC;
+  font-weight: 200;
+  font-style: italic;
 }
 footer a:hover {
   color: #CCC !important;

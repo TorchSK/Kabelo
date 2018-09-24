@@ -56,6 +56,7 @@
 	</div>
 </div>
 
+@if($appname=='kabelo')
 <div id="hours" class="box">
 	<div>
 		<i class="clock huge teal icon"></i>
@@ -70,7 +71,7 @@
 		<div><b>nedeľa</b>ZATVORENÉ</div>
 	</div>
 </div>
-
+@endif
 
 </div>
 
