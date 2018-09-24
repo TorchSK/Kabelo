@@ -284,14 +284,6 @@ body.eshop .pusher {
 .dark.wrapper {
   background-color: #F7F7F7;
 }
-.container {
-  text-align: left;
-}
-@media all and (max-width: 980px) {
-  .container {
-    width: 95%;
-  }
-}
 .ct {
   text-align: center;
 }
@@ -1193,7 +1185,7 @@ a:hover {
 }
 @media all and (max-width: 980px) {
   #header .logo text {
-    font-size: 1em;
+    display: none;
   }
 }
 #header .search.item {
@@ -1353,6 +1345,11 @@ a:hover {
   cursor: pointer;
   margin-right: 5px;
   margin-top: 3px;
+}
+@media all and (max-width: 980px) {
+  #header .catalogues {
+    display: none;
+  }
 }
 #header #catalogues_popup {
   width: 370px !important;
@@ -4131,6 +4128,11 @@ h1.header {
   text-transform: uppercase;
   margin-bottom: 1px;
   background-color: #F3F3F3;
+}
+@media all and (max-width: 980px) {
+  #filterbar.horizontal {
+    display: none;
+  }
 }
 #filterbar.horizontal .container {
   background-color: #FFF;
