@@ -49,6 +49,7 @@ class HomeController extends Controller
 
             $request['maker'] = $maker;
             $data = $this->productService->makerList($request);
+        $data['categories'] = $this->categoryService->getCategories();
 
             return view('home/makerProducts', $data);
 

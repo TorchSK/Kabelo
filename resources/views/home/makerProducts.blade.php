@@ -23,7 +23,7 @@
 
 
 		<div class="subcategories">
-		    @foreach ($categories as $category)
+		    @foreach ($subcategories as $category)
                 @include('categories.image',['category'=>App\Category::find($category)])
 		    @endforeach  
 		</div>
