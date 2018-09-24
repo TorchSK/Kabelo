@@ -13,7 +13,7 @@
 	<div>
 		<i class="home huge teal icon"></i>
 	</div>
-	<div>W
+	<div>
 		<div>{{App\Setting::firstOrCreate(['name'=>'company_name'])->value}}</div>
 		<div>{{App\Setting::firstOrCreate(['name'=>'street'])->value}}</div>
 		<div>{{App\Setting::firstOrCreate(['name'=>'zip'])->value}} {{App\Setting::firstOrCreate(['name'=>'city'])->value}}</div>
