@@ -46,14 +46,14 @@
 
 	<div class="title">{{$product->name}}</div>
 	
-	@if(Auth::check() && Auth::user()->admin)
+	@if(Auth::check() && Auth::user()->admin && $appname=='aa')
 	<div class="code">{{$product->code}}</div>
 	@endif
 
 
 
     <div class="prices">
-	    <div class="final_price">{{number_format($product->price,2)}} &euro;</div>
+	    <div class="final_price" style="color: red;">{{number_format($product->price,2)}} &euro;</div>
     </div>
 
 
