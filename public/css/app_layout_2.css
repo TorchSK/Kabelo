@@ -1696,11 +1696,15 @@ a:hover {
   padding: 40px 0 50px 0 ;
 }
 @media all and (max-width: 980px) {
+  #category_path_wrapper > .container {
+    padding: 15px 0;
+  }
+}
+@media all and (max-width: 980px) {
   #category_path_wrapper {
-    font-size: 2em;
-    margin-top: 10px;
+    font-size: 1em;
+    font-weight: 300;
     text-align: center;
-    margin-bottom: 30px;
   }
 }
 #category_path_wrapper i.setting.icon:hover {
@@ -1712,6 +1716,11 @@ a:hover {
 #subcategories_wrapper > .container {
   background-color: #FFF;
   padding: 40px 0 ;
+}
+@media all and (max-width: 980px) {
+  #subcategories_wrapper > .container {
+    padding: 15px 5px 15px 15px;
+  }
 }
 #subcategories_wrapper .subcategories {
   display: -webkit-box;
@@ -1741,6 +1750,11 @@ a:hover {
   background-color: #FFF;
   padding: 30px;
 }
+@media all and (max-width: 980px) {
+  #grid_wrapper > .container {
+    padding: 15px;
+  }
+}
 #grid_wrapper .flickity-slider .item.grid {
   width: 12.9%;
 }
@@ -1757,6 +1771,13 @@ a:hover {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-bottom: 45px;
+}
+@media all and (max-width: 980px) {
+  #grid_wrapper .options {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 #grid_wrapper .sorts {
   overflow: hidden;
@@ -3361,7 +3382,8 @@ body.admin #filterbar.vertical .categories .item {
 }
 @media all and (max-width: 980px) {
   .subcategories .category_image {
-    width: 45%;
+    width: 31%;
+    margin-bottom: 10px;
   }
 }
 .subcategories .category_image .image {
@@ -3386,6 +3408,13 @@ body.admin #filterbar.vertical .categories .item {
   margin: 15px auto 0 auto;
   word-wrap: wrap;
   width: 80%;
+}
+@media all and (max-width: 980px) {
+  .subcategories .category_image .name {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1em;
+  }
 }
 .category_images .category_image {
   margin-bottom: 35px;
@@ -4227,6 +4256,11 @@ h1.header {
   padding: 15px;
   background-color: #FFF;
 }
+@media all and (max-width: 980px) {
+  #m_categories_wrapper {
+    display: block;
+  }
+}
 .admin_add_cover {
   padding: 50px;
   width: 100%;
@@ -4455,6 +4489,41 @@ body.eshop #header .search.item {
   background-color: #FFFFFF;
   padding-bottom: 25px;
   position: relative;
+}
+@media all and (max-width: 2100px) {
+  .item.product.grid {
+    width: 18.28%;
+  }
+  .item.product.grid.grid:nth-child(5n) {
+    margin-right: 0;
+  }
+}
+@media all and (max-width: 1690px) {
+  .item.product.grid {
+    width: 18.28%;
+  }
+}
+@media all and (max-width: 1280px) {
+  .item.product.grid {
+    width: 22%;
+  }
+}
+@media all and (max-width: 980px) {
+  .item.product.grid {
+    width: 30%;
+    padding-bottom: 5px;
+  }
+}
+@media all and (max-width: 736px) {
+  .item.product.grid {
+    width: 47%;
+  }
+}
+@media all and (max-width: 480px) {
+  .item.product.grid {
+    width: 47%;
+    margin-right: 5px;
+  }
 }
 .item.product.grid.grid:nth-child(5n) {
   margin-right: 0;

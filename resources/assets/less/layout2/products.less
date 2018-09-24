@@ -10,6 +10,37 @@
 	padding-bottom: 25px;
 	position: relative;
 
+	@media @break6{
+		width: @cw6;
+
+		&.grid:nth-child(5n){
+			margin-right: 0;
+		}
+	}
+
+	@media @break5{
+		width: @cw5;
+	}
+
+	@media @break4{
+		width: @cw4;
+	}
+
+	@media @break3{
+		width: @cw3;
+		padding-bottom: 5px;
+
+	}
+
+	@media @break2{
+		width: @cw2;
+	}
+
+	@media @break1{
+		width: @cw1;
+		margin-right: 5px;
+	}
+	
 	&.grid:nth-child(5n){
 		margin-right: 0;
 	}

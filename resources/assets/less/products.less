@@ -230,20 +230,24 @@
 #category_path_wrapper{
 	margin-bottom: 1px;
 
+
 	>.container{
 		background-color: #FFF;
 		text-align: center;
 		padding: 40px 0 50px 0 ;
+
+		@media @break3{
+			padding: 15px 0;
+		}
 
 	}
 	font-size: 2em;
 	font-weight: 100;
 
 	@media @break3{
-		font-size: 2em;
-		margin-top: 10px;
+		font-size: 1em;
+		font-weight: 300;
 		text-align: center;
-		margin-bottom: 30px;
 	}
 
 	i.setting.icon:hover{
@@ -257,6 +261,10 @@
 	>.container{
 		background-color: #FFF;
 		padding: 40px 0 ;
+		
+		@media @break3{
+			padding: 15px 5px 15px 15px;
+		}
 	}
 
 
@@ -285,6 +293,10 @@
 	>.container{
 		background-color: #FFF;
 		padding: 30px;
+
+		@media @break3{
+			padding: 15px;
+		}
 	}
 
 	.flickity-slider{
@@ -301,6 +313,11 @@
 		display: flex;
 		justify-content: space-between;
 		margin-bottom: 45px;
+
+		@media @break3{
+			justify-content: center;
+		}
+
 	}
 
 	.sorts{

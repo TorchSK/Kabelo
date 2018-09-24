@@ -20,7 +20,7 @@
 
     <!-- mobile -->
     <div id="m_categories_wrapper">
-        <div class="ui brown  small fluid button" id="catbar_handle">Kategorie</div>
+        <div class="ui red  small fluid button" id="catbar_handle">Kategorie</div>
     </div>
 
     <div class="flex_row">

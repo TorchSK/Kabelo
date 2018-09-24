@@ -18,6 +18,12 @@
     @include('includes/filterbar_horizontal')
     @endif
 
+    <!-- mobile -->
+    <div id="m_categories_wrapper">
+        <div class="ui red  small fluid button" id="catbar_handle">Kategorie</div>
+    </div>
+
+
     <div class="flex_row">
     @if($layout == 1)
     @include('includes/filterbar', ['sticky'=> true])

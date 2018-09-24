@@ -1505,7 +1505,7 @@ a:hover {
 }
 @media all and (max-width: 980px) {
   .item.product {
-    width: 30%;
+    width: 47%;
     padding-bottom: 5px;
   }
 }
@@ -1696,11 +1696,15 @@ a:hover {
   padding: 40px 0 50px 0 ;
 }
 @media all and (max-width: 980px) {
+  #category_path_wrapper > .container {
+    padding: 15px 0;
+  }
+}
+@media all and (max-width: 980px) {
   #category_path_wrapper {
-    font-size: 2em;
-    margin-top: 10px;
+    font-size: 1em;
+    font-weight: 300;
     text-align: center;
-    margin-bottom: 30px;
   }
 }
 #category_path_wrapper i.setting.icon:hover {
@@ -1712,6 +1716,11 @@ a:hover {
 #subcategories_wrapper > .container {
   background-color: #FFF;
   padding: 40px 0 ;
+}
+@media all and (max-width: 980px) {
+  #subcategories_wrapper > .container {
+    padding: 15px 5px 15px 15px;
+  }
 }
 #subcategories_wrapper .subcategories {
   display: -webkit-box;
@@ -1741,6 +1750,11 @@ a:hover {
   background-color: #FFF;
   padding: 30px;
 }
+@media all and (max-width: 980px) {
+  #grid_wrapper > .container {
+    padding: 15px;
+  }
+}
 #grid_wrapper .flickity-slider .item.grid {
   width: 12.9%;
 }
@@ -1757,6 +1771,13 @@ a:hover {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-bottom: 45px;
+}
+@media all and (max-width: 980px) {
+  #grid_wrapper .options {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 #grid_wrapper .sorts {
   overflow: hidden;
@@ -3361,7 +3382,8 @@ body.admin #filterbar.vertical .categories .item {
 }
 @media all and (max-width: 980px) {
   .subcategories .category_image {
-    width: 45%;
+    width: 31%;
+    margin-bottom: 10px;
   }
 }
 .subcategories .category_image .image {
@@ -3386,6 +3408,13 @@ body.admin #filterbar.vertical .categories .item {
   margin: 15px auto 0 auto;
   word-wrap: wrap;
   width: 80%;
+}
+@media all and (max-width: 980px) {
+  .subcategories .category_image .name {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1em;
+  }
 }
 .category_images .category_image {
   margin-bottom: 35px;
@@ -4226,6 +4255,11 @@ h1.header {
   width: 100%;
   padding: 15px;
   background-color: #FFF;
+}
+@media all and (max-width: 980px) {
+  #m_categories_wrapper {
+    display: block;
+  }
 }
 .admin_add_cover {
   padding: 50px;

@@ -41,7 +41,7 @@ class Category extends Model {
   	{
   		$appname = strtolower(env('APP_NAME'));
 
-        if($appname == 'Laravel')
+        if($appname == 'laravel')
         {
             $appname = strtolower(explode(".", Request::getHost())[0]);
         }
