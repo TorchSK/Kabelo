@@ -2387,6 +2387,10 @@ body.admin .pusher {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+body.admin #filterbar.vertical .categories .item {
+  -webkit-transition: none !important;
+  transition: none !important;
+}
 .admin_wrapper {
   width: 100%;
   background-color: #FDFDFD;

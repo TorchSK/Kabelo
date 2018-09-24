@@ -1422,7 +1422,7 @@ $carousel.on( 'pointerUp.flickity', function(){
 	$('#search_results').hide();
 } );
 
-$('.admin_wrapper .categories').nestedSortable({
+$('body.admin .categories').nestedSortable({
   handle: 'div',
   items: 'li',
   toleranceElement: '> div',
@@ -1433,7 +1433,7 @@ $('.admin_wrapper .categories').nestedSortable({
     $orders = {};
     $parents = {};
 
-    $('.admin_wrapper .categories .category.item').each(function(index, item){
+    $('body.admin .categories .category.item').each(function(index, item){
       $orders[$(item).data('categoryid')] = index;
       $parents[$(item).data('categoryid')] = $(item).closest('li').parent().closest('li').data('categoryid');
     });
