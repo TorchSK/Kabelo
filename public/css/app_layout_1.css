@@ -3378,9 +3378,14 @@ body.admin #filterbar.vertical .categories .item {
 #cart_info_wrapper > .container {
   background-color: #FFF;
   padding: 50px;
+  font-style: italic;
+  font-weight: 300;
 }
 #cart_info_wrapper .payment_note {
   margin-top: 15px;
+}
+#cart_info_wrapper i.icon {
+  margin-bottom: 15px;
 }
 #cart_shipping_wrapper > .container {
   background-color: #FAFAFA;
