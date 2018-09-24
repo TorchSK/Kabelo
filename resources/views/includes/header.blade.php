@@ -35,7 +35,7 @@
         </div>
 
         <a class="item" id="sidebar_handle">
-          <i class="icon content"></i>
+          <i class="icon big content"></i>
         </a>
 
    

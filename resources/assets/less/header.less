@@ -20,6 +20,10 @@
 			font-size: 13px;
 			font-weight: 400;
 
+			@media @break3{
+				padding: 14px 18px;
+			}
+
 			img{
 				width: 30px;
 			}
@@ -42,7 +46,13 @@
 		padding: 0 10px;
 
 		@media @break3{
-			padding: 24px 18px;
+			padding: 14px 18px;
+		}
+
+		img{
+			@media @break3{
+				width: 30px !important;
+			}
 		}
 	}
 

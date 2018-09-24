@@ -202,6 +202,11 @@ body {
 body.shrinkable {
   padding-top: 85px;
 }
+@media all and (max-width: 980px) {
+  body.shrinkable {
+    padding-top: 58px;
+  }
+}
 body.eshop .pusher {
   width: 100%;
   -webkit-box-flex: 1;
@@ -1105,6 +1110,11 @@ a:hover {
   font-size: 13px;
   font-weight: 400;
 }
+@media all and (max-width: 980px) {
+  #header.shrink .item {
+    padding: 14px 18px;
+  }
+}
 #header.shrink .item img {
   width: 30px;
 }
@@ -1125,7 +1135,12 @@ a:hover {
 }
 @media all and (max-width: 980px) {
   #header .item {
-    padding: 24px 18px;
+    padding: 14px 18px;
+  }
+}
+@media all and (max-width: 980px) {
+  #header .item img {
+    width: 30px !important;
   }
 }
 #header #sidebar_handle {
@@ -4215,6 +4230,11 @@ h1.header {
 }
 #catalogue_btn {
   margin-top: 20px;
+}
+#m_categories_wrapper {
+  width: 100%;
+  padding: 15px;
+  background-color: #FFF;
 }
 .admin_add_cover {
   padding: 50px;

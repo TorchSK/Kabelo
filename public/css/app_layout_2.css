@@ -202,6 +202,11 @@ body {
 body.shrinkable {
   padding-top: 85px;
 }
+@media all and (max-width: 980px) {
+  body.shrinkable {
+    padding-top: 58px;
+  }
+}
 body.eshop .pusher {
   width: 100%;
   -webkit-box-flex: 1;
@@ -1105,6 +1110,11 @@ a:hover {
   font-size: 13px;
   font-weight: 400;
 }
+@media all and (max-width: 980px) {
+  #header.shrink .item {
+    padding: 14px 18px;
+  }
+}
 #header.shrink .item img {
   width: 30px;
 }
@@ -1125,7 +1135,12 @@ a:hover {
 }
 @media all and (max-width: 980px) {
   #header .item {
-    padding: 24px 18px;
+    padding: 14px 18px;
+  }
+}
+@media all and (max-width: 980px) {
+  #header .item img {
+    width: 30px !important;
   }
 }
 #header #sidebar_handle {
@@ -4216,6 +4231,11 @@ h1.header {
 #catalogue_btn {
   margin-top: 20px;
 }
+#m_categories_wrapper {
+  width: 100%;
+  padding: 15px;
+  background-color: #FFF;
+}
 .admin_add_cover {
   padding: 50px;
   width: 100%;
@@ -4370,6 +4390,14 @@ body.eshop #home_sales_div .caption {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+@media all and (max-width: 980px) {
+  body.eshop #home_news_div .caption,
+  body.eshop #home_sales_div .caption {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
 body.eshop #home_news_div .caption name,
 body.eshop #home_sales_div .caption name {
   font-size: 1.3em;
@@ -4391,6 +4419,12 @@ body.eshop #home_sales_div .caption arrows {
   padding: 5px;
   margin-bottom: 10px;
   font-weight: 700;
+}
+@media all and (max-width: 980px) {
+  body.eshop #home_news_div .caption arrows,
+  body.eshop #home_sales_div .caption arrows {
+    display: none;
+  }
 }
 body.eshop #home_news_div .caption arrows i.icon,
 body.eshop #home_sales_div .caption arrows i.icon {
@@ -4446,6 +4480,11 @@ body.eshop #header .search.item {
 body.eshop footer > .container {
   padding: 50px;
   max-width: 1400px;
+}
+@media all and (max-width: 980px) {
+  body.eshop footer > .container {
+    padding: 1px 0 20px 0;
+  }
 }
 #filterbar.horizontal .container {
   max-width: 1400px;

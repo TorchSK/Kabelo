@@ -1,6 +1,6 @@
 <div class="ui sidebar inverted vertical top menu" id="catbar">
 	@foreach (App\Category::whereNull('parent_id')->orderBy('order')->get() as $category)
-    <a class="item" href="/category/{{$category->url}}">
+    <a class="item" href="{{route('category.products',['category'=>$category->full_url])}}">
      <text>{{$category->name}}</text>
      <count>{{$categoryCounts['categories'][$category->id]}}</count>
     </a>

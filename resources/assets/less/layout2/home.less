@@ -20,6 +20,10 @@ body.eshop{
 		.caption{
 			display: flex;
 			justify-content: space-between;
+			
+			@media @break3{
+				justify-content: center;
+			}
 
 			name{
 	  			font-size: 1.3em;
@@ -41,6 +45,10 @@ body.eshop{
 	  			padding: 5px;
 	  			margin-bottom: 10px;
 	  			font-weight: 700;
+				
+				@media @break3{
+					display: none;
+				}
 
 	  			i.icon{
 		  			color: #BBB;

@@ -19,7 +19,7 @@
     @endif
 
     <!-- mobile -->
-    <div id="m_categories_btn">
+    <div id="m_categories_wrapper">
         <div class="ui brown  small fluid button" id="catbar_handle">Kategorie</div>
     </div>
 
