@@ -204,7 +204,7 @@ body.shrinkable {
 }
 @media all and (max-width: 980px) {
   body.shrinkable {
-    padding-top: 58px;
+    padding-top: 0px;
   }
 }
 body.eshop .pusher {
@@ -1088,6 +1088,11 @@ a:hover {
 #header.shrinkable {
   position: fixed;
   top: 0;
+}
+@media all and (max-width: 980px) {
+  #header.shrinkable {
+    position: relative;
+  }
 }
 #header .container {
   display: -webkit-box;
