@@ -145,9 +145,9 @@
         </div>
 
         <div class="ui basic popup transition" id="catalogues_popup">
-            <a class="cat" href="/img/cat9.pdf" target="_blank"><img src="/img/catalogue9.jpg" width="100" /></a>
-            <a class="cat" href="/img/cat8.pdf" target="_blank"><img src="/img/catalogue8.jpg" width="100" /></a>
-            <a class="cat" href="/img/cat7.pdf" target="_blank"><img src="/img/catalogue7.jpg" width="100" /></a>
+            <a class="cat" href="http://katalogy.dedra.cz/catalogue-8-hlavni-katalog-drogerie/data/catalogue-9-hlavni-katalog-drogerie.pdf" target="_blank"><img src="/img/catalogue9.jpg" width="100" /></a>
+            <a class="cat" href="http://katalogy.dedra.cz/catalogue-8-hlavni-katalog-drogerie/data/catalogue-8-hlavni-katalog-drogerie.pdf" target="_blank"><img src="/img/catalogue8.jpg" width="100" /></a>
+            <a class="cat" href="http://katalogy.dedra.cz/catalogue-8-hlavni-katalog-drogerie/data/catalogue-7-hlavni-katalog-drogerie.pdf target="_blank"><img src="/img/catalogue7.jpg" width="100" /></a>
 
         </div>
         @endif
