@@ -216,16 +216,11 @@ class ProductController extends Controller
     }
 
     public function list(Request $request){
-        if (!$request->has('filters') && !$request->has('category'))
-        {
-            return Response::json(['products' => view('home.initial')->render()]);   
-        }
-        else
-        {
-            $data = $this->productService->list($request);
+      
+         $data = $this->productService->list($request);
 
-            return Response::json(['products' => view('products.list', $data)->render(), 'filters' => view('home.makers', $data)->render(), 'data' => $data]);   
-        }
+        return Response::json(['products' => view('products.list', $data)->render(), 'filters' => view('home.makers', $data)->render(), 'data' => $data]);   
+      
 
     }
 
