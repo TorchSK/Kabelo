@@ -3161,6 +3161,16 @@ body.admin #filterbar.vertical .categories .item {
           flex: 1;
   text-align: left;
 }
+#cart_delivery_wrapper div.ui.fluid.steps .step {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+#cart_delivery_wrapper div.ui.fluid.steps .content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
 #cart_prices_wrapper {
   margin-bottom: 1px;
 }
