@@ -36,7 +36,7 @@
 </div>
 
 <div id="cart_info_wrapper" class="wrapper">
-	<div class="container ct">
+	<div class="container">
 		<i class="info huge grey icon"></i>
 
 		<div class="notes_list">
