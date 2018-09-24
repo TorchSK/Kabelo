@@ -393,15 +393,19 @@
 		padding: 3% 100px 1% 100px;
 		justify-content: space-between;
 		position: relative;
+		text-align: left;
 
 		@media @break3{
 			padding: 15px;
+			text-align: center;
 		}
 	
 	}
 
 	>.container.flex_row{
-		display: block;
+		@media @break3{
+			display: block;
+		}
 	
 	}
 
@@ -720,6 +724,7 @@
 	>.container{
 		background-color: #FCFCFC;
 		padding: 50px;
+		text-align: left;
 
 		@media @break3{
 			padding: 15px;
