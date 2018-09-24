@@ -1006,16 +1006,6 @@ a:hover {
   padding: 0;
   margin: 0;
 }
-#m_categories_btn {
-  display: none;
-  background-color: #F7F7F7;
-}
-@media all and (max-width: 980px) {
-  #m_categories_btn {
-    display: block;
-    padding: 10px;
-  }
-}
 .stripes.divider {
   background-image: url('/img/diag.jpg');
   height: 13px;
@@ -4232,6 +4222,7 @@ h1.header {
   margin-top: 20px;
 }
 #m_categories_wrapper {
+  display: none;
   width: 100%;
   padding: 15px;
   background-color: #FFF;
