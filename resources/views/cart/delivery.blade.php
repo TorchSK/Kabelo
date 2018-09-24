@@ -5,10 +5,10 @@
 
 @include('cart.steps',['step'=>'2'])
 
-<div id="cart_products_wrapper" class="wrapper">
-	<div class="container ct">
+<div id="cart_delivery_wrapper" class="wrapper">
+	<div class="container">
 
-
+		<div class="flex_row">
 		<div id="cart_delivery_options">
 			<div class="ui horizontal divider">Sposob dopravy</div>
 
@@ -20,7 +20,7 @@
 
 		</div>
 
-		<div id="cart_payment_options ct">
+		<div id="cart_payment_options">
 			<div class="ui horizontal divider">Sposob plabty</div>
 			
 			@foreach(App\PaymentMethod::all() as $payment)
@@ -30,6 +30,7 @@
 			@endif
 			@endforeach
 
+		</div>
 		</div>
 
 	</div>

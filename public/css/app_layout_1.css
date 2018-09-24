@@ -3133,6 +3133,32 @@ body.admin #filterbar.vertical .categories .item {
   text-align: center;
   padding: 80px  0 0 0;
 }
+#cart_delivery_wrapper {
+  margin-bottom: 1px;
+  background-color: #F4F4F4;
+}
+#cart_delivery_wrapper > .container {
+  background-color: #FAFAFA;
+  padding: 50px;
+}
+#cart_delivery_wrapper .flex_row {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+#cart_delivery_wrapper #cart_delivery_options {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-right: 5px;
+  text-align: left;
+}
+#cart_delivery_wrapper #cart_payment_options {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: left;
+}
 #cart_prices_wrapper {
   margin-bottom: 1px;
 }
