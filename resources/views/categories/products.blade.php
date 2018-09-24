@@ -30,7 +30,7 @@
     @endif
 
     <div class="flex_column">
-    <div id="category_path_wrapper" class="wrapper">
+    <div id="category_path_wrapper" class="wrapper" data-categoryid="{{$requestCategory->id}}">
         <div class="container">
         
         @if($requestCategory->parent_id && App\Category::find($requestCategory->parent_id)->parent_id)

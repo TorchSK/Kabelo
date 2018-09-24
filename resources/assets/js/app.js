@@ -487,7 +487,7 @@ function getActiveFilters(){
 }
 
 function getActiveCategory(){
-  return $('.categories .item.selected').data('categoryid');
+  return $('#category_path_wrapper').data('categoryid');
 }
 
 function getDesiredSortBy(){
