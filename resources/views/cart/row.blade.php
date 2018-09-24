@@ -8,7 +8,9 @@
 	</div>
 
 	<div class="name"><a href="{{route('product.detail',['url'=>$product->url])}}">{{$product->name}}</a></div>
+	@if(!isset($cart_confirm) || !$cart_confirm)
 	<div class="delete cart_delete_product" data-tooltip="Zmazat"><i class="icon red large delete"></i></div>
+	@endif
 
 	@if(!isset($cart_confirm) || !$cart_confirm)
 	<div class="actions">
@@ -22,6 +24,9 @@
 		</div>
 
 	</div>
+	@else
+		<div class="actions">
+		</div>
 	@endif
 
 	<div class="level">

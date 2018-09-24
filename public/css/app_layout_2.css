@@ -3027,15 +3027,18 @@ body.admin #filterbar.vertical .categories .item {
   margin-bottom: 0px;
   border-radius: 0;
 }
-#cart_products_wrapper {
+#cart_products_wrapper,
+#cart_confirm_wrapper {
   margin-bottom: 1px;
   background-color: #F4F4F4;
 }
-#cart_products_wrapper > .container {
+#cart_products_wrapper > .container,
+#cart_confirm_wrapper > .container {
   background-color: #FAFAFA;
   padding: 50px;
 }
-#cart_products_wrapper .product {
+#cart_products_wrapper .product,
+#cart_confirm_wrapper .product {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3050,17 +3053,20 @@ body.admin #filterbar.vertical .categories .item {
           align-items: center;
   position: relative;
 }
-#cart_products_wrapper .product .image_div {
+#cart_products_wrapper .product .image_div,
+#cart_confirm_wrapper .product .image_div {
   width: 150px;
   height: 100px;
   display: inline-block;
   margin-right: 25px;
 }
-#cart_products_wrapper .product .image_div img {
+#cart_products_wrapper .product .image_div img,
+#cart_confirm_wrapper .product .image_div img {
   max-height: 100%;
   max-width: 100%;
 }
-#cart_products_wrapper .product .name {
+#cart_products_wrapper .product .name,
+#cart_confirm_wrapper .product .name {
   font-size: 1.2em;
   font-weight: 400;
   margin-right: 25px;
@@ -3069,67 +3075,84 @@ body.admin #filterbar.vertical .categories .item {
           flex: 0 0 100%;
   max-width: 200px;
 }
-#cart_products_wrapper .product .delete {
+#cart_products_wrapper .product .delete,
+#cart_confirm_wrapper .product .delete {
   cursor: pointer;
 }
-#cart_products_wrapper .product .actions {
+#cart_products_wrapper .product .actions,
+#cart_confirm_wrapper .product .actions {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   background-color: #FFF;
   margin-right: 25px;
 }
-#cart_products_wrapper .product .level {
+#cart_products_wrapper .product .level,
+#cart_confirm_wrapper .product .level {
   white-space: nowrap;
   margin-right: 125px;
 }
-#cart_products_wrapper .product .price {
+#cart_products_wrapper .product .price,
+#cart_confirm_wrapper .product .price {
   font-size: 1.2em;
   font-weight: 900;
 }
-#cart_products_wrapper .cart_icon {
+#cart_products_wrapper .cart_icon,
+#cart_confirm_wrapper .cart_icon {
   background-color: #F7F7F7;
   margin-top: 25px;
 }
-#cart_products_wrapper .cart_icon i.icon {
+#cart_products_wrapper .cart_icon i.icon,
+#cart_confirm_wrapper .cart_icon i.icon {
   opacity: 0.9;
   color: #A5673F;
 }
-#cart_products_wrapper .caption {
+#cart_products_wrapper .caption,
+#cart_confirm_wrapper .caption {
   padding: 50px 0;
   font-size: 3em;
   font-weight: 100;
   text-align: center;
   background-color: #F7F7F7;
 }
-#cart_products_wrapper .actions {
+#cart_products_wrapper .actions,
+#cart_confirm_wrapper .actions {
   text-align: center;
   background-color: #F7F7F7;
 }
-#cart_products_wrapper .cart_plus_product {
+#cart_products_wrapper .cart_plus_product,
+#cart_confirm_wrapper .cart_plus_product {
   margin-left: 10px;
 }
 #cart_products_wrapper .cart_plus_product,
-#cart_products_wrapper .cart_minus_product {
+#cart_confirm_wrapper .cart_plus_product,
+#cart_products_wrapper .cart_minus_product,
+#cart_confirm_wrapper .cart_minus_product {
   background-color: #DCDDDE;
   border-radius: 999px;
   padding: 5px;
 }
 #cart_products_wrapper .cart_plus_product:hover,
-#cart_products_wrapper .cart_minus_product:hover {
+#cart_confirm_wrapper .cart_plus_product:hover,
+#cart_products_wrapper .cart_minus_product:hover,
+#cart_confirm_wrapper .cart_minus_product:hover {
   background-color: #A5673F;
   color: #FFFFFF;
 }
 #cart_products_wrapper .cart_plus_product i.icon,
-#cart_products_wrapper .cart_minus_product i.icon {
+#cart_confirm_wrapper .cart_plus_product i.icon,
+#cart_products_wrapper .cart_minus_product i.icon,
+#cart_confirm_wrapper .cart_minus_product i.icon {
   margin: 0;
   padding: 0;
 }
-#cart_products_wrapper .status {
+#cart_products_wrapper .status,
+#cart_confirm_wrapper .status {
   background-color: #F7F7F7;
   text-align: center;
 }
-#cart_products_wrapper #grid {
+#cart_products_wrapper #grid,
+#cart_confirm_wrapper #grid {
   text-align: center;
   padding: 80px  0 0 0;
 }

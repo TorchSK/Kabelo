@@ -3,15 +3,24 @@
 	
 @include('cart.steps',['step'=>'4'])
 
-<div id="cart_shipping_wrapper" class="cart_confirm wrapper">
+<div id="cart_confirm_wrapper" class="wrapper wrapper">
 	<div class="container ct">
 
 
 		<grid>
 
-			@foreach($cart['items'] as $productid)
-				@include('products.row',['product'=> App\Product::find($productid), 'cart_confirm'=>true])
-			@endforeach
+			@if (Auth::check())
+				@foreach($cart->products as $product)
+					@include('cart.row',['cart_confirm'=>true])
+				@endforeach
+			@else
+				@foreach($cart['items'] as $productid)
+					@if(isset(App\PriceLevel::find($cart['price_levels'][$productid])->moc_regular))
+						@include('cart.row', ['product' => App\Product::find($productid),'cart_confirm'=>true])
+					@endif
+				@endforeach
+			@endif
+
 		</grid>
 
 		<div class="delivery ct">
