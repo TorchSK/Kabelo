@@ -37,8 +37,10 @@
 
 <div id="cart_info_wrapper" class="wrapper">
 	<div class="container">
+		<div class="ct">
 		<i class="info huge grey icon"></i>
-
+		</div>
+		
 		<div class="notes_list">
 			<div class="delivery_note">
 				@if ($cart['delivery_method'])
