@@ -3672,8 +3672,8 @@ footer > .container {
   margin: 0 auto;
 }
 @media all and (max-width: 980px) {
-  footer {
-    padding: 40px;
+  footer > .container {
+    padding: 20px;
     display: block;
     text-align: center;
   }
@@ -3710,15 +3710,15 @@ footer .logo {
       -ms-flex-align: center;
           align-items: center;
 }
+@media all and (max-width: 980px) {
+  footer .logo {
+    display: none;
+  }
+}
 footer .logo img {
   margin-right: 15px;
   position: relative;
   display: inline-block;
-}
-@media all and (max-width: 980px) {
-  footer .logo img {
-    display: none;
-  }
 }
 footer .logo text {
   font-family: "hwt-artz";

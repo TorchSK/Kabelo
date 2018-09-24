@@ -13,13 +13,15 @@ footer{
 		justify-content: space-between;
 		align-items: center;
 		margin: 0 auto;
+
+		@media @break3{
+			padding: 20px;
+			display: block;
+			text-align: center;
+		}
 	}
 
-	@media @break3{
-		padding: 40px;
-		display: block;
-		text-align: center;
-	}
+
 
 	a:hover{
 		color: #CCC !important;
@@ -44,14 +46,17 @@ footer{
 	.logo{
 		display: flex;
 		align-items: center;
+
+		@media @break3{
+			display: none;
+		}
+
 		img{
 			margin-right: 15px;
 			position: relative;
 			display: inline-block;
 
-			@media @break3{
-				display: none;
-			}
+	
 		}
 		
 		text{
