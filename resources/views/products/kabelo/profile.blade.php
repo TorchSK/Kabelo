@@ -87,7 +87,7 @@
    			@endforeach
         </div>
 
-        <div class="" id="maker">Výrobca: <b><a href="/maker/{{$product->maker}}" class="effect-1">{{$product->maker}}</a></b></div>
+        <div class="" id="maker">Výrobca: <b><a href="/m/{{$product->maker}}" class="effect-1">{{$product->maker}}</a></b></div>
 
    		</div>
 

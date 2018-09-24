@@ -233,7 +233,7 @@ class ProductService implements ProductServiceContract {
       $data = [
             'products' => $products,
             'priceRange' => $priceRange,
-            'categories' => array_unique($categories),
+            'categories' => collect(array_unique($categories)),
             'maker' => $request->get('maker'),
             'makers' => Product::where('maker',[$request->get('maker')])->get(),
             'filters' => []

@@ -183,7 +183,7 @@ Route::get('category/{categoryid}/makers','CategoryController@makers');
 Route::resource('category','CategoryController');
 
 
-Route::get('/maker/{maker}', 'HomeController@makerProducts')->name('maker.products');
+Route::get('/m/{maker}', 'HomeController@makerProducts')->name('maker.products');
 
 Route::get('/{maker}/{code}/edit','ProductController@edit');
 
