@@ -220,7 +220,7 @@ class CategoryController extends Controller
 
     public function setOrder(Request $request)
     {
-        foreach(Category::all() as $category)
+        foreach(Category::where('active',1)->get() as $category)
         {
             $category->order = $request->get('orders')[$category->id];
 
