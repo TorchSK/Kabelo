@@ -19,9 +19,22 @@ Pridaj sposob dopravy
     <input type="text" placeholder="Popis" id="add_delivery_method_desc_input" />
   </div>
 
+  <div class="label">Cena</div>
+
+  <div class="ui fluid input">
+    <input type="text" placeholder="Popis" id="add_delivery_method_price_input" />
+  </div>
+
+<div class="ui form">
+  <div class="field">
+    <label>Poznámka k doprave</label>
+    <textarea id="add_delivery_method_note_input" ></textarea>
+  </div>
+</div>
+
   <div class="label">Ikona</div>
 
-  <div class="ui selection big dropdown">
+  <div class="ui selection fluid big dropdown add">
     <input type="hidden" name="gender">
     <i class="dropdown icon"></i>
     <div class="default text">Ikona</div>

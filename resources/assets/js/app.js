@@ -380,7 +380,7 @@ $('#product_detail_tocart_btn').click(function(){
 })
 
 
-$(document).on('click', 'grid .to_cart',function(){
+$(document).on('click', '.to_cart',function(){
   $product = $(this).closest('.product').data('productid');
   var cart = $('#header .cart.item');
   var img = $(this).closest('.product').find('.image_div');
@@ -797,7 +797,7 @@ $(".cart_delivery.eshop").click(function(){
 
 $(".cart_payment.eshop").click(function(){
   $this = $(this);
-  	$paymentNote = $this.data('note');
+  $paymentNote = $this.data('note');
 
   if(!$this.hasClass('completed'))
   {
@@ -812,6 +812,8 @@ $(".cart_payment.eshop").click(function(){
   	$shipping_price = $shipping_price  + parseFloat($('.cart_delivery.completed.active').data('price'));
   	$data['shipping_price'] = $shipping_price;
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
+  	$('#cart_shipping_price').find('price').text($shipping_price);
+
   }
 
 
@@ -820,6 +822,8 @@ $(".cart_payment.eshop").click(function(){
   	$shipping_price = parseFloat($(this).data('price'));
   	$data['shipping_price'] = $shipping_price;
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
+  	$('#cart_shipping_price').find('price').text($shipping_price);
+
   }
 
 
@@ -829,6 +833,7 @@ $(".cart_payment.eshop").click(function(){
   	$data['shipping_price'] = $shipping_price;
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
   	  	$('.cart_next').removeClass('disabled');
+  	$('#cart_shipping_price').find('price').text($shipping_price);
 
   }
 
@@ -837,6 +842,8 @@ $(".cart_payment.eshop").click(function(){
   	$shipping_price = parseFloat($(this).data('price'));
   	$data['shipping_price'] = $shipping_price;
   	$('#cart_total_price').find('price').text(parseFloat($('#cart_total_price').data('price')) + $shipping_price);
+  	  	$('#cart_shipping_price').find('price').text($shipping_price);
+
   }
 
 
@@ -1507,17 +1514,21 @@ $('.dashboard_tabs .overall.tab').click(function(){
 });
 
 
+
+
 $('.add_delivery_method_btn').click(function(){
     $('#add_delivery_method_modal').modal('setting', {
     onApprove : function() {
       $name = $('#add_delivery_method_name_input').val();
       $desc = $('#add_delivery_method_desc_input').val();
-      $icon = $('#add_delivery_method_modal').find('.ui.dropdown').dropdown('get value');
+      $price = $('#add_delivery_method_price_input').val();
+      $icon = $('#add_delivery_method_modal').find('.ui.dropdown.add').dropdown('get value');
+      $note = $('add_delivery_method_note_input').val();
 
       $.ajax({
         type: "POST",
         url: "/admin/delivery/",
-        data: {name: $name, desc:$desc, icon: $icon},
+        data: {name: $name, desc:$desc, icon: $icon, note: $note, price: $price},
         success: function(){
           location.reload();
         }
@@ -1533,12 +1544,14 @@ $('.add_payment_method_btn').click(function(){
     onApprove : function() {
       $name = $('#add_payment_method_name_input').val();
       $desc = $('#add_payment_method_desc_input').val();
-      $icon = $('#add_payment_method_modal').find('.ui.dropdown').dropdown('get value');
-      
+      $price = $('#add_payment_method_price_input').val();
+      $icon = $('#add_payment_method_modal').find('.ui.dropdown.add').dropdown('get value');
+      $note = $('add_payment_method_note_input').val();
+
       $.ajax({
         type: "POST",
         url: "/admin/payment/",
-        data: {name: $name, desc:$desc, icon: $icon},
+        data: {name: $name, desc:$desc, icon: $icon, note: $note, price: $price},
         success: function(){
           location.reload();
         }
@@ -1548,29 +1561,6 @@ $('.add_payment_method_btn').click(function(){
 })
 
 
-
-
-$(document).on('click','.admin_method_list i.check', function(){
-  $row = $(this).closest('tr');
-  $type = $(this).closest('tbody').data('type');
-  $id = $row.data('id');
-  $this = $(this);
-  $key = $row.find('input[name="key"]').val();
-  $name = $row.find('input[name="name"]').val();
-  $desc = $row.find('input[name="desc"]').val();
-  $price = $row.find('input[name="price"]').val();
-  $icon = $row.find('.ui.dropdown').dropdown('get value');
-
-  $.ajax({
-    type: "PUT",
-    url: "/admin/"+$type+"/"+$id,
-    data: {name:$name, key: $key, desc:$desc, icon: $icon, price: $price},
-    success: function(){
-      
-    }
-  })
-
-})
 
 $('.admin_method_list i.delete').click(function(){
   $item = $(this).closest('.step');
@@ -1590,6 +1580,44 @@ $('.admin_method_list i.delete').click(function(){
     }
   }).modal('show');
 })
+
+
+$('.admin_method_list i.edit').click(function(){
+  $item = $(this).closest('.step');
+  $id = $item.data('id');
+  $type = $item.data('type');
+
+   $('#edit_method_modal').modal('setting', {
+    autofocus: false,
+    onShow: function(){
+    	$('#edit_method_name_input').val($item.data('name'));
+      	$('#edit_method_desc_input').val($item.data('desc'));
+     	$('#edit_method_price_input').val($item.data('price'));
+      	$('#edit_method_modal').find('.ui.dropdown.edit').dropdown('set value',$item.data('icon'));
+      	$('#edit_method_modal').find('.ui.dropdown.edit').dropdown('set text',"<i class='big icon "+$item.data('icon')+"'></i>");
+
+      	$('#edit_method_note_input').val($item.data('note'));
+    },
+    onApprove : function() {
+
+    	$name = $('#edit_method_name_input').val();
+      	$desc = $('#edit_method_desc_input').val();
+     	$price = $('#edit_method_price_input').val();
+      	$icon = $('#edit_method_modal').find('.ui.dropdown.edit').dropdown('get value');
+      	$note = $('edit_method_note_input').val();
+
+		$.ajax({
+			type: "PUT",
+			url: "/admin/"+$type+"/"+$id,
+        	data: {name: $name, desc:$desc, icon: $icon, note: $note, price: $price},
+			success: function(){
+			 	location.reload();
+			}
+		})
+    }
+  }).modal('show');
+})
+
 
 
 

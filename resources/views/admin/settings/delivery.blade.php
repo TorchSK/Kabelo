@@ -54,6 +54,8 @@
 	</tbody>
 	</table>
 	@include('modals.newpayment')
+	
+	@include('modals.editmethod')
 
 
 

@@ -2737,8 +2737,21 @@ body.admin #filterbar.vertical .categories .item {
   font-size: 1em;
   margin-top: 5px;
 }
+.admin_method_list {
+  margin-bottom: 15px;
+}
 .admin_method_list i.icon {
   cursor: pointer;
+}
+.admin_method_list div.ui.fluid.steps .step {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+.admin_method_list div.ui.fluid.steps .content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .order_detail {
   padding: 2%;
@@ -3637,7 +3650,7 @@ body.admin #filterbar.vertical .categories .item {
   margin-top: 25px;
 }
 .short {
-  max-width: 1300px;
+  max-width: 700px;
 }
 .short .setting {
   display: -webkit-box;

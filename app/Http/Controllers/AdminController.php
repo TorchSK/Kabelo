@@ -730,6 +730,9 @@ class AdminController extends Controller
         $delivery->key = str_slug($request->get('name'));
         $delivery->desc = $request->get('desc');
         $delivery->icon = $request->get('icon');
+        $delivery->price = $request->get('price');
+        $delivery->note = $request->get('note');
+
         $delivery->save();
 
         return $delivery;
@@ -739,7 +742,6 @@ class AdminController extends Controller
     {
         $delivery = DeliveryMethod::find($id);
         $delivery->name = $request->get('name');
-        $delivery->key = $request->get('key');
         $delivery->desc = $request->get('desc');
         $delivery->icon = $request->get('icon');
         $delivery->price = $request->get('price');
@@ -763,6 +765,8 @@ class AdminController extends Controller
         $payment->key = str_slug($request->get('name'));
         $payment->desc = $request->get('desc');
         $payment->icon = $request->get('icon');
+        $payment->price = $request->get('price');
+        $payment->note = $request->get('note');
         $payment->save();
 
         return $payment;
@@ -772,7 +776,6 @@ class AdminController extends Controller
     {
         $payment = PaymentMethod::find($id);
         $payment->name = $request->get('name');
-        $payment->key = $request->get('key');
         $payment->desc = $request->get('desc');
         $payment->icon = $request->get('icon');
         $payment->price = $request->get('price');
