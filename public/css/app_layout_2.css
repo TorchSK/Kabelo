@@ -4769,10 +4769,9 @@ body.eshop footer > .container {
 .covers .cover {
   height: 380px !important;
 }
-@media all and (max-width: 980px) {
+@media all and (max-width: 1280px) {
   .covers .cover {
     height: auto !important;
     padding-bottom: 27%;
-    text-align: center;
   }
 }
