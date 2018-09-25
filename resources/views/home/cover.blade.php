@@ -1,7 +1,7 @@
 @if(Request::segment(1)=='admin')
-<div class="cover @if(isset($editable)) editable @endif" style="background-image: @if($appname=='kabelo')url('/img/overlays/dot.png'),@endif url(/{{$cover->image}});background-size: @if($appname=='kabelo')auto,@endif cover;" data-id="{{$cover->id}}">
+<div class="cover @if(isset($editable)) editable @endif" style="background-image: @if($appname=='kabelo')url('/img/overlays/dot.png'),@endif url({{$cover->image}});background-size: @if($appname=='kabelo')auto,@endif cover;" data-id="{{$cover->id}}">
 	@else
-<a href="{{url($cover->url)}}" class="cover @if(isset($editable)) editable @endif" style="background-image: @if($appname=='kabelo')url('/img/overlays/dot.png'),@endif url(/{{$cover->image}});background-size: @if($appname=='kabelo')auto,@endif cover;" data-id="{{$cover->id}}">
+<a href="/{{$cover->url}}" class="cover @if(isset($editable)) editable @endif" style="background-image: @if($appname=='kabelo')url('/img/overlays/dot.png'), @endif url({{$cover->image}});background-size: @if($appname=='kabelo')auto,@endif cover;" data-id="{{$cover->id}}">
 @endif
 
     <div class="cover_div" style="top: {{$cover->top}}% ;left: {{$cover->left}}%;text-align: center; width: {{$cover->width}}%;">

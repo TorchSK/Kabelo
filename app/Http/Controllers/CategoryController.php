@@ -46,6 +46,8 @@ class CategoryController extends Controller
     {   
             $cat = Category::whereFullUrl($path)->first();
 
+            if (!$cat) abort(404);
+            
             $request['category'] = $cat->id;
             $data = $this->productService->list($request);
 
