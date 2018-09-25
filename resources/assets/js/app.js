@@ -2081,6 +2081,8 @@ $('.ui.new.product.search')
     fields: {
       results : 'results',
       title   : 'name',
+     	url: '',
+
     },
     onSelect: function(result, response){
        $.ajax({
@@ -2121,6 +2123,8 @@ $('.ui.sale.product.search')
     fields: {
       results : 'results',
       title   : 'name',
+      	  url: '',
+
     },
     onSelect: function(result, response){
        $.ajax({
@@ -2162,6 +2166,8 @@ $('.ui.inactive.product.search')
     fields: {
       results : 'results',
       title   : 'name',
+      	  url: '',
+
     },
     onSelect: function(result, response){
        $.ajax({
@@ -2202,6 +2208,8 @@ $('.ui.cart.product.search')
     fields: {
       results : 'results',
       title   : 'name',
+      	  url: '',
+
     },
     onSelect: function(result, response){
        $cartid = $('.cart.content').data('cartid');
@@ -3208,6 +3216,25 @@ $(".admin_page_color_chooser").on('dragstop.spectrum', function(e, color) {
 
 });
 
+
+$('#cover_search_url')
+  .search({
+    apiSettings: {
+      url: '/api/categories/search?query={query}',
+    },
+    fields: {
+      results : 'results',
+      title   : 'full_url',
+      image  : '',
+      action : '',  
+	  actionText: '',    
+	  actionURL: '' ,
+	  url: '',
+    },
+    onSelect: function(result, response){
+    	$('#admin_add_cover_form').find('input[name="url"]').val(result.full_url);
+    }
+  }).unbind('ajaxStart');;
 
 });
 

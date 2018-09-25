@@ -2,6 +2,13 @@
 @section('content')
 
 	<div class="admin_add_cover">
+					<div class="ui search" id="cover_search_url">
+					<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz" />
+					  <div class="results"></div>
+
+				</div>
+
+
 		@if (isset($cover))
 		<form action="/admin/cover/upload" class="dropzone hidden" id="cover_dropzone"> <input name="_token" hidden value="{!! csrf_token() !!}" /></form>
 
@@ -49,7 +56,8 @@
 					<div id="admin_add_cover_h2_size_slider"></div>
 
 				</div>
-		
+			
+	
 
 
 			<form @if (isset($cover)) action="/admin/cover/{{$cover->id}}" method="POST" @else action="/admin/cover" method="POST" @endif id="admin_add_cover_form">
@@ -64,6 +72,7 @@
 			<input type="hidden" name="y" value="" />
 			<input type="hidden" name="w" value="" />
 			<input type="hidden" name="h" value="" />
+			<input type="hidden" name="url" value="" />
 
 			<input type="hidden" name="left" @if(isset($cover)) value="{{$cover->left}}" @else value="10" @endif />
 			<input type="hidden" name="top"  @if(isset($cover)) value="{{$cover->top}}" @else value="30" @endif />

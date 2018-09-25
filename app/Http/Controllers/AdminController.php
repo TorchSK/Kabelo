@@ -905,6 +905,8 @@ class AdminController extends Controller
         $cover->width = $request->get('width');
         $cover->h1_text = $request->get('h1_text');
         $cover->h2_text = $request->get('h2_text');
+        $cover->url = $request->get('url');
+
         $cover->save();
 
         return redirect('/admin/settings/banners');
@@ -924,6 +926,7 @@ class AdminController extends Controller
         $cover->width = $request->get('width');
         $cover->h1_text = $request->get('h1_text');
         $cover->h2_text = $request->get('h2_text');
+        $cover->url = $request->get('url');
 
         if ($request->filled('filename'))
         {

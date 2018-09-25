@@ -27,6 +27,10 @@ class CategoryController extends Controller
         $this->categoryService = $categoryService;
     }
 
+    public function inputSearch(Request $request)
+    {
+        return response()->json(['results'=>Category::where('name', 'like', '%'.$request->get('query').'%')->get()]);
+    }
 
     public function all()
     {
