@@ -947,12 +947,6 @@ a:hover {
 .covers {
   opacity: 0;
 }
-@media all and (max-width: 980px) {
-  .covers {
-    height: 20vh;
-    text-align: center;
-  }
-}
 .covers .cover_options {
   opacity: 0;
 }
@@ -4774,4 +4768,11 @@ body.eshop footer > .container {
 }
 .covers .cover {
   height: 380px !important;
+}
+@media all and (max-width: 980px) {
+  .covers .cover {
+    height: auto !important;
+    padding-bottom: 27%;
+    text-align: center;
+  }
 }
