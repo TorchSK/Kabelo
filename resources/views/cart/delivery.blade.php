@@ -38,9 +38,9 @@
 
 <div id="cart_info_wrapper" class="wrapper">
 	<div class="container">
-		<div class="ct">
+
+		<div class="flex_row">
 		<i class="info huge grey icon"></i>
-		</div>
 		
 		<div class="notes_list">
 			<div class="delivery_note">
@@ -54,7 +54,7 @@
 				@endif
 			</div>
 		</div>
-
+	</div>
 	</div>
 </div>
 
