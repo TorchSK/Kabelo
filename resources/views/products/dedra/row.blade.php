@@ -42,7 +42,7 @@
 
 	</div>
 
-	<div class="desc">{{$product->desc}}</div>
+	<div class="desc">{{substr(trim($product->desc),0,200)}}</div>
 
 	<div class="title">{{$product->name}}</div>
 	
