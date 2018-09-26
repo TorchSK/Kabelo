@@ -8,6 +8,7 @@
     <meta name="keywords" content="darček,darčeky pre muža,darčeky pre ženu,dedra,drogeria,dekoracie,šperky,doplnky do domácnosti,do bytu,domov, tolovanie,porcelán,bižutéria,cestovanie,keramika">
     
     <meta name="description" content="DEDRA EKO čistiace prostriedky, darčeky pre mužov, darčeky pre ženy, šperky, drogéria pre domácnosť">
+    <meta name="robots" content="index, follow">
     
     <title>{{App\Setting::firstOrCreate(['name'=>'company_name'])->value}}.sk</title>
 
