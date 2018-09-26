@@ -18,7 +18,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/xml/import', 'AdminController@xmlImport')->name('admin.xmlImport');
 	Route::get('/translate/', 'AdminController@translate')->name('admin.translate');
 	Route::get('/xml/addMoreImages', 'AdminController@addMoreImages')->name('admin.addMoreImages');
-	Route::get('/xml/updateXML', 'AdminController@updateXML')->name('admin.updateXML');
+	Route::get('/xml/postXmlUpdate', 'AdminController@postXmlUpdate')->name('admin.postXmlUpdate');
 	Route::get('/xml/addCategoryPath', 'AdminController@addCategoryPath')->name('admin.addCategoryPath');
 	Route::get('/addCategoryFullurl', 'AdminController@addCategoryFullurl')->name('admin.addCategoryFullurl');
 	Route::get('/addProductUrl', 'AdminController@addProductUrl')->name('admin.addProductUrl');
@@ -26,8 +26,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
 	Route::get('/dashboard', 'AdminController@dashboardNew')->name('admin.dashboard.new');
 	Route::get('/dashboard/overall', 'AdminController@dashboardOverall')->name('admin.dashboard.overall');
-
-
+	
+	Route::put('/eshop/postXmlUpdate', 'AdminController@postXmlUpdate')->name('admin.postXmlUpdate');
+	Route::get('/eshop/xmlupdate', 'AdminController@xmlUpdate')->name('admin.eshop.xmlupdate');
 	Route::get('/eshop/products/{category}', 'AdminController@products')->name('admin.eshop.products');
 	Route::get('/eshop/categories', 'AdminController@categories')->name('admin.eshop.categories');
 	Route::get('/eshop/new', 'AdminController@new')->name('admin.eshop.new');

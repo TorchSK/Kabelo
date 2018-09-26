@@ -22,6 +22,7 @@ use Image;
 use Storage;
 use Cookie;
 use Exception;
+use DB;
 
 use App\DeliveryMethod;
 use App\PaymentMethod;
@@ -72,11 +73,23 @@ class AdminController extends Controller
 
     }
 
-    public function updateXML()
-    {   
 
-        $contents = file_get_contents('https://dedra.blob.core.windows.net/cms/xmlexport/cs_xml_export.xml?ppk=133538');
-       
+    public function xmlUpdate()
+    {
+        return view('admin.eshop.xmlupdate');
+    }
+
+    public function postXmlUpdate(Request $request)
+    {   
+        if ($request->get('external'))
+        {
+            $contents = file_get_contents($request->get('url'));
+
+        }
+        else
+        {
+            $contents = file_get_contents('uploads/files/'.$request->get('url'));
+        }
 
         $xml = XmlParser::extract($contents);
        
@@ -84,7 +97,12 @@ class AdminController extends Controller
             'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variant_image]'],
         ]);
 
-        dd($items);
+        DB::beginTransaction();
+        $changes = [];
+        $changes['new_categories'] = [];
+        $changes['new_products'] = [];
+        $changes['removed_categories'] = [];
+        $changes['removed_products'] = [];
 
         foreach($items['products'] as $key => $item)
         {
@@ -127,6 +145,9 @@ class AdminController extends Controller
                     $parent = $cat->id;
 
                     $categoryID = $cat->id;
+
+                    array_push($changes['new_categories'],$cat);
+
                 }
                 else
                 {
@@ -147,6 +168,8 @@ class AdminController extends Controller
                         $parent = $cat->id;
 
                         $categoryID = $cat->id;
+
+                        array_push($changes['new_categories'],$cat);
                     }
                     else
                     {
@@ -168,6 +191,8 @@ class AdminController extends Controller
                         $parent = $cat->id;
 
                         $categoryID = $cat->id;
+
+                        array_push($changes['new_categories'],$cat);
                     }
                     else
                     {
@@ -190,6 +215,8 @@ class AdminController extends Controller
 
                         $categoryID = $cat->id;
 
+                        array_push($changes['new_categories'],$cat);
+
                     }
                     else
                     {
@@ -209,6 +236,9 @@ class AdminController extends Controller
                 $product->moc_sort_price = $item['price_skk'];
                 $product->voc_sort_price = $item['price_skk'];
                 $product->save();
+
+                array_push($changes['new_products'],$product);
+
 
                 $image = new ProductFile();
                 $image->product_id = $product->id;
@@ -237,8 +267,8 @@ class AdminController extends Controller
 
         }
 
-
-    }
+        return $changes;
+    }   
 
     public function addCategoryPath()
     {

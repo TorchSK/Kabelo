@@ -3235,6 +3235,37 @@ $(document).on('click', '.product.item', function(){
 	location.replace($link);
 });
 
+
+$('#xml_dropzone').dropzone({
+	clickable: '#xml_upload_btn',
+	success: function(file, response){
+        $('#xml_url_input').val(response);
+        $('#xml_url_input').data('external',0);
+    }
+});
+
+$('#xml_update_check_btn').click(function(){
+	$url =  $('#xml_url_input').val();
+	$external = $('#xml_url_input').data('external');
+	$(this).addClass('loading');
+
+	$.ajax({
+		type: "PUT",
+		url: "/admin/eshop/postXmlUpdate/",
+		data: {'external': $external, 'url': $url},
+		success: function(data){
+			$('#xml_results').find('.new_categories_count value').text(data.new_categories.length);
+			$('#xml_results').find('.new_products_count value').text(data.new_products.length);
+			$('#xml_results').find('.removed_categories_count value').text(data.removed_categories.length);
+			$('#xml_results').find('.removed_products_count value').text(data.removed_products.length);
+			$('#xml_update_check_btn').removeClass('loading');
+			$('#xml_update_confirm_btn').css('display','inline-block');
+		}
+	})
+});
+
+
+
 });
 
 var sticky;

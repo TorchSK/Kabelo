@@ -3030,6 +3030,27 @@ body.admin #filterbar.vertical .categories .item {
       -ms-flex: 1;
           flex: 1;
 }
+#xml_update_check_btn {
+  margin-top: 15px;
+}
+#xml_dropzone {
+  display: none;
+}
+#xml_results {
+  margin-top: 15px;
+}
+#xml_results .caption {
+  font-size: 1.2em;
+  font-weight: 200;
+  margin-bottom: 7px;
+}
+#xml_results .caption value {
+  font-weight: 900;
+}
+#xml_update_confirm_btn {
+  display: none;
+  margin-top: 15px;
+}
 #order_steps_wrapper {
   background-color: #EEE;
 }

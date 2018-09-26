@@ -52,20 +52,26 @@ class FileController extends Controller
         $file = $request->file('file');
         $destinationPath = 'uploads/files';
         $extension = $file->getClientOriginalExtension(); 
-        $filename = $file->getClientOriginalName().'.'.$extension;
+        $filename = $file->getClientOriginalName();
         $fullpath = $destinationPath.'/'.$filename;
 
         $success = $file->move($destinationPath, $filename);
 
         if ($success)
         {
-            $fileDB = new FileDB();
-            $fileDB->type = "system";
-            $fileDB->path = $fullpath;
+            if(FileDB::wherePath($fullpath)->count() == 0)
+            {
+                $fileDB = new FileDB();
+                $fileDB->type = "system";
+                $fileDB->path = $fullpath;
 
-            $fileDB->save();
+                $fileDB->save();
+
+            }
+
         }
-        return 1;
+
+        return $filename;
     }
 
     public function destroy($id)

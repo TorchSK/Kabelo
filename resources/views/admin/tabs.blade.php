@@ -23,6 +23,7 @@
       <i class="dropdown icon"></i>
     </div>
     <div class="content menu @if(strpos(Route::currentRouteName(),'admin.eshop')!==false) active @endif">
+      <a href="{{route('admin.eshop.xmlupdate')}}" class="item @if(Route::currentRouteName()=='admin.eshop.xmlupdate') active @endif">Aktualizácia z XML</a>
       <a href="{{route('admin.eshop.categories')}}" class="item @if(Route::currentRouteName()=='admin.eshop.categories') active @endif">Zoznam kategórií</a>
       <a href="{{route('admin.eshop.products',['category'=>App\Category::first()->url])}}" class="item @if(Route::currentRouteName()=='admin.eshop.products') active @endif">Kategórie / Produkty</a>
       <a href="{{route('admin.eshop.new')}}" class="item @if(Route::currentRouteName()=='admin.eshop.new') active @endif">Novinky</a>
