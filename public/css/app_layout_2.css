@@ -1529,6 +1529,9 @@ a:hover {
 .item.product.inactive {
   opacity: 0.4;
 }
+.item.product .p_anch {
+  display: none;
+}
 .item.product .image_div {
   text-align: center;
   border-radius: 3px;
