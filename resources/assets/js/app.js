@@ -284,17 +284,16 @@ $('#edit_category_submit').click(function(){
 
 
 
-$('.other_img img').click(function(e){
+$('.other_img .img').click(function(e){
 	e.preventDefault();
   $('#product_main_wrapper .img.main img').attr('src', '/img/loader.gif');
-  $('#product_main_wrapper .img.main img').attr('src', '/img/loader.gif');
 
-  $index = $(this).data('index');
+  $index = $(this).find('img').data('index');
 
   $('#product_main_wrapper').data('index', $index);
 
   var img = new Image() 
-  var src = $(this).data('full');
+  var src = $(this).find('img').data('full');
   img.src = src;
 
   img.onload = function() {
