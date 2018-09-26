@@ -1,5 +1,5 @@
 <div class="item product @if(isset($grid) && $grid)grid @endif @if($product->active==0) inactive @endif" data-productid={{$product->id}} data-minqty="{{$product->priceLevels->min('threshold')}}">
-<a href="{{route('product.detail',['url'=>$product->url])}}">
+	<div href="{{route('product.detail',['url'=>$product->url])}}">
 	
 
 
@@ -34,7 +34,7 @@
 			<img src="/img/empty.jpg" class="ui image"/>
 		@elseif ($product->image)
 			@if($appname=='dedra')
-			 <img src="{{$product->image->thumb}}" class="ui image" style="max-height: 187px; display: inline-block;"/>
+			 <img src="{{$product->image->thumb}}" class="ui image" alt="{{$product->code}}" style="max-height: 187px; display: inline-block;"/>
 			@else
           	 <img src="{{$product->image->path}}" class="ui image" style="max-height: 187px; display: inline-block;"/>
            @endif

@@ -8,7 +8,7 @@
     @endif
     
         <a class="logo item" href="/">
-          <div class="image"><img class="{{strtolower($appname)}}" src="/img/logo_{{strtolower($appname)}}.png" /></div>
+          <div class="image"><img class="{{strtolower($appname)}}" alt="logo" src="/img/logo_{{strtolower($appname)}}.png" /></div>
           <text>{{$appname}}</text>
         </a>
 

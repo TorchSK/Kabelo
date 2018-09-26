@@ -28,7 +28,7 @@
           @foreach($product->images as $key => $image)
             @if($appname=='dedra')
             <a class="img ct mobx" href="{{$image->path}}" style="display: inline-block;"  data-rel="{{$product->code}}" data-index="{{$key}}">
-             <img src="{{$image->thumb}}" class="ui image" data-full="{{$image->path}}" style="max-height: 130px; max-width: 130px; display: inline-block;"/>
+             <img src="{{$image->thumb}}" class="ui image" alt="{{$product->code}}" data-full="{{$image->path}}" style="max-height: 130px; max-width: 130px; display: inline-block;"/>
              </a>
             @else
              <img src="{{$image->path}}" class="ui image" width="200px" />
