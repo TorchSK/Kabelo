@@ -3236,6 +3236,13 @@ $('#cover_search_url')
     }
   }).unbind('ajaxStart');;
 
+
+
+$(document).on('click', '.product.item', function(){
+	$link = $(this).find('.p_anch').attr('href');
+	location.replace($link);
+});
+
 });
 
 var sticky;

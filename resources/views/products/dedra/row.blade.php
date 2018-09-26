@@ -1,5 +1,5 @@
 <div class="item product @if(isset($grid) && $grid)grid @endif @if($product->active==0) inactive @endif" data-productid={{$product->id}} data-minqty="{{$product->priceLevels->min('threshold')}}">
-	<a href="{{route('product.detail',['url'=>$product->url])}}">
+	<a class="p_anch" href="{{route('product.detail',['url'=>$product->url])}}"></a>
 	
 
 
@@ -79,8 +79,6 @@
 		</div>	
 	@endif
 
-
-</a>
 
 
 </div>
