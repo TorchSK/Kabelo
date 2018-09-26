@@ -6,7 +6,7 @@
     </a>
 
     		@foreach ($category->children->sortBy('order') as $child)
-    		    <a class="item sub" href="/category/{{$child->url}}">
+    		    <a class="item sub" href="{{route('category.products',['category'=>$child->full_url])}}">
     			 <text>{{$child->name}}</text>
     			 <count>{{$categoryCounts['categories'][$child->id]}}</count>
     			</a>

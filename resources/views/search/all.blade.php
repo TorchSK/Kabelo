@@ -24,7 +24,7 @@
 
                 <div class="caption">
                 @if($requestCategory->parent_id)
-                    <a class="effect-1" href="/category/{{$requestCategory->parent->url}}">{{App\Category::find($requestCategory->parent_id)->name}}</a> -
+                    <a class="effect-1" href="{{route('category.products',['category'=>$requestCategory->parent->full_url])}}">{{App\Category::find($requestCategory->parent_id)->name}}</a> -
                 @endif
                     <a>{{$requestCategory->name}}</a>
                     @if (Auth::check() && Auth::user()->admin)
