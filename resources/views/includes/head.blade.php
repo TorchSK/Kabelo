@@ -14,6 +14,12 @@
 
     <link rel="icon" type="image/png" href="{{url('img/'.$appname)}}_favico.png" />
 
+    @if($appname=='kabelo')
+    <link rel="canonical" href="https://www.dedra.kabelo.sk/">
+    @else
+    <link rel="canonical" href="https://www.kabelo.sk/">
+    @endif
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
