@@ -32,7 +32,7 @@
     <div class="flex_column">
     <div id="category_path_wrapper" class="wrapper" data-categoryid="{{$requestCategory->id}}">
         <div class="container">
-        
+        <h1>
         @if($requestCategory->parent_id && App\Category::find($requestCategory->parent_id)->parent_id)
             <a class="effect-1" href="{{route('category.products',['path'=> App\Category::find(App\Category::find($requestCategory->parent_id)->parent_id)->full_url])}}">{{App\Category::find(App\Category::find($requestCategory->parent_id)->parent_id)->name}}</a> -
         @endif
@@ -42,6 +42,7 @@
         @endif
 
             <a>{{$requestCategory->name}}</a>
+        </h1>
         </div>
     </div>
 
