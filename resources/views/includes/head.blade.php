@@ -5,7 +5,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="google-site-verification" content="CY9IwgJZGjaR_icVxrolcCKFZUjWhHfx9QDnJ32_MLE" />
     
-    <meta name="keywords" content="darček,darčeky pre muža,darčeky pre ženu,dedra,drogeria,dekoracie,šperky,doplnky do domácnosti,do bytu,domov, tolovanie,porcelán,bižutéria,cestovanie,keramika">
+    <meta name="keywords" content="darček,darčeky pre muža,darčeky pre ženu,dedra,drogeria,dekoracie,šperky,doplnky do domácnosti,do bytu,domov, stolovanie,porcelán,bižutéria,cestovanie,keramika">
     
     <meta name="description" content="DEDRA EKO čistiace prostriedky, darčeky pre mužov, darčeky pre ženy, šperky, drogéria pre domácnosť">
     <meta name="robots" content="index, follow">
