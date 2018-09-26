@@ -5,7 +5,7 @@
 		<a href="{{route('category.products',['path'=> $category->full_url])}}">
 	@endif
 	<div class="image @if (Request::segment(1)!='admin') btn-4  @endif">
-		<img src="{{url($category->image)}}" />
+		<img src="{{url($category->image)}}" alt="{{$category->name}}"/>
 		@if(Request::segment(1)=='admin')
 		<div class="options">
 			<a class="ui green tiny button change_cat_img_btn">Zmeň obrázok</a>

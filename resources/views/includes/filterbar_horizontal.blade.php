@@ -5,7 +5,7 @@
     	<a href="{{route('category.products',['category'=>$category->full_url])}}" class="item @if(isset($requestCategory) && ($category->id == $requestCategory->id || in_array($category->id,$requestCategory->ancestors->pluck('id')->toArray()))) active @endif" data-cat="{{$category->id}}">
     		@if(App\Setting::firstOrCreate(['name'=>'filterbar_image'])->value == 1)
     		<div class="image_div">
-    			<img src="{{url($category->image)}}" />
+    			<img src="{{url($category->image)}}" alt="{{$category->name}}"/>
     		</div>
     		@endif
     		<name>{{$category->name}}</name>

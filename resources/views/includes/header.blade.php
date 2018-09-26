@@ -140,14 +140,14 @@
 
       @if($appname=='dedra')
         <div class="catalogues item ct">
-          <img src="/img/catalogue9.jpg" width="50" />
+          <img src="/img/catalogue9.jpg" width="50" alt="catalogue9" />
 
         </div>
 
         <div class="ui basic popup transition" id="catalogues_popup">
-            <a class="cat" href="http://katalogy.dedra.cz/catalogue-9-vonave-kremovy/data/catalogue-9-vonave-kremovy.pdf" target="_blank"><img src="/img/catalogue9.jpg" width="100" /></a>
-            <a class="cat" href="http://katalogy.dedra.cz/catalogue-8-hlavni-katalog-drogerie/data/catalogue-8-hlavni-katalog-drogerie.pdf" target="_blank"><img src="/img/catalogue8.jpg" width="100" /></a>
-            <a class="cat" href="http://katalogy.dedra.cz/catalogue-7-18-leto-v-pohode/data/catalogue-7-18-leto-v-pohode.pdf target="_blank"><img src="/img/catalogue7.jpg" width="100" /></a>
+            <a class="cat" href="http://katalogy.dedra.cz/catalogue-9-vonave-kremovy/data/catalogue-9-vonave-kremovy.pdf" target="_blank"><img src="/img/catalogue9.jpg" width="100" alt="catalogue9"/></a>
+            <a class="cat" href="http://katalogy.dedra.cz/catalogue-8-hlavni-katalog-drogerie/data/catalogue-8-hlavni-katalog-drogerie.pdf" target="_blank"><img src="/img/catalogue8.jpg" width="100" alt="catalogue8" /></a>
+            <a class="cat" href="http://katalogy.dedra.cz/catalogue-7-18-leto-v-pohode/data/catalogue-7-18-leto-v-pohode.pdf target="_blank"><img src="/img/catalogue7.jpg" width="100" alt="catalogue7"/></a>
 
         </div>
         @endif

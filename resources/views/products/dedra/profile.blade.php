@@ -31,16 +31,16 @@
              <img src="{{$image->thumb}}" class="ui image" alt="{{$product->code}}" data-full="{{$image->path}}" style="max-height: 130px; max-width: 130px; display: inline-block;"/>
              </a>
             @else
-             <img src="{{$image->path}}" class="ui image" width="200px" />
+             <img src="{{$image->path}}" class="ui image" width="200px"  alt="{{$product->code}}" />
            @endif
            @endforeach
          </div>
 
-        <a class="img ct main" href="{{$product->image->path}}"  data-rel="{{$product->code}}">
+        <a class="img ct main" href="{{$product->image->path}}"  data-rel="{{$product->code}}" >
            @if ($product->images->count() == 0)
-           <img src="/img/empty.jpg" class="ui image" />
+           <img src="/img/empty.jpg" class="ui image" alt="{{$product->code}}"/>
            @elseif ($product->image)
-           <img src="{{$product->image->path}}" class="ui image" />
+           <img src="{{$product->image->path}}" class="ui image" alt="{{$product->code}}"/>
            @endif
         </a>
         
@@ -50,10 +50,10 @@
           @foreach($product->images as $key => $image)
             @if($appname=='dedra')
             <a class="img ct" href="{{$image->path}}" style="display: inline-block;" >
-             <img src="{{$image->thumb}}" class="ui image" data-full="{{$image->path}}" data-index="{{$key}}"/>
+             <img src="{{$image->thumb}}" class="ui image" data-full="{{$image->path}}" data-index="{{$key}}" alt="{{$product->code}}"/>
              </a>
             @else
-             <img src="{{$image->path}}" class="ui image" width="200px" />
+             <img src="{{$image->path}}" class="ui image" width="200px" alt="{{$product->code}}" />
            @endif
            @endforeach
            @endif
