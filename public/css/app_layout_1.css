@@ -3063,9 +3063,21 @@ body.admin #filterbar.vertical .categories .item {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+}
+#xml_results .list .item .image {
+  width: 100px;
+  height: 80px;
+  margin-right: 10px;
+}
+#xml_results .list .item .image img {
+  max-height: 100%;
+  max-width: 100%;
+}
+#xml_results .list .item .code {
+  margin-right: 10px;
+}
+#xml_results .list .item .name {
+  margin-right: 10px;
 }
 #xml_update_confirm_btn {
   display: none;
