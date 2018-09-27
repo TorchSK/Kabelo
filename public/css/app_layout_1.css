@@ -1743,7 +1743,8 @@ a:hover {
   }
 }
 #subcategories_wrapper .subcategories .category_image {
-  margin-right: 5px;
+  margin-right: 8px;
+  margin-bottom: 8px;
 }
 #grid_wrapper {
   -webkit-box-flex: 1;
