@@ -241,7 +241,7 @@ class AdminController extends Controller
 
 
                 $product = new Product();
-                $product->name = $item['text1'];
+                $product->name = $item['text1'].' '.$item['text2'];;
                 $product->desc = $item['detail'];
                 $product->code = $item['product_id'];
                 $product->price = $item['price_skk'];

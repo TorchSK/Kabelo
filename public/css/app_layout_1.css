@@ -3084,6 +3084,9 @@ body.admin #filterbar.vertical .categories .item {
 #xml_results .list .item .name {
   margin-right: 10px;
 }
+#xml_results .list .item .price {
+  font-weight: 900;
+}
 #xml_update_confirm_btn {
   display: none;
   margin-top: 15px;
