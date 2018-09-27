@@ -112,7 +112,7 @@ class AdminController extends Controller
         $dbProducts = Product::all()->pluck('code')->toArray();
 
         $removedProductsArray = array_diff($dbProducts, $xmlProducts);
-
+        dd($removedProductsArray);
         $removedProducts = Product::whereIn('code', $removedProductsArray)->get();
 
         DB::beginTransaction();
