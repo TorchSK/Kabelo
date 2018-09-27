@@ -1,7 +1,7 @@
 <li class="category title item @if(Request::get('category') == $category->id) selected @endif @if(Request::get('category') == $category->id || in_array(Request::get('category'), (array)$category->descendants->pluck('id')->toArray())) active @endif @if($category->parent_id) sub @endif  @if(isset($product) && in_array($category->id, $product->categories->pluck('id')->toArray())) selected @endif @if(isset($product) && in_array($category->id, $product->parentCategories->pluck('id')->toArray())) active @endif" data-filter="category" data-value="{{$category->id}}" data-categoryid="{{$category->id}}">
    
     <div class="caption title">
-    @if($category->children->count() > 0) 
+    @if($category->children->where('active',1)->count() > 0) 
         <i class="@if(Request::has('category') && (Request::get('category') == $category->id || ($requestCategory->parent && $requestCategory->parent->parent_id == $category->id) || in_array(Request::get('category'), (array)$category->descendants->pluck('id')->toArray())) || (isset($product) && in_array($category->id, $product->parentCategories->pluck('id')->toArray())) || (isset($product) && in_array($category->id, $product->parentBaseCategories->pluck('id')->toArray()))) minus @else plus @endif square outline icon"></i>
         @else
         <i class="cube icon"></i>
