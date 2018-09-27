@@ -113,7 +113,8 @@ class AdminController extends Controller
 
         $removedProductsArray = array_diff($dbProducts, $xmlProducts);
         $removedProducts = Product::whereIn('code', $removedProductsArray)->get();
-        dd($removedProducts);
+        
+        $changes['removed_products'] = $removedProducts->count();
 
         DB::beginTransaction();
 

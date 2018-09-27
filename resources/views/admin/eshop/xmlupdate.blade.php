@@ -22,19 +22,19 @@
     		<div class="removed_categories_count caption">Počet zneaktivnených kategórií: <value></value></div>
     		<div class="removed_products_count caption">Počet zneaktivnených produktov: <value></value></div>
             <div class="new_categories_list">
-                <div class="caption">Pridané kategórie</div>
+                <div class="big caption">Pridané kategórie</div>
                 <div class="list"></div>
             </div>
             <div class="new_products_list">
-                <div class="caption">Pridané produkty</div>
+                <div class="big caption">Pridané produkty</div>
                 <div class="list"></div>
             </div>
             <div class="removed_categories_list">
-                <div class="caption">Zneaktivnené kategórie</div>
+                <div class="big caption">Zneaktivnené kategórie</div>
                 <div class="list"></div>
             </div>
             <div class="removed_products_list">
-                <div class="caption">Zneaktivnené produkty</div>
+                <div class="big caption">Zneaktivnené produkty</div>
                 <div class="list"></div>
             </div>
 
