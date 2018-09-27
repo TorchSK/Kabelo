@@ -23,6 +23,7 @@ use Storage;
 use Cookie;
 use Exception;
 use DB;
+use Response;
 
 use App\DeliveryMethod;
 use App\PaymentMethod;
@@ -97,12 +98,24 @@ class AdminController extends Controller
             'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variant_image]'],
         ]);
 
-        DB::beginTransaction();
+        $xmlProductsIds = $xml->parse([
+            'ids' => ['uses' => 'product[product_id]'],
+        ]);
+
         $changes = [];
         $changes['new_categories'] = [];
         $changes['new_products'] = [];
         $changes['removed_categories'] = [];
         $changes['removed_products'] = [];
+
+        $xmlProducts = collect($xmlProductsIds)->flatten()->toArray();
+        $dbProducts = Product::all()->pluck('code')->toArray();
+
+        $removedProductsArray = array_diff($dbProducts, $xmlProducts);
+
+        $removedProducts = Product::whereIn('code', $removedProductsArray)->get();
+
+        DB::beginTransaction();
 
         foreach($items['products'] as $key => $item)
         {
@@ -267,7 +280,8 @@ class AdminController extends Controller
 
         }
 
-        return $changes;
+        return Response::json(['changes' => $changes, 'newCategories' => view('admin.eshop.xmlcategorylist', ['categories'=>collect($changes['new_categories'])])->render(), 'removedCategories' => view('admin.eshop.xmlcategorylist', ['categories'=>collect($changes['removed_categories'])])->render(), 'newProducts' => view('admin.eshop.xmlproductlist', ['products'=>collect($changes['new_products'])])->render(), 'removedProducts' => view('admin.eshop.xmlproductlist', ['products'=>$removedProducts])->render()]);   
+
     }   
 
     public function addCategoryPath()

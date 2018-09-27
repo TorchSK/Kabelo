@@ -3039,6 +3039,7 @@ body.admin #filterbar.vertical .categories .item {
 }
 #xml_results {
   margin-top: 15px;
+  display: none;
 }
 #xml_results .caption {
   font-size: 1.2em;
@@ -3047,6 +3048,24 @@ body.admin #filterbar.vertical .categories .item {
 }
 #xml_results .caption value {
   font-weight: 900;
+}
+#xml_results .new_categories_list {
+  border-top: 1px solid #CCC;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+#xml_results .list .item {
+  background-color: #FFF;
+  margin-bottom: 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 #xml_update_confirm_btn {
   display: none;

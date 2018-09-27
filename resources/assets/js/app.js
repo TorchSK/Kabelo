@@ -3254,10 +3254,18 @@ $('#xml_update_check_btn').click(function(){
 		url: "/admin/eshop/postXmlUpdate/",
 		data: {'external': $external, 'url': $url},
 		success: function(data){
-			$('#xml_results').find('.new_categories_count value').text(data.new_categories.length);
-			$('#xml_results').find('.new_products_count value').text(data.new_products.length);
-			$('#xml_results').find('.removed_categories_count value').text(data.removed_categories.length);
-			$('#xml_results').find('.removed_products_count value').text(data.removed_products.length);
+			$('#xml_results').show();
+			$('#xml_results').find('.new_categories_count value').text(data.changes.new_categories.length);
+			$('#xml_results').find('.new_products_count value').text(data.changes.new_products.length);
+			$('#xml_results').find('.removed_categories_count value').text(data.changes.removed_categories.length);
+			$('#xml_results').find('.removed_products_count value').text(data.changes.removed_products.length);
+
+			$('#xml_results').find('.new_categories_list .list').html(data.newCategories);
+			$('#xml_results').find('.new_products_list .list').html(data.newProducts);
+
+			$('#xml_results').find('.removed_categories_list .list').html(data.removedCategories);
+			$('#xml_results').find('.removed_products_list .list').html(data.removedProducts);
+
 			$('#xml_update_check_btn').removeClass('loading');
 			$('#xml_update_confirm_btn').css('display','inline-block');
 		}
