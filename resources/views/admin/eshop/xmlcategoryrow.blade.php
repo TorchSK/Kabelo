@@ -1,3 +1,3 @@
 <div class="item">
-	<div class="path">{{$cateogory->path}}</div>
+	<div class="path">{{$category->path}}</div>
 </div>
