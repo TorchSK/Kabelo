@@ -20,10 +20,6 @@
         @endif
 
         @if (Request::segment(1)=='admin')
-        <div class="sidebar_btn">
-            <a href="/admin/bulk" class="ui fluid green button"><i class="cloud upload icon"></i>Hromadné zmeny</a>
-            </div>
-
             <div class="sidebar_btn">
             <div class="ui fluid blue button add_category_btn"><i class="add icon"></i>Pridaj kategóriu</div>
         </div>

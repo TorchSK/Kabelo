@@ -101,7 +101,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/layout', 'AdminController@layout')->name('admin.layout');
 	
 	Route::post('/layout/set', 'AdminController@setLayout')->name('admin.setLayout');
-	Route::get('/bulk/', 'ProductController@bulk')->name('admin.bulk');
+	Route::get('/bulk/', 'ProductController@bulk')->name('admin.eshop.bulk');
 
 	Route::get('p/edit/{url}', 'ProductController@edit')->name('admin.product.edit');
 	
