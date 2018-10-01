@@ -229,13 +229,6 @@ $('#create_product_categories_input').dropdown({
 })
 
 
-$('#edit_product_categories_input').dropdown({
-  maxSelections: 10,
-  fullTextSearch: true,
-  onAdd: function(addedValue, addedText, $addedChoice){
-    console.log(addedValue);
-  }
-})
 
 $('#create_product_form').submit(function(e){
   $validation = 1;
@@ -1385,10 +1378,6 @@ $('#filterbar .tabs .param.tab:not(".disabled")').click(function(){
       $('#filterbar .tabs .tab').removeClass('active');
   $(this).addClass('active');
 })
-
-$('.ui.dropdown').dropdown({
-  allowCategorySelection: true
-});
 
 $('#category_image_dropzone').dropzone({
   success: function(file, response){
@@ -3273,6 +3262,13 @@ $('#xml_update_check_btn').click(function(){
 	})
 });
 
+$('#edit_product_categories_input').dropdown({
+  maxSelections: 10,
+  fullTextSearch: true,
+  onAdd: function(addedValue, addedText, $addedChoice){
+    console.log(addedValue);
+  }
+})
 
 
 });
