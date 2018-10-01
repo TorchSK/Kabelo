@@ -111,6 +111,8 @@ class AdminController extends Controller
         $xmlProducts = collect($xmlProductsIds)->flatten()->toArray();
         $dbProducts = Product::all()->pluck('code')->toArray();
 
+        $addedProductsArray = array_diff($xmlProducts, $dbProducts);
+
         $removedProductsArray = array_diff($dbProducts, $xmlProducts);
         $removedProducts = Product::whereIn('code', $removedProductsArray)->get();
         
@@ -118,43 +120,105 @@ class AdminController extends Controller
 
         DB::beginTransaction();
 
-        foreach($items['products'] as $key => $item)
+        foreach($addedProductsArray as $key => $item)
         {
-            $query = Product::where('code',$item['product_id']);
-            $count = $query->count();
-            $product = $query->first();
+            $productCategory = $item['kategorie'];
 
-            // novy produkt ktory je v XML ale nie je v DB
-            if($count==0)
+            $productCategoryArray = explode(' / ',$item['kategorie']);
+
+
+            $dbCategory1 = Category::where('path',$productCategoryArray[0])->first();
+
+            if(isset($productCategoryArray[1]))
             {
-                $productCategory = $item['kategorie'];
+                $dbCategory2 = Category::where('path',$productCategoryArray[0].' / '.$productCategoryArray[1])->first();
+            }
 
-                $productCategoryArray = explode(' / ',$item['kategorie']);
+            if(isset($productCategoryArray[2]))
+            {
+                $dbCategory3 = Category::where('path',$productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2])->first();
+            }
 
+            if(isset($productCategoryArray[3]))
+            {
+                $dbCategory4 = Category::where('path',$productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2].' / '.$productCategoryArray[3])->first();
+            }
 
-                $dbCategory1 = Category::where('path',$productCategoryArray[0])->first();
+            if(!$dbCategory1)
+            {
+                $cat = new Category();
+                $cat->name = $productCategoryArray[0];
+                $cat->url = str_slug($productCategoryArray[0]);
+                $cat->path = $productCategoryArray[0];
+                $cat->save();
+                $parent = $cat->id;
 
-                if(isset($productCategoryArray[1]))
-                {
-                    $dbCategory2 = Category::where('path',$productCategoryArray[0].' / '.$productCategoryArray[1])->first();
-                }
+                $categoryID = $cat->id;
 
-                if(isset($productCategoryArray[2]))
-                {
-                    $dbCategory3 = Category::where('path',$productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2])->first();
-                }
+                array_push($changes['new_categories'],$cat);
 
-                if(isset($productCategoryArray[3]))
-                {
-                    $dbCategory4 = Category::where('path',$productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2].' / '.$productCategoryArray[3])->first();
-                }
+            }
+            else
+            {
+                $parent = $dbCategory1->id;
+                $categoryID = $dbCategory1->id;
+            }
 
-                if(!$dbCategory1)
+            if(isset($productCategoryArray[1]))
+            {
+                if(!$dbCategory2)
                 {
                     $cat = new Category();
-                    $cat->name = $productCategoryArray[0];
-                    $cat->url = str_slug($productCategoryArray[0]);
-                    $cat->path = $productCategoryArray[0];
+                    $cat->name = $productCategoryArray[1];
+                    $cat->url = str_slug($productCategoryArray[1]);
+                    $cat->parent_id = $parent;
+                    $cat->path = $productCategoryArray[0].' / '.$productCategoryArray[1];
+                    $cat->save();
+                    $parent = $cat->id;
+
+                    $categoryID = $cat->id;
+
+                    array_push($changes['new_categories'],$cat);
+                }
+                else
+                {
+                    $parent = $dbCategory2->id;
+                    $categoryID = $dbCategory2->id;
+                }
+            }
+
+            if(isset($productCategoryArray[2]))
+            {
+                if(!$dbCategory3)
+                {
+                    $cat = new Category();
+                    $cat->name = $productCategoryArray[2];
+                    $cat->url = str_slug($productCategoryArray[2]);
+                    $cat->parent_id = $parent;
+                    $cat->path = $productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2];
+                    $cat->save();
+                    $parent = $cat->id;
+
+                    $categoryID = $cat->id;
+
+                    array_push($changes['new_categories'],$cat);
+                }
+                else
+                {
+                    $parent = $dbCategory3->id;
+                    $categoryID = $dbCategory3->id;
+                }
+            }
+
+            if(isset($productCategoryArray[3]))
+            {
+                if(!$dbCategory4)  
+                {
+                    $cat = new Category();
+                    $cat->name = $productCategoryArray[3];
+                    $cat->url = str_slug($productCategoryArray[3]);
+                    $cat->parent_id = $parent;
+                    $cat->path = $productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2].' / '.$productCategoryArray[3];
                     $cat->save();
                     $parent = $cat->id;
 
@@ -165,121 +229,53 @@ class AdminController extends Controller
                 }
                 else
                 {
-                    $parent = $dbCategory1->id;
-                    $categoryID = $dbCategory1->id;
+                    $parent = $dbCategory4->id;
+                    $categoryID = $dbCategory4->id;
                 }
-
-                if(isset($productCategoryArray[1]))
-                {
-                    if(!$dbCategory2)
-                    {
-                        $cat = new Category();
-                        $cat->name = $productCategoryArray[1];
-                        $cat->url = str_slug($productCategoryArray[1]);
-                        $cat->parent_id = $parent;
-                        $cat->path = $productCategoryArray[0].' / '.$productCategoryArray[1];
-                        $cat->save();
-                        $parent = $cat->id;
-
-                        $categoryID = $cat->id;
-
-                        array_push($changes['new_categories'],$cat);
-                    }
-                    else
-                    {
-                        $parent = $dbCategory2->id;
-                        $categoryID = $dbCategory2->id;
-                    }
-                }
-
-                if(isset($productCategoryArray[2]))
-                {
-                    if(!$dbCategory3)
-                    {
-                        $cat = new Category();
-                        $cat->name = $productCategoryArray[2];
-                        $cat->url = str_slug($productCategoryArray[2]);
-                        $cat->parent_id = $parent;
-                        $cat->path = $productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2];
-                        $cat->save();
-                        $parent = $cat->id;
-
-                        $categoryID = $cat->id;
-
-                        array_push($changes['new_categories'],$cat);
-                    }
-                    else
-                    {
-                        $parent = $dbCategory3->id;
-                        $categoryID = $dbCategory3->id;
-                    }
-                }
-
-                if(isset($productCategoryArray[3]))
-                {
-                    if(!$dbCategory4)  
-                    {
-                        $cat = new Category();
-                        $cat->name = $productCategoryArray[3];
-                        $cat->url = str_slug($productCategoryArray[3]);
-                        $cat->parent_id = $parent;
-                        $cat->path = $productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2].' / '.$productCategoryArray[3];
-                        $cat->save();
-                        $parent = $cat->id;
-
-                        $categoryID = $cat->id;
-
-                        array_push($changes['new_categories'],$cat);
-
-                    }
-                    else
-                    {
-                        $parent = $dbCategory4->id;
-                        $categoryID = $dbCategory4->id;
-                    }
-                }
-
-
-                $product = new Product();
-                $product->name = $item['text1'].' '.$item['text2'];;
-                $product->desc = $item['detail'];
-                $product->code = $item['product_id'];
-                $product->price = $item['price_skk'];
-                $product->price_unit = 'ks';
-                $product->maker = 'Dedra';
-                $product->moc_sort_price = $item['price_skk'];
-                $product->voc_sort_price = $item['price_skk'];
-                $product->save();
-
-                array_push($changes['new_products'],$product);
-
-
-                $image = new ProductFile();
-                $image->product_id = $product->id;
-                $image->path = $item['picture1']; 
-                $image->type = 'image';
-                $image->primary = 1;
-                $image->save();
-
-                $product->categories()->attach($categoryID);
-
-                $pricelevel = new PriceLevel();
-                $pricelevel->threshold = 1;
-                $pricelevel->moc_regular = $item['price_skk'];
-                $pricelevel->moc_sale = $item['price_skk'];
-                $pricelevel->voc_regular = $item['price_skk'];
-                $pricelevel->voc_sale = $item['price_skk'];
-
-                $product->priceLevels()->save($pricelevel);
-
             }
-            else
-            {
-                $product->name = $item['text1'].' '.$item['text2'];
-                $product->save();
-            }
+
+
+            $product = new Product();
+            $product->name = $item['text1'].' '.$item['text2'];;
+            $product->desc = $item['detail'];
+            $product->code = $item['product_id'];
+            $product->price = $item['price_skk'];
+            $product->price_unit = 'ks';
+            $product->maker = 'Dedra';
+            $product->moc_sort_price = $item['price_skk'];
+            $product->voc_sort_price = $item['price_skk'];
+            $product->save();
+
+            array_push($changes['new_products'],$product);
+
+
+            $image = new ProductFile();
+            $image->product_id = $product->id;
+            $image->path = $item['picture1']; 
+            $image->type = 'image';
+            $image->primary = 1;
+            $image->save();
+
+            $product->categories()->attach($categoryID);
+
+            $pricelevel = new PriceLevel();
+            $pricelevel->threshold = 1;
+            $pricelevel->moc_regular = $item['price_skk'];
+            $pricelevel->moc_sale = $item['price_skk'];
+            $pricelevel->voc_regular = $item['price_skk'];
+            $pricelevel->voc_sale = $item['price_skk'];
+
+            $product->priceLevels()->save($pricelevel);
 
         }
+        
+        foreach([] as $item)
+        {
+            $product->name = $item['text1'].' '.$item['text2'];
+            $product->save();
+        }
+
+    
 
         return Response::json(['changes' => $changes, 'newCategories' => view('admin.eshop.xmlcategorylist', ['categories'=>collect($changes['new_categories'])])->render(), 'removedCategories' => view('admin.eshop.xmlcategorylist', ['categories'=>collect($changes['removed_categories'])])->render(), 'newProducts' => view('admin.eshop.xmlproductlist', ['products'=>collect($changes['new_products'])])->render(), 'removedProducts' => view('admin.eshop.xmlproductlist', ['products'=>$removedProducts])->render()]);   
 
