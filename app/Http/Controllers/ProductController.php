@@ -38,6 +38,11 @@ class ProductController extends Controller
 
     }
 
+    public function all()
+    {
+        return Product::all();
+    }
+
     public function inputSearch(Request $request)
     {
         return response()->json(['results'=>Product::where('name', 'like', '%'.$request->get('query').'%')->get()]);

@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 Route::get('orders/countbydays/{daysago}', 'OrderController@countByDays');
 Route::get('users/countbydays/{daysago}', 'UserController@countByDays');
 Route::get('products/search', 'ProductController@inputSearch');
+Route::get('products/all', 'ProductController@all');
+
 Route::get('categories/search', 'CategoryController@inputSearch');
 
 Route::put('product/{id}', 'ProductController@apiUpdate');

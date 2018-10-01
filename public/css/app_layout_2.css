@@ -2873,9 +2873,6 @@ body.admin #filterbar.vertical .categories .item {
 }
 #bulk_products {
   padding: 50px;
-  overflow-x: scroll;
-  width: 100%;
-  margin: 5px;
 }
 #admin_user_options {
   padding: 10px 0;

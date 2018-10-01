@@ -38,6 +38,7 @@
     <script src="/js/nestedsortable.js"></script>
     <script src="/js/dropzone.js"></script>
     <script src="/js/infinite.js"></script>
+    <script src="/js/handsontable.full.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
@@ -53,8 +54,10 @@
     <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/modulobox.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/css/handsontable.full.min.css">
 
     <link media="all" type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
+
 
     @if(App\Setting::where('name','layout')->first()->value == 1 || Request::segment(1)=='admin')
     <link media="all" type="text/css" rel="stylesheet" href="/css/app_layout_1.css">

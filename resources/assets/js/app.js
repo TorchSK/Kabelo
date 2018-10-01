@@ -2468,12 +2468,68 @@ $('.admin_checkbox_onthefly').checkbox({
   });
 
 
- $('#bulk_products_table').DataTable({
-  paging: true,
-  info: false,
-  lengthChange: false,
-   "orderClasses": false
- });
+var
+  container = document.getElementById('bulk_products_table'),
+  load_btn = $('#bulk_load_btn'),
+  save_btn = $('#bulk_save_btn'),
+  autosaveNotification,
+  hot;
+
+hot = new Handsontable(container, {
+  startRows: 8,
+  startCols: 6,
+  rowHeaders: true,
+  colHeaders: true,
+  minSpareRows: 1,
+  contextMenu: true,
+  afterChange: function (change, source) {
+    if (source === 'loadData') {
+      return; //don't save this change
+    }
+    if (!autosave.checked) {
+      return;
+    }
+    clearTimeout(autosaveNotification);
+    ajax('json/save.json', 'GET', JSON.stringify({data: change}), function (data) {
+      exampleConsole.innerText  = 'Autosaved (' + change.length + ' ' + 'cell' + (change.length > 1 ? 's' : '') + ')';
+      autosaveNotification = setTimeout(function() {
+        exampleConsole.innerText ='Changes will be autosaved';
+      }, 1000);
+    });
+  }
+});
+
+Handsontable.dom.addEvent(load_btn, 'click', function() {
+  ajax('/api/products/all', 'GET', '', function(res) {
+    var data = JSON.parse(res.response);
+
+    hot.loadData(data.data);
+    exampleConsole.innerText = 'Data loaded';
+  });
+});
+
+Handsontable.dom.addEvent(save, 'click', function() {
+  // save all cell's data
+  ajax('json/save.json', 'GET', JSON.stringify({data: hot.getData()}), function (res) {
+    var response = JSON.parse(res.response);
+
+    if (response.result === 'ok') {
+      exampleConsole.innerText = 'Data saved';
+    }
+    else {
+      exampleConsole.innerText = 'Save error';
+    }
+  });
+});
+
+Handsontable.dom.addEvent(autosave, 'click', function() {
+  if (autosave.checked) {
+    exampleConsole.innerText = 'Changes will be autosaved';
+  }
+  else {
+    exampleConsole.innerText ='Changes will not be autosaved';
+  }
+});
 
 
 function getBulkEditedRows()
