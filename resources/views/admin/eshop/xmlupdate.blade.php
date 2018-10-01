@@ -19,7 +19,6 @@
     	<div id="xml_results">
     		<div class="new_categories_count caption">Počet nových kategórií: <value></value></div>
     		<div class="new_products_count caption">Počet nových produktov: <value></value></div>
-    		<div class="removed_categories_count caption">Počet zneaktivnených kategórií: <value></value></div>
     		<div class="removed_products_count caption">Počet zneaktivnených produktov: <value></value></div>
             <div class="new_categories_list">
                 <div class="big caption">Pridané kategórie</div>
@@ -29,10 +28,7 @@
                 <div class="big caption">Pridané produkty</div>
                 <div class="list"></div>
             </div>
-            <div class="removed_categories_list">
-                <div class="big caption">Zneaktivnené kategórie</div>
-                <div class="list"></div>
-            </div>
+ 
             <div class="removed_products_list">
                 <div class="big caption">Zneaktivnené produkty</div>
                 <div class="list"></div>
