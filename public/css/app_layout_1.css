@@ -1554,6 +1554,8 @@ a:hover {
   font-size: 1.1em;
   min-height: 38.86px;
   padding: 0 15px;
+  max-height: 38.86px;
+  overflow: hidden;
 }
 @media all and (max-width: 980px) {
   .item.product .title {
