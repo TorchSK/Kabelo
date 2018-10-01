@@ -120,8 +120,10 @@ class AdminController extends Controller
 
         DB::beginTransaction();
 
-        foreach($addedProductsArray as $key => $item)
+        foreach($addedProductsArray as $key => $temp)
         {
+            $item = $items['products'][$key];
+            
             $productCategory = $item['kategorie'];
 
             $productCategoryArray = explode(' / ',$item['kategorie']);
