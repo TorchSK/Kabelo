@@ -1297,7 +1297,7 @@ $('.close_btn').click(function(){
 })
 
 
-$('#home_sales_div .items').flickity({
+$sales_carousel = $('#home_sales_div .items').flickity({
     cellAlign: 'left',
     contain: true,
     pageDots: false,
@@ -1306,7 +1306,7 @@ $('#home_sales_div .items').flickity({
     autoPlay: 2000,
 });
 
-$('#home_news_div .items').flickity({
+$news_carousel = $('#home_news_div .items').flickity({
     cellAlign: 'left',
     contain: true,
     pageDots: false,
@@ -1314,6 +1314,17 @@ $('#home_news_div .items').flickity({
     imagesLoaded: true,
       autoPlay: 2000,
 });
+
+$sales_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
+	$link = $(cellElement).find('.p_anch').attr('href');
+	location.replace($link);
+});
+
+$news_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
+	$link = $(cellElement).find('.p_anch').attr('href');
+	location.replace($link);
+});
+
 
 $('#admin_add_category_param_btn').click(function(){
   $html = $('#admin_filters_div .row:first-child').clone();
@@ -3207,10 +3218,6 @@ $('#cover_search_url')
 
 
 
-$(document).on('click', '.product.item', function(){
-	$link = $(this).find('.p_anch').attr('href');
-	location.replace($link);
-});
 
 
 $('#xml_dropzone').dropzone({
