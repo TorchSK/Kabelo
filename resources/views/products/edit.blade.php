@@ -28,6 +28,13 @@
 
   <input name="_method" type="hidden" value="PUT">
 
+<div id="product_options_top">
+ <div class="container">
+  <button type="submit" class="ui green button" id="edit_product_submit">Ulož zmeny</button>
+  <a href="{{route('product.detail',['url'=>$product->url])}}" class="ui red button">Zruš editáciu</a>
+
+</div>
+</div>
 
 <div id="product_main_wrapper" class="product_detail flex_row" data-id="{{$product->id}}">
    
@@ -164,7 +171,7 @@
       </div>
 
       <div class="ui header">Kategória</div>
-    <select multiple="true" name="categories[]" id="edit_product_categories_input" class="ui fluid normal dropdown">
+    <select multiple="true" name="categories[]" id="edit_product_categories_input" class="ui fluid search dropdown">
     <option value="">Kategória</option>
     @foreach (App\Category::orderBy('path','asc')->get() as $category)
     <option value="{{$category->id}}" @if(in_array($category->id, $product->categories->pluck('id')->toArray())) selected="true" @endif>

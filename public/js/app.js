@@ -231,6 +231,7 @@ $('#create_product_categories_input').dropdown({
 
 $('#edit_product_categories_input').dropdown({
   maxSelections: 10,
+  fullTextSearch: true,
   onAdd: function(addedValue, addedText, $addedChoice){
     console.log(addedValue);
   }

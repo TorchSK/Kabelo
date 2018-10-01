@@ -2332,6 +2332,9 @@ a:hover {
 #product_options {
   padding-top: 50px;
 }
+#product_options_top {
+  padding-bottom: 30px;
+}
 #product_detail_tocart_btn {
   position: relative;
   top: 40px;
