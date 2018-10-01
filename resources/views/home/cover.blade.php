@@ -1,5 +1,5 @@
 @if(Request::segment(1)=='admin')
-<div class="cover @if(isset($editable)) editable @endif" style="background-image: @if($appname=='kabelo')url('/img/overlays/dot.png'),@endif url({{$cover->image}});background-size: @if($appname=='kabelo')auto,@endif cover;" data-id="{{$cover->id}}">
+<div class="cover @if(isset($editable)) editable @endif" style="background-image: @if($appname=='kabelo')url('/img/overlays/dot.png'),@endif url(/{{$cover->image}});background-size: @if($appname=='kabelo')auto,@endif cover;" data-id="{{$cover->id}}">
 	@else
 <a href="/{{$cover->url}}" class="cover @if(isset($editable)) editable @endif" style="background-image: @if($appname=='kabelo')url('/img/overlays/dot.png'), @endif url(/{{$cover->image}});background-size: @if($appname=='kabelo')auto,@endif cover;" data-id="{{$cover->id}}">
 @endif
