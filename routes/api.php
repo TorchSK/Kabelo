@@ -25,3 +25,5 @@ Route::put('product/{id}', 'ProductController@apiUpdate');
 Route::get('view/pricelevel', 'ProductController@viewPriceLevel');
 
 Route::get('search/{query}', 'UtilController@searchAll');
+
+Route::post('/bulk/', 'ProductController@postBulk')->name('admin.postBulk');

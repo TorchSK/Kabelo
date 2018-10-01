@@ -2477,7 +2477,12 @@ if ($('body').attr('id')=="body_bulk")
 	  colHeaders: true,
 	  minSpareRows: 1,
 	  contextMenu: true,
-	  manualColumnResize: [, , , , , 400]
+	  manualColumnResize: [, , , , , 400],
+	  afterChange: function(changes, source){
+	  	if(source=='edit'){
+	  		console.log(this.getDataAtRow(changes[0][0]));
+	  	}
+	  }
 	});
 
 	var load_btn = document.getElementById('bulk_load_btn');
@@ -2498,72 +2503,18 @@ if ($('body').attr('id')=="body_bulk")
 
 	Handsontable.dom.addEvent(save_btn, 'click', function() {
 	  // save all cell's data
-	  $.ajax('json/save.json', 'GET', JSON.stringify({data: hot.getData()}), function (res) {
-	    var response = res.response;
+	  $.ajax({
+	  	url: '/api/bulk', 
+	  	method: 'POST', 
+	  	data: JSON.stringify(hot.getData()),
+	  	success: function (res) {
+	   		
+	   	}
 
-	    if (response.result === 'ok') {
-	      exampleConsole.innerText = 'Data saved';
-	    }
-	    else {
-	      exampleConsole.innerText = 'Save error';
-	    }
 	  });
 	});
 
 }
-
-function getBulkEditedRows()
-{
-    var myRows = {};
-    var tbl = $('#bulk_products_table tbody tr.edited').each(function(index, item) {
-      $cells = $(this).find("td.edit");
-
-      $productid = $(item).data('id');
-      myRows[$productid] = {};
-      $cells.each(function(cindex,citem) {
-        myRows[$productid][$(citem).data('name')] = $(citem).find('input').val();
-      });    
-    });
-    
-
-    return myRows;
-}
-
-  $editedRows=[];
-$('#bulk_products_table').on('change keyup','.product_param', function(){
-  $tr = $(this).closest('tr');
-  $tr.addClass('positive edited');
-  $productid=$tr.data('id');
-  $editedRows.push($productid);
- });
-
-$('#bulk_save_btn').click(function(){
-  console.log(getBulkEditedRows());
-
-    $.ajax({
-      method: 'POST',
-      url: '/bulk',
-      data: getBulkEditedRows() ,
-      success: function(data){
-        location.reload();
-      } 
-    })
-})
-
-
-$('#cookies_consent_btn').click(function(){
-	$(document).unbind('ajaxStart');
-  $('#cookies_msg').hide();
-  $.ajax({
-    method: "POST",
-    url: '/cookies',
-    data: {name: 'cookies_consent',value: 1, expiry: 9999999},
-    success: function(){
-    	$(document).bind('ajaxStart');
-    }
-  })
-});
-
 
 
 if($('body').attr('id')=='cartproducts')

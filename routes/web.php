@@ -112,7 +112,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
 });
 
-Route::post('/bulk/', 'ProductController@postBulk')->name('admin.postBulk');
 
 Route::get('/stock/', 'ProductController@setStock')->name('setStock');
 

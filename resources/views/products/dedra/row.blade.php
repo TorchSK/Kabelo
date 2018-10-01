@@ -53,7 +53,12 @@
 
 
     <div class="prices">
-	    <div class="final_price" style="color: red;">{{number_format($product->price,2)}} &euro;</div>
+    	@if($product->sale)
+	    <div class="price crossed">{{number_format($product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_regular,2)}} &euro; </div>
+	    <div class="final_price">{{number_format($product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_sale,2)}} &euro;</div>
+	    @else
+	    <div class="final_price">{{number_format($product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_regular,2)}} &euro;</div>
+	    @endif
     </div>
 
 
