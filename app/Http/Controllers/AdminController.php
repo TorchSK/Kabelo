@@ -113,7 +113,7 @@ class AdminController extends Controller
 
         $addedProductsArray = array_diff($xmlProducts, $dbProducts);
         $existingProductsArray = array_intersect($xmlProducts, $dbProducts);
-        
+
         $removedProductsArray = array_diff($dbProducts, $xmlProducts);
         $removedProducts = Product::whereIn('code', $removedProductsArray)->get();
         
@@ -272,9 +272,11 @@ class AdminController extends Controller
 
         }
         
-        foreach($existingProductsArray as $item)
-        {
-            $product = Product::whereCode($item)->first();
+        foreach($existingProductsArray as $key => $temp)
+        {   
+            $item = $items['products'][$key];
+
+            $product = Product::whereCode($temp)->first();
             $product->name = $item['text1'].' '.$item['text2'];
             $product->save();
         }
