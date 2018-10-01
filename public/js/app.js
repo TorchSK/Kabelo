@@ -2473,12 +2473,11 @@ if ($('body').attr('id')=="body_bulk")
 	container = document.getElementById('bulk_products_table');
 
 	hot = new Handsontable(container, {
-	  startRows: 8,
-	  startCols: 6,
 	  rowHeaders: true,
 	  colHeaders: true,
 	  minSpareRows: 1,
 	  contextMenu: true,
+	  manualColumnResize: [, , , , , 400]
 	});
 
 	var load_btn = document.getElementById('bulk_load_btn');
@@ -2489,6 +2488,7 @@ if ($('body').attr('id')=="body_bulk")
 	  	method: 'GET', 
 	  	success: function(data) {
 		    hot.loadData(data);
+		   	hot.loadData(data);
 		}
 
 	  });

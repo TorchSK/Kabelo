@@ -187,6 +187,9 @@
 html {
   height: 100%;
 }
+body > span {
+  position: absolute;
+}
 body {
   background-color: transparent;
   display: -webkit-box;
