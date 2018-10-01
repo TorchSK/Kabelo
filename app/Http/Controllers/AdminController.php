@@ -296,24 +296,6 @@ class AdminController extends Controller
             $pricelevel->save();
         }
 
-        foreach($existingProductsArray as $key => $temp)
-        {   
-            $item = $items['products'][$key];
-
-            $product = Product::whereCode($temp)->first();
-            $product->name = $item['text1'].' '.$item['text2'];
-            $product->price = $item['price_skk'];
-            $product->moc_sort_price = $item['price_skk'];
-            $product->voc_sort_price = $item['price_skk'];
-            $product->save();
-
-            $priceLevel = $product->priceLevels->first();
-            $pricelevel->moc_regular = $item['price_skk'];
-            $pricelevel->moc_sale = $item['price_skk'];
-            $pricelevel->voc_regular = $item['price_skk'];
-            $pricelevel->voc_sale = $item['price_skk'];
-            $pricelevel->save();
-        }
 
         foreach($removedProductsArray as $key => $temp)
         {   
