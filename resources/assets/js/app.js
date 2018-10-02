@@ -2491,6 +2491,7 @@ if ($('body').attr('id')=="body_bulk")
 	var cellChanges = [];
 	var selectedCells = [];
 	var selectedIds = [];
+	var categoryChanges = [];
 
 	$data = [];
 	$data['changes'] = [];
@@ -2591,10 +2592,10 @@ if ($('body').attr('id')=="body_bulk")
 	  maxSelections: 10,
 	  fullTextSearch: true,
 	  onAdd: function(addedValue, addedText, $addedChoice){
-	   
+	   	categoryChanges.push(addedValue);
 	  }
 	})
-	
+
 	$('#bulk_change_category_btn').click(function(){
 		$('#bulk_change_category_modal').modal('setting', {
 	    autofocus: false,
