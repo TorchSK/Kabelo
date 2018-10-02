@@ -26,6 +26,27 @@ class ProductService implements ProductServiceContract {
 
   }
 
+    public function filter(Request $request)
+    {
+        $products = Product::where(function($query) use ($request){
+            if ($request->has('categories'))
+            {
+                foreach($request->get('categories') as $categoryId)
+                {
+                    $query->whereHas('categories', function($query) use ($request, $categoryId){
+                        $children = Category::find($categoryId)->descendants;
+
+                        $query->orWhere('category_id', $categoryId)->orWhereIn('category_id', $children->pluck('id'));
+                    });
+                }
+            }
+
+
+        });
+
+        return $products->get();
+    }
+
     public function getPriceLevel($productId, $qty)
     {
         $user = Auth::user();

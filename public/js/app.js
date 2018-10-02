@@ -2494,6 +2494,7 @@ if ($('body').attr('id')=="body_bulk")
 	  colHeaders: true,
 	  minSpareRows: 1,
 	  contextMenu: true,
+	  stretchH: 'all',
 	  manualColumnResize: [, , , , , 400],
 	  afterChange: function(changes, source){
 	  	if(source=='edit'){
@@ -2505,15 +2506,21 @@ if ($('body').attr('id')=="body_bulk")
 	var load_btn = document.getElementById('bulk_load_btn');
 
 	Handsontable.dom.addEvent(load_btn, 'click', function() {
-	  $.ajax({
-	  	url: '/api/products/all', 
-	  	method: 'GET', 
-	  	success: function(data) {
-		    hot.loadData(data);
-		   	hot.loadData(data);
+
+		$filters = {
+			"categories" : $('.filter_item.category').dropdown('get value')
 		}
 
-	  });
+		$.ajax({
+			url: '/api/products/filter', 
+			method: 'GET', 
+			data: $filters,
+			success: function(data) {
+			    hot.loadData(data);
+			   	hot.loadData(data);
+		}
+
+		});
 	});
 
 	var save_btn = document.getElementById('bulk_save_btn');
@@ -2530,6 +2537,15 @@ if ($('body').attr('id')=="body_bulk")
 
 	  });
 	});
+
+	$('#bulk_filter_category').dropdown({
+	  maxSelections: 10,
+	  fullTextSearch: true,
+	  onAdd: function(addedValue, addedText, $addedChoice){
+	   
+	  }
+	})
+
 
 }
 
@@ -3288,6 +3304,8 @@ $('#edit_product_categories_input').dropdown({
     console.log(addedValue);
   }
 })
+
+
 
 
 });

@@ -47,6 +47,12 @@ class ProductController extends Controller
     {
         return response()->json(['results'=>Product::where('name', 'like', '%'.$request->get('query').'%')->get()]);
     }
+
+    public function filter(Request $request)
+    {
+        return $this->productService->filter($request);
+    }
+    
     /**
      * Show the application dashboard.
      *

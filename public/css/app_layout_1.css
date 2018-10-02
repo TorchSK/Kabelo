@@ -2876,9 +2876,6 @@ body.admin #filterbar.vertical .categories .item {
 #import_json_table {
   display: none;
 }
-#bulk_products {
-  padding: 50px;
-}
 #admin_user_options {
   padding: 10px 0;
   margin-top: 35px;
@@ -3096,6 +3093,25 @@ body.admin #filterbar.vertical .categories .item {
 #xml_update_confirm_btn {
   display: none;
   margin-top: 15px;
+}
+#bulk_products_wrapper {
+  position: relative;
+  height: 100%;
+}
+#bulk_products_wrapper .filters .filter_item {
+  margin-bottom: 15px;
+}
+#bulk_products_wrapper #bulk_products_table {
+  overflow: hidden;
+  z-index: 2;
+  width: 100%;
+  height: 90%;
+}
+#bulk_products_wrapper .actions {
+  margin-bottom: 15px;
+}
+#bulk_products_wrapper .ui.dropdown .menu {
+  z-index: 99999;
 }
 #order_steps_wrapper {
   background-color: #EEE;

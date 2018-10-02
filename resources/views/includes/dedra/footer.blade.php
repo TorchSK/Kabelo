@@ -12,6 +12,8 @@
 	<div class="column"><a href="/obchodne-podmienky" class="effect-1">Obchodné podmienky</a></div>
   <div class="column"><a href="/gdpr" class="effect-1">Ochrana osobných údajov</a></div>
   <div class="column"><a href="/kontakt" class="effect-1">Kontakt</a></div>
+    <div class="column"><a href="/spolupraca" class="effect-1">Spolupráca</a></div>
+
   </div>
 
 	<div class="column social">
