@@ -31,14 +31,18 @@ class ProductService implements ProductServiceContract {
         $products = Product::where(function($query) use ($request){
             if ($request->has('categories'))
             {
+                $children = collect([]);
+
                 foreach($request->get('categories') as $categoryId)
                 {
-                    $query->whereHas('categories', function($query) use ($request, $categoryId){
-                        $children = Category::find($categoryId)->descendants;
-
-                        $query->orWhere('category_id', $categoryId)->orWhereIn('category_id', $children->pluck('id'));
-                    });
+                     $children = $children->merge(Category::find($categoryId)->descendants);
                 }
+
+
+                $query->whereHas('categories', function($query) use ($request, $children){
+                    $query->whereIn('category_id', (array)$request->get('categories'))->orWhereIn('category_id', $children->pluck('id'));
+                });
+            
             }
 
 
