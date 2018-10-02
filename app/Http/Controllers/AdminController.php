@@ -52,19 +52,31 @@ class AdminController extends Controller
     public function translate()
     {
         $client = new \GoogleTranslate\Client('AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI');
-        foreach(Product::where('translate_error',1)->get() as $product)
-        {   
-    
-            $sourceLanguage = 'cs';
-            $name = $client->translate($product->name, 'sk', $sourceLanguage);
 
-            if ($product->desc)
+        foreach(Product::all() as $product)
+        {   
+            $sourceLanguage = 'cs';
+
+            $checkName = $result = $client->detect($product->name);
+            if ($checkName['language'] != 'sk')
             {
-                $desc = $client->translate($product->desc, 'sk', $sourceLanguage);
-                $product->desc = $desc;
+                $name = $client->translate($product->name, 'sk', $sourceLanguage);
+                $product->name = $name;
             }
 
-            $product->name = $name;
+            /*
+            if ($product->desc)
+            {
+                $checkDesc = $result = $client->detect($product->desc);
+
+                if ($checkDesc['language'] != 'sk')
+                {
+                    $desc = $client->translate($product->desc, 'sk', $sourceLanguage);
+                    $product->desc = $desc;
+                }
+            }
+            */
+            
             $product->translated = 1;
             $product->translate_error = null;
 
