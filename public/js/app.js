@@ -1317,12 +1317,18 @@ $news_carousel = $('#home_news_div .items').flickity({
 
 $sales_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
 	$link = $(cellElement).find('.p_anch').attr('href');
-	location.replace($link);
+	if($($(pointer)[0].target).hasClass('to_cart')==false)
+	{
+		location.replace($link);
+	}
 });
 
 $news_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
 	$link = $(cellElement).find('.p_anch').attr('href');
-	location.replace($link);
+	if($($(pointer)[0].target).hasClass('to_cart')==false)
+	{
+		location.replace($link);
+	}
 });
 
 
@@ -3035,7 +3041,7 @@ $('grid.infinite').on( 'append.infiniteScroll', function( event, response, path,
 
 function initRelatedSlider(speed){
 
-	$('.related_products_carousel').flickity({
+	$related_carousel = $('.related_products_carousel').flickity({
 	    cellAlign: 'left',
 	    contain: true,
 	    pageDots: false,
@@ -3044,8 +3050,27 @@ function initRelatedSlider(speed){
 	    autoPlay: speed,
 	});
 
+	$related_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
+		$link = $(cellElement).find('.p_anch').attr('href');
+		
+		if($($(pointer)[0].target).hasClass('to_cart')==false)
+		{
+			location.replace($link);
+		}
+	});
+
+
 }
+
 initRelatedSlider(parseInt($('#suggested_wrapper_speed').find('value').html()));
+
+
+$("#grid_wrapper").on('click', '.product.item', function(){
+	$link = $(this).find('.p_anch').attr('href');
+	location.replace($link);
+});
+
+
 
 
 var mobx = $.ModuloBox({
