@@ -18,6 +18,7 @@
                  <input type="text" value="{{$category->url}}" />
             </div>
             <br />
+            
             <a class="ui green button" id="edit_category_submit" data-categoryid="{{$category->id}}">Ulož</a>
 
             <div class="ui horizontal divider active title">Obrázok kategórie</div>

@@ -282,7 +282,7 @@ class AdminController extends Controller
             $item = $items['products'][$key];
 
             $product = Product::whereCode($temp)->first();
-            $product->name = $item['text1'].' '.$item['text2'];
+            
             $product->price = $item['price_skk'];
             $product->moc_sort_price = $item['price_skk'];
             $product->voc_sort_price = $item['price_skk'];
