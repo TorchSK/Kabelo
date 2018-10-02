@@ -2545,14 +2545,16 @@ if ($('body').attr('id')=="body_bulk")
 	var save_btn = document.getElementById('bulk_save_btn');
 
 	Handsontable.dom.addEvent(save_btn, 'click', function() {
-	console.log($data);
+	$(save_btn).addClass('loading');
+
 	  // save all cell's data
 	  $.ajax({
 	  	url: '/api/bulk', 
 	  	method: 'POST', 
 	  	data: JSON.stringify($data),
 	  	success: function (res) {
-	   		
+	   		$(save_btn).removeClass('loading');
+	   		$('#bulk_products_table').find('td').removeClass('changed');
 	   	}
 
 	  });
