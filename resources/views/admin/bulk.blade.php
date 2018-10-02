@@ -23,8 +23,15 @@
 	</div>
 
 	<div class="actions">
-	    <div id="bulk_load_btn" class="ui blue button">Filtruj</div>
-	    <div id="bulk_save_btn" class="ui green button">Ulož</div>
+		<div class="left">
+		    <div id="bulk_load_btn" class="ui blue button">Filtruj</div>
+		    <div id="bulk_save_btn" class="ui green button">Ulož</div>
+		</div>
+		<div class="right">
+		    <div id="bulk_change_category_btn" class="ui brown button">Zmeň kategóriu</div>
+		    @include('modals.changecategory')
+		   	<div id="bulk_add_category_btn" class="ui blue button">Pridaj kategóriu</div>
+		</div>
 	</div>
 
 	<div id="bulk_products_table">

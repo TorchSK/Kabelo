@@ -293,12 +293,22 @@ class ProductController extends Controller
         return view('admin.bulk', $data);
     }
 
+    public function simpleList(Request $request)
+    {
+        foreach(array_unique($request->get('id')) as $key => $product)
+        {
+            $data['products'][$key] = Product::find($product);
+        }
+
+        return view('products.simplelist', $data);
+ 
+    }
 
     public function postBulk(Request $request)
     {
         $data = json_decode($request->getContent(), true);
 
-        foreach ($data as $item)
+        foreach ($data['changes'] as $item)
         {
             $product = Product::find($item['id']);
             $product->name = $item['name'];

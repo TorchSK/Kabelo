@@ -2489,7 +2489,13 @@ if ($('body').attr('id')=="body_bulk")
 
 	container = document.getElementById('bulk_products_table');
 	var cellChanges = [];
+	var selectedCells = [];
+	var selectedIds = [];
+
 	$data = [];
+	$data['changes'] = [];
+	$data['categoryChanges'] = [];
+	$data['categoryAdds'] = [];
 
 	hot = new Handsontable(container, {
 	 columns: [
@@ -2500,12 +2506,13 @@ if ($('body').attr('id')=="body_bulk")
 	  colHeaders: true,
 	  minSpareRows: 1,
 	  stretchH: 'all',
+	  outsideClickDeselects : false,
 	  manualColumnResize: [, , , , , 400],
 	  afterChange: function(change, source){
 	  	if(source=='edit'){
 	  		if (change[0][2] != change[0][3]){
 	  			cellChanges.push({'rowid':change[0][0], 'colid':this.propToCol(change[0][1])});
-	  			$data.push(this.getSourceDataAtRow(change[0][0]));
+	  			$data['changes'].push(this.getSourceDataAtRow(change[0][0]));
 	  		}
 
 	  		$.each(cellChanges, function (index, element) { 
@@ -2518,6 +2525,18 @@ if ($('body').attr('id')=="body_bulk")
 	  	$.each(cellChanges, function (index, element) { 
 	  		$this.getCell(element['rowid'], element['colid'], false).className = 'changed'; 
 	  	});
+	  },
+	  afterSelection: function(row, column, row2, column2, preventScrolling, selectionLayerLevel){
+	  	$('#bulk_products_wrapper .actions >.right').show();
+		
+		var i;
+		for (i = row; i <= row2; i++) { 
+	  		selectedCells.push(this.getSourceDataAtRow(i)); 
+	  		selectedIds.push(this.getSourceDataAtRow(i).id); 
+	  	}
+	  },
+	  afterDeselect: function(){
+	  	$('#bulk_products_wrapper .actions .right').hide();
 	  }
 	});
 
@@ -2551,7 +2570,7 @@ if ($('body').attr('id')=="body_bulk")
 	  $.ajax({
 	  	url: '/api/bulk', 
 	  	method: 'POST', 
-	  	data: JSON.stringify($data),
+	  	data: JSON.stringify($data['changes']),
 	  	success: function (res) {
 	   		$(save_btn).removeClass('loading');
 	   		$('#bulk_products_table').find('td').removeClass('changed');
@@ -2568,6 +2587,27 @@ if ($('body').attr('id')=="body_bulk")
 	  }
 	})
 
+	$('#bulk_change_category_btn').click(function(){
+		$('#bulk_change_category_modal').modal('setting', {
+	    autofocus: false,
+	    onShow: function(){
+	    	$.ajax({
+				method: "GET",
+				url: '/api/products/simplelist',
+				data: {id: selectedIds},
+	    		success: function(data)	{
+	    			$('#bulk_change_category_modal').find('.product_list').append(data);
+	    		}
+	    	})
+	    	
+	    
+
+	    },
+	    onApprove : function() {
+	    	
+	    }
+	  }).modal('show');
+	})
 
 }
 
