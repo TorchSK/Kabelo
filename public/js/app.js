@@ -271,7 +271,7 @@ $('#edit_category_submit').click(function(){
       url: "/category/"+$categoryid,
       data: {name: $name, url: $url},
       success: function(data){
-        location.reload();
+        location.replace('/admin/eshop/products/'+$url);
       } 
     })
 });
@@ -2490,10 +2490,13 @@ if ($('body').attr('id')=="body_bulk")
 	container = document.getElementById('bulk_products_table');
 
 	hot = new Handsontable(container, {
+	 columns: [
+	    {data: "code"},
+	    {data: "name"},
+	  ],
 	  rowHeaders: true,
 	  colHeaders: true,
 	  minSpareRows: 1,
-	  contextMenu: true,
 	  stretchH: 'all',
 	  manualColumnResize: [, , , , , 400],
 	  afterChange: function(changes, source){
@@ -2516,6 +2519,7 @@ if ($('body').attr('id')=="body_bulk")
 			method: 'GET', 
 			data: $filters,
 			success: function(data) {
+
 			    hot.loadData(data);
 			   	hot.loadData(data);
 		}
