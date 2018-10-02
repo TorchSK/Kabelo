@@ -11,7 +11,7 @@
 				<h3>Hľadáme spolupracovníkov z celého Slovenska !</h3>
 			</div>
 
-			<div class="image"><img src="/img/uspesny-start-2018.jpg" alt="dedra_start" class="ui image" /></div>
+			<div class="image"><img src="/img/uspesny-start-2018.jpg" alt="dedra_start" class="ui image" width="500" /></div>
 
 			<div>Obľúbili ste si výrobky DEDRA INNOVATIONS?
 			zaregistrujte sa v spoločnosti Vaše DEDRA s.r.o
