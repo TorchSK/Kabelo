@@ -108,7 +108,12 @@
 
     <div id="prices">
         <span style="font-size: 1.6em; color: #F2711C; font-weight: 700; margin-right: 10px;">Cena:</span> 
-        <div id="final_price">{{number_format($product->price,2)}} &euro;</div>
+        @if($product->sale)
+        <div id="price" class="crossed">{{number_format($product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_regular,2)}} &euro; </div>
+        <div id="final_price">{{number_format($product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_sale,2)}} &euro;</div>
+        @else
+        <div id="final_price">{{number_format($product->priceLevels->where('threshold',$product->priceLevels->min('threshold'))->first()->moc_regular,2)}} &euro;</div>
+        @endif
     </div>
 
     <div id="product_detail_tocart_btn" class="ui large brown labeled icon button" data-qty="{{$product->priceLevels->min('threshold')}}"><i class="add to cart icon"></i>Kúpiť</div>
