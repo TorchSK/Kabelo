@@ -2587,6 +2587,14 @@ if ($('body').attr('id')=="body_bulk")
 	  }
 	})
 
+	$('#bulk_change_category_dropdown').dropdown({
+	  maxSelections: 10,
+	  fullTextSearch: true,
+	  onAdd: function(addedValue, addedText, $addedChoice){
+	   
+	  }
+	})
+	
 	$('#bulk_change_category_btn').click(function(){
 		$('#bulk_change_category_modal').modal('setting', {
 	    autofocus: false,

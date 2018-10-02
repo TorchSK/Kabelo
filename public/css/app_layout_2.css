@@ -3125,6 +3125,9 @@ body.admin #filterbar.vertical .categories .item {
 #bulk_products_wrapper .ui.dropdown .menu {
   z-index: 99999;
 }
+#bulk_change_category_modal .product_list {
+  margin: 15px 0;
+}
 #order_steps_wrapper {
   background-color: #EEE;
 }
