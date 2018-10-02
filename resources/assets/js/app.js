@@ -2488,6 +2488,8 @@ if ($('body').attr('id')=="body_bulk")
 {
 
 	container = document.getElementById('bulk_products_table');
+	var cellChanges = [];
+	$data = [];
 
 	hot = new Handsontable(container, {
 	 columns: [
@@ -2499,10 +2501,23 @@ if ($('body').attr('id')=="body_bulk")
 	  minSpareRows: 1,
 	  stretchH: 'all',
 	  manualColumnResize: [, , , , , 400],
-	  afterChange: function(changes, source){
+	  afterChange: function(change, source){
 	  	if(source=='edit'){
-	  		console.log(this.getDataAtRow(changes[0][0]));
+	  		if (change[0][2] != change[0][3]){
+	  			cellChanges.push({'rowid':change[0][0], 'colid':this.propToCol(change[0][1])});
+	  			$data.push(this.getSourceDataAtRow(change[0][0]));
+	  		}
+
+	  		$.each(cellChanges, function (index, element) { 
+		  		$this.getCell(element['rowid'], element['colid'], false).className = 'changed'; 
+		  	});
 	  	}
+	  },
+	  afterRender: function(){
+	  	$this = this;
+	  	$.each(cellChanges, function (index, element) { 
+	  		$this.getCell(element['rowid'], element['colid'], false).className = 'changed'; 
+	  	});
 	  }
 	});
 
@@ -2530,11 +2545,12 @@ if ($('body').attr('id')=="body_bulk")
 	var save_btn = document.getElementById('bulk_save_btn');
 
 	Handsontable.dom.addEvent(save_btn, 'click', function() {
+	console.log($data);
 	  // save all cell's data
 	  $.ajax({
 	  	url: '/api/bulk', 
 	  	method: 'POST', 
-	  	data: JSON.stringify(hot.getData()),
+	  	data: JSON.stringify($data),
 	  	success: function (res) {
 	   		
 	   	}

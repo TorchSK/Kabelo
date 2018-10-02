@@ -3101,6 +3101,9 @@ body.admin #filterbar.vertical .categories .item {
 #bulk_products_wrapper .filters .filter_item {
   margin-bottom: 15px;
 }
+#bulk_products_wrapper table .changed {
+  background-color: #2185D0 !important;
+}
 #bulk_products_wrapper #bulk_products_table {
   overflow: hidden;
   z-index: 2;

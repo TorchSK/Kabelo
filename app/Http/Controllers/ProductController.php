@@ -296,30 +296,16 @@ class ProductController extends Controller
 
     public function postBulk(Request $request)
     {
-        $products = [];
-        foreach ($request->all() as $key=>$data){
-            $product = Product::find($key);
-            foreach($data as $param => $value)
-            {
-                $product->$param = $value;
+        $data = json_decode($request->getContent(), true);
 
-            }
+        foreach ($data as $item)
+        {
+            $product = Product::find($item['id']);
+            $product->name = $item['name'];
             $product->save();
         }
 
-        foreach ((array)$request->get('thresholds') as $key=>$threshold)
-        {
-            $pricelevel = new PriceLevel();
-            $pricelevel->threshold = $threshold;
-            $pricelevel->moc_regular = $request->get('mocs')[$key];
-            $pricelevel->moc_sale = $request->get('moc_sales')[$key];
-            $pricelevel->voc_regular = $request->get('vocs')[$key];
-            $pricelevel->voc_sale = $request->get('voc_sales')[$key];
-
-            $product->priceLevels()->save($pricelevel);
-        }
-
-        return $products;
+        return 1;
     }
 
     public function apiUpdate($productid, Request $request)
