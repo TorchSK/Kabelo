@@ -80,6 +80,10 @@
     @if ($product->new)
     <div id="new" class="ui blue large label" style="margin-left: 15px;"><i class="star icon"></i> Novinka</div>
     @endif
+    
+      @if ($product->sale)
+    <div id="sale" class="ui green large label"><i class="money icon"></i> Zľava</div>
+    @endif
 
    		<div class="ui header" id="product_categories">
         <div>
