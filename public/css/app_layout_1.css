@@ -3715,9 +3715,6 @@ body.admin #filterbar.vertical .categories .item {
   cursor: pointer;
 }
 #settings_user {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   position: relative;
 }
 #settings_user #left {
@@ -3741,10 +3738,11 @@ body.admin #filterbar.vertical .categories .item {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding: 50px 0;
 }
 .settings_account_div {
-  padding-left: 80px;
+  background-color: #FCFCFC;
+  padding: 50px;
+  text-align: left;
 }
 #settings_submit_btn {
   margin-top: 25px;

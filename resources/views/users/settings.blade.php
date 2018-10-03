@@ -1,30 +1,11 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="flex_content" id="settings_user" data-userid="{{Auth::user()->id}}">
 
-<div id="left" class="ct">
-		<div class="avatar">
-			@if (Auth::user()->avatar)
-				<img src="/img/{{Auth::user()->avatar}}" />
-			@else
-				<i class="user huge icon"></i>
-			@endif
-		</div>
 
-		<div class="name">
-			@if (Auth::user()->first_name)
-				{{Auth::user()->first_name}} {{Auth::user()->last_name}}
-			@else
-				{{Auth::user()->email}}
-			@endif
-		</div>
+<div id="settings_user" class="wrapper" data-userid="{{Auth::user()->id}}">
 
-</div>
-
-<div class="wrapper" id="right">
-
-	<div class="settings_account_div">
+	<div class="settings_account_div container" id="right">
 
 	<div class="ui header">Základné údáje</div>
 
@@ -152,12 +133,12 @@
 
 	</div>
 
-		<div class="ui green button" id="settings_submit_btn" data-redirect="/seettings/account">Uložiť zmeny</div>
+	<div class="ui green button" id="settings_submit_btn" data-redirect="/seettings/account">Uložiť zmeny</div>
 
 </div>
 
 
 
 </div>
-</div>
+
 @stop
