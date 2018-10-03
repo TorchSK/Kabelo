@@ -24,10 +24,7 @@
     </div>
     <div class="content menu @if(strpos(Route::currentRouteName(),'admin.eshop')!==false) active @endif">
       <a href="{{route('admin.eshop.categories')}}" class="item @if(Route::currentRouteName()=='admin.eshop.categories') active @endif">Kategórie</a>
-
-      <a href="{{route('admin.eshop.bulk')}}" class="item @if(Route::currentRouteName()=='admin.eshop.bulk') active @endif">Hromadné zmeny</a>
-
-      <a href="{{route('admin.eshop.products',['category'=>App\Category::first()->url])}}" class="item @if(Route::currentRouteName()=='admin.eshop.products') active @endif">Kategórie / Produkty</a>
+      <a href="{{route('admin.eshop.products')}}" class="item @if(Route::currentRouteName()=='admin.eshop.products') active @endif">Produkty</a>
       <a href="{{route('admin.eshop.new')}}" class="item @if(Route::currentRouteName()=='admin.eshop.new') active @endif">Novinky</a>
       <a href="{{route('admin.eshop.sale')}}" class="item @if(Route::currentRouteName()=='admin.eshop.sale') active @endif">Zľavy</a>
       <a href="{{route('admin.eshop.inactive')}}" class="item @if(Route::currentRouteName()=='admin.eshop.inactive') active @endif">Neaktívne</a>
@@ -116,9 +113,5 @@
     </div>
   </div>
 </div>
-
-@if( Route::currentRouteName() == 'admin.eshop.products')
-@include('admin.sidebar')
-@endif
 
 

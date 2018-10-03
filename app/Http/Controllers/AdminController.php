@@ -631,7 +631,7 @@ class AdminController extends Controller
         return view('admin.files', $data);
     }
 
-    public function products($category, Request $request)
+    public function category($category, Request $request)
     {
         $cat = Category::where('url',$category)->first();
 
@@ -644,8 +644,16 @@ class AdminController extends Controller
 
         $request['category'] = $cat->id;
 
-        return view('admin.eshop.products', $data);
+        return view('admin.eshop.category', $data);
     }
+
+    public function products()
+    {
+        $data['bodyid'] = 'body_bulk';
+
+        return view('admin.bulk', $data);
+    }
+
 
     public function new()
     {

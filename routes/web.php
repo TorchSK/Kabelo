@@ -29,8 +29,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	
 	Route::put('/eshop/postXmlUpdate', 'AdminController@postXmlUpdate')->name('admin.postXmlUpdate');
 	Route::get('/eshop/xmlupdate', 'AdminController@xmlUpdate')->name('admin.eshop.xmlupdate');
-	Route::get('/eshop/products/{category}', 'AdminController@products')->name('admin.eshop.products');
+	Route::get('/eshop/products', 'AdminController@products')->name('admin.eshop.products');
 	Route::get('/eshop/categories', 'AdminController@categories')->name('admin.eshop.categories');
+	Route::get('/eshop/category/{category}', 'AdminController@category')->name('admin.eshop.category');
 	Route::get('/eshop/new', 'AdminController@new')->name('admin.eshop.new');
 	Route::get('/eshop/sale', 'AdminController@sale')->name('admin.eshop.sale');
 	Route::get('/eshop/inactive', 'AdminController@inactive')->name('admin.eshop.inactive');

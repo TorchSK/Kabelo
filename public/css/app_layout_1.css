@@ -2493,6 +2493,10 @@ body.admin #filterbar.vertical .categories .item {
 #admin_categories {
   padding: 3%;
 }
+#admin_categories .expand_all_toggle {
+  margin-bottom: 15px;
+  cursor: pointer;
+}
 #admin_categories .admin_categories_list .ui.styled.accordion .accordion {
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -2500,8 +2504,18 @@ body.admin #filterbar.vertical .categories .item {
 #admin_categories .admin_categories_list .name {
   display: inline-block;
 }
+#admin_categories .admin_categories_list .image {
+  display: inline-block;
+  margin-right: 15px;
+}
 #admin_categories .admin_categories_list .content {
   padding-left: 20px !important;
+}
+#admin_categories .admin_categories_list .handle {
+  display: inline-block;
+  margin-right: 10px;
+  cursor: move;
+  color: #CCC;
 }
 #admin_categories .admin_categories_list .content .content {
   padding-left: 20px !important;
@@ -2669,10 +2683,12 @@ body.admin #filterbar.vertical .categories .item {
 }
 .no_of_items {
   display: inline-block;
-  margin-left: 20px;
+  margin-right: 30px;
   font-style: italic;
   color: #767676;
   font-weight: 100;
+  float: right;
+  margin-top: 5px;
 }
 .admin_filters {
   margin-bottom: 35px;

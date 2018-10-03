@@ -286,12 +286,6 @@ class ProductController extends Controller
         }
     }
 
-    public function bulk()
-    {
-        $data['bodyid'] = 'body_bulk';
-
-        return view('admin.bulk', $data);
-    }
 
     public function simpleList(Request $request)
     {

@@ -1458,6 +1458,47 @@ $('body.admin .categories').nestedSortable({
   }
 });
 
+$('.expand_all_toggle').click(function(){
+	$target = $(this).data('target');
+	if ($(this).hasClass('expanded'))
+	{
+		$('[data-target="'+$target+'"]').find('.title').removeClass('active');
+		$('[data-target="'+$target+'"]').find('.content').removeClass('active');
+		$(this).removeClass('expanded').text('Rozbal všetko');
+	}
+	else
+	{
+		$('[data-target="'+$target+'"]').find('.title').addClass('active');
+		$('[data-target="'+$target+'"]').find('.content').addClass('active');
+		$(this).addClass('expanded').text('Zbal všetko');
+	}
+
+})
+$('.admin_categories_list .accordion').nestedSortable({
+  handle: '.handle',
+  items: '.category',
+  listType: 'ul',
+  disableParentChange: false,
+  stop: function(event, ui){
+    $data = [];
+    $orders = {};
+    $parents = {};
+
+    $('.admin_categories_list .accordion .category').each(function(index, item){
+      $orders[$(item).data('categoryid')] = index;
+      $parents[$(item).data('categoryid')] = $(item).closest('li').parent().closest('li').data('categoryid');
+    });
+    //console.log($(ui.item).closest('li').parent().closest('li').data('categoryid'));
+
+    $.ajax({
+      method: "PUT",
+      url: '/categories/setorder',
+      data: {'orders':$orders, 'parents': $parents}
+    })
+  }
+});
+
+
 $('.tabs .tab').click(function(){
   $('.tabs .tab').removeClass('brown').addClass('basic');
   $(this).addClass('brown').removeClass('basic')
@@ -3190,7 +3231,7 @@ $('#product_main_wrapper .main').click(function(e){
 
 $('.active_flag').click(function(){
 	$icon = $(this).find('i');
-	$id = $(this).closest('.category').data('id');
+	$id = $(this).closest('.category').data('categoryid');
 	$state = $(this).closest('.category').data('active');
 
 	if($state == 1)
@@ -3211,7 +3252,7 @@ $('.active_flag').click(function(){
 			url: "/category/set/"+$id,
 			data: {active: 1},
 			success: function(data){
-				$icon.toggleClass('red green');s
+				$icon.toggleClass('red green');
 			}
 		})	
 	}
