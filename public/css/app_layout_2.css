@@ -4739,10 +4739,10 @@ body.eshop #home_sales_div .caption {
 }
 body.eshop #home_news_div .caption name,
 body.eshop #home_sales_div .caption name {
-  font-size: 1.3em;
-  padding: 5px;
+  font-size: 2em;
+  padding: 15px;
   margin-bottom: 10px;
-  font-weight: 700;
+  font-weight: 200;
   color: #444;
 }
 body.eshop #home_news_div .caption name i,
