@@ -4471,6 +4471,7 @@ h1.header {
   margin-bottom: 1px;
   background-color: #F3F3F3;
   background-image: url('/img/leaves-pattern.png');
+  background-position: 0 50%;
 }
 @media all and (max-width: 980px) {
   #filterbar.horizontal {
@@ -4481,7 +4482,8 @@ h1.header {
   background-color: #FFF;
   text-align: center;
   position: relative;
-  margin: 0 auto;
+  margin: 15px auto;
+  border-radius: 5px;
 }
 #filterbar.horizontal .popup {
   left: 0 !important;
@@ -4774,8 +4776,8 @@ body.eshop #home_sales_div .items {
       -ms-flex: 1;
           flex: 1;
 }
-body.eshop #home_sales_div .container {
-  margin-top: 1px;
+body.eshop #home_sales_div {
+  padding-top: 25px;
 }
 body.eshop #header {
   background-color: #DDD;
