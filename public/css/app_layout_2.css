@@ -1762,6 +1762,7 @@ a:hover {
           flex: 1;
   background-color: #F7F7F7;
   position: relative;
+  text-align: left;
 }
 #grid_wrapper > .container {
   background-color: #FFF;
