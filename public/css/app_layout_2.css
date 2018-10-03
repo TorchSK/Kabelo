@@ -4735,6 +4735,7 @@ body.eshop #home_news_div .container,
 body.eshop #home_sales_div .container {
   background-color: #FFF;
   padding: 15px;
+  border-radius: 5px;
 }
 body.eshop #home_news_div .caption,
 body.eshop #home_sales_div .caption {
@@ -4793,7 +4794,10 @@ body.eshop #home_sales_div .items {
           flex: 1;
 }
 body.eshop #home_sales_div {
-  padding-top: 25px;
+  padding: 25px 0;
+}
+body.eshop #home_sales_div .container {
+  border-radius: 5px;
 }
 body.eshop #header {
   background-color: #DDD;
