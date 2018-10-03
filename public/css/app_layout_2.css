@@ -1486,18 +1486,22 @@ a:hover {
   text-align: center;
   margin-bottom: 25px;
   margin-right: 25px;
+  padding-right: 25px;
   border-radius: 5px;
   cursor: pointer;
   background-color: #FFFFFF;
   padding-bottom: 25px;
   position: relative;
+  border-right: 1px solid #EEE;
 }
 @media all and (max-width: 2100px) {
   .item.product {
     width: 18.28%;
   }
   .item.product.grid:nth-child(5n) {
-    margin-right: 0;
+    margin-right: 5px;
+    padding-right: 0;
+    border-right: 0;
   }
 }
 @media all and (max-width: 1690px) {
@@ -4861,6 +4865,8 @@ body.eshop #header .search.item {
 }
 .item.product.grid.grid:nth-child(5n) {
   margin-right: 0;
+  padding-right: 0;
+  border-right: 0;
 }
 #product_content {
   max-width: 1400px;

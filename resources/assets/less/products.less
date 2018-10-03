@@ -7,17 +7,21 @@
 	text-align: center;
 	margin-bottom: 25px;
 	margin-right: 25px;
+	padding-right: 25px;
 	border-radius: 5px;
 	cursor: pointer;
 	background-color: @white;
 	padding-bottom: 25px;
 	position: relative;
+	border-right: 1px solid #EEE;
 
 	@media @break6{
 		width: @cw6;
 
 		&.grid:nth-child(5n){
-			margin-right: 0;
+			margin-right: 5px;
+			padding-right: 0;
+			border-right: 0;
 		}
 	}
 
