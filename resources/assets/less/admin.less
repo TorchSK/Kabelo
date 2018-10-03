@@ -25,46 +25,27 @@ body.admin{
 
 	.admin_categories_list{
 
-
-		.item{
-			background-color: rgba(0,0,0,0.08);
-			padding: 15px;
-			margin-bottom: 3px;
-			border-radius: 5px;
-			text-align: left;
-
-			.image{
-				display: inline-block;
-				width: 50px;
-				border-radius: 3px;
-				margin-right: 10px;
-				overflow: hidden; 
-
-				img{
-					display: inline-block;
-					max-height: 100%;
-					max-width: 100%;
-				}
+		.ui.styled.accordion{
+			.accordion{
+				box-shadow :none;
 			}
-		}
-
-		li ul{
-			margin-left: 20px;
 		}
 
 		.name{
 			display: inline-block;
 		}
+		.content{
+			padding-left: 20px !important;
+		}
 
-		.admin_edit_category_btn{
-			display: inline-block;
+		.content .content{
+			padding-left: 20px !important;
+		}
+
+		.edit_category_btn{
 			float: right;
 		}
 
-		.admin_delete_category_btn{
-				display: inline-block;
-			float: right;
-		}
 	}
 }
 

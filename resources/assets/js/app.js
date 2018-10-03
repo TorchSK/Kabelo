@@ -164,6 +164,16 @@ $('#filterbar .ui.accordion').accordion({
   }
 }); 
 
+$('.admin_categories_list .ui.accordion').accordion({
+  exclusive: false,
+    selector    : {
+    accordion : '.accordion',
+    title     : '.title',
+    trigger   : '.name',
+    content   : '.content'
+  }
+}); 
+
 $('.register_form').click(function(){
 	$popup = $('#auth_popup');
 	$email = $('#register_div').find('input[name="email"]').val();

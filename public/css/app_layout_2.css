@@ -2493,37 +2493,20 @@ body.admin #filterbar.vertical .categories .item {
 #admin_categories {
   padding: 3%;
 }
-#admin_categories .admin_categories_list .item {
-  background-color: rgba(0, 0, 0, 0.08);
-  padding: 15px;
-  margin-bottom: 3px;
-  border-radius: 5px;
-  text-align: left;
-}
-#admin_categories .admin_categories_list .item .image {
-  display: inline-block;
-  width: 50px;
-  border-radius: 3px;
-  margin-right: 10px;
-  overflow: hidden;
-}
-#admin_categories .admin_categories_list .item .image img {
-  display: inline-block;
-  max-height: 100%;
-  max-width: 100%;
-}
-#admin_categories .admin_categories_list li ul {
-  margin-left: 20px;
+#admin_categories .admin_categories_list .ui.styled.accordion .accordion {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 #admin_categories .admin_categories_list .name {
   display: inline-block;
 }
-#admin_categories .admin_categories_list .admin_edit_category_btn {
-  display: inline-block;
-  float: right;
+#admin_categories .admin_categories_list .content {
+  padding-left: 20px !important;
 }
-#admin_categories .admin_categories_list .admin_delete_category_btn {
-  display: inline-block;
+#admin_categories .admin_categories_list .content .content {
+  padding-left: 20px !important;
+}
+#admin_categories .admin_categories_list .edit_category_btn {
   float: right;
 }
 #admin_layouts {
