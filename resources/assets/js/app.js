@@ -2544,9 +2544,13 @@ if ($('body').attr('id')=="body_bulk")
 	var selectedIds = [];
 	var categoryChanges = [];
 
-	$data = [];
+	$data = {};
 	$data['changes'] = [];
+
 	$data['categoryChanges'] = [];
+	$data['categoryChanges']['categories'] = [];
+	$data['categoryChanges']['products'] = [];
+
 	$data['categoryAdds'] = [];
 
 	hot = new Handsontable(container, {
@@ -2613,23 +2617,7 @@ if ($('body').attr('id')=="body_bulk")
 		});
 	});
 
-	var save_btn = document.getElementById('bulk_save_btn');
 
-	Handsontable.dom.addEvent(save_btn, 'click', function() {
-	$(save_btn).addClass('loading');
-
-	  // save all cell's data
-	  $.ajax({
-	  	url: '/api/bulk', 
-	  	method: 'POST', 
-	  	data: JSON.stringify($data['changes']),
-	  	success: function (res) {
-	   		$(save_btn).removeClass('loading');
-	   		$('#bulk_products_table').find('td').removeClass('changed');
-	   	}
-
-	  });
-	});
 
 	$('#bulk_filter_category').dropdown({
 	  maxSelections: 10,
@@ -2659,15 +2647,34 @@ if ($('body').attr('id')=="body_bulk")
 	    			$('#bulk_change_category_modal').find('.product_list').append(data);
 	    		}
 	    	})
-	    	
-	    
-
 	    },
 	    onApprove : function() {
-	    	
+	    	$data['categoryChanges']['categories'] = selectedIds;
+	    	$data['categoryChanges']['products'].push($('#bulk_change_category_dropdown').dropdown('get value'));
 	    }
 	  }).modal('show');
 	})
+
+
+	var save_btn = document.getElementById('bulk_save_btn');
+
+	Handsontable.dom.addEvent(save_btn, 'click', function() {
+		$(save_btn).addClass('loading');
+
+		console.log(JSON.stringify($data));
+
+		// save all cell's data
+		$.ajax({
+			url: '/api/bulk', 
+			method: 'POST', 
+			data: JSON.stringify($data),
+			success: function (res) {
+				$(save_btn).removeClass('loading');
+	   		$('#bulk_products_table').find('td').removeClass('changed');
+	   	}
+
+	  });
+	});
 
 }
 
