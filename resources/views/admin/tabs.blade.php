@@ -88,6 +88,7 @@
     </div>
     <div class="menu content @if(strpos(Route::currentRouteName(),'admin.files')!==false) active @endif">
       <a href="{{route('admin.files')}}" class="item @if(Route::currentRouteName()=='admin.files') active @endif">Zoznam súborov</a>
+      <a href="{{route('admin.catalogues')}}" class="item @if(Route::currentRouteName()=='admin.files') active @endif">Zoznam katalógov</a>
     </div>
   </div>
 

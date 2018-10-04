@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/import/', 'AdminController@import')->name('admin.import');
 	Route::post('/import/', 'AdminController@postImport')->name('admin.postImport');
 	Route::get('/files/', 'AdminController@files')->name('admin.files');
+	Route::get('/catalogues/', 'AdminController@catalogues')->name('admin.catalogues');
 
 	Route::get('/params', 'AdminController@params')->name('admin.params.index');
 
