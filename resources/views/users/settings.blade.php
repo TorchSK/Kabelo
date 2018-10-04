@@ -7,7 +7,7 @@
 
 	<div class="settings_account_div container" id="right">
 
-	<div class="ui header">Základné údáje</div>
+	<div class="ui header">Základné údaje</div>
 
 		<div class="labeled form">
 
@@ -37,7 +37,7 @@
 
 		</div>
 
-			<div class="ui header">Firemné údáje</div>
+			<div class="ui header">Firemné údaje</div>
 
 		<div class="labeled form">
 
