@@ -77,7 +77,6 @@
       <a href="{{route('admin.settings.eshop')}}" class="item @if(Route::currentRouteName()=='admin.settings.eshop') active @endif">Eshop</a>
       <a href="{{route('admin.settings.delivery')}}" class="item @if(Route::currentRouteName()=='admin.settings.delivery') active @endif">Doprava</a>
       <a href="{{route('admin.settings.invoice')}}" class="item @if(Route::currentRouteName()=='admin.settings.invoice') active @endif">Fakturačné údaje</a>
-      <a href="{{route('admin.settings.pages')}}" class="item @if(Route::currentRouteName()=='admin.settings.pages') active @endif">Podstránky</a>
     </div>
 
   </div>
@@ -97,10 +96,10 @@
   <div class="header title @if(strpos(Route::currentRouteName(),'admin.layout')!==false) active @endif">
     <i class="columns icon"></i>
       <i class="dropdown icon"></i>
-      Nastavenia stránok
+      Podstránky webu
     </div>
     <div class="content menu @if(strpos(Route::currentRouteName(),'admin.pages')!==false) active @endif">
-      <a href="{{route('admin.pages.home')}}" class="item @if(Route::currentRouteName()=='admin.pages.home') active @endif">Úvodná stránka</a>
+      <a href="{{route('admin.pages.list')}}" class="item @if(Route::currentRouteName()=='admin.pages.list') active @endif">Zoznam podstránok</a>
     </div>
   </div>
 
@@ -111,7 +110,8 @@
       Šáblóna webu
     </div>
     <div class="content menu @if(strpos(Route::currentRouteName(),'admin.layout')!==false) active @endif">
-      <a href="{{route('admin.layout')}}" class="item @if(Route::currentRouteName()=='admin.layout') active @endif">Zoznam šablón</a>
+      <a href="{{route('admin.layout.templates')}}" class="item @if(Route::currentRouteName()=='admin.layout.templates') active @endif">Zoznam šablón</a>
+      <a href="{{route('admin.layout.pages')}}" class="item @if(Route::currentRouteName()=='admin.layout.pages') active @endif">Úprava stránok</a>
     </div>
   </div>
 </div>

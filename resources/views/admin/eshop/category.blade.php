@@ -6,20 +6,43 @@
 
             @if ($category!='unknown')
 
-            <div class="ui horizontal divider active title">URL kategórie</div>
+            <div class="ui horizontal divider active title">Parametre kategórie</div>
 
-              <div class="ui labeled input" id="edit_product_name_input">
-                 <div class="ui label">Názov</div>
-                 <input type="text" value="{{$category->name}}" />
-            </div>
+            <form action="{{route('category.update',['category'=>$category->id])}}" method="POST" class="admin_category_attributes">
+              {{ csrf_field() }}
 
-              <div class="ui labeled input" id="edit_product_url_input">
-                <div class="ui label">URL</div>
-                 <input type="text" value="{{$category->url}}" />
-            </div>
-            <br />
-            
-            <a class="ui green button" id="edit_category_submit" data-categoryid="{{$category->id}}">Ulož</a>
+          <input type="hidden" name="_method" value="PUT" />
+
+              <div class="ui fluid labeled input" data-attribute="name">
+                   <div class="ui label">Názov</div>
+                   <input type="text" name="name" value="{{$category->name}}" />
+              </div>
+
+                <div class="ui fluid labeled input" data-attribute="url">
+                  <div class="ui label">URL</div>
+                   <input type="text" name="url" value="{{$category->url}}" />
+              </div>
+
+                <div class="ui fluid labeled input" data-attribute="url">
+                  <div class="ui label">Popis</div>
+                   <input type="text" name="desc" value="{{$category->desc}}" />
+              </div>
+              
+              <div class="ui fluid labeled input" data-attribute="url">
+                  <div class="ui label">Title</div>
+                   <input type="text" name="title" value="{{$category->title}}" />
+              </div>
+              
+                <div class="ui fluid labeled input" data-attribute="url">
+                  <div class="ui label">Keywords</div>
+                   <input type="text" name="keywords" value="{{$category->keywords}}" />
+              </div>
+              
+              
+              <button type="submit" class="ui green button" id="edit_category_submit" data-categoryid="{{$category->id}}">Ulož</button>
+
+            </form>
+
 
             <div class="ui horizontal divider active title">Obrázok kategórie</div>
  
@@ -49,7 +72,7 @@
               </div>
             </div>
 
-
+            @if($appname=='kabelo')
             <div class="ui horizontal divider active title">Parametre / Filtre</div>
 
             <div class="admin_filters">
@@ -65,25 +88,8 @@
             
             </div>
             @endif
+            @endif
 
-
-            <div class="ui horizontal divider active title">Produkty</div>
-
-            <div id="grid">
-            
-            @if ($category!='unknown')
-				      <a class="item grid new_product_btn" href="/product/create?category={{$category->id}}">
-    					   <i class="huge icons">
-    					  <i class="plus brown icon"></i>
-    					</i>
-    					Pridaj produkt
-    				</a>
-        @endif
-
-    		@foreach ($products as $product)
-    			@include('products.row')
-    		@endforeach
-           </div>
 
  
          </div>

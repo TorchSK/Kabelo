@@ -61,12 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/settings/eshop', 'AdminController@eshop')->name('admin.settings.eshop');
 	Route::get('/settings/invoice', 'AdminController@invoice')->name('admin.settings.invoice');
 	Route::get('/settings/delivery', 'AdminController@delivery')->name('admin.settings.delivery');
-	Route::get('/settings/pages', 'AdminController@pages')->name('admin.settings.pages');
-
-	Route::get('/pages/home', 'AdminController@homePageSeetings')->name('admin.pages.home');
-
 	Route::post('/settings/eshop/save', 'SettingController@bulkUpdate')->name('settings.bulkUpdate');
-
 	Route::post('/settings/invoice/save', 'SettingController@bulkUpdate')->name('settings.bulkUpdate');
 
 	Route::post('/delivery', 'AdminController@addDeliveryMethod');
@@ -101,8 +96,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::put('/cover/{id}', 'AdminController@updatecover')->name('admin.updatecover');
 	Route::delete('/cover/{id}', 'AdminController@deleteCover')->name('admin.deletecover');
 
-	Route::get('/layout', 'AdminController@layout')->name('admin.layout');
-	
+	Route::get('/layout/templates', 'AdminController@layoutTemplates')->name('admin.layout.templates');
+	Route::get('/layout/pages', 'AdminController@layout')->name('admin.layout.pages');
+
+	Route::get('/pages/list', 'AdminController@pages')->name('admin.pages.list');
+
 	Route::post('/layout/set', 'AdminController@setLayout')->name('admin.setLayout');
 	Route::get('/bulk/', 'ProductController@bulk')->name('admin.eshop.bulk');
 
@@ -193,6 +191,12 @@ Route::get('/{maker}/{code}/edit','ProductController@edit');
 Route::post('/category/image/upload','CategoryController@uploadImage');
 Route::post('/category/{categoryid}/image/confirmCrop','CategoryController@confirmCrop');
 
+
+// Pages
+Route::put('/page/set/{id}','PageController@set');
+Route::put('pages/setorder/','PageController@setOrder');
+
+Route::resource('page','PageController');
 
 
 // Upload

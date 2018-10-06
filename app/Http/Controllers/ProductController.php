@@ -340,6 +340,21 @@ class ProductController extends Controller
 
         }
 
+
+        foreach (array_unique($data['addEcoImages']) as $productid)
+        {
+            $product = Product::find($productid);
+            $product->ecoImages = 1;
+            $product->save();
+        }
+
+        foreach (array_unique($data['removwEcoImages']) as $productid)
+        {
+            $product = Product::find($productid);
+            $product->ecoImages = 0;
+            $product->save();
+        }
+
         return 1;
     }
 

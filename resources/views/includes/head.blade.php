@@ -10,7 +10,13 @@
     <meta name="description" content="DEDRA EKO čistiace prostriedky, darčeky pre mužov, darčeky pre ženy, šperky, drogéria pre domácnosť">
     <meta name="robots" content="index, follow">
     
-    <title>{{App\Setting::firstOrCreate(['name'=>'company_name'])->value}}.sk</title>
+    <title>
+    @if(isset($title))
+    {{$title}} | {{App\Setting::firstOrCreate(['name'=>'company_name'])->value}}.sk
+    @else
+    {{App\Setting::firstOrCreate(['name'=>'company_name'])->value}}.sk
+    @endif
+    </title>
 
     <link rel="icon" type="image/png" href="{{url('img/'.$appname)}}_favico.png" />
 

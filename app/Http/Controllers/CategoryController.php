@@ -53,6 +53,7 @@ class CategoryController extends Controller
 
             $data['requestCategory'] = Category::find($request->get('category'));
             $data['categories'] = $this->categoryService->getCategories();
+            $data['title'] = Category::find($request->get('category'))->title;
 
             return view('categories/products', $data);
 
@@ -104,10 +105,13 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->name = $request->get('name');
         $category->url = $request->get('url');
+        $category->desc = $request->get('desc');
+        $category->keywords = $request->get('keyword');
+        $category->title = $request->get('title');
 
         $category->save();
 
-        return '/admin/products';
+        return redirect()->route('admin.eshop.category',['category'=>$category->url]);
     }
 
 

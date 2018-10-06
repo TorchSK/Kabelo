@@ -294,7 +294,7 @@ body.admin{
 	background-color: @white;
 	width: 200px;
 	height: 110px;
-	margin: 0 15px;
+	margin-right: 15px;
 	text-align: center;
 	padding-top: 20px;
 	border-radius: 5px;
@@ -768,6 +768,17 @@ body.admin{
 		height: 70vh;
 		display: none;
 
+		.mini.button{
+			position: relative;
+			top: 10px;
+			opacity: 0.5;
+
+			&:hover{
+				opacity: 1;
+			}
+		}
+
+
 		.image{
 			width: 50px;
 			height: 50px;
@@ -801,5 +812,40 @@ body.admin{
 #bulk_change_category_modal{
 	.product_list{
 		margin: 15px 0;
+	}
+}
+
+.pages_list{
+	.item{
+		display: flex;
+		background-color: #F2F2F2;
+		border-radius: 5px;
+		margin-bottom: 1px;
+		padding: 15px;
+
+		.handle{
+			margin-right: 15px;
+			color: #BBB;
+			cursor: move;
+		}
+
+		.name{
+			margin: 0 10px;
+		}
+
+	}
+}
+
+#new_page_btn{
+	margin-top: 25px;
+}
+
+.admin_category_attributes{
+	.input{
+		margin-bottom: 5px;
+
+		.ui.label{
+			min-width: 100px;
+		}
 	}
 }

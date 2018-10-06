@@ -1,4 +1,4 @@
-<li class="category" data-categoryid="{{$category->id}}" data-active="{{$category->active}}">
+<li class="category item" data-id="{{$category->id}}" data-active="{{$category->active}}" data-type="category">
 	<div class="title">
 	
 

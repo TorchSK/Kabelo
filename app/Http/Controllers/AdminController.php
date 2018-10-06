@@ -14,6 +14,7 @@ use App\Parameter;
 use App\File as ProductFile;
 use App\PriceLevel;
 use App\File;
+use App\Page;
 
 
 use Auth;
@@ -792,7 +793,9 @@ class AdminController extends Controller
 
     public function pages()
     {
-        return view('admin.settings.pages');
+        $data['pages'] = Page::orderBy('order')->get();
+
+        return view('admin.pages.list', $data);
     }
 
     public function import()
@@ -1099,10 +1102,10 @@ class AdminController extends Controller
     }
 
 
-    public function layout()
+    public function layoutTemplates()
     {
 
-        return view('admin.layout');
+        return view('admin.layout.templates');
     }
 
     public function setLayout(Request $request)
@@ -1114,10 +1117,10 @@ class AdminController extends Controller
 
     }
 
-    public function homePageSeetings()
+    public function layoutHome()
     {
 
-        return view('admin.pages.home');
+        return view('admin.layout.home');
     }
 
 }

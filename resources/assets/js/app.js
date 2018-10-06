@@ -275,23 +275,6 @@ $('#create_product_form').submit(function(e){
 
 
 
-$('#edit_category_submit').click(function(){
-  $categoryid = $(this).data('categoryid');
-  $name = $('#edit_product_name_input input').val()
-  $url = $('#edit_product_url_input input').val()
-
-    $.ajax({
-      method: "PUT",
-      url: "/category/"+$categoryid,
-      data: {name: $name, url: $url},
-      success: function(data){
-        location.replace('/admin/eshop/products/'+$url);
-      } 
-    })
-});
-
-
-
 $('.other_img .img').click(function(e){
 	e.preventDefault();
   $('#product_main_wrapper .img.main img').attr('src', '/img/loader.gif');
@@ -1437,30 +1420,6 @@ $carousel.on( 'pointerUp.flickity', function(){
 	$('#search_results').hide();
 } );
 
-$('body.admin .categories').nestedSortable({
-  handle: 'div',
-  items: 'li',
-  toleranceElement: '> div',
-  listType: 'ul',
-  disableParentChange: false,
-  stop: function(event, ui){
-    $data = [];
-    $orders = {};
-    $parents = {};
-
-    $('body.admin .categories .category.item').each(function(index, item){
-      $orders[$(item).data('categoryid')] = index;
-      $parents[$(item).data('categoryid')] = $(item).closest('li').parent().closest('li').data('categoryid');
-    });
-    //console.log($(ui.item).closest('li').parent().closest('li').data('categoryid'));
-
-    $.ajax({
-      method: "PUT",
-      url: '/categories/setorder',
-      data: {'orders':$orders, 'parents': $parents}
-    })
-  }
-});
 
 $('.expand_all_toggle').click(function(){
 	$target = $(this).data('target');
@@ -1478,6 +1437,7 @@ $('.expand_all_toggle').click(function(){
 	}
 
 })
+
 $('.admin_categories_list .accordion').nestedSortable({
   handle: '.handle',
   items: '.category',
@@ -1489,8 +1449,8 @@ $('.admin_categories_list .accordion').nestedSortable({
     $parents = {};
 
     $('.admin_categories_list .accordion .category').each(function(index, item){
-      $orders[$(item).data('categoryid')] = index;
-      $parents[$(item).data('categoryid')] = $(item).closest('li').parent().closest('li').data('categoryid');
+      $orders[$(item).data('id')] = index;
+      $parents[$(item).data('id')] = $(item).closest('li').parent().closest('li').data('id');
     });
     //console.log($(ui.item).closest('li').parent().closest('li').data('categoryid'));
 
@@ -1501,6 +1461,31 @@ $('.admin_categories_list .accordion').nestedSortable({
     })
   }
 });
+
+$('.pages_list').nestedSortable({
+  handle: '.handle',
+  items: '.item',
+  listType: 'ul',
+  disableParentChange: false,
+  stop: function(event, ui){
+    $data = [];
+    $orders = {};
+    $parents = {};
+
+    $('.pages_list .item').each(function(index, item){
+      $orders[$(item).data('id')] = index;
+      $parents[$(item).data('id')] = $(item).closest('li').parent().closest('li').data('id');
+    });
+    //console.log($(ui.item).closest('li').parent().closest('li').data('categoryid'));
+
+    $.ajax({
+      method: "PUT",
+      url: '/pages/setorder',
+      data: {'orders':$orders, 'parents': $parents}
+    })
+  }
+});
+
 
 
 $('.tabs .tab').click(function(){
@@ -1538,6 +1523,23 @@ $('.disabled.rating').rateYo({
   readOnly: true,
 })
 
+$('#new_page_btn').click(function(){
+$('#add_page_modal').modal('setting', {
+	autofocus: true,
+	onApprove : function() {
+	  $text = $('#new_rating_modal textarea').val();
+	  $id = $('#product_main_wrapper').data('id');
+	  $.ajax({
+	    type: "POST",
+	    url: "/product/"+$id+"/rating",
+	    data: {value: data.rating, text: $text},
+	    success: function(){
+	      location.reload();
+	    }
+	  })
+	}
+}).modal('show');
+});
 
 
 
@@ -2563,17 +2565,23 @@ if ($('body').attr('id')=="body_bulk")
 	$data['categoryRemoved']['categories'] = [];
 	$data['categoryRemoved']['products'] = [];
 
+	$data['addEcoImages'] = {};
+	$data['removeEcoImages'] = {};
+
 	hot = new Handsontable(container, {
 	 columns: [
+	 	{data: "url", renderer: detailRenderer},
 	 	{data: "image.path", renderer: imageRenderer},
 	    {data: "code"},
 	    {data: "name"},
 	    {data: "categories", renderer: categoryRenderer}
 	  ],
-	  colHeaders: ['Obrázok','Kód', 'Názov', 'Kategórie'],
+	  colHeaders: ['', 'Obrázok','Kód', 'Názov', 'Kategórie'],
+	  colWidths: [5,7,10,'',''],
 	  rowHeaders: true,
 	  minSpareRows: 1,
 	  stretchH: 'all',
+	  columnSorting: true,
 	  outsideClickDeselects : false,
 	  afterChange: function(change, source){
 	  	if(source=='edit'){
@@ -2623,6 +2631,13 @@ if ($('body').attr('id')=="body_bulk")
 	  		selectedIds = [];
 	  }
 	});
+
+	function detailRenderer (instance, td, row, col, prop, value, cellProperties) {
+		$(td).html('<a class="blue icon mini button" href="/p/'+value+'"><i class="search icon"><i></a>');
+		$(td).append('<a class="teal icon mini button" href="/admin/p/edit/'+value+'"><i class="edit icon"><i></a>');
+		return td;
+	}
+
 
 	function categoryRenderer (instance, td, row, col, prop, value, cellProperties) {
 		var row = [];
@@ -2722,6 +2737,14 @@ if ($('body').attr('id')=="body_bulk")
 	    }
 	  }).modal('show');
 	})
+
+	$('#bulk_add_eco_images_btn').click(function(){
+	    $data['addEcoImages'] = selectedIds;
+	});
+
+	$('#bulk_remove_eco_images_btn').click(function(){
+	    $data['removeEcoImages'] = selectedIds;
+	});
 
 	var save_btn = document.getElementById('bulk_save_btn');
 
@@ -3305,17 +3328,18 @@ $('#product_main_wrapper .main').click(function(e){
 
 $('.active_flag').click(function(){
 	$icon = $(this).find('i');
-	$id = $(this).closest('.category').data('categoryid');
-	$state = $(this).closest('.category').data('active');
+	$type = $(this).closest('.item').data('type');
+	$id = $(this).closest('.item').data('id');
+	$state = $(this).closest('.item').data('active');
 
 	if($state == 1)
 	{
 		$.ajax({
 			type: "PUT",
-			url: "/category/set/"+$id,
+			url: "/"+$type+"/set/"+$id,
 			data: {active: 0},
 			success: function(data){
-				$icon.toggleClass('red green');s
+				$icon.toggleClass('red green');
 			}
 		})	
 	}
@@ -3323,7 +3347,7 @@ $('.active_flag').click(function(){
 	{
 		$.ajax({
 			type: "PUT",
-			url: "/category/set/"+$id,
+			url: "/"+$type+"/set/"+$id,
 			data: {active: 1},
 			success: function(data){
 				$icon.toggleClass('red green');

@@ -32,6 +32,9 @@
 		    @include('modals.changecategory')
 		    @include('modals.addcategory')
 		   	<div id="bulk_add_category_btn" class="ui blue button">Pridaj kategóriu</div>
+		  	<div id="bulk_add_eco_images_btn" class="ui blue button">Zobraz EKO obrázky</div>
+		  	<div id="bulk_remove_eco_images_btn" class="ui blue button">Zobraz EKO obrázky</div>
+
 		</div>
 	</div>
 
