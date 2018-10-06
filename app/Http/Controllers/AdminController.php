@@ -628,8 +628,18 @@ class AdminController extends Controller
             'files' => File::where('type','system')->get()
         ];
 
-        return view('admin.files', $data);
+        return view('admin.files.files', $data);
     }
+
+    public function catalogues()
+    {
+        $data = [
+            'files' => File::where('type','catalogue')->get()
+        ];
+
+        return view('admin.files.files', $data);
+    }
+
 
     public function category($category, Request $request)
     {
@@ -670,6 +680,8 @@ class AdminController extends Controller
         return view('admin.eshop.inactive');
     }
     
+
+
     public function orders()
     {
         $data = [
@@ -776,6 +788,11 @@ class AdminController extends Controller
     public function invoice()
     {
         return view('admin.settings.invoice');
+    }
+
+    public function pages()
+    {
+        return view('admin.settings.pages');
     }
 
     public function import()

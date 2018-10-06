@@ -309,6 +309,37 @@ class ProductController extends Controller
             $product->save();
         }
 
+        foreach ($data['categoryChanges']['products'] as $productid)
+        {
+            $product = Product::find($productid);
+            
+            foreach ($product->categories as $category)
+            {
+                $product->categories()->detach($category);
+            }
+
+            foreach ($data['categoryChanges']['categories'] as $categoryid)
+            {
+                $product->categories()->attach($categoryid);
+            }
+
+            $product->save();
+
+        }
+
+        foreach (array_unique($data['categoryAdds']['products']) as $productid)
+        {
+            $product = Product::find($productid);
+
+            foreach ($data['categoryAdds']['categories'] as $categoryid)
+            {
+                $product->categories()->attach($categoryid);
+            }
+
+            $product->save();
+
+        }
+
         return 1;
     }
 

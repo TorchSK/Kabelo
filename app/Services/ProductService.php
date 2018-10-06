@@ -48,7 +48,7 @@ class ProductService implements ProductServiceContract {
 
         });
 
-        return $products->get();
+        return $products->with(['categories','image'])->get();
     }
 
     public function getPriceLevel($productId, $qty)

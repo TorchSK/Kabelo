@@ -77,6 +77,7 @@
       <a href="{{route('admin.settings.eshop')}}" class="item @if(Route::currentRouteName()=='admin.settings.eshop') active @endif">Eshop</a>
       <a href="{{route('admin.settings.delivery')}}" class="item @if(Route::currentRouteName()=='admin.settings.delivery') active @endif">Doprava</a>
       <a href="{{route('admin.settings.invoice')}}" class="item @if(Route::currentRouteName()=='admin.settings.invoice') active @endif">Fakturačné údaje</a>
+      <a href="{{route('admin.settings.pages')}}" class="item @if(Route::currentRouteName()=='admin.settings.pages') active @endif">Podstránky</a>
     </div>
 
   </div>
@@ -87,8 +88,8 @@
       Súbory
     </div>
     <div class="menu content @if(strpos(Route::currentRouteName(),'admin.files')!==false) active @endif">
-      <a href="{{route('admin.files')}}" class="item @if(Route::currentRouteName()=='admin.files') active @endif">Zoznam súborov</a>
-      <a href="{{route('admin.catalogues')}}" class="item @if(Route::currentRouteName()=='admin.files') active @endif">Zoznam katalógov</a>
+      <a href="{{route('admin.files.files')}}" class="item @if(Route::currentRouteName()=='admin.files.files') active @endif">Súbory</a>
+      <a href="{{route('admin.files.catalogues')}}" class="item @if(Route::currentRouteName()=='admin.files.catalogues') active @endif">Katalógy</a>
     </div>
   </div>
 

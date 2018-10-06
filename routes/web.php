@@ -39,8 +39,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/orders/', 'AdminController@manageOrders')->name('admin.orders');
 	Route::get('/import/', 'AdminController@import')->name('admin.import');
 	Route::post('/import/', 'AdminController@postImport')->name('admin.postImport');
-	Route::get('/files/', 'AdminController@files')->name('admin.files');
-	Route::get('/catalogues/', 'AdminController@catalogues')->name('admin.catalogues');
+	Route::get('/files/', 'AdminController@files')->name('admin.files.files');
+	Route::get('/catalogues/', 'AdminController@catalogues')->name('admin.files.catalogues');
 
 	Route::get('/params', 'AdminController@params')->name('admin.params.index');
 
@@ -61,7 +61,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/settings/eshop', 'AdminController@eshop')->name('admin.settings.eshop');
 	Route::get('/settings/invoice', 'AdminController@invoice')->name('admin.settings.invoice');
 	Route::get('/settings/delivery', 'AdminController@delivery')->name('admin.settings.delivery');
-	
+	Route::get('/settings/pages', 'AdminController@pages')->name('admin.settings.pages');
+
 	Route::get('/pages/home', 'AdminController@homePageSeetings')->name('admin.pages.home');
 
 	Route::post('/settings/eshop/save', 'SettingController@bulkUpdate')->name('settings.bulkUpdate');
