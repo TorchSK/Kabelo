@@ -3,7 +3,7 @@
 	<input type="hidden" name="_method" value="PUT" />
 	
 	@if(isset($editable) && $editable==true)
-    <div class="ui fluid labeled input" data-attribute="name">
+    <div class="ui fluid labeled input attribute" data-attribute="name">
         <div class="ui label">Názov</div>
         <input type="text" name="name" value="{{$text->name}}" />
     </div>

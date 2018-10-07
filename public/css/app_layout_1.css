@@ -4818,6 +4818,9 @@ canvas {
 #page_wrapper .page_preview {
   margin-top: 25px;
 }
+#text_wrapper .attribute {
+  margin-bottom: 25px;
+}
 .wrapper > .container {
   width: 100%;
   max-width: 100%;
