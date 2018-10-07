@@ -100,6 +100,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/layout/pages', 'AdminController@layout')->name('admin.layout.pages');
 
 	Route::get('/pages/list', 'AdminController@pages')->name('admin.pages.list');
+	Route::get('/pages/texts', 'AdminController@texts')->name('admin.pages.texts');
 
 	Route::post('/layout/set', 'AdminController@setLayout')->name('admin.setLayout');
 	Route::get('/bulk/', 'ProductController@bulk')->name('admin.eshop.bulk');
@@ -108,6 +109,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	
 	Route::put('/setting/', 'SettingController@apiUpdate')->name('admin.setting.apiUpdate');
 	
+	Route::get('/page/{url}', 'AdminController@pageEdit')->name('admin.pages.pageEdit');
+	Route::get('/text/{url}', 'AdminController@textEdit')->name('admin.pages.textEdit');
+	
+
+
 	Route::put('/page/setting/', 'SettingController@pageUpdate')->name('admin.setting.pageUpdate');
 
 
@@ -195,8 +201,13 @@ Route::post('/category/{categoryid}/image/confirmCrop','CategoryController@confi
 // Pages
 Route::put('/page/set/{id}','PageController@set');
 Route::put('pages/setorder/','PageController@setOrder');
+Route::post('/page/{pageid}/attach/{textid}', 'PageController@attachText')->name('admin.pages.attachText');
+Route::post('/page/{pageid}/detach/{textid}', 'PageController@detachText')->name('admin.pages.detachText');
 
 Route::resource('page','PageController');
+
+// Texts
+Route::resource('text','TextController');
 
 
 // Upload
@@ -230,21 +241,35 @@ Route::get('katalog/{id}', 'UtilController@catalogue');
 Route::get('cookie', 'UtilController@cookie');
 Route::get('connectors/guide', 'UtilController@connectorsGuide');
 
-Route::get('kontakt', 'UtilController@contactPage');
-Route::get('obchodne-podmienky', 'UtilController@termsPage');
-Route::get('obchodne-podmienky/edit', 'UtilController@termsPage');
-Route::get('gdpr', 'UtilController@gdprPage');
-Route::get('gdpr/edit', 'UtilController@gdprPage');
-Route::get('spolupraca', 'UtilController@spolupracaPage');
 
 Route::get('cookies/info', 'UtilController@cookiesInfo');
 Route::get('email/order', 'UtilController@sendOrderEmail');
 Route::post('set/config', 'UtilController@setConfig');
 
-Route::post('text', 'UtilController@setText');
-
 Route::post('cookies', 'UtilController@setCookie');
 
 Route::get('search/{query}', 'UtilController@search');
+
+$app = env('APP_NAME');
+
+if($app == 'Laravel')
+{
+    $app = ucfirst(explode(".", Request::getHost())[0]);
+}
+
+if($app == 'Kabelo')
+{
+    Config::set('database.default', 'kabelo');
+}
+elseif($app == 'Dedra')
+{
+    Config::set('database.default', 'dedra');
+}
+
+foreach(App\Page::all() as $page)
+{
+	Route::get('{'.$page->url.'}', 'PageController@profile');
+
+}
 
 Route::get('/{path}', 'CategoryController@products')->where('path','(.*)')->name('category.products');

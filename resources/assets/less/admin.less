@@ -831,21 +831,66 @@ body.admin{
 
 		.name{
 			margin: 0 10px;
+			font-weight: 200;
+
+			b{
+				font-weight: 800;
+			}
+		}
+
+		.url{
+			margin-left: 30px;
+			font-weight: 200;
+
+			b{
+				font-weight: 800;
+			}
+		}
+
+		.stretch{
+			flex: 1;
+		}
+		.actions{
+			align-self:  flex-end;
 		}
 
 	}
 }
 
-#new_page_btn{
+#new_page_btn,
+#new_text_btn{
 	margin-top: 25px;
 }
 
-.admin_category_attributes{
+.admin_category_attributes,
+.admin_page_attributes{
 	.input{
 		margin-bottom: 5px;
 
 		.ui.label{
 			min-width: 100px;
+		}
+	}
+}
+
+.page_texts_list{
+	background-color: #F9F9F9;
+	padding: 10px;
+	border-radius: 5px;
+	display: flex;
+
+	.item{
+		padding: 10px;
+		background-color: #F2F2F2;
+		min-width: 100px;
+		cursor: pointer;
+		border: 1px solid #EEE;
+		text-align: center;
+		border-radius: 4px;
+
+		&.active{
+			background-color: @green;
+			color: #FFF;
 		}
 	}
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Page;
+use App\Text;
 
 class PageController extends Controller
 {
@@ -36,5 +37,60 @@ class PageController extends Controller
         }
     }
 
+    public function profile($url)
+    {   
+        $data['page'] = Page::whereUrl($url)->first();
 
+        return view('pages.profile',$data);
+    }   
+
+
+    public function store(Request $request)
+    {   
+        $page = new Page();
+        $page->name = $request->get('name');
+        $page->url = $request->get('url');
+        $page->text_key = str_slug($request->get('url'));
+        $page->save();
+
+        $text = new Text();
+        $text->key = $page->text_key;
+        $text->save();
+
+        return 1;
+    }   
+
+    public function update($id, Request $request)
+    {   
+        $page = Page::find($id);
+        $page->name = $request->get('name');
+        $page->url = $request->get('url');
+        $page->save();
+        
+        return redirect()->back();
+    }  
+
+    public function attachText($pageid, $textid)
+    {   
+        $page = Page::find($pageid);
+        $page->texts()->attach($textid);
+        $page->save();
+        
+        return 1;
+    }  
+
+    public function detachText($pageid, $textid)
+    {   
+        $page = Page::find($pageid);
+        $page->texts()->detach($textid);
+        $page->save();
+        
+        return 1;
+    }  
+
+    public function destroy($id)
+    {
+        $page = Page::find($id);
+        $page->delete();
+    }
 }

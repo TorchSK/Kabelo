@@ -9,12 +9,10 @@
 	</div>
 
   <div class="stretch">
-	<div class="column"><a href="/obchodne-podmienky" class="effect-1">Obchodné podmienky</a></div>
-  <div class="column"><a href="/gdpr" class="effect-1">Ochrana osobných údajov</a></div>
-  <div class="column"><a href="/kontakt" class="effect-1">Kontakt</a></div>
-    <div class="column"><a href="/spolupraca" class="effect-1">Spolupráca</a></div>
-
-  </div>
+    @foreach(App\Page::orderBy('order')->get() as $page)
+	   <div class="column"><a href="/{{$page->url}}" class="effect-1">{{$page->name}}</a></div>
+    @endforeach
+  </div>  
 
 	<div class="column social">
 		<a href="https://www.facebook.com/dedraslovakia/" target="_blank"><i class="facebook square icon"></i></a>

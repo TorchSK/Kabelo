@@ -18,17 +18,36 @@
   </div>
 </div>
 
-<div class="ui mini modal" id="delete_user_modal">
+<div class="ui mini modal" id="delete_page_modal">
           
   <div class="header">
-    Uživalte
+    Košík
   </div>
   <div class="content">
-     Naozaj chcete vymazať uživateľa?
+     Naozaj chcete vymazať košík
   </div>
   <div class="actions">
     <div class="ui red deny button">
-      Níe
+      Nie
+    </div>
+    <div class="ui positive right labeled icon button">
+      Áno
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
+<div class="ui mini modal" id="delete_user_modal">
+          
+  <div class="header">
+    Stránka
+  </div>
+  <div class="content">
+     Naozaj chcete vymazať stránku?
+  </div>
+  <div class="actions">
+    <div class="ui red deny button">
+      Nie
     </div>
     <div class="ui positive right labeled icon button">
       Áno
@@ -47,7 +66,7 @@
   </div>
   <div class="actions">
     <div class="ui red deny button">
-      Níe
+      Nie
     </div>
     <div class="ui positive right labeled icon button">
       Áno

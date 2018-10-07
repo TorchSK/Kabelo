@@ -697,36 +697,6 @@ a:hover {
 .c_header div {
   width: 80%;
 }
-#terms_div {
-  text-align: center;
-  padding: 3%;
-  margin: 0 auto;
-}
-#terms_div .richtext {
-  background-color: #FFF;
-  display: inline-block;
-  text-align: center;
-  padding: 50px;
-  margin-top: 50px;
-  width: 1000px;
-  font-weight: 300;
-}
-#terms_div .richtext a {
-  text-decoration: underline !important;
-}
-#gdpr_div {
-  text-align: center;
-  padding: 3%;
-  margin: 0 auto;
-}
-#gdpr_div pre {
-  background-color: #FFF;
-  display: inline-block;
-  text-align: center;
-  white-space: pre-line;
-  max-width: 800px;
-  padding: 50px;
-}
 #contact_left {
   padding: 60px;
   margin-right: 20px;
@@ -3162,15 +3132,59 @@ body.admin #filterbar.vertical .categories .item {
 }
 .pages_list .item .name {
   margin: 0 10px;
+  font-weight: 200;
 }
-#new_page_btn {
+.pages_list .item .name b {
+  font-weight: 800;
+}
+.pages_list .item .url {
+  margin-left: 30px;
+  font-weight: 200;
+}
+.pages_list .item .url b {
+  font-weight: 800;
+}
+.pages_list .item .stretch {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.pages_list .item .actions {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+#new_page_btn,
+#new_text_btn {
   margin-top: 25px;
 }
-.admin_category_attributes .input {
+.admin_category_attributes .input,
+.admin_page_attributes .input {
   margin-bottom: 5px;
 }
-.admin_category_attributes .input .ui.label {
+.admin_category_attributes .input .ui.label,
+.admin_page_attributes .input .ui.label {
   min-width: 100px;
+}
+.page_texts_list {
+  background-color: #F9F9F9;
+  padding: 10px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.page_texts_list .item {
+  padding: 10px;
+  background-color: #F2F2F2;
+  min-width: 100px;
+  cursor: pointer;
+  border: 1px solid #EEE;
+  text-align: center;
+  border-radius: 4px;
+}
+.page_texts_list .item.active {
+  background-color: #21BA45;
+  color: #FFF;
 }
 #order_steps_wrapper {
   background-color: #EEE;
@@ -3752,7 +3766,7 @@ body.admin #filterbar.vertical .categories .item {
   padding-left: 40px !important;
 }
 #edit_category_submit {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 .active_flag {
   display: inline-block;
@@ -4758,6 +4772,51 @@ canvas {
   margin-top: 25px;
   width: 100%;
   max-height: 100% !important;
+}
+#page_div {
+  text-align: center;
+  padding: 3%;
+  margin: 0 auto;
+}
+#page_div .richtext a {
+  text-decoration: underline !important;
+}
+#gdpr_div {
+  text-align: center;
+  padding: 3%;
+  margin: 0 auto;
+}
+#gdpr_div pre {
+  background-color: #FFF;
+  display: inline-block;
+  text-align: center;
+  white-space: pre-line;
+  max-width: 800px;
+  padding: 50px;
+}
+#text_save_btn {
+  margin-top: 25px;
+}
+#page_wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+#page_wrapper .container {
+  background-color: #FFF;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+#page_wrapper .page_preview {
+  margin-top: 25px;
 }
 body {
   background-color: #EEE;

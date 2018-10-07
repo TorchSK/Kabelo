@@ -9,9 +9,9 @@ class Page extends Model {
   	protected $table = "pages";
   	protected $fillable = ['active','name','url'];
 
-	public function text()
+	public function texts()
 	{
-	    return $this->hasOne('App\Text');
+	    return $this->belongsToMany('App\Text');
 	}
  
 

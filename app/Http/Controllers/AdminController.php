@@ -15,6 +15,7 @@ use App\File as ProductFile;
 use App\PriceLevel;
 use App\File;
 use App\Page;
+use App\Text;
 
 
 use Auth;
@@ -796,6 +797,32 @@ class AdminController extends Controller
         $data['pages'] = Page::orderBy('order')->get();
 
         return view('admin.pages.list', $data);
+    }
+
+    public function pageEdit($url)
+    {
+        $data = [
+         'page' => Page::whereUrl($url)->first(),
+         'texts' => Text::all()
+        ];
+
+        return view('admin.pages.edit', $data);
+    }
+
+    public function texts()
+    {
+        $data['texts'] = Text::get();
+
+        return view('admin.texts.list', $data);
+    }
+
+    public function textEdit($id)
+    {
+        $data = [
+         'text' => Text::find($id)
+        ];
+
+        return view('admin.texts.edit', $data);
     }
 
     public function import()

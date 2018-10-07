@@ -100,6 +100,7 @@
     </div>
     <div class="content menu @if(strpos(Route::currentRouteName(),'admin.pages')!==false) active @endif">
       <a href="{{route('admin.pages.list')}}" class="item @if(Route::currentRouteName()=='admin.pages.list') active @endif">Zoznam podstránok</a>
+      <a href="{{route('admin.pages.texts')}}" class="item @if(Route::currentRouteName()=='admin.pages.texts') active @endif">Zoznam textov</a>
     </div>
   </div>
 

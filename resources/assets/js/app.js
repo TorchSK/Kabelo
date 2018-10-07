@@ -1527,12 +1527,30 @@ $('#new_page_btn').click(function(){
 $('#add_page_modal').modal('setting', {
 	autofocus: true,
 	onApprove : function() {
-	  $text = $('#new_rating_modal textarea').val();
-	  $id = $('#product_main_wrapper').data('id');
+	  $name = $('#add_page_name_input').val();
+	  $url = $('#add_page_url_input').val();
 	  $.ajax({
 	    type: "POST",
-	    url: "/product/"+$id+"/rating",
-	    data: {value: data.rating, text: $text},
+	    url: "/page",
+	    data: {name: $name, url: $url},
+	    success: function(){
+	      location.reload();
+	    }
+	  })
+	}
+}).modal('show');
+});
+
+
+$('#new_text_btn').click(function(){
+$('#add_text_modal').modal('setting', {
+	autofocus: true,
+	onApprove : function() {
+	  $name = $('#add_text_name_input').val();
+	  $.ajax({
+	    type: "POST",
+	    url: "/text",
+	    data: {name: $name},
 	    success: function(){
 	      location.reload();
 	    }
@@ -1631,6 +1649,24 @@ $('.admin_method_list i.delete').click(function(){
     }
   }).modal('show');
 })
+
+$('.page_delete_btn').click(function(){
+  $id = $(this).closest('.item').data('id');
+
+   $('#delete_page_modal').modal('setting', {
+    onApprove : function() {
+      $.ajax({
+	    type: "DELETE",
+	    url: "/page/"+$id,
+	    success: function(){
+	      location.reload();
+	    }
+	  })
+    }
+  }).modal('show');
+})
+
+
 
 
 $('.admin_method_list i.edit').click(function(){
@@ -3216,24 +3252,48 @@ if($('body').attr('id') == 'cart_shipping')
 tinymce.init({
 	selector: '.richtext.editable',
     menubar: false,
-    inline: true,
-    theme: 'inlite',
     insert_toolbar: 'undo redo',
     selection_toolbar: 'bold italic | quicklink h2 h3',
 });
 
-
 $('#text_save_btn').click(function(){
-	$key = $(this).data('key');
-	$text = $('.richtext').html();
+	$('.text_form').submit();	
+})
+
+$('.page_texts_list .item').click(function(){
+	$button = $(this);
+	$pageid = $(this).data('pageid');
+	$textid = $(this).data('textid'); 
+
+	if(!$button.hasClass('active'))
+	{
+	$.ajax({
+		type: "POST",
+		url: "/page/"+$pageid+"/attach/"+$textid,
+		success: function(data){
+			$button.addClass('active');
+
+			$.ajax({
+				method: "GET",
+				url: '/text/'+$textid,
+				success: function(data){
+					$('.page_preview').append(data);
+				}
+			})
+		}
+	})	
+	}
+	else{
 		$.ajax({
 			type: "POST",
-			url: "/text",
-			data:{key: $key, text: $text},
+			url: "/page/"+$pageid+"/detach/"+$textid,
 			success: function(data){
-				location.replace('/obchodne-podmienky');
+				$button.removeClass('active');
+
+				$('.text_form[data-textid="'+$textid+'"]').remove();
 			}
 		})	
+	}
 })
 
 $('.copy_to_clipboard_btn').click(function(){
