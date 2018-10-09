@@ -3221,6 +3221,17 @@ body.admin #filterbar.vertical .categories .item {
       -ms-flex: 1;
           flex: 1;
 }
+.sticker_preview_div {
+  border: 1px solid #CCC;
+  width: 250px;
+  height: 220px;
+}
+.sticker_preview_div .sticker {
+  display: inline-block;
+}
+.sticker_preview_div .sticker img {
+  width: 70px;
+}
 #order_steps_wrapper {
   background-color: #EEE;
 }

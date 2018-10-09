@@ -1700,6 +1700,9 @@ $('.sticker_delete_btn').click(function(){
   }).modal('show');
 })
 
+$('.sticker_preview_div .sticker').draggable({ 
+	containment: "parent" 
+});
 
 
 $('.admin_method_list i.edit').click(function(){
