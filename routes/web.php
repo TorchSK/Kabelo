@@ -35,12 +35,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/eshop/new', 'AdminController@new')->name('admin.eshop.new');
 	Route::get('/eshop/sale', 'AdminController@sale')->name('admin.eshop.sale');
 	Route::get('/eshop/inactive', 'AdminController@inactive')->name('admin.eshop.inactive');
+	Route::get('/eshop/stickers', 'AdminController@eshopStickers')->name('admin.eshop.stickers');
 
 	Route::get('/orders/', 'AdminController@manageOrders')->name('admin.orders');
 	Route::get('/import/', 'AdminController@import')->name('admin.import');
 	Route::post('/import/', 'AdminController@postImport')->name('admin.postImport');
+
 	Route::get('/files/', 'AdminController@files')->name('admin.files.files');
 	Route::get('/catalogues/', 'AdminController@catalogues')->name('admin.files.catalogues');
+	Route::get('/stickers/', 'AdminController@stickers')->name('admin.files.stickers');
 
 	Route::get('/params', 'AdminController@params')->name('admin.params.index');
 
@@ -112,6 +115,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/page/{url}', 'AdminController@pageEdit')->name('admin.pages.pageEdit');
 	Route::get('/text/{url}', 'AdminController@textEdit')->name('admin.pages.textEdit');
 	
+	Route::get('/sticker/{url}', 'AdminController@stickerEdit')->name('admin.files.stickerEdit');
 
 
 	Route::put('/page/setting/', 'SettingController@pageUpdate')->name('admin.setting.pageUpdate');
@@ -216,6 +220,9 @@ Route::post('{type}/upload', 'ProductController@upload');
 //Files
 Route::resource('file', 'FileController');
 Route::post('catalogue/changeImage', 'FileController@changeCatalogueImage');
+
+//Stickers
+Route::resource('sticker', 'StickerController');
 
 // Settings
 Route::get('settings/account', 'UserController@settings');

@@ -28,6 +28,7 @@
       <a href="{{route('admin.eshop.new')}}" class="item @if(Route::currentRouteName()=='admin.eshop.new') active @endif">Novinky</a>
       <a href="{{route('admin.eshop.sale')}}" class="item @if(Route::currentRouteName()=='admin.eshop.sale') active @endif">Zľavy</a>
       <a href="{{route('admin.eshop.inactive')}}" class="item @if(Route::currentRouteName()=='admin.eshop.inactive') active @endif">Neaktívne</a>
+      <a href="{{route('admin.eshop.stickers')}}" class="item @if(Route::currentRouteName()=='admin.eshop.stickers') active @endif">Stickers</a>
       <a href="{{route('admin.eshop.xmlupdate')}}" class="item @if(Route::currentRouteName()=='admin.eshop.xmlupdate') active @endif">Aktualizácia z XML</a>
 
     </div>
@@ -89,6 +90,7 @@
     <div class="menu content @if(strpos(Route::currentRouteName(),'admin.files')!==false) active @endif">
       <a href="{{route('admin.files.files')}}" class="item @if(Route::currentRouteName()=='admin.files.files') active @endif">Súbory</a>
       <a href="{{route('admin.files.catalogues')}}" class="item @if(Route::currentRouteName()=='admin.files.catalogues') active @endif">Katalógy</a>
+      <a href="{{route('admin.files.stickers')}}" class="item @if(Route::currentRouteName()=='admin.files.stickers') active @endif">Stickers</a>
     </div>
   </div>
 

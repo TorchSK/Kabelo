@@ -9,7 +9,7 @@
 			<div class="stretch"></div>
 			<div class="actions">
 				<a href="{{route('admin.pages.textEdit', ['id' => $text->id])}}" class="ui mini green icon button"><i class="search icon"></i></a>
-				<div class="ui mini red icon button page_delete_btn"><i class="delete icon"></i></div>
+				<div class="ui mini red icon button text_delete_btn"><i class="delete icon"></i></div>
 			</div>
 		</li>
 	@endforeach

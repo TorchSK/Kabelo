@@ -16,6 +16,7 @@ use App\PriceLevel;
 use App\File;
 use App\Page;
 use App\Text;
+use App\Sticker;
 
 
 use Auth;
@@ -642,6 +643,25 @@ class AdminController extends Controller
         return view('admin.files.catalogues', $data);
     }
 
+    public function eshopStickers()
+    {
+        $data = [
+            'stickers' => Sticker::all()
+        ];
+
+        return view('admin.eshop.stickers', $data);
+    }
+
+    public function stickers()
+    {
+        $data = [
+            'stickers' => Sticker::all()
+        ];
+
+        return view('admin.files.stickers', $data);
+    }
+
+
 
     public function category($category, Request $request)
     {
@@ -823,6 +843,15 @@ class AdminController extends Controller
         ];
 
         return view('admin.texts.edit', $data);
+    }
+
+    public function stickerEdit($id)
+    {
+        $data = [
+         'sticker' => Sticker::find($id)
+        ];
+
+        return view('admin.stickers.edit', $data);
     }
 
     public function import()
