@@ -639,7 +639,7 @@ class AdminController extends Controller
             'files' => File::where('type','catalogue')->get()
         ];
 
-        return view('admin.files.files', $data);
+        return view('admin.files.catalogues', $data);
     }
 
 

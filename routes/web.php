@@ -215,6 +215,7 @@ Route::post('{type}/upload', 'ProductController@upload');
 
 //Files
 Route::resource('file', 'FileController');
+Route::post('catalogue/changeImage', 'FileController@changeCatalogueImage');
 
 // Settings
 Route::get('settings/account', 'UserController@settings');

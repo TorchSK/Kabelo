@@ -3549,6 +3549,41 @@ $('#xml_dropzone').dropzone({
     }
 });
 
+
+$('#catalogue_dropzone').dropzone({
+	clickable: '.catalogue_upload_btn',
+	success: function(file, response){
+        location.reload();
+    }
+});
+
+$('.catalogue_image_dropzone').dropzone({
+	clickable: '.catalogue_image_btn',
+	success: function(file, response){
+        location.reload();
+    }
+});
+
+$('.catalogue_path_btn').click(function(){
+	$('#catalogue_url_input').css('display','flex');
+	$('.catalogue_ok_btn').css('display','inline-block');
+	$('.catalogue_upload_btn').hide();
+	$('.catalogue_path_btn').hide();
+})
+
+$('.catalogue_ok_btn').click(function(){
+	$path  = $('#catalogue_url_input input').val();
+	$.ajax({
+		type: "POST",
+		url: "/file",
+		data: {type: 'catalogue', path: $path, do_not_upload: true},
+		success: function(data){
+			location.reload();
+		}
+	})	
+})
+
+
 $('#xml_update_check_btn').click(function(){
 	$url =  $('#xml_url_input').val();
 	$external = $('#xml_url_input').data('external');

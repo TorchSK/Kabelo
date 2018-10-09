@@ -9,6 +9,7 @@ use App\Product;
 
 use File;
 use App\File as FileDB;
+use Image;
 
 class FileController extends Controller
 {
@@ -49,6 +50,52 @@ class FileController extends Controller
 
     public function store(Request $request)
     {
+        if(!$request->has('do_not_upload'))
+        {
+            $file = $request->file('file');
+            $destinationPath = 'uploads/files';
+            $extension = $file->getClientOriginalExtension(); 
+            $filename = $file->getClientOriginalName();
+            $fullpath = $destinationPath.'/'.$filename;
+
+            $success = $file->move($destinationPath, $filename);
+
+
+            if ($success)
+            {
+
+                if(FileDB::wherePath($fullpath)->count() == 0)
+                {
+                    $fileDB = new FileDB();
+                    $fileDB->type = "system";
+                    $fileDB->path = $fullpath;
+
+                    $fileDB->save();
+
+                }
+
+            }
+
+            return $filename;
+
+        }
+        else
+        {
+            $fileDB = new FileDB();
+            $fileDB->type = $request->get('type');
+            $fileDB->path = $request->get('path');;
+
+            $fileDB->save();
+
+            return $fileDB;
+        }
+
+    }
+
+    public function changeCatalogueImage(Request $request)
+    {
+        $catalogue = FileDB::find($request->get('catalogue_id'));
+        
         $file = $request->file('file');
         $destinationPath = 'uploads/files';
         $extension = $file->getClientOriginalExtension(); 
@@ -59,19 +106,27 @@ class FileController extends Controller
 
         if ($success)
         {
-            if(FileDB::wherePath($fullpath)->count() == 0)
-            {
-                $fileDB = new FileDB();
-                $fileDB->type = "system";
-                $fileDB->path = $fullpath;
+            $image = Image::make($destinationPath.'/'.$filename);
 
-                $fileDB->save();
+            $image->resize(100, null , function ($constraint) {
+                    $constraint->aspectRatio();
+            });
+            
+            $image->save($destinationPath.'/'.$filename);
 
-            }
+            $thumb = new FileDB();
+            $thumb->type = "thumb";
+            $thumb->path = $fullpath;
+
+            $thumb->save();
+            $catalogue->thumb_id = $thumb->id;
+            $catalogue->save();
 
         }
 
-        return $filename;
+        return 1;
+
+
     }
 
     public function destroy($id)

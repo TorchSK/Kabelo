@@ -3186,6 +3186,13 @@ body.admin #filterbar.vertical .categories .item {
   background-color: #21BA45;
   color: #FFF;
 }
+#catalogue_url_input {
+  display: none;
+  margin-bottom: 25px;
+}
+.ui.button.catalogue_ok_btn {
+  display: none;
+}
 #order_steps_wrapper {
   background-color: #EEE;
 }

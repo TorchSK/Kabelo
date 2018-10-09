@@ -14,6 +14,12 @@ class File extends Model {
  		return $this->belongsTo('App\Product');
  	}
 
+    public function thumbnail() 
+    {
+    return $this->belongsTo('App\File','thumb_id');
+  }
+
+
     public function getThumbAttribute()
     {
 		  $array = explode('/', $this->path);
