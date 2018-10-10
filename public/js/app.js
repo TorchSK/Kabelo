@@ -1700,9 +1700,54 @@ $('.sticker_delete_btn').click(function(){
   }).modal('show');
 })
 
+var sticker_left, sticker_top;
+var sticker_width, sticker_height;
+
+
 $('.sticker_preview_div .sticker').draggable({ 
-	containment: "parent" 
+	containment: "parent",
+	create: function(){
+		stikcer_left = 0;
+		sticker_right = 0;
+	},
+	stop: function(){
+
+		sticker_left = $(this).position().left;
+        sticker_top = $(this).position().top;
+
+	}
+
 });
+
+$('.sticker_preview_div .sticker').resizable({ 
+	containment: "parent",
+	create: function(){
+		sticker_width = $(this).width();
+		sticker_height = $(this).height();
+	},
+	stop: function(){		
+		sticker_width = $(this).width();
+        sticker_height = $(this).height();
+	}
+
+});
+
+$('#edit_sticker_submit').click(function(){
+
+	$id = $(this).data('id');
+	$sticker_product_row = $('#sticker_product_row').checkbox('is checked');
+	$sticker_product_detail = $('#sticker_product_detail').checkbox('is checked');;
+
+	$.ajax({
+		url: '/sticker/'+$id,
+		method: "PUT",
+		data: {left: sticker_left, top: sticker_top, width: sticker_width, height: sticker_height, product_row: $sticker_product_row, product_detail: $sticker_product_detail},
+		success: function(){
+			location.reload();
+		}
+
+	})
+})
 
 
 $('.admin_method_list i.edit').click(function(){
@@ -2753,15 +2798,6 @@ if ($('body').attr('id')=="body_bulk")
 	});
 
 
-
-	$('#bulk_filter_category').dropdown({
-	  maxSelections: 10,
-	  fullTextSearch: true,
-	  onAdd: function(addedValue, addedText, $addedChoice){
-	   
-	  }
-	})
-
 	$('#bulk_change_category_dropdown').dropdown({
 	  maxSelections: 10,
 	  fullTextSearch: true,
@@ -2840,6 +2876,93 @@ if ($('body').attr('id')=="body_bulk")
 
 }
 
+$('#bulk_filter_category').dropdown({
+  maxSelections: 10,
+  fullTextSearch: true,
+  onAdd: function(addedValue, addedText, $addedChoice){
+   
+  }
+})
+
+$('#product_sticker_load_btn').click(function(){
+
+	$filters = {
+		"categories" : $('.filter_item.category').dropdown('get value')
+	}
+	$button = $(this);
+	$button.addClass('loading')
+
+	$.ajax({
+		url: '/api/products/filter', 
+		method: 'GET', 
+		data: $filters,
+		success: function(data) {
+			$('.product_list .list').html('');
+			$(data).each(function(i,e){
+
+				$stickers = [];
+				
+
+				if (e.stickers.length != 0)
+				{
+					$(e.stickers).each(function(i,e){
+						$stickers.push('<img src='+e.path+'/>');
+					})
+				}
+
+				$html = "<div class='item' data-id='"+e.id+"'>"
+				$html += "<div class='ui checkbox'><input type='checkbox'><label></label></div>";
+				$html += "<div class='name'>"+e.name+"</div>";
+				$html += "<div class='name'>"+$stickers+"</div>";
+				$html += "</div>"
+				$('.product_list .list').append($html);
+
+				$('.product_list .list .checkbox').checkbox({
+				    onChecked: function(){
+				      $item = $(this).closest('.item');
+				      $item.addClass('selected');
+
+				    },
+				    onUnchecked: function(){
+				      $item = $(this).closest('.item');
+				      $item.removeClass('selected');
+				    }
+				})
+
+			})
+			$button.removeClass('loading');
+	}
+	})
+})
+
+$('.sticker_list .sticker').click(function(){
+	$(this).toggleClass('selected');
+})
+
+
+$('#product_sticker_save_btn').click(function(){
+	$data = {};
+	$data['products'] = [];
+	$data['stickers'] = [];
+
+	$('.sticker_list .sticker.selected').each(function(i,e){
+		$data['stickers'][i] = $(e).data('id');
+	})
+
+	$('.product_list .list .item.selected').each(function(i,e){
+		$data['products'][i] = $(e).data('id');
+	})
+
+	$.ajax({
+		url: '/admin/stickers/attach', 
+		method: 'POST', 
+		data: $data,
+		success: function(data) {
+			
+		}
+	})
+
+})
 
 if($('body').attr('id')=='cartproducts')
 {

@@ -23,28 +23,16 @@ class StickerController extends Controller
 
     public function update($id, Request $request)
     {
-        $file = ProductFile::find($id);
-        $product = $file->product;
+        $sticker = Sticker::find($id);
 
         foreach ($request->except('_token') as $key => $value)
         {
-            $file->$key = $value;
-
-            if ($key == 'primary')
-            {
-                $otherFiles = $product->images->whereNotIn('id', [$file->id]);
-
-                foreach ($otherFiles as $otherFile)
-                {
-                    $otherFile->primary = 0;
-                    $otherFile->save();
-                }  
-            }
+            $sticker->$key = $value;
         }
 
-        $file->save();
+        $sticker->save();
 
-        return $file;
+        return $sticker;
     }
 
     public function store(Request $request)

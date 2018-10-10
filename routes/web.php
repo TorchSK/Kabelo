@@ -116,6 +116,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/text/{url}', 'AdminController@textEdit')->name('admin.pages.textEdit');
 	
 	Route::get('/sticker/{url}', 'AdminController@stickerEdit')->name('admin.files.stickerEdit');
+	Route::post('/stickers/attach/', 'AdminController@stickerAttach')->name('admin.files.stickerAttach');
 
 
 	Route::put('/page/setting/', 'SettingController@pageUpdate')->name('admin.setting.pageUpdate');

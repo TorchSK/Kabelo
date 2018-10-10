@@ -17,4 +17,29 @@ class Sticker extends Model {
  		return $this->belongsTo('App\User');
  	}
 
+
+	public function setProductRowAttribute($value)
+  	{
+      if ($value == 'true' || $value == 1)
+      {
+        $this->attributes['product_row'] = 1;
+      }
+      else
+      {
+        $this->attributes['product_row'] = 0;
+      }
+  	}
+
+  	public function setProductDetailAttribute($value)
+  	{
+      if ($value == 'true' || $value == 1)
+      {
+        $this->attributes['product_detail'] = 1;
+      }
+      else
+      {
+        $this->attributes['product_detail'] = 0;
+      }
+  	}
+
 }

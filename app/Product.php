@@ -47,6 +47,13 @@ class Product extends Model {
     return $this->hasMany('App\File');
   }
 
+
+  public function stickers() 
+    {
+    return $this->belongsToMany('App\Sticker');
+  }
+
+
  	public function image() 
   	{
  		return $this->hasOne('App\File')->where('type','image')->where('primary',1);
