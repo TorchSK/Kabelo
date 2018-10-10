@@ -106,7 +106,7 @@ class CategoryController extends Controller
         $category->name = $request->get('name');
         $category->url = $request->get('url');
         $category->desc = $request->get('desc');
-        $category->keywords = $request->get('keyword');
+        $category->keywords = $request->get('keywords');
         $category->title = $request->get('title');
 
         $category->save();
