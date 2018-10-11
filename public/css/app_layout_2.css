@@ -4892,7 +4892,7 @@ canvas {
   max-width: 800px;
   padding: 50px;
 }
-#text_save_btn {
+.ui.button.text_save_btn {
   margin-top: 25px;
 }
 #page_wrapper {

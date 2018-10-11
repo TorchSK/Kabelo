@@ -38,6 +38,7 @@ class TextController extends Controller
     public function update($id, Request $request)
     {   
         $text = Text::find($id);
+        $text->name = $request->get('name');
         $text->text = $request->get('mce_0');
         $text->save();
         

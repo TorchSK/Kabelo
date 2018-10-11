@@ -3419,7 +3419,7 @@ tinymce.init({
   	toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
   });
 
-$('#text_save_btn').click(function(){
+$('.text_save_btn').click(function(){
 	$('.text_form').submit();	
 })
 
