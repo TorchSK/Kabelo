@@ -2884,6 +2884,19 @@ $('#bulk_filter_category').dropdown({
   }
 })
 
+$('#cookies_consent_btn').click(function(){
+	$(document).unbind('ajaxStart');
+  $('#cookies_msg').hide();
+  $.ajax({
+    method: "POST",
+    url: '/cookies',
+    data: {name: 'cookies_consent',value: 1, expiry: 9999999},
+    success: function(){
+    	$(document).bind('ajaxStart');
+    }
+  })
+});
+
 $('#product_sticker_load_btn').click(function(){
 
 	$filters = {
