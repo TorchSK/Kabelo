@@ -49,13 +49,8 @@ class PageController extends Controller
     {   
         $page = new Page();
         $page->name = $request->get('name');
-        $page->url = $request->get('url');
-        $page->text_key = str_slug($request->get('url'));
+        $page->url = str_slug($request->get('url'));
         $page->save();
-
-        $text = new Text();
-        $text->key = $page->text_key;
-        $text->save();
 
         return 1;
     }   
