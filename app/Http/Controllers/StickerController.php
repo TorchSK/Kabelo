@@ -69,7 +69,8 @@ class StickerController extends Controller
         else
         {
             $sticker = new Sticker();
-            $sticker->path = $request->get('path');;
+            $sticker->path = $request->get('path');
+            $sticker->width = 70;
             $sticker->save();
 
             return $sticker;

@@ -1667,6 +1667,14 @@ a:hover {
 .item.product .labels .label {
   display: inline-block;
 }
+.item.product .sticker {
+  position: absolute;
+  z-index: 101;
+}
+.item.product .sticker img {
+  max-height: 100%;
+  max-width: 100%;
+}
 #category_path_wrapper {
   margin-bottom: 1px;
   font-size: 2em;

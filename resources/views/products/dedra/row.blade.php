@@ -5,6 +5,14 @@
 
 	<div class="image_div ct" style="height: 220px;">
 
+		@if($product->stickers->count() > 0)
+	      @foreach($product->stickers as $sticker)
+	        <div class="sticker" style="left: {{$sticker->left}}px; top: {{$sticker->top}}px; width: {{$sticker->width}}px; height: {{$sticker->height}}px;">
+	          <img src="{{url($sticker->path)}}" >
+	        </div>
+	      @endforeach
+	     @endif
+
 	 <div class="labels">
 		@if ($product->sale || (Auth::check() && Auth::user()->discount > 0))
 		<div class="ui green label">-
