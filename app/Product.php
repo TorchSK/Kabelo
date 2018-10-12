@@ -47,11 +47,22 @@ class Product extends Model {
     return $this->hasMany('App\File');
   }
 
-
   public function stickers() 
     {
     return $this->belongsToMany('App\Sticker');
   }
+
+
+  public function rowStickers() 
+    {
+    return $this->belongsToMany('App\Sticker')->where('product_row',1);
+  }
+
+    public function detailStickers() 
+    {
+    return $this->belongsToMany('App\Sticker')->where('product_detail',1);
+    }
+
 
 
  	public function image() 

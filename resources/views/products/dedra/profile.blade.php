@@ -135,9 +135,9 @@
     <div class="ui header">Detailný popis</div>
      <p style="text-align: justify;">{{trim($product->desc)}}</p>
     
-    @if($product->stickers->count() > 0)
+    @if($product->detailStickers->count() > 0)
      <div class="product_stickers">
-      @foreach($product->stickers as $sticker)
+      @foreach($product->detailStickers as $sticker)
         <div class="sticker">
           <img src="{{url($sticker->path)}}" >
         </div>

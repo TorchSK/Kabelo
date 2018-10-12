@@ -10,8 +10,24 @@
     </div>
     @endif
     
+    <div class="text_save_btn ui green button" data-id="{{$text->id}}">Ulož</div>
 
-	<div class="richtext @if(isset($editable) && $editable==true) editable @endif">
+    <div class="text_files_list">
+    	@foreach(App\File::where('type','system')->get() as $file)
+    	<div class="item" data-content="{{$file->path}}">
+    		<div class="image">
+    			@if(pathinfo($file->path,PATHINFO_EXTENSION)=='jpg')
+    				<img src="{{url($file->path)}}" />
+    			@else
+    				<i class="file outline big icon"></i>
+    			@endif
+    		</div>
+    		<div class="name">{{basename($file->path)}}</div>
+    	</div>
+    	@endforeach
+    </div>
+
+	<div class="richtext @if(isset($editable) && $editable==true) editable @endif" id="mce">
 		{!! $text->text !!}
 	</div>
 </form>

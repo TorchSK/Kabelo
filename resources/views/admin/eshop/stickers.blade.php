@@ -26,10 +26,11 @@
 					    @endforeach
 			    </select>
 
-			    		<div class="ui checkbox" id="filters_stickers_active_checkbox">
-			  <input type="checkbox">
-			  <label>Produkty so stickerom</label>
-			</div>
+				<div class="ui checkbox" id="filters_stickers_active_checkbox">
+				  <input type="checkbox">
+				  <label>Produkty so stickerom</label>
+				</div>
+
 			</form>
 
 	
