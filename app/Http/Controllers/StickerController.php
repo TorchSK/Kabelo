@@ -50,20 +50,13 @@ class StickerController extends Controller
 
             if ($success)
             {
-
-                if(FileDB::wherePath($fullpath)->count() == 0)
-                {
-                    $fileDB = new FileDB();
-                    $fileDB->type = "system";
-                    $fileDB->path = $fullpath;
-
-                    $fileDB->save();
-
-                }
-
+                $sticker = new Sticker();
+                $sticker->path = $fullpath;
+                $sticker->width = 70;
+                $sticker->save();
             }
 
-            return $filename;
+            return $sticker;
 
         }
         else
