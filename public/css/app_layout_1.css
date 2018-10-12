@@ -2167,6 +2167,7 @@ a:hover {
 #product_detail_wrapper .product_stickers .sticker {
   width: 150px;
   margin-right: 25px;
+  display: inline-block;
 }
 #product_detail_wrapper .product_stickers .sticker img {
   max-height: 100%;
