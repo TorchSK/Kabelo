@@ -8,9 +8,9 @@
         <div class="ui label">Názov</div>
         <input type="text" name="name" value="{{$text->name}}" />
     </div>
-    @endif
     
     <div class="text_save_btn ui green button" data-id="{{$text->id}}">Ulož</div>
+    @endif
 
     <div class="text_files_list">
     	@foreach(App\File::where('type','system')->get() as $file)
