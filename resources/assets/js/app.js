@@ -2902,6 +2902,14 @@ $('#product_sticker_load_btn').click(function(){
 	$filters = {
 		"categories" : $('.filter_item.category').dropdown('get value')
 	}
+
+	if ($('#filters_stickers_active_checkbox').checkbox('is checked'))
+	{
+		$filters['with_stickers_only'] = 1;
+
+	}
+	
+
 	$button = $(this);
 	$button.addClass('loading')
 
@@ -2919,14 +2927,14 @@ $('#product_sticker_load_btn').click(function(){
 				if (e.stickers.length != 0)
 				{
 					$(e.stickers).each(function(i,e){
-						$stickers.push('<img src='+e.path+'/>');
+						$stickers.push('<img src='+e.path+'>');
 					})
 				}
 
 				$html = "<div class='item' data-id='"+e.id+"'>"
 				$html += "<div class='ui checkbox'><input type='checkbox'><label></label></div>";
 				$html += "<div class='name'>"+e.name+"</div>";
-				$html += "<div class='name'>"+$stickers+"</div>";
+				$html += "<div class='active_stickers'>"+$stickers+"</div>";
 				$html += "</div>"
 				$('.product_list .list').append($html);
 

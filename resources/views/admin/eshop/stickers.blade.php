@@ -25,7 +25,14 @@
 					    </option>
 					    @endforeach
 			    </select>
+
+			    		<div class="ui checkbox" id="filters_stickers_active_checkbox">
+			  <input type="checkbox">
+			  <label>Produkty so stickerom</label>
+			</div>
 			</form>
+
+	
 
 		    <div id="product_sticker_load_btn" class="ui blue button">Filtruj</div>
 		    <div id="product_sticker_save_btn" class="ui green button">Pridaj sticker</div>

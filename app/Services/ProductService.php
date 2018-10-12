@@ -45,7 +45,10 @@ class ProductService implements ProductServiceContract {
             
             }
 
-
+            if ($request->has('with_stickers_only'))
+            {
+                $query->whereHas('stickers');
+            }
         });
 
         return $products->with(['categories','image','stickers'])->get();

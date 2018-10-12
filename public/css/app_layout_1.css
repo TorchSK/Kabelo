@@ -2156,6 +2156,14 @@ a:hover {
     font-size: 1em;
   }
 }
+#product_detail_wrapper .product_stickers .sticker {
+  width: 150px;
+  margin-right: 25px;
+}
+#product_detail_wrapper .product_stickers .sticker img {
+  max-height: 100%;
+  max-width: 100%;
+}
 #product_params_wrapper {
   background-color: #EEE;
 }
@@ -3276,13 +3284,26 @@ body.admin #filterbar.vertical .categories .item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 #admin_product_sticker_wrapper .product_list .list {
   max-height: 65vh;
   overflow-y: scroll;
 }
+#admin_product_sticker_wrapper .product_list .list .active_stickers {
+  margin-left: 25px;
+}
+#admin_product_sticker_wrapper .product_list .list .active_stickers img {
+  width: 50px;
+  margin-right: 5px;
+}
 #admin_product_sticker_wrapper #product_sticker_load_btn {
   margin: 25px 0;
+}
+#admin_product_sticker_wrapper #filters_stickers_active_checkbox {
+  margin-top: 15px;
 }
 #order_steps_wrapper {
   background-color: #EEE;
