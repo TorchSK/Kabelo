@@ -3430,8 +3430,8 @@ if($('body').attr('id') == 'cart_shipping')
 
 
 tinymce.init({
-	selector: '#mce',
-	auto_focus : "mce",
+	selector: '.richtext.editable',
+	auto_focus : "mce_0",
     menubar: false,
 	plugins: [
 	    'advlist autolink lists link image charmap print preview anchor textcolor',
