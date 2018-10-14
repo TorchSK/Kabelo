@@ -812,6 +812,12 @@ class AdminController extends Controller
         return view('admin.settings.invoice');
     }
 
+
+    public function site()
+    {
+        return view('admin.settings.site');
+    }
+
     public function pages()
     {
         $data['pages'] = Page::orderBy('order')->get();

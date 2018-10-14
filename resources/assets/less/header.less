@@ -392,14 +392,24 @@
 	}
 
 	.right{
-		display: inline-block;
+		display: inline-flex;
 		width: 230px;
+		align-items: center;
+		height: 100%;
 
-		.ui.red.button{
+		.ui.button{
 			display: inline-block;
 			position: absolute;
 			top: 40%;
-			left: 64%;
+			left: 62%;
+			
+			&.brown{
+				left: 62%;
+			}
+
+			&.red{
+				left: 64%;
+			}
 		}
 	}
 

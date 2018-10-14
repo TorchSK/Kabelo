@@ -1413,13 +1413,25 @@ a:hover {
   border-right: 1px dashed #CCC;
 }
 #auth_popup .right {
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 230px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
 }
-#auth_popup .right .ui.red.button {
+#auth_popup .right .ui.button {
   display: inline-block;
   position: absolute;
   top: 40%;
+  left: 62%;
+}
+#auth_popup .right .ui.button.brown {
+  left: 62%;
+}
+#auth_popup .right .ui.button.red {
   left: 64%;
 }
 #auth_popup .row:not(.button) {
@@ -3937,9 +3949,6 @@ body.admin #filterbar.vertical .categories .item {
 #admin_invoice_settings_div {
   margin-top: 25px;
 }
-.short {
-  max-width: 700px;
-}
 .short .setting {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3953,6 +3962,9 @@ body.admin #filterbar.vertical .categories .item {
 }
 .short .setting > .label {
   margin-right: 15px;
+  min-width: 250px;
+}
+.short .setting > .ui.input {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -4876,8 +4888,29 @@ h1.header {
 #cover_search_url input {
   width: 500px;
 }
-.tablesorter-header-inner {
-  display: inline-block;
+#login_wrapper,
+#register_wrapper,
+#reset_wrapper,
+#email_wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+#login_wrapper .container,
+#register_wrapper .container,
+#reset_wrapper .container,
+#email_wrapper .container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-color: #FAFAFA;
 }
 .chart_days_btn {
   cursor: pointer;

@@ -12,9 +12,9 @@
     
     <title>
     @if(isset($title))
-    {{$title}} | {{App\Setting::firstOrCreate(['name'=>'company_name'])->value}}.sk
+    {{$title}} | {{App\Setting::firstOrCreate(['name'=>'home_title'])->value}}.sk
     @else
-    {{App\Setting::firstOrCreate(['name'=>'company_name'])->value}}.sk
+    {{App\Setting::firstOrCreate(['name'=>'home_title'])->value}}.sk
     @endif
     </title>
 

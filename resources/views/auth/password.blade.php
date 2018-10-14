@@ -3,8 +3,8 @@
 
 @include('includes.header')
 
-<div class="pad wrapper">
-<div class="container ct">
+<div id="password_wrapper" class="wrapper">
+<div class="container lander ct">
 
     <h1 class="ui header">Reset password</h1>
     

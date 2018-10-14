@@ -78,6 +78,8 @@
       <a href="{{route('admin.settings.eshop')}}" class="item @if(Route::currentRouteName()=='admin.settings.eshop') active @endif">Eshop</a>
       <a href="{{route('admin.settings.delivery')}}" class="item @if(Route::currentRouteName()=='admin.settings.delivery') active @endif">Doprava</a>
       <a href="{{route('admin.settings.invoice')}}" class="item @if(Route::currentRouteName()=='admin.settings.invoice') active @endif">Fakturačné údaje</a>
+      <a href="{{route('admin.settings.site')}}" class="item @if(Route::currentRouteName()=='admin.settings.site') active @endif">Web</a>
+
     </div>
 
   </div>

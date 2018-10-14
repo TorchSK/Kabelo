@@ -106,20 +106,7 @@
 
           <div class="right" id="register_div">
 
-
-            <form action="/register" class="register_form" method="POST">
-              <input name="_token" type="hidden" value="{{csrf_token()}}">
-
-          <div class="ui fluid input">
-            <input type="text" name="email" placeholder="email">
-          </div>
-
-          <div class="ui fluid input" id="register_password_input">
-            <input type="text" name="password" placeholder="heslo">
-          </div>
-
-          <button type="submit" class="ui brown fluid button" id="register_btn">Registrovať</button>
-        </form>
+           <a href="/register"  class="ui brown button" id="register_btn">Registrovať</a>
         </div>
 
         @endif

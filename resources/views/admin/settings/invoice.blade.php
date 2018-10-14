@@ -21,13 +21,6 @@
 		</div>	
 	</div>
 
-	<div class="item setting">
-		<div class="label">Text1</div>
-		<div class="ui input">
-		  <input type="text" name="text1" value="{{App\Setting::firstOrCreate(['name'=>'text1'])->value}}">
-		</div>	
-	</div>
-
 	<div class="ui header">Kontaktná adresa</div>
 
 

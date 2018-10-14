@@ -2,8 +2,8 @@
 @section('content')
 
 
-<div class="flex_content content">
-<div class="lander ct">
+<div id="email_wrapper" class="wrapper">
+<div class="lander container ct">
 
 @include ('utils/errors')
 

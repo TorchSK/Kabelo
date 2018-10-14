@@ -2,9 +2,9 @@
 @section('content')
 
 
-<div class="flex_content content">
+<div id="login_wrapper" class="wrapper">
 
-<div class="lander ct">
+<div class="lander container ct">
 @include ('utils/errors')
 <form action="login" method="POST" autocomplete="true" class="ui form small_form login_form">
               <input name="_token" type="hidden" value="{{csrf_token()}}">

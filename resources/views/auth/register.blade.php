@@ -2,14 +2,11 @@
 @section('content')
 
 
-<div class="pad wrapper ct">
+<div id="register_wrapper" class="wrapper">
 
-<div class="container ct">
-
-
+<div class="lander container ct">
 
 
-<div class="lander ct">
 @include ('utils/errors')
 <form  action="login" method="POST" autocomplete="true" class="ui form small_form register_form">
               <input name="_token" type="hidden" value="{{csrf_token()}}">
@@ -35,7 +32,7 @@
 
 </form>
 
-</div>
+</>
 
 </div>
 </div>

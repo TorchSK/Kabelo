@@ -2,8 +2,8 @@
 @section('content')
 
 
-<div class="flex_content content">
-    <div class="lander ct">
+<div id="reset_wrapper" class="wrapper">
+    <div class="container lander ct">
 
     @include ('utils/errors')
 
