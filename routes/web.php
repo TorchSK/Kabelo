@@ -61,8 +61,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/import/json', 'AdminController@importJson')->name('admin.importJson');
 	Route::post('/import/json', 'AdminController@postImportJson')->name('admin.postImportJson');
 
-	Route::get('/category/{category}', 'AdminController@categoryProducts')->name('admin.category');
-
 	Route::get('/settings/banners', 'AdminController@banners')->name('admin.settings.banners');
 	Route::get('/settings/eshop', 'AdminController@eshop')->name('admin.settings.eshop');
 	Route::get('/settings/invoice', 'AdminController@invoice')->name('admin.settings.invoice');

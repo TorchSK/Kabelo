@@ -126,7 +126,7 @@ class ProductController extends Controller
         $product->save();
 
 
-        return redirect('admin/category/'.$product->categories->first()->url);
+        return redirect()->route('admin.eshop.products');
     }
 
     
