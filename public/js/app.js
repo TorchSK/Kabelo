@@ -2776,7 +2776,7 @@ if ($('body').attr('id')=="body_bulk")
 	    
 	    if(value)
 	    {
-	    	if(value.includes('http'))
+	    	if(value.indexOf('http') !== -1)
 	    	{
 				$(td).html('<div class="image"><img class="lazy" data-src="'+value.path+'" /></div>');
 			}
