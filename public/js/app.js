@@ -2699,6 +2699,8 @@ if ($('body').attr('id')=="body_bulk")
 	  minSpareRows: 1,
 	  stretchH: 'all',
 	  columnSorting: true,
+	    rowHeights: 60 ,
+
 	  outsideClickDeselects : false,
 	  afterChange: function(change, source){
 	  	if(source=='edit'){
