@@ -2776,8 +2776,16 @@ if ($('body').attr('id')=="body_bulk")
 	    
 	    if(value)
 	    {
-			$(td).html('<div class="image"><img class="lazy" data-src="'+value.path+'" /></div>');
+	    	if(value.includes('http'))
+	    	{
+				$(td).html('<div class="image"><img class="lazy" data-src="'+value.path+'" /></div>');
+			}
+			else
+			{
+				$(td).html('<div class="image"><img class="lazy" data-src="/'+value.path+'" /></div>');
+			}
 		}
+
 		return td;
 	}
 
