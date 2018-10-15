@@ -2688,7 +2688,7 @@ if ($('body').attr('id')=="body_bulk")
 	hot = new Handsontable(container, {
 	 columns: [
 	 	{data: "url", renderer: detailRenderer},
-	 	{data: "image.path", renderer: imageRenderer},
+	 	{data: "image", renderer: imageRenderer},
 	    {data: "code"},
 	    {data: "name"},
 	    {data: "categories", renderer: categoryRenderer}
@@ -2773,8 +2773,11 @@ if ($('body').attr('id')=="body_bulk")
 		$(function() {
 	        $('.lazy').Lazy();
 	    });
-	           
-		$(td).html('<div class="image"><img class="lazy" data-src="'+value+'" /></div>');
+	    
+	    if(value)
+	    {
+			$(td).html('<div class="image"><img class="lazy" data-src="'+value.path+'" /></div>');
+		}
 		return td;
 	}
 
