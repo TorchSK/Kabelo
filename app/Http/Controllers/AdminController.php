@@ -11,7 +11,7 @@ use App\Cover;
 use App\Setting;
 use App\Color;
 use App\Parameter;
-use App\File as ProductFile;
+use App\File;
 use App\PriceLevel;
 use App\Page;
 use App\Text;
@@ -26,7 +26,7 @@ use Cookie;
 use Exception;
 use DB;
 use Response;
-use File;
+use File as Filez;
 
 use App\DeliveryMethod;
 use App\PaymentMethod;
@@ -701,13 +701,13 @@ class AdminController extends Controller
 
         $directory = 'temp';
         
-        $files = File::files($directory);
+        $files = Filez::files($directory);
         
-        if (sizeof(File::files($directory)) > 0)
+        if (sizeof(Filez::files($directory)) > 0)
         {
             foreach ($files as $file)
             {
-                File::delete($file);
+                Filez::delete($file);
             }
         }
 

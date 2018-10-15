@@ -25,8 +25,9 @@
 
 
 <form action="/product/{{$product->id}}" method="POST"  class="admin_wrapper">
-
+  {!! csrf_field()!!}
   <input name="_method" type="hidden" value="PUT">
+  
 
 <div id="product_options_top">
  <div class="container">

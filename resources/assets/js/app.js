@@ -1335,7 +1335,9 @@ $('#admin_add_category_param_btn').click(function(){
 })
 
 $('#product_detail_dropzone').dropzone({
-	
+	params: {
+      '_token': $('meta[name="csrf-token"]').attr('content')
+    }
 });
 
 $('#banner_dropzone').dropzone({
@@ -2753,7 +2755,7 @@ if ($('body').attr('id')=="body_bulk")
 
 	function detailRenderer (instance, td, row, col, prop, value, cellProperties) {
 		$(td).html('<a class="blue icon mini button" href="/p/'+value+'"><i class="search icon"><i></a>');
-		$(td).append('<a class="teal icon mini button" href="/admin/p/edit/'+value+'"><i class="edit icon"><i></a>');
+		$(td).append('<a class="teal icon mini button" href="/admin/eshop/product/'+value+'"><i class="edit icon"><i></a>');
 		return td;
 	}
 
@@ -2776,7 +2778,7 @@ if ($('body').attr('id')=="body_bulk")
 	    
 	    if(value)
 	    {
-	    	if(value.indexOf('http') !== -1)
+	    	if(value.toString().indexOf('http') !== -1)
 	    	{
 				$(td).html('<div class="image"><img class="lazy" data-src="'+value.path+'" /></div>');
 			}

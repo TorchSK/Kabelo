@@ -5,7 +5,7 @@
 @if (Auth::check() && Auth::user()->admin)
 <div id="product_options_wrapper" class="wrapper">
  <div class="container ct">
-  <a href="{{route('admin.product.edit',['url'=>$product->url])}}" class="ui teal button">Edituj produkt</a>
+  <a href="{{route('admin.eshop.product.edit',['product'=>$product->url])}}" class="ui teal button">Edituj produkt</a>
   <a class="ui red button" id="product_detail_delete_btn">Zmaž produkt</a>
 </div>
 </div>
