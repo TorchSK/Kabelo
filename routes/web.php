@@ -278,8 +278,7 @@ elseif($app == 'Dedra')
 
 foreach(App\Page::all() as $page)
 {
-	Route::get('{'.$page->url.'}', 'PageController@profile');
-
+	Route::get($page->url, 'PageController@profile');
 }
 
 Route::get('/{path}', 'CategoryController@products')->where('path','(.*)')->name('category.products');

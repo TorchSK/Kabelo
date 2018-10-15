@@ -37,8 +37,9 @@ class PageController extends Controller
         }
     }
 
-    public function profile($url)
+    public function profile(Request $request)
     {   
+        $url = $request->segment(1);
         $data['page'] = Page::whereUrl($url)->first();
 
         return view('pages.profile',$data);
