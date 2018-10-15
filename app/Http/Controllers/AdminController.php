@@ -13,7 +13,6 @@ use App\Color;
 use App\Parameter;
 use App\File as ProductFile;
 use App\PriceLevel;
-use App\File;
 use App\Page;
 use App\Text;
 use App\Sticker;
@@ -27,6 +26,7 @@ use Cookie;
 use Exception;
 use DB;
 use Response;
+use File;
 
 use App\DeliveryMethod;
 use App\PaymentMethod;
@@ -677,6 +677,42 @@ class AdminController extends Controller
         $request['category'] = $cat->id;
 
         return view('admin.eshop.category', $data);
+    }
+
+    public function productCreate(Request $request)
+    {   
+        $category = Category::find($request->get('category'));
+        
+        $data = [
+           'selectedCategory' => $category
+        ];
+
+        return view('products.create', $data);
+    }
+
+
+    public function productEdit($product)
+    {
+        $product = Product::where('url', $product)->first();
+        
+        $data = [
+           'product' => $product
+        ];
+
+        $directory = 'temp';
+        
+        $files = File::files($directory);
+        
+        if (sizeof(File::files($directory)) > 0)
+        {
+            foreach ($files as $file)
+            {
+                File::delete($file);
+            }
+        }
+
+        return view('products.edit', $data);
+
     }
 
     public function products()

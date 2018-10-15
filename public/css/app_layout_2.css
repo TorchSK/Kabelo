@@ -1834,7 +1834,6 @@ a:hover {
 }
 #product_options_wrapper > .container {
   background-color: #FAFAFA;
-  padding: 20px 0;
 }
 #product_main_wrapper > .container {
   background-color: #FFF;
@@ -2334,9 +2333,6 @@ a:hover {
 }
 #param_template {
   display: none;
-}
-#product_options {
-  padding-top: 50px;
 }
 #product_options_top {
   padding-bottom: 30px;
@@ -3325,6 +3321,12 @@ body.admin #filterbar.vertical .categories .item {
 }
 #admin_product_sticker_wrapper #filters_stickers_active_checkbox {
   margin-top: 15px;
+}
+#create_product_form {
+  width: 100%;
+}
+#create_product_submit {
+  margin-bottom: 25px;
 }
 #order_steps_wrapper {
   background-color: #EEE;

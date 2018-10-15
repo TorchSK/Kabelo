@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-<form action="/product" method="POST" id="create_product_form">
+<form action="/product" method="POST" id="create_product_form" class="admin_wrapper">
 
 <div id="product_options" class="ct">
  <div class="container ct">
@@ -10,8 +10,8 @@
  </div>
 </div>
 
-<div id="product_detail" class="admin_wrapper">
-    <div class="left">
+<div id="product_main_wrapper" class="product_detail flex_row">
+    <div class="images">
         <div class="img">
            <div action="/file/upload" class="dropzone" id="product_detail_dropzone"> 
            	<input name="_token" hidden value="{!! csrf_token() !!}" />
@@ -68,7 +68,7 @@
 		</div>
 
 
-    <div class="right">
+    <div class="info">
     	
     	@if($errors->any())
 		<div class="ui negative message">{{$errors->first()}}</div>
@@ -123,7 +123,7 @@
 	 					@foreach (App\Product::find(Request::get('duplicate'))->categories()->first()->parameters as $param)
 					  		@include('products.paramoptions')
 					  	@endforeach
-				  	@else
+				  	@elseif(Request::has('category'))
 					  	@foreach (App\Category::find(Request::get('category'))->parameters as $param)
 					  		@include('products.paramoptions')
 					  	@endforeach

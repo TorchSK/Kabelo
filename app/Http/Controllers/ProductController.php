@@ -130,16 +130,6 @@ class ProductController extends Controller
     }
 
     
-    public function create(Request $request)
-    {   
-        $category = Category::find($request->get('category'));
-        
-        $data = [
-           'selectedCategory' => $category
-        ];
-
-        return view('products.create', $data);
-    }
 
     public function upload($type, Request $request)
     {   
@@ -202,29 +192,7 @@ class ProductController extends Controller
 
     }
 
-    public function edit($url)
-    {
-        $product = Product::where('url', $url)->first();
-        
-        $data = [
-           'product' => $product
-        ];
 
-        $directory = 'temp';
-        
-        $files = File::files($directory);
-        
-        if (sizeof(File::files($directory)) > 0)
-        {
-            foreach ($files as $file)
-            {
-                File::delete($file);
-            }
-        }
-
-        return view('products.edit', $data);
-
-    }
 
     public function list(Request $request){
       

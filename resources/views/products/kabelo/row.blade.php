@@ -74,8 +74,8 @@
 	<div class="buttons_div">
 		@if(Auth::check() && Auth::user()->admin)
 		<div class="ui icon fluid buttons">
-		<a href="/{{$product->maker}}/{{$product->code}}/edit" class=" ui blue  button"><i class="edit icon"></i></a>
-		<a href="/product/create?duplicate={{$product->id}}" class=" ui yellow  button"><i class="clone icon"></i></a>
+		<a href="{{route('admin.eshop.product.edit',['product'=>$product->url])}}" class=" ui blue  button"><i class="edit icon"></i></a>
+		<a href="{{route('admin.eshop.product.create',['duplicate'=>$product->id])}}" class=" ui yellow  button"><i class="clone icon"></i></a>
 		<a class=" ui red button product_row_delete_btn"><i class="delete icon"></i></a>
 		</div>
 		@endif
@@ -84,8 +84,8 @@
 	</div>
 	@elseif(Request::segment(1) == 'admin')
 		<div class="actions ui fluid icon buttons">
-		<a href="/{{$product->maker}}/{{$product->code}}/edit" class="ui blue small button"><i class="edit icon"></i></a>
-		<a href="/product/create?duplicate={{$product->id}}" class="ui teal small button"><i class="copy icon"></i></a>
+		<a href="{{route('admin.eshop.product.edit',['product'=>$product->url])}}" class="ui blue small button"><i class="edit icon"></i></a>
+		<a href="{{route('admin.eshop.product.create',['duplicate'=>$product->id])}}" class="ui teal small button"><i class="copy icon"></i></a>
 		<a class="ui red small button product_row_delete_btn"><i class="delete icon"></i></a>
 		</div>	
 	@endif
