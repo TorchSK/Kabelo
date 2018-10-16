@@ -4196,11 +4196,10 @@ footer {
   position: relative;
   z-index: 999;
   width: 100%;
-  background-color: #EEE;
+  background-color: #2B2D2D;
 }
 footer > .container {
-  background-color: #2B2D2D;
-  padding: 90px 100px 60px 100px;
+  padding: 3% 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4211,6 +4210,7 @@ footer > .container {
       -ms-flex-align: center;
           align-items: center;
   margin: 0 auto;
+  width: 80%;
 }
 @media all and (max-width: 980px) {
   footer > .container {
@@ -4218,23 +4218,6 @@ footer > .container {
     display: block;
     text-align: center;
   }
-}
-footer > .container:last-child {
-  background-color: #111;
-  padding: 5px !important;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0 auto;
-  color: #CCC;
-  font-weight: 200;
-  font-style: italic;
 }
 footer a:hover {
   color: #CCC !important;
