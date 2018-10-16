@@ -1070,7 +1070,7 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   margin: 0 auto;
-  background-color: #1F1F1F;
+  background-color: #0d345b;
 }
 #header.shrink .item {
   font-size: 13px;
@@ -1348,7 +1348,7 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
   font-weight: 900;
   -ms-flex-item-align: stretch;
       align-self: stretch;
@@ -4199,7 +4199,6 @@ footer {
   background-color: #2B2D2D;
 }
 footer > .container {
-  padding: 3% 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4210,7 +4209,6 @@ footer > .container {
       -ms-flex-align: center;
           align-items: center;
   margin: 0 auto;
-  width: 80%;
 }
 @media all and (max-width: 980px) {
   footer > .container {
@@ -5144,9 +5142,30 @@ body.eshop #header .search.item {
 #product_detail {
   width: 100%;
 }
+body.eshop footer {
+  background-color: #EEE;
+}
 body.eshop footer > .container {
   padding: 50px;
   max-width: 1400px;
+  background-color: #0d345b;
+}
+body.eshop footer > .container:last-child {
+  background-color: #111;
+  padding: 5px !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  color: #CCC;
+  font-weight: 200;
+  font-style: italic;
 }
 @media all and (max-width: 980px) {
   body.eshop footer > .container {
