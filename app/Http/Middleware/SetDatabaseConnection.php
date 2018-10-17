@@ -28,14 +28,9 @@ class SetDatabaseConnection
             $app = ucfirst(explode(".", Request::getHost())[0]);
         }
 
-        if($app == 'Kabelo')
-        {
-            Config::set('database.default', 'kabelo');
-        }
-        elseif($app == 'Dedra')
-        {
-            Config::set('database.default', 'dedra');
-        }
+        Config::set('database.default', strtolower($app));
+    
+
 
         return $next($request);
     }
