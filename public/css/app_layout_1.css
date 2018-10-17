@@ -919,6 +919,7 @@ a:hover {
 }
 .covers {
   opacity: 0;
+  padding-top: 15px;
 }
 .covers .cover_options {
   opacity: 0;
@@ -1070,7 +1071,7 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   margin: 0 auto;
-  background-color: #0d345b;
+  background-color: #FFF;
 }
 #header.shrink .item {
   font-size: 13px;
@@ -1094,7 +1095,7 @@ a:hover {
 #header .item {
   -ms-flex-item-align: center;
       align-self: center;
-  color: #DDD;
+  color: #555;
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
   padding: 0 10px;
@@ -1348,7 +1349,6 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: rgba(0, 0, 0, 0.2);
   font-weight: 900;
   -ms-flex-item-align: stretch;
       align-self: stretch;
