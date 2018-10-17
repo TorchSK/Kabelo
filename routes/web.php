@@ -267,15 +267,10 @@ if($app == 'Laravel')
 {
     $app = ucfirst(explode(".", Request::getHost())[0]);
 }
+else{
+	Config::set('database.default', strtolower($app));
+}
 
-if($app == 'Kabelo')
-{
-    Config::set('database.default', 'kabelo');
-}
-elseif($app == 'Dedra')
-{
-    Config::set('database.default', 'dedra');
-}
 
 foreach(App\Page::all() as $page)
 {
