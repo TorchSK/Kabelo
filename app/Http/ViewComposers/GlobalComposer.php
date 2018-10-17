@@ -48,7 +48,7 @@ class GlobalComposer {
 
         //dd($cart);
         
-        $layout = Setting::whereName('layout')->first()->value;
+        $layout = Setting::firstOrCreate(['value'=>1])->value;
 
         $view->with('cart', $cart);
         $view->with('layout', $layout);
