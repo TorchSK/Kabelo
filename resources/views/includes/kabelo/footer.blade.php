@@ -9,9 +9,9 @@
 	</div>
 
   <div class="stretch">
-	<div class="column"><a href="/obchodne-podmienky" class="effect-1">Obchodné podmienky</a></div>
-  <div class="column"><a href="/gdpr" class="effect-1">Ochrana osobných údajov</a></div>
-  <div class="column"><a href="/kontakt" class="effect-1">Kontakt</a></div>
+    @foreach(App\Page::orderBy('order')->get() as $page)
+     <div class="column"><a href="/s/{{$page->url}}" class="effect-1">{{$page->name}}</a></div>
+    @endforeach
   </div>
 
 	<div class="column social">

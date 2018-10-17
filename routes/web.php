@@ -261,20 +261,7 @@ Route::post('cookies', 'UtilController@setCookie');
 
 Route::get('search/{query}', 'UtilController@search');
 
-$app = env('APP_NAME');
+Route::get('s/{url}', 'PageController@profile')->name('page.profile');;
 
-if($app == 'Laravel')
-{
-    $app = ucfirst(explode(".", Request::getHost())[0]);
-}
-else{
-	Config::set('database.default', strtolower($app));
-}
-
-
-foreach(App\Page::all() as $page)
-{
-	Route::get($page->url, 'PageController@profile');
-}
 
 Route::get('/{path}', 'CategoryController@products')->where('path','(.*)')->name('category.products');
