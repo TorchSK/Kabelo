@@ -913,7 +913,6 @@ a:hover {
 }
 .covers {
   opacity: 0;
-  padding-top: 15px;
 }
 .covers .cover_options {
   opacity: 0;
@@ -1065,7 +1064,7 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   margin: 0 auto;
-  background-color: #FFF;
+  background-color: #1F1F1F;
 }
 #header.shrink .item {
   font-size: 13px;
@@ -1089,7 +1088,7 @@ a:hover {
 #header .item {
   -ms-flex-item-align: center;
       align-self: center;
-  color: #555;
+  color: #EEE;
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
   padding: 0 10px;
@@ -5070,9 +5069,11 @@ body.eshop #header {
 body.eshop #header > .container {
   max-width: 1400px;
   padding: 0 1%;
+  background-color: #FFF;
 }
 body.eshop #header .item {
   text-align: left;
+  color: #555;
 }
 body.eshop #header .search.item {
   margin-right: 5%;
@@ -5172,6 +5173,7 @@ body.eshop footer > .container:last-child {
 .covers {
   max-width: 1400px;
   width: 100%;
+  padding-top: 15px;
 }
 @media all and (max-width: 736px) {
   .covers {
