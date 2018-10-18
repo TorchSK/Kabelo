@@ -1568,7 +1568,7 @@ a:hover {
   margin-top: 15px;
 }
 .item.product .price {
-  color: #A5673F;
+  color: #767676;
   font-size: 1.4em;
   font-weight: 900;
   position: relative;
@@ -1582,7 +1582,7 @@ a:hover {
   }
 }
 .item.product .final_price {
-  color: #A5673F;
+  color: #767676;
   font-size: 1.4em;
   font-weight: 900;
   position: relative;
