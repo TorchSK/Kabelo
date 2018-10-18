@@ -82,7 +82,7 @@
 		</div>
 		@endif
 
-		<a class="to_cart ui fluid teal icon button"><i class="shop icon"></i> Kúpiť &nbsp;{{$product->priceLevels->min('threshold')}} {{$product->price_unit}}</a>
+		<a class="to_cart ui fluid icon button"><i class="shop icon"></i> Kúpiť</a>
 	</div>
 	@elseif(Request::segment(1) == 'admin')
 		<div class="actions ui fluid icon buttons">

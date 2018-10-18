@@ -10,3 +10,7 @@ body.eshop footer > .container {
 body.eshop footer > .container:last-child {
   background-color: #173e65;
 }
+body.eshop .item.product .to_cart {
+  background-color: #f22b6c;
+  color: #DDD;
+}
