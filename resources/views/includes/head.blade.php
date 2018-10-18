@@ -71,6 +71,8 @@
     <link media="all" type="text/css" rel="stylesheet" href="/css/app_layout_2.css">
     @endif
 
+    <link media="all" type="text/css" rel="stylesheet" href="/css/{{$appname}}.css">
+
 
     <script src="/js/app.js"></script>
 
