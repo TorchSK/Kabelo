@@ -26,13 +26,28 @@ body.eshop{
 
 	}
 
-.item.product{
+	.item.product{
 
-	.to_cart{
+		.to_cart{
 			background-color: rgb(242,43,108);
 			color: #FFF;
 		}
 
+	}
+
+
+	#filterbar.horizontal{
+
+		.item{
+			&.active{
+				name{
+					background-color: @headerColorC;
+					color: #FFF;
+				}
+			}
+		}
+
+	
 	}
 
 
