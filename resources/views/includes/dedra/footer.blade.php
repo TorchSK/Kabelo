@@ -10,7 +10,7 @@
 
   <div class="stretch">
     @foreach(App\Page::orderBy('order')->get() as $page)
-	   <div class="column"><a href="/s/{{$page->url}}" class="effect-1">{{$page->name}}</a></div>
+	   <div class="column"><a href="{{route('slug',$page->url)}}" class="effect-1">{{$page->name}}</a></div>
     @endforeach
   </div>  
 

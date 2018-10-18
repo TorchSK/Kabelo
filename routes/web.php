@@ -261,7 +261,7 @@ Route::post('cookies', 'UtilController@setCookie');
 
 Route::get('search/{query}', 'UtilController@search');
 
-Route::get('s/{url}', 'PageController@profile')->name('page.profile');;
+Route::get('/{url}', 'SlugController@show')->name('slug');
 
 
 Route::get('/{path}', 'CategoryController@products')->where('path','(.*)')->name('category.products');
