@@ -7,3 +7,6 @@ body.eshop #header .item {
 body.eshop footer > .container {
   background-color: #0d345b;
 }
+body.eshop footer > .container:last-child {
+  background-color: #173e65;
+}
