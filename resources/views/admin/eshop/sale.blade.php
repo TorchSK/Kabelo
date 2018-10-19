@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 @section('content')
 
-    <div id="admin_new_wrapper" class="admin_wrapper">
+    <div id="admin_sale_wrapper" class="admin_wrapper">
 		<div class="content" data-tab="inactive">
 
-			<table class="ui celled selectable unstackable sortable table" id="inactive_product_table">
+			<table class="ui celled selectable unstackable sortable table" id="sale_product_table">
 			  <thead>
 			    <tr>
 			    <th>ID</th>
@@ -21,7 +21,7 @@
 				@endforeach
 				<tr>
 					<td colspan="3">
-						<div class="ui product inactive search">
+						<div class="ui product sale search">
 						  <input class="prompt" type="text" placeholder="Pridaj produkt">
 						  <div class="results"></div>
 						</div>
