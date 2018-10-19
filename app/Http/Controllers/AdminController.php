@@ -164,7 +164,7 @@ class AdminController extends Controller
         {
             $image = new File();
             $image->product_id = $product->id;
-            $image->path = DB::table('eshop_produkty')->where('id', $product->id)->first()->image;
+            $image->path = 'uploads/'.DB::table('eshop_produkty')->where('id', $product->id)->first()->image;
             $image->type = 'image';
             $image->primary = 1;
             $image->save();
