@@ -154,6 +154,27 @@ class AdminController extends Controller
 
     }
 
+    public function copperAttachFiles()
+    {   
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        DB::table('files')->truncate();
+
+        foreach(Product::all() as $product)
+        {
+            $image = new File();
+            $image->product_id = $product->id;
+            $image->path = DB::table('eshop_produkty')->where('id', $product->id)->first()->image;
+            $image->type = 'image';
+            $image->primary = 1;
+            $image->save();
+            
+        }
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+    }
+
     public function copperInit()
     {
         $this->copperLoadProducts();
