@@ -281,6 +281,11 @@ class ProductService implements ProductServiceContract {
         {
             return $this->list_dedra($request);
         }
+
+        if(env('DB_DATABASE_COPPER')=='copper')
+        {
+            return $this->list_kabelo($request);
+        }
     }
 
     public function list_kabelo(Request $request)
