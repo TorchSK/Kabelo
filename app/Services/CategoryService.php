@@ -29,7 +29,7 @@ class CategoryService implements CategoryServiceContract {
       }
       else
       {
-        $categories = Category::with('descendants')->orderBy('order')->get()->toTree();
+        $categories =  Cache::get('categories');
       }
       return $categories;
   }
