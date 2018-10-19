@@ -25,7 +25,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/translate/', 'AdminController@translate')->name('admin.translate');
 	Route::get('/xml/addMoreImages', 'AdminController@addMoreImages')->name('admin.addMoreImages');
 	Route::get('/xml/postXmlUpdate', 'AdminController@postXmlUpdate')->name('admin.postXmlUpdate');
-	Route::get('/xml/addCategoryPath', 'AdminController@addCategoryPath')->name('admin.addCategoryPath');
+	Route::get('/addCategoryPath', 'AdminController@addCategoryPath')->name('admin.addCategoryPath');
 	Route::get('/addCategoryFullurl', 'AdminController@addCategoryFullurl')->name('admin.addCategoryFullurl');
 	Route::get('/addProductUrl', 'AdminController@addProductUrl')->name('admin.addProductUrl');
 
