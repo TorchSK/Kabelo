@@ -175,6 +175,20 @@ class AdminController extends Controller
 
     }
 
+    public function copperAddDesc()
+    {   
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        foreach(Product::all() as $product)
+        {
+            $product->desc = DB::table('eshop_produkty_description')->where('id_produkt', $product->id)->first()->uputavka;
+            $product->save();
+        }
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+    }
+
     public function copperInit()
     {
         $this->copperLoadProducts();
@@ -182,6 +196,9 @@ class AdminController extends Controller
         $this->copperAddCategoryParent();
         $this->copperAddPrices();
         $this->copperAttachCategories();
+        $this->copperAttachFiles();
+        $this->copperAddDesc();
+
     }
 
 
