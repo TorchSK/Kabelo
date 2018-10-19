@@ -27,12 +27,6 @@
       @endif
 
 </div>
-<div class="container">
-
-  <div class="">
-    Táto stránka nie je oficiálna stránka spoločnosti VAŠE DEDRA
-  </div>
-</div>
 
 </footer>	
 

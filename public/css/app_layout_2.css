@@ -1133,7 +1133,8 @@ a:hover {
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
-#header .logo img.kabelo {
+#header .logo img.kabelo,
+#header .logo img.copper {
   width: 35px;
 }
 #header .logo img.dedra {

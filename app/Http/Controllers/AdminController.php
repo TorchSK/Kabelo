@@ -52,6 +52,119 @@ class AdminController extends Controller
 
     }
 
+    public function copperLoadProducts()
+    {   
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        $oldProducts = DB::table('eshop_produkty')->get();
+        DB::table('products')->truncate();
+
+        foreach($oldProducts as $oldProduct)
+        {
+            $product = new Product();
+            $product->id = $oldProduct->id;
+            $product->name = $oldProduct->title;
+            $product->code = $oldProduct->kod_produktu;
+            $product->price_unit = 'ks';
+            $product->maker = $oldProduct->id_vyrobca;
+
+            $product->save();
+
+
+        }
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+    }
+
+    public function copperLoadCategories()
+    {   
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        $oldCategories = DB::table('eshop_kategorie')->get();
+        DB::table('categories')->truncate();
+
+        foreach($oldCategories as $oldCategory)
+        {
+            $category = new Category();
+            $category->id = $oldCategory->id;
+            $category->name = $oldCategory->nazov;
+            $category->url = str_slug($oldCategory->nazov);
+
+            $category->save();
+        }
+
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+    }
+
+    public function copperAddCategoryParent()
+    {   
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        foreach(Category::all() as $category)
+        {
+            $category->parent_id = DB::table('eshop_kategorie')->where('id', $category->id)->first()->parent;
+
+            $category->save();
+        }
+
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+    }
+
+    public function copperAddPrices()
+    {   
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        foreach(Product::all() as $product)
+        {
+            $pricelevel = new PriceLevel();
+            $pricelevel->threshold = 1;
+            $pricelevel->moc_regular = DB::table('eshop_produkty')->where('id', $product->id)->first()->cena;
+            $pricelevel->moc_sale = DB::table('eshop_produkty')->where('id', $product->id)->first()->cena_akcia;
+            $pricelevel->voc_regular = DB::table('eshop_produkty')->where('id', $product->id)->first()->cena_voc;
+            $pricelevel->voc_sale = DB::table('eshop_produkty')->where('id', $product->id)->first()->cena_voc_akcia;
+
+            $product->priceLevels()->save($pricelevel);
+        }
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+    }
+
+    public function copperAttachCategories()
+    {   
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table('category_product')->truncate();
+
+        foreach(Product::all() as $product)
+        {
+            if (DB::table('eshop_katalogova_vazba')->where('id_produkt', $product->id)->count() > 0)
+            {
+                $categoryId = DB::table('eshop_katalogova_vazba')->where('id_produkt', $product->id)->first()->id_kategoria;
+                $category = Category::find($categoryId);
+                $product->categories()->save($category);
+            }
+        }
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+    }
+
+    public function copperInit()
+    {
+        $this->copperLoadProducts();
+        $this->copperLoadCategories();
+        $this->copperAddCategoryParent();
+        $this->copperAddPrices();
+        $this->copperAttachCategories();
+    }
+
+
+
     public function translate()
     {
         $client = new \GoogleTranslate\Client('AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI');

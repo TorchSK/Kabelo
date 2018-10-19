@@ -13,8 +13,8 @@ class AddTextToCovers extends Migration {
 	{
 		Schema::table('covers', function($table)
 		{
-			$table->string('h1_text');
-			$table->string('h2_text');
+			$table->string('h1_text')->nullable();
+			$table->string('h2_text')->nullable();
 		});
 	}
 

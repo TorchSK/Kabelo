@@ -8,7 +8,7 @@
 
 
 @include ('utils/errors')
-<form  action="login" method="POST" autocomplete="true" class="ui form small_form register_form">
+<form  action="register" method="POST" autocomplete="true" class="ui form small_form register_form">
               <input name="_token" type="hidden" value="{{csrf_token()}}">
 
     <div class="field">
