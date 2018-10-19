@@ -180,9 +180,12 @@ class AdminController extends Controller
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         foreach(Product::all() as $product)
-        {
-            $product->desc = DB::table('eshop_produkty_description')->where('id_produkt', $product->id)->first()->uputavka;
-            $product->save();
+        {   
+            if(DB::table('eshop_produkty_description')->where('id_produkt', $product->id)->count() > 0)
+            {
+                $product->desc = DB::table('eshop_produkty_description')->where('id_produkt', $product->id)->first()->uputavka;
+                $product->save();
+            }
         }
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
