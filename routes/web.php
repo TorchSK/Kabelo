@@ -19,6 +19,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/copper/addCategoryParent', 'AdminController@copperAddCategoryParent');
 	Route::get('/copper/addPrices', 'AdminController@copperAddPrices');
 	Route::get('/copper/attachCategories', 'AdminController@copperAttachCategories');
+	Route::get('/copper/init', 'AdminController@copperInit');
 
 	Route::get('/xml/import', 'AdminController@xmlImport')->name('admin.xmlImport');
 	Route::get('/translate/', 'AdminController@translate')->name('admin.translate');
