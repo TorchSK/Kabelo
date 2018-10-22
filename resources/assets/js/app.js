@@ -765,6 +765,10 @@ $(".cart_delivery.eshop").click(function(){
     	{
     		$this.addClass('completed active');
     		$('#cart_info_wrapper').find('.delivery_note').html($deliveryNote);
+    		if($deliveryNote)
+    		{
+    			$('#cart_info_wrapper').show();
+    		}
     	}
     
     }
@@ -834,14 +838,32 @@ $(".cart_payment.eshop").click(function(){
     success: function(){
     	if (!$this.hasClass('completed'))
     	{
-    		  $this.addClass('completed active');
-    		  $('#cart_info_wrapper').find('.payment_note').html($paymentNote);
+    		$this.addClass('completed active');
+    		$('#cart_info_wrapper').find('.payment_note').html($paymentNote);
+    		if($paymentNote)
+    		{
+    			$('#cart_info_wrapper').show();
+    		}
 
     	}
     }
   })
 }
 })
+
+if($('body').attr('id')=='body_cart_delivery')
+{
+	$deliveryprice = parseFloat($('.cart_delivery.active').data('price'));
+	$paymentprice = parseFloat($('.cart_payment.active').data('price'));
+	$('#cart_shipping_price').find('price').html($deliveryprice + $paymentprice);
+	$('#cart_total_price').find('price').html($deliveryprice + $paymentprice + parseFloat($('#cart_without_vat_price').find('price').text()) +  parseFloat($('#cart_vat').find('price').text())) ;
+
+	 $.ajax({
+	    method: "POST",
+	    url: '/cart',
+	    data: {'shipping_price': $deliveryprice + $paymentprice}
+	});
+}
 
 
 

@@ -18,7 +18,7 @@
 @endif
 
 @if($cart['price'] < App\Setting::whereName('min_free_shipping_price')->first()->value)
-<div id="cart_free_shipping_price" data-price="{{App\Setting::whereName('min_free_shipping_price')->first()->value }}">Už len <price>{{App\Setting::whereName('min_free_shipping_price')->first()->value - $cart['price']}}</price>&euro; a máte dopravu zdarma</div>
+<div id="cart_free_shipping_price" data-price="{{App\Setting::whereName('min_free_shipping_price')->first()->value }}">Už len <price>{{round(App\Setting::whereName('min_free_shipping_price')->first()->value - $cart['price'],2)}}</price>&euro; a máte dopravu zdarma</div>
 @endif
 </div>
 </div>

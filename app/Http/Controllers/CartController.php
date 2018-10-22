@@ -62,7 +62,8 @@ class CartController extends Controller
 
         $data = [
             'delivery' => $delivery,
-            'payment' => $payment
+            'payment' => $payment,
+            'bodyid' => 'body_cart_delivery'
         ];
 
         return view('cart.delivery', $data);

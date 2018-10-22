@@ -3742,6 +3742,7 @@ body.admin #filterbar.vertical .categories .item {
           align-items: center;
 }
 #cart_info_wrapper {
+  display: none;
   margin-bottom: 1px;
   background-color: #F4F4F4;
 }
