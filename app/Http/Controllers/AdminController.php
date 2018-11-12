@@ -426,7 +426,7 @@ class AdminController extends Controller
             array_push($changes['new_products'],$product);
 
 
-            $image = new ProductFile();
+            $image = new File();
             $image->product_id = $product->id;
             $image->path = $item['picture1']; 
             $image->type = 'image';
@@ -532,9 +532,9 @@ class AdminController extends Controller
 
             if($product && $item['picture2'] != '')
             {
-                if(ProductFile::where('path', $item['picture2'])->count() == 0)
+                if(File::where('path', $item['picture2'])->count() == 0)
                 {
-                    $image = new ProductFile();
+                    $image = new File();
                     $image->product_id = $product->id;
                     $image->path = $item['picture2']; 
                     $image->type = 'image';
@@ -545,9 +545,9 @@ class AdminController extends Controller
 
             if($product && $item['picture3'] != '')
             {
-                if(ProductFile::where('path', $item['picture3'])->count() == 0)
+                if(File::where('path', $item['picture3'])->count() == 0)
                 {
-                    $image = new ProductFile();
+                    $image = new File();
                     $image->product_id = $product->id;
                     $image->path = $item['picture3']; 
                     $image->type = 'image';
@@ -558,9 +558,9 @@ class AdminController extends Controller
 
             if($product && $item['picture4'] != '')
             {
-                if(ProductFile::where('path', $item['picture4'])->count() == 0)
+                if(File::where('path', $item['picture4'])->count() == 0)
                 {
-                    $image = new ProductFile();
+                    $image = new File();
                     $image->product_id = $product->id;
                     $image->path = $item['picture4']; 
                     $image->type = 'image';
@@ -572,9 +572,9 @@ class AdminController extends Controller
             if($product && $item['picture5'] != '')
             {
 
-                if(ProductFile::where('path', $item['picture5'])->count() == 0)
+                if(File::where('path', $item['picture5'])->count() == 0)
                 {
-                    $image = new ProductFile();
+                    $image = new File();
                     $image->product_id = $product->id;
                     $image->path = $item['picture5']; 
                     $image->type = 'image';
@@ -585,13 +585,13 @@ class AdminController extends Controller
 
             if($product &&  $item['picture6'] != '')
             {
-                $image = new ProductFile();
+                $image = new File();
                 $image->product_id = $product->id;
                 $image->path = $item['picture6']; 
                 $image->type = 'image';
                 $image->primary = 0;
 
-                if(ProductFile::where('path', $item['picture6'])->count() == 0)
+                if(File::where('path', $item['picture6'])->count() == 0)
                 {
                     $image->save();
                 }
@@ -620,7 +620,7 @@ class AdminController extends Controller
             $temp->delete();
         }
         
-        foreach(ProductFile::all() as $temp)
+        foreach(File::all() as $temp)
         {
             $temp->delete();
         }
@@ -712,7 +712,7 @@ class AdminController extends Controller
             $product->voc_sort_price = $item['price_skk'];
             $product->save();
 
-            $image = new ProductFile();
+            $image = new File();
             $image->product_id = $product->id;
             $image->path = $item['picture1']; 
             $image->type = 'image';

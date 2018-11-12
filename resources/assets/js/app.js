@@ -2800,7 +2800,7 @@ if ($('body').attr('id')=="body_bulk")
 	    
 	    if(value)
 	    {
-	    	if(value.toString().indexOf('http') !== -1)
+	    	if(value.path.toString().indexOf('http') !== -1)
 	    	{
 				$(td).html('<div class="image"><img class="lazy" data-src="'+value.path+'" /></div>');
 			}
