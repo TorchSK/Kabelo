@@ -2820,7 +2820,9 @@ if ($('body').attr('id')=="body_bulk")
 		$(load_btn).addClass('loading');
 
 		$filters = {
-			"categories" : $('.filter_item.category').dropdown('get value')
+			"categories" : $('.filter_item.category').dropdown('get value'),
+			"name" : $('.filter_item.name').find('input').val()
+
 		}
 
 		$.ajax({

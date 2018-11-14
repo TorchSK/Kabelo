@@ -17,6 +17,10 @@
 				    </option>
 				    @endforeach
 		    </select>
+
+		    <div class="ui fluid input filter_item name">
+		    	<input type="text" name="name" placeholder="Zadajte názov produktu" />
+			</div>
 		</form>
 
 
