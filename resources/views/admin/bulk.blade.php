@@ -6,7 +6,7 @@
 
 		<form class="filters_form">
 			<select multiple="true" name="categories[]" id="bulk_filter_category" class="ui fluid search dropdown filter_item category">
-			    <option value="">Kategória</option>
+			    <option value="">Vyberte kategóriu</option>
 
 			    @foreach (App\Category::orderBy('path','asc')->get() as $category)
 				    <option value="{{$category->id}}">

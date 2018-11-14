@@ -3133,6 +3133,9 @@ body.admin #filterbar.vertical .categories .item {
 #bulk_products_wrapper > .actions > .right {
   display: none;
 }
+#bulk_products_wrapper > .actions #bulk_save_btn {
+  display: none;
+}
 #bulk_products_wrapper .ui.dropdown .menu {
   z-index: 99999;
 }

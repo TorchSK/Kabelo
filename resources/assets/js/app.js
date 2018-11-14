@@ -2816,6 +2816,8 @@ if ($('body').attr('id')=="body_bulk")
 	var load_btn = document.getElementById('bulk_load_btn');
 
 	Handsontable.dom.addEvent(load_btn, 'click', function() {
+		
+		$(load_btn).addClass('loading');
 
 		$filters = {
 			"categories" : $('.filter_item.category').dropdown('get value')
@@ -2827,6 +2829,8 @@ if ($('body').attr('id')=="body_bulk")
 			data: $filters,
 			success: function(data) {
 				$('#bulk_products_table').show();
+				$('#bulk_save_btn').css('display','inline-block');
+				$(load_btn).removeClass('loading');
 			    hot.loadData(data);
 			   	hot.loadData(data);
 		}
