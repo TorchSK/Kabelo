@@ -179,8 +179,10 @@
 		 <div class="vop_info">Stlačením „Dokončiť objednávku s povinnosťou platby“ potvrdzujete, že ste sa oboznámili s <a href="/obchodne-podmienky" target="_blank">obchodnými podmienkami</a></div>
 		 <div class="gdpr_info"><a href="/obchodne-podmienky" target="_blank">Info o spracovaní osobných údajov</a></div>
 
-		<a class="ui huge green button" id="submit_order_btn"><i class="upload icon"></i>Dokončiť objednávku</a> 
-		<div class="payment_info">s povinnosťou platby</div>
+		<a class="ui huge green button" id="submit_order_btn"><i class="upload icon"></i>Dokončiť testovaciu objednávku</a> 
+
+		<div class="text_info">!!! Toto je testovacia verzia eshopu! Objednávka nie je závazná !!!</div>
+		<div class="text_info">s povinnosťou platby</div>
 	</div>
 
 </div>
