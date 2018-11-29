@@ -1170,6 +1170,7 @@ a:hover {
           flex: 1;
   width: 30%;
   padding: 0;
+  padding-right: 15px;
   position: relative;
 }
 #header .search.item i.icon {
@@ -3328,6 +3329,12 @@ body.admin #filterbar.vertical .categories .item {
 }
 #create_product_submit {
   margin-bottom: 25px;
+}
+.admin_info_div {
+  margin-bottom: 35px;
+}
+#admin_new_display_type_form {
+  margin-bottom: 35px;
 }
 #order_steps_wrapper {
   background-color: #EEE;

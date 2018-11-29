@@ -5,6 +5,12 @@
 
 		<div class="content" data-tab="news">
 
+			<div class="admin_info_div">
+				<i class="info circle icon"></i>
+				Nastavenie zobrazovania noviniek na úvodnej strane eshopu
+			</div>
+
+
 			<table class="ui celled selectable unstackable sortable table" id="new_product_table">
 			  <thead>
 			    <tr>
