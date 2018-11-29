@@ -9,7 +9,7 @@
     
         <a class="logo item" href="/">
           <div class="image"><img class="{{strtolower($appname)}}" alt="logo" src="/img/logo_{{strtolower($appname)}}.png" /></div>
-          <text>{{$appname}} <sub>test</sub></text>
+          <text>{{$appname}}</text>
         </a>
 
     
