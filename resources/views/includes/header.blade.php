@@ -1,4 +1,4 @@
-<div id="header" @if(Request::segment(1)!='admin') class="shrinkable" @endif>
+<div id="header">
     <div class="container">
 
     @include('includes.modals')

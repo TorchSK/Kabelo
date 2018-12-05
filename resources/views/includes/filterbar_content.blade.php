@@ -10,13 +10,6 @@
     <div class="ui accordion">
         @if (Route::currentRouteName()!='product.detail' && Route::currentRouteName()!='home')
 
-        <div id="product_search">
-            <div class="ui left icon huge fluid input product_search_input" >
-              <input type="text" placeholder="Hľadaj v produktoch...">
-                <i class="search icon"></i>
-            </div>
-        </div>
-
         @endif
 
         @if (Request::segment(1)=='admin')
