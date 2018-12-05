@@ -30,7 +30,7 @@
            <div class="users"></div>
            @endif
 
-           <a class="search_view_all_btn" href="#">Všetky výsledky</a>
+           <a class="ui blue button search_view_all_btn" href="#">Všetky výsledky</a>
           </div>
         </div>
 

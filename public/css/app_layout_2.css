@@ -1219,19 +1219,15 @@ a:hover {
   padding: 15px;
   position: absolute;
   z-index: 999999;
-  width: 100%;
+  width: 98.8%;
+  text-align: left;
+  border-bottom: 1px solid #DDD;
 }
 #header #search_results .divider {
   margin: 10px;
 }
 #header #search_results .search_view_all_btn {
-  display: block;
-  width: 100%;
-  background-color: #2185D0;
-  padding: 5px;
-  border-radius: 3px;
-  text-align: center;
-  color: #FFF;
+  float: right;
 }
 #header #search_results .products {
   margin-bottom: 25px;
@@ -1350,6 +1346,7 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: left;
 }
 #header .cart:hover {
   -webkit-box-shadow: inset 0 0 0 -5px #53a7ea;
