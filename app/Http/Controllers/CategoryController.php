@@ -85,6 +85,7 @@ class CategoryController extends Controller
         $category->save();
 
         Cache::forget('category_counts');
+        Cache::forget('categories');
 
         return 1;
     }

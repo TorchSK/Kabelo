@@ -69,7 +69,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/import/json', 'AdminController@importJson')->name('admin.importJson');
 	Route::post('/import/json', 'AdminController@postImportJson')->name('admin.postImportJson');
 
-	Route::get('/settings/banners', 'AdminController@banners')->name('admin.settings.banners');
 	Route::get('/settings/eshop', 'AdminController@eshop')->name('admin.settings.eshop');
 	Route::get('/settings/invoice', 'AdminController@invoice')->name('admin.settings.invoice');
 	Route::get('/settings/delivery', 'AdminController@delivery')->name('admin.settings.delivery');
@@ -98,6 +97,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::delete('/deliverypayment', 'AdminController@removeDeliveryPayment');
 	Route::put('/deliverypayment', 'AdminController@changeDeliveryPayment');
 
+
+
+	Route::get('/banners/', 'AdminController@banners')->name('admin.banners.banners');
+	Route::get('/covers/', 'AdminController@covers')->name('admin.banners.covers');
+
+
+
 	Route::get('/banner/', 'AdminController@addCover')->name('admin.addCover');
 	Route::post('/cover/', 'AdminController@storeCover')->name('admin.storeCover');
 	Route::post('/cover/upload', 'AdminController@uploadCover')->name('admin.uploadCover');
@@ -108,6 +114,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/cover/edit/{id}', 'AdminController@editCover')->name('admin.editcover');
 	Route::put('/cover/{id}', 'AdminController@updatecover')->name('admin.updatecover');
 	Route::delete('/cover/{id}', 'AdminController@deleteCover')->name('admin.deletecover');
+
+
+
+
 
 	Route::get('/layout/templates', 'AdminController@layoutTemplates')->name('admin.layout.templates');
 	Route::get('/layout/pages', 'AdminController@layout')->name('admin.layout.pages');

@@ -982,9 +982,14 @@ class AdminController extends Controller
     }
 
 
+    public function covers()
+    {
+        return view('admin.banners.covers');
+    }
+
     public function banners()
     {
-        return view('admin.settings.banners');
+        return view('admin.banners.banners');
     }
 
     public function eshop()

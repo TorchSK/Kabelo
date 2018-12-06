@@ -208,11 +208,11 @@ $('.add_category_btn').click(function(){
     autofocus: false,
     onApprove : function() {
     	$name = $('#add_category_input').val();
-      $parent_id = $('input[name="parent_id"]').val();
+      	$parent_id = $('input[name="parent_id"]').val();
 
     	$.ajax({
     		type: "POST",
-    		url: "/category/",
+    		url: "/category",
     		data: {name: $name, parent_id:$parent_id},
     		success: function(){
     			location.reload();

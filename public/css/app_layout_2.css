@@ -1183,7 +1183,7 @@ a:hover {
   width: 100%;
 }
 #header #main_search input {
-  background-color: rgba(255, 255, 255, 0.07);
+  background-color: rgba(255, 255, 255, 0.1);
   padding: 18px 15px;
   color: #DDD;
 }
@@ -1191,7 +1191,7 @@ a:hover {
   /* Chrome/Opera/Safari */
   font-weight: 200;
   font-size: 1.1em;
-  color: #888;
+  color: #FFF;
 }
 #header #main_search input::-moz-placeholder {
   /* Firefox 19+ */
@@ -2486,8 +2486,19 @@ body.admin #filterbar.vertical .categories .item {
 #admin_categories {
   padding: 3%;
 }
-#admin_categories .expand_all_toggle {
+#admin_categories .actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-bottom: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#admin_categories .expand_all_toggle {
   cursor: pointer;
 }
 #admin_categories .admin_categories_list .ui.styled.accordion .accordion {
@@ -4490,7 +4501,7 @@ h1.header {
 #filterbar.vertical #cat_div {
   height: 100%;
   overflow-y: auto;
-  width: 330px;
+  padding-top: 10px;
 }
 #filterbar.vertical #cat_div.hidden {
   display: none;
@@ -4868,11 +4879,7 @@ h1.header {
   margin-left: 25px;
 }
 #banner_dropzone {
-  display: inline-block;
-  width: 300px;
-  height: 80px;
-  min-height: 130px;
-  padding: 0;
+  display: none;
 }
 #cover_search_url input {
   width: 500px;

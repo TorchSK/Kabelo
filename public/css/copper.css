@@ -1,0 +1,9 @@
+body.eshop #header {
+  background-color: #ec5a4a;
+}
+body.eshop #header > .container {
+  background-color: #ec5a4a;
+}
+body.eshop #header .item {
+  color: #FFF;
+}

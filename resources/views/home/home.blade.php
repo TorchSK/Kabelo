@@ -1,18 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-    <div class="covers">
-        @foreach(App\Cover::orderBy('order')->get() as $cover)
-            @include('home.cover')
-        @endforeach
-    </div>
 
- 
-    @if($layout == 1)
-    <div class="stripes divider">               
-      &nbsp;
-    </div>  
-    @endif
 
     @if($layout == 2)
     @include('includes/filterbar_horizontal')
@@ -30,6 +19,25 @@
         @endif
 
         <div class="am">
+        
+        <div class="flex_row">
+
+            <div class="covers">
+                @foreach(App\Cover::orderBy('order')->get() as $cover)
+                    @include('home.cover')
+                @endforeach
+            </div>
+
+
+            <div class="top_banners">
+                @foreach(App\Banner::orderBy('order')->get() as $cover)
+                    @include('home.cover')
+                @endforeach
+            </div>
+
+        </div>
+
+
         <div id="home_news_div" class="wrapper">
             <div class="container">
                 <div class="caption">
@@ -63,10 +71,5 @@
         </div>
     </div>
 
-    @if($layout == 1)
-    <div class="stripes divider">               
-      &nbsp;
-    </div>  
-    @endif
 
 @stop

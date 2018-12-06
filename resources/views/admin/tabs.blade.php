@@ -76,7 +76,6 @@
       Nastavenia
     </div>
     <div class="menu content @if(strpos(Route::currentRouteName(),'admin.settings')!==false) active @endif">
-      <a href="{{route('admin.settings.banners')}}" class="item @if(Route::currentRouteName()=='admin.settings.banners') active @endif">Bannery</a>
       <a href="{{route('admin.settings.eshop')}}" class="item @if(Route::currentRouteName()=='admin.settings.eshop') active @endif">Eshop</a>
       <a href="{{route('admin.settings.delivery')}}" class="item @if(Route::currentRouteName()=='admin.settings.delivery') active @endif">Doprava</a>
       <a href="{{route('admin.settings.invoice')}}" class="item @if(Route::currentRouteName()=='admin.settings.invoice') active @endif">Fakturačné údaje</a>
@@ -85,7 +84,20 @@
     </div>
 
   </div>
-    <div class="item">
+  
+  <div class="item">
+  <div class="header title @if(strpos(Route::currentRouteName(),'admin.banners')!==false) active @endif">
+    <i class="image icon"></i>
+      <i class="dropdown icon"></i>
+      Bannery
+    </div>
+    <div class="menu content @if(strpos(Route::currentRouteName(),'admin.banners')!==false) active @endif">
+      <a href="{{route('admin.banners.covers')}}" class="item @if(Route::currentRouteName()=='admin.banners.covers') active @endif">Covery</a>
+      <a href="{{route('admin.banners.banners')}}" class="item @if(Route::currentRouteName()=='admin.banners.banners') active @endif">Bannery</a>
+    </div>
+  </div>
+
+  <div class="item">
 	<div class="header title @if(strpos(Route::currentRouteName(),'admin.files')!==false) active @endif">
     <i class="file icon"></i>
       <i class="dropdown icon"></i>
