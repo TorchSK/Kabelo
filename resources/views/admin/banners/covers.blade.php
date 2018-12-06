@@ -11,15 +11,14 @@
             @include('home.cover')
         @endforeach
 
-        <form action="/admin/banner/upload" class="dropzone" id="banner_dropzone"> 
+        <form action="{{route('cover.store')}}" class="dropzone" id="add_cover_dropzone"> 
 			<input name="_token" hidden value="{!! csrf_token() !!}" />
-			 <div class="dz-message">Nový banner</div>
 		</form>
 
 	</div>
 	
-	<a href="{{route('admin.addCover')}}" class="ui blue button">Nový cover</a>
-	<a href="{{route('admin.addCover')}}" class="ui teal button"><i class="settings icon"></i> Vyrobiť cover</a>
+	<button class="ui blue button" id="add_cover_btn">Nový cover</button>
+	<a href="{{route('admin.makeCover')}}" class="ui teal button"><i class="settings icon"></i> Vyrobiť cover</a>
 </div>
 
 @stop

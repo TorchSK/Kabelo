@@ -50,8 +50,10 @@
 
 	</div>
 
+	@if(!isset($showdesc))
 	<div class="desc">{{substr(trim($product->desc),0,200)}}</div>
-
+	@endif
+	
 	<div class="title">{{$product->name}}</div>
 	
 	@if(Auth::check() && Auth::user()->admin && $appname=='aa')

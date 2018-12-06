@@ -3,6 +3,7 @@
 	text-align: center;
 	white-space: nowrap;
 	z-index: 9999;
+	padding: 0 25px;
 
 	&.shrinkable{
 		position: fixed;
@@ -12,35 +13,11 @@
 			position: relative;
 		}
 	}
+
 	.container{
 		display: flex;
 		margin: 0 auto;
 		background-color: #1F1F1F;
-	}
-
-	&.shrink
-	{
-		.item{
-			font-size: 13px;
-			font-weight: 400;
-
-			@media @break3{
-				padding: 14px 18px;
-			}
-
-			img{
-				width: 30px;
-			}
-		}
-
-		.logo{
-			padding: 10px;
-			height: 20px;
-
-			img{
-				width: 30px !important;
-			}
-		}
 	}
 
 	.item{
@@ -48,6 +25,8 @@
 		color: #EEE;
 		transition: 0.2s ease;
 		padding: 0 10px;
+		font-weight: 300;
+		font-size: 1.1em;
 
 		@media @break3{
 			padding: 14px 18px;
@@ -273,7 +252,6 @@
 				top:-17px;
 				right: -10px;
 				margin-left: 5px;
-				font-weight: 900;
 				font-style: normal;
 				z-index: 99999;
 				background-color: @blue;
@@ -314,7 +292,6 @@
 
 	.cart{
 		display: flex;
-		font-weight: 900;
 		align-self: stretch;
 	    align-items: center;
 	    text-align: left;
@@ -329,13 +306,12 @@
 
 		#cart_icon{  
 			display: inline-block;
-			vertical-align: top;
-			margin-right: 15px;
-			font-size: 1.4em;
+			font-size: 1.1em;
+			position: relative;
 		}
 
 		#cart_text{
-			display: inline-block;
+			display: none;
 			vertical-align: top;
 
 			price{
@@ -345,7 +321,6 @@
 	}
 
 	.account{
-		font-size: 1.2em;
 		cursor: pointer;
 		overflow: hidden;
 

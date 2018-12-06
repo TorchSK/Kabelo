@@ -1,9 +1,9 @@
 #filterbar.vertical{
-	background-color: rgba(0,0,0,0.05);
 	display: flex;
 	overflow-y: auto;
 	width: 340px;
 	min-width: 340px;
+	text-align: left;
 
 	@media @break3{
 		display: none;
@@ -12,7 +12,7 @@
 	#cat_div{
 		height: 100%;
 		overflow-y: auto;
-		padding-top:10px;
+		padding-top:23px;
 	}
 
 
@@ -46,7 +46,7 @@
 
 	.pad.item{
 		margin: 0 10px;
-		padding: 10px;
+		padding: 10px 10px 10px 0px;
 		display: block;
 		border-radius: 3px;
 		display: flex;
@@ -99,7 +99,6 @@
 	}
 
 	.categories{
-		padding: 0 10px;
 
 		.item{
 			cursor: pointer;
@@ -108,7 +107,7 @@
 			overflow: hidden;
 			display: flex;
 			flex-direction: column;
-				font-weight: 600;
+			font-weight: 400;
 
 			.caption{
 				flex: 1;

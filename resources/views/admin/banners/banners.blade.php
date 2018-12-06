@@ -5,20 +5,20 @@
 
 <div id="admin_settings_banner" class="admin_wrapper">
 
+	@include('admin.info',['text'=>'Nastavenie zobrazovania bannerov na úvodnej strane eshopu'])
 
-	<div class="admin_cover_list">
-     	@foreach(App\Cover::orderBy('order')->get() as $cover)
-            @include('home.cover')
+	<div class="admin_banner_list">
+     	@foreach(App\Banner::orderBy('order')->get() as $cover)
+            @include('home.banner')
         @endforeach
 
-        <form action="/admin/banner/upload" class="dropzone" id="banner_dropzone"> 
+        <form action="{{route('banner.store')}}" class="dropzone" id="add_banner_dropzone"> 
 			<input name="_token" hidden value="{!! csrf_token() !!}" />
-			 <div class="dz-message">Nový banner</div>
 		</form>
 
 	</div>
 	
-	<a href="{{route('admin.addCover')}}" class="ui blue button">Vyrobiť baner</a>
+	<button class="ui blue button" id="add_banner_btn">Nový baner</button>
 </div>
 
 @stop

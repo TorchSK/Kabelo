@@ -7,67 +7,80 @@
     @include('includes/filterbar_horizontal')
     @endif
 
-    <!-- mobile -->
     <div id="m_categories_wrapper">
         <div class="ui red  small fluid button" id="catbar_handle">Kategorie</div>
     </div>
 
-    <div class="flex_row">
+    <div class="wrapper">
 
-        @if($layout == 1)
-        @include('includes/filterbar', ['sticky'=> true])
-        @endif
 
-        <div class="am">
-        
+        <div class="container">
+
         <div class="flex_row">
 
-            <div class="covers">
-                @foreach(App\Cover::orderBy('order')->get() as $cover)
-                    @include('home.cover')
-                @endforeach
+            @include('includes/filterbar')
+
+            <div class="grow">
+
+                    <div class="top_banner_row">
+
+                        <div class="covers">
+                            @foreach(App\Cover::orderBy('order')->get() as $cover)
+                                @include('home.cover')
+                            @endforeach
+                        </div>
+
+
+                        <div class="top_banners">
+                            @foreach(App\Banner::orderBy('order')->get() as $cover)
+                                @include('home.banner')
+                            @endforeach
+                        </div>
+                    </div>
+
+       
+
+                <div id="home_news_div" class="wrapper">
+                    <div class="container">
+                        <div class="caption">
+                            <name>Novinky</name>
+                            <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
+                        </div>
+                        <div class="items">
+                        @foreach(App\Product::where('new',1)->orderBy('updated_at','desc')->get() as $product)
+                            @include('products.row',['showdesc'=>false])
+                        @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrapper" id="makers_div">
+                <div class="container">
+                    <a><img src="/img/velleman-logo.png" /></a>
+                    <a><img src="/img/tasker.png" /></a>
+                    <a><img src="/img/peaktech.png" /></a>
+                    <a><img src="/img/distrelec.png" /></a>
+
+                </div>
+                </div>
+
+                <div id="home_sales_div" class="wrapper">
+                    <div class="container">
+
+                        <div class="caption">
+                            <name>Akcie</name>
+                            <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
+                        </div>
+
+                        <div class="items">
+                        @foreach(App\Product::where('sale',1)->orderBy('updated_at','desc')->get() as $product)
+                            @include('products.row',['showdesc'=>false])
+                        @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
-            <div class="top_banners">
-                @foreach(App\Banner::orderBy('order')->get() as $cover)
-                    @include('home.cover')
-                @endforeach
-            </div>
-
         </div>
-
-
-        <div id="home_news_div" class="wrapper">
-            <div class="container">
-                <div class="caption">
-                    <name>Novinky</name>
-                    <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
-                </div>
-                <div class="items">
-                @foreach(App\Product::where('new',1)->orderBy('updated_at','desc')->get() as $product)
-                    @include('products.row')
-                @endforeach
-                </div>
-            </div>
-        </div>
-
-        <div id="home_sales_div" class="wrapper">
-            <div class="container">
-
-                <div class="caption">
-                    <name>Akcie</name>
-                    <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
-                </div>
-
-                <div class="items">
-                @foreach(App\Product::where('sale',1)->orderBy('updated_at','desc')->get() as $product)
-                    @include('products.row')
-                @endforeach
-                </div>
-            </div>
-        </div>
-
         </div>
     </div>
 

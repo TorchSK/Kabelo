@@ -1322,7 +1322,6 @@ $sales_carousel = $('#home_sales_div .items').flickity({
     pageDots: false,
     prevNextButtons: false,
     imagesLoaded: true,
-    autoPlay: 2000,
 });
 
 $news_carousel = $('#home_news_div .items').flickity({
@@ -1331,7 +1330,6 @@ $news_carousel = $('#home_news_div .items').flickity({
     pageDots: false,
     prevNextButtons: false,
     imagesLoaded: true,
-      autoPlay: 2000,
 });
 
 $sales_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
@@ -1361,13 +1359,6 @@ $('#product_detail_dropzone').dropzone({
       '_token': $('meta[name="csrf-token"]').attr('content')
     }
 });
-
-$('#banner_dropzone').dropzone({
-    params: {
-      '_token': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
 
 
 $('#file_dropzone').dropzone({
@@ -1437,7 +1428,7 @@ $('#category_image_dropzone').dropzone({
 
 $carousel = $('.covers').flickity({
   autoPlay: 4000,
-  adaptiveHeight: true
+  setGallerySize: false
 });
 
 $carousel.on( 'pointerUp.flickity', function(){
@@ -1910,6 +1901,20 @@ function initCoverEdit()
 }
 
 initCoverEdit();
+
+$('#add_banner_dropzone').dropzone({
+  clickable: ['#add_banner_btn'],
+  success: function(file, response){
+  	location.reload();
+  }
+});
+
+$('#add_cover_dropzone').dropzone({
+  clickable: ['#add_cover_btn'],
+  success: function(file, response){
+  	location.reload();
+  }
+});
 
 $('#cover_dropzone').dropzone({
   clickable: ['#admin_add_cover_change_image_btn', '#cover_dropzone'],

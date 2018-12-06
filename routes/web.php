@@ -104,7 +104,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
 
 
-	Route::get('/banner/', 'AdminController@addCover')->name('admin.addCover');
+	Route::get('/banner/', 'AdminController@makeCover')->name('admin.makeCover');
 	Route::post('/cover/', 'AdminController@storeCover')->name('admin.storeCover');
 	Route::post('/cover/upload', 'AdminController@uploadCover')->name('admin.uploadCover');
 	
@@ -233,6 +233,12 @@ Route::resource('page','PageController');
 
 // Texts
 Route::resource('text','TextController');
+
+// Covers
+Route::resource('cover','CoverController');
+
+// Banners
+Route::resource('banner','BannerController');
 
 
 // Upload

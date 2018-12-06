@@ -8,7 +8,7 @@
     @endif
     
         <a class="logo item" href="/">
-          <div class="image"><img class="{{strtolower($appname)}}" alt="logo" src="/img/logo_{{strtolower($appname)}}.png" /></div>
+          <div class="image"><img class="{{strtolower($appname)}}" alt="logo" src="/img/logo_{{strtolower($appname)}}_white.png" /></div>
           <text>{{$appname}}</text>
         </a>
 
@@ -118,7 +118,12 @@
 
 
         <a class="cart item hvr-curl-top-left" href="/cart/products">
-          <div id="cart_icon"><i class="shop big icon"></i></div>
+          <div id="cart_icon">
+            <i class="shopping basket large icon"></i>
+              <div class="floating ui black label">{{$cart['number']}}</div>
+          </div>
+         
+
           <div id="cart_text">
               <text>Nákupný košík (<number>{{$cart['number']}}</number>)</text>
               <price><number>{{number_format($cart['price'],2)}}</number> Eur</price>
