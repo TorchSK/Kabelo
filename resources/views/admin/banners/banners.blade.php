@@ -12,13 +12,9 @@
             @include('home.banner')
         @endforeach
 
-        <form action="{{route('banner.store')}}" class="dropzone" id="add_banner_dropzone"> 
-			<input name="_token" hidden value="{!! csrf_token() !!}" />
-		</form>
-
 	</div>
 	
-	<button class="ui blue button" id="add_banner_btn">Nový baner</button>
+	<a href="{{route('banner.create')}}" class="ui blue button">Nový cover</a>
 </div>
 
 @stop

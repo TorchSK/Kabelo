@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 class BannerController extends Controller
 {
 
+    public function create()
+    {
+        return view('admin.addbanner');
+    }
+
     public function store(Request $request)
     {
         $file = $request->file('file');

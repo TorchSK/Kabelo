@@ -3887,7 +3887,27 @@ $('#edit_product_categories_input').dropdown({
   }
 })
 
+$('#category_url_checbox').checkbox({
+	onChecked: function(){
+		$('#cover_category_url').removeClass('disabled');
+		$('#cover_product_url').addClass('disabled');
+		$('#product_url_checbox').checkbox('uncheck');
+	},
+	onUnchecked: function(){
+		$('#cover_category_url').addClass('disabled');
+	}
+})
 
+$('#product_url_checbox').checkbox({
+	onChecked: function(){
+		$('#cover_product_url').removeClass('disabled');
+		$('#cover_category_url').addClass('disabled');
+		$('#category_url_checbox').checkbox('uncheck');
+	},
+	onUnchecked: function(){
+		$('#cover_product_url').addClass('disabled');
+	}
+})
 
 
 });

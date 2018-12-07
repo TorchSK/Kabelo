@@ -8,7 +8,7 @@
 		  <label>Odkaz na kategóriu</label>
 		</div>
 
-		<div class="ui disabled search" id="cover_search_url">
+		<div class="ui disabled search" id="cover_category_url">
 			<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz" />
 			 <div class="results"></div>
 		</div>
@@ -19,7 +19,7 @@
 		  <label>Odkaz na produkt</label>
 		</div>
 
-		<div class="ui disabled search" id="cover_search_url">
+		<div class="ui disabled search" id="cover_product_url">
 			<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz" />
 			 <div class="results"></div>
 		</div>

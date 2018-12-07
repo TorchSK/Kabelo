@@ -119,7 +119,7 @@
 
         <a class="cart item hvr-curl-top-left" href="/cart/products">
           <div id="cart_icon">
-            <i class="shopping basket large icon"></i>
+            <i class="shopping basket big icon"></i>
               <div class="floating ui black label">{{$cart['number']}}</div>
           </div>
          
