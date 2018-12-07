@@ -11,7 +11,7 @@
         <div class="ui red  small fluid button" id="catbar_handle">Kategorie</div>
     </div>
 
-    <div class="wrapper">
+    <div class="main wrapper">
 
 
         <div class="container">

@@ -916,6 +916,9 @@ a:hover {
   -webkit-transform: skew(8deg) rotate(3deg);
   transform: skew(8deg) rotate(3deg);
 }
+.main.wrapper {
+  padding: 0 2%;
+}
 .top_banner_row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1157,7 +1160,7 @@ a:hover {
   text-align: center;
   white-space: nowrap;
   z-index: 9999;
-  padding: 0 25px;
+  padding: 0 2%;
 }
 #header.shrinkable {
   position: fixed;
