@@ -1214,11 +1214,6 @@ class AdminController extends Controller
 
     }
 
-    public function addCover()
-    {
-        return view('admin.addcover');
-    }
-
 
 
 

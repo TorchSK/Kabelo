@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 class CoverController extends Controller
 {
 
+    public function create()
+    {
+        return view('admin.addcover');
+    }
+
+
+
     public function store(Request $request)
     {
         $file = $request->file('file');

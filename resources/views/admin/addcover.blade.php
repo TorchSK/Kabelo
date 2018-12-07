@@ -2,11 +2,27 @@
 @section('content')
 
 	<div class="admin_add_cover">
-					<div class="ui search" id="cover_search_url">
-					<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz" />
-					  <div class="results"></div>
+		
+		<div class="ui checkbox" id="category_url_checbox">
+		  <input type="checkbox" name="category_url_checbox">
+		  <label>Odkaz na kategóriu</label>
+		</div>
 
-				</div>
+		<div class="ui disabled search" id="cover_search_url">
+			<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz" />
+			 <div class="results"></div>
+		</div>
+
+
+		<div class="ui checkbox" id="product_url_checbox">
+		  <input type="checkbox" name="product_url_checbox">
+		  <label>Odkaz na produkt</label>
+		</div>
+
+		<div class="ui disabled search" id="cover_search_url">
+			<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz" />
+			 <div class="results"></div>
+		</div>
 
 
 		@if (isset($cover))

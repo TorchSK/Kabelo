@@ -1902,19 +1902,7 @@ function initCoverEdit()
 
 initCoverEdit();
 
-$('#add_banner_dropzone').dropzone({
-  clickable: ['#add_banner_btn'],
-  success: function(file, response){
-  	location.reload();
-  }
-});
 
-$('#add_cover_dropzone').dropzone({
-  clickable: ['#add_cover_btn'],
-  success: function(file, response){
-  	location.reload();
-  }
-});
 
 $('#cover_dropzone').dropzone({
   clickable: ['#admin_add_cover_change_image_btn', '#cover_dropzone'],

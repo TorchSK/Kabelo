@@ -26,7 +26,7 @@
 ---------------*/
 /* This adjusts the default form input across all elements */
 /* Input Text Color */
-/* Line Height Default For Inputs in Browser (Descendors are 17px at 14px base em) */
+/* Line Height Default For Inputs in Browser (Descenders are 17px at 14px base em) */
 /*-------------------
     Focused Input
 --------------------*/
@@ -215,6 +215,9 @@ body.eshop .pusher {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
+}
+.ui.search .prompt {
+  border-radius: 3px;
 }
 .flex_column {
   display: -webkit-box;
@@ -3102,6 +3105,12 @@ body.admin #filterbar.vertical .categories .item {
 }
 #admin_order_params_list .item {
   margin-bottom: 15px;
+}
+.admin_add_cover #cover_search_url {
+  margin-bottom: 25px;
+}
+.admin_add_cover .ui.checkbox {
+  margin-bottom: 10px;
 }
 .admin_add_cover .cover {
   height: 55vh;
