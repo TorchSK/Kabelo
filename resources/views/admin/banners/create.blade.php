@@ -3,23 +3,43 @@
 
 	<div class="admin_add_cover">
 		
-		<div class="ui checkbox" id="category_url_checbox">
-		  <input type="checkbox" name="category_url_checbox">
-		  <label>Odkaz na kategóriu</label>
+
+		<div class="ui form" id="add_banner_radioboxes">
+		  <div class="inline fields">
+		    <label>Vyberte typ odkazu</label>
+		    <div class="field">
+		      <div class="ui radio checkbox">
+		        <input type="radio" name="frequency" checked="checked">
+		        <label>Kategória</label>
+		      </div>
+		    </div>
+		    <div class="field">
+		      <div class="ui radio checkbox">
+		        <input type="radio" name="frequency">
+		        <label>Produkt</label>
+		      </div>
+		    </div>
+		    <div class="field">
+		      <div class="ui radio checkbox">
+		        <input type="radio" name="frequency">
+		        <label>Vlastný</label>
+		      </div>
+		    </div>
+		  </div>
 		</div>
 
-		<div class="ui disabled search" id="cover_category_url">
+
+		<div class="ui search" id="cover_category_url">
 			<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz" />
 			 <div class="results"></div>
 		</div>
 
-
-		<div class="ui checkbox" id="product_url_checbox">
-		  <input type="checkbox" name="product_url_checbox">
-		  <label>Odkaz na produkt</label>
+		<div class="ui search" id="cover_product_url">
+			<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz" />
+			 <div class="results"></div>
 		</div>
 
-		<div class="ui disabled search" id="cover_product_url">
+		<div class="ui search" id="cover_other_url">
 			<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz" />
 			 <div class="results"></div>
 		</div>
@@ -104,7 +124,7 @@
 			<input type="hidden" name="h2_text" @if(isset($cover)) value="{{$cover->h2_text}}" @else value="Text ktory sa zobrazi pod nadpisom" @endif />
 
 			<input name="_token" hidden value="{!! csrf_token() !!}" />
-			<button type="submit" class="ui green button">Ulož</button>
+			<button type="submit" class="ui green button">Vytvor {{Request::get('type')}}</button>
 
 			</form>
 

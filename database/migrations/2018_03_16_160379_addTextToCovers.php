@@ -11,7 +11,7 @@ class AddTextToCovers extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('covers', function($table)
+		Schema::table('banners', function($table)
 		{
 			$table->string('h1_text')->nullable();
 			$table->string('h2_text')->nullable();
@@ -25,7 +25,7 @@ class AddTextToCovers extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('covers', function($table)
+		Schema::table('banners', function($table)
 		{
 			$table->dropColumn('h1_text');	
 			$table->dropColumn('h2_text');

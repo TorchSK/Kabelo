@@ -2029,25 +2029,25 @@ $('#admin_add_cover_h2').on('keyup', function(e, color) {
 });
 
 
-$('.admin_cover_list h1').each(function(index,element){
+$('.admin_banner_list h1').each(function(index,element){
   $(element).css('font-size', parseFloat(($(element).css('font-size')))*0.18);
 });
 
-$('.admin_cover_list h2').each(function(index,element){
+$('.admin_banner_list h2').each(function(index,element){
   $(element).css('font-size', parseFloat(($(element).css('font-size')))*0.2);
 });
 
 
 
-$('.delete_cover_btn').click(function(){
+$('.delete_banner_btn').click(function(){
   $btn = $(this);
-  $('#delete_cover_modal').modal('setting', {
+  $('#delete_banner_modal').modal('setting', {
     autofocus: false,
     onApprove : function() {
-      $id = $btn.closest('.cover').data('id');
+      $id = $btn.closest('.banner').data('id');
       $.ajax({
         type: "DELETE",
-        url: "/admin/cover/"+$id,
+        url: "/admin/banner/"+$id,
         success: function(){
           location.reload();
         }
@@ -2057,17 +2057,17 @@ $('.delete_cover_btn').click(function(){
 })
 
 
-$('.admin_cover_list').sortable({
+$('.admin_banner_list').sortable({
   stop: function(){
     $data = {};
 
-    $('.admin_cover_list .cover').each(function(index, item){
+    $('.admin_banner_list .banner').each(function(index, item){
       $data[$(item).data('id')] = index;
     });
 
     $.ajax({
       method: "PUT",
-      url: '/admin/cover/setorder',
+      url: '/admin/banner/setorder',
       data: $data
     })
   }
@@ -3760,7 +3760,26 @@ $(".admin_page_color_chooser").on('dragstop.spectrum', function(e, color) {
 });
 
 
-$('#cover_search_url')
+$('#cover_product_url')
+  .search({
+    apiSettings: {
+      url: '/api/products/search?query={query}',
+    },
+    fields: {
+      results : 'results',
+      title   : 'url',
+      image  : '',
+      action : '',  
+	  actionText: '',    
+	  actionURL: '' ,
+	  url: '',
+    },
+    onSelect: function(result, response){
+    	$('#admin_add_cover_form').find('input[name="url"]').val(result.full_url);
+    }
+  }).unbind('ajaxStart');;
+
+$('#cover_category_url')
   .search({
     apiSettings: {
       url: '/api/categories/search?query={query}',
@@ -3887,27 +3906,7 @@ $('#edit_product_categories_input').dropdown({
   }
 })
 
-$('#category_url_checbox').checkbox({
-	onChecked: function(){
-		$('#cover_category_url').removeClass('disabled');
-		$('#cover_product_url').addClass('disabled');
-		$('#product_url_checbox').checkbox('uncheck');
-	},
-	onUnchecked: function(){
-		$('#cover_category_url').addClass('disabled');
-	}
-})
 
-$('#product_url_checbox').checkbox({
-	onChecked: function(){
-		$('#cover_product_url').removeClass('disabled');
-		$('#cover_category_url').addClass('disabled');
-		$('#category_url_checbox').checkbox('uncheck');
-	},
-	onUnchecked: function(){
-		$('#cover_product_url').addClass('disabled');
-	}
-})
 
 
 });

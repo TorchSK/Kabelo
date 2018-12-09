@@ -1144,8 +1144,9 @@ a:hover {
   margin-bottom: 25px;
 }
 #makers_div .container {
+  border: 1px solid #EEE;
   padding: 25px;
-  background-color: #2e2e2e;
+  background-color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2720,17 +2721,6 @@ body.admin #filterbar.vertical .categories .item {
 }
 .admin_banner_list .banner {
   width: 400px;
-  height: 300px;
-  position: relative;
-  display: inline-block;
-  border-radius: 4px;
-  margin-right: 5px;
-}
-.admin_cover_list {
-  margin-bottom: 15px;
-}
-.admin_cover_list .cover {
-  width: 400px;
   height: 170px;
   position: relative;
   display: inline-block;
@@ -2738,20 +2728,24 @@ body.admin #filterbar.vertical .categories .item {
   overflow: hidden;
   margin-right: 5px;
 }
-.admin_cover_list .cover:hover {
+.admin_banner_list .banner img {
+  max-height: 100%;
+  max-width: 100%;
+}
+.admin_banner_list .banner:hover {
   cursor: move;
 }
-.admin_cover_list .cover .cover_div {
+.admin_banner_list .banner .banner_div {
   position: absolute;
 }
-.admin_cover_list .cover .cover_div .slogan {
+.admin_banner_list .banner .banner_div .slogan {
   margin-bottom: 0px;
   font-family: 'hwt-artz';
 }
-.admin_cover_list .cover .cover_div .sub_slogan {
+.admin_banner_list .banner .banner_div .sub_slogan {
   margin-top: 9px;
 }
-.admin_cover_list .cover .cover_options {
+.admin_banner_list .banner .banner_options {
   opacity: 0;
   position: absolute;
   margin-left: auto;
@@ -2761,7 +2755,7 @@ body.admin #filterbar.vertical .categories .item {
   width: 180px;
   top: 35%;
 }
-.admin_cover_list .cover:hover .cover_options {
+.admin_banner_list .banner:hover .banner_options {
   opacity: 1;
 }
 .admin_settings {
@@ -4711,7 +4705,7 @@ h1.header {
   color: #1B1C1D;
 }
 #filterbar.vertical .categories .item .caption a {
-  color: #1B1C1D;
+  color: #444;
 }
 #filterbar.vertical .categories .item .caption:hover {
   background-color: #FFFFFF;
@@ -4754,6 +4748,8 @@ h1.header {
   max-width: 48px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  font-size: 16px;
+  color: #444;
 }
 #filterbar.vertical .categories .item i.setting {
   margin-left: 5px;

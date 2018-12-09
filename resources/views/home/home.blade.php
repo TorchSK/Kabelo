@@ -25,7 +25,7 @@
                     <div class="top_banner_row">
 
                         <div class="covers">
-                            @foreach(App\Cover::orderBy('order')->get() as $cover)
+                            @foreach(App\Banner::orderBy('order')->get() as $cover)
                                 @include('home.cover')
                             @endforeach
                         </div>
@@ -57,9 +57,9 @@
                 <div class="wrapper" id="makers_div">
                 <div class="container">
                     <a><img src="/img/velleman-logo.png" /></a>
-                    <a><img src="/img/tasker.png" /></a>
-                    <a><img src="/img/peaktech.png" /></a>
-                    <a><img src="/img/distrelec.png" /></a>
+                    <a><img src="/img/tasker_dark.png" /></a>
+                    <a><img src="/img/peaktech_dark.png" /></a>
+                    <a><img src="/img/distrelec_dark.png" /></a>
 
                 </div>
                 </div>

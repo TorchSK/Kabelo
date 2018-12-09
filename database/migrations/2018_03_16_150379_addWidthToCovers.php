@@ -11,7 +11,7 @@ class AddWidthToCovers extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('covers', function($table)
+		Schema::table('banners', function($table)
 		{
 			$table->string('width');
 		});
@@ -24,7 +24,7 @@ class AddWidthToCovers extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('covers', function($table)
+		Schema::table('banners', function($table)
 		{
 			$table->dropColumn('width');	
 

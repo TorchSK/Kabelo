@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddOrderToCovers extends Migration {
+class AddTypeToBanners extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,7 +13,7 @@ class AddOrderToCovers extends Migration {
 	{
 		Schema::table('banners', function($table)
 		{
-			$table->string('order')->default(0);
+			$table->string('type');
 		});
 	}
 
@@ -26,8 +26,7 @@ class AddOrderToCovers extends Migration {
 	{
 		Schema::table('banners', function($table)
 		{
-			$table->dropColumn('order');	
-
+			$table->dropColumn('type');	
 		});
 
 	}

@@ -92,7 +92,6 @@
       Bannery
     </div>
     <div class="menu content @if(strpos(Route::currentRouteName(),'admin.banners')!==false) active @endif">
-      <a href="{{route('admin.banners.covers')}}" class="item @if(Route::currentRouteName()=='admin.banners.covers') active @endif">Covery</a>
       <a href="{{route('admin.banners.banners')}}" class="item @if(Route::currentRouteName()=='admin.banners.banners') active @endif">Bannery</a>
     </div>
   </div>

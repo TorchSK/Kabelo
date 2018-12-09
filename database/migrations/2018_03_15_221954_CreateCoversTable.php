@@ -10,7 +10,7 @@ class CreateCoversTable extends Migration {
    */
   public function up()
   {
-    Schema::create('covers', function(Blueprint $table)
+    Schema::create('banners', function(Blueprint $table)
     {
       $table->increments('id');
       $table->string('image');
@@ -34,6 +34,6 @@ class CreateCoversTable extends Migration {
    */
   public function down()
   {
-    Schema::drop('covers');
+    Schema::drop('banners');
   }
 }

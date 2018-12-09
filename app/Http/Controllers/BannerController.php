@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Banner;
+use App\Cover;
 use Illuminate\Http\Request;
 
 class BannerController extends Controller
@@ -10,8 +10,10 @@ class BannerController extends Controller
 
     public function create()
     {
-        return view('admin.addbanner');
+        return view('admin.banners.create');
     }
+
+
 
     public function store(Request $request)
     {
@@ -27,13 +29,12 @@ class BannerController extends Controller
 
         if ($success)
         {
-            $banner = new Banner();
-            $banner->image = $destinationPath.'/'.$filename;
-            $banner->type = 'top';
-            $banner->save();
+            $cover = new Cover();
+            $cover->image = $destinationPath.'/'.$filename;
+            $cover->save();
         }
 
-        return redirect('/admin/banners');
+        return 1;
 
     }
 
