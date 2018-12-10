@@ -63,4 +63,12 @@ class BannerController extends Controller
         return redirect()->route('admin.banners');
     }
 
+    public function destroy($id)
+    {
+        $cover = Banner::find($id);
+        $cover->delete();
+        return 1;
+    }
+
+
 }

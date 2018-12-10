@@ -1313,12 +1313,6 @@ class AdminController extends Controller
 
     }
 
-    public function deleteCover($id)
-    {
-        $cover = Cover::find($id);
-        $cover->delete();
-        return 1;
-    }
 
     public function setCoverOrder(Request $request)
     {

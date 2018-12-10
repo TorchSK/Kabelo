@@ -173,7 +173,7 @@
   </div>
 
 
-  <div class="ui mini modal" id="delete_cover_modal">
+  <div class="ui mini modal" id="delete_banner_modal">
             
     <div class="header">
       Zmazať banner
