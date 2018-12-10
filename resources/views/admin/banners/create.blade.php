@@ -9,7 +9,7 @@
 		    <label>Vyberte typ odkazu</label>
 		    <div class="field">
 		      <div class="ui radio checkbox">
-		        <input type="radio" name="frequency" checked="checked">
+		        <input type="radio" name="frequency">
 		        <label>Kategória</label>
 		      </div>
 		    </div>
@@ -30,16 +30,16 @@
 
 
 		<div class="ui search" id="cover_category_url">
-			<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz" />
+			<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz na kategóriu" />
 			 <div class="results"></div>
 		</div>
 
-		<div class="ui search" id="cover_product_url">
-			<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz" />
+		<div class="ui hiden search" id="cover_product_url">
+			<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz na produkt" />
 			 <div class="results"></div>
 		</div>
 
-		<div class="ui search" id="cover_other_url">
+		<div class="ui hiden search" id="cover_other_url">
 			<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz" />
 			 <div class="results"></div>
 		</div>
@@ -96,7 +96,7 @@
 	
 
 
-			<form @if (isset($cover)) action="/admin/cover/{{$cover->id}}" method="POST" @else action="/admin/cover" method="POST" @endif id="admin_add_cover_form">
+			<form @if (isset($cover)) action="{{route('banner.update',['cover'=>$cover->id])}}" method="POST" @else action="{{route('banner.store')}}" method="POST" @endif id="admin_add_cover_form">
 			
 			@if (isset($cover))
 			<input type="hidden" name="_method" value="PUT" />
@@ -109,6 +109,8 @@
 			<input type="hidden" name="w" value="" />
 			<input type="hidden" name="h" value="" />
 			<input type="hidden" name="url" value="" />
+
+			<input type="hidden" name="type" value="{{Request::get('type')}}" />
 
 			<input type="hidden" name="left" @if(isset($cover)) value="{{$cover->left}}" @else value="10" @endif />
 			<input type="hidden" name="top"  @if(isset($cover)) value="{{$cover->top}}" @else value="30" @endif />

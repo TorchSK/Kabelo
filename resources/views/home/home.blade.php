@@ -25,15 +25,15 @@
                     <div class="top_banner_row">
 
                         <div class="covers">
-                            @foreach(App\Banner::orderBy('order')->get() as $cover)
-                                @include('home.cover')
+                            @foreach(App\Banner::where('type','cover')->orderBy('order')->get() as $cover)
+                                @include('home.cover',['type'=>'cover'])
                             @endforeach
                         </div>
 
 
                         <div class="top_banners">
-                            @foreach(App\Banner::orderBy('order')->get() as $cover)
-                                @include('home.banner')
+                            @foreach(App\Banner::where('type','banner')->orderBy('order')->get() as $cover)
+                                @include('home.banner',['type'=>'banner'])
                             @endforeach
                         </div>
                     </div>

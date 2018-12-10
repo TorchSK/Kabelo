@@ -97,12 +97,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::delete('/deliverypayment', 'AdminController@removeDeliveryPayment');
 	Route::put('/deliverypayment', 'AdminController@changeDeliveryPayment');
 
-
-
-	Route::get('/banners/', 'AdminController@banners')->name('admin.banners.banners');
-	Route::get('/covers/', 'AdminController@covers')->name('admin.banners.covers');
-
-
+	Route::get('/banners/', 'AdminController@banners')->name('admin.banners');
 
 	Route::get('/banner/', 'AdminController@makeCover')->name('admin.makeCover');
 	Route::post('/cover/', 'AdminController@storeCover')->name('admin.storeCover');

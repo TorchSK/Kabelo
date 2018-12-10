@@ -10,7 +10,7 @@
 
 	<div class="admin_banner_list">
      	@foreach(App\Banner::where('type','cover')->orderBy('order')->get() as $cover)
-            @include('home.banner')
+            @include('home.banner',['type'=>'cover'])
         @endforeach
 
 	</div>
@@ -24,8 +24,8 @@
 	<div class="ui header">Bannery</div>
 
 	<div class="admin_banner_list">
-     	@foreach(App\Banner::where('type','top_banner')->orderBy('order')->get() as $cover)
-            @include('home.banner')
+     	@foreach(App\Banner::where('type','banner')->orderBy('order')->get() as $cover)
+            @include('home.banner',['type'=>'banner'])
         @endforeach
 
 	</div>

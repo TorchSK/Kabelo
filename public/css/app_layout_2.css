@@ -275,7 +275,7 @@ body.eshop .pusher {
   background-color: #F7F7F7;
 }
 .hiden {
-  display: none !important;
+  display: none;
 }
 .flex_content {
   -webkit-box-flex: 1;
@@ -2719,9 +2719,15 @@ body.admin #filterbar.vertical .categories .item {
 .admin_banner_list {
   margin-bottom: 15px;
 }
+.admin_banner_list .banner[data-type="cover"] {
+  width: calc(280px);
+  height: 100px;
+}
+.admin_banner_list .banner[data-type="banner"] {
+  width: calc(180px);
+  height: 100px;
+}
 .admin_banner_list .banner {
-  width: 400px;
-  height: 170px;
   position: relative;
   display: inline-block;
   border-radius: 4px;
@@ -3100,11 +3106,13 @@ body.admin #filterbar.vertical .categories .item {
   margin-bottom: 15px;
 }
 .admin_add_cover #cover_category_url,
-.admin_add_cover #cover_product_url {
+.admin_add_cover #cover_product_url,
+.admin_add_cover #cover_other_url {
   margin-bottom: 25px;
 }
 .admin_add_cover #cover_category_url input,
-.admin_add_cover #cover_product_url input {
+.admin_add_cover #cover_product_url input,
+.admin_add_cover #cover_other_url input {
   width: 500px;
 }
 .admin_add_cover .ui.checkbox {

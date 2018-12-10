@@ -169,9 +169,20 @@ body.admin{
 .admin_banner_list{
 	margin-bottom: 15px;
 
+	.banner[data-type="cover"]
+	{
+		width: calc(100px * 2.8);
+		height: 100px;
+	}
+
+	.banner[data-type="banner"]
+	{
+		width: calc(100px * 1.8);
+		height: 100px;
+	}
+
 	.banner{
-		width: 400px;
-		height:170px;
+
 		position: relative;
 		display: inline-block;
 		border-radius: 4px;
@@ -638,7 +649,8 @@ body.admin{
 .admin_add_cover{
 
 	#cover_category_url,
-	#cover_product_url{
+	#cover_product_url,
+	#cover_other_url{
 		margin-bottom: 25px;
 
 		input{

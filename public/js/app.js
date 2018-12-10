@@ -1916,10 +1916,19 @@ $('#cover_dropzone').dropzone({
     $('#admin_add_cover_form input[name="filename"]').val(file.name);
     $('#admin_add_cover_change_image_btn').hide();
 
+    if($('input[name="type"]').val()=='cover')
+    {
+    	$aspect = 2.8;
+    }
+    else
+    {
+    	$aspect = 1.8;
+    }
+
     $('.crop_preview img').cropper({
       guides: false,
       viewMode: 1,
-      aspectRatio: 3.3,
+      aspectRatio: $aspect,
       autoCropArea: 1,
 
       crop: function(e){
@@ -3760,7 +3769,26 @@ $(".admin_page_color_chooser").on('dragstop.spectrum', function(e, color) {
 });
 
 
-$('#cover_search_url')
+$('#cover_product_url')
+  .search({
+    apiSettings: {
+      url: '/api/products/search?query={query}',
+    },
+    fields: {
+      results : 'results',
+      title   : 'url',
+      image  : '',
+      action : '',  
+	  actionText: '',    
+	  actionURL: '' ,
+	  url: '',
+    },
+    onSelect: function(result, response){
+    	$('#admin_add_cover_form').find('input[name="url"]').val(result.full_url);
+    }
+  }).unbind('ajaxStart');;
+
+$('#cover_category_url')
   .search({
     apiSettings: {
       url: '/api/categories/search?query={query}',
@@ -3887,27 +3915,36 @@ $('#edit_product_categories_input').dropdown({
   }
 })
 
-$('#category_url_checbox').checkbox({
-	onChecked: function(){
-		$('#cover_category_url').removeClass('disabled');
-		$('#cover_product_url').addClass('disabled');
-		$('#product_url_checbox').checkbox('uncheck');
-	},
-	onUnchecked: function(){
-		$('#cover_category_url').addClass('disabled');
-	}
-})
+$('#add_banner_radioboxes').find('.checkbox:eq(0)')
+  .checkbox({
+    onChecked: function() {
+     $('#cover_category_url').show();
+     $('#cover_product_url').hide();
+     $('#cover_other_url').hide();
+    },
+});
 
-$('#product_url_checbox').checkbox({
-	onChecked: function(){
-		$('#cover_product_url').removeClass('disabled');
-		$('#cover_category_url').addClass('disabled');
-		$('#category_url_checbox').checkbox('uncheck');
-	},
-	onUnchecked: function(){
-		$('#cover_product_url').addClass('disabled');
-	}
-})
+
+$('#add_banner_radioboxes').find('.checkbox:eq(1)')
+  .checkbox({
+    onChecked: function() {
+     $('#cover_category_url').hide();
+     $('#cover_product_url').show();
+     $('#cover_other_url').hide();
+
+    },
+});
+
+$('#add_banner_radioboxes').find('.checkbox:eq(2)')
+  .checkbox({
+    onChecked: function() {
+     $('#cover_category_url').hide();
+     $('#cover_product_url').hide();
+     $('#cover_other_url').show();
+
+    },
+});
+
 
 
 });
