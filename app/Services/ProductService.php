@@ -244,7 +244,7 @@ class ProductService implements ProductServiceContract {
             $sortBy = $this->getUserPriceType();
         }
         
-        $products = $this->query($filters,[], [])->orderBy($sortBy,$sortOrder)->paginate(Setting::where('name','ppp')->first()->value);
+        $products = $this->query($filters,[], [])->orderBy($sortBy,$sortOrder)->paginate(Setting::firstOrCreate(['name'=>'ppp'])->first()->value);
 
         // set price range
         $priceRangeFilters = $filters;
@@ -317,7 +317,7 @@ class ProductService implements ProductServiceContract {
 
             $searchFilters['search'] = $filters['search'];
 
-            $products = $this->query($searchFilters,[], [])->orderBy($sortBy,$sortOrder)->paginate(Setting::where('name','ppp')->first()->value);
+            $products = $this->query($searchFilters,[], [])->orderBy($sortBy,$sortOrder)->paginate(Setting::firstOrCreate(['name'=>'ppp'])->first()->value);
 
             $makers = $products->unique(['maker']); 
 
@@ -366,7 +366,7 @@ class ProductService implements ProductServiceContract {
             $activeFilters = collect($filters);
 
             // set products
-            $products = $this->query($filters,[], $descendants)->orderBy($sortBy,$sortOrder)->paginate(Setting::where('name','ppp')->first()->value);
+            $products = $this->query($filters,[], $descendants)->orderBy($sortBy,$sortOrder)->paginate(Setting::firstOrCreate(['name'=>'ppp'])->first()->value);
 
 
             // set price range

@@ -49,7 +49,7 @@
 		<form action="/admin/cover/upload" class="dropzone hidden" id="cover_dropzone"> <input name="_token" hidden value="{!! csrf_token() !!}" /></form>
 
 		 <div class="cover_image">
-		 @include('home.cover', ['editable'=>true])
+		 @include('home.banner', ['type'=>Request::get('type')])
 		</div>
 		@else
 		<div class="cover_image hidden">
@@ -126,7 +126,7 @@
 			<input type="hidden" name="h2_text" @if(isset($cover)) value="{{$cover->h2_text}}" @else value="Text ktory sa zobrazi pod nadpisom" @endif />
 
 			<input name="_token" hidden value="{!! csrf_token() !!}" />
-			<button type="submit" class="ui green button">Vytvor {{Request::get('type')}}</button>
+			<button type="submit" class="ui green button">@if (isset($cover)) Zmeň @else Vytvor @endif {{Request::get('type')}}</button>
 
 			</form>
 

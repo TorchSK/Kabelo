@@ -3,7 +3,7 @@
 	<img src="{{url($cover->image)}}" />
 
     <div class="banner_options">
-    	<a href="{{route('admin.editcover',['cover'=>$cover->id])}}" class="ui blue button">Zmeň</a>
+    	<a href="{{route('banner.edit',['cover'=>$cover->id, 'type'=> $type])}}" class="ui blue button">Zmeň</a>
     	<a class="ui red button delete_banner_btn">Zmaž</a>
     </div>
 

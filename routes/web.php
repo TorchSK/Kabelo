@@ -168,6 +168,8 @@ Route::get('/home/eshop', 'HomeController@index')->name('home.eshop');
 Route::put('/user/{userid}', 'UserController@update');
 Route::delete('/user/{userid}', 'UserController@destroy');
 
+// Banners
+Route::resource('banner','BannerController');
 
 //Cart
 Route::get('cart/products','CartController@products');
@@ -229,11 +231,6 @@ Route::resource('page','PageController');
 // Texts
 Route::resource('text','TextController');
 
-// Covers
-Route::resource('cover','CoverController');
-
-// Banners
-Route::resource('banner','BannerController');
 
 
 // Upload

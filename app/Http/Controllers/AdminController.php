@@ -1217,15 +1217,7 @@ class AdminController extends Controller
 
 
 
-    public function editCover($id)
-    {
 
-        $data = [
-            'cover'=>Cover::find($id)
-        ];
-
-        return view('admin.addcover', $data);
-    }
 
     public function uploadAndStoreBanner(Request $request)
     {
@@ -1252,50 +1244,6 @@ class AdminController extends Controller
 
 
 
-    public function updateCover($id, Request $request)
-    {
-        $cover = Cover::find($id);
-        $cover->left = $request->get('left');
-        $cover->top = $request->get('top');
-        $cover->h1_font = $request->get('h1_font');
-        $cover->h2_font = $request->get('h2_font');
-        $cover->h1_size = $request->get('h1_size');
-        $cover->h2_size = $request->get('h2_size');
-        $cover->h1_color = $request->get('h1_color');
-        $cover->h2_color = $request->get('h2_color');
-        $cover->width = $request->get('width');
-        $cover->h1_text = $request->get('h1_text');
-        $cover->h2_text = $request->get('h2_text');
-        $cover->url = $request->get('url');
-
-        if ($request->filled('filename'))
-        {
-            $filename = $request->get('filename');
-
-            $x = round($request->get('x'));
-            $y = round($request->get('y'));
-            $w = round($request->get('w'));
-            $h = round($request->get('h'));
-
-            $path = 'temp/covers/'.$filename;
-            $destinationPath = 'uploads/covers';
-
-
-            $width = 1920;   
-
-            Image::make($path)
-                     ->crop($w, $h, $x, $y)
-                     ->widen($width)
-                     ->save($destinationPath.'/'.$filename);
-
-        $cover->image = $destinationPath.'/'.$filename;
-
-        }
-
-        $cover->save();
-
-        return redirect('/admin/settings/banners');
-    }
 
 
     public function uploadCover(Request $request)

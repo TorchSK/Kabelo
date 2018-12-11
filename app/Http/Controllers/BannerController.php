@@ -63,6 +63,63 @@ class BannerController extends Controller
         return redirect()->route('admin.banners');
     }
 
+    public function edit($id)
+    {
+
+        $data = [
+            'cover'=>Banner::find($id)
+        ];
+
+        return view('admin.banners.create', $data);
+    }
+
+    public function update($id, Request $request)
+    {
+        $cover = Banner::find($id);
+        $cover->left = $request->get('left');
+        $cover->top = $request->get('top');
+        $cover->h1_font = $request->get('h1_font');
+        $cover->h2_font = $request->get('h2_font');
+        $cover->h1_size = $request->get('h1_size');
+        $cover->h2_size = $request->get('h2_size');
+        $cover->h1_color = $request->get('h1_color');
+        $cover->h2_color = $request->get('h2_color');
+        $cover->width = $request->get('width');
+        $cover->h1_text = $request->get('h1_text');
+        $cover->h2_text = $request->get('h2_text');
+        $cover->url = $request->get('url');
+        $cover->type = $request->get('type');
+
+        if ($request->filled('filename'))
+        {
+            $filename = $request->get('filename');
+
+            $x = round($request->get('x'));
+            $y = round($request->get('y'));
+            $w = round($request->get('w'));
+            $h = round($request->get('h'));
+
+            $path = 'temp/covers/'.$filename;
+            $destinationPath = 'uploads/covers';
+
+
+            $width = 1920;   
+
+            Image::make($path)
+                     ->crop($w, $h, $x, $y)
+                     ->widen($width)
+                     ->save($destinationPath.'/'.$filename);
+
+        $cover->image = $destinationPath.'/'.$filename;
+
+        }
+
+        $cover->save();
+
+        return redirect()->route('admin.banners');
+    }
+
+
     public function destroy($id)
     {
         $cover = Banner::find($id);
