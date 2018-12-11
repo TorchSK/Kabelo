@@ -1,30 +1,16 @@
 @extends('layouts.master')
 @section('content')
 
+<div class="main wrapper" id="product">
 
-@if (Auth::check() && Auth::user()->admin)
-<div id="product_options_wrapper" class="wrapper">
- <div class="container ct">
-  <a href="{{route('admin.eshop.product.edit',['product'=>$product->url])}}" class="ui teal button">Edituj produkt</a>
-  <a class="ui red button" id="product_detail_delete_btn">Zmaž produkt</a>
-</div>
-</div>
-@endif
+<div class="flex_row">
 
+@include('includes/filterbar', ['sticky'=> true])
 
+<div id="product_wrapper">
 <div id="product_main_wrapper" class="wrapper @if($product->active==0) inactive @endif" data-id="{{$product->id}}" data-gallery="{{$product->code}}" data-index="0">
   <div class="container flex_row">
       
-  <div id="filterbar_absolute">
-    <div class="ui button filterbar_handle sticky_div">Zobrazit katalóg</div>
-    @include('includes/filterbar')
-  </div>
-
-
-
-
-
-
     <div class="images">
 
 
@@ -286,8 +272,6 @@
 </div>
 </div>
 </div>
-</div>
-
 </div>
 
 @stop

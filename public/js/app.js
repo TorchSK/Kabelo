@@ -1849,61 +1849,6 @@ $('input.delivery_price').keyup(function(){
 });
 
 
-
-
-function initCoverEdit()
-{
-    $('.cover.editable .cover_div').resizable({
-        stop: function stop() {
-          $('#admin_add_cover_form input[name="width"]').val($(this).width() / $(this).parent().width() * 100);
-        }
-      }).draggable({
-      containment: ".cover_image",
-      start: function start(event, ui) {
-        var left = parseInt($(this).css('left'), 10);
-        left = isNaN(left) ? 0 : left;
-        var top = parseInt($(this).css('top'), 10);
-        top = isNaN(top) ? 0 : top;
-        __recoupLeft = left - ui.position.left;
-        __recoupTop = top - ui.position.top;
-      },
-      drag: function drag(event, ui) {
-        //resize bug fix ui drag `enter code here`
-        __dx = ui.position.left - ui.originalPosition.left;
-        __dy = ui.position.top - ui.originalPosition.top;
-        //ui.position.left = ui.originalPosition.left + ( __dx/__scale);
-        //ui.position.top = ui.originalPosition.top + ( __dy/__scale );
-        ui.position.left = ui.originalPosition.left + __dx;
-        ui.position.top = ui.originalPosition.top + __dy;
-        //
-        ui.position.left += __recoupLeft;
-        ui.position.top += __recoupTop;
-      },
-      stop: function stop() {
-        var pos = {};
-
-        $('#admin_add_cover_form input[name="left"]').val($(this).position().left / $(this).parent().width() * 100);
-        $('#admin_add_cover_form input[name="top"]').val($(this).position().top / $(this).parent().height() * 100);
-      }
-    });
-
-    $('.cover_div h1').css('color',$('#admin_add_cover_form input[name="h1_color"]').val());
-    $('.cover_div h1').css('font-size',$('#admin_add_cover_form input[name="h1_size"]').val()+'vw');
-    $('.cover_div h2').css('color',$('#admin_add_cover_form input[name="h2_color"]').val());
-    $('.cover_div h2').css('font-size',$('#admin_add_cover_form input[name="h2_size"]').val()+'vw');
-    $('.cover_div h1').text($('#admin_add_cover_form input[name="h1_text"]').val());
-    $('.cover_div h2').text($('#admin_add_cover_form input[name="h2_text"]').val());
-
-    $('.cover_div').css('left',$('#admin_add_cover_form input[name="left"]').val()+'%');
-    $('.cover_div').css('top',$('#admin_add_cover_form input[name="top"]').val()+'%');
-    $('.cover_div').css('width',$('#admin_add_cover_form input[name="width"]').val()+'%');
-
-}
-
-initCoverEdit();
-
-
-
 $('#cover_dropzone').dropzone({
   clickable: ['#admin_add_cover_change_image_btn', '#cover_dropzone'],
   success: function(file, response){
@@ -1936,13 +1881,6 @@ $('#cover_dropzone').dropzone({
         $('#admin_add_cover_form input[name="y"]').val(e.y);
         $('#admin_add_cover_form input[name="w"]').val(e.width);
         $('#admin_add_cover_form input[name="h"]').val(e.height);
-
-        if ($('.cover_image').find('.cover_div').length == 0)
-        {
-         $('.cover_image .cover').append('<div class="cover_div"><h1>Nadpis</h1><h2>Text ktory sa zobrazi pod nadpisom</h2></div>');
-        }
-
-        initCoverEdit();
 
       },
       preview: $('.cover_image .cover')

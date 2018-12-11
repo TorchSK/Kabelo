@@ -8,6 +8,7 @@
     @include('includes/filterbar_horizontal')
     @endif
 
+
     <!-- mobile -->
     <div id="m_categories_wrapper">
         <div class="ui red  small fluid button" id="catbar_handle">Kategorie</div>
@@ -87,8 +88,8 @@
                 @include('products.list')
                
             </grid>
-            
-            @if($products->count() > 0)
+                
+            @if($products->count() > 0 && $products->hasMorePages())
             <div class="ct">
                 <div class="ui large blue button view-more-button">Viac produktov</div>
             </div>

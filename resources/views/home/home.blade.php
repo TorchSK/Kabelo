@@ -26,7 +26,7 @@
 
                         <div class="covers">
                             @foreach(App\Banner::where('type','cover')->orderBy('order')->get() as $cover)
-                                @include('home.cover',['type'=>'cover'])
+                                @include('home.banner',['type'=>'cover'])
                             @endforeach
                         </div>
 

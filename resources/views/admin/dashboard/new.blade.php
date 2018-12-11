@@ -57,7 +57,7 @@
 			      <td><a href="/{{$product->maker}}/{{$product->code}}/detail">{{$product->id}}</a></td>
 			      <td>{{Carbon\Carbon::parse($product->created_at)->format('d.m.Y H:i:s')}}</td>
 			   	  <td>{{$product->name}}</td>
-			   	  <td>{{$product->categories->first()->name}}</td>
+			   	  <td>@if($product->categories->count() > 0){{$product->categories->first()->name}}@endif</td>
 			   	  <td>{{$product->price}}</td>
 			      <td></td>
 

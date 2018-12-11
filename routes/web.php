@@ -44,7 +44,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/eshop/sale', 'AdminController@sale')->name('admin.eshop.sale');
 	Route::get('/eshop/inactive', 'AdminController@inactive')->name('admin.eshop.inactive');
 	Route::get('/eshop/stickers', 'AdminController@eshopStickers')->name('admin.eshop.stickers');
-	Route::get('/eshop/product/create', 'AdminController@productCreate')->name('admin.eshop.product.create');
 	Route::get('/eshop/product/{product}', 'AdminController@productEdit')->name('admin.eshop.product.edit');
 
 

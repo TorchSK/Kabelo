@@ -833,17 +833,6 @@ class AdminController extends Controller
         return view('admin.eshop.category', $data);
     }
 
-    public function productCreate(Request $request)
-    {   
-        $category = Category::find($request->get('category'));
-        
-        $data = [
-           'selectedCategory' => $category
-        ];
-
-        return view('products.create', $data);
-    }
-
 
     public function productEdit($product)
     {

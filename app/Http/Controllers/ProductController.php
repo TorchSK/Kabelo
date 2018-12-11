@@ -18,6 +18,8 @@ use Response;
 use Auth;
 use Storage;
 use Excel;
+use Cookie;
+
 use Rap2hpoutre\FastExcel\FastExcel;
 
 use App\Services\Contracts\ProductServiceContract;
@@ -52,6 +54,19 @@ class ProductController extends Controller
     {
         return $this->productService->filter($request);
     }
+
+
+    public function create(Request $request)
+    {   
+        $category = Category::find($request->get('category'));
+        
+        $data = [
+           'selectedCategory' => $category
+        ];
+
+        return view('products.create', $data);
+    }
+
     
     /**
      * Show the application dashboard.
@@ -76,6 +91,7 @@ class ProductController extends Controller
         $product->new = $request->get('new');
         $product->sale = $request->get('sale');
         $product->sale_price = $request->get('sale_price');
+        $product->url = str_slug($product->code."-".$product->name);
 
         $product->save();
 
@@ -125,7 +141,7 @@ class ProductController extends Controller
         }
         $product->save();
 
-
+        Cache::forget('category_counts');
         return redirect()->route('admin.eshop.products');
     }
 

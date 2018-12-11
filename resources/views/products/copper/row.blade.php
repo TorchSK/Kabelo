@@ -78,8 +78,8 @@
 	<div class="buttons_div">
 		@if(Auth::check() && Auth::user()->admin)
 		<div class="ui icon fluid buttons">
-		<a href="{{route('admin.eshop.product.edit',['product'=>$product->url])}}" class=" ui blue  button"><i class="edit icon"></i></a>
-		<a href="{{route('admin.eshop.product.create',['duplicate'=>$product->id])}}" class=" ui yellow  button"><i class="clone icon"></i></a>
+		<a href="{{route('product.edit',['product'=>$product->url])}}" class=" ui blue  button"><i class="edit icon"></i></a>
+		<a href="{{route('product.create',['duplicate'=>$product->id])}}" class=" ui yellow  button"><i class="clone icon"></i></a>
 		<a class=" ui red button product_row_delete_btn"><i class="delete icon"></i></a>
 		</div>
 		@endif

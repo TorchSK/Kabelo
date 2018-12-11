@@ -1,4 +1,4 @@
-@if(Request::segment(1)=='admin')
+@if(Request::segment(1)=='banner')
 <div class="banner" data-type="{{$type}}" data-id="{{$cover->id}}">
 	<img src="{{url($cover->image)}}" />
 
@@ -9,7 +9,7 @@
 
 </div>
 @else
-<a href="" class="banner" data-type="{{$type}}">
+<a href="{{$cover->url}}" class="banner" data-type="{{$type}}">
 	<img src="{{url($cover->image)}}" />
 </a>
 @endif
