@@ -7,18 +7,18 @@
 @endif
 
 @if($appname=="kabelo")
-<div id="cart_without_vat_price">Cena bez dph: <price></price> <symbol>{{ round($cart['price'] / (1 + App\Setting::where('name','vat')->first()->value/100),2)}} &euro;</symbol></div>
-<div id="cart_vat">DPH: <price></price> <symbol>{{$cart['price'] - round($cart['price']/(1 + App\Setting::where('name','vat')->first()->value/100),2)}} &euro;</symbol></div>
+<div id="cart_without_vat_price">Cena bez dph: <price></price> <symbol>{{ round($cart['price'] / (1 + App\Setting::firstOrCreate(['name'=>'vat'])->value/100),2)}} &euro;</symbol></div>
+<div id="cart_vat">DPH: <price></price> <symbol>{{$cart['price'] - round($cart['price']/(1 + App\Setting::firstOrCreate(['name'=>'vat'])->value/100),2)}} &euro;</symbol></div>
 @endif
 
 <div id="cart_total_price">Celková cena: <price></price> <symbol>{{$cart['price']}} &euro;</symbol></div>
 
-@if(App\Setting::whereName('min_order_price')->first()->value > 0)
-<div id="cart_min_price">Minimálna výška objednávky je <price>{{App\Setting::whereName('min_order_price')->first()->value }}</price>&euro;</div>
+@if(App\Setting::firstOrCreate(['name'=>'min_order_price'])->value > 0)
+<div id="cart_min_price">Minimálna výška objednávky je <price>{{App\Setting::firstOrCreate(['name'=>'min_order_price'])->value }}</price>&euro;</div>
 @endif
 
-@if($cart['price'] < App\Setting::whereName('min_free_shipping_price')->first()->value)
-<div id="cart_free_shipping_price" data-price="{{App\Setting::whereName('min_free_shipping_price')->first()->value }}">Už len <price>{{round(App\Setting::whereName('min_free_shipping_price')->first()->value - $cart['price'],2)}}</price>&euro; a máte dopravu zdarma</div>
+@if($cart['price'] < App\Setting::firstOrCreate(['name'=>'min_free_shipping_price'])->value)
+<div id="cart_free_shipping_price" data-price="{{App\Setting::firstOrCreate(['name'=>'min_free_shipping_price'])->value }}">Už len <price>{{round(App\Setting::firstOrCreate(['name'=>'min_free_shipping_price'])->value - $cart['price'],2)}}</price>&euro; a máte dopravu zdarma</div>
 @endif
 </div>
 </div>

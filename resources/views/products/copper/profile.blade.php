@@ -2,10 +2,13 @@
 @section('content')
 
 <div class="main wrapper" id="product">
+<div class="container">
 
-<div class="flex_row">
+<div class="filterbar_handle ui blue button"><i class="bars icon"></i>Kategórie</div>
+<div class="absolute">
+@include('includes/filterbar')
+</div>
 
-@include('includes/filterbar', ['sticky'=> true])
 
 <div id="product_wrapper">
 <div id="product_main_wrapper" class="wrapper @if($product->active==0) inactive @endif" data-id="{{$product->id}}" data-gallery="{{$product->code}}" data-index="0">
@@ -217,59 +220,7 @@
 </div>
 @endif
 
-<div class="pad wrapper ct">
-               <div class="ui horizontal divider">Hodnotenia</div>
 
-      <div class="container ct">
-
-
-        <div class="overall_rating">
-          <div class="rating_number"><number>@if($product->ratings->pluck('value')->avg() > 0) {{$product->ratings->pluck('value')->avg()}}</number> @else 0 @endif <span>({{$product->ratings->count()}} hodnotení)</span></div>
-          <div class="disabled rating" @if($product->ratings->count()>0) data-rating="{{$product->ratings->pluck('value')->avg()}}" @else data-rating="0" @endif">
-          </div>
-        </div>
-
-        @if(Auth::check())
-        <div class="my_rating">
-          <div class="rating_number"><number>@if(App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->count() >0) {{App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value}}</number> @else 0 @endif <span>(Moje hodnotenie)</span></div>
-
-           <div class="my rating" @if(App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->count() >0) data-rating="{{App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value}}" @else data-rating="0" @endif>
-          </div>
-        </div>
-        @else
-          <div class="my_rating"><a class="ui teal button" href="/login">Prihláste sa</a></div>
-
-        @endif
-
-        <div class="ratings_list">
-          @foreach($product->ratings as $rating)
-            <div class="rating_div">
-              <div class="user">
-                @if ($rating->user->first_name)
-                {{$rating->user->first_name}} {{$rating->user->last_name}} 
-                @else
-                  Zákazník
-                @endif
-
-                <div class="text"> {{$rating->text}}</div>
-
-              </div>
-
-              <div class="value">
-
-                  <div class="disabled rating" data-rating="{{$rating->value}}">
-                    </div>
-
-              </div>
-            </div>
-          @endforeach
-        </div>
-  </div>
-  @if(Auth::check())
-  <div id="myrating" @if(App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->count() >0) data-rating="{{App\Rating::where('user_id',Auth::user()->id)->where('ratingable_id', $product->id)->first()->value}}" @else data-rating="0" @endif></div>
-  @endif
-
-</div>
 </div>
 </div>
 </div>

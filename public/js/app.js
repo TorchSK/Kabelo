@@ -3000,12 +3000,12 @@ if($('body').attr('id')=='cartproducts')
 }
 
 $('.filterbar_handle').mouseover(function(){
-  $('#filterbar').show();
+  $('.absolute').show();
 })
 
-$('#filterbar_absolute #filterbar').mouseleave(function(){
+$('.absolute #filterbar').mouseleave(function(){
   setTimeout(function(){
-    $('#filterbar').hide();
+    $('.absolute').hide();
   },600)
 })
 
