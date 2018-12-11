@@ -6,19 +6,19 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\ProductParameter;
-use App\File as ProductFile;
+use App\File;
 use App\Rating;
 use App\ProductRelation;
 use App\PriceLevel;
 use App\Parameter;
 
 use Image;
-use File;
 use Response;
 use Auth;
 use Storage;
 use Excel;
-use Cookie;
+use Cache;
+use File as Filez;
 
 use Rap2hpoutre\FastExcel\FastExcel;
 
@@ -234,16 +234,16 @@ class ProductController extends Controller
     {
         $directory = 'temp';
 
-        if (sizeof(File::files($directory)) > 0)
+        if (sizeof(Filez::files($directory)) > 0)
         {
-            $files = File::files($directory);
+            $files = Filez::files($directory);
 
             foreach ($files as $key => $file)
             {
                 $filename = explode("/", $file)[1];
                 $ext = explode(".", $file)[1];
 
-                $productFile = new ProductFile();
+                $productFile = new File();
 
                 $productFile->product_id = $product->id;
                 $productFile->path = 'uploads/'.$filename;
@@ -264,7 +264,7 @@ class ProductController extends Controller
 
                 $productFile->save();
 
-                $move = File::move($file, 'uploads/'.$filename);
+                $move = Filez::move($file, 'uploads/'.$filename);
 
             }
         }
@@ -354,7 +354,29 @@ class ProductController extends Controller
         return 1;
     }
 
+    public function edit($product)
+    {
+        $product = Product::where('url', $product)->first();
+        
+        $data = [
+           'product' => $product
+        ];
 
+        $directory = 'temp';
+        
+        $files = Filez::files($directory);
+        
+        if (sizeof(Filez::files($directory)) > 0)
+        {
+            foreach ($files as $file)
+            {
+                Filez::delete($file);
+            }
+        }
+
+        return view('products.edit', $data);
+
+    }
 
 
     public function update($productid, Request $request)
@@ -472,7 +494,7 @@ class ProductController extends Controller
         {
             foreach ((array)$request->get('videos') as $key => $video)
             {
-                $productFile = new ProductFile();
+                $productFile = new File();
 
                 $productFile->product_id = $product->id;
                 $productFile->type='video';
@@ -575,7 +597,7 @@ class ProductController extends Controller
 
         foreach ($product->images as $file)
         {
-            File::delete($file->path);
+            Filez::delete($file->path);
             $file->delete();
         }
         $product->delete();

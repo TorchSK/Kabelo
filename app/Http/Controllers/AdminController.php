@@ -834,29 +834,7 @@ class AdminController extends Controller
     }
 
 
-    public function productEdit($product)
-    {
-        $product = Product::where('url', $product)->first();
-        
-        $data = [
-           'product' => $product
-        ];
 
-        $directory = 'temp';
-        
-        $files = Filez::files($directory);
-        
-        if (sizeof(Filez::files($directory)) > 0)
-        {
-            foreach ($files as $file)
-            {
-                Filez::delete($file);
-            }
-        }
-
-        return view('products.edit', $data);
-
-    }
 
     public function products()
     {

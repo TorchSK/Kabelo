@@ -1863,7 +1863,7 @@ $('#cover_dropzone').dropzone({
 
     if($('input[name="type"]').val()=='cover')
     {
-    	$aspect = 2.8;
+    	$aspect = 2.4615;
     }
     else
     {

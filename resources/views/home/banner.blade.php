@@ -1,4 +1,4 @@
-@if(Request::segment(1)=='banner')
+@if(Request::segment(1)=='banner' || Request::segment(1)=='admin')
 <div class="banner" data-type="{{$type}}" data-id="{{$cover->id}}">
 	<img src="{{url($cover->image)}}" />
 
