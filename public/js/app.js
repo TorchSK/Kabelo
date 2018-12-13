@@ -338,8 +338,8 @@ function addToCart(productid, qty){
     global: false,
     success: function(data){
     	console.log(data);
-      cart.find('text number').text(data.count);
-      cart.find('price number').text(parseFloat(price+parseFloat(data.price)).toFixed(2));
+      	cart.find('.label').text(data.count);
+      	cart.find('price number').text(parseFloat(price+parseFloat(data.price)).toFixed(2));
     }
   })
 }
@@ -1863,7 +1863,7 @@ $('#cover_dropzone').dropzone({
 
     if($('input[name="type"]').val()=='cover')
     {
-    	$aspect = 2.4615;
+    	$aspect = 2.233;
     }
     else
     {

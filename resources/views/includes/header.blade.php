@@ -122,12 +122,6 @@
             <i class="shopping basket big icon"></i>
               <div class="floating ui black label">{{$cart['number']}}</div>
           </div>
-         
-
-          <div id="cart_text">
-              <text>Nákupný košík (<number>{{$cart['number']}}</number>)</text>
-              <price><number>{{number_format($cart['price'],2)}}</number> Eur</price>
-          </div>
         </a>
 
       @if($appname=='dedra')

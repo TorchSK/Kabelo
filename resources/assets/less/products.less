@@ -379,6 +379,7 @@
 
 	>.container{
 		background-color: #FAFAFA;
+		padding: 15px 0;
 	}
 
 }
@@ -394,7 +395,7 @@
 		position: absolute;
 		z-index: 999;
 		display: none;
-		max-height: 75vh;
+		max-height: 70vh;
 		overflow-y: auto;
 		top: 65px;
 		background-color: #FAFAFA;
@@ -402,8 +403,13 @@
 		border: 1px solid #EDEDED;
 		padding: 10px;
 
-		#filterbar.vertical #cat_div{
-			padding-top: 5px;
+		#filterbar.vertical 
+		{
+			margin-right: 0px;
+
+			#cat_div{
+				padding-top: 5px;
+			}
 		}
 	}
 }
@@ -803,7 +809,7 @@
 		background-color: #FFF;
 
 	>.container{
-		padding: 50px;
+		padding: 50px 0;
 
 		@media @break3{
 			padding: 15px;

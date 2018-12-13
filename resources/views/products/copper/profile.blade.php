@@ -1,6 +1,15 @@
 @extends('layouts.master')
 @section('content')
 
+@if (Auth::check() && Auth::user()->admin)
+<div id="product_options_wrapper" class="wrapper">
+ <div class="container ct">
+  <a href="{{route('product.edit',['product'=>$product->url])}}" class="ui teal button">Edituj produkt</a>
+  <a class="ui red button" id="product_detail_delete_btn">Zmaž produkt</a>
+</div>
+</div>
+@endif
+
 <div class="main wrapper" id="product">
 <div class="container">
 
@@ -203,22 +212,40 @@
 </div>
 </div>
 
-@if($product->relatedProducts->count() > 0)
-<div class="pad wrapper ct" id="product_detail_suggested_wrapper">
+<div class="pad wrapper" id="product_detail_suggested_wrapper">
 
   <div class="container">
-    <div class="ui header">Doporučené výrobky</div>
+    
+    <div class="caption">
+    <div class="ui header">Ďalšie súvisiace produkty</div>
+      @if(Auth::check() && Auth::user()->admin)
+      <div id="suggested_wrapper_speed">
+          <i class="minus circle icon"></i>
+          <span>Pauza: <value>{{App\Setting::firstOrCreate(['name'=>'suggested_wrapper_speed'])->value}}</value></span>
+          <i class="plus circle icon"></i>
+      </div>
+      @endif
+      <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
+    </div>
 
-      <div id="grid">
+      <div class="related_products_carousel">
+        @if($product->relatedProducts->count() > 0)
 
-      @foreach($product->relatedProducts as $relprod)
-        @include('products.row',['product'=>$relprod])
-      @endforeach
+          @foreach($product->relatedProducts as $relprod)
+            @include('products.row',['product'=>$relprod])
+          @endforeach
+        
+        @else
+
+          @foreach(App\Product::inRandomOrder()->whereHas('categories', function ($query) use ($product) {$query->whereIn('id', $product->categories->pluck('id'));})->where('id','!=',$product->id)->take(50)->get() as $relprod)
+            @include('products.row',['product'=>$relprod])
+          @endforeach
+
+        @endif
 
       </div>
 </div>
 </div>
-@endif
 
 
 </div>
