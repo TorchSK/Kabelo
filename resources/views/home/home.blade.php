@@ -18,7 +18,9 @@
 
         <div class="flex_row">
 
+            @if($layout == 1)
             @include('includes/filterbar')
+            @endif
 
             <div class="grow">
 

@@ -75,7 +75,7 @@
 	}
 
 	.title{
-		font-weight: 900;
+		font-weight: 300;
 		font-size: 1.1em;
 		min-height: 38.86px;
 		padding: 0 15px;
@@ -119,12 +119,11 @@
 	.price{
 		color: @grey;
 		font-size: 1.5em;
-		font-weight: 900;
 		position: relative;
 		display: inline-block;
 		overflow: hidden;
 		font-family: "futura-pt-bold";
-		font-weight: 700;
+		font-weight: 100;
 
 		@media @break3{
 			font-size: 1.3em;
@@ -135,13 +134,12 @@
 	.final_price{
 		color: @grey;
 		font-size: 1.5em;
-		font-weight: 900;
+		font-weight: 100;
 		position: relative;
 		overflow: hidden;
 		display: inline-block;
 		margin-left: 10px;
 		font-family: "futura-pt-bold";
-		font-weight: 700;
 
 		@media @break3{
 			font-size: 1.3em;
@@ -374,33 +372,7 @@
 	left: 0px;
 }
 
-#filterbar_absolute{
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
 
-	&.inactive{
-		opacity: 0.5;
-	}
-
-	#filterbar{
-			background-color: #EEE;
-			display: none;
-			position: absolute;
-			height: 99vh;
-			z-index: 99999;
-			top: 45px;
-			left: 5px;
-			border-radius: 6px;
-			border-right: 2px solid #FFF;
-	}
-
-	.filterbar_handle{
-		margin: 5px;
-		position: absolute;
-	}
-}
 
 #product_options_wrapper{
 	margin-bottom: 1px;
@@ -423,10 +395,16 @@
 		z-index: 999;
 		display: none;
 		max-height: 75vh;
-		overflow-y: scroll;
+		overflow-y: auto;
 		top: 65px;
 		background-color: #FAFAFA;
 		border-radius:3px;
+		border: 1px solid #EDEDED;
+		padding: 10px;
+
+		#filterbar.vertical #cat_div{
+			padding-top: 5px;
+		}
 	}
 }
 
@@ -810,10 +788,12 @@
 }
 
 #product_params_wrapper{
-		background-color: #FFF;
+	margin-top: 50px;
+		background-color: rgba(0,0,0,0.03);
 
 	>.container{
 		padding: 50px;
+		text-align: left;
 	}
 
 
