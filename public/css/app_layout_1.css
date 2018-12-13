@@ -1517,7 +1517,7 @@ a:hover {
 }
 .item.product {
   display: inline-block;
-  width: 15.17%;
+  width: 18.3%;
   text-align: center;
   margin-bottom: 25px;
   margin-right: 25px;
@@ -1525,6 +1525,9 @@ a:hover {
   background-color: #FFFFFF;
   padding-bottom: 25px;
   position: relative;
+}
+.item.product.grid:nth-child(5n) {
+  margin-right: 0px;
 }
 @media all and (max-width: 2100px) {
   .item.product {
