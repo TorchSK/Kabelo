@@ -1602,6 +1602,9 @@ $('.dashboard_tabs .overall.tab').click(function(){
 
 $('.add_delivery_method_btn').click(function(){
     $('#add_delivery_method_modal').modal('setting', {
+    onVisible: function() {
+    	$('.ui.dropdown').dropdown();
+    },
     onApprove : function() {
       $name = $('#add_delivery_method_name_input').val();
       $desc = $('#add_delivery_method_desc_input').val();
@@ -1611,7 +1614,7 @@ $('.add_delivery_method_btn').click(function(){
 
       $.ajax({
         type: "POST",
-        url: "/admin/delivery/",
+        url: "/admin/delivery",
         data: {name: $name, desc:$desc, icon: $icon, note: $note, price: $price},
         success: function(){
           location.reload();
@@ -1634,7 +1637,7 @@ $('.add_payment_method_btn').click(function(){
 
       $.ajax({
         type: "POST",
-        url: "/admin/payment/",
+        url: "/admin/payment",
         data: {name: $name, desc:$desc, icon: $icon, note: $note, price: $price},
         success: function(){
           location.reload();

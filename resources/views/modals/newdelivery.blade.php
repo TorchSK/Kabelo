@@ -19,10 +19,10 @@ Pridaj sposob dopravy
     <input type="text" placeholder="Popis" id="add_delivery_method_desc_input" />
   </div>
 
-  <div class="label">Cena</div>
+  <div class="label">Cena v &euro;</div>
 
   <div class="ui fluid input">
-    <input type="text" placeholder="Popis" id="add_delivery_method_price_input" />
+    <input type="text" placeholder="Cena" id="add_delivery_method_price_input" />
   </div>
 
 <div class="ui form">
