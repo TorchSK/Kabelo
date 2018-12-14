@@ -1534,7 +1534,7 @@ a:hover {
     width: 18.28%;
   }
   .item.product.grid:nth-child(5n) {
-    margin-right: 5px;
+    margin-right: 0px;
   }
 }
 @media all and (max-width: 1690px) {
