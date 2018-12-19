@@ -2556,6 +2556,9 @@ body.admin #filterbar.vertical .categories .item {
   padding: 3%;
   text-align: left;
 }
+.admin_wrapper .short {
+  max-width: 800px;
+}
 #admin_categories {
   padding: 3%;
 }
@@ -3420,6 +3423,11 @@ body.admin #filterbar.vertical .categories .item {
 }
 #admin_new_display_type_form {
   margin-bottom: 35px;
+}
+#admin_settings_banner .banner_preview {
+  margin-top: 25px;
+  border: 1px solid #CCC;
+  width: 1400px;
 }
 #order_steps_wrapper {
   padding: 15px 0;

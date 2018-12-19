@@ -16,11 +16,6 @@
   <div class="container flex_row">
     
 
-<div id="filterbar_absolute">
-  <div class="ui button filterbar_handle sticky_div">Zobrazit katalóg</div>
-  @include('includes/filterbar')
-</div>
-
 
     <div class="images">
 

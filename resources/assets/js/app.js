@@ -543,6 +543,55 @@ function initPriceSlider(){
 initPriceSlider();
 filtersInit();
 
+
+function initCoverHeightSlider(){
+
+    var checkExists = $('#cover_height_slider').length;
+
+    if (checkExists)
+    {
+
+      if ($('#cover_height_slider')[0].noUiSlider)
+      {
+        $('#cover_height_slider')[0].noUiSlider.destroy();
+      }
+
+      var coverHeightSLider = document.getElementById('cover_height_slider');
+
+      noUiSlider.create(coverHeightSLider, {
+        start: $('input[name="cover_height"]').val(),
+        connect: [true,false],
+        range: {
+          'min': 0,
+          'max': 1000
+        },
+        format: wNumb({
+            decimals: 0,
+          }),
+        
+        step: 1
+      });
+
+      coverHeightSLider.noUiSlider.on('slide', function()
+      {
+      	$('input[name="cover_height"').val(coverHeightSLider.noUiSlider.get());
+      	chanegCoverHeight((coverHeightSLider.noUiSlider.get()));
+      });
+
+    }
+}
+
+function chanegCoverHeight(height){
+	$('.banner_preview').height(height);
+
+}
+
+
+$('input[name="cover_height"]').change(function(){
+})
+
+initCoverHeightSlider();
+
 function doSort(){
 
   //console.log(getPriceFilter('price'));

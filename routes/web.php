@@ -97,6 +97,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::put('/deliverypayment', 'AdminController@changeDeliveryPayment');
 
 	Route::get('/banners/', 'AdminController@banners')->name('admin.banners');
+	Route::get('/banners/settings', 'AdminController@bannersSettings')->name('admin.banners.settings');
 
 	Route::get('/banner/', 'AdminController@makeCover')->name('admin.makeCover');
 	Route::post('/cover/', 'AdminController@storeCover')->name('admin.storeCover');

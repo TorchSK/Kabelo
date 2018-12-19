@@ -56,6 +56,7 @@
                     </div>
                 </div>
 
+                @if($appname=='copper')
                 <div class="wrapper" id="makers_div">
                 <div class="container">
                     <a><img src="/img/velleman-logo.png" /></a>
@@ -65,7 +66,8 @@
 
                 </div>
                 </div>
-
+                @endif
+                
                 <div id="home_sales_div" class="wrapper">
                     <div class="container">
 
