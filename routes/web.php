@@ -71,8 +71,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/settings/eshop', 'AdminController@eshop')->name('admin.settings.eshop');
 	Route::get('/settings/invoice', 'AdminController@invoice')->name('admin.settings.invoice');
 	Route::get('/settings/delivery', 'AdminController@delivery')->name('admin.settings.delivery');
-	Route::post('/settings/eshop/save', 'SettingController@bulkUpdate')->name('settings.bulkUpdate');
-	Route::post('/settings/invoice/save', 'SettingController@bulkUpdate')->name('settings.bulkUpdate');
+
+	Route::post('/settings/save', 'SettingController@bulkUpdate')->name('settings.bulkUpdate');
+	
 	Route::get('/settings/site', 'AdminController@site')->name('admin.settings.site');
 
 	Route::post('/delivery', 'AdminController@addDeliveryMethod');

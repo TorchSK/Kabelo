@@ -26,14 +26,14 @@
 
                     <div class="top_banner_row">
 
-                        <div class="covers">
+                        <div class="covers" style="height: {{App\Setting::firstOrCreate(['name'=>'cover_height'])->value}};">
                             @foreach(App\Banner::where('type','cover')->orderBy('order')->get() as $cover)
                                 @include('home.banner',['type'=>'cover'])
                             @endforeach
                         </div>
 
 
-                        <div class="top_banners">
+                        <div class="top_banners" style="height: {{App\Setting::firstOrCreate(['name'=>'cover_height'])->value}};">
                             @foreach(App\Banner::where('type','banner')->orderBy('order')->get() as $cover)
                                 @include('home.banner',['type'=>'banner'])
                             @endforeach

@@ -581,16 +581,96 @@ function initCoverHeightSlider(){
     }
 }
 
+function initCoverWidthSlider(){
+
+    var checkExists = $('#cover_width_slider').length;
+
+    if (checkExists)
+    {
+
+      if ($('#cover_width_slider')[0].noUiSlider)
+      {
+        $('#cover_width_slider')[0].noUiSlider.destroy();
+      }
+
+      var coverHeightSLider = document.getElementById('cover_width_slider');
+
+      noUiSlider.create(coverHeightSLider, {
+        start: $('input[name="cover_width"]').val(),
+        connect: [true,false],
+        range: {
+          'min': 50,
+          'max':90
+        },
+        format: wNumb({
+            decimals: 0,
+          }),
+        
+        step: 1
+      });
+
+      coverHeightSLider.noUiSlider.on('slide', function()
+      {
+      	$('input[name="cover_width"').val(coverHeightSLider.noUiSlider.get());
+      	changeCoverWidth((coverHeightSLider.noUiSlider.get()));
+      });
+
+    }
+}
+
+function changeCoverWidth(width){
+	$('.banner_preview .cover').width(width+'%');
+	$('#cover_dimensions_settings').find('width').text($('.banner_preview .cover').width());
+
+	$coverRatio = ($('.banner_preview .cover').width()/$('.banner_preview .cover').height()).toFixed(2)
+	$('#cover_dimensions_settings').find('ratio').text($coverRatio);
+	
+	$bannerRatio = ($('.banner_preview .banner').width()/$('.banner_preview .banner').height()).toFixed(2)
+	$('#banner_dimensions_settings').find('ratio').text($bannerRatio);
+
+	$('#banner_dimensions_settings').find('width').text($('.banner_preview .banner').width());
+	
+	$('input[name="cover_ratio"]').val($coverRatio);
+	$('input[name="cover_ratio"]').val($bannerRatio);
+}
+
 function chanegCoverHeight(height){
-	$('.banner_preview').height(height);
+	$('.banner_preview .cover').height(height-2);
+	$('.banner_preview .banners').height(height);
+
+	$('#cover_dimensions_settings').find('height').text($('.banner_preview .cover').height());
+
+	$coverRatio = ($('.banner_preview .cover').width()/$('.banner_preview .cover').height()).toFixed(2)
+	$('#cover_dimensions_settings').find('ratio').text($coverRatio);
+	
+	$bannerRatio = ($('.banner_preview .banner').width()/$('.banner_preview .banner').height()).toFixed(2)
+	$('#banner_dimensions_settings').find('ratio').text($bannerRatio);
+
+	$('#banner_dimensions_settings').find('height').text($('.banner_preview .banner').height());
+	
+	$('input[name="cover_ratio"]').val($coverRatio);
+	$('input[name="cover_ratio"]').val($bannerRatio);
 
 }
 
 
-$('input[name="cover_height"]').change(function(){
+$('#banners_visible_checkbox').checkbox({
+  onChecked: function(){
+    $('.banner_preview').find('.banners').show();
+	$('.banner_preview .cover').width($('input[name="cover_width"').val()+'%');
+	$('#cover_width_setting').show();
+
+  },
+  onUnchecked: function(){
+     $('.banner_preview').find('.banners').hide();
+	 $('.banner_preview .cover').width('100%');
+	 $('#cover_width_setting').hide();
+  }
 })
 
+
 initCoverHeightSlider();
+initCoverWidthSlider();
 
 function doSort(){
 
