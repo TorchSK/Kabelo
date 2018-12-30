@@ -1555,7 +1555,10 @@ $('#category_image_dropzone').dropzone({
   } 
 });
 
-
+$carousel = $('.covers').flickity({
+  autoPlay: 4000,
+  setGallerySize: false
+});
 
 $carousel.on( 'pointerUp.flickity', function(){
 	$('#search_results').hide();
