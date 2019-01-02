@@ -3,6 +3,8 @@
 
     <div id="admin_product_sticker_wrapper" class="admin_wrapper">
     	<div class="sticker_list">
+    		<div class="caption">Zoznam stickerov</div>
+
     		@foreach(App\Sticker::all() as $sticker)
     			<div class="item sticker" data-id="{{$sticker->id}}">
     				<div class="image"><img src="{{url($sticker->path)}}" /></div>

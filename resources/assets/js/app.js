@@ -1461,6 +1461,15 @@ $news_carousel = $('#home_news_div .items').flickity({
     imagesLoaded: true,
 });
 
+$news_carousel = $('#home_bestsellers_div .items').flickity({
+    cellAlign: 'left',
+    contain: true,
+    pageDots: false,
+    prevNextButtons: false,
+    imagesLoaded: true,
+});
+
+
 $sales_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
 	$link = $(cellElement).find('.p_anch').attr('href');
 	if($($(pointer)[0].target).hasClass('to_cart')==false)

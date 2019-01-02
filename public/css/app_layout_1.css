@@ -1070,11 +1070,13 @@ a:hover {
   margin-right: 25px;
 }
 #home_news_div .container,
-#home_sales_div .container {
+#home_sales_div .container,
+#home_bestsellers_div .container {
   padding: 15px 0 15px 0;
 }
 #home_news_div .caption,
-#home_sales_div .caption {
+#home_sales_div .caption,
+#home_bestsellers_div .caption {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1083,7 +1085,8 @@ a:hover {
           justify-content: space-between;
 }
 #home_news_div .caption name,
-#home_sales_div .caption name {
+#home_sales_div .caption name,
+#home_bestsellers_div .caption name {
   font-size: 1.3em;
   padding: 5px;
   margin-bottom: 10px;
@@ -1091,29 +1094,36 @@ a:hover {
   color: #444;
 }
 #home_news_div .caption name i,
-#home_sales_div .caption name i {
+#home_sales_div .caption name i,
+#home_bestsellers_div .caption name i {
   font-size: 0.8em;
   position: relative;
   top: -1px;
   color: #888;
 }
 #home_news_div .caption arrows,
-#home_sales_div .caption arrows {
+#home_sales_div .caption arrows,
+#home_bestsellers_div .caption arrows {
   font-size: 1.3em;
   padding: 5px;
   margin-bottom: 10px;
   font-weight: 700;
 }
 #home_news_div .caption arrows i.icon,
-#home_sales_div .caption arrows i.icon {
+#home_sales_div .caption arrows i.icon,
+#home_bestsellers_div .caption arrows i.icon {
   color: #BBB;
   font-size: 1.2em;
 }
 #home_news_div .items,
-#home_sales_div .items {
+#home_sales_div .items,
+#home_bestsellers_div .items {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+#home_bestsellers_div {
+  background-color: #21BA45;
 }
 #makers_div {
   margin-top: 25px;
@@ -3370,7 +3380,9 @@ body.admin #filterbar.vertical .categories .item {
 }
 #admin_product_sticker_wrapper .sticker_list {
   width: 200px;
-  background-color: #FAFAFA;
+}
+#admin_product_sticker_wrapper .sticker_list .caption {
+  margin-bottom: 15px;
 }
 #admin_product_sticker_wrapper .sticker_list .item.sticker {
   opacity: 0.5;

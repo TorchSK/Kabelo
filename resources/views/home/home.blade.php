@@ -56,6 +56,21 @@
                     </div>
                 </div>
 
+                <div id="home_bestsellers_div" class="wrapper">
+                    <div class="container">
+                        <div class="caption">
+                            <name>Bestsellery</name>
+                            <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
+                        </div>
+                        <div class="items">
+                        @foreach(App\Product::with('orders')->take(10)->get()->sortByDesc(function($q){return $q->orders->count();}); as $product)
+                            @include('products.row',['showdesc'=>false])
+                        @endforeach
+                        </div>
+                    </div>
+                </div>
+
+
                 @if($appname=='copper')
                 <div class="wrapper" id="makers_div">
                 <div class="container">
