@@ -1461,7 +1461,7 @@ $news_carousel = $('#home_news_div .items').flickity({
     imagesLoaded: true,
 });
 
-$news_carousel = $('#home_bestsellers_div .items').flickity({
+$bestsellers_carousel = $('#home_bestsellers_div .items').flickity({
     cellAlign: 'left',
     contain: true,
     pageDots: false,
@@ -1485,6 +1485,15 @@ $news_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement
 		location.replace($link);
 	}
 });
+
+$bestsellers_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
+	$link = $(cellElement).find('.p_anch').attr('href');
+	if($($(pointer)[0].target).hasClass('to_cart')==false)
+	{
+		location.replace($link);
+	}
+});
+
 
 
 $('#admin_add_category_param_btn').click(function(){
