@@ -36,6 +36,10 @@ class BannerController extends Controller
 
         $mdfilename = md5($filename.time());
 
+        if(!File::exists($destinationPath)) {
+            File::makeDirectory($destinationPath);
+        }
+
         Image::make($path)
                  ->crop($w, $h, $x, $y)
                  ->widen($width)
