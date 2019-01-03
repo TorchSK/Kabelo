@@ -51,7 +51,7 @@
 				<div class="item setting" id="cover_dimensions_settings">
 					<div class="label">Rozmery coveru</div>
 					<div class="ui right labeled input">
-						<width>{{14*App\Setting::firstOrCreate(['name'=>'cover_width'])->value}}</width>&nbsp;x&nbsp;<height>{{App\Setting::firstOrCreate(['name'=>'cover_height'])->value}}</height>&nbsp;(<ratio>{{round(14*App\Setting::firstOrCreate(['name'=>'cover_width'])->value / App\Setting::firstOrCreate(['name'=>'cover_height','value'=>'1'])->value,2)}}</ratio>)
+						<width>{{14*App\Setting::firstOrCreate(['name'=>'cover_width'])->value}}</width>&nbsp;x&nbsp;<height>{{App\Setting::firstOrCreate(['name'=>'cover_height'])->value}}</height>&nbsp;(<ratio>{{round(14*App\Setting::firstOrCreate(['name'=>'cover_width'])->value / App\Setting::firstOrCreate(['name'=>'cover_height'],['value'=>'1'])->value,2)}}</ratio>)
 					</div>	
 				</div>
 
@@ -62,7 +62,6 @@
 						&nbsp;
 						(
 						<ratio>
-						
 							{{round((14*(100-App\Setting::firstOrCreate(['name'=>'cover_width'])->value) - 35) / ((App\Setting::firstOrCreate(['name'=>'cover_height'])->value -35) / 2),2)}}
 						</ratio>
 						)
