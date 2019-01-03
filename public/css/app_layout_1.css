@@ -1123,8 +1123,11 @@ a:hover {
           flex: 1;
 }
 #home_bestsellers_div {
-  background-color: #dcdbda;
+  background-color: #f22b6c;
   padding: 10px 50px;
+}
+#home_bestsellers_div .caption name {
+  color: #FFF !important;
 }
 #makers_div {
   margin-top: 25px;
