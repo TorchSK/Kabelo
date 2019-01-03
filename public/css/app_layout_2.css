@@ -1123,7 +1123,8 @@ a:hover {
           flex: 1;
 }
 #home_bestsellers_div {
-  background-color: #21BA45;
+  background-color: #dcdbda;
+  padding: 10px 50px;
 }
 #makers_div {
   margin-top: 25px;
