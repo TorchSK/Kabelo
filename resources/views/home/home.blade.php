@@ -57,10 +57,11 @@
                 </div>
 
                 <div id="home_bestsellers_div" class="wrapper">
-                    <div class="container">
-                        <div class="caption">
+                    <div class="container flex_row">
+                        <div class="box">
+                            <icon><i class="rocket icon"></i></icon>
                             <name>Bestsellery</name>
-                            <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
+                            <desc>Najpredávanejšie produkty z kategórií</desc>
                         </div>
                         <div class="items">
                         @foreach(App\Product::with('orders')->take(10)->get()->sortByDesc(function($q){return $q->orders->count();}); as $product)

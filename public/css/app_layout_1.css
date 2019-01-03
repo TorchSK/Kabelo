@@ -1123,8 +1123,35 @@ a:hover {
           flex: 1;
 }
 #home_bestsellers_div {
+  margin-top: 50px;
+}
+#home_bestsellers_div .box {
+  color: #FFF;
+  font-size: 3em;
   background-color: #f22b6c;
-  padding: 10px 50px;
+  padding: 35px;
+  width: 400px;
+  margin-right: 35px;
+  margin-bottom: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+#home_bestsellers_div .box name {
+  font-weight: 700;
+}
+#home_bestsellers_div .box desc {
+  font-weight: 200;
+  font-size: 0.5em;
+  line-height: 1.4em;
+  letter-spacing: 2px;
+  font-style: italic;
 }
 #home_bestsellers_div .caption name {
   color: #FFF !important;
