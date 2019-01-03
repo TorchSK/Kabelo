@@ -1675,6 +1675,7 @@ a:hover {
   max-height: 110px;
   /* fallback */
   min-height: 110px;
+  padding-right: 25px;
 }
 .item.product .prices {
   overflow: hidden;
