@@ -36,7 +36,7 @@ class BannerController extends Controller
 
         $mdfilename = md5($filename.time());
 
-        if(!File::exists($destinationPath)) {
+        if(!File::isDirectory($destinationPath)) {
             File::makeDirectory($destinationPath);
         }
 
