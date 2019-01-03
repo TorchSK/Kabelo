@@ -1090,7 +1090,7 @@ a:hover {
   font-size: 1.3em;
   padding: 5px;
   margin-bottom: 10px;
-  font-weight: 700;
+  font-weight: 200;
   color: #444;
 }
 #home_news_div .caption name i,
@@ -5155,7 +5155,8 @@ body.eshop #grid {
   padding-top: 10px !important;
 }
 body.eshop #home_news_div .caption,
-body.eshop #home_sales_div .caption {
+body.eshop #home_sales_div .caption,
+body.eshop #home_bestsellers_div .caption {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5165,14 +5166,16 @@ body.eshop #home_sales_div .caption {
 }
 @media all and (max-width: 980px) {
   body.eshop #home_news_div .caption,
-  body.eshop #home_sales_div .caption {
+  body.eshop #home_sales_div .caption,
+  body.eshop #home_bestsellers_div .caption {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
   }
 }
 body.eshop #home_news_div .caption name,
-body.eshop #home_sales_div .caption name {
+body.eshop #home_sales_div .caption name,
+body.eshop #home_bestsellers_div .caption name {
   font-size: 2em;
   padding: 15px;
   margin-bottom: 10px;
@@ -5180,14 +5183,16 @@ body.eshop #home_sales_div .caption name {
   color: #444;
 }
 body.eshop #home_news_div .caption name i,
-body.eshop #home_sales_div .caption name i {
+body.eshop #home_sales_div .caption name i,
+body.eshop #home_bestsellers_div .caption name i {
   font-size: 0.8em;
   position: relative;
   top: -1px;
   color: #888;
 }
 body.eshop #home_news_div .caption arrows,
-body.eshop #home_sales_div .caption arrows {
+body.eshop #home_sales_div .caption arrows,
+body.eshop #home_bestsellers_div .caption arrows {
   font-size: 1.3em;
   padding: 5px;
   margin-bottom: 10px;
@@ -5195,17 +5200,20 @@ body.eshop #home_sales_div .caption arrows {
 }
 @media all and (max-width: 980px) {
   body.eshop #home_news_div .caption arrows,
-  body.eshop #home_sales_div .caption arrows {
+  body.eshop #home_sales_div .caption arrows,
+  body.eshop #home_bestsellers_div .caption arrows {
     display: none;
   }
 }
 body.eshop #home_news_div .caption arrows i.icon,
-body.eshop #home_sales_div .caption arrows i.icon {
+body.eshop #home_sales_div .caption arrows i.icon,
+body.eshop #home_bestsellers_div .caption arrows i.icon {
   color: #BBB;
   font-size: 1.2em;
 }
 body.eshop #home_news_div .items,
-body.eshop #home_sales_div .items {
+body.eshop #home_sales_div .items,
+body.eshop #home_bestsellers_div .items {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
