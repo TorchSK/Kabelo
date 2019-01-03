@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\File;
 use App\Banner;
 
+use App\Filez;
 
 use Image;
 
@@ -36,8 +37,8 @@ class BannerController extends Controller
 
         $mdfilename = md5($filename.time());
 
-        if(!File::isDirectory($destinationPath)) {
-            File::makeDirectory($destinationPath);
+        if(!Filez::isDirectory($destinationPath)) {
+            Filez::makeDirectory($destinationPath);
         }
 
         Image::make($path)
