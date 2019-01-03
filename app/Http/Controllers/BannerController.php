@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\File;
 use App\Banner;
 
-use App\Filez;
+use File as Filez;
 
 use Image;
 
