@@ -3,6 +3,9 @@
 
 	<div class="admin_add_cover">
 		
+		<div class="hiden" id="cover_ratio">{{App\Setting::firstOrCreate(['name'=>'cover_ratio'],['value'=>2.8])->value}}</div>
+		<div class="hiden" id="banner_ratio">{{App\Setting::firstOrCreate(['name'=>'banner_ratio'],['value'=>2.8])->value}}</div>
+
 
 		<div class="ui form" id="add_banner_radioboxes">
 		  <div class="inline fields">

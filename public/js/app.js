@@ -631,7 +631,7 @@ function changeCoverWidth(width){
 	$('#banner_dimensions_settings').find('width').text($('.banner_preview .banner').width());
 	
 	$('input[name="cover_ratio"]').val($coverRatio);
-	$('input[name="cover_ratio"]').val($bannerRatio);
+	$('input[name="banner_ratio"]').val($bannerRatio);
 }
 
 function chanegCoverHeight(height){
@@ -649,7 +649,7 @@ function chanegCoverHeight(height){
 	$('#banner_dimensions_settings').find('height').text($('.banner_preview .banner').height());
 	
 	$('input[name="cover_ratio"]').val($coverRatio);
-	$('input[name="cover_ratio"]').val($bannerRatio);
+	$('input[name="banner_ratio"]').val($bannerRatio);
 
 }
 
@@ -2004,11 +2004,11 @@ $('#cover_dropzone').dropzone({
 
     if($('input[name="type"]').val()=='cover')
     {
-    	$aspect = 2.233;
+    	$aspect = $('#cover_ratio').text();
     }
     else
     {
-    	$aspect = 1.8;
+    	$aspect = $('#banner_ratio').text();;
     }
 
     $('.crop_preview img').cropper({

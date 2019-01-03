@@ -2723,12 +2723,12 @@ body.admin #filterbar.vertical .categories .item {
   margin-bottom: 15px;
 }
 .admin_banner_list .banner[data-type="cover"] {
-  width: calc(223.3px);
   height: 100px;
+  background-size: cover;
 }
 .admin_banner_list .banner[data-type="banner"] {
-  width: calc(180px);
   height: 100px;
+  background-size: cover;
 }
 .admin_banner_list .banner {
   position: relative;

@@ -10,7 +10,7 @@
 
 	<div class="admin_banner_list">
      	@foreach(App\Banner::where('type','cover')->orderBy('order')->get() as $cover)
-            @include('home.banner',['type'=>'cover'])
+            @include('home.banner',['type'=>'cover','width'=> 'calc(100px * '.App\Setting::firstOrCreate(['name'=>'cover_ratio'],['value'=>2.8])->value.')'])
         @endforeach
 
 	</div>
@@ -25,7 +25,7 @@
 
 	<div class="admin_banner_list">
      	@foreach(App\Banner::where('type','banner')->orderBy('order')->get() as $cover)
-            @include('home.banner',['type'=>'banner'])
+            @include('home.banner',['type'=>'banner','width'=> 'calc(100px * '.App\Setting::firstOrCreate(['name'=>'banner_ratio'],['value'=>2.8])->value.')'])
         @endforeach
 
 	</div>

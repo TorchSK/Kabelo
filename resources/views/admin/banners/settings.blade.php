@@ -51,7 +51,7 @@
 				<div class="item setting" id="cover_dimensions_settings">
 					<div class="label">Rozmery coveru</div>
 					<div class="ui right labeled input">
-						<width>{{14*App\Setting::firstOrCreate(['name'=>'cover_width'])->value}}</width>&nbsp;x&nbsp;<height>{{App\Setting::firstOrCreate(['name'=>'cover_height'])->value}}</height>&nbsp;(<ratio>{{round(14*App\Setting::firstOrCreate(['name'=>'cover_width'])->value / App\Setting::firstOrCreate(['name'=>'cover_height'])->value,2)}}</ratio>)
+						<width>{{14*App\Setting::firstOrCreate(['name'=>'cover_width'])->value}}</width>&nbsp;x&nbsp;<height>{{App\Setting::firstOrCreate(['name'=>'cover_height'])->value}}</height>&nbsp;(<ratio>{{round(14*App\Setting::firstOrCreate(['name'=>'cover_width'])->value / App\Setting::firstOrCreate(['name'=>'cover_height','value'=>'1'])->value,2)}}</ratio>)
 					</div>	
 				</div>
 
@@ -73,7 +73,7 @@
 			</div>
 
 				<input type="hidden" name="cover_ratio" value="{{App\Setting::firstOrCreate(['name'=>'cover_ratio'],['value'=>2.8])->value}}">
-				<input type="hidden" name="banner_ratio" value="{{App\Setting::firstOrCreate(['name'=>'cover_ratio'],['value'=>1.8])->value}}">
+				<input type="hidden" name="banner_ratio" value="{{App\Setting::firstOrCreate(['name'=>'banner_ratio'],['value'=>1.8])->value}}">
 
 			<button type="submit" class="ui green button settings_save">Ulož</button>
 

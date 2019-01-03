@@ -137,7 +137,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
 	Route::put('/page/setting/', 'SettingController@pageUpdate')->name('admin.setting.pageUpdate');
 
-
+	// Banners
+	Route::resource('banner','BannerController');
 });
 
 
@@ -169,8 +170,7 @@ Route::get('/home/eshop', 'HomeController@index')->name('home.eshop');
 Route::put('/user/{userid}', 'UserController@update');
 Route::delete('/user/{userid}', 'UserController@destroy');
 
-// Banners
-Route::resource('banner','BannerController');
+
 
 //Cart
 Route::get('cart/products','CartController@products');
