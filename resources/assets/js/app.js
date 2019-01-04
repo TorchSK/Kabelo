@@ -3061,7 +3061,14 @@ $('#product_sticker_load_btn').click(function(){
 				if (e.stickers.length != 0)
 				{
 					$(e.stickers).each(function(i,e){
-						$stickers.push('<img src='+e.path+' data-productid='+e.pivot.product_id+' data-stickerid='+e.pivot.sticker_id+'>');
+						if(e.path.toString().indexOf('http') !== -1)
+						{
+							$stickers.push('<img src='+e.path+' data-productid='+e.pivot.product_id+' data-stickerid='+e.pivot.sticker_id+'>');
+						}
+						else
+						{
+							$stickers.push('<img src=/'+e.path+' data-productid='+e.pivot.product_id+' data-stickerid='+e.pivot.sticker_id+'>');
+						}
 					})
 				}
 
