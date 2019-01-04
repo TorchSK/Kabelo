@@ -2297,12 +2297,15 @@ a:hover {
     font-size: 1em;
   }
 }
-#product_detail_wrapper .product_stickers .sticker {
-  width: 150px;
+.product_stickers {
+  margin-top: 70px;
+}
+.product_stickers .sticker {
+  width: 120px;
   margin-right: 25px;
   display: inline-block;
 }
-#product_detail_wrapper .product_stickers .sticker img {
+.product_stickers .sticker img {
   max-height: 100%;
   max-width: 100%;
 }
@@ -3408,10 +3411,11 @@ body.admin #filterbar.vertical .categories .item {
   height: 100%;
   max-height: 100%;
 }
-#admin_product_sticker_wrapper {
+#admin_product_sticker_wrapper .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 35px;
 }
 #admin_product_sticker_wrapper .sticker_list {
   width: 200px;
@@ -3460,9 +3464,14 @@ body.admin #filterbar.vertical .categories .item {
 #admin_product_sticker_wrapper .product_list .list .active_stickers img {
   width: 50px;
   margin-right: 5px;
+  display: inline-block;
+  cursor: pointer;
 }
 #admin_product_sticker_wrapper #product_sticker_load_btn {
   margin: 25px 0;
+}
+#admin_product_sticker_wrapper #product_sticker_save_btn {
+  display: none;
 }
 #admin_product_sticker_wrapper #filters_stickers_active_checkbox {
   margin-top: 15px;
@@ -3472,9 +3481,6 @@ body.admin #filterbar.vertical .categories .item {
 }
 #create_product_submit {
   margin-bottom: 25px;
-}
-.admin_info_div {
-  margin-bottom: 35px;
 }
 #admin_new_display_type_form {
   margin-bottom: 35px;

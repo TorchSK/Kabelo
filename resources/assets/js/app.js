@@ -3033,7 +3033,8 @@ $('#cookies_consent_btn').click(function(){
 $('#product_sticker_load_btn').click(function(){
 
 	$filters = {
-		"categories" : $('.filter_item.category').dropdown('get value')
+		"categories" : $('.filter_item.category').dropdown('get value'),
+		"name" : $('.filter_item.name input').val(),
 	}
 
 	if ($('#filters_stickers_active_checkbox').checkbox('is checked'))
@@ -3060,14 +3061,14 @@ $('#product_sticker_load_btn').click(function(){
 				if (e.stickers.length != 0)
 				{
 					$(e.stickers).each(function(i,e){
-						$stickers.push('<img src='+e.path+'>');
+						$stickers.push('<img src='+e.path+' data-productid='+e.pivot.product_id+' data-stickerid='+e.pivot.sticker_id+'>');
 					})
 				}
 
 				$html = "<div class='item' data-id='"+e.id+"'>"
 				$html += "<div class='ui checkbox'><input type='checkbox'><label></label></div>";
 				$html += "<div class='name'>"+e.name+"</div>";
-				$html += "<div class='active_stickers'>"+$stickers+"</div>";
+				$html += "<div class='active_stickers'>"+$stickers.toString()+"</div>";
 				$html += "</div>"
 				$('.product_list .list').append($html);
 
@@ -3085,6 +3086,20 @@ $('#product_sticker_load_btn').click(function(){
 
 			})
 			$button.removeClass('loading');
+			$('#product_sticker_save_btn').css('display','inline-block');
+
+			$('.active_stickers img').click(function(){
+				$image = $(this);
+				$productid = $(this).data('productid');
+				$stickerid = $(this).data('stickerid');
+				$.ajax({
+					url: '/product/'+$productid+'/sticker/'+$stickerid, 
+					method: 'DELETE', 
+					success: function(data) {
+						$image.remove();
+					}
+				})
+			})
 	}
 	})
 })
@@ -3098,9 +3113,12 @@ $('#product_sticker_save_btn').click(function(){
 	$data = {};
 	$data['products'] = [];
 	$data['stickers'] = [];
+	$data['sticker_paths'] = [];
 
 	$('.sticker_list .sticker.selected').each(function(i,e){
 		$data['stickers'][i] = $(e).data('id');
+		$data['sticker_paths'][i] = $(e).find('img').attr('src');
+
 	})
 
 	$('.product_list .list .item.selected').each(function(i,e){
@@ -3108,11 +3126,13 @@ $('#product_sticker_save_btn').click(function(){
 	})
 
 	$.ajax({
-		url: '/admin/stickers/attach', 
+		url: '/stickers/attach', 
 		method: 'POST', 
 		data: $data,
 		success: function(data) {
-			
+			$('.product_list .list .item.selected').each(function(i,e){
+				$(e).find('.active_stickers').append('<img src='+$data['sticker_paths']+'>');
+			})
 		}
 	})
 

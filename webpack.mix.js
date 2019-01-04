@@ -16,7 +16,6 @@ mix.less('resources/assets/less/layout2/master.less','public/css/app_layout_2.cs
 
 mix.less('resources/assets/less/sites/dedra.less','public/css/dedra.css');
 mix.less('resources/assets/less/sites/copper.less','public/css/copper.css');
-mix.less('resources/assets/less/sites/kabelo.less','public/css/kabelo.css');
 
 mix.copy('resources/assets/js/app.js','public/js/app.js',false);
 

@@ -116,7 +116,16 @@
     </div>
 
     <div id="product_detail_tocart_btn" class="ui large brown labeled icon button" data-qty="{{$product->priceLevels->min('threshold')}}"><i class="add to cart icon"></i>Kúpiť</div>
-
+    
+    @if($product->detailStickers->count() > 0)
+     <div class="product_stickers">
+      @foreach($product->detailStickers as $sticker)
+        <div class="sticker">
+          <img src="{{url($sticker->path)}}" >
+        </div>
+      @endforeach
+     </div>
+     @endif
 
  </div>
 
@@ -129,16 +138,6 @@
   <div class="container">
     <div class="ui header">Detailný popis</div>
      <p style="text-align: justify;">{{trim($product->desc)}}</p>
-    
-    @if($product->detailStickers->count() > 0)
-     <div class="product_stickers">
-      @foreach($product->detailStickers as $sticker)
-        <div class="sticker">
-          <img src="{{url($sticker->path)}}" >
-        </div>
-      @endforeach
-     </div>
-     @endif
   </div>
 </div>
 

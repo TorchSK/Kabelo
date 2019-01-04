@@ -944,6 +944,7 @@ body.admin{
 			width: 100px;
 			height: 100px;
 			margin-right: 15px;
+
 			img{
 				max-width: 100%;
 				max-height: 100%;
@@ -981,7 +982,11 @@ body.admin{
 }
 
 #admin_product_sticker_wrapper{
-	display: flex;
+
+	.container{
+		display: flex;
+		margin-top: 35px;
+	}
 
 	.sticker_list{
 		width: 200px;
@@ -1031,6 +1036,8 @@ body.admin{
 				img{
 					width: 50px;
 					margin-right: 5px;
+					display: inline-block;
+					cursor: pointer;
 				}
 			}
 		}
@@ -1038,6 +1045,10 @@ body.admin{
 
 	#product_sticker_load_btn{
 		margin: 25px 0;
+	}
+
+	#product_sticker_save_btn{
+		display: none;
 	}
 
 	#filters_stickers_active_checkbox{
@@ -1053,9 +1064,6 @@ body.admin{
 	margin-bottom: 25px;
 }
 
-.admin_info_div{
-	margin-bottom: 35px;
-}
 
 #admin_new_display_type_form{
 	margin-bottom: 35px;

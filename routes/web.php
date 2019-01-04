@@ -132,7 +132,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/text/{url}', 'AdminController@textEdit')->name('admin.pages.textEdit');
 	
 	Route::get('/sticker/{url}', 'AdminController@stickerEdit')->name('admin.files.stickerEdit');
-	Route::post('/stickers/attach/', 'AdminController@stickerAttach')->name('admin.files.stickerAttach');
 
 
 	Route::put('/page/setting/', 'SettingController@pageUpdate')->name('admin.setting.pageUpdate');
@@ -261,6 +260,10 @@ Route::resource('param','ParamController');
 // Settings
 Route::get('email/send/welcome/{userid}', 'UserController@sendActivationEmail');
 });
+
+//Stickers
+Route::post('/stickers/attach/', 'StickerController@stickerAttach')->name('admin.files.stickerAttach');
+Route::delete('/product/{productid}/sticker/{stickerid}', 'StickerController@removeStickerFromProduct');
 
 
 Route::get('katalog/{id}', 'UtilController@catalogue');

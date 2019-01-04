@@ -1024,18 +1024,6 @@ class AdminController extends Controller
     }
 
 
-    public function stickerAttach(Request $request)
-    {
-        $products = $request->get('products');
-        $stickers = $request->get('stickers');
-
-        foreach($products as $productId)
-        {
-            $product = Product::find($productId);
-            $product->stickers()->attach($stickers);
-        }
-          
-    }
 
 
     public function import()
