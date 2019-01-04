@@ -1130,7 +1130,7 @@ a:hover {
   font-size: 3em;
   background-color: #f22b6c;
   padding: 35px;
-  width: 400px;
+  width: 350px;
   margin-right: 35px;
   margin-bottom: 25px;
   display: -webkit-box;
@@ -1157,7 +1157,7 @@ a:hover {
   color: #FFF !important;
 }
 #home_bestsellers_div .items .item {
-  width: 22.4%;
+  width: 22.6%;
 }
 #makers_div {
   margin-top: 25px;
