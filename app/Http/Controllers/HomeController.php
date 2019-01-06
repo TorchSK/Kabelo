@@ -38,9 +38,10 @@ class HomeController extends Controller
             $data['categoryCounts'] = $this->productService->categoryCounts();
             $data['bestsellerCategory'] = $this->categoryService->getBestsellerCategory();
 
-            $request = new Request(['categories'=>[$data['bestsellerCategory']->id]]);
-
-            $data['bestsellerProducts'] = $this->productService->filter($request);
+            if($data['bestsellerCategory']){
+                $request = new Request(['categories'=>[$data['bestsellerCategory']->id]]);
+                $data['bestsellerProducts'] = $this->productService->filter($request);
+            }
 
         }
         

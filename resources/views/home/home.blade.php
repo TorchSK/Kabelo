@@ -56,6 +56,7 @@
                     </div>
                 </div>
 
+                @if(isset($bestsellerCategory))
                 <div id="home_bestsellers_div" class="wrapper">
                     <div class="container flex_row">
                         <div class="box">
@@ -70,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-
+                @endif
 
                 @if($appname=='copper')
                 <div class="wrapper" id="makers_div">
