@@ -1580,7 +1580,7 @@ $carousel = $('.covers').flickity({
 
 $carousel.on( 'pointerUp.flickity', function(){
 	$('#search_results').hide();
-} );
+});
 
 
 $('.expand_all_toggle').click(function(){
@@ -2177,7 +2177,7 @@ $('table.sortable').tablesorter({
 
 
 setTimeout(function () {
-  $('.covers').fadeTo("slow", 1);
+  $('.top_banner_row').fadeTo("slow", 0.9);
 }, 100);
 
 if ($('body').attr('id')=='dashboard')
