@@ -61,10 +61,10 @@
                         <div class="box">
                             <icon><i class="rocket icon"></i></icon>
                             <name>Bestsellery</name>
-                            <desc>Najpredávanejšie produkty z kategórií</desc>
+                            <desc>Najpredávanejšie produkty z kategórie <b>{{$bestsellerCategory->name}}</b></desc>
                         </div>
                         <div class="items">
-                        @foreach(App\Product::with('orders')->take(10)->get()->sortByDesc(function($q){return $q->orders->count();}); as $product)
+                        @foreach($bestsellerProducts as $product)
                             @include('products.row',['showdesc'=>false])
                         @endforeach
                         </div>

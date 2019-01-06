@@ -5,7 +5,7 @@
 @if (Auth::check() && Auth::user()->admin)
 <div id="product_options_wrapper" class="wrapper">
  <div class="container ct">
-  <a href="{{route('admin.eshop.product.edit',['product'=>$product->url])}}" class="ui teal button">Edituj produkt</a>
+  <a href="{{route('product.edit',['product'=>$product->url])}}" class="ui teal button">Edituj produkt</a>
   <a class="ui red button" id="product_detail_delete_btn">Zmaž produkt</a>
 </div>
 </div>
@@ -14,8 +14,6 @@
 
 <div id="product_main_wrapper" class="wrapper @if($product->active==0) inactive @endif" data-id="{{$product->id}}" data-gallery="{{$product->code}}" data-index="0">
   <div class="container flex_row">
-    
-
 
     <div class="images">
 
@@ -115,6 +113,7 @@
         @endif
     </div>
 
+    <div class="product_bottom">
     <div id="product_detail_tocart_btn" class="ui large brown labeled icon button" data-qty="{{$product->priceLevels->min('threshold')}}"><i class="add to cart icon"></i>Kúpiť</div>
     
     @if($product->detailStickers->count() > 0)
@@ -126,7 +125,8 @@
       @endforeach
      </div>
      @endif
-
+   </div>
+   
  </div>
 
 

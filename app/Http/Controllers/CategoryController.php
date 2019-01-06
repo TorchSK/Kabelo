@@ -245,6 +245,18 @@ class CategoryController extends Controller
     }
 
 
+    public function apiUpdate($categoryid, Request $request)
+    {
+        $category = Category::find($categoryid);
+
+        foreach ($request->except('_token') as $key => $value){
+            $category->$key = $value;
+        }
+
+        $category->save();
+        return 1;
+    }
+
     public function destroy($id)
     {
         $category = Category::find($id);

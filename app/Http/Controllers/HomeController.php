@@ -29,13 +29,19 @@ class HomeController extends Controller
             $data = $this->productService->list($request);
 
             $data['requestCategory'] = Category::find($request->get('category'));
-        $data['categories'] = $this->categoryService->getCategories();
+            $data['categories'] = $this->categoryService->getCategories();
 
             return view('home/home', $data);
         }
         else
         {
             $data['categoryCounts'] = $this->productService->categoryCounts();
+            $data['bestsellerCategory'] = $this->categoryService->getBestsellerCategory();
+
+            $request = new Request(['categories'=>[$data['bestsellerCategory']->id]]);
+
+            $data['bestsellerProducts'] = $this->productService->filter($request);
+
         }
         
         $data['categories'] = $this->categoryService->getCategories();
@@ -47,11 +53,11 @@ class HomeController extends Controller
     public function makerProducts($maker, Request $request)
     {   
 
-            $request['maker'] = $maker;
-            $data = $this->productService->makerList($request);
+        $request['maker'] = $maker;
+        $data = $this->productService->makerList($request);
         $data['categories'] = $this->categoryService->getCategories();
 
-            return view('home/makerProducts', $data);
+        return view('home/makerProducts', $data);
 
     }
 

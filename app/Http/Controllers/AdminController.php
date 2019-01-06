@@ -854,6 +854,11 @@ class AdminController extends Controller
         return view('admin.eshop.sale');
     }
 
+    public function bestsellers()
+    {
+        return view('admin.eshop.bestsellers');
+    }
+
     public function inactive()
     {
         return view('admin.eshop.inactive');

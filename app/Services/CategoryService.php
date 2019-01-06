@@ -49,5 +49,10 @@ class CategoryService implements CategoryServiceContract {
       return $categories;
   }
  
- 
+  public function getBestsellerCategory()
+  { 
+    $category = Category::whereBestseller(1)->inRandomOrder()->first();
+    return $category;
+  }
+
 }

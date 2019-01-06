@@ -25,7 +25,10 @@ Route::get('products/all', 'ProductController@all');
 Route::get('categories/search', 'CategoryController@inputSearch');
 
 Route::put('product/{id}', 'ProductController@apiUpdate');
+Route::put('category/{id}', 'CategoryController@apiUpdate');
+
 Route::get('products/simplelist', 'ProductController@simpleList');
+
 
 Route::get('view/pricelevel', 'ProductController@viewPriceLevel');
 

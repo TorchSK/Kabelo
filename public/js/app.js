@@ -2480,6 +2480,91 @@ $('#inactive_product_table').on('click', '.red.button', function(){
   })
 })
 
+$('.ui.bestseller.product.search')
+  .search({
+    apiSettings: {
+      url: '/api/products/search?query={query}',
+    },
+    fields: {
+      results : 'results',
+      title   : 'name',
+     	url: '',
+
+    },
+    onSelect: function(result, response){
+       $.ajax({
+        method: 'PUT',
+        url: '/api/product/'+result.id,
+        data: {bestseller: 1}, 
+        success: function(data){
+          $row = $('#bestseller_product_table tbody tr:first-child').clone();
+          $row.find('td:first-child').text(result.id);
+          $row.find('td:nth-child(2)').text(result.name);
+          $row.data('id',result.id);
+          $('#bestseller_product_table tbody tr:last-child').before($row);
+          $('.ui.bestseller.product.search input').val('');
+        }   
+      })
+    }
+  }).unbind('ajaxStart');;
+
+$('#bestseller_product_table').on('click', '.red.button', function(){
+  $row = $(this).closest('tr');
+  $id = $row.data('id');
+  $.ajax({
+    method: 'PUT',
+    url: '/api/product/'+$id,
+    data: {bestseller: 0}, 
+    success: function(data){
+      $row.remove();
+    }   
+  })
+})
+
+
+$('.ui.bestseller.category.search')
+  .search({
+    apiSettings: {
+      url: '/api/categories/search?query={query}',
+    },
+    fields: {
+      results : 'results',
+      title   : 'full_url',
+      image  : '',
+      action : '',  
+	  actionText: '',    
+	  actionURL: '' ,
+	  url: '',
+    },
+    onSelect: function(result, response){
+       $.ajax({
+        method: 'PUT',
+        url: '/api/category/'+result.id,
+        data: {bestseller: 1}, 
+        success: function(data){
+          $row = $('#bestseller_category_table tbody tr:first-child').clone();
+          $row.find('td:first-child').text(result.id);
+          $row.find('td:nth-child(2)').text(result.name);
+          $row.data('id',result.id);
+          $('#bestseller_category_table tbody tr:last-child').before($row);
+          $('.ui.bestseller.category.search input').val('');
+        }   
+      })
+    }
+  }).unbind('ajaxStart');;
+
+$('#bestseller_category_table').on('click', '.red.button', function(){
+  $row = $(this).closest('tr');
+  $id = $row.data('id');
+  $.ajax({
+    method: 'PUT',
+    url: '/api/category/'+$id,
+    data: {bestseller: 0}, 
+    success: function(data){
+      $row.remove();
+    }   
+  })
+})
 
 
 $('.ui.cart.product.search')
