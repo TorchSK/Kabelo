@@ -2144,7 +2144,7 @@ $('.delete_banner_btn').click(function(){
       $id = $btn.closest('.banner').data('id');
       $.ajax({
         type: "DELETE",
-        url: "/banner/"+$id,
+        url: "/admin/banner/"+$id,
         success: function(){
           location.reload();
         }
