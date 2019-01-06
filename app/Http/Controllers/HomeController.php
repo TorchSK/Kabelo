@@ -6,6 +6,8 @@ use App\Services\Contracts\ProductServiceContract;
 use App\Services\Contracts\CategoryServiceContract;
 
 use App\Category;
+use App\Product;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -41,6 +43,12 @@ class HomeController extends Controller
             if($data['bestsellerCategory']){
                 $request = new Request(['categories'=>[$data['bestsellerCategory']->id]]);
                 $data['bestsellerProducts'] = $this->productService->filter($request);
+                
+                $manualBestsellers = Product::whereBestseller(1)->whereHas('categories', function($query) use($data){
+                    $query->where('category_id', $data['bestsellerCategory']->id);
+                })->get();
+
+                $data['bestsellerProducts'] = $data['bestsellerProducts']->merge($manualBestsellers);
             }
 
         }
