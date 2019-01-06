@@ -15,9 +15,9 @@
   </div>  
 
 	<div class="column social">
-		<a href="https://www.facebook.com/dedraslovakia/" target="_blank"><i class="facebook square icon"></i></a>
-		<a href="/" target="_blank"><i class="twitter square icon"></i></a>
-		<a href="/" target="_blank"><i class="instagram square icon"></i></a>
+		<a href="https://www.facebook.com/dedraslovakia/" target="_blank"><i class="facebook f icon"></i></a>
+		<a href="/" target="_blank"><i class="twitter icon"></i></a>
+		<a href="/" target="_blank"><i class="instagram icon"></i></a>
    <div id="td">Made with <o>love</o> by &copy; <a class="effect-1" href="mailto:jan.krnac@seznam.cz" target="_top">Ján Krnáč</a></div>
 	</div> 
 
