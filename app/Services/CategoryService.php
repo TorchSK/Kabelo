@@ -54,9 +54,9 @@ class CategoryService implements CategoryServiceContract {
     $category = Category::whereBestseller(1)->inRandomOrder()->first();
 
     if(!$category){
-      Category::first();
+      $category = Category::first();
     }
-    
+
     return $category;
   }
 
