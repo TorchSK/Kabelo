@@ -34,7 +34,7 @@
 
 
                         <div class="top_banners">
-                            @foreach(App\Banner::where('type','banner')->orderBy('order')->get() as $cover)
+                            @foreach(App\Banner::where('type','banner')->orderBy('order')->inRandomOrder()->take(2)->get() as $cover)
                                 @include('home.banner',['type'=>'banner'])
                             @endforeach
                         </div>
