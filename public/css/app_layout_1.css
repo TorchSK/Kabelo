@@ -2282,7 +2282,7 @@ a:hover {
       align-content: center;
 }
 #product_detail_wrapper {
-  background-color: #EEE;
+  background-color: #F7F7F7;
 }
 #product_detail_wrapper > .container {
   background-color: #FCFCFC;
@@ -2329,10 +2329,12 @@ a:hover {
   text-align: left;
 }
 #product_detail_suggested_wrapper {
-  background-color: #FFF;
+  background-color: #F7F7F7;
 }
 #product_detail_suggested_wrapper > .container {
   padding: 50px 0;
+  background-color: #FAFAFA;
+  padding: 50px;
 }
 @media all and (max-width: 980px) {
   #product_detail_suggested_wrapper > .container {
