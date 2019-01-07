@@ -65,6 +65,9 @@
 	<div id="cart_without_vat_price">Cena bez dph: <price>{{round($cart['price']/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</price><symbol>&euro;</symbol></div>
 	<div id="cart_vat">DPH: <price>{{$cart['price'] - round($cart['price']/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</price><symbol>&euro;</symbol></div>
 	@endif
+	@if($appname=="dedra")
+	<div id="cart_price">DPH: <price>{{$cart['price']}}</price><symbol>&euro;</symbol></div>
+	@endif
 	<div id="cart_shipping_price">Cena za prepravu: <price>{{$cart['shipping_price']}}</price><symbol>&euro;</symbol></div>
 	<div id="cart_total_price" data-price="{{$cart['price']}}">Celková cena: <price>{{$cart['price'] + $cart['shipping_price']}}</price><symbol>&euro;</symbol></div>
 
