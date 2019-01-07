@@ -46,7 +46,7 @@ class HomeController extends Controller
                 
                 $manualBestsellers = Product::whereBestseller(1)->whereHas('categories', function($query) use($data){
                     $query->where('category_id', $data['bestsellerCategory']->id);
-                })->get();
+                })->take(10)->get();
 
                 $data['bestsellerProducts'] = $data['bestsellerProducts']->merge($manualBestsellers);
             }
