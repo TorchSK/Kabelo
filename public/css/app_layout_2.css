@@ -5357,6 +5357,12 @@ body.eshop #header .search.item {
 #product_detail {
   width: 100%;
 }
+#order_steps_wrapper .container {
+  background-color: #FAFAFA;
+}
+#cart_products_wrapper .container {
+  background-color: #FCFCFC;
+}
 body.eshop footer {
   background-color: #F7F7F7;
 }
