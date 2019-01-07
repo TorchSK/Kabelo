@@ -11,6 +11,7 @@
 </div>
 @endif
 
+@include('includes/filterbar_horizontal')
 
 <div id="product_main_wrapper" class="wrapper @if($product->active==0) inactive @endif" data-id="{{$product->id}}" data-gallery="{{$product->code}}" data-index="0">
   <div class="container flex_row">
