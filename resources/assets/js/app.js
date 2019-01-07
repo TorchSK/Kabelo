@@ -982,10 +982,10 @@ $(".cart_payment.eshop").click(function(){
 
 if($('body').attr('id')=='body_cart_delivery')
 {
-	$deliveryprice = parseFloat($('.cart_delivery.active').data('price')).toFixed(2) || 0;
-	$paymentprice = parseFloat($('.cart_payment.active').data('price')).toFixed(2) || 0;
+	$deliveryprice = parseFloat($('.cart_delivery.active').data('price')) || 0;
+	$paymentprice = parseFloat($('.cart_payment.active').data('price')) || 0;
 	$('#cart_shipping_price').find('price').html($deliveryprice + $paymentprice);
-	$('#cart_total_price').find('price').html($deliveryprice + $paymentprice + parseFloat($('#cart_without_vat_price').find('price').text() || 0).toFixed(2) +  parseFloat($('#cart_vat').find('price').text() || 0).toFixed(2) + parseFloat($('#cart_price').find('price').text() || 0 ).toFixed(2)) ;
+	$('#cart_total_price').find('price').html(parseFloat($deliveryprice + $paymentprice + parseFloat($('#cart_without_vat_price').find('price').text() || 0) +  parseFloat($('#cart_vat').find('price').text() || 0) + parseFloat($('#cart_price').find('price').text() || 0 )).toFixed(2)) ;
 
 	 $.ajax({
 	    method: "POST",
