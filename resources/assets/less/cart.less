@@ -22,6 +22,7 @@
 		margin-bottom: 5px;
 		border-radius: 5px;
 		align-items: center;
+		align-content: center;
 		position: relative;
 
 		.image_div{
@@ -29,10 +30,16 @@
 			height: 100px;
 			display: inline-block;
 			margin-right: 25px;
+			text-align: center;
 
-			img{
-				max-height: 100%;
-				max-width: 100%;
+			a{
+				margin: 0 auto;
+				width: 100%;
+				img{
+					margin: 0 auto;
+					max-height: 100%;
+					max-width: 100%;
+				}
 			}
 		}
 
@@ -49,12 +56,12 @@
 		}
 
 		.actions{
-			flex: 1;
 			background-color: #FFF;
 			margin-right: 25px;
 		}
 
 		.level{
+			flex:1;
     		white-space: nowrap;
     		margin-right: 125px;
 		}
@@ -85,8 +92,21 @@
 	}
 
 	.actions{
-		text-align: center;
+		margin-left: 25px;
 		background-color: #F7F7F7;
+
+		.input{
+			margin-right: 15px;
+			input{
+				width: 50px;
+			}
+		}
+
+		i.icon{
+			cursor: pointer;
+			font-size: 1.2em;
+			color: #777;
+		}
 
 	}
 

@@ -2685,6 +2685,44 @@ $('.product_color.choosable')
   })
 ;
 
+$('#cartproducts').on('click', 'i.qty', function(){
+	$productid = $(this).closest('.product').data('productid');
+	$cartid = $('.cart.content').data('cartid');
+	$qty = $(this).closest('.actions').find('.cart_qty_input').val();
+
+	if ($(this).hasClass('plus')){
+		$newqty = parseFloat($qty)+1;
+	}
+	else
+	{
+		$newqty = parseFloat($qty)-1;
+	}
+
+	$.ajax({
+		type: "PUT",
+		url: "/cart/"+$cartid+"/"+$productid,
+		data: {qty: $newqty},
+		success: function(){
+		  location.reload();
+		}
+	})
+})
+
+
+$('#cartproducts').on('blur', '.cart_qty_input', function(){
+	$productid = $(this).closest('.product').data('productid');
+	$cartid = $('.cart.content').data('cartid');
+	$qty = $(this).val();
+
+	$.ajax({
+		type: "PUT",
+		url: "/cart/"+$cartid+"/"+$productid,
+		data: {qty: $qty},
+		success: function(){
+		  location.reload();
+		}
+	})
+})
 
 function initCartProductSlider(){
 

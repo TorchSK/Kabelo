@@ -14,13 +14,14 @@
 
 	@if(!isset($cart_confirm) || !$cart_confirm)
 	<div class="actions">
-		
-		<div class="cart_slider" >
-			@if (Auth::check())
-			<div class="cart_length_slider" data-productid="{{$product->id}}" data-step="{{$product->step}}" data-qty="{{$product->pivot->qty}}" data-min="{{$product->priceLevels->min('threshold')}}" data-thresholds="{{$product->priceLevels->pluck('threshold')}}" data-prices="@if(Auth::user()->voc)@if($product->sale){{$product->priceLevels->pluck('voc_sale')}}@else{{$product->priceLevels->pluck('voc_regular')}}@endif @else @if($product->sale) {{$product->priceLevels->pluck('moc_sale')}} @else {{$product->priceLevels->pluck('moc_regular') }} @endif @endif"></div>
-			@else
-			<div class="cart_length_slider" data-productid="{{$product->id}}" data-qty="{{$cart['counts'][$product->id]}}" data-min="{{$product->priceLevels->min('threshold')}}" data-thresholds="{{$product->priceLevels->pluck('threshold')}}" data-prices=" @if($product->sale){{$product->priceLevels->pluck('moc_sale')}}@else{{$product->priceLevels->pluck('moc_regular')}}@endif "></div>
-			@endif
+		<div class="qty">
+			<div class="ui input">
+			  <input type="text" value="{{$product->pivot->qty}}" class="cart_qty_input">
+			</div>
+			<i class="icon minus qty circle cart_minus_qty"></i>
+			<i class="icon plus qty circle cart_plus_qty"></i>
+
+
 		</div>
 
 	</div>
