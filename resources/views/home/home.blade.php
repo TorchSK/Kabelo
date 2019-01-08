@@ -62,7 +62,7 @@
                         <div class="box">
                             <icon><i class="rocket icon"></i></icon>
                             <name>Bestsellery</name>
-                            <desc>Najpredávanejšie produkty z kategórie <b>{{$bestsellerCategory->name}}</b></desc>
+                            <desc>Najpredávanejšie produkty z kategórie <b><a class="effect-1" href="{{$bestsellerCategory->full_url}}">{{$bestsellerCategory->name}}</a></b></desc>
                         </div>
                         <div class="items">
                         @foreach($bestsellerProducts as $product)

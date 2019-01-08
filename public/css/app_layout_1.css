@@ -1159,6 +1159,9 @@ a:hover {
   letter-spacing: 2px;
   font-style: italic;
 }
+#home_bestsellers_div .box desc a:hover {
+  color: #FFF !important;
+}
 #home_bestsellers_div .caption name {
   color: #FFF !important;
 }
