@@ -25,7 +25,6 @@ class SettingController extends Controller
 		$setting = Setting::find($id);
 
 		$setting->value = $value;
-
 		$setting->save();
 	}
 
@@ -55,13 +54,13 @@ class SettingController extends Controller
 
 	public function bulkUpdate(Request $request)
 	{
+
 		foreach($request->except('_token') as $key => $item)
 		{
 			$setting = Setting::where('name', $key)->first();
-			
 			if($setting)
 			{
-				$this->update($setting->id, $item);		
+				$this->update($setting->id, $item);	
 			}
 		}
 
