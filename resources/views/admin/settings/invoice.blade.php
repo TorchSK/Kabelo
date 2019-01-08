@@ -8,7 +8,7 @@
 
 
 <div class="short">
-	<form method="POST" action="/admin/settings/invoice/save">
+	<form method="POST" action="/admin/settings/save">
         {{ csrf_field() }}
 
 	<div id="admin_invoice_settings_div">

@@ -8,7 +8,7 @@
 
 <div class="short">
 
-<form method="POST" action="/admin/settings/eshop/save">
+<form method="POST" action="/admin/settings/save">
 
 	<div class="ui horizontal divider">Parametre objednávky</div>
 
