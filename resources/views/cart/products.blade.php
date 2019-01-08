@@ -38,6 +38,7 @@
 
 @include('cart.prices')
 
+{{App\Setting::firstOrCreate(['name'=>'min_order_price'])->first()->value}}
 
 <div id="cart_actions_wrapper" class="wrapper">
 	<div class="container">

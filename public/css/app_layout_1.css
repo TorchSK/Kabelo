@@ -3555,9 +3555,6 @@ body.admin #filterbar.vertical .categories .item {
   margin-top: 50px;
   font-weight: 300;
 }
-#order_steps_wrapper {
-  padding: 15px 0;
-}
 #order_steps_wrapper #order_steps {
   margin-bottom: 0px;
   border-radius: 0;
@@ -3686,7 +3683,7 @@ body.admin #filterbar.vertical .categories .item {
   padding: 80px  0 0 0;
 }
 #cart_delivery_wrapper {
-  background-color: #F4F4F4;
+  background-color: #F7F7F7;
 }
 #cart_delivery_wrapper > .container {
   background-color: #FAFAFA;
