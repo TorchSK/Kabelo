@@ -5415,6 +5415,11 @@ body.eshop #header .search.item {
   padding-left: 25px;
   padding-right: 25px;
 }
+#cart_confirm_wrapper .container {
+  background-color: #FCFCFC;
+  padding-left: 25px;
+  padding-right: 25px;
+}
 body.eshop footer {
   background-color: #F7F7F7;
 }
