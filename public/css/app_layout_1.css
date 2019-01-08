@@ -1114,6 +1114,12 @@ a:hover {
 #home_bestsellers_div .caption arrows i.icon {
   color: #BBB;
   font-size: 1.2em;
+  cursor: pointer;
+}
+#home_news_div .caption arrows i.icon:hover,
+#home_sales_div .caption arrows i.icon:hover,
+#home_bestsellers_div .caption arrows i.icon:hover {
+  color: #0d345b;
 }
 #home_news_div .items,
 #home_sales_div .items,

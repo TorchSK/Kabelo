@@ -1453,6 +1453,12 @@ $sales_carousel = $('#home_sales_div .items').flickity({
     imagesLoaded: true,
 });
 
+$('#home_sales_div').on('click','.right.icon',function(){
+	$sales_carousel.flickity('next');
+}).on('click','.left.icon',function(){
+	$sales_carousel.flickity('previous');
+});
+
 $news_carousel = $('#home_news_div .items').flickity({
     cellAlign: 'left',
     contain: true,
@@ -1461,6 +1467,13 @@ $news_carousel = $('#home_news_div .items').flickity({
     imagesLoaded: true,
 });
 
+$('#home_news_div').on('click','.right.icon',function(){
+	$news_carousel.flickity('next');
+}).on('click','.left.icon',function(){
+	$news_carousel.flickity('previous');
+});
+
+
 $bestsellers_carousel = $('#home_bestsellers_div .items').flickity({
     cellAlign: 'left',
     contain: true,
@@ -1468,6 +1481,7 @@ $bestsellers_carousel = $('#home_bestsellers_div .items').flickity({
     prevNextButtons: false,
     imagesLoaded: true,
 });
+
 
 
 $sales_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
