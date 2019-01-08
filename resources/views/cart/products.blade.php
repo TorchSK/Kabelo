@@ -38,13 +38,12 @@
 
 @include('cart.prices')
 
-{{App\Setting::firstOrCreate(['name'=>'min_order_price'])->first()->value}}
 
 <div id="cart_actions_wrapper" class="wrapper">
 	<div class="container">
 	@if (sizeof($cart['items']) > 0)
 	<a href="/#eshop" class="ui blue button"><i class="icon arrow left"></i>Do eshopu</a>
-	<a href="/cart/delivery" class="ui green button @if(App\Setting::firstOrCreate(['name'=>'min_order_price'])->first()->value > $cart['price']) disabled @endif" id="cart_continue_btn">Pokračovať</a>
+	<a href="/cart/delivery" class="ui green button @if(App\Setting::firstOrCreate(['name'=>'min_order_price'])->value > $cart['price']) disabled @endif" id="cart_continue_btn">Pokračovať</a>
 
 	@else
 	<a href="/" class="ui green button">Do eshopu</a>
