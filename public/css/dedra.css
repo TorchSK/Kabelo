@@ -18,3 +18,7 @@ body.eshop #filterbar.horizontal .item.active name {
   background-color: #0d345b;
   color: #FFF;
 }
+body.eshop #product_detail_tocart_btn {
+  background-color: #f22b6c;
+  color: #FFF;
+}

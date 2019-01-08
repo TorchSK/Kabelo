@@ -2108,6 +2108,10 @@ a:hover {
   margin-top: 25px;
   position: relative;
 }
+#product_main_wrapper #prices span {
+  color: #767676 !important;
+  font-family: "futura-pt-bold";
+}
 @media all and (max-width: 980px) {
   #product_main_wrapper #prices {
     display: block;
@@ -2148,12 +2152,13 @@ a:hover {
   font-weight: 900;
 }
 #product_main_wrapper #price {
-  color: #F2711C;
+  color: #767676;
   font-weight: 900;
   font-size: 1.8em;
   display: inline-block;
   position: relative;
   margin-right: 15px;
+  font-family: "futura-pt-bold";
 }
 @media all and (max-width: 980px) {
   #product_main_wrapper #price {
@@ -2203,11 +2208,12 @@ a:hover {
   }
 }
 #product_main_wrapper #final_price {
-  color: #F2711C;
+  color: #767676;
   font-weight: 900;
   font-size: 2em;
   display: inline-block;
   position: relative;
+  font-family: "futura-pt-bold";
 }
 @media all and (max-width: 980px) {
   #product_main_wrapper #final_price {
@@ -4896,7 +4902,7 @@ h1.header {
   text-align: left;
 }
 #filterbar.horizontal .subcats .name:hover {
-  background-color: #A5673F;
+  background-color: #f22b6c;
   color: #FFF;
 }
 #filterbar.horizontal .subcats .sub1 > .name {
@@ -4953,7 +4959,7 @@ h1.header {
   border-right: none;
 }
 #filterbar.horizontal .item.active name {
-  background-color: #A5673F;
+  background-color: #f22b6c;
   color: #FFF;
 }
 #catalogue_btn {

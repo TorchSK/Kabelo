@@ -115,7 +115,7 @@
     </div>
 
     <div class="product_bottom">
-    <div id="product_detail_tocart_btn" class="ui large brown labeled icon button" data-qty="{{$product->priceLevels->min('threshold')}}"><i class="add to cart icon"></i>Kúpiť</div>
+    <div id="product_detail_tocart_btn" class="ui large labeled icon button" data-qty="{{$product->priceLevels->min('threshold')}}"><i class="add to cart icon"></i>Kúpiť</div>
     
     @if($product->detailStickers->count() > 0)
      <div class="product_stickers">

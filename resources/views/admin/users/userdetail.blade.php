@@ -47,16 +47,16 @@
 
 						<div class="inputs">
 					      	<div class="ui large disabled input">
-					            <input type="text" name="email" value="{{Auth::user()->email}}" />
+					            <input type="text" name="email" value="{{$user->email}}" />
 					      	</div><br/>
 					      	<div class="ui large input">
-					            <input type="text" name="phone" value="{{Auth::user()->phone}}" />
+					            <input type="text" name="phone" value="{{$user->phone}}" />
 					      	</div><br/>
 					      	<div class="ui large input">
-					            <input name="first_name" type="text"  value="{{Auth::user()->first_name}}"/>
+					            <input name="first_name" type="text"  value="{{$user->first_name}}"/>
 					      	</div><br/>
 					      	<div class="ui large input">
-					            <input name="last_name" type="text"  value="{{Auth::user()->last_name}}"/>
+					            <input name="last_name" type="text"  value="{{$user->last_name}}"/>
 					      	</div>
 
 			        </div>
