@@ -300,6 +300,7 @@ body.eshop .pusher {
   right: 35px;
   z-index: 999999;
   display: none;
+  cursor: pointer;
 }
 .ct {
   text-align: center;
