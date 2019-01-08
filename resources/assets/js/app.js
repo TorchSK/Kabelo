@@ -4197,8 +4197,19 @@ $('#add_banner_radioboxes').find('.checkbox:eq(2)')
     },
 });
 
+$('.scroll_to_top').click(function(){
+  $("html, body").animate({ scrollTop: 0 }, "fast");
+})
 
+});
 
+$(document).scroll(function() {
+  var y = $(this).scrollTop();
+  if (y > 800) {
+    $('.scroll_to_top').fadeIn();
+  } else {
+    $('.scroll_to_top').fadeOut();
+  }
 });
 
 var sticky;
