@@ -4435,6 +4435,7 @@ body.admin #filterbar.vertical .categories .item {
 }
 .order_detail {
   background-color: #F7F7F7;
+  width: 100%;
 }
 footer {
   color: #CCC;
