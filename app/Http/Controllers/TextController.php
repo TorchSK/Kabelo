@@ -39,7 +39,11 @@ class TextController extends Controller
     {   
         $text = Text::find($id);
         $text->name = $request->get('name');
-        $text->text = $request->get('mce_0');
+        
+        if($request->filled('mce')){
+            $text->text = $request->get('mce');
+        }
+
         $text->save();
         
         return redirect()->back();
