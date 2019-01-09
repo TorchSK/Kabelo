@@ -45,8 +45,14 @@
             margin-right: 15px;
           }
 
+          .image{
+            width: 80px;
+            height: 80px;
+          }
+
           .image img{
-            width: 60px;
+            max-width: 100%;
+            max-height: 100%;
           }
 
           .name{
