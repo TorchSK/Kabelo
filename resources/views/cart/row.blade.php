@@ -16,7 +16,7 @@
 	<div class="actions">
 		<div class="qty">
 			<div class="ui input">
-			  <input type="text" value="{{$product->pivot->qty}}" class="cart_qty_input">
+			  <input type="text" value="@if(Auth::check()) {{$product->pivot->qty}} @else {{$cart['counts'][$product->id]}} @endif" class="cart_qty_input">
 			</div>
 			<i class="icon minus qty circle cart_minus_qty"></i>
 			<i class="icon plus qty circle cart_plus_qty"></i>
