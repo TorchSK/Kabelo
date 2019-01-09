@@ -165,8 +165,6 @@
         </div>
 
         <div style="margin: 30px 0;">
-
-            <span>Budeme Vás informovať o stave.</span>
             
             <div style="font-size: 14px; text-align: right;">
                 <div style="font-size: 14px;">Cena za tovar s DPH: <span style="font-weight: 900">{{$order->price}}</span> &euro;</div>

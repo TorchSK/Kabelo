@@ -42,6 +42,6 @@ class NewOrder extends Mailable
         $this->delivery_method = Order::where('id', $this->order['id'])->first()->delivery;
         $this->payment_method = Order::where('id', $this->order['id'])->first()->payment;
 
-        return $this->from('kabelo@kabelo.sk')->subject('Objednávka')->view('emails.neworder');
+        return $this->from('kabelo@kabelo.sk')->subject('Objednávka č. '.$this->order['id'])->view('emails.neworder');
     }
 }
