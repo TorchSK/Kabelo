@@ -30,7 +30,7 @@
       <a href="{{route('admin.eshop.bestsellers')}}" class="item @if(Route::currentRouteName()=='admin.eshop.bestsellers') active @endif">Bestsellery</a>
       <a href="{{route('admin.eshop.inactive')}}" class="item @if(Route::currentRouteName()=='admin.eshop.inactive') active @endif">Neaktívne</a>
       <a href="{{route('admin.eshop.stickers')}}" class="item @if(Route::currentRouteName()=='admin.eshop.stickers') active @endif">Stickers</a>
-      @if($appname=='Dedra')
+      @if($appname=='dedra')
       <a href="{{route('admin.eshop.xmlupdate')}}" class="item @if(Route::currentRouteName()=='admin.eshop.xmlupdate') active @endif">Aktualizácia z XML</a>
       @endif
 
