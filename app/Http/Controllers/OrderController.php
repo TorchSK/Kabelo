@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Order;
 use App\Product;
+use App\Setting;
+
 use App\Mail\NewOrder;
 
 use App\Services\Contracts\CartServiceContract;
@@ -88,7 +90,8 @@ class OrderController extends Controller
 
         $user = Auth::user();
         Mail::to(json_decode($order->invoice_address)->email)->queue(new NewOrder($order));
-
+        Mail::to(Setting::whereName('order_email_1')->first())->queue(new NewOrder($order));
+        
         //delete the cart
         $this->cartService->delete();  
 

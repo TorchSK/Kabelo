@@ -54,6 +54,14 @@
 			</div>	
 		</div>
 
+		<div class="item">
+			<div>Email pre kopiu objednavky</div>
+			<div class="ui right labeled input">
+			  <input type="text" name="vat" value="{{App\Setting::firstOrCreate(['name'=>'order_email_1'])->value}}">
+			    <div class="ui basic label">%</div>
+			</div>	
+		</div>
+
 		</div>	
 
 	<button type="submit" class="ui green button settings_save">Ulož</button>
