@@ -4401,6 +4401,7 @@ body.admin #filterbar.vertical .categories .item {
 }
 .order_products_list .product .image_div {
   width: 100px;
+  height: 100px;
   display: inline-block;
   margin-right: 25px;
 }
