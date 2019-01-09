@@ -4404,6 +4404,10 @@ body.admin #filterbar.vertical .categories .item {
   display: inline-block;
   margin-right: 25px;
 }
+.order_products_list .product .image_div img {
+  max-height: 100%;
+  max-width: 100%;
+}
 .order_products_list .product .name {
   font-size: 1.2em;
   font-weight: 400;
