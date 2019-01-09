@@ -33,4 +33,8 @@ class Order extends Model {
   	{
  		return $this->belongsTo('App\User');
  	}
+
+ 	function getIdAttribute() {
+    	return str_pad($this->id,6,'0',STR_PAD_LEFT);
+	}
 }
