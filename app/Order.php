@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model {
 
   	protected $table = "orders";
-  	protected $fillable = [];
  
  	public function products() 
   	{
@@ -34,7 +33,7 @@ class Order extends Model {
  		return $this->belongsTo('App\User');
  	}
 
- 	function getIdAttribute() {
-    	return str_pad($this->id,6,'0',STR_PAD_LEFT);
+ 	function getIdAttribute($value) {
+    	return str_pad($value,6,'0',STR_PAD_LEFT);
 	}
 }
