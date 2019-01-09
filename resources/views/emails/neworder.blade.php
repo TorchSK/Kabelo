@@ -176,9 +176,11 @@
                 <div style="font-size: 14px;">Cena za tovar s DPH: <span style="font-weight: 900">{{$order->price}}</span> &euro;</div>
                 <div style="font-size: 14px;">Cena za prepravu s DPH: <span style="font-weight: 900">{{$order->shipping_price}}</span> &euro;</div>
 
+                @if($appname=='copper')
                 <div style="font-size: 14px;">Celková cena bez DPH: <span style="font-weight: 900">{{round(($order->price + $order->shipping_price)/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</span> &euro;</div>
                 <div style="font-size: 14px;">DPH: <span style="font-weight: 900">{{($order->price + $order->shipping_price) - round(($order->price + $order->shipping_price)/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</span> &euro;</div>
-
+                @endif
+                
                 <div style="font-size: 14px;">Celková cena s DPH: <span style="font-weight: 900">{{$order->price + $order->shipping_price}}</span> &euro;</div>
             </div>
         </div>
