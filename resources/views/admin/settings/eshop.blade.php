@@ -56,9 +56,8 @@
 
 		<div class="item">
 			<div>Email pre kopiu objednavky</div>
-			<div class="ui right labeled input">
+			<div class="ui input">
 			  <input type="text" name="vat" value="{{App\Setting::firstOrCreate(['name'=>'order_email_1'])->value}}">
-			    <div class="ui basic label">%</div>
 			</div>	
 		</div>
 
