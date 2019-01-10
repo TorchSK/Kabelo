@@ -29,7 +29,7 @@ class File extends Model {
       {
         $path = 'https://dedra.blob.core.windows.net/imagehandler/dedra.blob.core.windows.net/cms/ContentItems/'.$array[5].'/images/m_max__w_480__h_480__a_middlecenter__o__x_bottomright__r_30/'.explode('.',$array[7])[0].'.jpeg';
         
-        if (file_exists($path))
+        if(stripos(get_headers($path))[0],'200 OK')
         {
           return $path;
         }
