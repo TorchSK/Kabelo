@@ -517,7 +517,7 @@ class AdminController extends Controller
 
     public function addMoreImages()
     {
-        $contents = Storage::get('dedra.xml');
+        $contents = file_get_contents('https://dedra.blob.core.windows.net/cms/xmlexport/cs_xml_export.xml?ppk=133538');
         $xml = XmlParser::extract($contents);
 
         $items = $xml->parse([
@@ -527,7 +527,7 @@ class AdminController extends Controller
         foreach(array_reverse($items['products']) as $key => $item)
         {   
 
-            $product = Product::where('code',$item['product_id'])->where('temp',0)->first(); 
+            $product = Product::where('code',$item['product_id'])->first(); 
 
             if($product && $item['picture2'] != '')
             {
