@@ -456,11 +456,14 @@ class AdminController extends Controller
             $product->save();
 
             $priceLevel = $product->priceLevels->first();
-            $pricelevel->moc_regular = $item['price_skk'];
-            $pricelevel->moc_sale = $item['price_skk'];
-            $pricelevel->voc_regular = $item['price_skk'];
-            $pricelevel->voc_sale = $item['price_skk'];
-            $pricelevel->save();
+            if($pricelevel)
+            {
+                $pricelevel->moc_regular = $item['price_skk'];
+                $pricelevel->moc_sale = $item['price_skk'];
+                $pricelevel->voc_regular = $item['price_skk'];
+                $pricelevel->voc_sale = $item['price_skk'];
+                $pricelevel->save();
+            }
         }
 
 
