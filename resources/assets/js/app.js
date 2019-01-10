@@ -4162,7 +4162,7 @@ $('#xml_update_check_btn').click(function(){
 $('#xml_update_confirm_btn').click(function(){
 	$.ajax({
 		type: "POST",
-		url: "/admin/eshop/confirmXmlUpdate/",
+		url: "/admin/eshop/confirmXmlUpdate",
 		success: function(){
 			location.realod();
 		}
