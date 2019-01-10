@@ -27,7 +27,7 @@
       <a href="{{route('admin.eshop.products')}}" class="item @if(Route::currentRouteName()=='admin.eshop.products') active @endif">Produkty ({{App\Product::whereActive(1)->count()}})</a>
       <a href="{{route('admin.eshop.new')}}" class="item @if(Route::currentRouteName()=='admin.eshop.new') active @endif">Novinky ({{App\Product::whereNew(1)->count()}})</a>
       <a href="{{route('admin.eshop.sale')}}" class="item @if(Route::currentRouteName()=='admin.eshop.sale') active @endif">Zľavy ({{App\Product::whereSale(1)->count()}})</a>
-      <a href="{{route('admin.eshop.bestsellers')}}" class="item @if(Route::currentRouteName()=='admin.eshop.bestsellers') active @endif">Bestsellery ({{App\Product::whereBestseller(1)->count()}})</a>
+      <a href="{{route('admin.eshop.bestsellers')}}" class="item @if(Route::currentRouteName()=='admin.eshop.bestsellers') active @endif">Bestsellery (({{App\Category::whereBestseller(1)->count()}}) / {{App\Product::whereBestseller(1)->count()}})</a>
       <a href="{{route('admin.eshop.inactive')}}" class="item @if(Route::currentRouteName()=='admin.eshop.inactive') active @endif">Neaktívne ({{App\Product::whereActive(0)->count()}})</a>
       <a href="{{route('admin.eshop.stickers')}}" class="item @if(Route::currentRouteName()=='admin.eshop.stickers') active @endif">Stickers</a>
       @if($appname=='dedra')
