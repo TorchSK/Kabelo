@@ -481,6 +481,10 @@ class AdminController extends Controller
 
     }   
 
+    public function confirmXMLUpdate(){
+        return DB::commit();
+    }
+
     public function addCategoryPath()
     {
         foreach(Category::all() as $category)
