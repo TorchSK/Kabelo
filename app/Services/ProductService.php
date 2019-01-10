@@ -563,6 +563,7 @@ class ProductService implements ProductServiceContract {
                 Category::fixTree();
                 $categoryCounts['categories'] = [];
                 $categories = Category::with('descendants','products','descendants.products')->get();
+                dd($categories);
                 foreach($categories as $category)
                 {
                     $categoryCounts['categories'][$category->id] = $category->products->count();
