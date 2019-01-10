@@ -466,12 +466,9 @@ class AdminController extends Controller
 
         foreach($removedProductsArray as $key => $temp)
         {   
-            $item = $items['products'][$key];
-
             $product = Product::whereCode($temp)->first();
-            $product->active = 0;
+            $product->active = 'off';
             $product->save();
-            dd('uuu');
         }
 
 
