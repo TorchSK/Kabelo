@@ -23,11 +23,11 @@
       <i class="dropdown icon"></i>
     </div>
     <div class="content menu @if(strpos(Route::currentRouteName(),'admin.eshop')!==false) active @endif">
-      <a href="{{route('admin.eshop.categories')}}" class="item @if(Route::currentRouteName()=='admin.eshop.categories') active @endif">Kategórie</a>
-      <a href="{{route('admin.eshop.products')}}" class="item @if(Route::currentRouteName()=='admin.eshop.products') active @endif">Produkty</a>
-      <a href="{{route('admin.eshop.new')}}" class="item @if(Route::currentRouteName()=='admin.eshop.new') active @endif">Novinky</a>
-      <a href="{{route('admin.eshop.sale')}}" class="item @if(Route::currentRouteName()=='admin.eshop.sale') active @endif">Zľavy</a>
-      <a href="{{route('admin.eshop.bestsellers')}}" class="item @if(Route::currentRouteName()=='admin.eshop.bestsellers') active @endif">Bestsellery</a>
+      <a href="{{route('admin.eshop.categories')}}" class="item @if(Route::currentRouteName()=='admin.eshop.categories') active @endif">Kategórie ({{App\Category::whereActive(0)->count()}})</a>
+      <a href="{{route('admin.eshop.products')}}" class="item @if(Route::currentRouteName()=='admin.eshop.products') active @endif">Produkty ({{App\Product::whereActive(1)->count()}})</a>
+      <a href="{{route('admin.eshop.new')}}" class="item @if(Route::currentRouteName()=='admin.eshop.new') active @endif">Novinky ({{App\Product::whereNew(1)->count()}})</a>
+      <a href="{{route('admin.eshop.sale')}}" class="item @if(Route::currentRouteName()=='admin.eshop.sale') active @endif">Zľavy ({{App\Product::whereSale(1)->count()}})</a>
+      <a href="{{route('admin.eshop.bestsellers')}}" class="item @if(Route::currentRouteName()=='admin.eshop.bestsellers') active @endif">Bestsellery ({{App\Product::whereBestseller(1)->count()}})</a>
       <a href="{{route('admin.eshop.inactive')}}" class="item @if(Route::currentRouteName()=='admin.eshop.inactive') active @endif">Neaktívne ({{App\Product::whereActive(0)->count()}})</a>
       <a href="{{route('admin.eshop.stickers')}}" class="item @if(Route::currentRouteName()=='admin.eshop.stickers') active @endif">Stickers</a>
       @if($appname=='dedra')
