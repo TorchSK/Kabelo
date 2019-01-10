@@ -130,7 +130,7 @@ class CategoryController extends Controller
                 $product->save();
             }
         }
-
+        Cache::forget('categories');
         return 1;
     }
 
