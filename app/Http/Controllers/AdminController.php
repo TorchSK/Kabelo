@@ -480,6 +480,7 @@ class AdminController extends Controller
                 $image->primary = 0;
                 $image->save();
             }
+            
             $product->categories()->attach($categoryID);
 
             $pricelevel = new PriceLevel();
