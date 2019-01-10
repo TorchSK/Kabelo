@@ -557,8 +557,6 @@ class ProductService implements ProductServiceContract {
 
      public function categoryCounts()
      {
-                dd(1);
-
         if(!Cache::has('category_counts'))
             {
                 Category::fixTree();
@@ -576,6 +574,8 @@ class ProductService implements ProductServiceContract {
             }
             else
             {
+                                dd(2);
+
                 $categoryCounts['categories'] = Cache::get('category_counts');
             }
 
