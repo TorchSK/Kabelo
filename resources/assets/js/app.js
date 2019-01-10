@@ -4164,7 +4164,7 @@ $('#xml_update_confirm_btn').click(function(){
 		type: "POST",
 		url: "/admin/eshop/confirmXmlUpdate",
 		success: function(){
-			location.realod();
+			location.reload();
 		}
 	})
 })
