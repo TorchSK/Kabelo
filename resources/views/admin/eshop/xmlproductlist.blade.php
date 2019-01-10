@@ -1,3 +1,3 @@
-@foreach($products as $product)
+@foreach($products as $index => $product)
 	@include('admin.eshop.xmlproductrow')
 @endforeach
