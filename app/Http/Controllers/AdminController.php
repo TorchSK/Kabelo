@@ -431,6 +431,55 @@ class AdminController extends Controller
             $image->primary = 1;
             $image->save();
 
+            if($item['picture2']!='')
+            {
+                $image = new File();
+                $image->product_id = $product->id;
+                $image->path = $item['picture2']; 
+                $image->type = 'image';
+                $image->primary = 0;
+                $image->save();
+            }
+
+            if($item['picture3']!='')
+            {
+                $image = new File();
+                $image->product_id = $product->id;
+                $image->path = $item['picture3']; 
+                $image->type = 'image';
+                $image->primary = 0;
+                $image->save();
+            }
+
+            if($item['picture4']!='')
+            {
+                $image = new File();
+                $image->product_id = $product->id;
+                $image->path = $item['picture4']; 
+                $image->type = 'image';
+                $image->primary = 0;
+                $image->save();
+            }
+
+            if($item['picture5']!='')
+            {
+                $image = new File();
+                $image->product_id = $product->id;
+                $image->path = $item['picture5']; 
+                $image->type = 'image';
+                $image->primary = 0;
+                $image->save();
+            }
+
+            if($item['picture6']!='')
+            {
+                $image = new File();
+                $image->product_id = $product->id;
+                $image->path = $item['picture6']; 
+                $image->type = 'image';
+                $image->primary = 0;
+                $image->save();
+            }
             $product->categories()->attach($categoryID);
 
             $pricelevel = new PriceLevel();
