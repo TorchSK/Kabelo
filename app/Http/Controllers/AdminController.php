@@ -293,8 +293,6 @@ class AdminController extends Controller
         $changes['removed_products'] = $removedProducts->count();
 
 
-        DB::beginTransaction();
-
         foreach($addedProductsArray as $key => $temp)
         {
             $item = $items['products'][$key];
@@ -474,8 +472,6 @@ class AdminController extends Controller
             $product->active = 0;
             $product->save();
         }
-
-            DB::commit();
 
 
         return Response::json(['changes' => $changes, 'newCategories' => view('admin.eshop.xmlcategorylist', ['categories'=>collect($changes['new_categories'])])->render(), 'removedCategories' => view('admin.eshop.xmlcategorylist', ['categories'=>collect($changes['removed_categories'])])->render(), 'newProducts' => view('admin.eshop.xmlproductlist', ['products'=>collect($changes['new_products'])])->render(), 'removedProducts' => view('admin.eshop.xmlproductlist', ['products'=>$removedProducts])->render()]);   
