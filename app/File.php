@@ -35,7 +35,7 @@ class File extends Model {
         }
         else
         {
-          'https://dedra.blob.core.windows.net/imagehandler/dedra.blob.core.windows.net/cms/ContentItems/'.$array[5].'/images/m_max__w_480__h_480__a_middlecenter__o/'.explode('.',$array[7])[0].'.jpeg';
+          return 'https://dedra.blob.core.windows.net/imagehandler/dedra.blob.core.windows.net/cms/ContentItems/'.$array[5].'/images/m_max__w_480__h_480__a_middlecenter__o/'.explode('.',$array[7])[0].'.jpeg';
         }
       }
       else{
