@@ -137,7 +137,7 @@ class Product extends Model {
       {
         $this->attributes['active'] = 1;
       }
-      else
+      elseif ($value == 'off' || $value == 0)
       {
         $this->attributes['active'] = 0;
       }
