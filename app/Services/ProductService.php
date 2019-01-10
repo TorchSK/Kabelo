@@ -574,8 +574,6 @@ class ProductService implements ProductServiceContract {
             }
             else
             {
-                                dd(2);
-
                 $categoryCounts['categories'] = Cache::get('category_counts');
             }
 
