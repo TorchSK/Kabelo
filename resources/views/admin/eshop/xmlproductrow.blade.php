@@ -1,6 +1,4 @@
 <div class="item">
-	<div class="index">{{$index}}</div>
-	<div class="id">{{$product->id}}</div>
 	<div class="image"><img src="{{$product->image->path}}"  /></div>
 	<div class="code">{{$product->code}}</div>
 	<div class="name">{{$product->name}}</div>

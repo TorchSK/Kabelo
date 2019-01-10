@@ -471,6 +471,7 @@ class AdminController extends Controller
             $product = Product::whereCode($temp)->first();
             $product->active = 0;
             $product->save();
+            dd('uuu');
         }
 
 
