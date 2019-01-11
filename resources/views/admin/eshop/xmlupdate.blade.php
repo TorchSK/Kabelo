@@ -14,7 +14,7 @@
 
     	<div class="ui big blue button" id="xml_upload_btn"><i class="upload icon"></i>Nahraj súbor</div>
 
-    	<div class="ui big teal button" id="xml_update_check_btn"><i class="check icon"></i>Spusť kontrolu</div>
+    	<div class="ui big teal button" id="xml_update_check_btn"><i class="check icon"></i>Spusť aktualizáciu</div>
     	
     	<div id="xml_results">
     		<div class="new_categories_count caption">Počet nových kategórií: <value></value></div>
@@ -34,7 +34,9 @@
                 <div class="list"></div>
             </div>
 
+            <!--
             <div class="ui big green button" id="xml_update_confirm_btn"><i class="upload icon"></i>Aktualizuj!</div>
+            -->
 
     	</div>
 

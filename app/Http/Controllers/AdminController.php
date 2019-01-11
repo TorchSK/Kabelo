@@ -511,6 +511,12 @@ class AdminController extends Controller
             $priceLevel->voc_regular = $item['price_skk'];
             $priceLevel->voc_sale = $item['price_skk'];
             $priceLevel->save();
+
+            $image = $product->image;
+
+            $image->path = $item['picture1']; 
+            $image->save();
+
         }
 
 
