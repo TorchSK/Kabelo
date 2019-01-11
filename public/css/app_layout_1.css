@@ -1063,10 +1063,6 @@ a:hover {
             flex-direction: column;
   }
 }
-.flickity-slider {
-  padding: 2px;
-  margin-left: 3px;
-}
 #search_grid {
   display: none;
 }
@@ -1174,7 +1170,7 @@ a:hover {
   color: #FFF !important;
 }
 #home_bestsellers_div .items .item {
-  width: 22.6%;
+  width: 23%;
 }
 #makers_div {
   margin-top: 25px;
