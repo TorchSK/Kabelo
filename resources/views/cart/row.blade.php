@@ -15,10 +15,11 @@
 	@if(!isset($cart_confirm) || !$cart_confirm)
 	<div class="actions">
 		<div class="qty">
-			<div class="ui input">
-			  <input type="text" value="@if(Auth::check()) {{$product->pivot->qty}} @else {{$cart['counts'][$product->id]}} @endif" class="cart_qty_input">
-			</div>
 			<i class="icon minus qty circle cart_minus_qty"></i>
+			<div class="ui right labeled input">
+			  <input type="text" value="@if(Auth::check()) {{$product->pivot->qty}} @else {{$cart['counts'][$product->id]}} @endif" class="cart_qty_input">
+			  <div class="ui basic label">ks</div>
+			</div>
 			<i class="icon plus qty circle cart_plus_qty"></i>
 
 
@@ -30,36 +31,6 @@
 		</div>
 	@endif
 
-	<div class="level">
-		<div>Cena: 
-			@if(Auth::check())
-				@if(Auth::user()->voc)
-			    	@if($product->sale)
-			    		{{App\PriceLevel::find($product->pivot->price_level_id)->voc_sale}} &euro;
-			    	@else
-			    		{{App\PriceLevel::find($product->pivot->price_level_id)->voc_regular}} &euro;
-			   		@endif
-			  	@else
-			    	@if($product->sale)
-			    		{{App\PriceLevel::find($product->pivot->price_level_id)->moc_sale}} &euro;
-			    	@else
-			    		{{App\PriceLevel::find($product->pivot->price_level_id)->moc_regular}} &euro;
-			    	@endif
-			  	@endif
-			@else
-				@if($product->sale)
-			    	{{App\PriceLevel::find($cart['price_levels'][$product->id])->moc_sale}} &euro;
-		    	@else
-			    	{{App\PriceLevel::find($cart['price_levels'][$product->id])->moc_regular}} &euro;
-		   		@endif
-			@endif
-		</div>
-		@if(Auth::check())
-		<div>Množstvo: {{$product->pivot->qty}}</div>
-		@else
-		<div>Množstvo: {{$cart['counts'][$product->id]}}</div>
-		@endif
-	</div>
 
     <div class="price">
     @if(Auth::check())
