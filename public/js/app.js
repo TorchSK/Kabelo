@@ -1447,7 +1447,7 @@ $('.close_btn').click(function(){
 
 $sales_carousel = $('#home_sales_div .items').flickity({
     cellAlign: 'left',
-    contain: true,
+    contain: false,
     pageDots: false,
     prevNextButtons: false,
     imagesLoaded: true,
@@ -1455,7 +1455,7 @@ $sales_carousel = $('#home_sales_div .items').flickity({
 
 $news_carousel = $('#home_news_div .items').flickity({
     cellAlign: 'left',
-    contain: true,
+    contain: false,
     pageDots: false,
     prevNextButtons: false,
     imagesLoaded: true,

@@ -1073,6 +1073,9 @@ a:hover {
   display: inline-block;
   margin-right: 25px;
 }
+.flickity-enabled {
+  width: 100.7%;
+}
 #home_news_div .container,
 #home_sales_div .container,
 #home_bestsellers_div .container {
