@@ -502,10 +502,13 @@ class AdminController extends Controller
 
             if($item['stav_skladu']=='PRODEJ UKONČEN')
             {
-                $product->active = 0;
-                $product->save();
+                if($product->active==1)
+                {
+                    $product->active = 'off';
+                    $product->save();
 
-                $removedProducts->push($product);
+                    $removedProducts->push($product);
+                }
 
             }
             else
