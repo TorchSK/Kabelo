@@ -54,7 +54,7 @@
 
 
 	@if(!isset($showdesc))
-	<div class="desc">{{substr(trim($product->desc),0,200)}}</div>
+	<div class="desc">{{substr(preg_replace('/\s+/', '', $product->desc),0,200)}}</div>
 	@endif
 	
 	
