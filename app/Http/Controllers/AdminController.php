@@ -499,23 +499,34 @@ class AdminController extends Controller
             $item = $items['products'][$key];
 
             $product = Product::whereCode($temp)->first();
-            
-            $product->price = $item['price_skk'];
-            $product->moc_sort_price = $item['price_skk'];
-            $product->voc_sort_price = $item['price_skk'];
-            $product->save();
 
-            $priceLevel = $product->priceLevels->first();
-            $priceLevel->moc_regular = $item['price_skk'];
-            $priceLevel->moc_sale = $item['price_skk'];
-            $priceLevel->voc_regular = $item['price_skk'];
-            $priceLevel->voc_sale = $item['price_skk'];
-            $priceLevel->save();
+            if($item['stav_skladu']=='PRODEJ UKONČEN')
+            {
+                $product->active = 0;
+                $product->save();
 
-            $image = $product->image;
+                $removedProducts->push($product);
 
-            $image->path = $item['picture1']; 
-            $image->save();
+            }
+            else
+            {
+                $product->price = $item['price_skk'];
+                $product->moc_sort_price = $item['price_skk'];
+                $product->voc_sort_price = $item['price_skk'];
+                $product->save();
+
+                $priceLevel = $product->priceLevels->first();
+                $priceLevel->moc_regular = $item['price_skk'];
+                $priceLevel->moc_sale = $item['price_skk'];
+                $priceLevel->voc_regular = $item['price_skk'];
+                $priceLevel->voc_sale = $item['price_skk'];
+                $priceLevel->save();
+
+                $image = $product->image;
+
+                $image->path = $item['picture1']; 
+                $image->save();
+            }
 
         }
 
