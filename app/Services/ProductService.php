@@ -486,8 +486,8 @@ class ProductService implements ProductServiceContract {
         $sortBy = $request->get('sortBy');
         $sortOrder = $request->get('sortOrder');    
 
-        if (!$sortBy) {$sortBy = 'name';};
-        if (!$sortOrder) {$sortOrder = 'asc';};
+        if (!$sortBy) {$sortBy = 'created_at';};
+        if (!$sortOrder) {$sortOrder = 'desc';};
 
         if ($sortBy == 'price')
         {
