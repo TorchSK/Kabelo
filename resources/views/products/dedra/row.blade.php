@@ -41,7 +41,7 @@
 		@if ($product->images->count() == 0)
 			<img src="/img/empty.jpg" class="ui image"/>
 		@elseif ($product->image)
-			@if($product->thumbail_flag==1)
+			@if($product->thumbnail_flag==1)
 			 <img src="{{$product->image->thumb}}" class="ui image" alt="{{$product->code}}" style="max-height: 187px; display: inline-block;"/>
 			@else
 			 <img src="{{$product->image->path}}" class="ui image" alt="{{$product->code}}" style="max-height: 187px; display: inline-block;"/>
