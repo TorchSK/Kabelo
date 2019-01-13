@@ -1837,7 +1837,9 @@ a:hover {
   color: #000 !important;
 }
 #subcategories_wrapper {
+  margin-top: 15px;
   margin-bottom: 1px;
+  background-color: #FAFAFA;
 }
 #subcategories_wrapper > .container {
   padding: 40px 0 ;
