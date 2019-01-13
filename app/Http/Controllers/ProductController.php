@@ -386,6 +386,7 @@ class ProductController extends Controller
         if (!$request->has('new')) {$request['new']='off';}
         if (!$request->has('sale')) {$request['sale']='off';}
         if (!$request->has('active')) {$request['active']='off';}
+        if (!$request->has('thumbnail_flag')) {$request['thumbnail_flag']='off';}
 
         $product->update($request->except('_token'));
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model {
 
   protected $table = "products";
-  protected $fillable = ["category_id", "name", "code", "price", "price_unit", "desc", "link", "stock", "maker", "new", "sale", "sale_price","active","step"];
+  protected $fillable = ["category_id", "name", "code", "price", "price_unit", "desc", "link", "stock", "maker", "new", "sale", "sale_price","active","step", "back1", "back2", "back3", "thumbnail_flag"];
 
   	public function categories() 
   	{
@@ -143,6 +143,17 @@ class Product extends Model {
       }
     }
 
+  public function setThumbnailFlagAttribute($value)
+    {
+      if ($value == 'on' || $value == 1)
+      {
+        $this->attributes['thumbnail_flag'] = 1;
+      }
+      elseif ($value == 'off' || $value == 0)
+      {
+        $this->attributes['thumbnail_flag'] = 0;
+      }
+    }
 
     public function setPriceAttribute($value)
     {

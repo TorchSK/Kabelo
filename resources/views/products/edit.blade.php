@@ -66,7 +66,10 @@
          </div>
        </div>
 
-
+    <div class="ui checkbox">
+      <input type="checkbox" name="thumbnail_flag" @if($product->thumbnail_flag) checked="1"  @endif>
+      <label>Zobrazovať pôvodný zmenšený obrázok</label>
+    </div>
 
   <div id="video_inputs">
          @foreach($product->videos as $video)
@@ -244,6 +247,24 @@
     </div>
 
     <div class="ui teal button" id="edit_product_add_param_row">Pridaj</div>
+
+    <div class="ui header">Zadný obal</div>
+
+
+    <div class="ui fluid input">
+        <input type="text" name="back1" value="{{$product->back1}}" />
+    </div>
+
+
+    <div class="ui fluid input">
+        <input type="text" name="back2" value="{{$product->back2}}" />
+    </div>
+
+
+
+    <div class="ui fluid input">
+        <input type="text" name="back3" value="{{$product->back3}}" />
+    </div>
 
 
     <div class="ui header">Doporúčane produkty</div>

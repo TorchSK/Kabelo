@@ -2580,7 +2580,7 @@ a:hover {
   padding: 0px;
 }
 #video_inputs {
-  margin-bottom: 25px;
+  margin: 25px 0;
 }
 #video_inputs .input {
   margin-bottom: 3px;
