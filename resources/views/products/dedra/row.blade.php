@@ -54,7 +54,7 @@
 
 
 	@if(!isset($showdesc))
-	<div class="desc">{{substr(trim($product->desc),0,1000)}}</div>
+	<div class="desc">{{substr(trim($product->desc),0,2000)}}</div>
 	@endif
 	
 	
