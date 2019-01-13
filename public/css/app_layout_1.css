@@ -2357,6 +2357,7 @@ a:hover {
   background-color: #F7F7F7;
 }
 #product_detail_suggested_wrapper > .container {
+  margin-top: 25px;
   padding: 50px 0;
   background-color: #FAFAFA;
   padding: 50px;
