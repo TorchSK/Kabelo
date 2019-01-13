@@ -1,11 +1,6 @@
 @extends('layouts.master')
 @section('content')
         
-    <div class="covers">
-        @foreach(App\Cover::orderBy('order')->get() as $cover)
-            @include('home.cover')
-        @endforeach
-    </div>
 
  
     @if($layout == 1)
