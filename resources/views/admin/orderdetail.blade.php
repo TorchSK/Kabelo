@@ -145,6 +145,10 @@
 				      <td>PSČ</td>
 				      <td>{{json_decode($order->invoice_address)->zip}}</td>
 				    </tr>
+				   	<tr>
+				      <td>Telefón</td>
+				      <td>{{json_decode($order->phone)->zip}}</td>
+				    </tr>
 					<tr>
 				      <td>email</td>
 				      <td>{{json_decode($order->invoice_address)->email}}</td>

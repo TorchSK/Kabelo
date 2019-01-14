@@ -1,7 +1,9 @@
 @extends('layouts.master')
 @section('content')
 
-	<div class="order_detail" data-orderid="{{$order->id}}">
+<div class="wrapper" id="order_detail_wrapper">
+
+	<div class="order_detail container" data-orderid="{{$order->id}}">
 
 		<div class="header section">
 
@@ -173,5 +175,5 @@
 		</div>
 	</div>
 	</div>
-
+</div>
 @stop

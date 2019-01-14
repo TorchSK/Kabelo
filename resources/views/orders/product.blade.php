@@ -4,9 +4,9 @@
 
 	<div class="image_div">
 		@if ($product->images->count() == 0)
-			<a href="/{{$product->maker}}/{{$product->code}}/detail"><img src="/img/empty.jpg" class="ui image" /></a>
+			<a href="{{route('product.detail',['url'=>$product->url])}}"><img src="/img/empty.jpg" class="ui image" /></a>
 		@elseif ($product->image)
-           <a href="/{{$product->maker}}/{{$product->code}}/detail"><img src="{{url($product->image->path)}}" class="ui image" /></a>
+           <a href="{{route('product.detail',['url'=>$product->url])}}"><img src="{{url($product->image->path)}}" class="ui image" /></a>
 		@endif
 	</div>
 
