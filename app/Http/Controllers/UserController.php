@@ -87,6 +87,13 @@ class UserController extends Controller
 
         $cart->save();
 
+        //create invoice address DB object
+        $address = new Address();
+        $address->address =  '';
+        $address->type =  'invoice';
+        $user->invoiceAddress()->save($address);
+
+        //send activation email
         $token = $this->createActivationToken($user);
         $email = $this->sendActivationEmail($user->id);
 

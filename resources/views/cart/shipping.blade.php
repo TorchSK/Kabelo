@@ -20,7 +20,6 @@
 				</div>
 
 				<div class="inputs">
-				
 			       	<div class="ui large input" data-column="name">
 			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>1) value="{{json_decode($cart['invoice_address'])->name}}" @elseif(Auth::check()) value="{{Auth::user()->first_name.' '.Auth::user()->last_name}}" @endif />
 			      	</div><br/>
