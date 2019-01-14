@@ -939,7 +939,7 @@ a:hover {
   display: flex;
   opacity: 0;
 }
-@media all and (max-width: 1690px) {
+@media all and (max-width: 1280px) {
   .top_banner_row {
     display: none !important;
   }
