@@ -4438,6 +4438,9 @@ body.admin #filterbar.vertical .categories .item {
   font-size: 1.2em;
   font-weight: 900;
 }
+.order_detail.admin {
+  width: 100%;
+}
 .order_change_status_btn {
   cursor: pointer;
 }

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-	<div class="order_detail" data-orderid="{{$order->id}}">
+	<div class="order_detail admin" data-orderid="{{$order->id}}">
 
 		<div class="header section">
 
