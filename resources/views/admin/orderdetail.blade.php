@@ -147,7 +147,7 @@
 				    </tr>
 				   	<tr>
 				      <td>Telefón</td>
-				      <td>{{json_decode($order->phone)->zip}}</td>
+				      <td>{{json_decode($order->invoice_address)->phone}}</td>
 				    </tr>
 					<tr>
 				      <td>email</td>
