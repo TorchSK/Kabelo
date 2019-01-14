@@ -1458,7 +1458,7 @@ $news_carousel = $('#home_news_div .items').flickity({
     contain: false,
     pageDots: false,
     prevNextButtons: false,
-    imagesLoaded: true,
+    imagesLoaded: false,
 });
 
 $bestsellers_carousel = $('#home_bestsellers_div .items').flickity({
