@@ -4440,6 +4440,7 @@ body.admin #filterbar.vertical .categories .item {
 }
 .order_detail.admin {
   width: 100%;
+  background-color: #FAFAFA;
 }
 .order_change_status_btn {
   cursor: pointer;
