@@ -23,7 +23,7 @@
 	<div class="ui horizontal divider">Vybavené objednávky</div>
 
 	@foreach(Auth::user()->orders->where('status_id',3) as $order)
-		<a class="item">
+		<a class="item" href="{{route('order.show',[$order->id])}}">
 			<div class="id">{{$order->id}}</div>
 			<div class="date">{{Carbon\Carbon::parse($order->created_at)->day.'.'.Carbon\Carbon::parse($order->created_at)->month.'.'.Carbon\Carbon::parse($order->created_at)->year}}</div>
 			<div class="price">{{$order->price}} Eur</div>
