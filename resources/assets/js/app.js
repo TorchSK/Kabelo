@@ -683,7 +683,6 @@ function doSort(){
   $sortBy = getDesiredSortBy();
   $sortOrder = getDesiredSortOrder();
 
-
   $filters = getActiveFilters();
   $categoryid = getActiveCategory();
 
@@ -698,7 +697,7 @@ function doSort(){
     $('#grid_wrapper').show();
     $('.sorts').show();
     $('#price_slider').show();
-    
+    $('.sort').removeClass('loading');
     initPriceSlider();
 
     $grid.on('click','.view_more_button',function(){
@@ -748,6 +747,7 @@ function removeFilter(key, value=''){
 
 
 $('.sort').click(function(){
+	$(this).addClass('loading');
   if ($(this).hasClass('active'))
   {
     if ($(this).data('sortorder')=='asc')

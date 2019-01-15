@@ -60,9 +60,9 @@
 
             <div class="options">
                 <div class="sorts">
-                    <div class="active sort" data-sortby="created_at" data-sortorder="desc"><i class="sort numeric ascending icon"></i> Dátum pridania</div>
-                    <div class="sort" data-sortby="name" data-sortorder="asc"><i class="sort alphabet ascending icon"></i> Názov</div>
-                    <div class="sort" data-sortby="price" data-sortorder="asc"><i class="sort numeric ascending icon"></i> Cena</div>
+                    <div class="active sort ui button" data-sortby="created_at" data-sortorder="desc"><i class="sort numeric ascending icon"></i> Dátum pridania</div>
+                    <div class="sort ui button" data-sortby="name" data-sortorder="asc"><i class="sort alphabet ascending icon"></i> Názov</div>
+                    <div class="sort ui button" data-sortby="price" data-sortorder="asc"><i class="sort numeric ascending icon"></i> Cena</div>
                 </div>
             </div>
                     
@@ -82,7 +82,25 @@
 
            <grid @if($appname=="dedra") class="infinite" @endif>
 
-               
+               <div class="ui three column stackable grid">
+                @for ($i = 0; $i < 9; $i++)
+
+                  <div class="column">
+                    <div class="ui raised segment">
+                      <div class="ui placeholder">
+                        <div class="image header">
+                          <div class="line"></div>
+                          <div class="line"></div>
+                        </div>
+                        <div class="paragraph">
+                          <div class="medium line"></div>
+                          <div class="short line"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  @endfor
+                </div>
             </grid>
                 
             <div class="scroll_to_top"><i class="big icon teal circular inverted angle double up"></i></div>
