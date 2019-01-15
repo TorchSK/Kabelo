@@ -5265,10 +5265,6 @@ body {
 body.eshop #eshop {
   max-width: 1400px;
 }
-body.eshop #grid {
-  background-color: #FFF;
-  padding-top: 10px !important;
-}
 body.eshop #home_news_div .caption,
 body.eshop #home_sales_div .caption,
 body.eshop #home_bestsellers_div .caption {
@@ -5418,6 +5414,24 @@ body.eshop #header .search.item {
 }
 #product_detail {
   width: 100%;
+}
+#grid_div .column {
+  display: inline-block;
+  width: 33%;
+}
+#grid_div .column:nth-child(2) {
+  text-align: center;
+}
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.pagination li {
+  margin-right: 7px;
 }
 #cart_products_wrapper .container {
   background-color: #FCFCFC;

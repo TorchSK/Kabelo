@@ -58,18 +58,14 @@
 
             <div id="grid_stats" @if(isset($priceRange)) data-minprice="{{$priceRange[0]}}" data-maxprice="{{$priceRange[1]}}" @else data-minprice="0" data-maxprice="1" @endif ></div>
 
-            @if($products->count() > 0)
-
             <div class="options">
                 <div class="sorts">
-                    <div class="active sort" data-sortby="created_at" data-sortorder="asc"><i class="sort numeric ascending icon"></i> Dátum pridania</div>
+                    <div class="active sort" data-sortby="created_at" data-sortorder="desc"><i class="sort numeric ascending icon"></i> Dátum pridania</div>
                     <div class="sort" data-sortby="name" data-sortorder="asc"><i class="sort alphabet ascending icon"></i> Názov</div>
                     <div class="sort" data-sortby="price" data-sortorder="asc"><i class="sort numeric ascending icon"></i> Cena</div>
                 </div>
             </div>
-            
-            @endif
-        
+                    
 
             @if($appname=='kabelo')
             <div id="price_slider"></div>
@@ -86,15 +82,11 @@
 
            <grid @if($appname=="dedra") class="infinite" @endif>
 
-                @include('products.list')
                
             </grid>
                 
-            @if($products->count() > 0 && $products->hasMorePages())
-            <div class="ct">
-                <div class="ui large blue button view-more-button">Viac produktov</div>
-            </div>
-            @endif
+            <div class="scroll_to_top"><i class="big icon teal circular inverted angle double up"></i></div>
+
 
         </div>
 

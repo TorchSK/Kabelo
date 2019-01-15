@@ -1,4 +1,4 @@
-@if(env('DB_DATABASE_KABELO')=='kabelo')
+@if($appname=='kabelo')
 <div class="ui horizontal divider active title"><i class="dropdown icon"></i>Výrobcovia</div>
 <div class="active content">
 @foreach($makers->unique('maker') as $maker)

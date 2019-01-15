@@ -17,6 +17,7 @@ use Cookie;
 use Response;
 use DB;
 use Cache;
+use Config;
 
 class ProductService implements ProductServiceContract {
 
@@ -277,17 +278,17 @@ class ProductService implements ProductServiceContract {
 
     public function list(Request $request)
     {
-        if(env('DB_DATABASE_KABELO')=='kabelo')
+        if(Config::get('database.default')=='kabelo')
         {
             return $this->list_kabelo($request);
         }
 
-        if(env('DB_DATABASE_DEDRA')=='dedra')
+        if(Config::get('database.default')=='dedra')
         {
             return $this->list_dedra($request);
         }
 
-        if(env('DB_DATABASE_COPPER')=='copper')
+        if(Config::get('database.default')=='copper')
         {
             return $this->list_kabelo($request);
         }
@@ -472,7 +473,9 @@ class ProductService implements ProductServiceContract {
             'activeFilters' => $activeFilters,
             'filterCounts' => $filterCounts,
             'priceRange' => $priceRange,
-            'search' => $search
+            'search' => $search,
+            'sortBy' => $sortBy,
+            'sortOrder' => $sortOrder
         ];
 
         return $data;
@@ -486,8 +489,11 @@ class ProductService implements ProductServiceContract {
         $sortBy = $request->get('sortBy');
         $sortOrder = $request->get('sortOrder');    
 
+
         if (!$sortBy) {$sortBy = 'created_at';};
         if (!$sortOrder) {$sortOrder = 'desc';};
+
+        $sortByRaw = $sortBy;
 
         if ($sortBy == 'price')
         {
@@ -546,10 +552,13 @@ class ProductService implements ProductServiceContract {
         $search = 'false';
         
         $data = [
+            'category' => $category,
             'products' => $products,
             'priceRange' => $priceRange,
             'search' => $search,
-            'makers' => collect([''])
+            'makers' => collect(['']),
+            'sortBy' => $sortByRaw,
+            'sortOrder' => $sortOrder
         ];
 
         return $data;

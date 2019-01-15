@@ -2,6 +2,13 @@
 	@include('products.row',['grid'=>1])
 @endforeach
 
-<div class="scroll_to_top"><i class="big icon teal circular inverted angle double up"></i></div>
+<div id="grid_div">
+	<div class="column"></div>
+    <div class="column"><div class="ui large blue button view_more_button">Viac produktov</div></div>
+    <div class="column">
+    <a href="{{ $products->appends(['sortBy' => $sortBy, 'sortOrder' => $sortOrder, 'category'=>$category->id])->nextPageUrl()}}" id="next_page" data-next="{{$products->hasMorePages()}}"></a>
+    {{ $products->links() }}
+	</div>
 
-<a href="{{ $products->nextPageUrl()}}" class="hidden" id="next_page" data-next="{{$products->hasMorePages()}}"></a>
+</div>
+

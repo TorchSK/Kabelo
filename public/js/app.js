@@ -672,6 +672,7 @@ $('#banners_visible_checkbox').checkbox({
 initCoverHeightSlider();
 initCoverWidthSlider();
 
+
 function doSort(){
 
   //console.log(getPriceFilter('price'));
@@ -686,43 +687,37 @@ function doSort(){
   $filters = getActiveFilters();
   $categoryid = getActiveCategory();
 
- if($('#routename').text()=='maker.products')
- {
-	$.get('/makerproduct/list',{category: $categoryid, sortBy: $sortBy, sortOrder: $sortOrder, filters: $filters}, function(data){
-	    $grid.html(data.products);
-		
-
-	    $filtersDiv.html(data.filters);
-	    filtersInit();
-	    $('#grid_wrapper').find('.dimmer').removeClass('active');
-	    $('#grid_wrapper').show();
-	    $('.sorts').show();
-	    $('#price_slider').show();
-	    
-	    initPriceSlider();
-	    
-	   
-	  })
- }
- else
- {
   $.get('/product/list',{category: $categoryid, sortBy: $sortBy, sortOrder: $sortOrder, filters: $filters}, function(data){
     $grid.html(data.products);
-	
 
     $filtersDiv.html(data.filters);
+    
     filtersInit();
+    
     $('#grid_wrapper').find('.dimmer').removeClass('active');
     $('#grid_wrapper').show();
     $('.sorts').show();
     $('#price_slider').show();
     
     initPriceSlider();
-    
-   
+
+    $grid.on('click','.view_more_button',function(){
+    	$('.view_more_button').addClass('loading');
+    	$.get($('#next_page').attr('href'),{category: $categoryid, sortBy: $sortBy, sortOrder: $sortOrder, filters: $filters}, function(data){
+    		$('#grid_div').remove();
+    		$grid.find('.item').last().after($(data.products));
+   		    $('#grid_wrapper').find('.dimmer').removeClass('active');
+   		    $('.view_more_button').removeClass('loading');
+    	});
+    })
   })
- }
+
 };
+
+if ($('body').attr('id')=='category_products_body')
+{
+	doSort();
+}
 
 function addFilter(key, value, desc, group=null){
   $('#active_filters').append('<span data-value="'+value+'" data-filter="'+key+'" data-group="'+group+'" class="'+key+' ui large teal label">'+desc+'<i class="delete icon"></i></span>');
@@ -1062,10 +1057,6 @@ $('.product_row_delete_btn').click(function(){
 })
 
 
-
-$(document).ajaxStart(function() {
-  $('#grid_wrapper').find('.dimmer').addClass('active');
-});
 
 
 var timeout = null;
@@ -3762,27 +3753,9 @@ $('.copy_to_clipboard_btn').click(function(){
 	$(this).toggleClass('copy checkmark');
 })
 
-$('grid.infinite').on( 'error.infiniteScroll', function( event, error, path ) {
-    console.log(1111111111);
-})
-
-$('grid.infinite').infiniteScroll({
-	path: '#next_page',
-	append: '.item.product.grid',
-	history: false,
-	button: '.view-more-button',
-	scrollThreshold: false,
-});
-
-$('grid.infinite').on( 'request.infiniteScroll', function( event, response, path, items ) {
-  $('.view-more-button').addClass('loading');
-});
 
 
-$('grid.infinite').on( 'append.infiniteScroll', function( event, response, path, items ) {
-  $('.view-more-button').removeClass('loading');
 
-});
 
 
 

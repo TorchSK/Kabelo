@@ -59,3 +59,27 @@
 	width: 100%;
 }
 
+#grid_div{
+
+	.column{
+		display: inline-block;
+		width: 33%;
+
+		&:nth-child(2)
+		{
+			text-align: center;
+		}
+
+		&:last-child{
+		}
+	}
+}
+
+.pagination{
+	display: flex;
+	justify-content: flex-end;
+
+	li{
+		margin-right: 7px;
+	}
+}

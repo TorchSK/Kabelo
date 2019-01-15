@@ -49,11 +49,12 @@ class CategoryController extends Controller
             if (!$cat) abort(404);
             
             $request['category'] = $cat->id;
-            $data = $this->productService->list($request);
 
             $data['requestCategory'] = Category::find($request->get('category'));
             $data['categories'] = $this->categoryService->getCategories();
             $data['title'] = Category::find($request->get('category'))->title;
+
+            $data['bodyid'] = 'category_products_body';
 
             return view('categories/products', $data);
 
