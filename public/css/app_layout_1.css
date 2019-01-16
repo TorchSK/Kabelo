@@ -984,7 +984,7 @@ a:hover {
           flex: 0 0 100%;
   max-width: 71%;
 }
-@media all and (max-width: 1690px) {
+@media all and (max-width: 1280px) {
   .covers {
     margin-top: 10px;
     max-width: 100%;
