@@ -3811,9 +3811,12 @@ function initRelatedSlider(speed){
 initRelatedSlider(parseInt($('#suggested_wrapper_speed').find('value').html()));
 
 
-$("#grid_wrapper").on('click', '.product.item', function(){
+$("#grid_wrapper").on('click', '.product.item', function(e){
 	$link = $(this).find('.p_anch').attr('href');
-	window.location.href = $link;
+	if($(e.target).hasClass('to_cart')==false)
+	{
+		window.location.href = $link;
+	}
 });
 
 
