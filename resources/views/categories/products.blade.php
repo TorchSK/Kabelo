@@ -60,7 +60,7 @@
 
             <div class="options">
                 <div class="sorts">
-                    <div class="active sort ui button" data-sortby="created_at" data-sortorder="desc"><i class="sort numeric ascending icon"></i> Najnovšie</div>
+                    <div class="active sort ui button" data-sortby="created_at" data-sortorder="desc"><i class="star icon"></i> Najnovšie</div>
                     <div class="sort ui button" data-sortby="name" data-sortorder="asc"><i class="sort alphabet ascending icon"></i> Názov</div>
                     <div class="sort ui button" data-sortby="price" data-sortorder="asc"><i class="sort numeric ascending icon"></i> Cena</div>
                 </div>
