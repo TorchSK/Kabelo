@@ -4000,7 +4000,9 @@ $('#cover_category_url')
     }
   }).unbind('ajaxStart');;
 
-
+$('#cover_other_url input').change(function(){
+$('#admin_add_cover_form').find('input[name="url"]').val($(this).val());
+})
 
 
 

@@ -5043,6 +5043,9 @@ h1.header {
 .admin_add_cover .ui.checkbox {
   margin-bottom: 10px;
 }
+.admin_add_cover .banner_options {
+  display: none;
+}
 .admin_add_cover #cover_dropzone {
   width: 100%;
 }
@@ -5051,7 +5054,7 @@ h1.header {
 }
 .admin_add_cover .banner {
   overflow: hidden;
-  height: 400px;
+  background-size: cover;
 }
 .admin_add_cover .banner .cover_options {
   display: none;
@@ -5062,7 +5065,7 @@ h1.header {
   margin-bottom: 20px;
   position: relative;
 }
-.admin_add_cover .cover_image .cover {
+.admin_add_cover .cover_image .banner {
   height: 100%;
 }
 .admin_add_cover .cover_image img {

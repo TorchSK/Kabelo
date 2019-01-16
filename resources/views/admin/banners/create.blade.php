@@ -44,14 +44,15 @@
 
 		<div class="ui hiden search" id="cover_other_url">
 			<input type="text" class="prompt" @if(isset($cover)) value="{{$cover->url}}" @endif placeholder="URL pre odkaz" />
-			 <div class="results"></div>
 		</div>
 
 
 		@if (isset($cover))
-		<form action="/admin/cover/upload" class="dropzone hidden" id="cover_dropzone"> <input name="_token" hidden value="{!! csrf_token() !!}" /></form>
+		<form action="/admin/cover/upload" class="dropzone hidden" id="cover_dropzone"> 
+			<input name="_token" hidden value="{!! csrf_token() !!}" />
+		</form>
 
-		 <div class="cover_image">
+		 <div class="cover_image" style="height: {{App\Setting::firstOrCreate(['name'=>'cover_height'])->value}}px;">
 		 @include('home.banner', ['type'=>Request::get('type')])
 		</div>
 		@else
@@ -93,7 +94,7 @@
 			<input type="hidden" name="top"  @if(isset($cover)) value="{{$cover->top}}" @else value="30" @endif />
 
 			<input name="_token" hidden value="{!! csrf_token() !!}" />
-			<button type="submit" class="ui green button">@if (isset($cover)) Zmeň @else Vytvor @endif {{Request::get('type')}}</button>
+			<button type="submit" class="ui green button">@if (isset($cover)) Ulož @else Vytvor {{Request::get('type')}} @endif</button>
 
 			</form>
 
