@@ -3828,6 +3828,7 @@ $('#product_main_wrapper .main').click(function(e){
 
 
 $('.active_flag').click(function(){
+	$item = $(this).closest('.item');
 	$icon = $(this).find('i');
 	$type = $(this).closest('.item').data('type');
 	$id = $(this).closest('.item').data('id');
@@ -3841,6 +3842,7 @@ $('.active_flag').click(function(){
 			data: {active: 0},
 			success: function(data){
 				$icon.toggleClass('red green');
+				$item.data('active',0)
 			}
 		})	
 	}
@@ -3852,6 +3854,7 @@ $('.active_flag').click(function(){
 			data: {active: 1},
 			success: function(data){
 				$icon.toggleClass('red green');
+				$item.data('active',1)
 			}
 		})	
 	}
