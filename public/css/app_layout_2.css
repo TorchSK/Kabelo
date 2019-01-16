@@ -2364,6 +2364,7 @@ a:hover {
   position: relative;
   margin-top: -50px;
   margin-left: 25px;
+  position: absolute;
 }
 @media all and (max-width: 980px) {
   #product_main_wrapper #product_categories_path {

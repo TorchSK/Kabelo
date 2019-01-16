@@ -31,8 +31,6 @@
         </div>
         @endforeach
         </div>
-
-
       </div>
 
     <div class="images">
