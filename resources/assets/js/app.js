@@ -152,6 +152,16 @@ $('#header .catalogues.item').popup({
 
 });
 
+$('#header .cart.item').popup({
+	popup : $('#cart_popup'),
+	on    : 'hover',
+	hoverable: true
+
+});
+
+$('#header .cart.item').click(function(){
+	window.location.href = $(this).attr('href');
+});
 
 $('.ui.accordion').accordion({
   exclusive: false

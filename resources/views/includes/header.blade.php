@@ -117,12 +117,31 @@
       
 
 
-        <a class="cart item hvr-curl-top-left" href="/cart/products">
+        <div class="cart item hvr-curl-top-left" href="/cart/products">
           <div id="cart_icon">
             <i class="shopping basket big icon"></i>
               <div class="floating ui black label">{{$cart['number']}}</div>
           </div>
-        </a>
+
+          <div id="cart_popup" class="ui basic popup transition"> 
+              @if (sizeof($cart['items']) > 0)
+                @if (Auth::check())
+                  @foreach($cart->products as $product)
+                    @include('cart.row')
+                  @endforeach
+                @else
+                  @foreach($cart['items'] as $productid)
+                    @if(isset(App\PriceLevel::find($cart['price_levels'][$productid])->moc_regular))
+                      @include('cart.row', ['product' => App\Product::find($productid)])
+                    @endif
+                  @endforeach
+                @endif
+                
+              @endif
+
+              <a class="ui tiny blue button" href="/cart/products">Zobraz košík</a>
+          </div>
+        </div>
 
       @if($appname=='dedra')
         <div class="catalogues item ct">

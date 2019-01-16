@@ -2,7 +2,7 @@
 	<div class="image_div">
 		@if ($product->images->count() == 0)
 			<a href="{{route('product.detail',['url'=>$product->url])}}"><img src="/img/empty.jpg" class="ui image" /></a>
-		@elseif ($product->image)
+		@else
            <a href="{{route('product.detail',['url'=>$product->url])}}"><img src="{{url($product->image->path)}}" class="ui image" /></a>
 		@endif
 	</div>
