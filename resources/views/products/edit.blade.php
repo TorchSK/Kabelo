@@ -10,9 +10,11 @@
             <div class="default text">Parameter</div>
 
           <div class="menu">
+            @if($product->categories->count() > 0)
             @foreach (App\Category::find($product->categories->first()->id)->parameters as $param)
               @include('products.paramoptions')
             @endforeach
+            @endif
           </div>
         </div>
         <div class="ui input value"><input type="text" name="value[]" /></div>
@@ -178,8 +180,8 @@
     <select multiple="true" name="categories[]" id="edit_product_categories_input" class="ui fluid search dropdown">
     <option value="">Kategória</option>
     @foreach (App\Category::orderBy('path','asc')->get() as $category)
-    <option value="{{$category->id}}" @if(in_array($category->id, $product->categories->pluck('id')->toArray())) selected="true" @endif>
-           @if($category->parent)
+    <option value="{{$category->id}}" @if($product->categories->count()>0 && in_array($category->id, $product->categories->pluck('id')->toArray())) selected="true" @endif>
+    @if($category->parent)
      {{$category->parent->name}} - 
       @endif
       {{$category->name}}
@@ -231,9 +233,11 @@
           <div class="text">{{$parameter->definition->display_key}}</div>
 
           <div class="menu">
+            @if($product->categories->count() > 0)
             @foreach (App\Category::find($product->categories->first()->id)->parameters as $param)
               @include('products.paramoptions')
             @endforeach
+            @endif
           </div>
         </div>
 
