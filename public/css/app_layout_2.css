@@ -2032,7 +2032,7 @@ a:hover {
 }
 #product_main_wrapper > .container {
   background-color: #FFF;
-  padding: 4% 0px 1% 0px;
+  padding: 3% 0px 1% 0px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
