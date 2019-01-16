@@ -778,12 +778,12 @@ $('.sort').click(function(){
   {
     if ($(this).data('sortorder')=='asc')
     {
-      $(this).data('sortorder','desc');
+      if($(this).data('sortby')!='created_at') {$(this).data('sortorder','desc');}
       $(this).find('i').removeClass('ascending').addClass('descending');
     }
     else
     {
-      $(this).data('sortorder','asc');
+      if($(this).data('sortby')!='created_at') {$(this).data('sortorder','asc');}
       $(this).find('i').removeClass('descending').addClass('ascending');
     }
   }
