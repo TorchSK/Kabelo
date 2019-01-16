@@ -1468,6 +1468,7 @@ $sales_carousel = $('#home_sales_div .items').flickity({
     pageDots: false,
     prevNextButtons: false,
     imagesLoaded: true,
+    wrapAround: true
 });
 
 $news_carousel = $('#home_news_div .items').flickity({
@@ -1476,6 +1477,8 @@ $news_carousel = $('#home_news_div .items').flickity({
     pageDots: false,
     prevNextButtons: false,
     imagesLoaded: false,
+        wrapAround: true
+
 });
 
 $bestsellers_carousel = $('#home_bestsellers_div .items').flickity({
@@ -1484,6 +1487,8 @@ $bestsellers_carousel = $('#home_bestsellers_div .items').flickity({
     pageDots: false,
     prevNextButtons: false,
     imagesLoaded: true,
+        wrapAround: true
+
 });
 
 
