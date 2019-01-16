@@ -2351,6 +2351,26 @@ a:hover {
             justify-content: center;
   }
 }
+#product_main_wrapper #product_categories_path {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 14px;
+  font-weight: 300;
+  position: relative;
+  margin-top: -50px;
+  margin-left: 25px;
+}
+@media all and (max-width: 980px) {
+  #product_main_wrapper #product_categories_path {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
 #product_main_wrapper .product_bottom {
   display: -webkit-box;
   display: -ms-flexbox;
