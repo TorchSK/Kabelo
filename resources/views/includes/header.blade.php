@@ -152,7 +152,11 @@
 
         <div class="ui basic popup transition" id="catalogues_popup">
           @foreach(App\File::whereType('catalogue')->get() as $catalogue)
-            <a class="cat" href="{{$catalogue->path}}" target="_blank"><img src="{{$catalogue->thumbnail->path}}" width="100" alt="catalogue9"/></a>
+            <a class="cat" href="{{$catalogue->path}}" target="_blank">
+              @if($catalogue->thumbnail)
+              <img src="{{$catalogue->thumbnail->path}}" width="100" alt="catalogue"/>
+              @endif
+            </a>
             @endforeach
         </div>
         @endif
