@@ -154,7 +154,7 @@
           @foreach(App\File::whereType('catalogue')->get() as $catalogue)
             <a class="cat" href="{{$catalogue->path}}" target="_blank">
               @if($catalogue->thumbnail)
-              <img src="{{$catalogue->thumbnail->path}}" width="100" alt="catalogue"/>
+              <img src="{{url($catalogue->thumbnail->path)}}" width="100" alt="catalogue"/>
               @endif
             </a>
             @endforeach
