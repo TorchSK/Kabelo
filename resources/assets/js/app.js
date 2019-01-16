@@ -672,6 +672,20 @@ $('#banners_visible_checkbox').checkbox({
 initCoverHeightSlider();
 initCoverWidthSlider();
 
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
 
 function doSort(){
 
@@ -686,7 +700,9 @@ function doSort(){
   $filters = getActiveFilters();
   $categoryid = getActiveCategory();
 
-  $.get('/product/list',{category: $categoryid, sortBy: $sortBy, sortOrder: $sortOrder, filters: $filters}, function(data){
+  $page = getUrlParameter('page');
+
+  $.get('/product/list',{category: $categoryid, sortBy: $sortBy, sortOrder: $sortOrder, filters: $filters, page: $page}, function(data){
     $grid.html(data.products);
 
     $filtersDiv.html(data.filters);
