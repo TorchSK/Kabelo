@@ -117,6 +117,7 @@
 		<div class="ui divider"></div>
     <div id="desc">
         {{$product->desc}}
+    </div>
 
             
       @if($product->detailStickers->count() > 0)
@@ -128,8 +129,7 @@
         @endforeach
        </div>
        @endif
-    </div>
-
+       
     <div class="ui divider"></div>
 
     <div id="prices">
