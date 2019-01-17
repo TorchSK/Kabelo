@@ -24,6 +24,10 @@
 							@endforeach	
 				</div>
 			@endforeach	
+
+							<div class="sub1">
+									Tu bude obrazok
+							</div>
 			</div>
 
 		</div>
