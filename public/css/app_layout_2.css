@@ -5031,6 +5031,13 @@ h1.header {
   padding: 4px;
   border-radius: 3px;
 }
+#filterbar.horizontal .subcats .sub1:last-child {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+#filterbar.horizontal .subcats .sub1 img {
+  max-height: 100%;
+}
 #filterbar.horizontal .subcats .sub2 {
   margin: 5px 0;
 }

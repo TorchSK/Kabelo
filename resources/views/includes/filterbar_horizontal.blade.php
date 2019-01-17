@@ -25,9 +25,10 @@
 				</div>
 			@endforeach	
 
-							<div class="sub1">
-									Tu bude obrazok
-							</div>
+			<div class="sub1">
+					<img src="/img/menu_{{$category->url}}.png" />
+			</div>
+
 			</div>
 
 		</div>
