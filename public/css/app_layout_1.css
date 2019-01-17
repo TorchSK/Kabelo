@@ -2239,7 +2239,7 @@ a:hover {
   }
 }
 #product_main_wrapper #desc {
-  margin: 35px 0;
+  margin: 35px 0 5px 0;
   font-size: 1.1em;
   line-height: 1.6em;
   text-align: justify;
@@ -2408,10 +2408,6 @@ a:hover {
   #product_detail_wrapper p {
     font-size: 1em;
   }
-}
-.product_stickers {
-  margin-left: 25px;
-  margin-top: 15px;
 }
 .product_stickers .sticker {
   width: 107px;
