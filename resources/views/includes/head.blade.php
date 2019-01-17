@@ -10,6 +10,12 @@
     <meta name="description" content="DEDRA EKO čistiace prostriedky, darčeky pre mužov, darčeky pre ženy, šperky, drogéria pre domácnosť">
     <meta name="robots" content="index, follow">
     
+    <meta property="og:url" content="{{Request::url()}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="@if(isset($product)){{$product->name}} @else Dedra @endif"/>
+    <meta property="og:description" content="@if(isset($product)){{substr($product->desc,0,100)}} @else Dedra @endif" />
+    <meta property="og:image" content="@if(isset($product)){{$product->image->path}} @else {{url('img/'.$appname)}}_favico.png @endif" />
+
     <title>
     @if(isset($title))
     {{$title}} | {{App\Setting::firstOrCreate(['name'=>'home_title'])->value}}.sk
@@ -23,7 +29,7 @@
     @if($appname=='kabelo')
     <link rel="canonical" href="https://www.dedra.kabelo.sk/">
     @else
-    <link rel="canonical" href="https://www.kabelo.sk/">
+    <link rel="canonical" href="https://www.{{$appname}}.sk/">
     @endif
 
     <!-- Fonts -->
