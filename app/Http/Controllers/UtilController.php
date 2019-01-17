@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Services\Contracts\ProductServiceContract;
 use App\Mail\NewOrder;
+use App\Mail\Welcome;
+
 use App\Services\Contracts\CategoryServiceContract;
 
 use App\Category;
@@ -153,5 +155,10 @@ class UtilController extends Controller
     public function setText(Request $request)
     {      
         Text::updateOrCreate(['key' => $request->get('key')], ['text' => $request->get('text')]);
+    }
+
+    public function getWelcomeEmail()
+    {
+        return new Welcome(User::first());
     }
 }
