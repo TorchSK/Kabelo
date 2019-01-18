@@ -2043,7 +2043,7 @@ a:hover {
 }
 #product_main_wrapper > .container {
   background-color: #FFF;
-  padding: 3% 0px 1% 0px;
+  padding: 100px 0px 1% 0px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -2370,12 +2370,15 @@ a:hover {
       -ms-flex-pack: justify;
           justify-content: space-between;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   color: #777;
   position: relative;
-  margin-top: -50px;
+  margin-top: -80px;
   margin-left: 25px;
   position: absolute;
+}
+#product_main_wrapper #product_categories_path a i.icon {
+  color: #AAA;
 }
 @media all and (max-width: 980px) {
   #product_main_wrapper #product_categories_path {

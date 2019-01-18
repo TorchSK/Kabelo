@@ -19,17 +19,19 @@
 
       <div class="ui header" id="product_categories_path">
         <div>
-        @foreach ($product->categories as $category)
-        <div>
-        @if(isset($category->parent) && $category->parent->count() > 0  && isset($category->parent->parent) && $category->parent->has('parent'))
-        <a href="{{route('category.products',['path'=> $category->parent->parent->full_url])}}" class="effect-1">{{$category->parent->parent->name}}</a> - 
-        @endif
-        @if(isset($category->parent) && $category->parent->count() > 0)
-        <a href="{{route('category.products',['path'=> $category->parent->full_url])}}" class="effect-1">{{$category->parent->name}}</a> - 
-        @endif
-        <a href="{{route('category.products',['path'=> $category->full_url])}}" class="effect-1">{{$category->name}}</a>
-        </div>
-        @endforeach
+          <div>
+            <a href="/" class=""><i class="home icon"></i></a> -
+          @if(isset($product->categories->first()->parent->parent) && $product->categories->first()->parent->count() > 0  && isset($product->categories->first()->parent->parent) && $product->categories->first()->parent->parent->has('parent'))
+          <a href="{{route('category.products',['path'=> $product->categories->first()->parent->parent->parent->full_url])}}" class="effect-1">{{$product->categories->first()->parent->parent->parent->name}}</a> - 
+          @endif
+          @if(isset($product->categories->first()->parent) && $product->categories->first()->parent->count() > 0  && isset($product->categories->first()->parent->parent) && $product->categories->first()->parent->has('parent'))
+          <a href="{{route('category.products',['path'=> $product->categories->first()->parent->parent->full_url])}}" class="effect-1">{{$product->categories->first()->parent->parent->name}}</a> - 
+          @endif
+          @if(isset($product->categories->first()->parent) && $product->categories->first()->parent->count() > 0)
+          <a href="{{route('category.products',['path'=> $product->categories->first()->parent->full_url])}}" class="effect-1">{{$product->categories->first()->parent->name}}</a> - 
+          @endif
+          <a href="{{route('category.products',['path'=> $product->categories->first()->full_url])}}" class="effect-1">{{$product->categories->first()->name}}</a>
+          </div>
         </div>
       </div>
 
