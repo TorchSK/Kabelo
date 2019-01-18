@@ -595,6 +595,10 @@ class AdminController extends Controller
         foreach(Product::whereActive(1)->get() as $product)
         {   
             $key = $product->code;
+
+            if (array_key_exists($key, $items['products']))
+            {
+
             $item = $items['products'][$key];
 
 
@@ -678,10 +682,8 @@ class AdminController extends Controller
                     $image->save();
                 }
             }
-            if($product){
-                $product->temp = 1;
-                $product->save();
-            }
+
+        }
 
         }
     }
