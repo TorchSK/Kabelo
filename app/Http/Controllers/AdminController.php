@@ -584,7 +584,8 @@ class AdminController extends Controller
 
 
     public function addMoreImages()
-    {
+    {   
+
         $contents = file_get_contents('https://dedra.blob.core.windows.net/cms/xmlexport/cs_xml_export.xml?ppk=133538');
         $xml = XmlParser::extract($contents);
 
@@ -592,17 +593,15 @@ class AdminController extends Controller
             'products' => ['uses' => 'product[product_id,picture1,picture2,picture3,picture4,picture5,picture6]'],
         ]);
 
-        foreach(Product::whereActive(1)->get() as $product)
-        {   
-            $key = $product->code;
 
-            if (array_key_exists($key, $items['products']))
+        foreach($items['products'] as $item)
+        {   
+            $product = Product::whereCode($item['product_id'])->first();
+
+            if ($product)
             {
 
-            $item = $items['products'][$key];
-
-
-            if($product && $item['picture1'] != '')
+                if($product && $item['picture1'] != '')
             {
                 if(File::where('path', $item['picture1'])->count() == 0)
                 {
