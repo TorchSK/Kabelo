@@ -55,7 +55,7 @@
 
             <div class="path">
               <div class="ui fluid action input">
-                <input type="text" name="image_ids[]" value="{{$image->id}}" />
+                <input type="hidden" name="image_ids[]" value="{{$image->id}}" />
                 <input type="text" name="image_paths[]" value="{{$image->path}}" />
                 <div class="ui red icon button delete_img"><i class="delete icon"></i></div>
                 <div class="ui blue icon button make_primary_img"><i class="star icon"></i></div>
