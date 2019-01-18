@@ -593,9 +593,10 @@ class AdminController extends Controller
             'products' => ['uses' => 'product[product_id,picture1,picture2,picture3,picture4,picture5,picture6]'],
         ]);
 
+        $item_collection = collect($items['products']);
+
         foreach(Product::whereTemp(0)->get() as $product)
         {   
-            $item_collection = collect($items['products']);
 
             $item = $item_collection->where('product_id',$product->code)->first();
 
