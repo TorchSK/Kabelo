@@ -210,6 +210,9 @@ body.shrinkable {
     padding-top: 0px;
   }
 }
+.table {
+  vertical-align: top;
+}
 body.eshop .pusher {
   width: 100%;
   -webkit-box-flex: 1;
