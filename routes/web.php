@@ -73,6 +73,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/settings/eshop', 'AdminController@eshop')->name('admin.settings.eshop');
 	Route::get('/settings/invoice', 'AdminController@invoice')->name('admin.settings.invoice');
 	Route::get('/settings/delivery', 'AdminController@delivery')->name('admin.settings.delivery');
+	Route::get('/settings/emails', 'AdminController@emails')->name('admin.settings.emails');
 
 	Route::post('/settings/save', 'SettingController@bulkUpdate')->name('settings.bulkUpdate');
 	

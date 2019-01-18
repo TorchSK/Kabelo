@@ -3539,6 +3539,23 @@ $('.order_change_status_btn').click(function(){
 	$orderid = $('.order_detail').data('orderid');
 	$status_id = $(this).data('statusid');
 
+	if($status_id == 0)
+		{
+		$('#change_order_modal').modal('setting', {
+
+	    onApprove : function() {
+			$.ajax({
+				type: "PUT",
+				url: "/order/"+$orderid,
+				data: {status_id: $status_id},
+				success: function(){
+					location.reload();
+				}
+			})
+		}
+		}).modal('show');
+	}
+
 	if($status_id == 1)
 		{
 		$('#change_order_modal_sent').modal('setting', {

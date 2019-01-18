@@ -9,6 +9,8 @@ use App\Product;
 use App\Setting;
 
 use App\Mail\NewOrder;
+use App\Mail\SentOrder;
+use App\Mail\CancelOrder;
 
 use App\Services\Contracts\CartServiceContract;
 use App\Services\Contracts\ProductServiceContract;
@@ -107,6 +109,18 @@ class OrderController extends Controller
         }    
 
         $order->save();
+
+
+        if($request->has('status_id') && $request->get('status_id')==1)
+        {
+            Mail::to(json_decode($order->invoice_address)->email)->queue(new SentOrder($order));
+        }
+
+        if($request->has('status_id') && $request->get('status_id')==4)
+        {
+            Mail::to(json_decode($order->invoice_address)->email)->queue(new CancelOrder($order));
+        }
+        
     }
 
     public function show($id)

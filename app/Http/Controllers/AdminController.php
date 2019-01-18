@@ -1044,6 +1044,11 @@ class AdminController extends Controller
         return view('admin.settings.delivery');
     }
 
+    public function emails()
+    {
+        return view('admin.settings.emails');
+    }
+
     public function invoice()
     {
         return view('admin.settings.invoice');

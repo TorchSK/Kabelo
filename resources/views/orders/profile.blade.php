@@ -139,8 +139,12 @@
 				      <td>{{json_decode($order->invoice_address)->zip}}</td>
 				    </tr>
 					<tr>
-				      <td>email</td>
+				      <td>Email</td>
 				      <td>{{json_decode($order->invoice_address)->email}}</td>
+				    </tr>
+				    <tr>
+				      <td>Telefón</td>
+				      <td>{{json_decode($order->invoice_address)->phone}}</td>
 				    </tr>
 				    @if(isset(json_decode($order->invoice_address)->ico))
 				    <tr>
