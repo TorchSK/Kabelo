@@ -174,7 +174,37 @@
 				  </tbody>
 				</table>
 
-
+				@if(isset(json_decode($order->delivery_address)->street))
+    			<table class="ui very basic collapsing unstackable table">
+	    			<thead >
+				    <tr><th colspan="2">
+				      Doručovacie údaje
+				    </th>
+				  </tr></thead>
+				  <tbody>
+				    <tr>
+				      <td>Meno</td>
+				      <td>{{json_decode($order->delivery_address)->name}}</td>
+				    </tr>
+				    <tr>
+				      <td>Ulica</td>
+				      <td>{{json_decode($order->delivery_address)->street}}</td>
+				    </tr>
+				    <tr>
+				      <td>Mesto</td>
+				      <td>{{json_decode($order->delivery_address)->city}}</td>
+				    </tr>
+				    <tr>
+				      <td>PSČ</td>
+				      <td>{{json_decode($order->delivery_address)->zip}}</td>
+				    </tr>
+				   	<tr>
+				      <td>Telefón</td>
+				      <td>{{json_decode($order->delivery_address)->phone}}</td>
+				    </tr>
+				 </tbody>
+				</table>
+				@endif
 				
 				</div>
 
