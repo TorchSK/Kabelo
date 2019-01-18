@@ -42,6 +42,6 @@ class SentOrder extends Mailable
         $this->delivery_method = Order::where('id', $this->order['id'])->first()->delivery;
         $this->payment_method = Order::where('id', $this->order['id'])->first()->payment;
 
-        return $this->from(env('MAIL_USERNAME'))->subject('Odoslaná objednávka č. '.$this->order['id'])->view('emails.sentorder');
+        return $this->from(env('MAIL_USERNAME'))->subject('Objednávka č. '.$this->order['id'].' bola práve odoslaná')->view('emails.sentorder');
     }
 }
