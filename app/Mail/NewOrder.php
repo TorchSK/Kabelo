@@ -45,8 +45,8 @@ class NewOrder extends Mailable
         return $this->from('kabelo@kabelo.sk')
                      ->subject('Objednávka č. '.$this->order['id'])
                      ->view('emails.neworder')
-                     ->attach(storage_path('app/OBCHODNÉ_PODMIENKY.pdf'))
-                     ->attach(storage_path('app/Vzorový formulár na odstúpenie od zmluvy.docs'));
+                     ->attach(storage_path('app/OBCHODNE_PODMIENKY.pdf'))
+                     ->attach(storage_path('app/Vzorovy formular na odstupenie od zmluvy.docx'));
 
     }
 }
