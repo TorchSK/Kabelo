@@ -2379,6 +2379,7 @@ a:hover {
 }
 #product_main_wrapper #product_categories_path a i.icon {
   color: #AAA;
+  margin-right: 4px !important;
 }
 @media all and (max-width: 980px) {
   #product_main_wrapper #product_categories_path {
