@@ -100,7 +100,7 @@
     <body style="width: 100%;margin: 0; padding: 0; ">
     
     <div style="border-top: 15px #0d345b solid; border-bottom: 1px solid #EEE; padding: 30px; color: #FFF; text-align: center; box-sizing: content-box">
-        <img src="<?php echo $message->embed(public_path().'/img/email_logo_'.$appname.'.jpg'); ?>" width="191">
+        <img src="<?php echo $message->embed(public_path().'/img/email_logo_'.$appname.'.png'); ?>" width="191">
     </div>
 
     <div style="background-color: rgba(0,0,0,0.04); padding: 50px;border-radius: 0 0 6px 6px; text-align: center;">
