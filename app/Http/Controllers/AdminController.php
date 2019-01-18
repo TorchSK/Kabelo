@@ -595,9 +595,9 @@ class AdminController extends Controller
 
         foreach(Product::whereTemp(0)->get() as $product)
         {   
-            $items = collect($items['products']);
+            $item_collection = collect($items['products']);
 
-            $item = $items->where('product_id',$product->code)->first();
+            $item = $item_collection->where('product_id',$product->code)->first();
 
             if ($item)
             {
