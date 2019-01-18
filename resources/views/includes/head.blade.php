@@ -14,7 +14,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="@if(isset($product)){{$product->name}} @else Dedra @endif"/>
     <meta property="og:description" content="@if(isset($product)){{substr($product->desc,0,100)}} @else Dedra @endif" />
-    @if (isset($product) && $product->images->count() > 0)
+    @if (isset($product) && $product->image)
     <meta property="og:image" content="@if(isset($product)){{$product->image->path}} @else {{url('img/'.$appname)}}_favico.png @endif" />
     @endif
 

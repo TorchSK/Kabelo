@@ -47,7 +47,7 @@
            @endforeach
          </div>
 
-        <a class="img ct main" @if ($product->images->count() > 0)href="{{$product->image->path}}"@endif  data-rel="{{$product->code}}" >
+        <a class="img ct main" @if ($product->image)href="{{$product->image->path}}"@endif  data-rel="{{$product->code}}" >
            @if ($product->images->count() == 0)
            <img src="/img/empty.jpg" class="ui image" alt="{{$product->code}}"/>
            @elseif ($product->image)
