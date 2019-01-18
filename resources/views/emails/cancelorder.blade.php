@@ -103,7 +103,7 @@
         <img src="<?php echo $message->embed(public_path().'/img/email_logo_'.$appname.'.png'); ?>" width="56">
     </div>
 
-    <div style="background-color: rgba(0,0,0,0.04); padding: 50px;border-radius: 0 0 6px 6px; text-align: center;">
+    <div style="background-color: rgba(0,0,0,0.02); padding: 50px;border-radius: 0 0 6px 6px; text-align: center;">
         <div style="width: 100%; max-width: 800px; display: inline-block; text-align: left;">
 
         <div style="margin: 15px 0;">Vaša objednávka č. {{$order->id}} bola <b>zrušená</b></div>
