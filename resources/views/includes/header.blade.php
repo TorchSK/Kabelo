@@ -136,7 +136,9 @@
                     @endif
                   @endforeach
                 @endif
-                
+              
+              @else
+              <div class="noitems">Prázdny košík</div>
               @endif
 
               <a class="ui tiny blue button" href="/cart/products">Zobraz košík</a>
