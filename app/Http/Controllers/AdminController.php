@@ -596,12 +596,12 @@ class AdminController extends Controller
 
         foreach($items['products'] as $item)
         {   
-            $product = Product::whereCode($item['product_id'])->first();
+            $product = Product::whereCode($item['product_id'])->whereTemp(0)->first();
 
             if ($product)
             {
 
-                if($product && $item['picture1'] != '')
+                if($item['picture1'] != '')
             {
                 if(File::where('path', $item['picture1'])->count() == 0)
                 {
@@ -615,7 +615,7 @@ class AdminController extends Controller
             }
 
 
-            if($product && $item['picture2'] != '')
+            if($item['picture2'] != '')
             {
                 if(File::where('path', $item['picture2'])->count() == 0)
                 {
@@ -628,7 +628,7 @@ class AdminController extends Controller
                 }
             }
 
-            if($product && $item['picture3'] != '')
+            if($item['picture3'] != '')
             {
                 if(File::where('path', $item['picture3'])->count() == 0)
                 {
@@ -641,7 +641,7 @@ class AdminController extends Controller
                 }
             }
 
-            if($product && $item['picture4'] != '')
+            if($item['picture4'] != '')
             {
                 if(File::where('path', $item['picture4'])->count() == 0)
                 {
@@ -654,7 +654,7 @@ class AdminController extends Controller
                 }
             }
 
-            if($product && $item['picture5'] != '')
+            if($item['picture5'] != '')
             {
 
                 if(File::where('path', $item['picture5'])->count() == 0)
@@ -668,7 +668,7 @@ class AdminController extends Controller
                 }
             }
 
-            if($product &&  $item['picture6'] != '')
+            if($item['picture6'] != '')
             {
                 $image = new File();
                 $image->product_id = $product->id;
@@ -681,6 +681,9 @@ class AdminController extends Controller
                     $image->save();
                 }
             }
+
+            $product->temp=1;
+            $product->save();
 
         }
 
