@@ -4491,6 +4491,12 @@ body.admin #filterbar.vertical .categories .item {
 }
 .order_products_list .product .image_div a {
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .order_products_list .product .image_div img {
   max-height: 100%;
