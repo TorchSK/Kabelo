@@ -597,7 +597,7 @@ class AdminController extends Controller
         {   
             $items = collect($items['products']);
 
-            $item = $items->where('product_id',$product->code));
+            $item = $items->where('product_id',$product->code);
 
             if ($item)
             {
