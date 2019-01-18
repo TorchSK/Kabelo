@@ -597,11 +597,10 @@ class AdminController extends Controller
         {   
             $items = collect($items['products']);
 
-            $item = $items->where('product_id',$product->code);
+            $item = $items->where('product_id',$product->code)->first();
 
             if ($item)
             {
-
             if($item['picture1'] != '')
             {
                 if(File::where('path', $item['picture1'])->count() == 0)
