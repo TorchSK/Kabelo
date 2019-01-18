@@ -10,6 +10,8 @@
 		@endif
 	</div>
 
+	<div class="code"><a href="/{{$product->maker}}/{{$product->code}}/detail">{{$product->code}}</a></div>
+
 	<div class="name"><a href="/{{$product->maker}}/{{$product->code}}/detail">{{$product->name}}</a></div>
 
 

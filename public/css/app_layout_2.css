@@ -4482,13 +4482,25 @@ body.admin #filterbar.vertical .categories .item {
   height: 100px;
   display: inline-block;
   margin-right: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.order_products_list .product .image_div a {
+  height: 100%;
 }
 .order_products_list .product .image_div img {
   max-height: 100%;
   max-width: 100%;
 }
+.order_products_list .product .code {
+  margin-right: 25px;
+  font-weight: 900;
+}
 .order_products_list .product .name {
-  font-size: 1.2em;
   font-weight: 400;
   margin-right: 25px;
   -webkit-box-flex: 1;
