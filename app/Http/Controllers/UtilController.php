@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Services\Contracts\ProductServiceContract;
 use App\Mail\NewOrder;
 use App\Mail\Welcome;
+use App\Mail\SentOrder;
+use App\Mail\CancelOrder;
 
 use App\Services\Contracts\CategoryServiceContract;
 
@@ -160,5 +162,22 @@ class UtilController extends Controller
     public function getWelcomeEmail()
     {
         return (new Welcome(User::first()))->render();
+    }
+
+
+    public function getNewOrderEmail()
+    {
+        return (new NewOrder(Order::first()))->render();
+    }
+
+
+    public function getSentOrderEmail()
+    {
+        return (new SentOrder(Order::first()))->render();
+    }
+
+    public function getCancelOrderEmail()
+    {
+        return (new CancelOrder(Order::first()))->render();
     }
 }

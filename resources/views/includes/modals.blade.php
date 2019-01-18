@@ -115,13 +115,48 @@
 </div>
 
 
-<div class="ui mini modal" id="change_order_modal">
+<div class="ui mini modal" id="change_order_modal_sent">
           
   <div class="header">
     Objednávka
   </div>
   <div class="content">
-     Naozaj chcete zmeniť stav objednávky?
+     Naozaj chcete zmeniť stav objednávky na Odoslaná?
+
+     <form class="ui form">
+      <div class="field">
+        <label>Podacie číslo balíku</label>
+        <input type="text" name="package_number" placeholder="Číslo balíku">
+      </div>
+    </form>
+
+  </div>
+  <div class="actions">
+    <div class="ui red deny button">
+      Níe
+    </div>
+    <div class="ui positive right labeled icon button">
+      Áno
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
+<div class="ui mini modal" id="change_order_modal_cancelled">
+          
+  <div class="header">
+    Objednávka
+  </div>
+  <div class="content">
+     Naozaj chcete zrušit objednávku?
+
+      <form class="ui form">
+        <div class="field">
+          <label>Dôvod zrušenia</label>
+          <input type="text" name="cancel_text" placeholder="Dôvod zrušeniá">
+        </div>
+      </form>
+
   </div>
   <div class="actions">
     <div class="ui red deny button">

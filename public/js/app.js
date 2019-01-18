@@ -3538,20 +3538,41 @@ $('.delete_user_btn').click(function(){
 $('.order_change_status_btn').click(function(){
 	$orderid = $('.order_detail').data('orderid');
 	$status_id = $(this).data('statusid');
-	$('#change_order_modal').modal('setting', {
 
-    onApprove : function() {
-		$.ajax({
-			type: "PUT",
-			url: "/order/"+$orderid,
-			data: {status_id: $status_id},
-			success: function(){
-				location.reload();
-			}
-		})
+	if($status_id == 1)
+		{
+		$('#change_order_modal_sent').modal('setting', {
+
+	    onApprove : function() {
+			$.ajax({
+				type: "PUT",
+				url: "/order/"+$orderid,
+				data: {status_id: $status_id, package_number: $('input[name="package_number"]').val()},
+				success: function(){
+					location.reload();
+				}
+			})
+		}
+		}).modal('show');
 	}
-	}).modal('show');
   
+  	if($status_id == 4)
+		{
+		$('#change_order_modal_cancelled').modal('setting', {
+
+	    onApprove : function() {
+			$.ajax({
+				type: "PUT",
+				url: "/order/"+$orderid,
+				data: {status_id: $status_id, cancel_text: $('input[name="cancel_text"]').val()},
+				success: function(){
+					location.reload();
+				}
+			})
+		}
+		}).modal('show');
+	}
+
   })
 
 $('#main_search input').keyup(function(e){

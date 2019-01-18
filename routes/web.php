@@ -261,6 +261,9 @@ Route::resource('param','ParamController');
 
 //Mailables
 Route::get('email/welcome','UtilController@getWelcomeEmail');
+Route::get('email/neworder','UtilController@getNewOrderEmail');
+Route::get('email/sentorder','UtilController@getSentOrderEmail');
+Route::get('email/cancelorder','UtilController@getCancelOrderEmail');
 
 // Settings
 Route::get('email/send/welcome/{userid}', 'UserController@sendActivationEmail');

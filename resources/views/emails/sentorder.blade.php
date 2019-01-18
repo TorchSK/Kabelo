@@ -106,7 +106,8 @@
     <div style="background-color: rgba(0,0,0,0.04); padding: 50px;border-radius: 0 0 6px 6px; text-align: center;">
         <div style="width: 100%; max-width: 800px; display: inline-block; text-align: left;">
 
-        <div style="margin: 15px 0;">Ďakujeme za Vašu objednávku</div>
+        <div style="margin: 15px 0;">Vaša objednávka č. {{$order->id}} bola <b>odoslaná</b></div>
+        <div style="margin: 15px 0;">Podacie číslo balíku je: {{$order->package_number}} </div>
 
         <div style="margin: 15px 0;; font-weight: 100;" >Objednali ste si:</div>
 
