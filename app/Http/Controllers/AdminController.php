@@ -593,15 +593,16 @@ class AdminController extends Controller
             'products' => ['uses' => 'product[product_id,picture1,picture2,picture3,picture4,picture5,picture6]'],
         ]);
 
-
-        foreach($items['products'] as $item)
+        foreach(Product::whereTemp(0)->get() as $product)
         {   
-            $product = Product::whereCode($item['product_id'])->whereTemp(0)->first();
+            $items = collect($items['products']);
 
-            if ($product)
+            $item = $items->where('product_id',$product->code));
+
+            if ($item)
             {
 
-                if($item['picture1'] != '')
+            if($item['picture1'] != '')
             {
                 if(File::where('path', $item['picture1'])->count() == 0)
                 {
