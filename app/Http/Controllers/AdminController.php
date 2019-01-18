@@ -520,9 +520,7 @@ class AdminController extends Controller
 
                 $priceLevel = $product->priceLevels->first();
                 $priceLevel->moc_regular = $item['price_skk'];
-                $priceLevel->moc_sale = $item['price_skk'];
                 $priceLevel->voc_regular = $item['price_skk'];
-                $priceLevel->voc_sale = $item['price_skk'];
                 $priceLevel->save();
 
                 $image = $product->image;

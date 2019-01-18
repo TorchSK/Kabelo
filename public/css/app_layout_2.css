@@ -2607,6 +2607,7 @@ a:hover {
 }
 .edit_product_images .image_div .image {
   width: 80px;
+  height: 80px;
 }
 .edit_product_images .image_div .path {
   margin: 0 15px;

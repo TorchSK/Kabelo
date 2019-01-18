@@ -40,14 +40,14 @@
 </div>
 
 <div id="product_main_wrapper" class="product_detail flex_row" data-id="{{$product->id}}">
-   
+    
     <div class="images">
      <div class="edit_product_images">
         @foreach($product->allfiles as $image)
           <div class="image_div @if($image->primary) primary @endif" data-fileid="{{$image->id}}">
             <div class="image">
               @if ($image->type=='image')
-              <img src="{{url($image->path)}}" class="ui image " />
+              <img src="{{url($image->path)}}" />
               @elseif ($image->type!='video')
               <i class="icon huge brown file pdf outline" ></i>
               @endif
@@ -55,6 +55,7 @@
 
             <div class="path">
               <div class="ui fluid action input">
+                <input type="text" name="image_ids[]" value="{{$image->id}}" />
                 <input type="text" name="image_paths[]" value="{{$image->path}}" />
                 <div class="ui red icon button delete_img"><i class="delete icon"></i></div>
                 <div class="ui blue icon button make_primary_img"><i class="star icon"></i></div>

@@ -491,6 +491,14 @@ class ProductController extends Controller
             $video->delete();
         }
 
+        foreach ($request->get('image_paths') as $index => $path)
+        {   
+            $image = File::find($request->get('image_ids')[$index]);
+
+            $image->path = $path;
+            $image->save();
+        }
+
         if ($request->filled('videos'))
         {
             foreach ((array)$request->get('videos') as $key => $video)
