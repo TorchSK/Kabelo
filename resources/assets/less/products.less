@@ -465,7 +465,7 @@
 
 		.img{
 			margin-bottom: 35px;
-			height: 400px;
+			height: 200px;
 			display: block;
 			position: relative;
 			flex:1;
@@ -1043,38 +1043,43 @@
 }
 
 .edit_product_images{
-	display: flex;
 	margin: 15px 0;
 
 	.image_div{
-		width: 80px;
-		position: relative;
+
+
 		margin-bottom: 5px;	
+		display: flex;
+
+		.image{
+			width: 80px;
+		}
+
+		.path{
+			margin: 0 15px;
+			flex:1;
+		}
 
 		img{
 			max-height: 100%;
 			max-width: 100%;
 		}
 
-		&.primary{
-			
+		.delete_img{
+			opacity: 0.5;
 		}
 
-		&:hover{
-			.edit_product_images_actions{
+		.make_primary_img{
+			opacity: 0.5;
+		}
+
+		&.primary{
+			.make_primary_img{
 				opacity: 1;
 			}
 		}
-	}
-}
 
-.edit_product_images_actions{
-	margin: auto;
-  	position: absolute;
-  	top: 0; left: 0; bottom: 0; right: 0;
-  	z-index: 99;
-  	opacity: 0;
-  	height: 20px;
+	}
 }
 
 #price_slider{
@@ -1093,6 +1098,7 @@
 
 
 #add_price_level_btn{
+	margin-bottom: 15px;
 }
 
 #product_price_levels_list{

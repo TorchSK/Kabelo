@@ -2072,7 +2072,7 @@ a:hover {
 }
 #product_main_wrapper .images .img {
   margin-bottom: 35px;
-  height: 400px;
+  height: 200px;
   display: block;
   position: relative;
   -webkit-box-flex: 1;
@@ -2597,33 +2597,35 @@ a:hover {
   margin-top: 10px;
 }
 .edit_product_images {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   margin: 15px 0;
 }
 .edit_product_images .image_div {
-  width: 80px;
-  position: relative;
   margin-bottom: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.edit_product_images .image_div .image {
+  width: 80px;
+}
+.edit_product_images .image_div .path {
+  margin: 0 15px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .edit_product_images .image_div img {
   max-height: 100%;
   max-width: 100%;
 }
-.edit_product_images .image_div:hover .edit_product_images_actions {
-  opacity: 1;
+.edit_product_images .image_div .delete_img {
+  opacity: 0.5;
 }
-.edit_product_images_actions {
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 99;
-  opacity: 0;
-  height: 20px;
+.edit_product_images .image_div .make_primary_img {
+  opacity: 0.5;
+}
+.edit_product_images .image_div.primary .make_primary_img {
+  opacity: 1;
 }
 #price_slider {
   margin: 0 auto 70px auto;
@@ -2637,6 +2639,9 @@ a:hover {
 }
 #price_slider .noUi-value {
   margin-top: 5px;
+}
+#add_price_level_btn {
+  margin-bottom: 15px;
 }
 #product_price_levels_list {
   margin-top: 25px;
