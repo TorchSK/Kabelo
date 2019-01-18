@@ -10,9 +10,9 @@
 		@endif
 	</div>
 
-	<div class="code"><a href="/{{$product->maker}}/{{$product->code}}/detail">{{$product->code}}</a></div>
+	<div class="code"><a href="{{route('product.detail',['url'=>$product->url])}}">{{$product->code}}</a></div>
 
-	<div class="name"><a href="/{{$product->maker}}/{{$product->code}}/detail">{{$product->name}}</a></div>
+	<div class="name"><a href="{{route('product.detail',['url'=>$product->url])}}">{{$product->name}}</a></div>
 
 
     <div class="price">
