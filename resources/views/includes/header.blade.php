@@ -124,7 +124,7 @@
           </div>
 
           <div id="cart_popup" class="ui basic popup transition"> 
-              @if (sizeof($cart['items']) > 0)
+              @if (count($cart['items']) > 0)
                 @if (Auth::check())
                   @foreach($cart->products as $product)
                     @include('cart.row')
