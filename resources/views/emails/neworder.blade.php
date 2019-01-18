@@ -106,8 +106,13 @@
     <div style="background-color: rgba(0,0,0,0.02); padding: 50px;border-radius: 0 0 6px 6px; text-align: center;">
         <div style="width: 100%; max-width: 800px; display: inline-block; text-align: left;">
 
-        <div style="margin: 15px 0;">Ďakujeme za Vašu objednávku</div>
+        <div style="margin: 15px 0;"><p>
+        Dobry den, <br/><br/>
+        ďakujeme za Vašu objednávku, vašu objednávku spracujeme čo najskôr. Tovar bude expedovaný najneskôr do 15 pracovných dní.
 
+        </p>
+        </div>
+        <br/>
         <div style="margin: 15px 0;; font-weight: 100;" >Objednali ste si:</div>
 
         @foreach($products as $key => $product)
@@ -192,7 +197,23 @@
 
         <div style="text-align: center;">
         <a id="detail_btn" target="_blank" href="{!! url("/order").'/'.$order->id !!}">Detail objednávky</a>
-    </div>
+        </div>
+
+        <div style="padding: 25px 0; border-top: 1px solid #EEE; margin-top: 50px;">
+
+<pre style="font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Sans-Serif; margin: 0; font-size: 13px;">
+Vaša 
+DEDRA SLOVAKIA
+Koordinátor: Monika Tagajová
+Číslo koordinátora: 133538
+
+mobil :0904 857 725
+mail : monika.tagajova@gmail.com
+web: www.dedraslovakia.sk
+
+V prílohe zasielame Všeobecné obchodné podmienky.
+</pre>
+            <div>
     </div>
 </div>
 
