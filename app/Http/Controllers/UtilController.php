@@ -159,6 +159,6 @@ class UtilController extends Controller
 
     public function getWelcomeEmail()
     {
-        return new Welcome(User::first());
+        return (new Welcome(User::first()))->render();
     }
 }
