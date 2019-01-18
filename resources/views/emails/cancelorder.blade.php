@@ -116,9 +116,9 @@
 
                 <div class="image">
                     @if($images[$key]['path'] != null)
-                    <img src="{{ $message->embed($images[$key]['path']) }}">
+                    <img src="{{$images[$key]['path']}}">
                     @else
-                    <img src="{{ $message->embed(public_path().'/img/empty.jpg') }}">
+                    <img src="{{public_path().'/img/empty.jpg'}}">
                     @endif
                 </div>
 

@@ -113,15 +113,14 @@
 
         @foreach($products as $key => $product)
             <div class="product">
-
+                
                 <div class="image">
                     @if($images[$key]['path'] != null)
-                    <img src="{{ $message->embed($images[$key]['path']) }}">
+                    <img src="{{$images[$key]['path']}}">
                     @else
-                    <img src="{{ $message->embed(public_path().'/img/empty.jpg') }}">
+                    <img src="{{public_path().'/img/empty.jpg'}}">
                     @endif
                 </div>
-
                 <div class="name">{{$product->name}}</div>
                
                 <div class="price">{{$product->pivot->qty}}{{$product->price_unit}} / {{$product->pivot->price}} &euro;</div>

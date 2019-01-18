@@ -47,6 +47,12 @@ class Product extends Model {
     return $this->hasMany('App\File');
   }
 
+  public function variants() 
+    {
+    return $this->hasMany('App\Product','variant_id');
+  }
+
+
   public function stickers() 
     {
     return $this->belongsToMany('App\Sticker');
