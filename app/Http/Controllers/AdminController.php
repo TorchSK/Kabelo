@@ -592,7 +592,7 @@ class AdminController extends Controller
             'products' => ['uses' => 'product[product_id,picture1,picture2,picture3,picture4,picture5,picture6]'],
         ]);
 
-        foreach(Product::all() as $product)
+        foreach(Product::whereActive(1)->get() as $product)
         {   
             $key = $product->code;
             $item = $items['products'][$key];
