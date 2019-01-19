@@ -2249,8 +2249,45 @@ a:hover {
     font-size: 1em;
   }
 }
-#product_main_wrapper #desc {
-  margin: 35px 0 15px 0;
+#product_main_wrapper .variants {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 25px;
+}
+#product_main_wrapper .variants .caption {
+  font-weight: 900;
+  margin-right: 15px;
+}
+#product_main_wrapper .variants .variant {
+  margin-right: 15px;
+  border: 1px solid #DDD;
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+#product_main_wrapper .colors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 25px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#product_main_wrapper .colors .caption {
+  font-weight: 900;
+  margin-right: 15px;
+}
+#product_main_wrapper .colors .color {
+  width: 50px;
+  height: 50px;
+}
+#product_main_wrapper .colors .color img {
+  max-width: 100%;
+  max-height: 100%;
+}
+#product_main_wrapper #desc .desc {
+  margin: 35px 0 35px 0;
   font-size: 1.1em;
   line-height: 1.6em;
   text-align: justify;
@@ -2261,7 +2298,7 @@ a:hover {
   /* exactly three lines */
   padding-right: 35px;
 }
-#product_main_wrapper #desc:after {
+#product_main_wrapper #desc .desc:after {
   content: "";
   text-align: right;
   position: absolute;
@@ -2273,17 +2310,17 @@ a:hover {
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 99%, #ffffff 100%);
 }
 @media all and (max-width: 2100px) {
-  #product_main_wrapper #desc {
+  #product_main_wrapper #desc .desc {
     -webkit-line-clamp: 4;
   }
 }
-#product_main_wrapper #desc a {
+#product_main_wrapper #desc .desc a {
   top: -2px;
   font-weight: 400;
   position: relative;
 }
 @media all and (max-width: 980px) {
-  #product_main_wrapper #desc {
+  #product_main_wrapper #desc .desc {
     font-size: 1em;
     text-align: left;
     width: 100%;

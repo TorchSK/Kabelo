@@ -118,7 +118,27 @@
 
 		<div class="ui divider"></div>
     <div id="desc">
-        {{$product->desc}}
+        <div class="desc">{{$product->desc}}</div>
+        @if($product->variants->count() > 0)
+        <div class="variants">
+          <div class="caption">Varianty</div>
+          @foreach($product->variants as $variant)
+            @if($variant->variant_text)
+            <a class="variant" href="{{route('product.detail',['product'=>$variant->url])}}">{{$variant->variant_text}}</a>
+            @endif
+          @endforeach
+        </div>
+        @endif
+
+     @if($product->colors->count() > 0)
+        <div class="colors">
+          <div class="caption">Farby</div>
+          @foreach($product->colors as $variant)
+            <a class="color" href="{{route('product.detail',['product'=>$variant->url])}}"><img src="{{url($variant->image->path)}}"/></a>
+          @endforeach
+        </div>
+        @endif
+
     </div>
 
             

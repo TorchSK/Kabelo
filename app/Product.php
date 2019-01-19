@@ -49,7 +49,12 @@ class Product extends Model {
 
   public function variants() 
     {
-    return $this->hasMany('App\Product','variant_id');
+    return $this->hasManyThrough('App\Product','App\Variant','product_id','id','id','variant_id')->where('type','Variant');
+  }
+
+  public function colors() 
+    {
+    return $this->hasManyThrough('App\Product','App\Variant','product_id','id','id','variant_id')->where('type','Color');
   }
 
 

@@ -16,7 +16,7 @@ use App\PriceLevel;
 use App\Page;
 use App\Text;
 use App\Sticker;
-
+use App\Variant;
 
 use Auth;
 use Excel;
@@ -264,8 +264,10 @@ class AdminController extends Controller
         $xml = XmlParser::extract($contents);
        
         $items = $xml->parse([
-            'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variant_image]'],
+            'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variants.variant(::product_id=::type)>variants]'],
         ]);
+
+        //dd($items['products']);
 
         $xmlProductsIds = $xml->parse([
             'ids' => ['uses' => 'product[product_id]'],
@@ -288,7 +290,7 @@ class AdminController extends Controller
         $existingProductsArray = array_intersect($xmlProducts, $dbProducts);
 
         $removedProductsArray = array_diff($dbProducts, $xmlProducts);
-        $removedProducts = Product::whereIn('code', $removedProductsArray)->get();
+        $removedProducts = Product::whereIn('code', $removedProductsArray)->whereActive(1)->get();
         
         $changes['removed_products'] = $removedProducts->count();
 
@@ -419,6 +421,11 @@ class AdminController extends Controller
             $product->maker = 'Dedra';
             $product->moc_sort_price = $item['price_skk'];
             $product->voc_sort_price = $item['price_skk'];
+            if(isset($item['variant_text']))
+            {
+            $product->variant_text = $item['variant_text'];
+            }
+
             $product->save();
 
             array_push($changes['new_products'],$product);
@@ -513,6 +520,10 @@ class AdminController extends Controller
             }
             else
             {
+                if(isset($item['variant_text']))
+                {
+                $product->variant_text = $item['variant_text'];
+                }
                 $product->price = $item['price_skk'];
                 $product->moc_sort_price = $item['price_skk'];
                 $product->voc_sort_price = $item['price_skk'];
@@ -527,6 +538,24 @@ class AdminController extends Controller
 
                 $image->path = $item['picture1']; 
                 $image->save();
+            }
+
+            if(count($item['variants']) > 0)
+            {   
+                foreach($item['variants'] as $key => $type){
+                    if(Product::whereCode($key)->count() > 0){
+
+                        $variant_product = Product::whereCode($key)->first();
+                        if($product->variants->where('id',$variant_product->id)->count()==0)
+                        {
+                            $variant = new Variant();
+                            $variant->product_id = $product->id;
+                            $variant->variant_id = $variant_product->id;
+                            $variant->type = $type;
+                            $variant->save();
+                        }
+                    }
+                }
             }
 
         }

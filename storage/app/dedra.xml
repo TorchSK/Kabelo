@@ -21,7 +21,10 @@
     <variant_text><![CDATA[]]></variant_text>
     <variant_image><![CDATA[]]></variant_image>
     <sizes />
-    <variants />
+    <variants>
+      <variant product_id="AA0879" type="Variant" />
+      <variant product_id="AA0878" type="Variant" />
+    </variants>
   </product>
   <product product_id="AA0220" link="https://www.dedra.cz/cs/aa0220-prvoobjednavka-formular">
     <product_id>AA0220</product_id>
