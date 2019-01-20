@@ -22,7 +22,8 @@ class HomeController extends Controller
         $this->productService = $productService;
         $this->categoryService = $categoryService;
     }
- public function index($category=null, Request $request)
+    
+    public function index($category=null, Request $request)
     {   
         if (isset($category))
         {

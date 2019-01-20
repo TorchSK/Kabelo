@@ -60,7 +60,6 @@
 
            <grid @if($appname=="dedra") class="infinite" @endif>
 
-                @include('products.list')
                
             </grid>
             

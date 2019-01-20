@@ -739,7 +739,7 @@ function doSort(){
 
 };
 
-if ($('body').attr('id')=='category_products_body')
+if ($('body').attr('id')=='category_products_body' || $('body').attr('id')=='search_body')
 {
 	doSort();
 }

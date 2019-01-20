@@ -149,6 +149,7 @@ class UtilController extends Controller
     {
         $data['products'] = Product::where('name', 'like', '%'.$query.'%')->orWhere("desc", "like", "%".$query."%")->orWhere("code", "like", "%".$query."%")->paginate(28);
         $data['categories']  = $this->categoryService->getCategories();
+        $data['bodyid']  ='search_body';
 
 
         return view('search.all', $data);
