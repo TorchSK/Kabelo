@@ -542,11 +542,13 @@ class AdminController extends Controller
 
             if(count($item['variants']) > 0)
             {   
-                foreach($item['variants'] as $key => $type){
-                    if(Product::whereCode($key)->count() > 0){
+                foreach($item['variants'] as $key => $type)
+                {
+                    $variant_product = Product::whereCode($key)->first();
 
-                        $variant_product = Product::whereCode($key)->first();
-                        if($product->variants->where('id',$variant_product->id)->count()==0)
+                    if($variant_product)
+                    {
+                        if($product->allVariants()->where('id',$variant_product->id)->count()==0)
                         {
                             $variant = new Variant();
                             $variant->product_id = $product->id;

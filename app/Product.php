@@ -47,10 +47,16 @@ class Product extends Model {
     return $this->hasMany('App\File');
   }
 
+  public function allVariants() 
+    {
+    return $this->hasManyThrough('App\Product','App\Variant','product_id','id','id','variant_id');
+  }
+
   public function variants() 
     {
     return $this->hasManyThrough('App\Product','App\Variant','product_id','id','id','variant_id')->where('type','Variant');
   }
+
 
   public function colors() 
     {
