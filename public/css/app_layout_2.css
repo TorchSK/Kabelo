@@ -935,7 +935,6 @@ a:hover {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  background-image: url('/img/leaves-pattern.png');
 }
 .top_banner_row {
   display: -webkit-box;
@@ -1068,11 +1067,6 @@ a:hover {
 }
 .flickity-enabled {
   width: 100.7%;
-}
-#home_news_div,
-#home_sales_div,
-#home_bestsellers_div {
-  background-image: url('/img/leaves-pattern.png');
 }
 #home_news_div .container,
 #home_sales_div .container,
@@ -1208,7 +1202,6 @@ a:hover {
   white-space: nowrap;
   z-index: 9999;
   padding: 0 2%;
-  background-image: url('/img/leaves-pattern.png');
 }
 @media all and (max-width: 1690px) {
   #header {
@@ -4607,7 +4600,6 @@ footer {
   z-index: 999;
   width: 100%;
   background-color: #2B2D2D;
-  background-image: url('/img/leaves-pattern.png');
 }
 footer > .container {
   display: -webkit-box;
