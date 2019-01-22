@@ -213,8 +213,7 @@ web: www.dedraslovakia.sk
 
 V prílohe zasielame Všeobecné obchodné podmienky.
 </pre>
-            <div>
-    </div>
+
 </div>
 
     </body>
