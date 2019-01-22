@@ -21,6 +21,7 @@
     
     <div style="border-top: 15px #0d345b solid; border-bottom: 1px solid #EEE; padding: 30px; color: #FFF; text-align: center; box-sizing: content-box">
         <img src="<?php echo $message->embed(public_path().'/img/email_logo_'.$appname.'.png'); ?>" width="60">
+        <div style="color:#444; font-weight: 800; font-size: 16px;">Dedraslovakia.sk</div>
     </div>
 
     <div style="padding: 50px; text-align: center;border-radius: 0 0 6px 6px;">
