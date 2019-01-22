@@ -204,20 +204,20 @@
         <a id="detail_btn" target="_blank" href="{!! url("/order").'/'.$order->id !!}">Detail objednávky</a>
     </div>
 
-            <div style="padding: 25px 0; border-top: 1px solid #EEE; margin-top: 50px;">
+            <div style="padding: 25px 0; border-top: 1px solid #EEE; margin-top: 50px; margin-left: 0;">
 
-            <pre style="font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;">
-            Vaša 
-            DEDRA SLOVAKIA
-            Koordinátor: Monika Tagajová
-            Číslo koordinátora: 133538
+<pre style="font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200; margin: 0;">
+Vaša 
+DEDRA SLOVAKIA
+Koordinátor: Monika Tagajová
+Číslo koordinátora: 133538
 
-            mobil :0904 857 725
-            mail : monika.tagajova@gmail.com
-            web: www.dedraslovakia.sk
+mobil :0904 857 725
+mail : monika.tagajova@gmail.com
+web: www.dedraslovakia.sk
 
-            V prílohe zasielame Všeobecné obchodné podmienky.
-            </pre>
+V prílohe zasielame Všeobecné obchodné podmienky.
+</pre>
 
             </div>
 
