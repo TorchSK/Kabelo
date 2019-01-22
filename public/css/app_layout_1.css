@@ -5352,6 +5352,7 @@ canvas {
   text-align: center;
   padding: 3%;
   margin: 0 auto;
+  font-size: 1.5em;
 }
 #page_div .richtext a {
   text-decoration: underline !important;
