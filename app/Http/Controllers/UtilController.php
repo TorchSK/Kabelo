@@ -125,7 +125,7 @@ class UtilController extends Controller
 
     public function sendOrderEmail()
     {       
-        $order = Order::find(2);
+        $order = Order::first();
         Mail::to(json_decode($order->invoice_address)->email)->queue(new NewOrder($order));
     }
 

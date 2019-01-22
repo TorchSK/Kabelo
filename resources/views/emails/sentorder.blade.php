@@ -5,8 +5,6 @@
 
         <style type="text/css">
 
-        @import url("https://fonts.googleapis.com/css?family=Montserrat");
-
         ul {
             list-style: none;
             margin:0;
@@ -20,8 +18,7 @@
 
 
           body {
-            font-size: 15px;
-            font-family: "Montserrat", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+            font-family: "Roboto", Sans-Serif;
             text-align: center;
             line-height: 20px;
 
@@ -100,11 +97,11 @@
     <body style="width: 100%;margin: 0; padding: 0; ">
     
     <div style="border-top: 15px #0d345b solid; border-bottom: 1px solid #EEE; padding: 30px; color: #FFF; text-align: center; box-sizing: content-box">
-        <img src="<?php echo '/img/email_logo_'.$appname.'.png'; ?>" width="56">
+        <img src="<?php echo $message->embed(public_path().'/img/email_logo_'.$appname.'.png'); ?>" width="56">
         <div style="color:#444; font-weight: 800; font-size: 16px;">Dedraslovakia.sk</div>
     </div>
 
-    <div style="background-color: rgba(0,0,0,0.02); padding: 50px;border-radius: 0 0 6px 6px; text-align: center;">
+    <div style="background-color: rgba(0,0,0,0.02); padding: 50px;border-radius: 0 0 6px 6px; text-align: center; font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;">
         <div style="width: 100%; max-width: 800px; display: inline-block; text-align: left;">
 
         <div style="margin: 15px 0;">Vaša objednávka č. {{$order->id}} bola <b>odoslaná</b></div>
@@ -122,7 +119,7 @@
 
         </div>
 
-        <div style="margin: 45px 0 15px 0;; font-weight: 100;" >Objednali ste si:</div>
+        <div style="margin: 45px 0 15px 0;; font-weight: 100; font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;">Objednali ste si:</div>
 
         @foreach($products as $key => $product)
             <div class="product">
@@ -145,7 +142,7 @@
         <div style="vertical-align: top;">
 
         <div style="display: inline-block; width: 70%;">
-        <div style="margin: 30px 0;" id="invoice_data">
+        <div style="margin: 30px 0; font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;" id="invoice_data">
             <div><b>Fakturačné údaje</b></div>
             <div>{{json_decode($order->invoice_address)->name}}</div>
             <div>{{json_decode($order->invoice_address)->street}}</div>
@@ -178,36 +175,51 @@
         </div>
         @endif
 
-        <div style="margin: 30px 0;" id="shipping_data">
+        <div style="margin: 30px 0; font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;" id="shipping_data">
             <div><b>Sposob dopravy: </b>{{$delivery_method->name}}</div>
             <div><b>Sposob platby: </b>{{$payment_method->name}}</div>
         </div>
         </div>
 
-        <div style="margin: 30px 0; display: inline-block; vertical-align: top; text-align: right; width: 29%;">
+        <div style="margin: 30px 0; display: inline-block; vertical-align: top; text-align: right; width: 29%; font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;">
             
-            <div style= text-align: right;">
-                <div style=">Cena za tovar s DPH: <span style="font-weight: 900">{{$order->price}}</span> &euro;</div>
-                <div style=">Cena za prepravu s DPH: <span style="font-weight: 900">{{$order->shipping_price}}</span> &euro;</div>
+            <div style="text-align: right; font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;">
+                <div>Cena za tovar s DPH: <span style="font-weight: 900">{{$order->price}}</span> &euro;</div>
+                <div>Cena za prepravu s DPH: <span style="font-weight: 900">{{$order->shipping_price}}</span> &euro;</div>
 
                 @if($appname=='copper')
-                <div style=">Celková cena bez DPH: <span style="font-weight: 900">{{round(($order->price + $order->shipping_price)/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</span> &euro;</div>
-                <div style=">DPH: <span style="font-weight: 900">{{($order->price + $order->shipping_price) - round(($order->price + $order->shipping_price)/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</span> &euro;</div>
+                <div>Celková cena bez DPH: <span style="font-weight: 900">{{round(($order->price + $order->shipping_price)/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</span> &euro;</div>
+                <div>DPH: <span style="font-weight: 900">{{($order->price + $order->shipping_price) - round(($order->price + $order->shipping_price)/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</span> &euro;</div>
                 @endif
                 
-                <div style=">Celková cena s DPH: <span style="font-weight: 900">{{$order->price + $order->shipping_price}}</span> &euro;</div>
+                <div>Celková cena s DPH: <span style="font-weight: 900">{{$order->price + $order->shipping_price}}</span> &euro;</div>
             </div>
         </div>
 
         </div>
 
-        <div style="text-align: center;margin: 30px 0;">Stav objednávky si možte skontrolovat aj po kliknuti na</div>
+        <div style="text-align: center;margin: 30px 0; font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;">Stav objednávky si možte skontrolovat aj po kliknuti na</div>
 
         <div style="text-align: center;">
         <a id="detail_btn" target="_blank" href="{!! url("/order").'/'.$order->id !!}">Detail objednávky</a>
     </div>
-    </div>
-</div>
+
+            <div style="padding: 25px 0; border-top: 1px solid #EEE; margin-top: 50px;">
+
+            <pre style="font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;">
+            Vaša 
+            DEDRA SLOVAKIA
+            Koordinátor: Monika Tagajová
+            Číslo koordinátora: 133538
+
+            mobil :0904 857 725
+            mail : monika.tagajova@gmail.com
+            web: www.dedraslovakia.sk
+
+            V prílohe zasielame Všeobecné obchodné podmienky.
+            </pre>
+
+            </div>
 
     </body>
 </html>
