@@ -108,7 +108,7 @@
         <div style="margin: 15px 0;">Podacie číslo balíku je: {{$order->package_number}} </div>
 
         <div>
-            @if($delivery_method->id == 1)
+            @if($delivery_method->id == 2)
             Stav zásielky si môžete skontrolovať na <a target="_blank" href="https://tracking.dpd.de/status/sk_SK/parcel/{{$order->package_number}}">https://tracking.dpd.de/status/sk_SK/parcel/{{$order->package_number}}</a>
             @endif
             
