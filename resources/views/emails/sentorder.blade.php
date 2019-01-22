@@ -110,7 +110,19 @@
         <div style="margin: 15px 0;">Vaša objednávka č. {{$order->id}} bola <b>odoslaná</b></div>
         <div style="margin: 15px 0;">Podacie číslo balíku je: {{$order->package_number}} </div>
 
-        <div style="margin: 15px 0;; font-weight: 100;" >Objednali ste si:</div>
+        <div>
+            @if($delivery_method->id == 1)
+            Stav zásielky si môžete skontrolovať na <a target="_blank" href="https://tracking.dpd.de/status/sk_SK/parcel/{{$order->package_number}}">https://tracking.dpd.de/status/sk_SK/parcel/{{$order->package_number}}</a>
+            @endif
+            
+            @if($delivery_method->id == 6)
+            Stav zásielky si môžete skontrolovať na <a target="_blank" href="https://tandt.posta.sk/zasielky/{{$order->package_number}}">https://tandt.posta.sk/zasielky/{{$order->package_number}}</a>
+            @endif
+
+
+        </div>
+
+        <div style="margin: 45px 0 15px 0;; font-weight: 100;" >Objednali ste si:</div>
 
         @foreach($products as $key => $product)
             <div class="product">
