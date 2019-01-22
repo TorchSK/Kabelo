@@ -110,7 +110,7 @@
 
         <div style="margin: 15px 0;"><p>
         Dobry den, <br/><br/>
-        ďakujeme za Vašu objednávku, vašu objednávku spracujeme čo najskôr. <br />Tovar bude expedovaný najneskôr do 15 pracovných dní.
+        ďakujeme za Vašu objednávku.<br />Tovar bude expedovaný najneskôr do 15 pracovných dní.
 
         </p>
         </div>
