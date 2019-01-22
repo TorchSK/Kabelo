@@ -2461,6 +2461,14 @@ a:hover {
     font-size: 1em;
   }
 }
+#product_detail_wrapper .product_back {
+  font-size: 16px;
+  margin-top: 6px;
+  font-weight: 700;
+}
+#product_detail_wrapper .product_back:first-child {
+  margin-top: 10px;
+}
 .product_stickers .sticker {
   width: 107px;
   margin-right: 10px;
@@ -5347,6 +5355,12 @@ canvas {
 }
 #page_div .richtext a {
   text-decoration: underline !important;
+}
+#page_div .richtext ul {
+  list-style-type: disc;
+}
+#page_div .richtext ol {
+  list-style-type: decimal;
 }
 #gdpr_div {
   text-align: center;

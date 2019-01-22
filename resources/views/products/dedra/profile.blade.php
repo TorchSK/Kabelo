@@ -182,21 +182,21 @@
      <p style="text-align: justify;">{{trim($product->desc)}}</p>
 
     @if($product->back1)
-    <div>
+    <div class="product_back">
       <i class="info teal circle icon"></i>
       <a href="{{$product->back1}}" target="_blank">Etiketa výrobku</a>
     </div>
     @endif
 
     @if($product->back2)
-    <div>
+    <div class="product_back">
       <i class="info teal circle icon"></i>
       <a href="{{$product->back2}}" target="_blank">Etiketa výrobku</a>
     </div>
     @endif
 
     @if($product->back3)
-    <div>
+    <div class="product_back">
       <i class="info teal circle icon"></i>
       <a href="{{$product->back3}}" target="_blank">Etiketa výrobku</a>
     </div>
