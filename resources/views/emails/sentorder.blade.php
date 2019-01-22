@@ -4,6 +4,9 @@
         <meta charset="utf-8" />
 
         <style type="text/css">
+
+        @import url("https://fonts.googleapis.com/css?family=Montserrat");
+
         ul {
             list-style: none;
             margin:0;
@@ -14,17 +17,14 @@
         }
 
         @media screen {
-          @font-face {
-            font-family: 'Lato';
-            font-style: normal;
-            font-weight: 400;
-            src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
-          }
+
 
           body {
-            font-size: 14px;
-            font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+            font-size: 15px;
+            font-family: "Montserrat", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
             text-align: center;
+            line-height: 20px;
+
           }
 
           .product{
@@ -100,7 +100,8 @@
     <body style="width: 100%;margin: 0; padding: 0; ">
     
     <div style="border-top: 15px #0d345b solid; border-bottom: 1px solid #EEE; padding: 30px; color: #FFF; text-align: center; box-sizing: content-box">
-        <img src="<?php echo $message->embed(public_path().'/img/email_logo_'.$appname.'.png'); ?>" width="56">
+        <img src="<?php echo '/img/email_logo_'.$appname.'.png'; ?>" width="56">
+        <div style="color:#444; font-weight: 800; font-size: 16px;">Dedraslovakia.sk</div>
     </div>
 
     <div style="background-color: rgba(0,0,0,0.02); padding: 50px;border-radius: 0 0 6px 6px; text-align: center;">
@@ -173,22 +174,22 @@
 
         <div style="margin: 30px 0; display: inline-block; vertical-align: top; text-align: right; width: 29%;">
             
-            <div style="font-size: 14px; text-align: right;">
-                <div style="font-size: 14px;">Cena za tovar s DPH: <span style="font-weight: 900">{{$order->price}}</span> &euro;</div>
-                <div style="font-size: 14px;">Cena za prepravu s DPH: <span style="font-weight: 900">{{$order->shipping_price}}</span> &euro;</div>
+            <div style= text-align: right;">
+                <div style=">Cena za tovar s DPH: <span style="font-weight: 900">{{$order->price}}</span> &euro;</div>
+                <div style=">Cena za prepravu s DPH: <span style="font-weight: 900">{{$order->shipping_price}}</span> &euro;</div>
 
                 @if($appname=='copper')
-                <div style="font-size: 14px;">Celková cena bez DPH: <span style="font-weight: 900">{{round(($order->price + $order->shipping_price)/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</span> &euro;</div>
-                <div style="font-size: 14px;">DPH: <span style="font-weight: 900">{{($order->price + $order->shipping_price) - round(($order->price + $order->shipping_price)/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</span> &euro;</div>
+                <div style=">Celková cena bez DPH: <span style="font-weight: 900">{{round(($order->price + $order->shipping_price)/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</span> &euro;</div>
+                <div style=">DPH: <span style="font-weight: 900">{{($order->price + $order->shipping_price) - round(($order->price + $order->shipping_price)/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</span> &euro;</div>
                 @endif
                 
-                <div style="font-size: 14px;">Celková cena s DPH: <span style="font-weight: 900">{{$order->price + $order->shipping_price}}</span> &euro;</div>
+                <div style=">Celková cena s DPH: <span style="font-weight: 900">{{$order->price + $order->shipping_price}}</span> &euro;</div>
             </div>
         </div>
 
         </div>
 
-        <div style="text-align: center;margin: 30px 0; font-size: 14px;">Stav objednávky si možte skontrolovat aj po kliknuti na</div>
+        <div style="text-align: center;margin: 30px 0;">Stav objednávky si možte skontrolovat aj po kliknuti na</div>
 
         <div style="text-align: center;">
         <a id="detail_btn" target="_blank" href="{!! url("/order").'/'.$order->id !!}">Detail objednávky</a>
