@@ -2461,6 +2461,14 @@ a:hover {
     font-size: 1em;
   }
 }
+#product_detail_wrapper .product_back {
+  font-size: 16px;
+  margin-top: 6px;
+  font-weight: 700;
+}
+#product_detail_wrapper .product_back:first-child {
+  margin-top: 10px;
+}
 .product_stickers .sticker {
   width: 107px;
   margin-right: 10px;
