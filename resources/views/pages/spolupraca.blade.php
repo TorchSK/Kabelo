@@ -32,13 +32,16 @@ Zarábať môžeš od začiatku. Pracovať môžeš, tam kde chceš ty. V kaviar
 		  	<div class="img"><img src="https://dedra.blob.core.windows.net/imagehandler/dedra.blob.core.windows.net/cms/ContentItems/21906_21906/m_max__w_735__h_190__o/marketing-plan2.jpeg" /></div>
 		  	<div class="caption">Ako sa stať predajcom</div>
 		  	<div class="text">Na vyžiadanie vám zašlem ďalšie informácie o spolupráci a údaje potrebné k registrácii
-- spolupráca je vhodná pre všetkých (matky na MD, študentov, zamestnancov, reštaurácie, upratovacie firmy ...)
-- registrácia je bez poplatkov a k ničomu Vás nezaväzuje
-- nakupujete si pre seba a svojich blízkych so zľavou alebo predávate výrobky za katalóg ceny
-- pomôžte nám rozšíriť rady distribútorov a budete za to odmenení
-- pýtajte sa na spoluprácu na našej mailovej adrese obchod@dedraslovakia.sk
+			<ul>
+			<li>- spolupráca je vhodná pre všetkých (matky na MD, študentov, zamestnancov, reštaurácie, upratovacie firmy ...)</li>
+			<li>- registrácia je bez poplatkov a k ničomu Vás nezaväzuje</li>
+			<li>- nakupujete si pre seba a svojich blízkych so zľavou alebo predávate výrobky za katalóg ceny</li>
+			<li>- pomôžte nám rozšíriť rady distribútorov a budete za to odmenení</li>
+			</ul>
+		</div>
+		<a href="mailto: obchod@dedraslovakia.sk" class="ui big button">Napíšte nám</a>
 
-V našom katalógu nájdete pomôcky k predaju</div>
+		<div class="textwa">V našom katalógu nájdete <a href="https://dedra.kabelo.sk/domacnost/prakticke/pre-predajcu/pomocky-predajcu">pomôcky k predaju</a></div>
 		  </div>
 
 	</div>
