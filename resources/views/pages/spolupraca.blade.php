@@ -2,37 +2,45 @@
 @section('content')
 
 
-<div id="spolupraca_wrapper" class="wrapper">
+<div id="page_wrapper" class="wrapper">
 	<div class="container ct">
-		<div>
-			<div>
-				<h1 class="ui header">STAŇTE SA PREDAJCOM DEDRA INNOVATIONS!</h1>
-				<h3>Ponúkame vám možnosť spolupráce  !</h3>
-				<h3>Hľadáme spolupracovníkov z celého Slovenska !</h3>
-			</div>
 
-			<div class="image"><img src="/img/uspesny-start-2018.jpg" alt="dedra_start" class="ui image" width="500" /></div>
+		<div class="grid">
+		  <div class="column">
+		  	<div class="img"><img src="https://dedra.blob.core.windows.net/imagehandler/dedra.blob.core.windows.net/cms/ContentItems/1823_01823/m_max__w_234__h_141__o/pohodli-domova.jpeg" /></div>
+		  	<div class="caption">Pracujte z domu</div>
+		  	<div class="text">Ak máte radi spoločnosť ostatných, je pre vás táto práca ako stvorená. Nie je nikdy nudná a stretnete sa v nej s množstvom zaujímavých ľudí a príbehov.
+				VYUŽITE ČAS STRÁVENÝ NA INTERNETE
+				Ak navyše radi trávite čas na Facebooku, poteší vás, že počas hodín strávených online môžete tentoraz zároveň zarábať peniaze. Využívajte automatického koordinátora PPK. Vytvárajte filmy na youtube. Píšte zaujímavé články. Zdieľajte svoje skúsenosti online.</div>
+		  </div>
+		  <div class="column">
+		  	<div class="img"><img src="https://dedra.blob.core.windows.net/imagehandler/dedra.blob.core.windows.net/cms/ContentItems/1823_01823/m_max__w_234__h_141__o/odkryj-moznosti.jpeg" /></div>
+		  	<div class="caption">Obľúbili ste si výrobky dedra?</div>
+		  	<div class="text">Drogéria DEDRA INNOVATIONS bola vytvorená odborníkmi v Českej republike.
+Je maximálne koncentrovaná. Nikdy nebola a nebude testovaná na zvieratách. Vyrábame ju a distribujeme s ohľadom na životné prostredie. Snažíme sa prinášať najlepšie výrobky na trhu s vysokou kvalitou.</div>
+		  </div>
+		  <div class="column">
+		  	<div class="img"><img src="https://dedra.blob.core.windows.net/imagehandler/dedra.blob.core.windows.net/cms/ContentItems/1823_01823/m_max__w_234__h_141__o/baw-sie-doskonale.jpeg" /></div>
+		  	<div class="caption">Začnite už dnes</div>
+		  	<div class="text">Pripoj sa medzi naše Dedrušky. Začni využívať zvýhodnené ceny pre registrovaných predajcov pre seba a svoju rodinu. Ukáž katalóg a webstránky DEDRA svojim priateľom, susedom, rodine alebo kolegom. Na začiatku od nich zbieraj objednávky - tak zarobíš svoje prvé peniaze alebo získaš zľavu na ďalšie produkty.
 
-			<div>Obľúbili ste si výrobky DEDRA INNOVATIONS?
-			zaregistrujte sa v spoločnosti Vaše DEDRA s.r.o
-			staňte sa predajcom a získate zľavu
-			dovoz tovaru kurierskou službou na vami zadanú adresu
-			získate darčeky
-			Ako sa stať predajcom?
-			Zašlite mi prosím info na email:: *	
-			Opíšte text z obrázku: *	
-
-			 captcha
-			 	
-			 	Submit
-			Na vyžiadanie vám zašlem ďalšie informácie o spolupráci a údaje potrebné k registrácii
-
-			spolupráca je vhodná pre všetkých (matky na MD, študentov, zamestnancov, reštaurácie, upratovacie firmy ...)
-			registrácia je bez poplatkov a k ničomu Vás nezaväzuje
-			nakupujete si pre seba a svojich blízkych so zľavou alebo predávate výrobky za katalóg ceny
-			pomôžte nám rozšíriť rady distribútorov a budete za to odmenení
-			pýtajte sa na spoluprácu na našej mailovej adrese obchod@dedraslovakia.sk</div>
+Zarábať môžeš od začiatku. Pracovať môžeš, tam kde chceš ty. V kaviarni, novej trendy reštaurácii alebo v parku. Vezmi so sebou katalógy DEDRA a vzorky a stretnutie si uži!.</div>
+		  </div>
 		</div>
+
+		  <div class="single_column">
+		  	<div class="img"><img src="https://dedra.blob.core.windows.net/imagehandler/dedra.blob.core.windows.net/cms/ContentItems/21906_21906/m_max__w_735__h_190__o/marketing-plan2.jpeg" /></div>
+		  	<div class="caption">Ako sa stať predajcom</div>
+		  	<div class="text">Na vyžiadanie vám zašlem ďalšie informácie o spolupráci a údaje potrebné k registrácii
+- spolupráca je vhodná pre všetkých (matky na MD, študentov, zamestnancov, reštaurácie, upratovacie firmy ...)
+- registrácia je bez poplatkov a k ničomu Vás nezaväzuje
+- nakupujete si pre seba a svojich blízkych so zľavou alebo predávate výrobky za katalóg ceny
+- pomôžte nám rozšíriť rady distribútorov a budete za to odmenení
+- pýtajte sa na spoluprácu na našej mailovej adrese obchod@dedraslovakia.sk
+
+V našom katalógu nájdete pomôcky k predaju</div>
+		  </div>
+
 	</div>
 </div>
 @stop

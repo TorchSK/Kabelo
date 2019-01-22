@@ -36,5 +36,8 @@ class SlugController extends Controller
 		}
 	}
 
+	public function spolupraca(){
+		return view('pages.spolupraca');
+	}
 
 }

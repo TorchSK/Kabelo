@@ -290,6 +290,7 @@ Route::post('cookies', 'UtilController@setCookie');
 
 Route::get('search/{query}', 'UtilController@search');
 
+Route::get('/spolupraca', 'SlugController@spolupraca');
 Route::get('/{url}', 'SlugController@show')->name('slug');
 
 
