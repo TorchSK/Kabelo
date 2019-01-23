@@ -503,7 +503,6 @@ class ProductService implements ProductServiceContract {
         if (isset($filters['search']))
         {
             $search = 'true';
-
             $searchFilters['search'] = $filters['search'];
 
             $products = $this->query($searchFilters,[], [])->orderBy($sortBy,$sortOrder)->paginate(Setting::firstOrCreate(['name'=>'ppp'])->value);
@@ -533,12 +532,13 @@ class ProductService implements ProductServiceContract {
 
             $priceRange = [];
 
+            $data['search'] = $filters['search'];
+
         }
         else
         {
         $category = Category::find($request->get('category'));
         $children = $category->children;
-        
         if ($category->children->count() > 0)
         {
             foreach ($category->children as $child)
@@ -592,7 +592,6 @@ class ProductService implements ProductServiceContract {
         $data = [
             'products' => $products,
             'priceRange' => $priceRange,
-            'search' => $filters['search'],
             'makers' => collect(['']),
             'sortBy' => $sortByRaw,
             'sortOrder' => $sortOrder
