@@ -198,11 +198,13 @@
 
         </div>
 
+        @if($order->user_id)
         <div style="text-align: center;margin: 30px 0; font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;">Stav objednávky si možte skontrolovat aj po kliknuti na</div>
 
         <div style="text-align: center;">
         <a id="detail_btn" target="_blank" href="{!! url("/order").'/'.$order->id !!}">Detail objednávky</a>
-    </div>
+        </div>
+        @endif
 
             <div style="padding: 25px 0; border-top: 1px solid #EEE; margin-top: 50px; margin-left: 0;">
 
