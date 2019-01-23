@@ -589,13 +589,11 @@ class ProductService implements ProductServiceContract {
 
         }
         
-        $data = [
-            'products' => $products,
-            'priceRange' => $priceRange,
-            'makers' => collect(['']),
-            'sortBy' => $sortByRaw,
-            'sortOrder' => $sortOrder
-        ];
+        $data['products'] = $products;
+        $data['priceRange'] = $priceRange;
+        $data['makers'] = collect(['']);
+        $data['sortBy'] = $sortByRaw;
+        $data['sortOrder'] = $sortOrder;
 
         return $data;
     }
