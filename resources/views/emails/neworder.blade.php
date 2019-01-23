@@ -192,6 +192,7 @@
         </div>
 
         </div>
+        
         @if($order->user_id)
         <div style="text-align: center;margin: 30px 0; font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;" >Stav objednávky si možte skontrolovat aj po kliknuti na</div>
 
