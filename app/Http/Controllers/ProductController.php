@@ -211,10 +211,16 @@ class ProductController extends Controller
 
 
     public function list(Request $request){
-      
         $data = $this->productService->list($request);
 
-        return Response::json(['products' => view('products.list', $data)->render(), 'filters' => view('home.makers', $data)->render(), 'data' => $data]);   
+        if($request->get('filters')['search'])
+        {
+            return Response::json(['products' => view('products.searchlist', $data)->render(), 'filters' => view('home.makers', $data)->render(), 'data' => $data]);
+        }
+        else
+        {
+            return Response::json(['products' => view('products.list', $data)->render(), 'filters' => view('home.makers', $data)->render(), 'data' => $data]);
+        }
       
 
     }

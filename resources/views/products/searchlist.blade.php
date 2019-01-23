@@ -1,5 +1,14 @@
-    @if(Auth::check())
-    <div class="content cart hidden" data-cartid="{{Auth::user()->cart->id}}"></div>
-    @endif
+@foreach($products as $product)
+	@include('products.row',['grid'=>1])
+@endforeach
 
-@include('products.list')
+<div id="grid_div">
+	<div class="column"></div>
+    <div class="column"><div class="ui large blue button view_more_button">Viac produktov</div></div>
+    <div class="column">
+    <a href="{{ $products->appends(['sortBy' => $sortBy, 'sortOrder' => $sortOrder])->nextPageUrl()}}" id="next_page" data-next="{{	$products->hasMorePages()}}"></a>
+    	{{ $products->withPath("\\search\\".$search) }}
+	</div>
+
+</div>
+

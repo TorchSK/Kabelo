@@ -473,7 +473,7 @@ class ProductService implements ProductServiceContract {
             'activeFilters' => $activeFilters,
             'filterCounts' => $filterCounts,
             'priceRange' => $priceRange,
-            'search' => $search,
+            'search' => $filters['search'],
             'sortBy' => $sortBy,
             'sortOrder' => $sortOrder
         ];
@@ -500,7 +500,42 @@ class ProductService implements ProductServiceContract {
             $sortBy = $this->getUserPriceType();
         }
 
+        if (isset($filters['search']))
+        {
+            $search = 'true';
 
+            $searchFilters['search'] = $filters['search'];
+
+            $products = $this->query($searchFilters,[], [])->orderBy($sortBy,$sortOrder)->paginate(Setting::firstOrCreate(['name'=>'ppp'])->value);
+
+            $makers = $products->unique(['maker']); 
+
+            $temp = [];
+            $filterCounts['parameters'] = [];
+
+            $filterCounts['parameters']['makers'] = [];
+            $filterCountFilters['parameters']['makers'] = [];
+
+            foreach ($makers as $maker)
+            {
+                $filterCountFilters = $searchFilters;
+                
+                $filterCountFilters['parameters']['makers'] = [$maker->maker];
+                
+                $filterCounts['parameters']['makers'][$maker->maker] = $this->query($filterCountFilters,[], [])->get()->count();
+                
+            }
+
+            $categoryParameters = [];
+            $filterValues = [];
+
+            $activeFilters = collect($searchFilters);
+
+            $priceRange = [];
+
+        }
+        else
+        {
         $category = Category::find($request->get('category'));
         $children = $category->children;
         
@@ -537,7 +572,6 @@ class ProductService implements ProductServiceContract {
 
 
         }
-        //dd($children);
 
         $products = $this->query($filters,[], $children)->orderBy($sortBy,$sortOrder)->paginate(Setting::where('name','ppp')->first()->value);
 
@@ -550,12 +584,15 @@ class ProductService implements ProductServiceContract {
         $priceRange[1] = $products->pluck($this->getUserPriceType())->max();
         
         $search = 'false';
+
+        $data['category'] = $category;
+
+        }
         
         $data = [
-            'category' => $category,
             'products' => $products,
             'priceRange' => $priceRange,
-            'search' => $search,
+            'search' => $filters['search'],
             'makers' => collect(['']),
             'sortBy' => $sortByRaw,
             'sortOrder' => $sortOrder

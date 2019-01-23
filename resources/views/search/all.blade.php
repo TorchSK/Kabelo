@@ -63,13 +63,15 @@
                
             </grid>
             
-            <div class="ct">
-            <div class="ui large blue button view-more-button">Viac produktov</div>
-            </div>
-
         </div>
 
         <div id="search_grid">
+
+                <div id="active_filters">
+                    <span data-filter="search" data-value="{{Request::segment(2)}}">
+                </div>
+
+
                 <div class="ui inverted dimmer">
                 <div class="ui text loader">Loading</div>
               </div>
