@@ -1730,7 +1730,7 @@ a:hover {
   opacity: 1;
 }
 .item.product.inactive {
-  opacity: 0.4;
+  display: none;
 }
 .item.product .p_anch {
   display: none;
