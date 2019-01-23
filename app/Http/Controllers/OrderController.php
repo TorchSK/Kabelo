@@ -128,6 +128,7 @@ class OrderController extends Controller
 
     public function show($id)
     {
+        $this->authorize('view', $id);
         $data['order'] = Order::find($id);
 
         return view('orders.profile', $data);
