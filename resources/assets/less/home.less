@@ -3,10 +3,24 @@
 	flex: 1;
 }
 
+.top_banner_row_mobile{
+	display: none;
+	margin-bottom: 15px;
+
+	@media @break4{
+		display: block;
+	}
+
+	img{
+		width: 100%;
+	}
+
+
+}
+
 .top_banner_row{
 	display: flex;
 	opacity: 0;
-
 
 	@media @break4{
 		display: none !important;
@@ -20,6 +34,10 @@
 	flex-direction: column;
 	justify-content: space-between;
 	flex:1;
+	
+	@media @break4{
+		display: none !important;
+	}
 
 	.banner{
 		display: block !important;
@@ -53,6 +71,7 @@
 	@media @break4{
 		margin-top: 10px;
 		max-width: 100%;
+		height: auto !important;
 	}
 
 	.banner{

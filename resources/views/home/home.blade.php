@@ -24,6 +24,13 @@
 
             <div class="grow">
 
+                    <div class="top_banner_row_mobile">
+                            @foreach(App\Banner::where('type','cover')->orderBy('order')->get() as $cover)
+                                <img src="{{url($cover->image)}}" />
+                            @endforeach
+                    </div>
+
+
                     <div class="top_banner_row">
 
                         <div class="covers" style="height: {{App\Setting::firstOrCreate(['name'=>'cover_height'])->value}}px;">

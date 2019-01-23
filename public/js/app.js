@@ -1462,6 +1462,7 @@ $('.close_btn').click(function(){
 })
 
 
+
 $sales_carousel = $('#home_sales_div .items').flickity({
     cellAlign: 'left',
     contain: false,
@@ -1600,6 +1601,12 @@ $carousel = $('.covers').flickity({
   autoPlay: 4000,
   setGallerySize: false
 });
+
+$carousel_mobile = $('.top_banner_row_mobile').flickity({
+  autoPlay: 4000,
+  pageDots: false
+});
+
 
 $carousel.on( 'pointerUp.flickity', function(){
 	$('#search_results').hide();
