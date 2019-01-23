@@ -63,24 +63,12 @@
                
             </grid>
             
-        </div>
-
-        <div id="search_grid">
-
-                <div id="active_filters">
+                   <div id="active_filters">
                     <span data-filter="search" data-value="{{Request::segment(2)}}">
                 </div>
 
-
-                <div class="ui inverted dimmer">
-                <div class="ui text loader">Loading</div>
-              </div>
-            <div class="caption">Vyhľadávanie</div>
-
-            <grid>
-                
-            </grid>
         </div>
+
     </div>
 </div>
 </div>
