@@ -57,10 +57,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
-    @if(request()->route()->getName() != 'slug')
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
-    @endif
     
     <link media="all" type="text/css" rel="stylesheet" href="/css/rateyo.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/spectrum.css">
