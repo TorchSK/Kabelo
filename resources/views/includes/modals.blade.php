@@ -37,6 +37,26 @@
   </div>
 </div>
 
+
+<div class="ui mini modal" id="delete_catalogue_modal">
+          
+  <div class="header">
+    Katalóg
+  </div>
+  <div class="content">
+     Naozaj chcete vymazať katalóg
+  </div>
+  <div class="actions">
+    <div class="ui red deny button">
+      Nie
+    </div>
+    <div class="ui positive right labeled icon button">
+      Áno
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
 <div class="ui mini modal" id="delete_text_modal">
           
   <div class="header">

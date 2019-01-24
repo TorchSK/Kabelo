@@ -909,7 +909,7 @@ class AdminController extends Controller
     public function catalogues()
     {
         $data = [
-            'files' => File::where('type','catalogue')->get()
+            'catalogues' => File::where('type','catalogue')->get()
         ];
 
         return view('admin.files.catalogues', $data);

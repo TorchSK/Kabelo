@@ -31,14 +31,26 @@ class FileController extends Controller
         {
             $file->$key = $value;
 
-            if ($key == 'primary')
+            if ($key == 'primary' && $file->type!='catalogue')
             {
+
+
                 $otherFiles = $product->images->whereNotIn('id', [$file->id]);
 
                 foreach ($otherFiles as $otherFile)
                 {
                     $otherFile->primary = 0;
                     $otherFile->save();
+                }  
+            }
+            elseif ($key == 'primary' && $file->type=='catalogue')
+            {
+                $otherCatalogues = ProductFile::whereType('catalogue')->wherePrimary(0)->get();
+
+                foreach ($otherCatalogues as $otherCatalogue)
+                {
+                    $otherCatalogue->primary = 0;
+                    $otherCatalogue->save();
                 }  
             }
         }

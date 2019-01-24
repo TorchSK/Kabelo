@@ -396,6 +396,53 @@ $(document).on('click','.delete_cart', function(){
 })
 
 
+$(document).on('click','.catalogue_delete_btn', function(){
+	$catalogueid = $(this).closest('.catalogue').data('id');
+    $('#delete_catalogue_modal').modal('setting', {
+    onApprove : function() {
+      $.ajax({
+        type: "DELETE",
+        url: "/file/"+$catalogueid,
+        data: {},
+        success: function(){
+          location.reload();
+        }
+      })
+    }
+  }).modal('show');
+})
+
+
+$('.catalogue_primary_btn').click(function(){
+
+$catalogueid = $(this).closest('.catalogue').data('id');
+
+ $.ajax({
+    type: "PUT",
+    url: "/file/"+$catalogueid,
+    data: {'primary':1},
+    success: function(){
+      location.reload();
+    }
+  })
+})
+
+$('.catalogue_save_btn').click(function(){
+
+$catalogueid = $(this).closest('.catalogue').data('id');
+$path = $(this).closest('.catalogue').find('input').val();
+$(this).addClass('loading');
+
+ $.ajax({
+    type: "PUT",
+    url: "/file/"+$catalogueid,
+    data: {'path':$path},
+    success: function(){
+      location.reload();
+    }
+  })
+})
+
 $('.cart_delete_product').click(function(){
   $productid = $(this).closest('.product').data('productid');
   $cartid = $('.cart.content').data('cartid');
