@@ -45,7 +45,7 @@ class FileController extends Controller
             }
             elseif ($key == 'primary' && $file->type=='catalogue')
             {
-                $otherCatalogues = ProductFile::whereType('catalogue')->wherePrimary(0)->get();
+                $otherCatalogues = ProductFile::whereType('catalogue')->wherePrimary(1)->get();
 
                 foreach ($otherCatalogues as $otherCatalogue)
                 {
