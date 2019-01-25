@@ -1542,16 +1542,15 @@ $bestsellers_carousel = $('#home_bestsellers_div .items').flickity({
 
 $sales_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
 	$link = $(cellElement).find('.p_anch').attr('href');
-	if($($(pointer)[0].target).hasClass('to_cart')==false)
+	if($($(pointer)[0].target).hasClass('to_cart')==false && $($(pointer)[0].target).hasClass('icon')==false )
 	{
-					window.location.href = $link;
-
+		window.location.href = $link;
 	}
 });
 
 $news_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
 	$link = $(cellElement).find('.p_anch').attr('href');
-	if($($(pointer)[0].target).hasClass('to_cart')==false)
+	if($($(pointer)[0].target).hasClass('to_cart')==false && $($(pointer)[0].target).hasClass('icon')==false )
 	{
 			window.location.href = $link;
 	}
@@ -1559,7 +1558,7 @@ $news_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement
 
 $bestsellers_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
 	$link = $(cellElement).find('.p_anch').attr('href');
-	if($($(pointer)[0].target).hasClass('to_cart')==false)
+	if($($(pointer)[0].target).hasClass('to_cart')==false && $($(pointer)[0].target).hasClass('icon')==false )
 	{
 			window.location.href = $link;
 	}
@@ -3896,7 +3895,7 @@ function initRelatedSlider(speed){
 	$related_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
 		$link = $(cellElement).find('.p_anch').attr('href');
 		
-		if($($(pointer)[0].target).hasClass('to_cart')==false)
+		if($($(pointer)[0].target).hasClass('to_cart')==false  && $($(pointer)[0].target).hasClass('icon')==false )
 		{
 			window.location.href = $link;
 		}
@@ -3910,7 +3909,7 @@ initRelatedSlider(parseInt($('#suggested_wrapper_speed').find('value').html()));
 
 $("#grid_wrapper").on('click', '.product.item', function(e){
 	$link = $(this).find('.p_anch').attr('href');
-	if($(e.target).hasClass('to_cart')==false)
+	if($(e.target).hasClass('to_cart')==false  && $($(pointer)[0].target).hasClass('icon')==false )
 	{
 		window.location.href = $link;
 	}
