@@ -5438,8 +5438,20 @@ canvas {
 #page_div .richtext ul {
   list-style-type: disc;
 }
+#page_div .richtext ul li {
+  margin-left: 15px;
+}
+#page_div .richtext ul li ul {
+  margin-left: 15px;
+}
 #page_div .richtext ol {
   list-style-type: decimal;
+}
+#page_div .richtext ol li {
+  margin-left: 15px;
+}
+#page_div .richtext ol li ol {
+  margin-left: 15px;
 }
 #gdpr_div {
   text-align: center;
