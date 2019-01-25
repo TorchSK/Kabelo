@@ -86,7 +86,7 @@
 
     <div class="info">
     	
-    	 <h1 id="name" style="font-weight: 600; font-size: 30px;">{{$product->name}}</h1>
+    	 <h1 id="name" style="font-weight: 600; font-size: 25px;">{{$product->name}}</h1>
 
 		  <div id="code">Kód produktu: {{$product->code}} </div>
 
