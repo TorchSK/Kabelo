@@ -5429,6 +5429,9 @@ canvas {
 #page_div .ui.header {
   font-size: 1.5em;
 }
+#page_div .richtext {
+  text-align: left;
+}
 #page_div .richtext a {
   text-decoration: underline !important;
 }
