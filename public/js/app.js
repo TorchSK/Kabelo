@@ -3909,7 +3909,7 @@ initRelatedSlider(parseInt($('#suggested_wrapper_speed').find('value').html()));
 
 $("#grid_wrapper").on('click', '.product.item', function(e){
 	$link = $(this).find('.p_anch').attr('href');
-	if($(e.target).hasClass('to_cart')==false  && $($(pointer)[0].target).hasClass('icon')==false )
+	if($(e.target).hasClass('to_cart')==false  && $(e.target).hasClass('icon')==false )
 	{
 		window.location.href = $link;
 	}
