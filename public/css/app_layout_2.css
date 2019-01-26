@@ -5136,7 +5136,6 @@ h1.header {
 }
 #filterbar.horizontal {
   width: 100%;
-  text-transform: uppercase;
   margin-bottom: 1px;
   background-color: #F3F3F3;
   background-image: url('/img/leaves-pattern.png');
@@ -5148,7 +5147,6 @@ h1.header {
   }
 }
 #filterbar.horizontal .container {
-  background-color: #FFF;
   text-align: center;
   position: relative;
   margin: 15px auto;
@@ -5195,11 +5193,10 @@ h1.header {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  color: #767676;
   padding: 5px 20px;
   margin: 15px 20px;
   font-size: 1.1em;
-  font-weight: 600;
+  font-weight: 300;
   border-radius: 4px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -5208,6 +5205,10 @@ h1.header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+#filterbar.horizontal .item.top {
+  font-family: "tilda-petite";
+  font-size: 2em;
 }
 #filterbar.horizontal .item name {
   padding: 5px 10px;

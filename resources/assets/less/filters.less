@@ -227,7 +227,6 @@
 
 #filterbar.horizontal{
 	width: 100%;
-	text-transform: uppercase;
 	margin-bottom: 1px;
 	background-color: #F3F3F3;
 	background-image: url('/img/leaves-pattern.png');
@@ -237,7 +236,7 @@
 	}
 	
 	.container{
-		background-color: #FFF;
+		//background-color: #FFF;
 		text-align:center;
 		position: relative;
 		margin: 15px auto;
@@ -293,14 +292,19 @@
 
 	.item{
 		display: inline-flex;
-		color: @grey;
 		padding: 5px 20px;
 		margin: 15px 20px;
 		font-size: 1.1em;
-		font-weight: 600;
+		font-weight: 300;
 		border-radius: 4px;
 		flex-direction: column;	
 		align-items: center;
+
+		&.top{
+			font-family: "tilda-petite";
+			font-size: 2em;
+
+		}
 
 		name
 		{
