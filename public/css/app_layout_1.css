@@ -997,7 +997,7 @@ a:hover {
   margin-bottom: 35px;
 }
 .covers {
-  margin: 35px 35px 35px 0;
+  margin: 25px 35px 35px 0;
   display: inline-block;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 100%;
@@ -5140,6 +5140,7 @@ h1.header {
   background-color: #F3F3F3;
   background-image: url('/img/leaves-pattern.png');
   background-position: 0 50%;
+  margin-top: 25px;
 }
 @media all and (max-width: 980px) {
   #filterbar.horizontal {
@@ -5196,7 +5197,7 @@ h1.header {
   padding: 5px 20px;
   margin: 15px 20px;
   font-size: 1.1em;
-  font-weight: 300;
+  font-weight: 500;
   border-radius: 4px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -5208,7 +5209,7 @@ h1.header {
 }
 #filterbar.horizontal .item.top {
   font-family: "tilda-petite";
-  font-size: 2em;
+  font-size: 2.2em;
 }
 #filterbar.horizontal .item name {
   padding: 5px 10px;

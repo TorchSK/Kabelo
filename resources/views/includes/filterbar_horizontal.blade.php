@@ -1,5 +1,5 @@
-<div id="filterbar" class="horizontal" data-item="filterbar_wrapper" style="background-color: {{App\Setting::firstOrCreate(['name'=>'filterbar_wrapper_background-color'])->value}};">
-	<div class="container" data-item="filterbar_container" style="background-color: {{App\Setting::firstOrCreate(['name'=>'filterbar_container_background-color'])->value}};">
+<div id="filterbar" class="horizontal" data-item="filterbar_wrapper">
+	<div class="container" data-item="filterbar_container">
     @foreach(App\Category::where('active',1)->orderBy('order')->get()->toTree()->take(5) as $category)
 
     	<a href="{{route('slug',['category'=>$category->full_url])}}" class="item top @if(isset($requestCategory) && ($category->id == $requestCategory->id || in_array($category->id,$requestCategory->ancestors->pluck('id')->toArray()))) active @endif" data-cat="{{$category->id}}">
