@@ -997,7 +997,7 @@ a:hover {
   margin-bottom: 35px;
 }
 .covers {
-  margin: 25px 35px 35px 0;
+  margin: 35px 35px 35px 0;
   display: inline-block;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 100%;
@@ -5135,6 +5135,7 @@ h1.header {
   }
 }
 #filterbar.horizontal {
+  background-color: #FFF;
   width: 100%;
   margin-bottom: 1px;
   background-color: #F3F3F3;
