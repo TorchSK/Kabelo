@@ -360,6 +360,36 @@ class ProductController extends Controller
         return 1;
     }
 
+
+    public function translate($productid)
+    {
+        $product = Product::find($productid);
+
+        $client = new \GoogleTranslate\Client('AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI');
+
+        $sourceLanguage = 'cs';
+
+        $checkName = $result = $client->detect($product->name);
+        if ($checkName['language'] != 'sk')
+        {
+            $name = $client->translate($product->name, 'sk', $sourceLanguage);
+            $product->name = $name;
+        }
+        
+        if ($product->desc)
+        {
+            $desc = $client->translate($product->desc, 'sk', $sourceLanguage);
+            $product->desc = $desc;
+        }
+
+        $product->translated = 1;
+        $product->translate_error = null;
+
+        $product->save();
+ 
+        return 1;
+    }
+
     public function edit($product)
     {
         $product = Product::where('url', $product)->first();

@@ -193,6 +193,8 @@ Route::get('makerproduct/list','ProductController@makerlist');
 
 Route::post('product/{productid}/change/category/{categoryid}','ProductController@changeCategory');
 Route::post('product/{productid}/rating/','ProductController@addRating');
+Route::put('product/{productid}/translate','ProductController@translate');
+
 Route::resource('product','ProductController');
 
 Route::get('p/{url}', 'ProductController@profile')->name('product.detail');

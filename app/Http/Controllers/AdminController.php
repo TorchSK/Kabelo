@@ -221,18 +221,12 @@ class AdminController extends Controller
                 $product->name = $name;
             }
 
-            /*
+            
             if ($product->desc)
             {
-                $checkDesc = $result = $client->detect($product->desc);
-
-                if ($checkDesc['language'] != 'sk')
-                {
-                    $desc = $client->translate($product->desc, 'sk', $sourceLanguage);
-                    $product->desc = $desc;
-                }
+                $desc = $client->translate($product->desc, 'sk', $sourceLanguage);
+                $product->desc = $desc;
             }
-            */
 
             $product->translated = 1;
             $product->translate_error = null;

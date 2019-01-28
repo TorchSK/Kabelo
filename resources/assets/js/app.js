@@ -4308,6 +4308,18 @@ $('#cartproducts').on('blur', '.cart_qty_input', function(){
 })
 
 
+$('#product_detail_translate_btn').click(function(){
+	$productid = $('#product_main_wrapper').data('id');
+
+	$.ajax({
+		type: "PUT",
+		url: "/product/"+$productid+'/translate',
+		success: function(){
+		  location.reload();
+		}
+	})
+})
+
 
 });
 

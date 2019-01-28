@@ -7,6 +7,8 @@
  <div class="container ct">
   <a href="{{route('product.edit',['product'=>$product->url])}}" class="ui teal button">Edituj produkt</a>
   <a class="ui red button" id="product_detail_delete_btn">Zmaž produkt</a>
+  <a class="ui blue button" id="product_detail_translate_btn">Prelož do SK</a>
+
 </div>
 </div>
 @endif
