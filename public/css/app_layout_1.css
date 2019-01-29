@@ -2324,6 +2324,7 @@ a:hover {
 #product_main_wrapper .colors .color:hover {
   width: 60px;
   height: 60px;
+  position: absolute;
 }
 #product_main_wrapper .colors .color img {
   max-width: 100%;
