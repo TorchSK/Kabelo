@@ -10,7 +10,6 @@
     </div>
     
     <div class="text_save_btn ui green button" data-id="{{$text->id}}">Ulož</div>
-    @endif
 
     <div class="text_files_list">
     	@foreach(App\File::where('type','system')->get() as $file)
@@ -26,6 +25,7 @@
     	</div>
     	@endforeach
     </div>
+    @endif
 
 	<div class="richtext @if(isset($editable) && $editable==true) editable @endif" id="mce">
 		{!! $text->text !!}

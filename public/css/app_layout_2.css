@@ -5430,6 +5430,10 @@ canvas {
 }
 #page_div .richtext {
   text-align: left;
+  font-weight: 300;
+}
+#page_div .richtext b {
+  font-weight: 900;
 }
 #page_div .richtext a {
   text-decoration: underline !important;
