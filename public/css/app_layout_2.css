@@ -2284,6 +2284,8 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   margin-top: 25px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 #product_main_wrapper .variants .caption {
   font-weight: 900;
@@ -2294,6 +2296,7 @@ a:hover {
   border: 1px solid #DDD;
   padding: 2px 7px;
   border-radius: 3px;
+  margin-bottom: 15px;
 }
 #product_main_wrapper .colors {
   display: -webkit-box;
