@@ -2297,6 +2297,12 @@ a:hover {
   padding: 2px 7px;
   border-radius: 3px;
   margin-bottom: 15px;
+  -webkit-transition: 0.4s all;
+  transition: 0.4s all;
+}
+#product_main_wrapper .variants .variant:hover {
+  background-color: #0d345b;
+  color: #FFF;
 }
 #product_main_wrapper .colors {
   display: -webkit-box;
