@@ -159,7 +159,7 @@
               @if($catalogue->thumbnail)
               <img src="{{url($catalogue->thumbnail->path)}}" width="100" alt="catalogue"/>
               @else
-              <img src="{{url($catalogue->thumbnail->path)}}" width="100" alt="catalogue"/>
+              <i class="icon file"></i>
               @endif
             </a>
             @endforeach
