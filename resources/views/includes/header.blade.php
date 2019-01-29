@@ -158,6 +158,8 @@
             <a class="cat" href="{{$catalogue->path}}" target="_blank">
               @if($catalogue->thumbnail)
               <img src="{{url($catalogue->thumbnail->path)}}" width="100" alt="catalogue"/>
+              @else
+              <img src="{{url($catalogue->thumbnail->path)}}" width="100" alt="catalogue"/>
               @endif
             </a>
             @endforeach
