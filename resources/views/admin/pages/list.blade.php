@@ -17,6 +17,8 @@
 			</div>
 			<div class="name">Názov: <b>{{$page->name}}</b></div>
 			<div class="url">URL: <b>{{$page->url}}</b></div>
+			<div class="footer">Footer: <div class="ui checkbox"><input type="checkbox" @if($page->footer) checked  @endif/></div></div>
+
 			<div class="stretch"></div>
 			<div class="actions">
 				<a href="{{route('admin.pages.pageEdit',['page'=>$page->url])}}" class="ui mini green icon button"><i class="search icon"></i></a>

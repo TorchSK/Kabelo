@@ -3521,15 +3521,23 @@ body.admin #filterbar.vertical .categories .item {
   color: #BBB;
   cursor: move;
 }
-.pages_list .item .name {
+.pages_list .item .name,
+.pages_list .item .footer {
   margin: 0 10px;
   font-weight: 200;
 }
-.pages_list .item .name b {
+.pages_list .item .name b,
+.pages_list .item .footer b {
   font-weight: 800;
 }
+.pages_list .item .name .ui.checkbox,
+.pages_list .item .footer .ui.checkbox {
+  position: relative;
+  margin-left: 5px;
+  top: 3px;
+}
 .pages_list .item .url {
-  margin-left: 30px;
+  margin: 0 30px;
   font-weight: 200;
 }
 .pages_list .item .url b {

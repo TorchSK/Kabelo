@@ -4321,6 +4321,34 @@ $('#product_detail_translate_btn').click(function(){
 })
 
 
+
+$('.pages_list .checkbox').checkbox({
+  onChecked: function(){
+    $pageid = $(this).closest('.item').data('id');
+	$.ajax({
+		type: "PUT",
+		url: "/api/page/"+$pageid,
+		data: {footer: 1},
+		success: function(){
+		  location.reload();
+		}
+	})
+
+  },
+  onUnchecked: function(){
+     $pageid = $(this).closest('.item').data('id');
+	 $.ajax({
+		type: "PUT",
+		url: "/api/page/"+$pageid,
+		data: {footer: 0},
+		success: function(){
+		  location.reload();
+		}
+	})
+  }
+})
+
+
 });
 
 $(document).scroll(function() {

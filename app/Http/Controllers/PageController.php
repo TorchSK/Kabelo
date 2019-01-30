@@ -55,6 +55,18 @@ class PageController extends Controller
         return 1;
     }   
 
+    public function apiUpdate($id, Request $request)
+    {   
+        $page = Page::find($id);
+        foreach($request->except('_token') as $key => $value)
+        {
+            $page->$key = $value;
+            $page->save();
+        }
+        
+        return 1;
+    }  
+
     public function update($id, Request $request)
     {   
         $page = Page::find($id);

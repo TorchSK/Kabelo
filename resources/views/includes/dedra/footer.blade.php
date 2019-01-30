@@ -9,7 +9,7 @@
 	</div>
 
   <div class="stretch">
-    @foreach(App\Page::orderBy('order')->get() as $page)
+    @foreach(App\Page::whereFooter(1)->orderBy('order')->get() as $page)
 	   <div class="column"><a href="{{route('slug',$page->url)}}" class="effect-1">{{$page->name}}</a></div>
     @endforeach
   </div>  
