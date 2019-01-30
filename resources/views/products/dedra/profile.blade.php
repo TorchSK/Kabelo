@@ -181,7 +181,7 @@
 
   <div class="container">
     <div class="ui header">Detailný popis</div>
-     <p style="text-align: justify;">{{ preg_replace("/\s/","", $product->desc)}}</p>
+     <p style="text-align: justify;">{{ $product->desc}}</p>
 
     @if($product->back1)
     <div class="product_back">
