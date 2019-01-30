@@ -210,7 +210,7 @@ class AdminController extends Controller
     {
         $client = new \GoogleTranslate\Client('AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI');
 
-        foreach(Product::whereTranslated(0)->get() as $product)
+        foreach(Product::where('id','>','63745')->get() as $product)
         {   
             $sourceLanguage = 'cs';
 
