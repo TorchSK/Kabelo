@@ -43,19 +43,19 @@
           @foreach($product->images as $key => $image)
             @if($appname=='dedra')
             <a class="img ct mobx" href="{{$image->path}}" style="display: inline-block;"  data-rel="{{$product->code}}" data-index="{{$key}}">
-             <img src="{{$image->thumb}}" class="ui image" alt="{{$product->code}}" data-full="{{$image->path}}" style="max-height: 130px; max-width: 130px; display: inline-block;"/>
+             <img src="{{$image->thumb}}" class="ui image" alt="{{$product->code}}-{{$product->name}}" data-full="{{$image->path}}" style="max-height: 130px; max-width: 130px; display: inline-block;"/>
              </a>
             @else
-             <img src="{{$image->path}}" class="ui image" width="200px"  alt="{{$product->code}}" />
+             <img src="{{$image->path}}" class="ui image" width="200px"  alt="{{$product->code}}-{{$product->name}}" />
            @endif
            @endforeach
          </div>
 
         <a class="img ct main" @if ($product->image)href="{{$product->image->path}}"@endif  data-rel="{{$product->code}}" >
            @if ($product->images->count() == 0)
-           <img src="/img/empty.jpg" class="ui image" alt="{{$product->code}}"/>
+           <img src="/img/empty.jpg" class="ui image" alt="{{$product->code}}-{{$product->name}}"/>
            @elseif ($product->image)
-           <img src="{{$product->image->path}}" class="ui image" alt="{{$product->code}}"/>
+           <img src="{{$product->image->path}}" class="ui image" alt="{{$product->code}}-{{$product->name}}"/>
            @endif
         </a>
         
@@ -65,10 +65,10 @@
           @foreach($product->images as $key => $image)
             @if($appname=='dedra')
             <a class="img ct" href="{{$image->path}}" style="display: inline-block;" >
-             <img src="{{$image->thumb}}" class="ui image" data-full="{{$image->path}}" data-index="{{$key}}" alt="{{$product->code}}"/>
+             <img src="{{$image->thumb}}" class="ui image" data-full="{{$image->path}}" data-index="{{$key}}" alt="{{$product->code}}-{{$product->name}}"/>
              </a>
             @else
-             <img src="{{$image->path}}" class="ui image" width="200px" alt="{{$product->code}}" />
+             <img src="{{$image->path}}" class="ui image" width="200px" alt="{{$product->code}}-{{$product->name}}" />
            @endif
            @endforeach
            @endif
