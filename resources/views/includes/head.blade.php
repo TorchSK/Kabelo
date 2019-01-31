@@ -84,25 +84,15 @@
 
     <script src="/js/app.js"></script>
 
-    <!-- Global site tag (gtag.js) - AdWords: 795715349 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-795715349"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-26854117-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'AW-795715349');
-    </script>
-
-    <script>
-      gtag('event', 'page_view', {
-        'send_to': 'AW-795715349',
-        'dynx_itemid': 'replace with value',
-        'dynx_itemid2': 'replace with value',
-        'dynx_pagetype': 'replace with value',
-        'dynx_totalvalue': 'replace with value',
-        'user_id': 'replace with value'
-      });
+      gtag('config', 'UA-26854117-1');
     </script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdqx8xXl2sxDke485SNJXjXXd2UZu_ofc&libraries=places"></script>
