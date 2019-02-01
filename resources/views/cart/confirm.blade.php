@@ -179,12 +179,8 @@
 		 <div class="vop_info">Stlačením „Dokončiť objednávku s povinnosťou platby“ potvrdzujete, že ste sa oboznámili s <a href="/obchodne-podmienky" target="_blank">obchodnými podmienkami</a></div>
 		 <div class="gdpr_info"><a href="/obchodne-podmienky" target="_blank">Info o spracovaní osobných údajov</a></div>
 
-		 @if(Auth::check() && Auth::user()->admin)
-		<a class="ui huge green button" id="submit_order_btn"><i class="upload icon"></i>Dokončiť testovaciu objednávku</a> 
-		@endif
+		<a class="ui huge green button" id="submit_order_btn"><i class="upload icon"></i>Dokončiť objednávku</a> 
 
-		<div class="text_info">!!! Toto je testovacia prevádzka obchodu dedraslovakia.sk. Objednávku zatiaľ nemožte odoslať !!!</div>
-		
 		@if(Auth::check() && Auth::user()->admin)
 		<div class="text_info">s povinnosťou platby</div>
 		@endif
