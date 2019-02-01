@@ -42,6 +42,6 @@ class CancelOrder extends Mailable
         $this->delivery_method = Order::where('id', $this->order['id'])->first()->delivery;
         $this->payment_method = Order::where('id', $this->order['id'])->first()->payment;
 
-        return $this->from(env('MAIL_USERNAME'))->subject('Odoslaná objednávka č. '.$this->order['id'])->view('emails.cancelorder');
+        return $this->from(env('MAIL_USERNAME'), "Dedraslovakia")->subject('Odoslaná objednávka č. '.$this->order['id'])->view('emails.cancelorder');
     }
 }
