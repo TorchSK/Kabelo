@@ -41,7 +41,7 @@ Zarábať môžeš od začiatku. Pracovať môžeš, tam kde chceš ty. V kaviar
 		</div>
 		<a href="mailto: obchod@dedraslovakia.sk" class="ui big button">Napíšte nám</a>
 
-		<div class="textwa">V našom katalógu nájdete <a href="https://dedra.kabelo.sk/domacnost/prakticke/pre-predajcu/pomocky-predajcu">pomôcky k predaju</a></div>
+		<div class="textwa">V našom katalógu nájdete <a href="domacnost/prakticke/pre-predajcu/pomocky-predajcu">pomôcky k predaju</a></div>
 		  </div>
 
 	</div>
