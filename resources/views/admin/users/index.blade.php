@@ -26,7 +26,7 @@
 	      </td>
 
 	      <td>{{$user->id}}</td>
-	   	  <td>{{$user->name}}</td>
+	   	  <td>{{$user->first_name}} {{$user->last_name}}</td>
 	      <td>{{$user->email}}</td>
 		  <td>
 	      	<div class="ui checkbox admin_checkbox_onthefly" data-resource="user" data-id="{{$user->id}}" >
