@@ -42,7 +42,7 @@ class NewOrder extends Mailable
         $this->delivery_method = Order::where('id', $this->order['id'])->first()->delivery;
         $this->payment_method = Order::where('id', $this->order['id'])->first()->payment;
 
-        return $this->from('kabelo@kabelo.sk')
+        return $this->from('obchod@dedraslovakia.sk')
                      ->subject('Objednávka č. '.$this->order['id'])
                      ->view('emails.neworder')
                      ->attach(storage_path('app/Obchodne podmienky.pdf'))
