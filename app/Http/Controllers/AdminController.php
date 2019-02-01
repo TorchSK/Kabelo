@@ -501,7 +501,7 @@ class AdminController extends Controller
 
             $product = Product::whereCode($temp)->first();
 
-            if($item['stav_skladu']=='PRODEJ UKONČEN')
+            if($item['stav_skladu']=='PRODEJ UKONČEN' || $item['stav_skladu']=='poslední kusy')
             {
                 if($product->active==1)
                 {
