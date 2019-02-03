@@ -25,10 +25,12 @@
     
     <meta property="og:url" content="{{Request::url()}}" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="@if(isset($product)){{$product->name}} @else Dedra @endif"/>
-    <meta property="og:description" content="@if(isset($product)){{substr($product->desc,0,100)}} @else Dedra @endif" />
-    @if (isset($product) && $product->image)
-    <meta property="og:image" content="@if(isset($product)){{$product->image->path}} @else {{url('img/'.$appname)}}_favico.png @endif" />
+    <meta property="og:title" content="@if(isset($title)){{$title}} @else Dedraslovakia.sk @endif"/>
+    <meta property="og:description" content="@if(isset($description)){{substr($description,0,100)}} @else DEDRA EKO čistiace prostriedky, darčeky pre mužov, darčeky pre ženy, šperky, drogéria pre domácnosť @endif" />
+    @if (isset($ogImage))
+    <meta property="og:image" content="{{$ogImage}}" />
+    @else
+    <meta property="og:image" content="{{url('img/'.$appname)}}_favico.png" />
     @endif
 
     <title>
