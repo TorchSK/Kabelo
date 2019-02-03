@@ -52,10 +52,10 @@ class CategoryController extends Controller
 
             $data['requestCategory'] = Category::find($request->get('category'));
             $data['categories'] = $this->categoryService->getCategories();
-            $data['title'] = Category::find($request->get('category'))->title;
+            $data['title'] = $cat->title;
+            $data['keywords'] = $cat->keywords;
 
             $data['bodyid'] = 'category_products_body';
-            $data['title'] =  $cat->name;
 
             return view('categories/products', $data);
 

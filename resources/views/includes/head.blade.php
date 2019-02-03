@@ -5,9 +5,22 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="google-site-verification" content="CY9IwgJZGjaR_icVxrolcCKFZUjWhHfx9QDnJ32_MLE" />
     
-    <meta name="keywords" content="darček,darčeky pre muža,darčeky pre ženu,dedra,drogeria,dekoracie,šperky,doplnky do domácnosti,do bytu,domov, stolovanie,porcelán,bižutéria,cestovanie,keramika">
-    
-    <meta name="description" content="DEDRA EKO čistiace prostriedky, darčeky pre mužov, darčeky pre ženy, šperky, drogéria pre domácnosť">
+    @if($appname=='dedra')
+
+        @if(isset($description))
+            <meta name="description" content="{{$description}}">
+        @else
+            <meta name="description" content="DEDRA EKO čistiace prostriedky, darčeky pre mužov, darčeky pre ženy, šperky, drogéria pre domácnosť">
+        @endif
+
+        @if(isset($keywords))
+            <meta name="keywords" content="{{$keywords}}">
+        @else
+            <meta name="keywords" content="darček,darčeky pre muža,darčeky pre ženu,dedra,drogeria,dekoracie,šperky,doplnky do domácnosti,do bytu,domov, stolovanie,porcelán,bižutéria,cestovanie,keramika">
+        @endif
+
+    @endif
+
     <meta name="robots" content="index, follow">
     
     <meta property="og:url" content="{{Request::url()}}" />
