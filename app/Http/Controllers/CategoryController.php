@@ -55,6 +55,7 @@ class CategoryController extends Controller
             $data['title'] = Category::find($request->get('category'))->title;
 
             $data['bodyid'] = 'category_products_body';
+            $data['title'] =  $cat->name;
 
             return view('categories/products', $data);
 
