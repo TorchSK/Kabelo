@@ -202,7 +202,8 @@ class ProductController extends Controller
            'product' => $product,
            'bodyid' => 'body_product_detail',
            'categories' => $this->categoryService->getCategories(),
-           'title' => $product->name
+           'title' => $product->name,
+           'ogImage' => $product->image->path
         ];
 
         return view('products.profile', $data);

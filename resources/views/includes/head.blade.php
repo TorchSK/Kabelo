@@ -23,6 +23,7 @@
 
     <meta name="robots" content="index, follow">
     
+    <meta property="og:app_id" content="{{Request::url()}}" />
     <meta property="og:url" content="{{Request::url()}}" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="@if(isset($title)){{$title}} @else Dedraslovakia.sk @endif"/>
