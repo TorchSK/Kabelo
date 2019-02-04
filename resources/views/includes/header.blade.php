@@ -9,7 +9,11 @@
     
         <a class="logo item" href="/">
           <div class="image"><img class="{{strtolower($appname)}}" alt="logo" src="/img/logo_{{strtolower($appname)}}_white.png" /></div>
+          @if($appname=="dedra")
+          <text>Dedra<o>slovakia</o></text>
+          @else
           <text>{{$appname}}</text>
+          @endif
         </a>
 
     

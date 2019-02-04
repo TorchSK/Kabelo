@@ -1304,9 +1304,12 @@ a:hover {
 }
 #header .logo text {
   font-family: "hwt-artz";
-  letter-spacing: 10px;
+  letter-spacing: 4px;
   display: inline-block;
   font-size: 1.5em;
+}
+#header .logo text o {
+  color: #f44e8e;
 }
 #header .logo text span {
   display: block;
