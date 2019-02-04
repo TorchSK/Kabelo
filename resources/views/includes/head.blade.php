@@ -45,9 +45,9 @@
     <link rel="icon" type="image/png" href="{{url('img/'.$appname)}}_favico.png" />
 
     @if($appname=='kabelo')
-    <link rel="canonical" href="https://www.dedra.kabelo.sk/">
+    <link rel="canonical" href="https://www.dedra.kabelo.sk">
     @else
-    <link rel="canonical" href="https://dedraslovakia.sk/">
+    <link rel="canonical" href="{{Request::url()}}">
     @endif
 
     <!-- Fonts -->
