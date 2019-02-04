@@ -1308,6 +1308,9 @@ a:hover {
   display: inline-block;
   font-size: 1.5em;
 }
+#header .logo text o {
+  padding-left: 7px;
+}
 #header .logo text span {
   display: block;
   margin-top: 3px;
