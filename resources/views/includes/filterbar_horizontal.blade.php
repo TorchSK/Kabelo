@@ -26,7 +26,7 @@
 			@endforeach	
 
 			<div class="sub1">
-					<img src="/img/menu_{{$category->url}}.png" alt="{{$cat->name}}" />
+					<img src="/img/menu_{{$category->url}}.png" alt="{{$category->name}}" />
 			</div>
 
 			</div>
