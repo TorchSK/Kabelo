@@ -26,7 +26,7 @@
 
                     <div class="top_banner_row_mobile">
                             @foreach(App\Banner::where('type','cover')->orderBy('order')->get() as $cover)
-                                <img src="{{url($cover->image)}}" />
+                                <img src="{{url($cover->image)}}" alt="{{$cover->image}}"/>
                             @endforeach
                     </div>
 

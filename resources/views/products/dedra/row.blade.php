@@ -8,7 +8,7 @@
 		@if($product->rowStickers->count() > 0)
 	      @foreach($product->rowStickers as $sticker)
 	        <div class="sticker" style="left: {{$sticker->left}}px; top: {{$sticker->top}}px; width: {{$sticker->width}}px; height: {{$sticker->height}}px;">
-	          <img src="{{url($sticker->path)}}" >
+	          <img src="{{url($sticker->path)}}" alt="sticker">
 	        </div>
 	      @endforeach
 	     @endif
