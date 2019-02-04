@@ -3072,8 +3072,8 @@ if ($('body').attr('id')=="body_bulk")
 
 		$filters = {
 			"categories" : $('.filter_item.category').dropdown('get value'),
-			"name" : $('.filter_item.name').find('input').val()
-
+			"name" : $('.filter_item.name').find('input').val(),
+			"without_category" : $('.filter_item.without_category').checkbox('is checked')
 		}
 
 		$.ajax({

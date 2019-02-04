@@ -30,6 +30,15 @@
 			    	<input type="text" name="name" placeholder="Zadajte názov produktu" />
 				</div>
 			</div>
+
+			<div class="field">
+
+			    <div class="ui checkbox filter_item without_category">
+			    	<label>Bez kategórie</label>
+
+			    	<input type="checkbox" name="name" placeholder="Zadajte názov produktu" />
+				</div>
+			</div>
 		</form>
 
 
