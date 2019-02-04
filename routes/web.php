@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
 	Route::get('/xml/import', 'AdminController@xmlImport')->name('admin.xmlImport');
 	Route::get('/translate/', 'AdminController@translate')->name('admin.translate');
+	Route::get('/translatepathtocz/', 'AdminController@translatePathToCz')->name('admin.translatePathToCz');
 	Route::get('/xml/addMoreImages', 'AdminController@addMoreImages')->name('admin.addMoreImages');
 	Route::get('/xml/postXmlUpdate', 'AdminController@postXmlUpdate')->name('admin.postXmlUpdate');
 	Route::get('/addCategoryPath', 'AdminController@addCategoryPath')->name('admin.addCategoryPath');

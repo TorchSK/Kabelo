@@ -237,6 +237,19 @@ class AdminController extends Controller
 
     }
 
+    public function translatePathToCz()
+    {
+        $client = new \GoogleTranslate\Client('AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI');
+
+        foreach(Category::all() as $category)
+        {   
+            $sourceLanguage = 'sk';
+            $category->path_cz = $client->translate($category->path, 'cs', $sourceLanguage);
+            $category->save();
+        }
+
+
+    }
 
     public function xmlUpdate()
     {
