@@ -311,21 +311,21 @@ class AdminController extends Controller
             $productCategoryArray = explode(' / ',$item['kategorie']);
 
 
-            $dbCategory1 = Category::where('path',$productCategoryArray[0])->first();
+            $dbCategory1 = Category::where('path_cz',$productCategoryArray[0])->first();
 
             if(isset($productCategoryArray[1]))
             {
-                $dbCategory2 = Category::where('path',$productCategoryArray[0].' / '.$productCategoryArray[1])->first();
+                $dbCategory2 = Category::where('path_cz',$productCategoryArray[0].' / '.$productCategoryArray[1])->first();
             }
 
             if(isset($productCategoryArray[2]))
             {
-                $dbCategory3 = Category::where('path',$productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2])->first();
+                $dbCategory3 = Category::where('path_cz',$productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2])->first();
             }
 
             if(isset($productCategoryArray[3]))
             {
-                $dbCategory4 = Category::where('path',$productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2].' / '.$productCategoryArray[3])->first();
+                $dbCategory4 = Category::where('path_cz',$productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2].' / '.$productCategoryArray[3])->first();
             }
 
             if(!$dbCategory1)
@@ -334,6 +334,7 @@ class AdminController extends Controller
                 $cat->name = $productCategoryArray[0];
                 $cat->url = str_slug($productCategoryArray[0]);
                 $cat->path = $productCategoryArray[0];
+                $cat->path_cz = $productCategoryArray[0];
                 $cat->save();
                 $parent = $cat->id;
 
@@ -357,6 +358,7 @@ class AdminController extends Controller
                     $cat->url = str_slug($productCategoryArray[1]);
                     $cat->parent_id = $parent;
                     $cat->path = $productCategoryArray[0].' / '.$productCategoryArray[1];
+                    $cat->path_cz = $productCategoryArray[0].' / '.$productCategoryArray[1];
                     $cat->save();
                     $parent = $cat->id;
 
@@ -380,6 +382,7 @@ class AdminController extends Controller
                     $cat->url = str_slug($productCategoryArray[2]);
                     $cat->parent_id = $parent;
                     $cat->path = $productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2];
+                    $cat->path_cz = $productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2];
                     $cat->save();
                     $parent = $cat->id;
 
@@ -403,6 +406,7 @@ class AdminController extends Controller
                     $cat->url = str_slug($productCategoryArray[3]);
                     $cat->parent_id = $parent;
                     $cat->path = $productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2].' / '.$productCategoryArray[3];
+                    $cat->path_cz = $productCategoryArray[0].' / '.$productCategoryArray[1].' / '.$productCategoryArray[2].' / '.$productCategoryArray[3];
                     $cat->save();
                     $parent = $cat->id;
 
@@ -428,6 +432,7 @@ class AdminController extends Controller
             $product->maker = 'Dedra';
             $product->moc_sort_price = $item['price_skk'];
             $product->voc_sort_price = $item['price_skk'];
+            
             if(isset($item['variant_text']))
             {
             $product->variant_text = $item['variant_text'];
