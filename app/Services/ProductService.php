@@ -59,6 +59,7 @@ class ProductService implements ProductServiceContract {
             if ($request->has('without_category'))
             {
                 $query->doesntHave('categories');
+                $query->whereActive('on');
             }
         });
 
