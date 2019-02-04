@@ -16,6 +16,8 @@
 
     	<div class="ui big teal button" id="xml_update_check_btn"><i class="check icon"></i>Spusť aktualizáciu</div>
     	
+        <a href="{{route('admin.eshop.xmlUpdateHistory')}}" class="ui big green button" id="xml_update_history_btn"><i class="clock icon"></i>História</a>
+
     	<div id="xml_results">
     		<div class="new_categories_count caption">Počet nových kategórií: <value></value></div>
     		<div class="new_products_count caption">Počet nových produktov: <value></value></div>

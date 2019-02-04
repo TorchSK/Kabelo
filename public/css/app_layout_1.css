@@ -3407,6 +3407,10 @@ body.admin #filterbar.vertical .categories .item {
 #xml_update_check_btn {
   margin-top: 15px;
 }
+#xml_update_history_btn {
+  float: right;
+  margin-top: 15px;
+}
 #xml_dropzone {
   display: none;
 }

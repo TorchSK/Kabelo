@@ -17,6 +17,7 @@ use App\Page;
 use App\Text;
 use App\Sticker;
 use App\Variant;
+use App\Log;
 
 use Auth;
 use Excel;
@@ -254,6 +255,11 @@ class AdminController extends Controller
     public function xmlUpdate()
     {
         return view('admin.eshop.xmlupdate');
+    }
+
+    public function xmlUpdateHistory()
+    {
+        return view('admin.eshop.xmlupdatehistory');
     }
 
     public function postXmlUpdate(Request $request)
@@ -582,10 +588,30 @@ class AdminController extends Controller
             $product->save();
         }
 
+        $log = new Log();
+        $log->log = $changes['new_categories'];
+        $log->type = 'product_update';
+        $log->operation = 'new_categories';
+        $log->save();
+
+        $log = new Log();
+        $log->log = $changes['new_products'];
+        $log->type = 'product_update';
+        $log->operation = 'new_products';
+        $log->save();
+
+        $log = new Log();
+        $log->log = $removedProducts;
+        $log->type = 'product_update';
+        $log->operation = 'removed_products';
+        $log->save();
+
 
         return Response::json(['changes' => $changes, 'newCategories' => view('admin.eshop.xmlcategorylist', ['categories'=>collect($changes['new_categories'])])->render(), 'removedCategories' => view('admin.eshop.xmlcategorylist', ['categories'=>collect($changes['removed_categories'])])->render(), 'newProducts' => view('admin.eshop.xmlproductlist', ['products'=>collect($changes['new_products'])])->render(), 'removedProducts' => view('admin.eshop.xmlproductlist', ['products'=>$removedProducts])->render()]);   
 
     }   
+
+
 
     public function confirmXMLUpdate(){
         return DB::commit();
