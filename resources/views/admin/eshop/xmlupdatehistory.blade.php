@@ -18,7 +18,7 @@
 
 			  @foreach(App\Log::whereType($log->type)->whereCreatedAt($log->created_at)->get() as $content)
 				    <p class="transition hidden">
-				    	@if(count($content->log > 0))
+				    	@if(is_array($content->log) && count($content->log > 0))
 					    	@foreach($content->log as $item)
 					    		{{$item['id']}}
 					    	@endforeach
