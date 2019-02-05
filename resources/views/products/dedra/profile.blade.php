@@ -138,7 +138,7 @@
         <div class="colors">
           <div class="caption">Farby</div>
           @foreach($product->colors as $variant)
-            <a class="color" href="{{route('product.detail',['product'=>$variant->url])}}"><img src="{{url($variant->image->path)}}"/></a>
+            <a class="color" href="{{route('product.detail',['product'=>$variant->url])}}"><img src="{{url($variant->image->path)}}" alt="{{url($variant->image->path)}}" /></a>
           @endforeach
         </div>
         @endif
@@ -150,7 +150,7 @@
        <div class="product_stickers">
         @foreach($product->detailStickers as $sticker)
           <div class="sticker">
-            <img src="{{url($sticker->path)}}" >
+            <img src="{{url($sticker->path)}}" alt="sticker">
           </div>
         @endforeach
        </div>
