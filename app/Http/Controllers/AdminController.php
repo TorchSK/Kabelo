@@ -522,6 +522,7 @@ class AdminController extends Controller
 
         }
         
+        /*
         foreach($existingProductsArray as $key => $temp)
         {   
             $item = $items['products'][$key];
@@ -590,6 +591,7 @@ class AdminController extends Controller
 
         }
 
+        */
 
         foreach($removedProductsArray as $key => $temp)
         {   
