@@ -137,15 +137,15 @@ class UtilController extends Controller
         }
     }
 
-    public function searchAll($query)
+    public function searchAll($querystring)
     {
-        $data['products'] = Product::where(function ($query) {
-                $query->where('name', 'like', '%'.$query.'%')
-                      ->orWhere("desc", "like", "%".$query."%")
-                      ->orWhere("code", "like", "%".$query."%");
+        $data['products'] = Product::where(function ($query) use ($querystring) {
+                $query->where('name', 'like', '%'.$querystring.'%')
+                      ->orWhere("desc", "like", "%".$querystring."%")
+                      ->orWhere("code", "like", "%".$querystring."%");
                 })->whereActive(1)->take(5)->get();
         
-        $data['users'] = User::where('name', 'like', '%'.$query.'%')->orWhere("email", "like", "%".$query."%")->take(5)->get();
+        $data['users'] = User::where('name', 'like', '%'.$querystring.'%')->orWhere("email", "like", "%".$querystring."%")->take(5)->get();
 
         return response()->json(['products'=>view('search.products', $data)->render(), 'users'=>view('search.users', $data)->render()]);
     }
