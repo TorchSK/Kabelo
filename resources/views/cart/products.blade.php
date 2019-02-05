@@ -7,7 +7,7 @@
 
 <div id="cart_products_wrapper" class="wrapper">
 	<div class="container">
-		@if (sizeof($cart['items']) > 0)
+		@if (is_array($cart['items']) && sizeof($cart['items']) > 0)
 		<div class="delete_cart">Vymazať košík</div>
 		@endif
 
@@ -41,7 +41,7 @@
 
 <div id="cart_actions_wrapper" class="wrapper">
 	<div class="container">
-	@if (sizeof($cart['items']) > 0)
+	@if (is_array($cart['items']) && sizeof($cart['items']) > 0)
 	<a href="/#eshop" class="ui blue button"><i class="icon arrow left"></i>Do eshopu</a>
 	<a href="/cart/delivery" class="ui green button @if(App\Setting::firstOrCreate(['name'=>'min_order_price'])->value > $cart['price']) disabled @endif" id="cart_continue_btn">Pokračovať</a>
 
