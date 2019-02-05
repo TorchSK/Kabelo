@@ -142,7 +142,7 @@ class UtilController extends Controller
         $data['products'] = Product::where(function ($query) {
                 $query->where('name', 'like', '%'.$query.'%')
                       ->orWhere("desc", "like", "%".$query."%")
-                      ->orWhere("code", "like", "%".$query."%")
+                      ->orWhere("code", "like", "%".$query."%");
                 })->whereActive(1)->take(5)->get();
         
         $data['users'] = User::where('name', 'like', '%'.$query.'%')->orWhere("email", "like", "%".$query."%")->take(5)->get();
