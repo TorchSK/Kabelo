@@ -203,8 +203,12 @@ class ProductController extends Controller
            'bodyid' => 'body_product_detail',
            'categories' => $this->categoryService->getCategories(),
            'title' => $product->name,
-           'ogImage' => $product->image->path
         ];
+
+        if($product->image)
+        {
+            $data['ogImage'] = $product->image->path;
+        }
 
         return view('products.profile', $data);
 
