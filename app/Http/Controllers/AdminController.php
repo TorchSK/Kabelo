@@ -522,6 +522,26 @@ class AdminController extends Controller
 
             $product->priceLevels()->save($pricelevel);
 
+            if(count($item['variants']) > 0)
+            {   
+                foreach($item['variants'] as $key => $type)
+                {
+                    $variant_product = Product::whereCode($key)->first();
+
+                    if($variant_product)
+                    {
+                        if($product->allVariants()->where('id',$variant_product->id)->count()==0)
+                        {
+                            $variant = new Variant();
+                            $variant->product_id = $product->id;
+                            $variant->variant_id = $variant_product->id;
+                            $variant->type = $type;
+                            $variant->save();
+                        }
+                    }
+                }
+            }
+
         }
         
         
@@ -548,6 +568,7 @@ class AdminController extends Controller
                 {
                 $product->variant_text = $item['variant_text'];
                 }
+
                 $product->price = $item['price_skk'];
                 $product->moc_sort_price = $item['price_skk'];
                 $product->voc_sort_price = $item['price_skk'];
@@ -571,25 +592,7 @@ class AdminController extends Controller
                 }
             }
 
-            if(count($item['variants']) > 0)
-            {   
-                foreach($item['variants'] as $key => $type)
-                {
-                    $variant_product = Product::whereCode($key)->first();
 
-                    if($variant_product)
-                    {
-                        if($product->allVariants()->where('id',$variant_product->id)->count()==0)
-                        {
-                            $variant = new Variant();
-                            $variant->product_id = $product->id;
-                            $variant->variant_id = $variant_product->id;
-                            $variant->type = $type;
-                            $variant->save();
-                        }
-                    }
-                }
-            }
 
         }
 
