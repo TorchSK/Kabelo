@@ -32,7 +32,7 @@
           @if(isset($product->categories->first()->parent) && $product->categories->first()->parent->count() > 0)
           <a href="{{route('category.products',['path'=> $product->categories->first()->parent->full_url])}}" class="effect-1">{{$product->categories->first()->parent->name}}</a> / 
           @endif
-          @if(isset($product->categories))
+          @if(isset($product->categories->first()))
           <a href="{{route('category.products',['path'=> $product->categories->first()->full_url])}}" class="effect-1">{{$product->categories->first()->name}}</a>
           @endif
           </div>
