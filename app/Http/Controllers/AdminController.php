@@ -559,10 +559,11 @@ class AdminController extends Controller
                 }
 
                 $image = $product->image;
-
-                $image->path = $item['picture1']; 
-
+                
                 if($image){
+
+                    $image->path = $item['picture1']; 
+
                     $image->save();
                 }
             }
