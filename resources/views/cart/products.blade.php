@@ -15,7 +15,7 @@
 		    <div class="ui text loader">Prepočítavam</div>
 		 </div>
 
-		@if (sizeof($cart['items']) > 0)
+		@if (is_array($cart['items']) && sizeof($cart['items']) > 0)
 			
 			@if (Auth::check())
 				@foreach($cart->products as $product)
