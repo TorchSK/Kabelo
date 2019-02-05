@@ -554,7 +554,7 @@ class AdminController extends Controller
                 $priceLevel->moc_regular = $item['price_skk'];
                 $priceLevel->voc_regular = $item['price_skk'];
 
-                if($pricelevel){
+                if($priceLevel){
                     $priceLevel->save();
                 }
 
