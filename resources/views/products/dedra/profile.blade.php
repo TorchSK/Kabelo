@@ -138,7 +138,11 @@
         <div class="colors">
           <div class="caption">Farby</div>
           @foreach($product->colors as $variant)
-            <a class="color" href="{{route('product.detail',['product'=>$variant->url])}}"><img src="{{url($variant->image->path)}}" alt="{{url($variant->image->path)}}" /></a>
+            <a class="color" href="{{route('product.detail',['product'=>$variant->url])}}">
+              @if($variant->image)
+              <img src="{{url($variant->image->path)}}" alt="{{url($variant->image->path)}}" />
+              @endif
+            </a>
           @endforeach
         </div>
         @endif

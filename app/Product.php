@@ -176,6 +176,7 @@ class Product extends Model {
     {
         $this->attributes['price'] =  floatval(str_replace(',', '.', $value));
     }
+  
 
 }
 
