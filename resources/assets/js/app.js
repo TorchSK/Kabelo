@@ -3087,6 +3087,8 @@ if ($('body').attr('id')=="body_bulk")
 			    hot.loadData(data);
 			   	hot.loadData(data);
 			   	hot.render();
+			   	hot.render();
+
 		}
 
 		});
