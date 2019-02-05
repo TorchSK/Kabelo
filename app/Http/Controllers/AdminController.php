@@ -561,7 +561,10 @@ class AdminController extends Controller
                 $image = $product->image;
 
                 $image->path = $item['picture1']; 
-                $image->save();
+
+                if($image){
+                    $image->save();
+                }
             }
 
             if(count($item['variants']) > 0)
