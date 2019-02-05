@@ -428,10 +428,13 @@ class AdminController extends Controller
                 }
             }
 
+            $client = new \GoogleTranslate\Client('AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI');
+
+            $sourceLanguage = 'cs';
 
             $product = new Product();
-            $product->name = $item['text1'].' '.$item['text2'];;
-            $product->desc = $item['detail'];
+            $product->name = $client->translate($item['text1'].' '.$item['text2'], 'sk', $sourceLanguage);
+            $product->desc = $client->translate($item['detail'], 'sk', $sourceLanguage);
             $product->code = $item['product_id'];
             $product->price = $item['price_skk'];
             $product->price_unit = 'ks';
@@ -550,7 +553,10 @@ class AdminController extends Controller
                 $priceLevel = $product->priceLevels->first();
                 $priceLevel->moc_regular = $item['price_skk'];
                 $priceLevel->voc_regular = $item['price_skk'];
-                $priceLevel->save();
+
+                if($pricelevel){
+                    $priceLevel->save();
+                }
 
                 $image = $product->image;
 
