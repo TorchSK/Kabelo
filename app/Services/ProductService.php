@@ -56,10 +56,6 @@ class ProductService implements ProductServiceContract {
                 $query->whereHas('stickers');
             }
 
-            if ($request->has('without_category') && $request->get('without_category')==true)
-            {
-                $query->doesntHave('categories');
-            }
         });
 
         return $products->with(['categories','image','stickers'])->get();
