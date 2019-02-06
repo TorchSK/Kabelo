@@ -120,9 +120,9 @@
 
                 <div class="image">
                     @if($images[$key]['path'] != null)
-                    <img src="{{$images[$key]['path']}}">
+                    <img src="{{$images[$key]['path']}}" height="80">
                     @else
-                    <img src="{{public_path().'/img/empty.jpg'}}">
+                    <img src="{{public_path().'/img/empty.jpg'}}" height="80">
                     @endif
                 </div>
 
