@@ -3717,7 +3717,7 @@ if($('body').attr('id') == 'body_contact')
 }
 
 
-
+/*
 if($('body').attr('id') == 'cart_shipping')
 {
 	 var placeSearch, autocomplete;
@@ -3785,7 +3785,7 @@ if($('body').attr('id') == 'cart_shipping')
       	geolocate();
       })
 }
-
+*/
 
 
 tinymce.init({

@@ -24,7 +24,7 @@
 			            <input type="text" @if(count(json_decode($cart['invoice_address'], true))>1) value="{{json_decode($cart['invoice_address'])->name}}" @elseif(Auth::check()) value="{{Auth::user()->first_name.' '.Auth::user()->last_name}}" @endif />
 			      	</div><br/>
 			      	<div class="ui large input" data-column="street">
-			            <input type="text" id="autocomplete" class=" class="invoice_street_number" @if(count(json_decode($cart['invoice_address'], true))>1) value="{{json_decode($cart['invoice_address'])->street}}" @elseif(Auth::check() && isset(json_decode(Auth::user()->invoiceAddress->address)->street)) value="{{json_decode(Auth::user()->invoiceAddress->address)->street}}" @endif />
+			            <input type="text" class=" class="invoice_street_number" @if(count(json_decode($cart['invoice_address'], true))>1) value="{{json_decode($cart['invoice_address'])->street}}" @elseif(Auth::check() && isset(json_decode(Auth::user()->invoiceAddress->address)->street)) value="{{json_decode(Auth::user()->invoiceAddress->address)->street}}" @endif />
 			      	</div><br/>
 			      	<div class="ui large input" data-column="city">
 			            <input type="text" class="invoice_administrative_area_level_1" @if(count(json_decode($cart['invoice_address'], true))>1) value="{{json_decode($cart['invoice_address'])->city}}"  @elseif(Auth::check() && isset(json_decode(Auth::user()->invoiceAddress->address)->city)) value="{{json_decode(Auth::user()->invoiceAddress->address)->city}}" @endif/>
