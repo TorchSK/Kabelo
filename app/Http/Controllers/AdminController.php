@@ -24,7 +24,6 @@ use Excel;
 use Image;
 use Storage;
 use Cookie;
-use Exception;
 use DB;
 use Response;
 use File as Filez;
