@@ -45,7 +45,7 @@ class NewOrder extends Mailable
         return $this->from('obchod@dedraslovakia.sk', "Dedraslovakia")
                      ->subject('Objednávka č. '.$this->order['id'])
                      ->view('emails.neworder')
-                     ->replyTo($order['email'])
+                     ->replyTo($this->order['email'])
                      ->attach(storage_path('app/Obchodne podmienky.pdf'))
                      ->attach(storage_path('app/Vzorovy formular na odstupenie od zmluvy.pdf'));
 
