@@ -318,7 +318,7 @@ class CartController extends Controller
         // return price for FE
         $data['price'] = $price;
         $data['count'] = $cartCount;
-        $data['row'] = view('cart.row', $product)->render();
+        $data['row'] = view('cart.row', compact($product))->render();
 
         return $data;
     }
