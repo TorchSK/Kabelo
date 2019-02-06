@@ -11,7 +11,7 @@
 			<div class="invoice">
 
 				<div class="labels">
-	       			<div class="item">Meno *</div>
+	       			<div class="item">Meno a priezvisko*</div>
 	       			<div class="item">Ulica *</div>
 	       			<div class="item">Mesto *</div>
 	       			<div class="item">PSČ *</div>
