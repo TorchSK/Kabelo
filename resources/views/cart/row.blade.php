@@ -17,8 +17,12 @@
 		<div class="qty">
 			<i class="icon minus qty circle cart_minus_qty"></i>
 			<div class="ui right labeled input">
-			  <input type="text" value="@if(Auth::check()) {{$product->pivot->qty}} @else {{$cart['counts'][$product->id]}} @endif" class="cart_qty_input">
-			  <div class="ui basic label">ks</div>
+
+				@if($product->pivot)
+			  	<input type="text" value="@if(Auth::check()) {{$product->pivot->qty}} @else {{$cart['counts'][$product->id]}} @endif" class="cart_qty_input">
+
+			  		<div class="ui basic label">ks</div>
+			  	@endif
 			</div>
 			<i class="icon plus qty circle cart_plus_qty"></i>
 
@@ -31,7 +35,7 @@
 		</div>
 	@endif
 
-
+	@if($product->pivot)
     <div class="price">
     @if(Auth::check())
     
@@ -57,5 +61,6 @@
 	    @endif
 	 @endif
     </div>
+    @endif
 
 </div>
