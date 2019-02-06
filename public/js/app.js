@@ -351,7 +351,8 @@ function addToCart(productid, qty){
     	console.log(data);
       	cart.find('.label').text(data.count);
       	cart.find('price number').text(parseFloat(price+parseFloat(data.price)).toFixed(2));
-      	cartpopup.append(data.row);
+      	cartpopup.find('.button').before(data.row);
+      	cartpopup.find('.noitems').hide();
     }
   })
 }
