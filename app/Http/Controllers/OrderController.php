@@ -97,6 +97,10 @@ class OrderController extends Controller
             Mail::to(Setting::whereName('order_email_1')->first()->value)->queue(new NewOrder($order));
         }
 
+        if(Setting::whereName('order_email_2')->first()) {
+            Mail::to(Setting::whereName('order_email_2')->first()->value)->queue(new NewOrder($order));
+        }
+
         //delete the cart
         $this->cartService->delete();  
 

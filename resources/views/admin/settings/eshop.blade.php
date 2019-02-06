@@ -61,6 +61,14 @@
 			</div>	
 		</div>
 
+		<div class="item">
+			<div>Email pre kopiu objednavky</div>
+			<div class="ui input">
+			  <input type="text" name="order_email_2" value="{{App\Setting::firstOrCreate(['name'=>'order_email_2'])->value}}">
+			</div>	
+		</div>
+
+
 		</div>	
 
 	<button type="submit" class="ui green button settings_save">Ulož</button>
