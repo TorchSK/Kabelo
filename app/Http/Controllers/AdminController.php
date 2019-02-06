@@ -28,6 +28,7 @@ use Exception;
 use DB;
 use Response;
 use File as Filez;
+use Exception;
 
 use App\DeliveryMethod;
 use App\PaymentMethod;
@@ -435,8 +436,16 @@ class AdminController extends Controller
             $sourceLanguage = 'cs';
 
             $product = new Product();
-            $product->name = $client->translate($item['text1'].' '.$item['text2'], 'sk', $sourceLanguage);
-            $product->desc = $client->translate($item['detail'], 'sk', $sourceLanguage);
+
+            try {
+                $product->name = $client->translate($item['text1'].' '.$item['text2'], 'sk', $sourceLanguage);
+                $product->desc = $client->translate($item['detail'], 'sk', $sourceLanguage);
+            }
+            catch(Exception $e)
+            {
+
+            }
+
             $product->code = $item['product_id'];
             $product->price = $item['price_skk'];
             $product->price_unit = 'ks';
