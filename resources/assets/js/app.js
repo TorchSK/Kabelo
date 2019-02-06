@@ -340,6 +340,7 @@ function addToCart(productid, qty){
   var cart = $('#header .cart.item');
   var price = parseFloat(cart.find('price number').text());
   var cartid = $('.content.cart').data('cartid');
+  var cartpopup = $('#cart_popup');
 
   $.ajax({
     method: "POST",
@@ -350,6 +351,7 @@ function addToCart(productid, qty){
     	console.log(data);
       	cart.find('.label').text(data.count);
       	cart.find('price number').text(parseFloat(price+parseFloat(data.price)).toFixed(2));
+      	cartpopup.append(data.row);
     }
   })
 }
