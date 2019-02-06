@@ -36,7 +36,6 @@ class NewOrder extends Mailable
      */
     public function build()
     {
-        dd(json_decode($this->order->invoice_address)->email);
         $this->products = Order::where('id', $this->order['id'])->first()->products;
         $this->images = Order::where('id', $this->order['id'])->first()->products->pluck('image');
 
