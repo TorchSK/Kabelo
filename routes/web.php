@@ -44,6 +44,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/eshop/categories', 'AdminController@categories')->name('admin.eshop.categories');
 	Route::get('/eshop/category/{category}', 'AdminController@category')->name('admin.eshop.category');
 	Route::get('/eshop/new', 'AdminController@new')->name('admin.eshop.new');
+
 	Route::get('/eshop/sale', 'AdminController@sale')->name('admin.eshop.sale');
 	Route::get('/eshop/bestsellers', 'AdminController@bestsellers')->name('admin.eshop.bestsellers');
 	Route::get('/eshop/inactive', 'AdminController@inactive')->name('admin.eshop.inactive');
@@ -196,6 +197,8 @@ Route::get('makerproduct/list','ProductController@makerlist');
 Route::post('product/{productid}/change/category/{categoryid}','ProductController@changeCategory');
 Route::post('product/{productid}/rating/','ProductController@addRating');
 Route::put('product/{productid}/translate','ProductController@translate');
+Route::put('products/new/setorder/','ProductController@setNewOrder');
+Route::put('products/sale/setorder/','ProductController@setSaleOrder');
 
 Route::resource('product','ProductController');
 

@@ -2846,6 +2846,9 @@ body.admin #filterbar.vertical .categories .item {
 .admin_wrapper .short {
   max-width: 800px;
 }
+.admin_wrapper .table .collapsing i.icon {
+  cursor: move;
+}
 #admin_categories {
   padding: 3%;
 }

@@ -642,6 +642,28 @@ class ProductController extends Controller
 
     }
 
+
+    public function setNewOrder(Request $request)
+    {
+        foreach(Product::whereNew(1)->get() as $product)
+        {
+            $product->new_order = $request->get($product->id);
+            $product->save();
+        }
+    }
+
+
+
+    public function setSaleOrder(Request $request)
+    {
+        foreach(Product::whereSale(1)->get() as $product)
+        {
+            $product->sale_order = $request->get($product->id);
+            $product->save();
+        }
+    }
+
+
     public function destroy($id)
     {
         $product = Product::find($id);

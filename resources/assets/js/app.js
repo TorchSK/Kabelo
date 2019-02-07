@@ -2249,6 +2249,50 @@ $('.admin_banner_list').sortable({
   }
 });
 
+var fixHelper = function(e, ui) {  
+  ui.children().each(function() {  
+  console.log(e);
+    $(this).width($(this).width());  
+  });  
+  return ui;  
+};
+
+
+$('#admin_new_wrapper table tbody').sortable({
+	helper: fixHelper,
+  stop: function(){
+    $data = {};
+
+    $('#admin_new_wrapper table tbody tr').each(function(index, item){
+      $data[$(item).data('id')] = index;
+    });
+
+    $.ajax({
+      method: "PUT",
+      url: '/products/new/setorder',
+      data: $data
+    })
+  }
+});
+
+$('#admin_sale_wrapper table tbody').sortable({
+	helper: fixHelper,
+  stop: function(){
+    $data = {};
+
+    $('#admin_sale_wrapper table tbody tr').each(function(index, item){
+      $data[$(item).data('id')] = index;
+    });
+
+    $.ajax({
+      method: "PUT",
+      url: '/products/sale/setorder',
+      data: $data
+    })
+  }
+});
+
+
 $('table.sortable').tablesorter({
   cssAsc:'sorted ascending',
   cssDesc:'sorted descending'
