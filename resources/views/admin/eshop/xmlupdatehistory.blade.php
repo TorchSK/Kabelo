@@ -36,8 +36,8 @@
 							    	@foreach($content->log as $item)
 							    		<div class="item">
 							    			<div class="id">{{$item['id']}}</div>
-							    			@if(isset($item['code']))
-							    			<div class="image"><img src="{{App\File::find($item['id'])}}" /></div>
+							    			@if(isset($item['code']) && App\File::where('product_id',$item['id'])->count() > 0)
+							    			<div class="image"><img src="{{App\File::find($item['id'])->path}}" /></div>
 							    			@endif
 							    			@if(isset($item['code']))
 							    			<div class="code">{{$item['code']}}</div>
