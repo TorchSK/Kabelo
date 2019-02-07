@@ -13,7 +13,7 @@
 			    <th>Zmazať</th>
 			  </tr></thead>
 			  <tbody>
-			  	@foreach(App\Product::whereSale('1')->orderBy('sale_order')->get() as $product)
+			  	@foreach(App\Product::whereSale('1')->orderBy('sale_order','desc')->get() as $product)
 				<tr data-id="{{$product->id}}">
 				   <td class="collapsing"><i class="content icon"></i></td>
 			      <td>{{$product->id}}</td>

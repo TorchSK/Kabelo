@@ -16,7 +16,7 @@
 			    <th>Zmazať</th>
 			  </tr></thead>
 			  <tbody>
-			  	@foreach(App\Product::whereNew('1')->orderBy('new_order')->get() as $product)
+			  	@foreach(App\Product::whereNew('1')->orderBy('new_order','desc')->get() as $product)
 				<tr data-id="{{$product->id}}">
 			 	  <td class="collapsing"><i class="content icon"></i></td>
 			      <td>{{$product->id}}</td>
