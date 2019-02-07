@@ -2846,7 +2846,7 @@ body.admin #filterbar.vertical .categories .item {
 .admin_wrapper .short {
   max-width: 800px;
 }
-.admin_wrapper .table .collapsing i.icon {
+.admin_wrapper .table .collapsing i.content.icon {
   cursor: move;
 }
 #admin_categories {
