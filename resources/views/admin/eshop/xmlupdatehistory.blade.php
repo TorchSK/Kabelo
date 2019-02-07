@@ -37,7 +37,7 @@
 							    		<div class="item">
 							    			<div class="id">{{$item['id']}}</div>
 							    			@if(isset($item['code']))
-							    			<div class="image"><img src="{{App\File::find($item['id'])->path}}" /></div>
+							    			<div class="image"><img src="{{App\File::find($item['id'])}}" /></div>
 							    			@endif
 							    			@if(isset($item['code']))
 							    			<div class="code">{{$item['code']}}</div>
