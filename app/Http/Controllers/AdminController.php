@@ -28,6 +28,7 @@ use DB;
 use Response;
 use File as Filez;
 use Exception;
+use Cache;
 
 use App\DeliveryMethod;
 use App\PaymentMethod;
@@ -631,6 +632,11 @@ class AdminController extends Controller
         $log->operation = 'removed_products';
         $log->save();
 
+        $this->addCategoryFullurl();
+        $this->addProductUrl();
+
+        Cache::forget('category_counts');
+        Cache::forget('categories');
 
         return Response::json(['changes' => $changes, 'newCategories' => view('admin.eshop.xmlcategorylist', ['categories'=>collect($changes['new_categories'])])->render(), 'removedCategories' => view('admin.eshop.xmlcategorylist', ['categories'=>collect($changes['removed_categories'])])->render(), 'newProducts' => view('admin.eshop.xmlproductlist', ['products'=>collect($changes['new_products'])])->render(), 'removedProducts' => view('admin.eshop.xmlproductlist', ['products'=>$removedProducts])->render()]);   
 
