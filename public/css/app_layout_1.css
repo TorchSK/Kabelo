@@ -3804,6 +3804,40 @@ body.admin #filterbar.vertical .categories .item {
       -ms-flex: 1;
           flex: 1;
 }
+#admin_xmlupdate_wrapper .ui.accordion .accordion .content {
+  padding-bottom: 15px !important;
+}
+#admin_xmlupdate_wrapper .ui.accordion .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 25px;
+  margin-bottom: 2px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#admin_xmlupdate_wrapper .ui.accordion .item .id {
+  min-width: 100px;
+}
+#admin_xmlupdate_wrapper .ui.accordion .item .code {
+  width: 120px;
+}
+#admin_xmlupdate_wrapper .ui.accordion .item .image {
+  width: 70px;
+  height: 70px;
+  margin-right: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#admin_xmlupdate_wrapper .ui.accordion .item .image img {
+  max-width: 100%;
+  max-height: 100%;
+}
 #order_steps_wrapper #order_steps {
   margin-bottom: 0px;
   border-radius: 0;
