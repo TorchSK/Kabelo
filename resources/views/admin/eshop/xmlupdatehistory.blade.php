@@ -10,7 +10,7 @@
 				    {{$log->created_at->format('d.m.Y h:m')}} - 
 
 				    @if($log->type="product_update")
-				    	Aktualizácia produktov
+				    	Aktualizácia produktov (({{collect($content->log)->count()}} / {{collect($content->log)->count()}} / ({{collect($content->log)->count()}})
 				    @endif
 		  		</div>
 
