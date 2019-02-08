@@ -35,7 +35,7 @@
 		</div>
 	@endif
 
-	@if($product->pivot)
+	@if(Route::currentRouteName()=='cart.products')
     <div class="price">
     @if(Auth::check())
     
