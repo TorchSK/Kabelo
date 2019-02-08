@@ -18,7 +18,7 @@
 			<i class="icon minus qty circle cart_minus_qty"></i>
 			<div class="ui right labeled input">
 
-				@if($product->pivot || isset($cart['counts']))
+				@if($product->pivot && Route::currentRouteName()=='cart.products')
 			  	<input type="text" value="@if(Auth::check()) {{$product->pivot->qty}} @else {{$cart['counts'][$product->id]}} @endif" class="cart_qty_input">
 
 			  		<div class="ui basic label">ks</div>

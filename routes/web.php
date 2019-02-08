@@ -180,7 +180,7 @@ Route::delete('/user/{userid}', 'UserController@destroy');
 
 
 //Cart
-Route::get('cart/products','CartController@products');
+Route::get('cart/products','CartController@products')->name('cart.products');
 Route::get('cart/delivery','CartController@delivery');
 Route::get('cart/shipping','CartController@shipping');
 Route::get('cart/confirm','CartController@confirm');
