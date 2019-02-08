@@ -2205,14 +2205,6 @@ $('#admin_add_cover_h2').on('keyup', function(e, color) {
 });
 
 
-$('.admin_banner_list h1').each(function(index,element){
-  $(element).css('font-size', parseFloat(($(element).css('font-size')))*0.18);
-});
-
-$('.admin_banner_list h2').each(function(index,element){
-  $(element).css('font-size', parseFloat(($(element).css('font-size')))*0.2);
-});
-
 
 
 $('.delete_banner_btn').click(function(){
@@ -2232,6 +2224,21 @@ $('.delete_banner_btn').click(function(){
   }).modal('show');
 })
 
+$('.admin_cover_list').sortable({
+  stop: function(){
+    $data = {};
+
+    $('.admin_cover_list .banner').each(function(index, item){
+      $data[$(item).data('id')] = index;
+    });
+
+    $.ajax({
+      method: "PUT",
+      url: '/admin/covers/setorder',
+      data: $data
+    })
+  }
+});
 
 $('.admin_banner_list').sortable({
   stop: function(){
@@ -2243,11 +2250,13 @@ $('.admin_banner_list').sortable({
 
     $.ajax({
       method: "PUT",
-      url: '/admin/banner/setorder',
+      url: '/admin/banners/setorder',
       data: $data
     })
   }
 });
+
+
 
 var fixHelper = function(e, ui) {  
   ui.children().each(function() {  

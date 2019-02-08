@@ -7,7 +7,7 @@ use App\Product;
 use App\Category;
 use App\User;
 use App\Order;
-use App\Cover;
+use App\Banner;
 use App\Setting;
 use App\Color;
 use App\Parameter;
@@ -1415,9 +1415,18 @@ class AdminController extends Controller
     }
 
 
+    public function setBannerOrder(Request $request)
+    {
+        foreach(Banner::where('type','banner')->get() as $cover)
+        {
+            $cover->order = $request->get($cover->id);
+            $cover->save();
+        }
+    }
+
     public function setCoverOrder(Request $request)
     {
-        foreach(Cover::all() as $cover)
+        foreach(Banner::where('type','cover')->get() as $cover)
         {
             $cover->order = $request->get($cover->id);
             $cover->save();

@@ -8,7 +8,7 @@
 
 	<div class="ui header">Covery</div>
 
-	<div class="admin_banner_list">
+	<div class="admin_cover_list">
      	@foreach(App\Banner::where('type','cover')->orderBy('order')->get() as $cover)
             @include('home.banner',['type'=>'cover','width'=> 'calc(100px * '.App\Setting::firstOrCreate(['name'=>'cover_ratio'],['value'=>2.8])->value.')'])
         @endforeach

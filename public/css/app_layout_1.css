@@ -2990,42 +2990,52 @@ body.admin #filterbar.vertical .categories .item {
 .admin_dashboard .box table tbody td {
   font-weight: 300 !important;
 }
-.admin_banner_list {
+.admin_banner_list,
+.admin_cover_list {
   margin-bottom: 15px;
 }
-.admin_banner_list .banner[data-type="cover"] {
+.admin_banner_list .banner[data-type="cover"],
+.admin_cover_list .banner[data-type="cover"] {
   height: 100px;
   background-size: cover;
 }
-.admin_banner_list .banner[data-type="banner"] {
+.admin_banner_list .banner[data-type="banner"],
+.admin_cover_list .banner[data-type="banner"] {
   height: 100px;
   background-size: cover;
 }
-.admin_banner_list .banner {
+.admin_banner_list .banner,
+.admin_cover_list .banner {
   position: relative;
   display: inline-block;
   border-radius: 4px;
   overflow: hidden;
   margin-right: 5px;
 }
-.admin_banner_list .banner img {
+.admin_banner_list .banner img,
+.admin_cover_list .banner img {
   max-height: 100%;
   max-width: 100%;
 }
-.admin_banner_list .banner:hover {
+.admin_banner_list .banner:hover,
+.admin_cover_list .banner:hover {
   cursor: move;
 }
-.admin_banner_list .banner .banner_div {
+.admin_banner_list .banner .banner_div,
+.admin_cover_list .banner .banner_div {
   position: absolute;
 }
-.admin_banner_list .banner .banner_div .slogan {
+.admin_banner_list .banner .banner_div .slogan,
+.admin_cover_list .banner .banner_div .slogan {
   margin-bottom: 0px;
   font-family: 'hwt-artz';
 }
-.admin_banner_list .banner .banner_div .sub_slogan {
+.admin_banner_list .banner .banner_div .sub_slogan,
+.admin_cover_list .banner .banner_div .sub_slogan {
   margin-top: 9px;
 }
-.admin_banner_list .banner .banner_options {
+.admin_banner_list .banner .banner_options,
+.admin_cover_list .banner .banner_options {
   opacity: 0;
   position: absolute;
   margin-left: auto;
@@ -3035,7 +3045,8 @@ body.admin #filterbar.vertical .categories .item {
   width: 180px;
   top: 35%;
 }
-.admin_banner_list .banner:hover .banner_options {
+.admin_banner_list .banner:hover .banner_options,
+.admin_cover_list .banner:hover .banner_options {
   opacity: 1;
 }
 .admin_settings {
