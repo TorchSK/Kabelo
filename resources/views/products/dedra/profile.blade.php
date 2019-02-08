@@ -173,7 +173,11 @@
     </div>
 
     <div class="product_bottom">
+      @if($product->active)
     <div id="product_detail_tocart_btn" class="ui large labeled icon button" data-qty="{{$product->priceLevels->min('threshold')}}"><i class="add to cart icon"></i>Kúpiť</div>
+    @else
+    <div iclass="ui large button disabled"></i>Predaj skončíl</div>
+    @endif
 
    </div>
    
