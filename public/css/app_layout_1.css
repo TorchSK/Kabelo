@@ -2688,12 +2688,14 @@ a:hover {
   padding-bottom: 30px;
   text-align: right;
 }
-#product_detail_tocart_btn {
+#product_detail_tocart_btn,
+#product_detail_disabled_btn {
   position: relative;
   top: 40px;
 }
 @media all and (max-width: 980px) {
-  #product_detail_tocart_btn {
+  #product_detail_tocart_btn,
+  #product_detail_disabled_btn {
     margin-top: 15px;
     margin-bottom: 15px;
     display: inline-block;
