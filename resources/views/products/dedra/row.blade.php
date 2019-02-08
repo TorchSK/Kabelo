@@ -86,7 +86,11 @@
 		</div>
 		@endif
 
+		@if($product->active)
 		<a class="to_cart ui fluid icon button"><i class="shop icon"></i> Kúpiť</a>
+		@else
+		<div class="ui fluid disabled button">Predaj skončil</div>
+		@endif
 	</div>
 	@elseif(Request::segment(1) == 'admin')
 		<div class="actions ui fluid icon buttons">
