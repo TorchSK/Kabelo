@@ -106,7 +106,7 @@
     <div style="background-color: rgba(0,0,0,0.02); padding: 50px;border-radius: 0 0 6px 6px; text-align: center;">
         <div style="width: 100%; max-width: 800px; display: inline-block; text-align: left;">
 
-        <div style="margin: 15px 0;">Vaša objednávka č. {{$order->id}} bola <b>zrušená</b></div>
+        <div style="margin: 15px 0;">Veľmi sa ospravedlňujeme, ale Vaša objednávka č. {{$order->id}} bola <b>zrušená</b></div>
         <div style="margin: 15px 0;">Dôvod zrušenia: {{$order->cancel_text}} </div>
 
         <div style="margin: 15px 0;; font-weight: 100;" >Objednali ste si:</div>
@@ -189,11 +189,7 @@
 
         </div>
 
-        <div style="text-align: center;margin: 30px 0; font-size: 14px;">Stav objednávky si možte skontrolovat aj po kliknuti na</div>
 
-        <div style="text-align: center;">
-        <a id="detail_btn" target="_blank" href="{!! url("/order").'/'.$order->id !!}">Detail objednávky</a>
-    </div>
     </div>
 </div>
 
