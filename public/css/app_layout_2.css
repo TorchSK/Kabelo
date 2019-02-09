@@ -2356,7 +2356,8 @@ a:hover {
   transition: 0.2s all;
   cursor: pointer;
 }
-#product_main_wrapper .sizes .size:hover {
+#product_main_wrapper .sizes .size:hover,
+#product_main_wrapper .sizes .size.selected {
   background-color: #0d345b;
   color: #FFF;
 }
