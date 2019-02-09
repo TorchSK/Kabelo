@@ -4407,7 +4407,7 @@ $('.pages_list .checkbox').checkbox({
 
 $('#product_main_wrapper .sizes .size.active').click(function(){
 	$code = $(this).data('code');
-	$('#product_main_wrapper #code code').text($code);
+	$('#product_main_wrapper #code scode').text($code);
 
 	$('#product_main_wrapper .sizes').removeClass('selected');
 	$(this).addClass('selected');

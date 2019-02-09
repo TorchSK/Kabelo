@@ -92,7 +92,7 @@
     	
     	 <h1 id="name" style="font-weight: 600; font-size: 25px;">{{$product->name}}</h1>
 
-		  <div id="code">Kód produktu: <code>{{$product->code}}></code> </div>
+		  <div id="code">Kód produktu: <scode>{{$product->code}}</scode> </div>
 
     @if ($product->new)
     <div id="new" class="ui blue large label" style="margin-left: 15px;"><i class="star icon"></i> Novinka</div>
