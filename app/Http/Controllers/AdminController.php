@@ -18,6 +18,7 @@ use App\Text;
 use App\Sticker;
 use App\Variant;
 use App\Log;
+use App\Size;
 
 use Auth;
 use Excel;
