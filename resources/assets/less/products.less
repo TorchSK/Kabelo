@@ -699,6 +699,37 @@
 		}
 	}
 
+	.sizes{
+		display: flex;
+		margin-top: 25px;
+		flex-wrap: wrap;
+
+		.caption{
+			font-weight: 900;
+			margin-right: 15px;
+		}
+
+		.size{
+			margin-right: 15px;
+			border: 1px solid #DDD;
+			padding: 2px 7px;
+			border-radius:3px;
+			margin-bottom: 15px;
+			transition: 0.2s all;
+			cursor: pointer;
+
+			&:hover{
+				background-color: #0d345b;
+				color: #FFF;
+			}
+
+			&.inactive{
+				opacity: 0.6;
+				cursor: normal;
+			}
+		}
+	}
+
 	#desc{
 
 		.desc{

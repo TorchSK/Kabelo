@@ -147,6 +147,16 @@
         </div>
         @endif
 
+     @if($product->sizes->count() > 0)
+        <div class="sizes">
+          <div class="caption">Veľkosti</div>
+          @foreach($product->sizes as $size)
+            <div class="size @if($size->stock=='poslední kusy' || $size->stock=='PRODEJ UKONČEN') inactive @endif">{{$size->size_code}}</div>
+            @endif
+          @endforeach
+        </div>
+        @endif
+
     </div>
 
             
