@@ -2334,6 +2334,36 @@ a:hover {
   max-width: 100%;
   max-height: 100%;
 }
+#product_main_wrapper .sizes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 25px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+#product_main_wrapper .sizes .caption {
+  font-weight: 900;
+  margin-right: 15px;
+}
+#product_main_wrapper .sizes .size {
+  margin-right: 15px;
+  border: 1px solid #DDD;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  cursor: pointer;
+}
+#product_main_wrapper .sizes .size:hover {
+  background-color: #0d345b;
+  color: #FFF;
+}
+#product_main_wrapper .sizes .size.inactive {
+  opacity: 0.6;
+  cursor: normal;
+}
 #product_main_wrapper #desc .desc {
   margin: 35px 0 35px 0;
   font-size: 1.1em;
