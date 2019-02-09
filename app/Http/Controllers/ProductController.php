@@ -664,6 +664,13 @@ class ProductController extends Controller
     }
 
 
+
+    public function getSizes($id)
+    {
+        return Product::find($id)->sizes;
+    }
+    
+
     public function destroy($id)
     {
         $product = Product::find($id);

@@ -31,6 +31,7 @@ class CreateCartCookie
                     'items' => [],
                     'counts' => [],
                     'price_levels' => [], 
+                    'sizes' => [], 
                     'delivery_method' => '',
                     'payment_method' => '',
                     'invoice_address' => '{}',
@@ -43,6 +44,14 @@ class CreateCartCookie
                 $cookie = Cookie::queue('cart',$cookieData,555555);
                 $cart = Cookie::get('cart');
             }
+
+            if(!array_key_exists('sizes', $cart))
+            {
+                $cookieData = $cart;
+                $cookieData['sizes'] = [];
+                $cookie = Cookie::queue('cart',$cookieData,555555);
+                $cart = Cookie::get('cart');
+            } 
         }
 
         return $next($request);

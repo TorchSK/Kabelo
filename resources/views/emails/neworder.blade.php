@@ -54,11 +54,19 @@
             max-height: 100%;
           }
 
+
+          .code{
+            margin-right: 15px;
+            padding-top: 5px;
+            font-weight: 900;
+            width: 10%;
+          }
+
           .name{
             margin-right: 15px;
             padding-top: 5px;
             font-weight: 900;
-            width: 70%;
+            width: 60%;
           }
 
 
@@ -126,6 +134,7 @@
                     @endif
                 </div>
 
+                <div class="code">{{$product->code}}</div>
                 <div class="name">{{$product->name}}</div>
                
                 <div class="price">{{$product->pivot->qty}}{{$product->price_unit}} / {{$product->pivot->price}} &euro;</div>

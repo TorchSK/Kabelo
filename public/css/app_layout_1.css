@@ -1602,7 +1602,8 @@ a:hover {
       -ms-flex: 1;
           flex: 1;
 }
-#cart_popup .product .actions {
+#cart_popup .product .actions,
+#cart_popup .product .sizes {
   display: none;
 }
 #cart_popup .product .cart_delete_product {
@@ -2857,6 +2858,29 @@ a:hover {
 #product_price_levels_list .product_price_level:first-child .delete_price_level_btn {
   display: none;
 }
+#sizes_modal #sizes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+#sizes_modal #sizes .size {
+  border-radius: 5px;
+  font-size: 1.5em;
+  border: 1px solid #DDD;
+  padding: 15px 25px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+#sizes_modal #sizes .size.active:hover,
+#sizes_modal #sizes .size.selected {
+  background-color: #2185D0;
+  color: #FFF;
+}
+#sizes_modal #sizes .size.inactive {
+  opacity: 0.5;
+}
 body.admin .pusher {
   width: 100%;
   display: -webkit-box;
@@ -3953,6 +3977,45 @@ body.admin #filterbar.vertical .categories .item {
           flex: 1;
   background-color: #FFF;
   margin-right: 25px;
+}
+#cart_products_wrapper .product .sizes .list,
+#cart_confirm_wrapper .product .sizes .list {
+  margin-top: 7px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#cart_products_wrapper .product .sizes .list .size,
+#cart_confirm_wrapper .product .sizes .list .size {
+  position: relative;
+}
+#cart_products_wrapper .product .sizes .list .size .text,
+#cart_confirm_wrapper .product .sizes .list .size .text {
+  border: 1px solid #DDD;
+  padding: 1px 4px;
+  border-radius: 2px;
+  margin-right: 2px;
+}
+#cart_products_wrapper .product .sizes .list .size .count,
+#cart_confirm_wrapper .product .sizes .list .size .count {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  background-color: #2185D0;
+  border-radius: 9999px;
+  height: 18px;
+  width: 18px;
+  line-height: 18px;
+  font-size: 11px;
+  color: #FFF;
+  text-align: center;
+  z-index: 555;
+}
+#cart_products_wrapper .product .sizes,
+#cart_confirm_wrapper .product .sizes {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 #cart_products_wrapper .product .price,
 #cart_confirm_wrapper .product .price {

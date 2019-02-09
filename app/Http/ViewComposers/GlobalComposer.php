@@ -38,7 +38,7 @@ class GlobalComposer {
 
         if (Auth::check())
         {   
-         $cart = Auth::user()->cart;
+            $cart = Auth::user()->cart;
             $cart = $this->cartController->getCart($cart->id);
         }
         else

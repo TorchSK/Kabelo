@@ -1,4 +1,4 @@
-<div class="item product @if(isset($grid) && $grid)grid @endif @if($product->active==0) inactive @endif" data-productid={{$product->id}} data-minqty="{{$product->priceLevels->min('threshold')}}">
+<div class="item product @if(isset($grid) && $grid)grid @endif @if($product->active==0) inactive @endif" data-productid="{{$product->id}}" data-productcode="{{$product->code}}" data-minqty="{{$product->priceLevels->min('threshold')}}">
 	<a class="p_anch" href="{{route('product.detail',['url'=>$product->url])}}">@if($product->categories->count() > 0) {{$product->categories->first()->name}} @endif, {{$product->code}} - {{$product->name}}</a>
 	
 
@@ -87,7 +87,7 @@
 		@endif
 
 		@if($product->active)
-		<a class="to_cart ui fluid icon button"><i class="shop icon"></i> Kúpiť</a>
+		<a class="to_cart ui fluid icon button @if($product->sizes->count() > 0) sizes @endif"><i class="shop icon"></i> Kúpiť</a>
 		@else
 		<div class="ui fluid disabled button">Predaj skončil</div>
 		@endif
@@ -99,7 +99,5 @@
 		<a class="ui red small button product_row_delete_btn"><i class="delete icon"></i></a>
 		</div>	
 	@endif
-
-
 
 </div>

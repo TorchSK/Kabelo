@@ -336,16 +336,21 @@ function flyToElement(flyer, flyingTo) {
 }
 
 
-function addToCart(productid, qty){
+function addToCart(productid, qty, size=null){
   var cart = $('#header .cart.item');
   var price = parseFloat(cart.find('price number').text());
   var cartid = $('.content.cart').data('cartid');
   var cartpopup = $('#cart_popup');
 
+  data = {};
+  data['qty'] = qty;	
+
+  if(size!=null) data['size'] = size;
+
   $.ajax({
     method: "POST",
     url: '/cart/'+cartid+"/"+productid,
-    data: {qty: qty},
+    data: data,
     global: false,
     success: function(data){
     	console.log(data);
@@ -361,27 +366,82 @@ function addToCart(productid, qty){
 $('#product_detail_tocart_btn').click(function(){
   $product = $('#product_main_wrapper').data('id');
   $qty = $(this).data('qty');
+  $size = $('#product_main_wrapper .sizes .size.selected').data('code');
 
   var cart = $('#header .cart.item');
   var img = $('#product_main_wrapper').find('.img');
   flyToElement(img, cart);
   
-  addToCart($product, $qty);
+  addToCart($product, $qty, $size);
 
 })
 
 
 $(document).on('click', '.to_cart',function(){
   $product = $(this).closest('.product').data('productid');
+  $product_code = $(this).closest('.product').data('productcode');
+  $product_name = $(this).closest('.product').find('.title').text();
   var cart = $('#header .cart.item');
   var img = $(this).closest('.product').find('.image_div');
   $qty = $(this).closest('.product').data('minqty');
 
-  flyToElement(img, cart);
-  
-  addToCart($product, $qty);
+  if($(this).hasClass('sizes'))
+  {
+  	$('#sizes_modal').modal('setting', {
+  		duration: 200,
+  		onShow: function(){	
+  			$('#sizes_modal').find('.image img').attr('src',img.find('img').attr('src'));
+  			$('#sizes_modal > .header').html($product_name);
+
+  			$.get('/api/product/'+$product+'/sizes',{}, function(data){
+  				$('#sizes_modal').find("#sizes").html('');
+  				$(data).each(function(i,e){
+  					if(e.stock=='PRODEJ UKONČEN')
+  					{
+  						$class='inactive';
+  					}
+  					else
+  					{
+  						$class="active";
+  					}
+
+  					if(e.size_code==$product_code)
+  					{
+  						$selected=' selected';
+  					}
+  					else
+  					{
+  						$selected="";
+  					}
+
+  					$('#sizes_modal').find("#sizes").append('<div class="size '+$class+$selected+'" data-code="'+e.size_code+'">'+e.text+'</div>');
+
+  					$('#sizes_modal .size.active').click(function(){
+						$('#sizes_modal .size').removeClass('selected');
+						$(this).addClass('selected');
+					})
+
+
+  				});
+  			})
+  		},	
+
+	    onApprove : function() {
+	    	$size = $('#sizes_modal').find('.selected.size').data('code');
+	      	addToCart($product, $qty, $size);
+	      	flyToElement(img, cart);
+
+	 	}
+	  }).modal('show');
+  }
+  else
+  {
+  	flyToElement(img, cart);
+  	addToCart($product, $qty);
+  }
 
 })
+
 
 $(document).on('click','.delete_cart', function(){
     $('#delete_cart_modal').modal('setting', {

@@ -1,4 +1,35 @@
 <div class="modals">
+
+
+    <div class="ui modal" id="sizes_modal">
+      <div class="header">
+        Prosím vyberte veľkosť
+      </div>
+      <div class="image content">
+        <div class="ui medium image">
+          <img src="">
+        </div>
+        <div class="description">
+          <div class="ui header">Prosím vyberte veľkosť</div>
+          <p>
+            <div id="sizes">
+            
+            </div>
+          </p>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="ui red deny button">
+          Zavrieť
+        </div>
+        <div class="ui positive right labeled icon button">
+          Do košíku
+          <i class="cart icon"></i>
+        </div>
+      </div>
+    </div>
+
+
 <div class="ui mini modal" id="delete_cart_modal">
 				  
   <div class="header">

@@ -112,7 +112,6 @@ class CartController extends Controller
             }
 
             $cart['price'] = $price;
-
         }
         else
         {
@@ -260,17 +259,39 @@ class CartController extends Controller
         if (Auth::check())
         {   
             $cartCount = $cart->products->count();
+            $pivot = [];
+
 
             if (! $cart->products->contains($product->id))
-            {
-                $cart->products()->attach($product, ['qty'=>$request->get('qty'), 'price_level_id'=>$this->getPriceLevel($productId, $request->get('qty'))]);
-                                 $cartCount =  $cartCount +1;
+            {   
+                if($request->has('size'))
+                {
+                    $sizes = [];
+                    array_push($sizes, $request->get('size'));
+                    $pivot['sizes'] = json_encode($sizes);
+                }
+
+                $pivot['qty'] = $request->get('qty');
+                $pivot['price_level_id'] = $this->getPriceLevel($productId, $request->get('qty'));
+
+                $cart->products()->attach($product, $pivot);
+                $cartCount =  $cartCount +1;
 
             }
             else
             {
+                if($request->has('size'))
+                {
+                    $sizes = json_decode($cart->products->where('id',$productId)->first()->pivot->sizes);
+                    array_push($sizes, $request->get('size'));  
+                    $pivot['sizes'] = json_encode($sizes);
+                }
+                
                 $oldQty = $cart->products->where('id',$productId)->first()->pivot->qty;
-                $cart->products()->updateExistingPivot($product->id, ['qty'=>$oldQty + $request->get('qty'), 'price_level_id' => $this->getPriceLevel($productId, $oldQty + $request->get('qty'))]);
+                $pivot['qty'] = $oldQty + $request->get('qty');
+                $pivot['price_level_id'] = $this->getPriceLevel($productId, $oldQty + $request->get('qty'));
+
+                $cart->products()->updateExistingPivot($product->id, $pivot);
             }
 
             
@@ -283,6 +304,7 @@ class CartController extends Controller
             $cartPrice = $cart['price'];
             $cartItems = $cart['items'];
             $cartCounts = $cart['counts'];
+            $cartSizes = $cart['sizes'];
             $cartPriceLevels = $cart['price_levels'];
             $cartCount = count($cartCounts);
 
@@ -297,6 +319,10 @@ class CartController extends Controller
                 $cartPriceLevels[$productId]=$this->getPriceLevel($productId, $request->get('qty'));
                 $cartCount = $cartCount + 1;
 
+                if($request->has('size'))
+                {
+                  $cartSizes[$productId]=[$request->get('size')];
+                }
             }
             else
             {
@@ -305,12 +331,23 @@ class CartController extends Controller
                 $cartCounts[$productId]=$oldQty + $request->get('qty');
                 $cartPriceLevels[$productId] = $this->getPriceLevel($productId, $oldQty+ $request->get('qty'));
 
+                if($request->has('size'))
+                {
+                    array_push($cartSizes[$productId], $request->get('size'));
+                }
+
+
             }
 
             $cartData['price'] = $cartPrice + $price;
             $cartData['items'] = $cartItems;
             $cartData['counts'] = $cartCounts;
             $cartData['price_levels'] = $cartPriceLevels;
+
+            if($request->has('size'))
+            {
+                $cartData['sizes'] = $cartSizes;
+            }
 
             Cookie::queue('cart', $cartData, config('app.cartCookieExpire'));
         }

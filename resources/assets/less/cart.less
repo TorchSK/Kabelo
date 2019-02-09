@@ -61,6 +61,42 @@
 			margin-right: 25px;
 		}
 
+		.sizes{
+			.list{
+				margin-top: 7px;
+				display: flex;
+
+				.size{
+					position: relative;
+					.text{
+						border: 1px solid #DDD;
+						padding: 1px 4px;
+						border-radius:2px;
+						margin-right: 2px;
+					}
+
+					.count{
+						position: absolute;
+						top: -7px;
+						right: -7px;
+						background-color: @blue;
+						border-radius:9999px;
+						height: 18px;
+						width: 18px;
+						line-height: 18px;
+						font-size: 11px;
+						color: #FFF;
+						text-align: center;
+						z-index: 555;
+					}
+				}
+			}
+		}
+
+		.sizes{
+			flex: 1;
+		}
+		
 		.price{
 			font-size: 1.2em;
 			font-weight: 900;		

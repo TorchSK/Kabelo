@@ -10,7 +10,7 @@ class Cart extends Model {
 
   public function products() 
   {
- 	  return $this->belongsToMany('App\Product')->orderBy('created_at')->withTimestamps()->withPivot(['qty','price_level_id']);
+ 	  return $this->belongsToMany('App\Product')->orderBy('created_at')->withTimestamps()->withPivot(['qty','price_level_id','sizes']);
   }
 
 

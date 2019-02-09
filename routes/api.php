@@ -21,6 +21,7 @@ Route::get('products/search', 'ProductController@inputSearch');
 Route::get('products/filter', 'ProductController@filter');
 
 Route::get('products/all', 'ProductController@all');
+Route::get('product/{id}/sizes', 'ProductController@getSizes');
 
 Route::get('categories/search', 'CategoryController@inputSearch');
 
