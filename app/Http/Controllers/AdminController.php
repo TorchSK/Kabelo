@@ -666,7 +666,7 @@ class AdminController extends Controller
                     foreach($item['sizes'] as $code => $text)
                     {
                         
-                        if($product->sizes()->where('product_id',$product->id)->where('size_code', $size_code)->count()==0)
+                        if($product->sizes()->where('product_id',$product->id)->where('size_code', $code)->count()==0)
                         {
                             $size = new Size();
                             $size->product_id = $product->id;
