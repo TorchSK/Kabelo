@@ -36,7 +36,7 @@
 	@endif
 
 	@if(Route::currentRouteName()=='cart.products')
-	@if((Auth::check() && count(json_decode($product->pivot->sizes)) > 0) || (!Auth::check() && array_key_exists($product->id, $cart['sizes']) && count($cart['sizes'][$product->id]) > 0))
+	@if((Auth::check() && is_array(json_decode($product->pivot->sizes)) && count(json_decode($product->pivot->sizes)) > 0) || (!Auth::check() && array_key_exists($product->id, $cart['sizes']) && count($cart['sizes'][$product->id]) > 0))
 	<div class="sizes">
 		Veľkosti: 
 		<div class="list">
