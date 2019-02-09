@@ -642,6 +642,45 @@ class AdminController extends Controller
 
     }   
 
+    public function addSizes()
+    {
+        $contents = file_get_contents('https://dedra.blob.core.windows.net/cms/xmlexport/cs_xml_export.xml?ppk=133538');
+        $xml = XmlParser::extract($contents);
+
+        $items = $xml->parse([
+            'products' => ['uses' => 'product[product_id,sizes.size(::size_id=@)>sizes,sizes.size(::size_id=::availability)>sizeStocks]'],
+        ]);
+
+
+        $item_collection = collect($items['products']);
+
+        foreach(Product::all() as $product)
+        {   
+
+            $item = $item_collection->where('product_id',$product->code)->first();
+
+            if ($item)
+            {
+                if(count($item['sizes']) > 0)
+                {   
+                    foreach($item['sizes'] as $code => $text)
+                    {
+                        
+                        if($product->sizes()->where('product_id',$product_id)->where('size_code', $size_code)->count()==0)
+                        {
+                            $size = new Size();
+                            $size->product_id = $product->id;
+                            $size->size_code = $code;
+                            $size->text = $text;
+                            $size->stock = $item['sizeStocks'][$code];
+                            $size->save();
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
 
 
     public function confirmXMLUpdate(){
