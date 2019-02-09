@@ -46,7 +46,7 @@
       @if(Auth::check() && Auth::user()->admin && App\Order::whereIn('status_id',[0])->count() > 0)
         <div class="item orders">
         <a href="/admin/orders">
-         <i class="shipping fast icon"></i> <count> {{App\Order::whereIn('status_id',[0])->count()}}</count>
+         <i class="paper plane icon"></i> <count> {{App\Order::whereIn('status_id',[0])->count()}}</count>
         </a>
       </div>
 
