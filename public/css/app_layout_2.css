@@ -2362,7 +2362,8 @@ a:hover {
   color: #FFF;
 }
 #product_main_wrapper .sizes .size.inactive {
-  opacity: 0.6;
+  border: 1px solid #CCC;
+  color: #CCC;
   cursor: default;
 }
 #product_main_wrapper #desc .desc {
