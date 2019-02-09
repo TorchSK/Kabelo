@@ -4409,7 +4409,7 @@ $('#product_main_wrapper .sizes .size.active').click(function(){
 	$code = $(this).data('code');
 	$('#product_main_wrapper #code scode').text($code);
 
-	$('#product_main_wrapper .sizes').removeClass('selected');
+	$('#product_main_wrapper .sizes .size').removeClass('selected');
 	$(this).addClass('selected');
 })
 
