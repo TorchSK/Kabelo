@@ -92,7 +92,7 @@
     	
     	 <h1 id="name" style="font-weight: 600; font-size: 25px;">{{$product->name}}</h1>
 
-		  <div id="code">Kód produktu: {{$product->code}} </div>
+		  <div id="code">Kód produktu: <code>{{$product->code}}></code> </div>
 
     @if ($product->new)
     <div id="new" class="ui blue large label" style="margin-left: 15px;"><i class="star icon"></i> Novinka</div>
@@ -151,7 +151,7 @@
         <div class="sizes">
           <div class="caption">Veľkosti</div>
           @foreach($product->sizes as $size)
-            <div class="size @if($size->stock=='poslední kusy' || $size->stock=='PRODEJ UKONČEN') inactive @else active @endif @if($size->size_code==$product->code) selected @endif" data-code="{{$size->size_code}}" @if($size->stock=='poslední kusy' || $size->stock=='PRODEJ UKONČEN') data-tooltip="Vypredané" @endif>{{$size->text}}</div>
+            <div class="size @if($size->stock=='PRODEJ UKONČEN') inactive @else active @endif @if($size->size_code==$product->code) selected @endif" data-code="{{$size->size_code}}" @if($size->stock=='PRODEJ UKONČEN') data-tooltip="Vypredané" @endif>{{$size->text}}</div>
           @endforeach
         </div>
         @endif
