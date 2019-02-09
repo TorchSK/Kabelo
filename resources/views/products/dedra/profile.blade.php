@@ -134,7 +134,7 @@
         </div>
         @endif
 
-     @if($product->colors->count() > 0)
+        @if($product->colors->count() > 0)
         <div class="colors">
           <div class="caption">Farby</div>
           @foreach($product->colors as $variant)
@@ -147,12 +147,11 @@
         </div>
         @endif
 
-     @if($product->sizes->count() > 0)
+      @if($product->sizes->count() > 0)
         <div class="sizes">
           <div class="caption">Veľkosti</div>
           @foreach($product->sizes as $size)
             <div class="size @if($size->stock=='poslední kusy' || $size->stock=='PRODEJ UKONČEN') inactive @endif">{{$size->size_code}}</div>
-            @endif
           @endforeach
         </div>
         @endif
