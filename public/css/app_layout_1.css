@@ -2363,7 +2363,7 @@ a:hover {
 }
 #product_main_wrapper .sizes .size.inactive {
   opacity: 0.6;
-  cursor: normal;
+  cursor: default;
 }
 #product_main_wrapper #desc .desc {
   margin: 35px 0 35px 0;
