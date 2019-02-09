@@ -57,6 +57,11 @@ class Product extends Model {
     return $this->hasManyThrough('App\Product','App\Variant','product_id','id','id','variant_id')->where('type','Variant');
   }
 
+  public function sizes() 
+    {
+    return $this->hasMany('App\Size');
+  }
+
 
   public function colors() 
     {
