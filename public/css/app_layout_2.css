@@ -3992,7 +3992,7 @@ body.admin #filterbar.vertical .categories .item {
 #cart_products_wrapper .product .sizes .list .size .text,
 #cart_confirm_wrapper .product .sizes .list .size .text {
   border: 1px solid #DDD;
-  padding: 1px 4px;
+  padding: 3px 7px;
   border-radius: 2px;
   margin-right: 2px;
 }
