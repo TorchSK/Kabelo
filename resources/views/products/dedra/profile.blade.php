@@ -151,7 +151,7 @@
         <div class="sizes">
           <div class="caption">Veľkosti</div>
           @foreach($product->sizes as $size)
-            <div class="size @if($size->stock=='poslední kusy' || $size->stock=='PRODEJ UKONČEN') inactive @endif @if($size->size_code==$product->code) selected @endif" data-code="{{$size->size_code}}">{{$size->text}}</div>
+            <div class="size @if($size->stock=='poslední kusy' || $size->stock=='PRODEJ UKONČEN') inactive @else active @endif @if($size->size_code==$product->code) selected @endif" data-code="{{$size->size_code}}">{{$size->text}}</div>
           @endforeach
         </div>
         @endif
