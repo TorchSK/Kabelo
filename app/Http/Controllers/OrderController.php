@@ -49,7 +49,7 @@ class OrderController extends Controller
             foreach (Auth::user()->cart->products as $product)
             {
                 $orderCounts[$product->id] =  $product->pivot->qty;
-                $orderSizes[$product->id] =  $product->pivot->sizes;
+                $orderSizes[$product->id] =  json_decode($product->pivot->sizes);
 
             }
         }
@@ -58,7 +58,6 @@ class OrderController extends Controller
             $orderData = Cookie::get('cart');
             $orderCounts =  $orderData['counts'];
             $orderSizes =  $orderData['sizes'];
-
         }
 
     	$order = new Order();
@@ -89,7 +88,17 @@ class OrderController extends Controller
 
         foreach($orderData['items'] as $key => $productid)
         {
-            $order->products()->attach($productid, ['price' => $this->productService->getUserProductPrice($productid, $orderCounts[$productid]), 'qty' => $orderCounts[$productid], 'sizes' => $orderSizes[$productid]]);
+            $pivot = [];
+            $pivot['price'] = $this->productService->getUserProductPrice($productid, $orderCounts[$productid]);
+            $pivot['qty'] = $orderCounts[$productid];
+
+            if(is_array($orderSizes) && array_key_exists($productid, $orderSizes))
+            {
+                $pivot['sizes'] = json_encode($orderSizes[$productid]);
+            }
+
+
+            $order->products()->attach($productid, $pivot);
         }
     
 
