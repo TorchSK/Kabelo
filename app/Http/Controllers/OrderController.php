@@ -94,7 +94,6 @@ class OrderController extends Controller
             if(is_array($orderSizes) && array_key_exists($productid, $orderSizes) && json_encode($orderSizes[$productid])!='null')
             {
                 $pivot['sizes'] = json_encode($orderSizes[$productid]);
-                dd($pivot);
             }
 
 
