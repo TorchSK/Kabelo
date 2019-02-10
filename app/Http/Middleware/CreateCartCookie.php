@@ -45,7 +45,7 @@ class CreateCartCookie
                 $cart = Cookie::get('cart');
             }
 
-            if(!array_key_exists('sizes', $cart))
+            if(is_array($cart) && !array_key_exists('sizes', $cart))
             {
                 $cookieData = $cart;
                 $cookieData['sizes'] = [];
