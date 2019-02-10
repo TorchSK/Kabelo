@@ -50,7 +50,6 @@ class OrderController extends Controller
             {
                 $orderCounts[$product->id] =  $product->pivot->qty;
                 $orderSizes[$product->id] =  json_decode($product->pivot->sizes);
-
             }
         }
         else
@@ -92,9 +91,10 @@ class OrderController extends Controller
             $pivot['price'] = $this->productService->getUserProductPrice($productid, $orderCounts[$productid]);
             $pivot['qty'] = $orderCounts[$productid];
 
-            if(is_array($orderSizes) && array_key_exists($productid, $orderSizes))
+            if(is_array($orderSizes) && array_key_exists($productid, $orderSizes) && json_encode($orderSizes[$productid])!='null')
             {
                 $pivot['sizes'] = json_encode($orderSizes[$productid]);
+                dd($pivot);
             }
 
 
