@@ -47,7 +47,7 @@
     @if($appname=='kabelo')
     <link rel="canonical" href="https://www.dedra.kabelo.sk">
     @else
-    <link rel="canonical" href="https://dedraslovakia.sk/@if(Request::path()!="/"){{Request::path()}} @endif">
+    <link rel="canonical" href="https://dedraslovakia.sk/@if(Request::path()!="/"){{Request::path()}}@endif">
     @endif
 
     <!-- Fonts -->
