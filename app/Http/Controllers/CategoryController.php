@@ -131,6 +131,15 @@ class CategoryController extends Controller
                 $product->active = $request->get('active');
                 $product->save();
             }
+            
+            foreach($category->descendants as $child)
+            {
+                foreach($child->products as $product)
+                {
+                    $product->active = $request->get('active');
+                    $product->save();
+                }
+            }
         }
         Cache::forget('categories');
         return 1;
