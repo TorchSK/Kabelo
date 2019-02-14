@@ -237,18 +237,21 @@ class AdminController extends Controller
                         $desc = $client->translate($product->desc, 'sk', $sourceLanguage);
                         $product->desc = $desc;
                     }
+
+                    $product->translated = 1;
+                    $product->translate_error = null;
+
+                    $product->save();
                 }
                 catch(Exception $e)
                 {
                     $product->translate_error = 'e';
+                    $product->save();
                 }
 
             }
 
-            $product->translated = 1;
-            $product->translate_error = null;
 
-            $product->save();
      
         }
 
