@@ -225,7 +225,7 @@ class AdminController extends Controller
                 $product->translate_error = 'e';
             }
 
-            if ($checkName['language'] != 'sk')
+            if (isset($checkName) && $checkName['language'] != 'sk')
             {
                 try
                 {
