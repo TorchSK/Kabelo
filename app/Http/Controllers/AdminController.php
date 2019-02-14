@@ -213,22 +213,30 @@ class AdminController extends Controller
     {
         $client = new \GoogleTranslate\Client('AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI');
 
-        foreach(Product::where('id','>','74745')->get() as $product)
+        foreach(Product::whereActive(1)->whereTranslated(0)->whereNull('translate_error')->get() as $product)
         {   
             $sourceLanguage = 'cs';
 
-            $checkName = $result = $client->detect($product->name);
+            $checkName = $result = $client->detect($product->desc);
+
             if ($checkName['language'] != 'sk')
             {
-                $name = $client->translate($product->name, 'sk', $sourceLanguage);
-                $product->name = $name;
-            }
+                try
+                {
+                    $name = $client->translate($product->name, 'sk', $sourceLanguage);
+                    $product->name = $name;
+             
+                    if ($product->desc)
+                    {
+                        $desc = $client->translate($product->desc, 'sk', $sourceLanguage);
+                        $product->desc = $desc;
+                    }
+                }
+                catch(Exception $e)
+                {
+                    $product->translate_error = 'e';
+                }
 
-            
-            if ($product->desc)
-            {
-                $desc = $client->translate($product->desc, 'sk', $sourceLanguage);
-                $product->desc = $desc;
             }
 
             $product->translated = 1;
