@@ -139,6 +139,9 @@ class CategoryController extends Controller
                     $product->active = $request->get('active');
                     $product->save();
                 }
+
+                $child->active=$request->get('active');
+                $child->save();
             }
         }
         Cache::forget('categories');
