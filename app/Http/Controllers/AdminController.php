@@ -217,7 +217,13 @@ class AdminController extends Controller
         {   
             $sourceLanguage = 'cs';
 
-            $checkName = $result = $client->detect($product->desc);
+            try{
+                $checkName = $result = $client->detect($product->desc);
+            }
+            catch(Exception $e)
+            {
+                $product->translate_error = 'e';
+            }
 
             if ($checkName['language'] != 'sk')
             {
