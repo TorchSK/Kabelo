@@ -91,7 +91,7 @@
 			<div class="product" style="display: flex; border-bottom: 1px dashed #CCC; padding-bottom: 5px; margin-bottom: 10px;">
 				<div class="name">Názov</div>
 				<div class="qty">Počet</div>
-				<div class="price">Cena z ks</div>
+				<div class="price">Cena za ks</div>
 				<div class="total">Cena celkovo</div>
 			</div>
 		
