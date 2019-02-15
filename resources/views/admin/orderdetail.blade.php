@@ -39,7 +39,7 @@
 		    		<table class="ui very basic collapsing unstackable table">
 		    			<thead >
 					    <tr><th colspan="2">
-					      Detaily
+					      Detaily - <a href="/order/print/{{$order->id}}" target="_blank" class="print_order_link"><i class="print icon"></i>Vytlačiť</a>
 					    </th>
 					  </tr></thead>
 					  <tbody>

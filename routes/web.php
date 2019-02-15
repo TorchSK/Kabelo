@@ -262,6 +262,7 @@ Route::get('settings/account', 'UserController@settings');
 //Orders
 Route::get('order/success','OrderController@success');
 Route::get('orders/mine','OrderController@myhistory');
+Route::get('order/print/{id}','OrderController@print');
 
 Route::resource('order','OrderController');
 

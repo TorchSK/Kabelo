@@ -151,6 +151,16 @@ class OrderController extends Controller
         
     }
 
+    public function print($id)
+    {
+        $data['order'] = Order::find($id);
+
+        $this->authorize('view', $data['order']);
+
+        return view('orders.print', $data);
+    }
+
+
     public function show($id)
     {
         $data['order'] = Order::find($id);

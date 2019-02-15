@@ -1475,17 +1475,19 @@ a:hover {
   opacity: 1;
   display: block;
   position: absolute;
-  top: -20px;
+  top: -22px;
   right: -14px;
   margin-left: 5px;
   font-style: normal;
   z-index: 99999;
-  background-color: #2185D0;
+  background-color: #FBBD08;
   border-radius: 99999px;
   padding: 5px;
   width: 26px;
   height: 26px;
   text-align: center;
+  font-weight: 900;
+  font-size: 13px;
 }
 #header .catalogues {
   cursor: pointer;
@@ -4762,6 +4764,10 @@ body.admin #filterbar.vertical .categories .item {
 .orders_table td[data-statusid="5"] {
   background-color: #2185D0;
   color: #FFFFFF;
+}
+.print_order_link {
+  color: #2185D0 !important;
+  font-weight: 400 !important;
 }
 .order_products_list {
   margin: 35px 0;
