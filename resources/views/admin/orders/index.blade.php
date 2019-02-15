@@ -20,7 +20,7 @@
 
 	  </tr></thead>
 	  <tbody>
-	  	@foreach(App\Order::whereIn('status_id',[0,1,2])->orderBy('status_id', 'asc')->orderBy('created_at','desc')->get() as $order)
+	  	@foreach(App\Order::whereIn('status_id',[0,1])->orderBy('status_id', 'asc')->orderBy('created_at','desc')->get() as $order)
 		<tr data-order_id={{$order->id}}>
 		  <td class="collapsing">
 	      	<a href="{{route('admin.orderDetail',['order'=>$order->id])}}" class="ui icon blue button"><i class="search icon"></i></a>
@@ -65,7 +65,7 @@
 
 	  </tr></thead>
 	  <tbody>
-	  	@foreach(App\Order::whereIn('status_id',[3,4])->orderBy('created_at','desc')->get() as $order)
+	  	@foreach(App\Order::whereIn('status_id',[2,3])->orderBy('created_at','desc')->get() as $order)
 		<tr data-order_id={{$order->id}}>
 		  <td class="collapsing">
 	      	<a href="{{route('admin.orderDetail',['order'=>$order->id])}}" class="ui icon blue button"><i class="search icon"></i></a>
