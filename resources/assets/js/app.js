@@ -3685,6 +3685,25 @@ $('.delete_order_btn').click(function(){
   
   })
 
+$('.close_order_btn').click(function(){
+	$orderid = $(this).closest('tr').data('order_id');
+
+	$('#change_order_modal').modal('setting', {
+
+    onApprove : function() {
+		$.ajax({
+			type: "PUT",
+			url: "/order/"+$orderid,
+			data: {status_id: 5},
+			success: function(){
+				location.reload();
+			}
+		})
+	}
+	}).modal('show');
+  
+  })
+
 $('.delete_user_btn').click(function(){
 	$userid = $(this).closest('tr').data('user_id');
 

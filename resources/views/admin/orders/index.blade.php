@@ -85,6 +85,7 @@
 	      <td>{{$order->delivery->name}} / {{$order->payment->name}}</td>
 	      <td class="collapsing">
 	      	<div class="ui icon red button delete_order_btn"><i class="delete icon"></i></div>
+	      	<div class="ui icon blue button close_order_btn"><i class="check icon"></i></div>
 	      </td>
 
 	  	</tr>
