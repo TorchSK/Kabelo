@@ -4759,6 +4759,10 @@ body.admin #filterbar.vertical .categories .item {
   background-color: #DB2828;
   color: #FFFFFF;
 }
+.orders_table td[data-statusid="5"] {
+  background-color: #DB2828;
+  color: #FFFFFF;
+}
 .order_products_list {
   margin: 35px 0;
 }
