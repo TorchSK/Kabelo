@@ -120,7 +120,7 @@
 
 	<div class="total" style="margin-top: 25px; display: flex; justify-content: space-between; font-weight: 900;border-bottom: 1px solid #CCC; padding-bottom: 15px;">
 		<div style="">Celkom</div>
-		<div style="">{{$order->price}} &euro;</div>
+		<div style="">{{$order->price + $order->shipping_price}} &euro;</div>
 	</div>
 
 
