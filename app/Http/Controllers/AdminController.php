@@ -223,6 +223,7 @@ class AdminController extends Controller
             catch(Exception $e)
             {
                 $product->translate_error = 'e';
+                @break;
             }
 
             if (isset($checkName) && $checkName['language'] != 'sk')
@@ -247,6 +248,7 @@ class AdminController extends Controller
                 {
                     $product->translate_error = 'e';
                     $product->save();
+                    @break;
                 }
 
             }
