@@ -240,6 +240,7 @@ class AdminController extends Controller
         catch(Exception $e)
         {
             $product->translate_error = 'e';
+            $product->save();
         }
     }
 
