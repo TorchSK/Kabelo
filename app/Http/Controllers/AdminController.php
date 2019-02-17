@@ -231,7 +231,7 @@ class AdminController extends Controller
             {
                 $item = $item_collection->where('product_id',$product->code)->first();
 
-                $product->name = $this->translateService->translate($item['text1']+' '+$item['text2']+' '+$item['text3']);
+                $product->name = $this->translateService->translate($item['text1'].' '.$item['text2'].' '.$item['text3']);
                 $product->desc = $this->translateService->translate($item['detail']);
 
                 $product->translated = 1;
