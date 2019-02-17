@@ -14,6 +14,21 @@
 
 	<div class="name"><a href="{{route('product.detail',['url'=>$product->url])}}">{{$product->name}}</a></div>
 
+	
+	@if(is_array(json_decode($product->pivot->sizes)) && count(json_decode($product->pivot->sizes)) > 0)
+	<div class="sizes">
+		Veľkosti: 
+		<div class="list">
+			@foreach(array_unique(json_decode($product->pivot->sizes)) as $size)
+			<div class="size">
+				<div class="text">{{App\Size::where('size_code', $size)->first()->text}}</div>
+				<div class="count">{{array_count_values(json_decode($product->pivot->sizes))[$size]}}</div>
+			</div>
+			@endforeach
+		</div>
+	</div>
+	@endif
+
 
     <div class="price">
     	{{$product->pivot->price}} &euro;

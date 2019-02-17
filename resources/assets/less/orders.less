@@ -106,7 +106,7 @@
 		align-items: center;
 		position: relative;
 
-		.count{
+		>.count{
 			margin-right: 25px;
 			width: 40px;
 		}
@@ -141,6 +141,41 @@
 			margin-right: 25px;
 			flex:1;
 		}	
+
+		.sizes{
+			flex: 1;
+
+			.list{
+				margin-top: 7px;
+				display: flex;
+
+				.size{
+					position: relative;
+					.text{
+						border: 1px solid #DDD;
+						padding: 3px 7px;
+						border-radius:2px;
+						margin-right: 2px;
+					}
+
+					.count{
+						position: absolute;
+						top: -7px;
+						right: -7px;
+						background-color: @blue;
+						border-radius:9999px;
+						height: 18px;
+						width: 18px;
+						line-height: 18px;
+						font-size: 11px;
+						color: #FFF;
+						text-align: center;
+						z-index: 555;
+					}
+				}
+			}
+		}
+
 
 		.delete{
 			cursor: pointer;
