@@ -218,7 +218,7 @@ class AdminController extends Controller
     {
         $contents = file_get_contents('https://dedra.blob.core.windows.net/cms/xmlexport/cs_xml_export.xml?ppk=133538');
         $xml = XmlParser::extract($contents);
-        
+
         $items = $xml->parse([
             'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail]'],
         ]);
@@ -242,7 +242,7 @@ class AdminController extends Controller
         }
         catch(Exception $e)
         {
-            $product->translate_error = 'e';
+            $product->translate_error = 1;
             $product->save();
         }
     }
