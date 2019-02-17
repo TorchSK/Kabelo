@@ -36,6 +36,7 @@ use App\PaymentMethod;
 
 use App\Services\Contracts\ProductServiceContract;
 use App\Services\Contracts\CategoryServiceContract;
+use App\Services\Contracts\TranslateServiceContract;
 
 use Orchestra\Parser\Xml\Facade as XmlParser;
 
@@ -47,12 +48,16 @@ class AdminController extends Controller
      *
      * @return void
      */
-    public function __construct(ProductServiceContract $productService, CategoryServiceContract $categoryService)
+    public function __construct(
+        ProductServiceContract $productService, 
+        CategoryServiceContract $categoryService,
+        TranslateServiceContract $translateService
+    )
     {        
         $this->middleware('auth');
         $this->productService = $productService;
         $this->categoryService = $categoryService;
-
+        $this->translateService = $translateService;
     }
 
     public function copperLoadProducts()
@@ -211,52 +216,31 @@ class AdminController extends Controller
 
     public function translate()
     {
-        $client = new \GoogleTranslate\Client('AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI');
+        $items = $xml->parse([
+            'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail]'],
+        ]);
 
-        foreach(Product::whereActive(1)->whereTranslated(0)->whereNull('translate_error')->get() as $product)
-        {   
-            $sourceLanguage = 'cs';
+        $item_collection = collect($items['products']);
 
-            try{
-                $checkName = $result = $client->detect($product->desc);
-            }
-            catch(Exception $e)
+        try{
+
+            foreach(Product::where('translated', 0)->get() as $product)
             {
-                $product->translate_error = 'e';
-                break;
+                $item = $item_collection->where('product_id',$product->code)->first();
+
+                $product->name = $this->translateService->translate($item['text1']+' '+$item['text2']+' '+$item['text3']);
+                $product->desc = $this->translateService->translate($item['detail']);
+
+                $product->translated = 1;
+                $product->translate_error = null;
+
+                $product->save();
             }
-
-            if (isset($checkName) && $checkName['language'] != 'sk')
-            {
-                try
-                {
-                    $name = $client->translate($product->name, 'sk', $sourceLanguage);
-                    $product->name = $name;
-             
-                    if ($product->desc)
-                    {
-                        $desc = $client->translate($product->desc, 'sk', $sourceLanguage);
-                        $product->desc = $desc;
-                    }
-
-                    $product->translated = 1;
-                    $product->translate_error = null;
-
-                    $product->save();
-                }
-                catch(Exception $e)
-                {
-                    $product->translate_error = 'e';
-                    $product->save();
-                    break;
-                }
-
-            }
-
-
-     
         }
-
+        catch(Exception $e)
+        {
+            $product->translate_error = 'e';
+        }
     }
 
     public function translatePathToCz()

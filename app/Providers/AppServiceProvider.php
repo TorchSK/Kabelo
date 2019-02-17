@@ -40,5 +40,10 @@ class AppServiceProvider extends ServiceProvider
             'App\Services\Contracts\CategoryServiceContract',
             'App\Services\CategoryService'
         );
+
+        $this->app->bind(
+            'App\Services\Contracts\TranslateServiceContract',
+            'App\Services\TranslateService'
+        );
     }
 }
