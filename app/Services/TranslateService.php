@@ -16,24 +16,20 @@ class TranslateService implements TranslateServiceContract
 
         $client = new Client();
 
-        try {
-            $res = $client->post($URL, [
-                'query' => [
-                    'key' => 'AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI',
-                    'souce' => 'cs',
-                    'target' => 'sk',
-                    'format' => 'text'
-                ],
+        $res = $client->post($URL, [
+            'query' => [
+                'key' => 'AIzaSyCEYe59xoog4g8GvqPOrBOP-veGVY8IFqI',
+                'souce' => 'cs',
+                'target' => 'sk',
+                'format' => 'text'
+            ],
 
-                'form_params' => [
-                    'q' => $text
-                ]
-                
-            ]);
-        }
-        catch (GuzzleException $e) {
-            return $e->getMessage();
-        }
+            'form_params' => [
+                'q' => $text
+            ]
+            
+        ]);
+
 
         $responseArray = json_decode($res->getBody() ,true);
         $translatedText = $responseArray['data']['translations'][0]['translatedText'];
