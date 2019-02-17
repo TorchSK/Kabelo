@@ -216,6 +216,9 @@ class AdminController extends Controller
 
     public function translate()
     {
+        $contents = file_get_contents('https://dedra.blob.core.windows.net/cms/xmlexport/cs_xml_export.xml?ppk=133538');
+        $xml = XmlParser::extract($contents);
+        
         $items = $xml->parse([
             'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail]'],
         ]);
