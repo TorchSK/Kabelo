@@ -231,13 +231,23 @@ class AdminController extends Controller
             {
                 $item = $item_collection->where('product_id',$product->code)->first();
 
-                $product->name = $this->translateService->translate($item['text1'].' '.$item['text2'].' '.$item['text3']);
-                $product->desc = $this->translateService->translate($item['detail']);
+                if($item)
+                {
+                    if($item['text1'])
+                    {
+                        $product->name = $this->translateService->translate($item['text1'].' '.$item['text2'].' '.$item['text3']);
+                    }
 
-                $product->translated = 1;
-                $product->translate_error = null;
+                    if($item['detail'])
+                    {
+                        if($item['text1']) $product->desc = $this->translateService->translate($item['detail']);
+                    }
 
-                $product->save();
+                    $product->translated = 1;
+                    $product->translate_error = null;
+
+                    $product->save();
+                }
             }
         }
         catch(Exception $e)

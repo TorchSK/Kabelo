@@ -30,7 +30,6 @@ class TranslateService implements TranslateServiceContract
             
         ]);
 
-
         $responseArray = json_decode($res->getBody() ,true);
         $translatedText = $responseArray['data']['translations'][0]['translatedText'];
 
