@@ -244,6 +244,8 @@ class AdminController extends Controller
         {
             $product->translate_error = 1;
             $product->save();
+
+            return $e->getMessage();
         }
     }
 
