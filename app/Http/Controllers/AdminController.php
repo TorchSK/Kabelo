@@ -64,21 +64,21 @@ class AdminController extends Controller
     {   
         $sitemap = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
 
-        $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.env('APP_URL').'</loc>'."\n"."\t"."\t".'<priority>1.00</priority>'."\n"."\t".'</url>'."\n";
+        $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.preg_replace( "/\r|\n/", "", env('APP_URL')).'</loc>'."\n"."\t"."\t".'<priority>1.00</priority>'."\n"."\t".'</url>'."\n";
 
         foreach(Product::whereActive(1)->get() as $product)
         {
-            $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.env('APP_URL').'/p/'.$product->url.'</loc>'."\n"."\t"."\t".'<priority>0.80</priority>'."\n"."\t".'</url>'."\n";
+            $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.preg_replace( "/\r|\n/", "", env('APP_URL')).'/p/'.$product->url.'</loc>'."\n"."\t"."\t".'<priority>0.80</priority>'."\n"."\t".'</url>'."\n";
         }
 
         foreach(Category::whereActive(1)->get() as $category)
         {
-            $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.env('APP_URL').'/'.$category->full_url.'</loc>'."\n"."\t"."\t".'<priority>0.90</priority>'."\n"."\t".'</url>'."\n";
+            $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.preg_replace( "/\r|\n/", "", env('APP_URL')).'/'.$category->full_url.'</loc>'."\n"."\t"."\t".'<priority>0.90</priority>'."\n"."\t".'</url>'."\n";
         }
 
         foreach(Page::all() as $page)
         {
-            $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.env('APP_URL').'/'.$page->url.'</loc>'."\n"."\t"."\t".'<priority>0.90</priority>'."\n".'</url>'."\t"."\n";
+            $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.preg_replace( "/\r|\n/", "", env('APP_URL')).'/'.$page->url.'</loc>'."\n"."\t"."\t".'<priority>0.90</priority>'."\n".'</url>'."\t"."\n";
         }
 
         $sitemap = $sitemap.'</urlset>';
