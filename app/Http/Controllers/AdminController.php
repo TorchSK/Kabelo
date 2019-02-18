@@ -81,7 +81,7 @@ class AdminController extends Controller
 
         $sitemap = $sitemap.'</urlset>';
 
-        Storage::put('sitemap.xml', $sitemap);
+        Storage::disk('public_physial')->put('sitemap.xml', $sitemap);
 
         return 1;
     }
