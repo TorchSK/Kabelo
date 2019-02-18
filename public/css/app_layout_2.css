@@ -3970,7 +3970,7 @@ body.admin #filterbar.vertical .categories .item {
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
-  max-width: 400px;
+  max-width: 350px;
 }
 #cart_products_wrapper .product .delete,
 #cart_confirm_wrapper .product .delete {
@@ -4022,6 +4022,10 @@ body.admin #filterbar.vertical .categories .item {
   color: #FFF;
   text-align: center;
   z-index: 555;
+}
+#cart_products_wrapper .product .unit_price,
+#cart_confirm_wrapper .product .unit_price {
+  margin-right: 35px;
 }
 #cart_products_wrapper .product .price,
 #cart_confirm_wrapper .product .price {
