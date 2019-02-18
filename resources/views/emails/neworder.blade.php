@@ -65,7 +65,7 @@
           .name{
             margin-right: 15px;
             padding-top: 5px;
-            font-weight: 900;
+            font-weight: 400;
             width: 60%;
           }
 
@@ -137,7 +137,10 @@
                 <div class="code">{{$product->code}}</div>
                 <div class="name">{{$product->name}}</div>
                
-                <div class="price">{{$product->pivot->qty}}{{$product->price_unit}} / {{$product->pivot->price}} &euro;</div>
+                <div class="price">
+                    {{$product->pivot->qty}}{{$product->price_unit}} / {{$product->pivot->price}} &euro;
+                    <div><b>{{$product->pivot->qty * $product->pivot->price}} &euro;</b></div>
+                </div>
 
 
             </div>
