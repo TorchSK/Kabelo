@@ -25,7 +25,7 @@
 
           </div>
 
-          <div id="search_results" class="popup">
+          <div id="search_results" class="desktop">
            <div class="ui horizontal divider active title">Produkty</div>
            <div class="products"></div>
 

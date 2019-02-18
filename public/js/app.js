@@ -3797,9 +3797,9 @@ $('#main_search input').keyup(function(e){
 			type: "GET",
 			url: "/api/search/"+$query,
 			success: function(data){
-				$('#search_results.popup').show();
-				$('#search_results.popup').find('.products').html(data.products);
-				$('#search_results.popup').find('.users').html(data.users);
+				$('#search_results.desktop').show();
+				$('#search_results.desktop').find('.products').html(data.products);
+				$('#search_results.desktop').find('.users').html(data.users);
 				$(document).bind('ajaxStart');
 			}
 		})	
