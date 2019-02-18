@@ -3809,7 +3809,7 @@ $('#main_search input').keyup(function(e){
 
 $('body').mouseup(function(e) 
 {
-    var container = $("#search_results");
+    var container = $("#search_results.desktop");
 
     // if the target of the click isn't the container nor a descendant of the container
     if (!container.is(e.target) && container.has(e.target).length === 0) 

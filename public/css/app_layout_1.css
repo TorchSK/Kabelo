@@ -1415,11 +1415,6 @@ a:hover {
   text-align: left;
   border-bottom: 1px solid #DDD;
 }
-@media all and (max-width: 980px) {
-  #header #search_results {
-    display: none !important;
-  }
-}
 #header #search_results .divider {
   margin: 10px;
 }
