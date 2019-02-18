@@ -62,24 +62,28 @@ class AdminController extends Controller
 
     public function getSitemap()
     {
-        $sitemap = '';
+        $sitemap = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
 
         foreach(Product::whereActive(1)->get() as $product)
         {
-            $sitemap = $sitemap.env('APP_URL').'/p/'.$product->url.'<br/>';
+            $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.env('APP_URL').'/p/'.$product->url.'</loc>'."\n"."\t".'</url>'."\n";
         }
 
         foreach(Category::whereActive(1)->get() as $category)
         {
-            $sitemap = $sitemap.env('APP_URL').'/'.$category->full_url.'<br/>';
+            $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.env('APP_URL').'/'.$category->full_url.'</loc>'."\n"."\t".'</url>'."\n";
         }
 
         foreach(Page::all() as $page)
         {
-            $sitemap = $sitemap.env('APP_URL').'/'.$page->url.'<br/>';
+            $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.env('APP_URL').'/'.$page->url.'</loc>'."\n"."\t".'</url>'."\n";
         }
 
-        return $sitemap;
+        $sitemap = $sitemap.'</urlset>';
+
+        Storage::put('sitemap.xml', $sitemap);
+
+        return 1;
     }
     public function copperLoadProducts()
     {   
