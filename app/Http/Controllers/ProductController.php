@@ -302,6 +302,14 @@ class ProductController extends Controller
         {
             $product = Product::find($item['id']);
             $product->name = $item['name'];
+
+            $priceLevel = PriceLevel::where('product_id', $item['id'])->first();
+            $priceLevel->moc_regular = $item['price_levels'][0]['moc_regular'];
+            $priceLevel->moc_sale = $item['price_levels'][0]['moc_sale'];
+            $priceLevel->save();
+            
+            $product->sale = $item['sale'];
+            $product->name = $item['name'];
             $product->save();
         }
 

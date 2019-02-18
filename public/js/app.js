@@ -3082,15 +3082,18 @@ if ($('body').attr('id')=="body_bulk")
 	 	{data: "image", renderer: imageRenderer},
 	    {data: "code"},
 	    {data: "name"},
+	    {data: "price_levels.0.moc_regular"},
+	    {data: "price_levels.0.moc_sale"},
+	    {data: "sale", type: 'checkbox',checkedTemplate: 1,uncheckedTemplate: 0},
 	    {data: "categories", renderer: categoryRenderer}
 	  ],
-	  colHeaders: ['', 'Obrázok','Kód', 'Názov', 'Kategórie'],
-	  colWidths: [5,7,10,'',''],
+	  colHeaders: ['', 'Obrázok','Kód', 'Názov','Cena','Cena v zlave', "Zlava", 'Kategórie'],
+	  colWidths: [5,7,10,'',10,10,5,''],
 	  rowHeaders: true,
 	  minSpareRows: 1,
 	  stretchH: 'all',
 	  columnSorting: true,
-	    rowHeights: 60 ,
+	  rowHeights: 60 ,
 
 	  outsideClickDeselects : false,
 	  afterChange: function(change, source){
@@ -3103,6 +3106,7 @@ if ($('body').attr('id')=="body_bulk")
 	  		$.each(cellChanges, function (index, element) { 
 		  		$this.getCell(element['rowid'], element['colid'], false).className = 'changed'; 
 		  	});
+		  	console.log($data['changes']);
 	  	}
 	  },
 	  afterRender: function(){
@@ -3147,7 +3151,6 @@ if ($('body').attr('id')=="body_bulk")
 		$(td).append('<a class="teal icon mini button" href="/admin/eshop/product/'+value+'"><i class="edit icon"><i></a>');
 		return td;
 	}
-
 
 	function categoryRenderer (instance, td, row, col, prop, value, cellProperties) {
 		var row = [];
