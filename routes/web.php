@@ -147,6 +147,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
 	// Banners
 	Route::resource('banner','BannerController');
+
+	Route::get('/sitemap', 'AdminController@getSitemap');
+
 });
 
 

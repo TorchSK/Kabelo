@@ -60,6 +60,27 @@ class AdminController extends Controller
         $this->translateService = $translateService;
     }
 
+    public function getSitemap()
+    {
+        $sitemap = '';
+
+        foreach(Product::whereActive(1)->get() as $product)
+        {
+            $sitemap = $sitemap.env('APP_URL').'/p/'.$product->url.'<br/>';
+        }
+
+        foreach(Category::whereActive(1)->get() as $category)
+        {
+            $sitemap = $sitemap.env('APP_URL').'/'.$category->full_url.'<br/>';
+        }
+
+        foreach(Page::all() as $page)
+        {
+            $sitemap = $sitemap.env('APP_URL').'/'.$page->url.'<br/>';
+        }
+
+        return $sitemap;
+    }
     public function copperLoadProducts()
     {   
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
