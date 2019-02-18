@@ -136,10 +136,11 @@
 
                 <div class="code">{{$product->code}}</div>
                 <div class="name">{{$product->name}}</div>
-               
+                <div class="qty"> {{$product->pivot->qty}}{{$product->price_unit}}</div>
+
                 <div class="price">
-                    {{$product->pivot->qty}}{{$product->price_unit}} / {{$product->pivot->price}} &euro;
-                    <div><b>{{$product->pivot->qty * $product->pivot->price}} &euro;</b></div>
+                    {{$product->pivot->price / $product->pivot->qty}} &euro; / {{$product->price_unit}}
+                    <div><b>{{$product->pivot->price}} &euro;</b></div>
                 </div>
 
 

@@ -31,7 +31,8 @@
 
 
     <div class="price">
-    	{{$product->pivot->price}} &euro;
+    	<div>{{$product->pivot->price / $product->pivot->qty}} &euro; / {{$product->price_unit}}</div>
+    	<div><b>{{$product->pivot->price}} &euro; </b></div>
     </div>
 
 </div>

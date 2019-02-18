@@ -4882,8 +4882,12 @@ body.admin #filterbar.vertical .categories .item {
   margin-right: 125px;
 }
 .order_products_list .product .price {
+  text-align: right;
   font-size: 1.2em;
+}
+.order_products_list .product .price b {
   font-weight: 900;
+  padding-top: 5px;
 }
 .order_detail.admin {
   width: 100%;
