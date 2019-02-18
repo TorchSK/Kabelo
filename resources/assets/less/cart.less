@@ -2,6 +2,10 @@
 	#order_steps{
 		margin-bottom: 0px;
 		border-radius: 0;
+
+		@media @break3{
+			display: none;
+		}
 	}
 }
 
@@ -25,12 +29,21 @@
 		align-content: center;
 		position: relative;
 
+		@media @break3{
+			flex-direction: column;
+		}
+
 		.image_div{
 			width: 150px;
 			height: 100px;
 			display: inline-block;
 			margin-right: 25px;
 			text-align: center;
+
+			@media @break3{
+				margin-right: 0px;
+				margin-bottom: 15px;
+			}
 
 			a{
 				margin: 0 auto;
@@ -49,6 +62,11 @@
 			margin-right: 25px;
 			flex: 2;
 			max-width: 350px;
+
+			@media @break3{
+				margin-right: 0px;
+				margin-bottom: 15px;
+			}
 		}	
 
 		.delete{
@@ -59,6 +77,11 @@
 			flex:1;
 			background-color: #FFF;
 			margin-right: 25px;
+
+			@media @break3{
+				margin-right: 0px;
+				margin: 15px 0;
+			}
 		}
 
 		.sizes{
@@ -70,6 +93,7 @@
 
 				.size{
 					position: relative;
+
 					.text{
 						border: 1px solid #DDD;
 						padding: 3px 7px;
@@ -98,6 +122,12 @@
 		.unit_price
 		{
 			margin-right: 35px;
+
+			@media @break3{
+				text-align: right;
+				margin-right: 0px;
+				margin-top: 15px;
+			}
 		}
 
 		.price{
@@ -186,17 +216,28 @@
 	>.container{
 		background-color: #FAFAFA;
 		padding: 50px;
+
+		>.flex_row{
+			justify-content: space-between;
+
+			@media @break3{
+				flex-direction: column;
+			}
+
+		}
 	}
 
-	.flex_row{
-		justify-content: space-between;
-	}
+
 
 	#cart_delivery_options{
 		padding: 0 5%;
 		flex:1;
 		margin-right: 25px;
 		text-align: left;
+
+		@media @break3{
+			margin-right: 0px;
+		}
 	}
 
 	#cart_payment_options{
@@ -208,6 +249,9 @@
 	}
 
 	div.ui.fluid.steps{
+
+		flex-direction: row !important;
+
 		.step{
 			justify-content: start;
 		}

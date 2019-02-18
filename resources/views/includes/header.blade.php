@@ -1,11 +1,11 @@
 <div id="header">
-    <div class="container">
-
     @include('includes.modals')
-    
     @if(Auth::check())
     <div class="content cart hidden" data-cartid="{{Auth::user()->cart->id}}"></div>
     @endif
+
+    <div class="container">
+    
     
         <a class="logo item" href="/">
           <div class="image"><img class="{{strtolower($appname)}}" alt="logo" src="/img/logo_{{strtolower($appname)}}_white.png" /></div>
@@ -19,13 +19,13 @@
     
         
         <div class="item search">
-          <div class="ui left icon input" id="main_search">
+          <div class="ui left icon input popup" id="main_search">
             <input type="text" placeholder="Hľadať produkty..." />
-                        <i class="search icon"></i>
+            <i class="search icon"></i>
 
           </div>
 
-          <div id="search_results">
+          <div id="search_results" class="popup">
            <div class="ui horizontal divider active title">Produkty</div>
            <div class="products"></div>
 
@@ -38,9 +38,7 @@
           </div>
         </div>
 
-        <a class="item" id="sidebar_handle">
-          <i class="icon big content"></i>
-        </a>
+
 
    
       @if(Auth::check() && Auth::user()->admin && App\Order::whereIn('status_id',[0])->count() > 0)
@@ -148,6 +146,10 @@
               <a class="ui tiny blue button" href="/cart/products">Zobraz košík</a>
           </div>
         </div>
+
+        <a class="item" id="sidebar_handle">
+          <i class="icon big content"></i>
+        </a>
 
       @if($appname=='dedra')
         <div class="catalogues item ct">
