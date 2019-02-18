@@ -198,6 +198,8 @@ class ProductController extends Controller
 
         $product = Product::whereUrl($url)->first();
         
+        if(!$product) return abort(404);
+        
         $data = [
            'product' => $product,
            'bodyid' => 'body_product_detail',
@@ -301,6 +303,14 @@ class ProductController extends Controller
         foreach ($data['changes'] as $item)
         {
             $product = Product::find($item['id']);
+            $product->name = $item['name'];
+
+            $priceLevel = PriceLevel::where('product_id', $item['id'])->first();
+            $priceLevel->moc_regular = $item['price_levels'][0]['moc_regular'];
+            $priceLevel->moc_sale = $item['price_levels'][0]['moc_sale'];
+            $priceLevel->save();
+            
+            $product->sale = $item['sale'];
             $product->name = $item['name'];
             $product->save();
         }

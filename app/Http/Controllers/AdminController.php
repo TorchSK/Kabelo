@@ -60,6 +60,33 @@ class AdminController extends Controller
         $this->translateService = $translateService;
     }
 
+    public function getSitemap()
+    {   
+        $sitemap = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
+
+        $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.env('APP_URL').'</loc>'."\n"."\t"."\t".'<priority>1.00</priority>'."\n"."\t".'</url>'."\n";
+
+        foreach(Product::whereActive(1)->get() as $product)
+        {
+            $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.env('APP_URL').'/p/'.$product->url.'</loc>'."\n"."\t"."\t".'<priority>0.80</priority>'."\n"."\t".'</url>'."\n";
+        }
+
+        foreach(Category::whereActive(1)->get() as $category)
+        {
+            $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.env('APP_URL').'/'.$category->full_url.'</loc>'."\n"."\t"."\t".'<priority>0.90</priority>'."\n"."\t".'</url>'."\n";
+        }
+
+        foreach(Page::all() as $page)
+        {
+            $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.env('APP_URL').'/'.$page->url.'</loc>'."\n"."\t"."\t".'<priority>0.90</priority>'."\n".'</url>'."\t"."\n";
+        }
+
+        $sitemap = $sitemap.'</urlset>';
+
+        Storage::disk('public_physial')->put('sitemap.xml', $sitemap);
+
+        return 1;
+    }
     public function copperLoadProducts()
     {   
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -551,26 +578,6 @@ class AdminController extends Controller
 
             $product->priceLevels()->save($pricelevel);
 
-            if(count($item['variants']) > 0)
-            {   
-                foreach($item['variants'] as $key => $type)
-                {
-                    $variant_product = Product::whereCode($key)->first();
-
-                    if($variant_product)
-                    {
-                        if($product->allVariants()->where('id',$variant_product->id)->count()==0)
-                        {
-                            $variant = new Variant();
-                            $variant->product_id = $product->id;
-                            $variant->variant_id = $variant_product->id;
-                            $variant->type = $type;
-                            $variant->save();
-                        }
-                    }
-                }
-            }
-
         }
         
         
@@ -654,6 +661,8 @@ class AdminController extends Controller
 
         $this->addCategoryFullurl();
         $this->addProductUrl();
+        $this->addVariants();
+        $this->addSizes();
 
         Cache::forget('category_counts');
         Cache::forget('categories');
@@ -661,6 +670,48 @@ class AdminController extends Controller
         return Response::json(['changes' => $changes, 'newCategories' => view('admin.eshop.xmlcategorylist', ['categories'=>collect($changes['new_categories'])])->render(), 'removedCategories' => view('admin.eshop.xmlcategorylist', ['categories'=>collect($changes['removed_categories'])])->render(), 'newProducts' => view('admin.eshop.xmlproductlist', ['products'=>collect($changes['new_products'])])->render(), 'removedProducts' => view('admin.eshop.xmlproductlist', ['products'=>$removedProducts])->render()]);   
 
     }   
+
+    public function addVariants()
+    {
+        $contents = file_get_contents('https://dedra.blob.core.windows.net/cms/xmlexport/cs_xml_export.xml?ppk=133538');
+        $xml = XmlParser::extract($contents);
+
+        $items = $xml->parse([
+            'products' => ['uses' => 'product[product_id,sizes.size(::size_id=@)>sizes,sizes.size(::size_id=::availability)>sizeStocks]'],
+        ]);
+
+
+        $item_collection = collect($items['products']);
+
+        foreach(Product::whereActive(1) as $product)
+        {   
+
+            $item = $item_collection->where('product_id',$product->code)->first();
+
+            if ($item)
+            {
+                if(count($item['variants']) > 0)
+                {   
+                    foreach($item['variants'] as $key => $type)
+                    {
+                        $variant_product = Product::whereCode($key)->first();
+
+                        if($variant_product)
+                        {
+                            if($product->allVariants()->where('id',$variant_product->id)->count()==0)
+                            {
+                                $variant = new Variant();
+                                $variant->product_id = $product->id;
+                                $variant->variant_id = $variant_product->id;
+                                $variant->type = $type;
+                                $variant->save();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     public function addSizes()
     {
