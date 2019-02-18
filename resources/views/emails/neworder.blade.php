@@ -182,6 +182,11 @@
         <div style="margin: 30px 0; font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;" id="shipping_data">
             <div><b>Sposob dopravy: </b>{{$delivery_method->name}}, {{$delivery_method->desc}}</div>
             <div><b>Sposob platby: </b>{{$payment_method->name}}, {{$payment_method->desc}}</div>
+
+            @if($payment_method->id == 1)
+            <div>{{$payment_method->note}}</div>
+            @endif
+
         </div>
         </div>
 
