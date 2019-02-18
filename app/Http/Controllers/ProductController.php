@@ -198,6 +198,8 @@ class ProductController extends Controller
 
         $product = Product::whereUrl($url)->first();
         
+        if(!$product) return abort(404);
+        
         $data = [
            'product' => $product,
            'bodyid' => 'body_product_detail',
