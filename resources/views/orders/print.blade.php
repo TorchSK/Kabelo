@@ -97,7 +97,7 @@
 		
 		@foreach($order->products as $item)
 		<div class="product" style="display: flex;">
-			<div class="name">{{$item->name}}</div>
+			<div class="name">{{$item->name}} (<i>{{$item->code}}</i>)</div>
 			<div class="qty">{{$item->pivot->qty}} ks</div>
 			<div class="price">{{$item->pivot->price / $item->pivot->qty}} &euro;</div>
 			<div class="total">{{$item->pivot->price}} &euro;</div>

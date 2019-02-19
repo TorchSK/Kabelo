@@ -102,7 +102,7 @@
     <div id="sale" class="ui green large label"><i class="money icon"></i> Zľava</div>
     @endif
 
-   		<div class="ui header" id="product_categories">
+   		<div class="" id="product_categories">
         <div>
    			@foreach ($product->categories as $category)
         <div>

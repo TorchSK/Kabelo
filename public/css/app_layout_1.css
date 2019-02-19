@@ -2503,6 +2503,8 @@ a:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-top: 15px;
+  font-size: 16px;
 }
 @media all and (max-width: 980px) {
   #product_main_wrapper #product_categories {
