@@ -11,6 +11,7 @@
 			  <thead>
 			    <tr>
 			    <th></th>
+			    <th>Carousel</th>
 			    <th>ID</th>
 			    <th>Názov</th>
 			    <th>Zmazať</th>
@@ -19,6 +20,8 @@
 			  	@foreach(App\Product::whereNew('1')->orderBy('new_order')->get() as $product)
 				<tr data-id="{{$product->id}}">
 			 	  <td class="collapsing"><i class="content icon"></i></td>
+			 	  <td class="collapsing"><div class="ui checkbox"><input type="checkbox" name="new_carousel" @if($product->new_carousel)checked @endif></div></td>
+
 			      <td>{{$product->id}}</td>
 			      <td>{{$product->name}}</td>
 			      <td class="collapsing"><a class="ui mini icon red button"><i class="delete large icon"></i></a></td>

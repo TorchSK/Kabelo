@@ -2344,6 +2344,25 @@ $('#admin_new_wrapper table tbody').sortable({
   }
 });
 
+$('#admin_new_wrapper table tbody .checkbox').checkbox({
+    onChecked: function(){
+      $id = $(this).closest('tr').data('id');
+      $.ajax({
+        method: 'PUT',
+        url: '/api/product/'+$id,
+        data: {new_carousel: 1}         
+      })
+    },
+    onUnchecked: function(){
+      $id = $(this).closest('tr').data('id');
+      $.ajax({
+        method: 'PUT',
+        url: '/api/product/'+$id,
+        data: {new_carousel: 0}         
+      })
+    }
+  });
+
 $('#admin_sale_wrapper table tbody').sortable({
 	helper: fixHelper,
   stop: function(){
@@ -2360,6 +2379,25 @@ $('#admin_sale_wrapper table tbody').sortable({
     })
   }
 });
+
+$('#admin_sale_wrapper table tbody .checkbox').checkbox({
+    onChecked: function(){
+      $id = $(this).closest('tr').data('id');
+      $.ajax({
+        method: 'PUT',
+        url: '/api/product/'+$id,
+        data: {sale_carousel: 1}         
+      })
+    },
+    onUnchecked: function(){
+      $id = $(this).closest('tr').data('id');
+      $.ajax({
+        method: 'PUT',
+        url: '/api/product/'+$id,
+        data: {sale_carousel: 0}         
+      })
+    }
+  });
 
 
 $('table.sortable').tablesorter({
