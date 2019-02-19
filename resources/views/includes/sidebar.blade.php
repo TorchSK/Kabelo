@@ -7,18 +7,6 @@
                         <i class="search icon"></i>
 
           </div>
-
-          <div id="search_results">
-           <div class="ui horizontal divider active title">Produkty</div>
-           <div class="products"></div>
-
-           @if(Auth::check() && Auth::user()->admin)
-           <div class="ui horizontal divider active title">Uživatelia</div>
-           <div class="users"></div>
-           @endif
-
-           <a class="ui blue button search_view_all_btn" href="#">Všetky výsledky</a>
-          </div>
         </div>
 
 
