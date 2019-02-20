@@ -4,6 +4,7 @@
 	white-space: nowrap;
 	padding: 0 2%;
 
+
 	@media @break5{
 		padding: 0;
 	}
@@ -21,6 +22,10 @@
 		display: flex;
 		margin: 0 auto;
 		background-color: #1F1F1F;
+
+		@media @break3{
+			justify-content:space-between;
+		}
 	}
 
 	.item{
@@ -115,6 +120,10 @@
 		padding: 0;
 		padding-right: 15px;
 		position: relative;
+
+		@media @break3{
+			display: none;
+		}
 
 		i.icon{
 			color: #EEE;
@@ -246,6 +255,10 @@
 	.orders{
 	  	margin-right: 15px;
 
+		@media @break3{
+			display: none;
+		}
+
 		a{
 			display: block;
 			color: #DDD;
@@ -326,7 +339,6 @@
 		}
 
 		@media @break3{
-			display: none;
 		}
 
 		#cart_icon{  

@@ -80,7 +80,7 @@
 </div>
 
 <div class="order" style="margin-left: 50px;">
-	<div class="header" style="border-bottom: 1px solid #CCC; display: flex; justify-content: space-between; padding-bottom: 8px;">
+	<div class="header" style="border-bottom: 1px solid #EEE; display: flex; justify-content: space-between; padding-bottom: 8px;">
 		<div>Číslo objednávky: <b>{{$order->id}}</b></div>
 		<div>{{Carbon\Carbon::parse($order->created_at)->format('d.m.Y H:i:s')}}</div>
 	</div>
@@ -88,7 +88,7 @@
 	<div class="products">
 		<div style="margin-top: 15px; margin-bottom: 10px; font-weight: 600;">Objednali ste si:</div>
 		
-			<div class="product" style="display: flex; border-bottom: 1px dashed #CCC; padding-bottom: 5px; margin-bottom: 10px;">
+			<div class="product" style="display: flex; border-bottom: 1px dashed #EEE; padding-bottom: 5px; margin-bottom: 10px;">
 				<div class="name">Názov</div>
 				<div class="qty">Počet</div>
 				<div class="price">Cena za ks</div>
@@ -97,10 +97,10 @@
 		
 		@foreach($order->products as $item)
 		<div class="product" style="display: flex;">
-			<div class="name">{{$item->name}}</div>
+			<div class="name">{{$item->name}} (<i>{{$item->code}}</i>)</div>
 			<div class="qty">{{$item->pivot->qty}} ks</div>
-			<div class="price">{{$item->pivot->price}} &euro;</div>
-			<div class="total">{{$item->pivot->qty * $item->pivot->price}} &euro;</div>
+			<div class="price">{{$item->pivot->price / $item->pivot->qty}} &euro;</div>
+			<div class="total">{{$item->pivot->price}} &euro;</div>
 		</div>
 		@endforeach
 
@@ -118,7 +118,7 @@
 		<div style="padding-left: 5px;">{{$order->payment->price}} &euro;</div>
 	</div>
 
-	<div class="total" style="margin-top: 25px; display: flex; justify-content: space-between; font-weight: 900;border-bottom: 1px solid #CCC; padding-bottom: 15px;">
+	<div class="total" style="margin-top: 25px; display: flex; justify-content: space-between; font-weight: 900;border-bottom: 1px solid #EEE; padding-bottom: 15px;">
 		<div style="">Celkom</div>
 		<div style="">{{$order->price + $order->shipping_price}} &euro;</div>
 	</div>
@@ -158,6 +158,21 @@
             <div><b style="display: inline-block; width: 150px;">PSČ:</b> {{json_decode($order->delivery_address)->zip}}</div>
         </div>
         @endif
+
+</div>
+
+<div style="padding: 25px 0; border-top: 1px solid #EEE; ">
+
+<pre style="font-family: 'Roboto', Sans-Serif; font-size: 13px; font-weight: 200;">
+Vaša 
+DEDRA SLOVAKIA
+Koordinátor: Monika Tagajová
+Číslo koordinátora: 133538
+
+mobil :0904 857 725
+mail : obchod@dedraslovakia.sk
+web: www.dedraslovakia.sk
+</pre>
 
 </div>
 

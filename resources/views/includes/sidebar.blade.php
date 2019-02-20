@@ -1,6 +1,15 @@
 <div class="ui right sidebar inverted vertical menu" id="sidebar">
     <a class="header right aligned item close_btn"><i class="chevron left icon"></i>Close</a>
 
+        <div class="item search">
+          <div class="ui left icon input" id="main_search">
+            <input type="text" placeholder="Hľadať produkty..." />
+                        <i class="search icon"></i>
+
+          </div>
+        </div>
+
+
   @if (Auth::check())
     <a href="/settings/account" class="item"><i class="user icon"></i> Nastavenia účtu</a>
     <a href="/orders/mine" class="item"><i class="history icon"></i> História objednávok</a>

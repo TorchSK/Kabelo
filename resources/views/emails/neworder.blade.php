@@ -65,7 +65,7 @@
           .name{
             margin-right: 15px;
             padding-top: 5px;
-            font-weight: 900;
+            font-weight: 400;
             width: 60%;
           }
 
@@ -136,8 +136,12 @@
 
                 <div class="code">{{$product->code}}</div>
                 <div class="name">{{$product->name}}</div>
-               
-                <div class="price">{{$product->pivot->qty}}{{$product->price_unit}} / {{$product->pivot->price}} &euro;</div>
+                <div class="qty"> {{$product->pivot->qty}}{{$product->price_unit}}</div>
+
+                <div class="price">
+                    {{$product->pivot->price / $product->pivot->qty}} &euro; / {{$product->price_unit}}
+                    <div><b>{{$product->pivot->price}} &euro;</b></div>
+                </div>
 
 
             </div>
@@ -181,7 +185,12 @@
 
         <div style="margin: 30px 0; font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;" id="shipping_data">
             <div><b>Sposob dopravy: </b>{{$delivery_method->name}}, {{$delivery_method->desc}}</div>
-            <div><b>Sposob platby: </b>{{$payment_method->name}}, {{$delivery_method->desc}}</div>
+            <div><b>Sposob platby: </b>{{$payment_method->name}}, {{$payment_method->desc}}</div>
+
+            @if($payment_method->id == 1)
+            <div>{{$payment_method->note}}</div>
+            @endif
+
         </div>
         </div>
 

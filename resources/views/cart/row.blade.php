@@ -59,6 +59,35 @@
 	</div>
 	@endif
 
+    <div class="unit_price">
+	 	@if(Auth::check())
+		    
+		    @if(Auth::user()->voc)
+			    @if($product->sale)
+			    	<div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->voc_sale*(1-Auth::user()->discount/100)}} &euro; / ks</div>
+			    @else
+			    	<div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->voc_regular*(1-Auth::user()->discount/100)}} &euro; / ks</div>
+			    @endif
+			@else
+			    @if($product->sale)
+			    	<div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->moc_sale*(1-Auth::user()->discount/100)}} &euro; / ks</div>
+			    @else
+			    	<div class="final_price">{{App\PriceLevel::find($product->pivot->price_level_id)->moc_regular*(1-Auth::user()->discount/100)}} &euro; / ks</div>
+			    @endif
+			@endif
+
+		@else
+	  	
+		  	@if($product->sale)
+			    <div class="final_price">{{App\PriceLevel::find($cart['price_levels'][$product->id])->moc_sale}} &euro;  / ks</div>
+			@else
+			    <div class="final_price">{{App\PriceLevel::find($cart['price_levels'][$product->id])->moc_regular}} &euro;  / ks</div>
+			@endif
+
+		@endif
+
+    </div>
+
     <div class="price">
 
 	    @if(Auth::check())

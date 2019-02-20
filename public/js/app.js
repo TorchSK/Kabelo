@@ -2344,6 +2344,25 @@ $('#admin_new_wrapper table tbody').sortable({
   }
 });
 
+$('#admin_new_wrapper table tbody .checkbox').checkbox({
+    onChecked: function(){
+      $id = $(this).closest('tr').data('id');
+      $.ajax({
+        method: 'PUT',
+        url: '/api/product/'+$id,
+        data: {new_carousel: 1}         
+      })
+    },
+    onUnchecked: function(){
+      $id = $(this).closest('tr').data('id');
+      $.ajax({
+        method: 'PUT',
+        url: '/api/product/'+$id,
+        data: {new_carousel: 0}         
+      })
+    }
+  });
+
 $('#admin_sale_wrapper table tbody').sortable({
 	helper: fixHelper,
   stop: function(){
@@ -2360,6 +2379,25 @@ $('#admin_sale_wrapper table tbody').sortable({
     })
   }
 });
+
+$('#admin_sale_wrapper table tbody .checkbox').checkbox({
+    onChecked: function(){
+      $id = $(this).closest('tr').data('id');
+      $.ajax({
+        method: 'PUT',
+        url: '/api/product/'+$id,
+        data: {sale_carousel: 1}         
+      })
+    },
+    onUnchecked: function(){
+      $id = $(this).closest('tr').data('id');
+      $.ajax({
+        method: 'PUT',
+        url: '/api/product/'+$id,
+        data: {sale_carousel: 0}         
+      })
+    }
+  });
 
 
 $('table.sortable').tablesorter({
@@ -3797,9 +3835,9 @@ $('#main_search input').keyup(function(e){
 			type: "GET",
 			url: "/api/search/"+$query,
 			success: function(data){
-				$('#search_results').show();
-				$('#search_results').find('.products').html(data.products);
-				$('#search_results').find('.users').html(data.users);
+				$('#search_results.desktop').show();
+				$('#search_results.desktop').find('.products').html(data.products);
+				$('#search_results.desktop').find('.users').html(data.users);
 				$(document).bind('ajaxStart');
 			}
 		})	
@@ -3809,7 +3847,7 @@ $('#main_search input').keyup(function(e){
 
 $('body').mouseup(function(e) 
 {
-    var container = $("#search_results");
+    var container = $("#search_results.desktop");
 
     // if the target of the click isn't the container nor a descendant of the container
     if (!container.is(e.target) && container.has(e.target).length === 0) 

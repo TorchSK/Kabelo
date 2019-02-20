@@ -56,7 +56,7 @@
                             <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
                         </div>
                         <div class="items">
-                        @foreach(App\Product::where('new',1)->orderBy('new_order')->get() as $product)
+                        @foreach(App\Product::where('new',1)->where('new_carousel',1)->orderBy('new_order')->get() as $product)
                             @include('products.row',['showdesc'=>false])
                         @endforeach
                         </div>
@@ -101,7 +101,7 @@
                         </div>
 
                         <div class="items">
-                        @foreach(App\Product::where('sale',1)->orderBy('sale_order')->get() as $product)
+                        @foreach(App\Product::where('sale',1)->where('sale_carousel',1)->orderBy('sale_order')->get() as $product)
                             @include('products.row',['showdesc'=>false])
                         @endforeach
                         </div>

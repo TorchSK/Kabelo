@@ -8,6 +8,7 @@
 			  <thead>
 			    <tr>
 			    <th></th>
+			    <th>Carousel</th>
 			    <th>ID</th>
 			    <th>Názov</th>
 			    <th>Zmazať</th>
@@ -15,7 +16,8 @@
 			  <tbody>
 			  	@foreach(App\Product::whereSale('1')->orderBy('sale_order')->get() as $product)
 				<tr data-id="{{$product->id}}">
-				   <td class="collapsing"><i class="content icon"></i></td>
+				  <td class="collapsing"><i class="content icon"></i></td>
+				  <td class="collapsing"><div class="ui checkbox"><input type="checkbox" name="sale_carousel" @if($product->sale_carousel)checked @endif></div></td>
 			      <td>{{$product->id}}</td>
 			      <td>{{$product->name}}</td>
 			      <td class="collapsing"><a class="ui mini icon red button"><i class="delete large icon"></i></a></td>
