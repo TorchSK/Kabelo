@@ -18,7 +18,7 @@
 		<a href="https://www.facebook.com/dedraslovakia/" target="_blank"><i class="facebook f icon"></i></a>
 		<a href="/" target="_blank"><i class="twitter icon"></i></a>
 		<a href="/" target="_blank"><i class="instagram icon"></i></a>
-   <div id="td">Made with <o>love</o> by &copy; <a class="effect-1" href="mailto:jan.krnac@seznam.cz" target="_top">Ján Krnáč</a></div>
+   <div id="td">Made with <o>love</o> by &copy; <a class="effect-1" href="mailto:jan.krnac@email.cz" target="_top">Ján Krnáč</a></div>
 	</div> 
 
 
