@@ -72,7 +72,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
     
     <link media="all" type="text/css" rel="stylesheet" href="/css/rateyo.css">
@@ -85,8 +85,6 @@
     <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/modulobox.min.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/handsontable.full.min.css">
-
-    <link media="all" type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
 
 
     @if(App\Setting::where('name','layout')->first()->value == 1 || Request::segment(1)=='admin')
