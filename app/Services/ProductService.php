@@ -57,11 +57,14 @@ class ProductService implements ProductServiceContract {
                 $query->whereHas('stickers');
             }
 
-                $query->whereActive(0);
+            if ($request->has('inactive_only') && $request->get('inactive_only')=='true')
+            {
+                $query->whereActive('0');
+            }
 
         });
 
-        dd([$products->toSql(),$products->getBindings()]);
+        return $products->with(['categories','image','stickers','priceLevels'])->get();
     }
 
     public function getPriceLevel($productId, $qty)
