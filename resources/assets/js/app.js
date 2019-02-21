@@ -3233,7 +3233,6 @@ if ($('body').attr('id')=="body_bulk")
 			"name" : $('.filter_item.name').find('input').val(),
 			"without_category" : $('.filter_item.without_category').checkbox('is checked'),
 			"inactive_only" : $('.filter_item.inactive').checkbox('is checked')
-
 		}
 
 		$.ajax({
@@ -3246,8 +3245,6 @@ if ($('body').attr('id')=="body_bulk")
 				$(load_btn).removeClass('loading');
 			   	hot.getInstance().loadData(data);
 			   	hot.getInstance().render();
-			   	hot.getInstance().render();
-
 		}
 
 		});

@@ -49,7 +49,9 @@ class ProductService implements ProductServiceContract {
 
             if ($request->has('name'))
             {
-                $query->where('name', 'like', '%'.$request->get('name').'%')->orWhere('code', $request->get('name'));
+                $query->where(function($query) use ($request){
+                    $query->where('name', 'like', '%'.$request->get('name').'%')->orWhere('code', $request->get('name'));
+                });
             }
 
             if ($request->has('with_stickers_only'))
@@ -59,7 +61,7 @@ class ProductService implements ProductServiceContract {
 
             if ($request->has('inactive_only') && $request->get('inactive_only')=='true')
             {
-                $query->whereActive('asdasd');
+                $query->whereActive(0);
             }
 
         });
