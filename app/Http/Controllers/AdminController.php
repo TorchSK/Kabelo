@@ -677,9 +677,8 @@ class AdminController extends Controller
         $xml = XmlParser::extract($contents);
 
         $items = $xml->parse([
-            'products' => ['uses' => 'product[product_id,sizes.size(::size_id=@)>sizes,sizes.size(::size_id=::availability)>sizeStocks]'],
+            'products' => ['uses' => 'product[product_id, variant_text,variants.variant(::product_id=::type)>variants]'],
         ]);
-
 
         $item_collection = collect($items['products']);
 
