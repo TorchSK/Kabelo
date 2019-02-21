@@ -29,6 +29,7 @@ class ProductService implements ProductServiceContract {
 
     public function filter(Request $request)
     {
+
         $products = Product::where(function($query) use ($request){
             if ($request->has('categories'))
             {
@@ -54,6 +55,11 @@ class ProductService implements ProductServiceContract {
             if ($request->has('with_stickers_only'))
             {
                 $query->whereHas('stickers');
+            }
+
+            if ($request->has('inactive_only') && $request->get('inactive_only')=='true')
+            {
+                $query->whereActive(0);
             }
 
         });

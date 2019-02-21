@@ -155,13 +155,19 @@ class Product extends Model {
 
   public function setActiveAttribute($value)
     {
-      if ($value == 'on' || $value == 1)
+      if ($value === 'on')
       {
         $this->attributes['active'] = 1;
       }
-      elseif ($value == 'off' || $value == 0)
+      
+      elseif ($value === 'off')
       {
         $this->attributes['active'] = 0;
+      }
+
+      else
+      {
+         $this->attributes['active'] = $value;
       }
     }
 

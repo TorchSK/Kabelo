@@ -311,6 +311,7 @@ class ProductController extends Controller
             $priceLevel->save();
             
             $product->sale = $item['sale'];
+            $product->active = $item['active'];
             $product->name = $item['name'];
             $product->save();
         }

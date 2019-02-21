@@ -35,9 +35,15 @@
 
 			    <div class="ui checkbox filter_item without_category">
 			    	<label>Bez kategórie</label>
-
-			    	<input type="checkbox" name="name" placeholder="Zadajte názov produktu" />
+			    	<input type="checkbox" name="without_category" />
 				</div>
+
+
+			    <div class="ui checkbox filter_item inactive">
+			    	<label>Iba neaktívne</label>
+			    	<input type="checkbox" name="inactive" />
+				</div>
+
 			</div>
 		</form>
 

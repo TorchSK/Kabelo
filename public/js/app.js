@@ -3117,6 +3117,7 @@ if ($('body').attr('id')=="body_bulk")
 	hot = new Handsontable(container, {
 	 columns: [
 	 	{data: "url", renderer: detailRenderer},
+	 	{data: "active", type: 'checkbox',checkedTemplate: 1,uncheckedTemplate: 0},
 	 	{data: "image", renderer: imageRenderer},
 	    {data: "code"},
 	    {data: "name"},
@@ -3125,8 +3126,8 @@ if ($('body').attr('id')=="body_bulk")
 	    {data: "sale", type: 'checkbox',checkedTemplate: 1,uncheckedTemplate: 0},
 	    {data: "categories", renderer: categoryRenderer}
 	  ],
-	  colHeaders: ['', 'Obrázok','Kód', 'Názov','Cena','Cena v zlave', "Zlava", 'Kategórie'],
-	  colWidths: [5,7,10,'',10,10,5,''],
+	  colHeaders: ['', 'Aktívny', 'Obrázok','Kód', 'Názov','Cena','Cena v zlave', "Zlava", 'Kategórie'],
+	  colWidths: [5,7,7,10,'',10,10,5,''],
 	  rowHeaders: true,
 	  minSpareRows: 1,
 	  stretchH: 'all',
@@ -3208,7 +3209,7 @@ if ($('body').attr('id')=="body_bulk")
 	    
 	    if(value)
 	    {
-	    	if(value.path.toString().indexOf('http') !== -1)
+	    	if(value.path && value.path.toString().indexOf('http') !== -1)
 	    	{
 				$(td).html('<div class="image"><img class="lazy" data-src="'+value.path+'" /></div>');
 			}
@@ -3230,7 +3231,9 @@ if ($('body').attr('id')=="body_bulk")
 		$filters = {
 			"categories" : $('.filter_item.category').dropdown('get value'),
 			"name" : $('.filter_item.name').find('input').val(),
-			"without_category" : $('.filter_item.without_category').checkbox('is checked')
+			"without_category" : $('.filter_item.without_category').checkbox('is checked'),
+			"inactive_only" : $('.filter_item.inactive').checkbox('is checked')
+
 		}
 
 		$.ajax({
@@ -3241,8 +3244,10 @@ if ($('body').attr('id')=="body_bulk")
 				$('#bulk_products_table').show();
 				$('#bulk_save_btn').css('display','inline-block');
 				$(load_btn).removeClass('loading');
-			    hot.loadData(data);
-			   	hot.loadData(data);
+			   	hot.getInstance().loadData(data);
+			   	hot.getInstance().render();
+			   	hot.getInstance().render();
+
 		}
 
 		});
@@ -3318,7 +3323,7 @@ if ($('body').attr('id')=="body_bulk")
 			method: 'POST', 
 			data: JSON.stringify($data),
 			success: function (res) {
-				$(save_btn).removeClass('loading');
+			$(save_btn).removeClass('loading');
 	   		$('#bulk_products_table').find('td').removeClass('changed');
 	   	}
 
