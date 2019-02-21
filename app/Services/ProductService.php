@@ -49,7 +49,7 @@ class ProductService implements ProductServiceContract {
 
             if ($request->has('name'))
             {
-                $query->where('name', 'like', '%'.$request->get('name').'%');
+                $query->where('name', 'like', '%'.$request->get('name').'%')->orWhere('code', $request->get('name'));
             }
 
             if ($request->has('with_stickers_only'))

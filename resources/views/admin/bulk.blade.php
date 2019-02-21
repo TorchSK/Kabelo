@@ -25,9 +25,9 @@
 			
 			<div class="field">
 
-				<label>Názov</label>
+				<label>Názov / Kód</label>
 			    <div class="ui fluid input filter_item name">
-			    	<input type="text" name="name" placeholder="Zadajte názov produktu" />
+			    	<input type="text" name="name" placeholder="Zadajte názov alebo kód produktu" />
 				</div>
 			</div>
 
