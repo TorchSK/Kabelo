@@ -57,7 +57,7 @@ class ProductService implements ProductServiceContract {
                 $query->whereHas('stickers');
             }
 
-            if ($request->has('inactive_only') && $request->get('inactive_only')==='true')
+            if (1)
             {
                 $query->whereActive(0);
             }
