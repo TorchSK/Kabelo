@@ -683,7 +683,7 @@ class AdminController extends Controller
 
         $item_collection = collect($items['products']);
 
-        foreach(Product::whereActive(1) as $product)
+        foreach(Product::whereActive(1)->get() as $product)
         {   
 
             $item = $item_collection->where('product_id',$product->code)->first();
@@ -725,7 +725,7 @@ class AdminController extends Controller
 
         $item_collection = collect($items['products']);
 
-        foreach(Product::all() as $product)
+        foreach(Product::whereActive(1)->get() as $product)
         {   
 
             $item = $item_collection->where('product_id',$product->code)->first();
