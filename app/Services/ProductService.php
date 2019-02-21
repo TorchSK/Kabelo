@@ -61,7 +61,7 @@ class ProductService implements ProductServiceContract {
 
         });
 
-        return $products->toSql();
+        dd([$products->toSql(),$products->getBindings()]);
     }
 
     public function getPriceLevel($productId, $qty)
