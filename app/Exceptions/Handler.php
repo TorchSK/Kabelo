@@ -7,6 +7,11 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
  
 use Illuminate\Auth\Access\AuthorizationException;
 
+use Mail;
+use Symfony\Component\Debug\Exception\FlattenException;
+use Symfony\Component\Debug\ExceptionHandler as SymfonyExceptionHandler;
+use App\Mail\ExceptionOccured;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -38,7 +43,26 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        if ($this->shouldReport($exception)) {
+            $this->sendEmail($exception); // sends an email
+        }
+
         parent::report($exception);
+    }
+
+    public function sendEmail(Exception $exception)
+    {
+        try {
+            $e = FlattenException::create($exception);
+
+            $handler = new SymfonyExceptionHandler();
+
+            $html = $handler->getHtml($e);
+
+            Mail::to('gtorch@gmail.com')->send(new ExceptionOccured($html));
+            } catch (Exception $ex) {
+                dd($ex);
+            }
     }
 
     /**
