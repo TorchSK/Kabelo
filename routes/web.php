@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/addCategoryFullurl', 'AdminController@addCategoryFullurl')->name('admin.addCategoryFullurl');
 	Route::get('/addProductUrl', 'AdminController@addProductUrl')->name('admin.addProductUrl');
 	Route::get('/addSizes', 'AdminController@addSizes');
+	Route::get('/addVariants', 'AdminController@addVariants');
 
 
 	Route::get('/dashboard', 'AdminController@dashboardNew')->name('admin.dashboard.new');
