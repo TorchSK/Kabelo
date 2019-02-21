@@ -30,7 +30,7 @@ class ProductService implements ProductServiceContract {
     public function filter(Request $request)
     {
 
-        $products = Product::whereActive(0)->where(function($query) use ($request){
+        $products = Product::where(function($query) use ($request){
             if ($request->has('categories'))
             {
                 $children = collect([]);
@@ -57,7 +57,7 @@ class ProductService implements ProductServiceContract {
                 $query->whereHas('stickers');
             }
 
-   
+                $query->whereActive(0);
 
         });
 
