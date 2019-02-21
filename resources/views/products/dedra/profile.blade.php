@@ -247,6 +247,9 @@
           @include('products.row',['product'=>$relprod])
         @endforeach
       </div>
+
+                  <div class="scroll_to_top"><i class="big icon teal circular inverted angle double up"></i></div>
+
 </div>
 </div>
 
