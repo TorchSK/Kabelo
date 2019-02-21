@@ -59,7 +59,7 @@ class ProductService implements ProductServiceContract {
 
             if (1)
             {
-                $query->whereActive(0);
+                $query->where('active',0);
             }
 
         });
