@@ -59,7 +59,7 @@ class ProductService implements ProductServiceContract {
 
             if ($request->has('inactive_only') && $request->get('inactive_only')=='true')
             {
-                $query->whereActive('0');
+                $query->whereActive('asdasd');
             }
 
         });
