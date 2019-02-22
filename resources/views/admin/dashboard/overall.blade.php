@@ -66,7 +66,7 @@
 			    <th>Suma objednávok</th>
 			  </tr></thead>
 			  <tbody>
-			  	@foreach(App\Product::with('orders')->take(10)->get()->sortByDesc(function($q){return $q->orders->count();}); as $product)
+			  	@foreach(App\Product::withCount('orders')->orderByDesc('orders_count')->take(10)->get(); as $product)
 				<tr>
 			      <td><a href="/product/{{$product->maker}}/{{$product->code}}">{{$product->id}}</a></td>
 			      <td>{{$product->name}}</td>
