@@ -14,6 +14,10 @@
 // Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 {
+
+		Route::post('/aaa', 'AdminController@aaa');
+
+
 	Route::get('/copper/loadProducts', 'AdminController@copperLoadProducts');
 	Route::get('/copper/loadCategories', 'AdminController@copperLoadCategories');
 	Route::get('/copper/addCategoryParent', 'AdminController@copperAddCategoryParent');
@@ -150,6 +154,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::resource('banner','BannerController');
 
 	Route::get('/sitemap', 'AdminController@getSitemap');
+	Route::get('/heurekaXML', 'AdminController@getHeurekaXML');
 
 });
 

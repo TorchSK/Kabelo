@@ -60,9 +60,29 @@ class AdminController extends Controller
         $this->translateService = $translateService;
     }
 
+    public function getHeurekaXML()
+    {   
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<SHOP>'."\n";
+
+        foreach(Product::whereActive(1) ->get() as $product)
+        {
+            $xml = $xml."\t".'<SHOPITEM>'."\n";
+            $xml = $xml."\t"."\t".'<ITEM_ID>'.$product->code.'</ITEM_ID>'."\n";
+            $xml = $xml."\t"."\t".'<PRODUCTNAME><![CDATA['.$product->name.']]></PRODUCTNAME>'."\n";
+            $xml = $xml."\t"."\t".'<CATEGORYTEXT><![CDATA['.str_replace('/','|',$product->categories->first()->path).']]></CATEGORYTEXT>'."\n";
+
+
+            $xml = $xml."\t".'</SHOPITEM>'."\n";
+        }
+
+        $xml = $xml.'</SHOP>';
+
+        return response($xml)->header('Content-Type', 'xml');
+    }
+
     public function getSitemap()
     {   
-        $sitemap = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
 
         $sitemap = $sitemap."\t".'<url>'."\n"."\t"."\t".'<loc>'.env('APP_URL').'</loc>'."\n"."\t"."\t".'<priority>1.00</priority>'."\n"."\t".'</url>'."\n";
 
@@ -87,6 +107,7 @@ class AdminController extends Controller
 
         return 1;
     }
+
     public function copperLoadProducts()
     {   
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -579,7 +600,34 @@ class AdminController extends Controller
             $product->priceLevels()->save($pricelevel);
 
         }
-        
+
+        foreach($addedProductsArray as $key => $temp)
+        {
+            $item = $items['products'][$key];
+            $product = Product::whereCode($key)->first();
+
+            if(count($item['variants']) > 0)
+            {   
+                foreach($item['variants'] as $key2 => $type)
+                {
+                    $variant_product = Product::whereCode($key2)->first();
+
+                    if($variant_product)
+                    {
+                        if($product->allVariants()->where('id',$variant_product->id)->count()==0)
+                        {
+                            $variant = new Variant();
+                            $variant->product_id = $product->id;
+                            $variant->variant_id = $variant_product->id;
+                            $variant->type = $type;
+                            $variant->save();
+                        }
+                    }
+                }
+            }
+        }
+
+
         
         foreach($existingProductsArray as $key => $temp)
         {   
@@ -661,8 +709,7 @@ class AdminController extends Controller
 
         $this->addCategoryFullurl();
         $this->addProductUrl();
-        $this->addVariants();
-        $this->addSizes();
+
 
         Cache::forget('category_counts');
         Cache::forget('categories');
