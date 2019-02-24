@@ -625,6 +625,24 @@ class AdminController extends Controller
                     }
                 }
             }
+
+            if(count($item['sizes']) > 0)
+            {   
+                foreach($item['sizes'] as $code => $text)
+                {
+                    
+                    if($product->sizes()->where('product_id',$product->id)->where('size_code', $code)->count()==0)
+                    {
+                        $size = new Size();
+                        $size->product_id = $product->id;
+                        $size->size_code = $code;
+                        $size->text = $text;
+                        $size->stock = $item['sizeStocks'][$code];
+                        $size->save();
+                    }
+                    
+                }
+            }
         }
 
 
