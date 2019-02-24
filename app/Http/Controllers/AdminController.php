@@ -346,7 +346,7 @@ class AdminController extends Controller
         $xml = XmlParser::extract($contents);
        
         $items = $xml->parse([
-            'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variants.variant(::product_id=::type)>variants]'],
+            'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variants.variant(::product_id=::type)>variants,sizes.size(::size_id=@)>sizes,sizes.size(::size_id=::availability)>sizeStocks]'],
         ]);
 
         //dd($items['products']);
