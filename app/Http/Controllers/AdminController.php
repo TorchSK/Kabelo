@@ -604,7 +604,7 @@ class AdminController extends Controller
         foreach($addedProductsArray as $key => $temp)
         {
             $item = $items['products'][$key];
-            $product = Product::whereCode($key)->first();
+            $product = Product::whereCode($temp)->first();
 
             if(count($item['variants']) > 0)
             {   
