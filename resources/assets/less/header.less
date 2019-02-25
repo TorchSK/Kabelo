@@ -21,8 +21,10 @@
 	.container{
 		display: flex;
 		margin: 0 auto;
-		background-color: #1F1F1F;
-
+		background-color: @primaryColor;
+		max-width: @maxwidth;
+    	padding: 0 1%;
+    	
 		@media @break3{
 			justify-content:space-between;
 		}

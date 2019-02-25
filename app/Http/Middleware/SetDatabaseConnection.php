@@ -30,8 +30,6 @@ class SetDatabaseConnection
 
         Config::set('database.default', strtolower($app));
     
-
-
         return $next($request);
     }
 }

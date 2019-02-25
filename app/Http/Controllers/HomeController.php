@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
+    public $app_name;
     /**
      * Create a new controller instance.
      *

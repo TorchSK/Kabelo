@@ -7,7 +7,21 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
+use Request;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function getApp()
+    {
+    	$app = env('APP_NAME');
+
+        if($app == 'Laravel')
+        {
+            $app = ucfirst(explode(".", Request::getHost())[0]);
+        }
+
+        return strtolower($app);
+    }
 }

@@ -62,6 +62,7 @@ class AdminController extends Controller
 
     public function getHeurekaXML()
     {   
+
         $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<SHOP>'."\n";
 
         foreach(Product::whereActive(1) ->get() as $product)

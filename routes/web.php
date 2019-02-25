@@ -14,10 +14,6 @@
 // Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 {
-
-		Route::post('/aaa', 'AdminController@aaa');
-
-
 	Route::get('/copper/loadProducts', 'AdminController@copperLoadProducts');
 	Route::get('/copper/loadCategories', 'AdminController@copperLoadCategories');
 	Route::get('/copper/addCategoryParent', 'AdminController@copperAddCategoryParent');
