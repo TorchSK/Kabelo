@@ -1894,6 +1894,8 @@ a:hover {
 .item.product .buttons_div .to_cart {
   margin-top: 10px;
   border-radius: 3px !important;
+  background-color: #f22b6c;
+  color: #EEE;
 }
 .item.product .stock {
   margin-top: 20px;
@@ -2760,6 +2762,8 @@ a:hover {
 #product_detail_disabled_btn {
   position: relative;
   top: 40px;
+  background-color: #f22b6c;
+  color: #EEE;
 }
 @media all and (max-width: 980px) {
   #product_detail_tocart_btn,
