@@ -209,7 +209,7 @@ class ProductController extends Controller
 
         if($product->image)
         {
-            $data['ogImage'] = $product->image->path;
+            $data['ogImages'] = $product->images->pluck('path');
         }
 
         return view('products.profile', $data);
