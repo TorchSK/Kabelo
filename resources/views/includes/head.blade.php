@@ -23,8 +23,9 @@
 
     <meta name="robots" content="index, follow">
     
-    <meta property="fb:app_id" content="{{Request::url()}}" />
+    <meta property="fb:app_id" content="" />
     <meta property="og:url" content="{{Request::url()}}" />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="@if(isset($title)){{$title}} @else Dedraslovakia.sk @endif"/>
     <meta property="og:description" content="@if(isset($description)){{substr($description,0,100)}} @else DEDRA EKO čistiace prostriedky, darčeky pre mužov, darčeky pre ženy, šperky, drogéria pre domácnosť @endif" />
     @if (isset($ogImages))
