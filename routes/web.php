@@ -108,6 +108,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/banners/', 'AdminController@banners')->name('admin.banners');
 	Route::get('/banners/settings', 'AdminController@bannersSettings')->name('admin.banners.settings');
 
+	Route::get('/seo/settings', 'SeoController@settings')->name('seo.settings');
+	Route::get('/seo/tools', 'SeoController@tools')->name('seo.tools');
+
 	Route::get('/banner/', 'AdminController@makeCover')->name('admin.makeCover');
 	Route::post('/cover/', 'AdminController@storeCover')->name('admin.storeCover');
 	Route::post('/cover/upload', 'AdminController@uploadCover')->name('admin.uploadCover');
