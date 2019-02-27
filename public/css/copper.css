@@ -5977,6 +5977,27 @@ canvas {
   text-decoration: underline;
   font-weight: 700;
 }
+#seo_wrapper .list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#seo_wrapper .list .item {
+  margin-bottom: 25px;
+  padding: 25px 40px;
+  border: 1px solid #DDD;
+  border-radius: 4px;
+  background-color: #EEE;
+  text-align: center;
+}
+#seo_wrapper .list .item .name {
+  font-size: 1.5em;
+  font-weight: 900;
+}
+#seo_wrapper .list .item .ui.checkbox {
+  margin-top: 25px;
+  margin-left: 15px;
+}
 .wrapper > .container {
   width: 100%;
   max-width: 1800px;

@@ -101,13 +101,13 @@
 
 
   <div class="item">
-  <div class="header title @if(strpos(Route::currentRouteName(),'admin.seo')!==false) active @endif">
+  <div class="header title @if(strpos(Route::currentRouteName(),'seo')!==false) active @endif">
     <i class="crosshairs icon"></i>
       <i class="dropdown icon"></i>
       SEO
     </div>
     <div class="content menu @if(strpos(Route::currentRouteName(),'seo')!==false) active @endif">
-      <a href="{{route('seo.settings')}}" class="item @if(Route::currentRouteName()=='seo.list') active @endif">Nastavenia</a>
+      <a href="{{route('seo.settings')}}" class="item @if(Route::currentRouteName()=='seo.settings') active @endif">Nastavenia</a>
       <a href="{{route('seo.tools')}}" class="item @if(Route::currentRouteName()=='seo.tools') active @endif">Vyhľadávače</a>
     </div>
   </div>
