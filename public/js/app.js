@@ -1594,7 +1594,7 @@ $news_carousel = $('#home_news_div .items').flickity({
 
 $bestsellers_carousel = $('#home_bestsellers_div .items').flickity({
     cellAlign: 'left',
-    contain: true,
+    contain: false,
     pageDots: false,
     prevNextButtons: false,
     imagesLoaded: true,
