@@ -110,6 +110,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
 	Route::get('/seo/settings', 'SeoController@settings')->name('seo.settings');
 	Route::get('/seo/tools', 'SeoController@tools')->name('seo.tools');
+	Route::get('/seo/tool/{url}', 'SeoController@seoToolProfile')->name('seo.tool');
+	Route::post('/seo/tool/{url}', 'SeoController@editSeoTool')->name('seo.tool.edit');
 
 	Route::get('/banner/', 'AdminController@makeCover')->name('admin.makeCover');
 	Route::post('/cover/', 'AdminController@storeCover')->name('admin.storeCover');
@@ -153,7 +155,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::resource('banner','BannerController');
 
 	Route::get('/sitemap', 'AdminController@getSitemap');
-	Route::get('/heurekaXML', 'AdminController@getHeurekaXML');
 
 });
 

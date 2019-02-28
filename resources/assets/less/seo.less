@@ -3,13 +3,52 @@
 	.list{
 		display: flex;
 
-		.item{
+		>.item{
 			margin-bottom: 25px;
-			padding: 25px 40px;
-			border: 1px solid #DDD;
+			box-shadow: 0 0 1px #CCC;
 			border-radius: 4px;
 			background-color: #EEE;
 			text-align: center;
+			display: flex;
+			overflow: hidden;
+			border: 8px solid #FFF;
+
+			&.active{
+				.right{
+					display: flex;
+				}
+			}
+
+			.left{
+				padding: 25px 40px;
+			}
+
+			.right{
+				flex-direction: column;
+				justify-content: space-between;
+				display: none;
+
+				.item{
+					height: 50%;
+					padding: 20px;
+					font-size: 1.3em;
+					color: #555;
+
+					i.icon{
+						margin-right: 0px;
+					}
+
+					&.edit{
+						background-color: rgba(0,0,200,0.1);
+					}
+
+					&.delete{
+						background-color: rgba(255,0,0,0.1);
+					}
+
+			
+				}
+			}
 
 			.name{
 				font-size: 1.5em;

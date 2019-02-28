@@ -60,26 +60,6 @@ class AdminController extends Controller
         $this->translateService = $translateService;
     }
 
-    public function getHeurekaXML()
-    {   
-
-        $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<SHOP>'."\n";
-
-        foreach(Product::whereActive(1) ->get() as $product)
-        {
-            $xml = $xml."\t".'<SHOPITEM>'."\n";
-            $xml = $xml."\t"."\t".'<ITEM_ID>'.$product->code.'</ITEM_ID>'."\n";
-            $xml = $xml."\t"."\t".'<PRODUCTNAME><![CDATA['.$product->name.']]></PRODUCTNAME>'."\n";
-            $xml = $xml."\t"."\t".'<CATEGORYTEXT><![CDATA['.str_replace('/','|',$product->categories->first()->path).']]></CATEGORYTEXT>'."\n";
-
-
-            $xml = $xml."\t".'</SHOPITEM>'."\n";
-        }
-
-        $xml = $xml.'</SHOP>';
-
-        return response($xml)->header('Content-Type', 'xml');
-    }
 
     public function getSitemap()
     {   
@@ -104,7 +84,7 @@ class AdminController extends Controller
 
         $sitemap = $sitemap.'</urlset>';
 
-        Storage::disk('public_physial')->put('sitemap.xml', $sitemap);
+        Storage::disk('public_physical')->put('sitemap.xml', $sitemap);
 
         return 1;
     }

@@ -4536,6 +4536,32 @@ $('#product_main_wrapper .sizes .size.active').click(function(){
 })
 
 
+$('#seo_wrapper .checkbox').checkbox({
+  onChecked: function(){
+    $id = $(this).closest('.item').data('id');
+	$.ajax({
+		type: "PUT",
+		url: "/api/seo/tool/"+$id,
+		data: {active: 1},
+		success: function(){
+		  location.reload();
+		}
+	})
+
+  },
+  onUnchecked: function(){
+     $id = $(this).closest('.item').data('id');
+	 $.ajax({
+		type: "PUT",
+		url: "/api/seo/tool/"+$id,
+		data: {active: 0},
+		success: function(){
+		  location.reload();
+		}
+	})
+  }
+})
+
 });
 
 $(document).scroll(function() {

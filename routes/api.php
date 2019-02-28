@@ -28,6 +28,8 @@ Route::get('categories/search', 'CategoryController@inputSearch');
 Route::put('product/{id}', 'ProductController@apiUpdate');
 Route::put('category/{id}', 'CategoryController@apiUpdate');
 
+Route::put('seo/tool/{id}', 'SeoController@toolApiUpdate');
+
 Route::put('page/{id}', 'PageController@apiUpdate');
 
 Route::get('products/simplelist', 'ProductController@simpleList');

@@ -5982,19 +5982,57 @@ canvas {
   display: -ms-flexbox;
   display: flex;
 }
-#seo_wrapper .list .item {
+#seo_wrapper .list > .item {
   margin-bottom: 25px;
-  padding: 25px 40px;
-  border: 1px solid #DDD;
+  -webkit-box-shadow: 0 0 1px #CCC;
+          box-shadow: 0 0 1px #CCC;
   border-radius: 4px;
   background-color: #EEE;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  border: 8px solid #FFF;
 }
-#seo_wrapper .list .item .name {
+#seo_wrapper .list > .item.active .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#seo_wrapper .list > .item .left {
+  padding: 25px 40px;
+}
+#seo_wrapper .list > .item .right {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: none;
+}
+#seo_wrapper .list > .item .right .item {
+  height: 50%;
+  padding: 20px;
+  font-size: 1.3em;
+  color: #555;
+}
+#seo_wrapper .list > .item .right .item i.icon {
+  margin-right: 0px;
+}
+#seo_wrapper .list > .item .right .item.edit {
+  background-color: rgba(0, 0, 200, 0.1);
+}
+#seo_wrapper .list > .item .right .item.delete {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+#seo_wrapper .list > .item .name {
   font-size: 1.5em;
   font-weight: 900;
 }
-#seo_wrapper .list .item .ui.checkbox {
+#seo_wrapper .list > .item .ui.checkbox {
   margin-top: 25px;
   margin-left: 15px;
 }
