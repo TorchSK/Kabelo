@@ -672,19 +672,23 @@ class AdminController extends Controller
                 $product->variant_text = $item['variant_text'];
                 }
 
-                $product->price = $item['price_skk'];
-                $product->moc_sort_price = $item['price_skk'];
-                $product->voc_sort_price = $item['price_skk'];
-                $product->save();
+                if($product->sale == 0)
+                {
+                    $product->price = $item['price_skk'];
+                    $product->moc_sort_price = $item['price_skk'];
+                    $product->voc_sort_price = $item['price_skk'];
+                    $product->save();
 
-                $priceLevel = $product->priceLevels->first();
-                $priceLevel->moc_regular = $item['price_skk'];
-                $priceLevel->voc_regular = $item['price_skk'];
+                    $priceLevel = $product->priceLevels->first();
+                    $priceLevel->moc_regular = $item['price_skk'];
+                    $priceLevel->voc_regular = $item['price_skk'];
 
-                if($priceLevel){
-                    $priceLevel->save();
+                    if($priceLevel){
+                        $priceLevel->save();
+                    }
+
                 }
-
+                
                 $image = $product->image;
                 
                 if($image){
