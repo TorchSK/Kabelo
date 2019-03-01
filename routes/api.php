@@ -28,7 +28,7 @@ Route::get('categories/search', 'CategoryController@inputSearch');
 Route::put('product/{id}', 'ProductController@apiUpdate');
 Route::put('category/{id}', 'CategoryController@apiUpdate');
 
-Route::put('product/{id}/xmlupdate', 'ProductController@xmlUpdate');
+Route::post('product/{id}/xmlupdate', 'ProductController@xmlUpdate');
 
 
 Route::put('seo/tool/{id}', 'SeoController@toolApiUpdate');
