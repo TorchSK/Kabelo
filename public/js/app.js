@@ -4562,6 +4562,18 @@ $('#seo_wrapper .checkbox').checkbox({
   }
 })
 
+
+$('#product_update_btn').click(function(){
+	$id = $(this).data('id');
+	$.ajax({
+		type: "POST",
+		url: "/api/product/"+$id+"/xmlupdate",
+		success: function(){
+		  location.reload();
+		}
+	})
+})
+
 });
 
 $(document).scroll(function() {

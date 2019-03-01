@@ -25,6 +25,7 @@ use Rap2hpoutre\FastExcel\FastExcel;
 use App\Services\Contracts\ProductServiceContract;
 use App\Services\Contracts\CategoryServiceContract;
 
+use Orchestra\Parser\Xml\Facade as XmlParser;
 
 class ProductController extends Controller
 {
@@ -584,6 +585,55 @@ class ProductController extends Controller
         $product->save();
 
         return redirect()->route('product.detail',['url'=> $product->url]);
+    }
+
+    public function xmlUpdate($id)
+    {
+        $product = Product::find($id);
+        
+        $contents = file_get_contents('https://dedra.blob.core.windows.net/cms/xmlexport/cs_xml_export.xml?ppk=133538');
+        $xml = XmlParser::extract($contents);
+       
+        $items = $xml->parse([
+            'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variants.variant(::product_id=::type)>variants,sizes.size(::size_id=@)>sizes,sizes.size(::size_id=::availability)>sizeStocks]']
+        ]);
+
+
+        if($product->image)
+        {
+            $product->image->path = $item['picture1'];
+        }
+        else
+        {
+            $image = new File();
+            $image->product_id = $product->id;
+            $image->path = $item['picture1']; 
+            $image->type = 'image';
+            $image->primary = 1;
+            $image->save();
+        }
+
+        foreach($product->otherImages as $key => $image)
+        {
+            if($item['picture'.$key+2]!='')
+            {
+                $image->path = $item['picture'.$key+2]; 
+                $image->save();
+            }
+        }
+
+        
+        @for ($i = $key+1; $i < 6; $i++)
+        {
+            $image = new File();
+            $image->product_id = $product->id;
+            $image->path = $item['picture'.$i]; 
+            $image->type = 'image';
+            $image->primary = 0;
+            $image->save();
+        }
+
+            
     }
 
     public function changeCategory($productid, $categoryid)
