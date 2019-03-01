@@ -598,8 +598,8 @@ class ProductController extends Controller
             'products' => ['uses' => 'product[kategorie,product_id,text1,text2,text3,detail,meritko,picture1,picture2,picture3,picture4,picture5,picture6,price_skk,stav_skladu,variant_text,variants.variant(::product_id=::type)>variants,sizes.size(::size_id=@)>sizes,sizes.size(::size_id=::availability)>sizeStocks]']
         ]);
 
-        dd($items);
-        $item = $items['products'][$product->code];
+        $item_collection = collect($items['products']);
+        $item = $item_collection->where('product_id',$product->code)->first();
 
         if($product->image)
         {
