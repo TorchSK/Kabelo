@@ -4569,8 +4569,9 @@ $('#product_update_btn').click(function(){
 	$.ajax({
 		type: "POST",
 		url: "/api/product/"+$id+"/xmlupdate",
-		success: function(){
-		  location.reload();
+		success: function(data){
+		  //location.reload();
+		  console.log(data);
 		}
 	})
 })

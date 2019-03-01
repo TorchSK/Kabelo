@@ -604,6 +604,7 @@ class ProductController extends Controller
         if($product->image)
         {
             $product->image->path = $item['picture1'];
+            $product->image->save();
         }
         else
         {
@@ -616,22 +617,34 @@ class ProductController extends Controller
         }
 
         foreach($product->otherImages as $key => $image)
-        {
-            if($item['picture'.$key+2]!='')
+        {   
+            $temp = $key + 2;
+            $index = 'picture'.$temp;
+
+            if($item[$index]!='')
             {
-                $image->path = $item['picture'.$key+2]; 
+                $image->path = $item[$index]; 
                 $image->save();
+            }
+            else
+            {
+                $image->delete();
             }
         }
         
-        for ($i = $key+1; $i < 6; $i++)
-        {
-            $image = new File();
-            $image->product_id = $product->id;
-            $image->path = $item['picture'.$i]; 
-            $image->type = 'image';
-            $image->primary = 0;
-            $image->save();
+        for ($i = $product->images->count()+1; $i <= 6; $i++)
+        {   
+            $index = 'picture'.$i;
+
+            if($item[$index]!='')
+            {
+                $image = new File();
+                $image->product_id = $product->id;
+                $image->path = $item[$index]; 
+                $image->type = 'image';
+                $image->primary = 0;
+                $image->save();
+            }
         }
 
             
