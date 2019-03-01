@@ -4570,7 +4570,7 @@ $('#product_update_btn').click(function(){
 		type: "POST",
 		url: "/api/product/"+$id+"/xmlupdate",
 		success: function(data){
-		  //location.reload();
+		  location.reload();
 		  console.log(data);
 		}
 	})
