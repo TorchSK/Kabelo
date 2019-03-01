@@ -621,9 +621,8 @@ class ProductController extends Controller
                 $image->save();
             }
         }
-
         
-        @for ($i = $key+1; $i < 6; $i++)
+        for ($i = $key+1; $i < 6; $i++)
         {
             $image = new File();
             $image->product_id = $product->id;
@@ -632,7 +631,6 @@ class ProductController extends Controller
             $image->primary = 0;
             $image->save();
         }
-        @endfor
 
             
     }
