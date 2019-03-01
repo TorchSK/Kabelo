@@ -130,13 +130,19 @@ class Product extends Model {
 
 	public function setSaleAttribute($value)
   	{
-      if ($value == 'on' || $value == 1)
+      if ($value === 'on')
       {
         $this->attributes['sale'] = 1;
       }
-      else
+
+      elseif($value === 'off')
       {
         $this->attributes['sale'] = 0;
+      }
+
+      else
+      {
+         $this->attributes['sale'] = $value;
       }
   	}
 	
