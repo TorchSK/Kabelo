@@ -3135,6 +3135,19 @@ if ($('body').attr('id')=="body_bulk")
 	  rowHeights: 60 ,
 
 	  outsideClickDeselects : false,
+	  afterPaste: function(change, source){
+	  	if(source=='edit'){
+	  		if (change[0][2] != change[0][3]){
+	  			cellChanges.push({'rowid':change[0][0], 'colid':this.propToCol(change[0][1])});
+	  			$data['changes'].push(this.getSourceDataAtRow(change[0][0]));
+	  		}
+
+	  		$.each(cellChanges, function (index, element) { 
+		  		$this.getCell(element['rowid'], element['colid'], false).className = 'changed'; 
+		  	});
+		  	console.log($data['changes']);
+	  	}
+	  },
 	  afterChange: function(change, source){
 	  	if(source=='edit'){
 	  		if (change[0][2] != change[0][3]){
