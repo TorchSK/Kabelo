@@ -632,6 +632,7 @@ class ProductController extends Controller
             $image->primary = 0;
             $image->save();
         }
+        @endfor
 
             
     }
