@@ -44,7 +44,7 @@ class HomeController extends Controller
             $data['bestsellerCategory'] = $this->categoryService->getBestsellerCategory();
 
             if($data['bestsellerCategory']){
-                $request = new Request(['categories'=>[$data['bestsellerCategory']->id]]);
+                $request = new Request(['categories'=>[$data['bestsellerCategory']->id], 'active_only'=> true]);
                 $data['bestsellerProducts'] = $this->productService->filter($request)->slice(0, 10);
                 
                 $manualBestsellers = Product::whereBestseller(1)->whereHas('categories', function($query) use($data){

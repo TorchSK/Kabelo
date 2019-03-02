@@ -16,6 +16,7 @@
         "nesbot/carbon": "~1.21",
         "orchestra/parser": "~3.5",
         "rap2hpoutre/fast-excel": "^0.6.0",
+        "spatie/array-to-xml": "^2.8",
         "viniciusgava/google-translate-api": "^2.0"
     },
     "require-dev": {

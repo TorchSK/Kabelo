@@ -64,6 +64,10 @@ class ProductService implements ProductServiceContract {
                 $query->whereActive(0);
             }
 
+            if ($request->has('active_only') && $request->get('active_only')=='true')
+            {
+                $query->whereActive(1);
+            }
         });
 
         return $products->with(['categories','image','stickers','priceLevels'])->get();
