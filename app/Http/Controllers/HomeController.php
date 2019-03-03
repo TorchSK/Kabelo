@@ -27,7 +27,7 @@ class HomeController extends Controller
     
     public function index($category=null, Request $request)
     {   
-        if (isset($category))
+        if (isseat($category))
         {
             $cat = Category::whereUrl($category)->first();
             $request['category'] = $cat->id;

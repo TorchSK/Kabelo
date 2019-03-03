@@ -44,7 +44,7 @@ class Handler extends ExceptionHandler
     public function report(Exception $exception)
     {
         if ($this->shouldReport($exception)) {
-            //$this->sendEmail($exception); // sends an email
+            $this->sendEmail($exception); // sends an email
         }
 
         parent::report($exception);
