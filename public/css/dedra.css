@@ -6036,6 +6036,9 @@ canvas {
   margin-top: 25px;
   margin-left: 15px;
 }
+#seo_tool_profile_wrapper #new_xml_field_btn {
+  margin-bottom: 25px;
+}
 body {
   background-color: #F7F7F7;
 }

@@ -38,8 +38,9 @@ class SeoController extends Controller
         return view('admin.seo.profile', $data);
     }
 
-    public function editSeoTool($id){
-        
+    public function seoToolUpdate($id)
+    {
+        $seoTool = SeoTool::find($id);
         
     }
 

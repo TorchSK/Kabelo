@@ -4562,6 +4562,11 @@ $('#seo_wrapper .checkbox').checkbox({
   }
 })
 
+$('#new_xml_field_btn').click(function(){
+	$html = $('#seo_tool_profile_wrapper').find('.xml_field').html();
+	$('#seo_tool_profile_wrapper .field_list').append($html);
+
+})
 
 $('#product_update_btn').click(function(){
 	$id = $(this).data('id');
