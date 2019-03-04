@@ -132,7 +132,7 @@ if (token) {
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
     broadcaster: 'socket.io',
-    host: { path: '/socket.io' }
+    host: window.location.hostname + ':6001'
 });
 
 /***/ }),
