@@ -79,6 +79,7 @@ module.exports = __webpack_require__(4);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_laravel_echo__);
 //window._ = require('lodash');
 
 /**
@@ -129,16 +130,128 @@ if (token) {
 
 // window.Pusher = require('pusher-js');
 
-window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
+window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
     broadcaster: 'socket.io',
     host: window.location.hostname + ':6001'
 });
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
+var asyncGenerator = function () {
+  function AwaitValue(value) {
+    this.value = value;
+  }
+
+  function AsyncGenerator(gen) {
+    var front, back;
+
+    function send(key, arg) {
+      return new Promise(function (resolve, reject) {
+        var request = {
+          key: key,
+          arg: arg,
+          resolve: resolve,
+          reject: reject,
+          next: null
+        };
+
+        if (back) {
+          back = back.next = request;
+        } else {
+          front = back = request;
+          resume(key, arg);
+        }
+      });
+    }
+
+    function resume(key, arg) {
+      try {
+        var result = gen[key](arg);
+        var value = result.value;
+
+        if (value instanceof AwaitValue) {
+          Promise.resolve(value.value).then(function (arg) {
+            resume("next", arg);
+          }, function (arg) {
+            resume("throw", arg);
+          });
+        } else {
+          settle(result.done ? "return" : "normal", result.value);
+        }
+      } catch (err) {
+        settle("throw", err);
+      }
+    }
+
+    function settle(type, value) {
+      switch (type) {
+        case "return":
+          front.resolve({
+            value: value,
+            done: true
+          });
+          break;
+
+        case "throw":
+          front.reject(value);
+          break;
+
+        default:
+          front.resolve({
+            value: value,
+            done: false
+          });
+          break;
+      }
+
+      front = front.next;
+
+      if (front) {
+        resume(front.key, front.arg);
+      } else {
+        back = null;
+      }
+    }
+
+    this._invoke = send;
+
+    if (typeof gen.return !== "function") {
+      this.return = undefined;
+    }
+  }
+
+  if (typeof Symbol === "function" && Symbol.asyncIterator) {
+    AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
+      return this;
+    };
+  }
+
+  AsyncGenerator.prototype.next = function (arg) {
+    return this._invoke("next", arg);
+  };
+
+  AsyncGenerator.prototype.throw = function (arg) {
+    return this._invoke("throw", arg);
+  };
+
+  AsyncGenerator.prototype.return = function (arg) {
+    return this._invoke("return", arg);
+  };
+
+  return {
+    wrap: function (fn) {
+      return function () {
+        return new AsyncGenerator(fn.apply(this, arguments));
+      };
+    },
+    await: function (value) {
+      return new AwaitValue(value);
+    }
+  };
+}();
+
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -202,15 +315,9 @@ var possibleConstructorReturn = function (self, call) {
 };
 
 var Connector = function () {
-    /**
-     * Create a new class instance.
-     */
     function Connector(options) {
         classCallCheck(this, Connector);
 
-        /**
-         * Default connector options.
-         */
         this._defaultOptions = {
             auth: {
                 headers: {}
@@ -225,10 +332,6 @@ var Connector = function () {
         this.setOptions(options);
         this.connect();
     }
-    /**
-     * Merge the custom options with the defaults.
-     */
-
 
     createClass(Connector, [{
         key: 'setOptions',
@@ -239,15 +342,11 @@ var Connector = function () {
             }
             return options;
         }
-        /**
-         * Extract the CSRF token from the page.
-         */
-
     }, {
         key: 'csrfToken',
         value: function csrfToken() {
             var selector = void 0;
-            if (typeof window !== 'undefined' && window['Laravel'] && window['Laravel'].csrfToken) {
+            if (window && window['Laravel'] && window['Laravel'].csrfToken) {
                 return window['Laravel'].csrfToken;
             } else if (this.options.csrfToken) {
                 return this.options.csrfToken;
@@ -260,52 +359,31 @@ var Connector = function () {
     return Connector;
 }();
 
-/**
- * This class represents a basic channel.
- */
 var Channel = function () {
-  function Channel() {
-    classCallCheck(this, Channel);
-  }
-
-  createClass(Channel, [{
-    key: 'listenForWhisper',
-
-    /**
-     * Listen for a whisper event on the channel instance.
-     */
-    value: function listenForWhisper(event, callback) {
-      return this.listen('.client-' + event, callback);
+    function Channel() {
+        classCallCheck(this, Channel);
     }
-    /**
-     * Listen for an event on the channel instance.
-     */
 
-  }, {
-    key: 'notification',
-    value: function notification(callback) {
-      return this.listen('.Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', callback);
-    }
-  }]);
-  return Channel;
+    createClass(Channel, [{
+        key: 'notification',
+        value: function notification(callback) {
+            return this.listen('.Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', callback);
+        }
+    }, {
+        key: 'listenForWhisper',
+        value: function listenForWhisper(event, callback) {
+            return this.listen('.client-' + event, callback);
+        }
+    }]);
+    return Channel;
 }();
 
-/**
- * Event name formatter
- */
 var EventFormatter = function () {
-    /**
-     * Create a new class instance.
-     */
     function EventFormatter(namespace) {
         classCallCheck(this, EventFormatter);
 
         this.setNamespace(namespace);
     }
-    /**
-     * Format the given event name.
-     */
-
 
     createClass(EventFormatter, [{
         key: 'format',
@@ -317,10 +395,6 @@ var EventFormatter = function () {
             }
             return event.replace(/\./g, '\\');
         }
-        /**
-         * Set the event namespace.
-         */
-
     }, {
         key: 'setNamespace',
         value: function setNamespace(value) {
@@ -330,15 +404,9 @@ var EventFormatter = function () {
     return EventFormatter;
 }();
 
-/**
- * This class represents a Pusher channel.
- */
 var PusherChannel = function (_Channel) {
     inherits(PusherChannel, _Channel);
 
-    /**
-     * Create a new class instance.
-     */
     function PusherChannel(pusher, name, options) {
         classCallCheck(this, PusherChannel);
 
@@ -351,49 +419,29 @@ var PusherChannel = function (_Channel) {
         _this.subscribe();
         return _this;
     }
-    /**
-     * Subscribe to a Pusher channel.
-     */
-
 
     createClass(PusherChannel, [{
         key: 'subscribe',
         value: function subscribe() {
             this.subscription = this.pusher.subscribe(this.name);
         }
-        /**
-         * Unsubscribe from a Pusher channel.
-         */
-
     }, {
         key: 'unsubscribe',
         value: function unsubscribe() {
             this.pusher.unsubscribe(this.name);
         }
-        /**
-         * Listen for an event on the channel instance.
-         */
-
     }, {
         key: 'listen',
         value: function listen(event, callback) {
             this.on(this.eventFormatter.format(event), callback);
             return this;
         }
-        /**
-         * Stop listening for an event on the channel instance.
-         */
-
     }, {
         key: 'stopListening',
         value: function stopListening(event) {
             this.subscription.unbind(this.eventFormatter.format(event));
             return this;
         }
-        /**
-         * Bind a channel to an event.
-         */
-
     }, {
         key: 'on',
         value: function on(event, callback) {
@@ -404,9 +452,6 @@ var PusherChannel = function (_Channel) {
     return PusherChannel;
 }(Channel);
 
-/**
- * This class represents a Pusher private channel.
- */
 var PusherPrivateChannel = function (_PusherChannel) {
     inherits(PusherPrivateChannel, _PusherChannel);
 
@@ -417,10 +462,6 @@ var PusherPrivateChannel = function (_PusherChannel) {
 
     createClass(PusherPrivateChannel, [{
         key: 'whisper',
-
-        /**
-         * Trigger client event on the channel.
-         */
         value: function whisper(eventName, data) {
             this.pusher.channels.channels[this.name].trigger('client-' + eventName, data);
             return this;
@@ -429,9 +470,6 @@ var PusherPrivateChannel = function (_PusherChannel) {
     return PusherPrivateChannel;
 }(PusherChannel);
 
-/**
- * This class represents a Pusher presence channel.
- */
 var PusherPresenceChannel = function (_PusherChannel) {
     inherits(PusherPresenceChannel, _PusherChannel);
 
@@ -442,10 +480,6 @@ var PusherPresenceChannel = function (_PusherChannel) {
 
     createClass(PusherPresenceChannel, [{
         key: 'here',
-
-        /**
-         * Register a callback to be called anytime the member list changes.
-         */
         value: function here(callback) {
             this.on('pusher:subscription_succeeded', function (data) {
                 callback(Object.keys(data.members).map(function (k) {
@@ -454,10 +488,6 @@ var PusherPresenceChannel = function (_PusherChannel) {
             });
             return this;
         }
-        /**
-         * Listen for someone joining the channel.
-         */
-
     }, {
         key: 'joining',
         value: function joining(callback) {
@@ -466,10 +496,6 @@ var PusherPresenceChannel = function (_PusherChannel) {
             });
             return this;
         }
-        /**
-         * Listen for someone leaving the channel.
-         */
-
     }, {
         key: 'leaving',
         value: function leaving(callback) {
@@ -478,10 +504,6 @@ var PusherPresenceChannel = function (_PusherChannel) {
             });
             return this;
         }
-        /**
-         * Trigger client event on the channel.
-         */
-
     }, {
         key: 'whisper',
         value: function whisper(eventName, data) {
@@ -492,21 +514,12 @@ var PusherPresenceChannel = function (_PusherChannel) {
     return PusherPresenceChannel;
 }(PusherChannel);
 
-/**
- * This class represents a Socket.io channel.
- */
 var SocketIoChannel = function (_Channel) {
     inherits(SocketIoChannel, _Channel);
 
-    /**
-     * Create a new class instance.
-     */
     function SocketIoChannel(socket, name, options) {
         classCallCheck(this, SocketIoChannel);
 
-        /**
-         * The event callbacks applied to the channel.
-         */
         var _this = possibleConstructorReturn(this, (SocketIoChannel.__proto__ || Object.getPrototypeOf(SocketIoChannel)).call(this));
 
         _this.events = {};
@@ -518,10 +531,6 @@ var SocketIoChannel = function (_Channel) {
         _this.configureReconnector();
         return _this;
     }
-    /**
-     * Subscribe to a Socket.io channel.
-     */
-
 
     createClass(SocketIoChannel, [{
         key: 'subscribe',
@@ -531,10 +540,6 @@ var SocketIoChannel = function (_Channel) {
                 auth: this.options.auth || {}
             });
         }
-        /**
-         * Unsubscribe from channel and ubind event callbacks.
-         */
-
     }, {
         key: 'unsubscribe',
         value: function unsubscribe() {
@@ -544,32 +549,12 @@ var SocketIoChannel = function (_Channel) {
                 auth: this.options.auth || {}
             });
         }
-        /**
-         * Listen for an event on the channel instance.
-         */
-
     }, {
         key: 'listen',
         value: function listen(event, callback) {
             this.on(this.eventFormatter.format(event), callback);
             return this;
         }
-        /**
-         * Stop listening for an event on the channel instance.
-         */
-
-    }, {
-        key: 'stopListening',
-        value: function stopListening(event) {
-            var name = this.eventFormatter.format(event);
-            this.socket.removeListener(name);
-            delete this.events[name];
-            return this;
-        }
-        /**
-         * Bind the channel's socket to an event and store the callback.
-         */
-
     }, {
         key: 'on',
         value: function on(event, callback) {
@@ -583,10 +568,6 @@ var SocketIoChannel = function (_Channel) {
             this.socket.on(event, listener);
             this.bind(event, listener);
         }
-        /**
-         * Attach a 'reconnect' listener and bind the event.
-         */
-
     }, {
         key: 'configureReconnector',
         value: function configureReconnector() {
@@ -598,20 +579,12 @@ var SocketIoChannel = function (_Channel) {
             this.socket.on('reconnect', listener);
             this.bind('reconnect', listener);
         }
-        /**
-         * Bind the channel's socket to an event and store the callback.
-         */
-
     }, {
         key: 'bind',
         value: function bind(event, callback) {
             this.events[event] = this.events[event] || [];
             this.events[event].push(callback);
         }
-        /**
-         * Unbind the channel's socket from all stored event callbacks.
-         */
-
     }, {
         key: 'unbind',
         value: function unbind() {
@@ -628,9 +601,6 @@ var SocketIoChannel = function (_Channel) {
     return SocketIoChannel;
 }(Channel);
 
-/**
- * This class represents a Socket.io presence channel.
- */
 var SocketIoPrivateChannel = function (_SocketIoChannel) {
     inherits(SocketIoPrivateChannel, _SocketIoChannel);
 
@@ -641,10 +611,6 @@ var SocketIoPrivateChannel = function (_SocketIoChannel) {
 
     createClass(SocketIoPrivateChannel, [{
         key: 'whisper',
-
-        /**
-         * Trigger client event on the channel.
-         */
         value: function whisper(eventName, data) {
             this.socket.emit('client event', {
                 channel: this.name,
@@ -657,9 +623,6 @@ var SocketIoPrivateChannel = function (_SocketIoChannel) {
     return SocketIoPrivateChannel;
 }(SocketIoChannel);
 
-/**
- * This class represents a Socket.io presence channel.
- */
 var SocketIoPresenceChannel = function (_SocketIoPrivateChann) {
     inherits(SocketIoPresenceChannel, _SocketIoPrivateChann);
 
@@ -670,10 +633,6 @@ var SocketIoPresenceChannel = function (_SocketIoPrivateChann) {
 
     createClass(SocketIoPresenceChannel, [{
         key: 'here',
-
-        /**
-         * Register a callback to be called anytime the member list changes.
-         */
         value: function here(callback) {
             this.on('presence:subscribed', function (members) {
                 callback(members.map(function (m) {
@@ -682,10 +641,6 @@ var SocketIoPresenceChannel = function (_SocketIoPrivateChann) {
             });
             return this;
         }
-        /**
-         * Listen for someone joining the channel.
-         */
-
     }, {
         key: 'joining',
         value: function joining(callback) {
@@ -694,10 +649,6 @@ var SocketIoPresenceChannel = function (_SocketIoPrivateChann) {
             });
             return this;
         }
-        /**
-         * Listen for someone leaving the channel.
-         */
-
     }, {
         key: 'leaving',
         value: function leaving(callback) {
@@ -710,185 +661,34 @@ var SocketIoPresenceChannel = function (_SocketIoPrivateChann) {
     return SocketIoPresenceChannel;
 }(SocketIoPrivateChannel);
 
-/**
- * This class represents a null channel.
- */
-var NullChannel = function (_Channel) {
-  inherits(NullChannel, _Channel);
-
-  function NullChannel() {
-    classCallCheck(this, NullChannel);
-    return possibleConstructorReturn(this, (NullChannel.__proto__ || Object.getPrototypeOf(NullChannel)).apply(this, arguments));
-  }
-
-  createClass(NullChannel, [{
-    key: 'subscribe',
-
-    /**
-     * Subscribe to a channel.
-     */
-    value: function subscribe() {}
-    //
-
-    /**
-     * Unsubscribe from a channel.
-     */
-
-  }, {
-    key: 'unsubscribe',
-    value: function unsubscribe() {}
-    //
-
-    /**
-     * Listen for an event on the channel instance.
-     */
-
-  }, {
-    key: 'listen',
-    value: function listen(event, callback) {
-      return this;
-    }
-    /**
-     * Stop listening for an event on the channel instance.
-     */
-
-  }, {
-    key: 'stopListening',
-    value: function stopListening(event) {
-      return this;
-    }
-    /**
-     * Bind a channel to an event.
-     */
-
-  }, {
-    key: 'on',
-    value: function on(event, callback) {
-      return this;
-    }
-  }]);
-  return NullChannel;
-}(Channel);
-
-/**
- * This class represents a null private channel.
- */
-var NullPrivateChannel = function (_NullChannel) {
-  inherits(NullPrivateChannel, _NullChannel);
-
-  function NullPrivateChannel() {
-    classCallCheck(this, NullPrivateChannel);
-    return possibleConstructorReturn(this, (NullPrivateChannel.__proto__ || Object.getPrototypeOf(NullPrivateChannel)).apply(this, arguments));
-  }
-
-  createClass(NullPrivateChannel, [{
-    key: 'whisper',
-
-    /**
-     * Trigger client event on the channel.
-     */
-    value: function whisper(eventName, data) {
-      return this;
-    }
-  }]);
-  return NullPrivateChannel;
-}(NullChannel);
-
-/**
- * This class represents a null presence channel.
- */
-var NullPresenceChannel = function (_NullChannel) {
-  inherits(NullPresenceChannel, _NullChannel);
-
-  function NullPresenceChannel() {
-    classCallCheck(this, NullPresenceChannel);
-    return possibleConstructorReturn(this, (NullPresenceChannel.__proto__ || Object.getPrototypeOf(NullPresenceChannel)).apply(this, arguments));
-  }
-
-  createClass(NullPresenceChannel, [{
-    key: 'here',
-
-    /**
-     * Register a callback to be called anytime the member list changes.
-     */
-    value: function here(callback) {
-      return this;
-    }
-    /**
-     * Listen for someone joining the channel.
-     */
-
-  }, {
-    key: 'joining',
-    value: function joining(callback) {
-      return this;
-    }
-    /**
-     * Listen for someone leaving the channel.
-     */
-
-  }, {
-    key: 'leaving',
-    value: function leaving(callback) {
-      return this;
-    }
-    /**
-     * Trigger client event on the channel.
-     */
-
-  }, {
-    key: 'whisper',
-    value: function whisper(eventName, data) {
-      return this;
-    }
-  }]);
-  return NullPresenceChannel;
-}(NullChannel);
-
-/**
- * This class creates a connector to Pusher.
- */
 var PusherConnector = function (_Connector) {
     inherits(PusherConnector, _Connector);
 
     function PusherConnector() {
+        var _ref;
+
         classCallCheck(this, PusherConnector);
 
-        /**
-         * All of the subscribed channel names.
-         */
-        var _this = possibleConstructorReturn(this, (PusherConnector.__proto__ || Object.getPrototypeOf(PusherConnector)).apply(this, arguments));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        var _this = possibleConstructorReturn(this, (_ref = PusherConnector.__proto__ || Object.getPrototypeOf(PusherConnector)).call.apply(_ref, [this].concat(args)));
 
         _this.channels = {};
         return _this;
     }
-    /**
-     * Create a fresh Pusher connection.
-     */
-
 
     createClass(PusherConnector, [{
         key: 'connect',
         value: function connect() {
-            if (typeof this.options.client !== 'undefined') {
-                this.pusher = this.options.client;
-            } else {
-                this.pusher = new Pusher(this.options.key, this.options);
-            }
+            this.pusher = new Pusher(this.options.key, this.options);
         }
-        /**
-         * Listen for an event on a channel instance.
-         */
-
     }, {
         key: 'listen',
         value: function listen(name, event, callback) {
             return this.channel(name).listen(event, callback);
         }
-        /**
-         * Get a channel instance by name.
-         */
-
     }, {
         key: 'channel',
         value: function channel(name) {
@@ -897,10 +697,6 @@ var PusherConnector = function (_Connector) {
             }
             return this.channels[name];
         }
-        /**
-         * Get a private channel instance by name.
-         */
-
     }, {
         key: 'privateChannel',
         value: function privateChannel(name) {
@@ -909,10 +705,6 @@ var PusherConnector = function (_Connector) {
             }
             return this.channels['private-' + name];
         }
-        /**
-         * Get a presence channel instance by name.
-         */
-
     }, {
         key: 'presenceChannel',
         value: function presenceChannel(name) {
@@ -921,10 +713,6 @@ var PusherConnector = function (_Connector) {
             }
             return this.channels['presence-' + name];
         }
-        /**
-         * Leave the given channel, as well as its private and presence variants.
-         */
-
     }, {
         key: 'leave',
         value: function leave(name) {
@@ -932,34 +720,17 @@ var PusherConnector = function (_Connector) {
 
             var channels = [name, 'private-' + name, 'presence-' + name];
             channels.forEach(function (name, index) {
-                _this2.leaveChannel(name);
+                if (_this2.channels[name]) {
+                    _this2.channels[name].unsubscribe();
+                    delete _this2.channels[name];
+                }
             });
         }
-        /**
-         * Leave the given channel.
-         */
-
-    }, {
-        key: 'leaveChannel',
-        value: function leaveChannel(name) {
-            if (this.channels[name]) {
-                this.channels[name].unsubscribe();
-                delete this.channels[name];
-            }
-        }
-        /**
-         * Get the socket ID for the connection.
-         */
-
     }, {
         key: 'socketId',
         value: function socketId() {
             return this.pusher.connection.socket_id;
         }
-        /**
-         * Disconnect Pusher connection.
-         */
-
     }, {
         key: 'disconnect',
         value: function disconnect() {
@@ -969,63 +740,35 @@ var PusherConnector = function (_Connector) {
     return PusherConnector;
 }(Connector);
 
-/**
- * This class creates a connnector to a Socket.io server.
- */
 var SocketIoConnector = function (_Connector) {
     inherits(SocketIoConnector, _Connector);
 
     function SocketIoConnector() {
+        var _ref;
+
         classCallCheck(this, SocketIoConnector);
 
-        /**
-         * All of the subscribed channel names.
-         */
-        var _this = possibleConstructorReturn(this, (SocketIoConnector.__proto__ || Object.getPrototypeOf(SocketIoConnector)).apply(this, arguments));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        var _this = possibleConstructorReturn(this, (_ref = SocketIoConnector.__proto__ || Object.getPrototypeOf(SocketIoConnector)).call.apply(_ref, [this].concat(args)));
 
         _this.channels = {};
         return _this;
     }
-    /**
-     * Create a fresh Socket.io connection.
-     */
-
 
     createClass(SocketIoConnector, [{
         key: 'connect',
         value: function connect() {
-            var io = this.getSocketIO();
             this.socket = io(this.options.host, this.options);
             return this.socket;
         }
-        /**
-         * Get socket.io module from global scope or options.
-         */
-
-    }, {
-        key: 'getSocketIO',
-        value: function getSocketIO() {
-            if (typeof io !== 'undefined') {
-                return io;
-            }
-            if (typeof this.options.client !== 'undefined') {
-                return this.options.client;
-            }
-            throw new Error('Socket.io client not found. Should be globally available or passed via options.client');
-        }
-        /**
-         * Listen for an event on a channel instance.
-         */
-
     }, {
         key: 'listen',
         value: function listen(name, event, callback) {
             return this.channel(name).listen(event, callback);
         }
-        /**
-         * Get a channel instance by name.
-         */
-
     }, {
         key: 'channel',
         value: function channel(name) {
@@ -1034,10 +777,6 @@ var SocketIoConnector = function (_Connector) {
             }
             return this.channels[name];
         }
-        /**
-         * Get a private channel instance by name.
-         */
-
     }, {
         key: 'privateChannel',
         value: function privateChannel(name) {
@@ -1046,10 +785,6 @@ var SocketIoConnector = function (_Connector) {
             }
             return this.channels['private-' + name];
         }
-        /**
-         * Get a presence channel instance by name.
-         */
-
     }, {
         key: 'presenceChannel',
         value: function presenceChannel(name) {
@@ -1058,10 +793,6 @@ var SocketIoConnector = function (_Connector) {
             }
             return this.channels['presence-' + name];
         }
-        /**
-         * Leave the given channel, as well as its private and presence variants.
-         */
-
     }, {
         key: 'leave',
         value: function leave(name) {
@@ -1069,34 +800,17 @@ var SocketIoConnector = function (_Connector) {
 
             var channels = [name, 'private-' + name, 'presence-' + name];
             channels.forEach(function (name) {
-                _this2.leaveChannel(name);
+                if (_this2.channels[name]) {
+                    _this2.channels[name].unsubscribe();
+                    delete _this2.channels[name];
+                }
             });
         }
-        /**
-         * Leave the given channel.
-         */
-
-    }, {
-        key: 'leaveChannel',
-        value: function leaveChannel(name) {
-            if (this.channels[name]) {
-                this.channels[name].unsubscribe();
-                delete this.channels[name];
-            }
-        }
-        /**
-         * Get the socket ID for the connection.
-         */
-
     }, {
         key: 'socketId',
         value: function socketId() {
             return this.socket.id;
         }
-        /**
-         * Disconnect Socketio connection.
-         */
-
     }, {
         key: 'disconnect',
         value: function disconnect() {
@@ -1106,235 +820,28 @@ var SocketIoConnector = function (_Connector) {
     return SocketIoConnector;
 }(Connector);
 
-/**
- * This class creates a null connector.
- */
-var NullConnector = function (_Connector) {
-  inherits(NullConnector, _Connector);
-
-  function NullConnector() {
-    classCallCheck(this, NullConnector);
-
-    /**
-     * All of the subscribed channel names.
-     */
-    var _this = possibleConstructorReturn(this, (NullConnector.__proto__ || Object.getPrototypeOf(NullConnector)).apply(this, arguments));
-
-    _this.channels = {};
-    return _this;
-  }
-  /**
-   * Create a fresh connection.
-   */
-
-
-  createClass(NullConnector, [{
-    key: 'connect',
-    value: function connect() {}
-    //
-
-    /**
-     * Listen for an event on a channel instance.
-     */
-
-  }, {
-    key: 'listen',
-    value: function listen(name, event, callback) {
-      return new NullChannel();
-    }
-    /**
-     * Get a channel instance by name.
-     */
-
-  }, {
-    key: 'channel',
-    value: function channel(name) {
-      return new NullChannel();
-    }
-    /**
-     * Get a private channel instance by name.
-     */
-
-  }, {
-    key: 'privateChannel',
-    value: function privateChannel(name) {
-      return new NullPrivateChannel();
-    }
-    /**
-     * Get a presence channel instance by name.
-     */
-
-  }, {
-    key: 'presenceChannel',
-    value: function presenceChannel(name) {
-      return new NullPresenceChannel();
-    }
-    /**
-     * Leave the given channel, as well as its private and presence variants.
-     */
-
-  }, {
-    key: 'leave',
-    value: function leave(name) {}
-    //
-
-    /**
-     * Leave the given channel.
-     */
-
-  }, {
-    key: 'leaveChannel',
-    value: function leaveChannel(name) {}
-    //
-
-    /**
-     * Get the socket ID for the connection.
-     */
-
-  }, {
-    key: 'socketId',
-    value: function socketId() {
-      return 'fake-socket-id';
-    }
-    /**
-     * Disconnect the connection.
-     */
-
-  }, {
-    key: 'disconnect',
-    value: function disconnect() {
-      //
-    }
-  }]);
-  return NullConnector;
-}(Connector);
-
-/**
- * This class is the primary API for interacting with broadcasting.
- */
-
 var Echo = function () {
-    /**
-     * Create a new class instance.
-     */
     function Echo(options) {
         classCallCheck(this, Echo);
 
         this.options = options;
-        this.connect();
-        this.registerInterceptors();
+        if (typeof Vue === 'function' && Vue.http) {
+            this.registerVueRequestInterceptor();
+        }
+        if (typeof axios === 'function') {
+            this.registerAxiosRequestInterceptor();
+        }
+        if (typeof jQuery === 'function') {
+            this.registerjQueryAjaxSetup();
+        }
+        if (this.options.broadcaster == 'pusher') {
+            this.connector = new PusherConnector(this.options);
+        } else if (this.options.broadcaster == 'socket.io') {
+            this.connector = new SocketIoConnector(this.options);
+        }
     }
-    /**
-     * Get a channel instance by name.
-     */
-
 
     createClass(Echo, [{
-        key: 'channel',
-        value: function channel(_channel) {
-            return this.connector.channel(_channel);
-        }
-        /**
-         * Create a new connection.
-         */
-
-    }, {
-        key: 'connect',
-        value: function connect() {
-            if (this.options.broadcaster == 'pusher') {
-                this.connector = new PusherConnector(this.options);
-            } else if (this.options.broadcaster == 'socket.io') {
-                this.connector = new SocketIoConnector(this.options);
-            } else if (this.options.broadcaster == 'null') {
-                this.connector = new NullConnector(this.options);
-            }
-        }
-        /**
-         * Disconnect from the Echo server.
-         */
-
-    }, {
-        key: 'disconnect',
-        value: function disconnect() {
-            this.connector.disconnect();
-        }
-        /**
-         * Get a presence channel instance by name.
-         */
-
-    }, {
-        key: 'join',
-        value: function join(channel) {
-            return this.connector.presenceChannel(channel);
-        }
-        /**
-         * Leave the given channel, as well as its private and presence variants.
-         */
-
-    }, {
-        key: 'leave',
-        value: function leave(channel) {
-            this.connector.leave(channel);
-        }
-        /**
-         * Leave the given channel.
-         */
-
-    }, {
-        key: 'leaveChannel',
-        value: function leaveChannel(channel) {
-            this.connector.leaveChannel(channel);
-        }
-        /**
-         * Listen for an event on a channel instance.
-         */
-
-    }, {
-        key: 'listen',
-        value: function listen(channel, event, callback) {
-            return this.connector.listen(channel, event, callback);
-        }
-        /**
-         * Get a private channel instance by name.
-         */
-
-    }, {
-        key: 'private',
-        value: function _private(channel) {
-            return this.connector.privateChannel(channel);
-        }
-        /**
-         * Get the Socket ID for the connection.
-         */
-
-    }, {
-        key: 'socketId',
-        value: function socketId() {
-            return this.connector.socketId();
-        }
-        /**
-         * Register 3rd party request interceptiors. These are used to automatically
-         * send a connections socket id to a Laravel app with a X-Socket-Id header.
-         */
-
-    }, {
-        key: 'registerInterceptors',
-        value: function registerInterceptors() {
-            if (typeof Vue === 'function' && Vue.http) {
-                this.registerVueRequestInterceptor();
-            }
-            if (typeof axios === 'function') {
-                this.registerAxiosRequestInterceptor();
-            }
-            if (typeof jQuery === 'function') {
-                this.registerjQueryAjaxSetup();
-            }
-        }
-        /**
-         * Register a Vue HTTP interceptor to add the X-Socket-ID header.
-         */
-
-    }, {
         key: 'registerVueRequestInterceptor',
         value: function registerVueRequestInterceptor() {
             var _this = this;
@@ -1346,10 +853,6 @@ var Echo = function () {
                 next();
             });
         }
-        /**
-         * Register an Axios HTTP interceptor to add the X-Socket-ID header.
-         */
-
     }, {
         key: 'registerAxiosRequestInterceptor',
         value: function registerAxiosRequestInterceptor() {
@@ -1362,10 +865,6 @@ var Echo = function () {
                 return config;
             });
         }
-        /**
-         * Register jQuery AjaxSetup to add the X-Socket-ID header.
-         */
-
     }, {
         key: 'registerjQueryAjaxSetup',
         value: function registerjQueryAjaxSetup() {
@@ -1381,12 +880,46 @@ var Echo = function () {
                 });
             }
         }
+    }, {
+        key: 'listen',
+        value: function listen(channel, event, callback) {
+            return this.connector.listen(channel, event, callback);
+        }
+    }, {
+        key: 'channel',
+        value: function channel(_channel) {
+            return this.connector.channel(_channel);
+        }
+    }, {
+        key: 'private',
+        value: function _private(channel) {
+            return this.connector.privateChannel(channel);
+        }
+    }, {
+        key: 'join',
+        value: function join(channel) {
+            return this.connector.presenceChannel(channel);
+        }
+    }, {
+        key: 'leave',
+        value: function leave(channel) {
+            this.connector.leave(channel);
+        }
+    }, {
+        key: 'socketId',
+        value: function socketId() {
+            return this.connector.socketId();
+        }
+    }, {
+        key: 'disconnect',
+        value: function disconnect() {
+            this.connector.disconnect();
+        }
     }]);
     return Echo;
 }();
 
-/* harmony default export */ __webpack_exports__["a"] = (Echo);
-
+module.exports = Echo;
 
 /***/ }),
 /* 3 */

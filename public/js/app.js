@@ -4593,9 +4593,11 @@ $(document).unbind('keypress').on('keypress', '#msg_input', function(e) {
     });
 });
 
+/*
 Echo.channel('chat').listen('MessageSent', (e) => {
 	console.log(e.message);
 })
+*/
 
 });
 
