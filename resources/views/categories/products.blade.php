@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    @if($category->desc)
+    @if($requestCategory->desc)
     <div class="category_desc">
         {{$requestCategory->desc}}
     </div>
