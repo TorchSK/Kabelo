@@ -41,6 +41,12 @@
         </div>
     </div>
 
+    @if($category->desc)
+    <div class="category_desc">
+        {{$requestCategory->desc}}
+    </div>
+    @endif
+
     @if($requestCategory->children->count() > 0)
     <div id="subcategories_wrapper" class="wrapper">
         <div class="container">
