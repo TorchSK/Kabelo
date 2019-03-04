@@ -4581,6 +4581,22 @@ $('#product_update_btn').click(function(){
 	})
 })
 
+
+$('#chat_icon').click(function(){
+	$('#chat_window').toggle();
+})
+
+$(document).unbind('keypress').on('keypress', '#msg_input', function(e) {
+	$this = $(this);
+	$text = $this.val();
+   	$.post('/chat/message', {'text':$text}, function(data){
+    });
+});
+
+Echo.channel('chat').listen('MessageSent', (e) => {
+	console.log(e.message);
+})
+
 });
 
 $(document).scroll(function() {

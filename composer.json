@@ -15,6 +15,7 @@
         "maatwebsite/excel": "^2.1",
         "nesbot/carbon": "~1.21",
         "orchestra/parser": "~3.5",
+        "predis/predis": "^1.1",
         "rap2hpoutre/fast-excel": "^0.6.0",
         "spatie/array-to-xml": "^2.8",
         "viniciusgava/google-translate-api": "^2.0"

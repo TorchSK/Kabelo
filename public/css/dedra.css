@@ -6046,6 +6046,39 @@ canvas {
 #seo_tool_profile_wrapper #new_xml_field_btn {
   margin-bottom: 25px;
 }
+#chat_icon {
+  position: fixed;
+  bottom: 15px;
+  right: 25px;
+  cursor: pointer;
+}
+#chat_icon i.icon {
+  font-size: 3.5em;
+}
+#chat_window {
+  position: fixed;
+  bottom: 85px;
+  right: 25px;
+  padding: 15px;
+  display: none;
+  border: 1px solid #CCC;
+  height: 400px;
+  width: 300px;
+  background-color: #FFF;
+}
+#chat_window .box {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
 body {
   background-color: #F7F7F7;
 }
@@ -6250,7 +6283,7 @@ body.eshop footer > .container {
   max-width: 1400px;
   background-color: #0d345b;
 }
-body.eshop footer > .container:last-child {
+body.eshop footer > .container.last {
   background-color: #111;
   padding: 5px !important;
   display: -webkit-box;

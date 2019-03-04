@@ -13,3 +13,5 @@ yarn-error.log
 /public/temp
 /public/uploads
 /semantic
+laravel-echo-server.json
+laravel-echo-server.lock

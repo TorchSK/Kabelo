@@ -280,6 +280,7 @@ Route::resource('order','OrderController');
 Route::resource('param','ParamController');
 
 
+
 //Mailables
 Route::get('email/welcome','UtilController@getWelcomeEmail');
 Route::get('email/neworder','UtilController@getNewOrderEmail');
@@ -294,6 +295,10 @@ Route::get('email/send/welcome/{userid}', 'UserController@sendActivationEmail');
 Route::post('/stickers/attach/', 'StickerController@stickerAttach')->name('admin.files.stickerAttach');
 Route::delete('/product/{productid}/sticker/{stickerid}', 'StickerController@removeStickerFromProduct');
 
+
+//Chat
+Route::post('/chat/message','ChatController@sendMessage');
+Route::resource('chat','ChatController');
 
 Route::get('katalog/{id}', 'UtilController@catalogue');
 

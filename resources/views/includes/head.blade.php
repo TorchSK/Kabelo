@@ -71,6 +71,7 @@
     <script src="/js/dropzone.js"></script>
     <script src="/js/infinite.js"></script>
     <script src="/js/handsontable.full.min.js"></script>
+    <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
@@ -91,7 +92,13 @@
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/{{$appname}}.css">
 
+    <script>
+      window.Laravel = {!! json_encode([
+        'user' => Session::getId()
+      ]) !!};
+    </script>
 
+    <script src="/js/bootstrap.js"></script>
     <script src="/js/app.js"></script>
 
 
