@@ -4594,6 +4594,24 @@ $(document).unbind('keypress').on('keypress', '#msg_input', function(e) {
 
 if(Laravel.user.admin)
 {
+	// activate chat for users
+	$('.chat_icon.operator').click(function(){
+		$this=$(this);
+
+		if($this.hasClass('inactive'))
+		{
+			$.post('/chat/activate', {}, function(data){
+				$this.addClass('active').removeClass('inactive');
+			});
+		}
+		else
+		{
+			$.post('/chat/deactivate', {}, function(data){
+				$this.addClass('inactive').removeClass('active');
+			});	
+		}
+	})
+
 	//listen for all opened chats
 	Echo.private('chats').listen('InitChat', (e) => {
         Echo.channel('chat.'+e.data['user']).listen('MessageSent', (f) => {
@@ -4633,6 +4651,11 @@ else
 		$window.find('.msgs').append('<div class="msg own">'+e.data['text']+'</div>');
 	})
 
+	Echo.channel('chats').listen('ActivateChat', (e) => {
+		$('.chat_icon.user').show();
+	}).listen('DectivateChat', (e) => {
+		$('.chat_icon.user').hide();
+	})
 }
 
 

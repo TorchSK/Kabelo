@@ -3,10 +3,22 @@
 	bottom: 15px;
 	right: 25px;
 	cursor: pointer;
-	display:none;
+
+	&.user{
+		display:none;
+	}
 
 	&.operator{
-		display: none;
+
+		&.inactive{
+
+		}
+
+		&.active{
+			i.icon{
+				color: @green;
+			}
+		}
 	}
 
 	i.icon{

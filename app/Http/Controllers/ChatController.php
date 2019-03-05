@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Events\MessageSent;
 use App\Events\InitChat;
+use App\Events\ActivateChat;
+use App\Events\DeactivateChat;
 
 use Auth;
 use Session;
@@ -19,6 +21,20 @@ class ChatController extends Controller
      */
     public function __construct()
     {
+    }
+
+    public function activateChat()
+    {
+        $data = []; 
+
+        event(new ActivateChat($data));
+    }
+
+    public function deactivateChat()
+    {
+        $data = []; 
+
+        event(new DeactivateChat($data));
     }
 
     public function initChat(Request $request)

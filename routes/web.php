@@ -300,6 +300,8 @@ Route::delete('/product/{productid}/sticker/{stickerid}', 'StickerController@rem
 Route::post('/chat/message','ChatController@sendMessage');
 Route::post('/chat/init','ChatController@initChat');
 Route::get('/chat/window/html','ChatController@chatWindowHtml');
+Route::post('/chat/activate/','ChatController@activateChat');
+Route::post('/chat/deactivate/','ChatController@deactivateChat');
 
 Route::resource('chat','ChatController');
 

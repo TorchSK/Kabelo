@@ -6051,10 +6051,12 @@ canvas {
   bottom: 15px;
   right: 25px;
   cursor: pointer;
+}
+.chat_icon.user {
   display: none;
 }
-.chat_icon.operator {
-  display: none;
+.chat_icon.operator.active i.icon {
+  color: #21BA45;
 }
 .chat_icon i.icon {
   font-size: 3.5em;

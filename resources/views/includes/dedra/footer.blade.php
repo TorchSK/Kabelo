@@ -36,6 +36,9 @@
 
 @if(auth()->check() && auth()->user()->admin)
   <div class="chat_windows"></div>
+  <div class="chat_icon operator inactive">
+    <i class="life ring icon"></i>
+  </div>
 @else
   <div class="chat_icon user">
     <i class="life ring blue icon"></i>
