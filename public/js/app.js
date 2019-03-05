@@ -4653,9 +4653,11 @@ else
 
 	Echo.channel('chats').listen('ActivateChat', (e) => {
 		$('.chat_icon.user').show();
-	}).listen('DectivateChat', (e) => {
+	});
+
+	Echo.channel('chats').listen('DeactivateChat', (e) => {
 		$('.chat_icon.user').hide();
-	})
+	});
 }
 
 
