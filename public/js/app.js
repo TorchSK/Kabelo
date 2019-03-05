@@ -4666,10 +4666,16 @@ else
 {
 	// init chat on click
 	$('.chat_icon.user').click(function(){
-		$(this).hide();
-		$.post('/chat/init', {'user':Laravel.user.id}, function(data){
-			$('.chat_window').show();
-		});
+		$this = $(this);
+		$this.hide();
+
+		if(!$this.hasClass('initaited'))
+		{
+			$.post('/chat/init', {'user':Laravel.user.id}, function(data){
+				$('.chat_window').show();
+				$this.addClass('initiated');
+			});
+		}
 	})
 
 
