@@ -6051,6 +6051,7 @@ canvas {
   bottom: 15px;
   right: 25px;
   cursor: pointer;
+  display: none;
 }
 .chat_icon.operator {
   display: none;
