@@ -4669,7 +4669,7 @@ else
 		$this = $(this);
 		$this.hide();
 
-		if(!$this.hasClass('initaited'))
+		if(!$this.hasClass('initiated'))
 		{
 			$.post('/chat/init', {'user':Laravel.user.id}, function(data){
 				$('.chat_window').show();
