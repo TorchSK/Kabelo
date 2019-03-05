@@ -118,6 +118,20 @@ class OrderController extends Controller
 
     }
 
+    public function sendOrderEmails($id)
+    {
+        $order = Order::find($id);
+        Mail::to(json_decode($order->invoice_address)->email)->queue(new NewOrder($order));
+        
+        if(Setting::whereName('order_email_1')->first()->value!='') {
+            Mail::to(Setting::whereName('order_email_1')->first()->value)->queue(new NewOrder($order));
+        }
+
+        if(Setting::whereName('order_email_2')->first()->value!='') {
+            Mail::to(Setting::whereName('order_email_2')->first()->value)->queue(new NewOrder($order));
+        }
+    }
+
     public function update($id, Request $request)
     {
         $order = Order::find($id);
