@@ -4677,6 +4677,10 @@ else
 				$this.addClass('initiated');
 			});
 		}
+		else
+		{
+			$('.chat_window').show();
+		}
 	})
 
 
