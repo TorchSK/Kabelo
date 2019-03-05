@@ -101,7 +101,7 @@
     @else
     <script>
         window.Laravel = {!! json_encode([
-            'user' => Session::getId()
+            'user' => ['id'=>Session::getId()]
         ]) !!};
     </script>
     @endif

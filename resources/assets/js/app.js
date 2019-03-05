@@ -4583,13 +4583,22 @@ $('#product_update_btn').click(function(){
 
 
 
-$(document).unbind('keypress').on('keypress', '#msg_input', function(e) {
+$(document).unbind('keypress').on('keypress', '.msg_input', function(e) {
 	$this = $(this);
 	$text = $this.val();
+	$user = $this.closest('.chat_window').data('user');
+
 	if(e.which == 13) {
-	   	$.post('/chat/message', {'text':$text}, function(data){
+	   	$.post('/chat/message', {'text':$text, 'user': $user}, function(data){
+	   		$this.val('');
 	    });
    	}
+});
+
+$(document).unbind('click').on('click', '.chat_window i.delete', function(e) {
+	$window = $(this).closest('.chat_window');
+	$window.hide();
+	$('.chat_icon.user').show();
 });
 
 if(Laravel.user.admin)
@@ -4626,11 +4635,29 @@ if(Laravel.user.admin)
 					$('.chat_windows').prepend(data);
 					$window = $('.chat_window[data-user="'+e.data['user']+'"]');
 					$window.show();
-					$window.find('.msgs').append('<div class="msg">'+f.data['text']+'</div>');
+					if(f.data['sender'] == Laravel.user.id)
+					{
+						$window.find('.msgs').append('<div class="msg own">'+f.data['text']+'</div>');
+					}
+					else
+					{
+						$window.find('.msgs').append('<div class="msg">'+f.data['text']+'</div>');
+					}
 				})
 			}
+			else
+			{
+				$window = $('.chat_window[data-user="'+e.data['user']+'"]');
+				if(f.data['sender'] == Laravel.user.id)
+				{
+					$window.find('.msgs').append('<div class="msg own">'+f.data['text']+'</div>');
+				}
+				else
+				{
+					$window.find('.msgs').append('<div class="msg">'+f.data['text']+'</div>');
+				}
+			}
 
-			$window.find('.msgs').append('<div class="msg">'+f.data['text']+'</div>');
 
         }) 
     });
@@ -4640,15 +4667,23 @@ else
 	// init chat on click
 	$('.chat_icon.user').click(function(){
 		$(this).hide();
-		$.post('/chat/init', {'user':Laravel.user}, function(data){
+		$.post('/chat/init', {'user':Laravel.user.id}, function(data){
 			$('.chat_window').show();
 		});
 	})
 
 
-	Echo.channel('chat.'+Laravel.user).listen('MessageSent', (e) => {
+	Echo.channel('chat.'+Laravel.user.id).listen('MessageSent', (e) => {
 		$window = $('.chat_window[data-user="'+e.data['user']+'"]');
-		$window.find('.msgs').append('<div class="msg own">'+e.data['text']+'</div>');
+		
+		if(e.data['sender'] == Laravel.user.id)
+		{
+			$window.find('.msgs').append('<div class="msg own">'+e.data['text']+'</div>');
+		}
+		else
+		{
+			$window.find('.msgs').append('<div class="msg">'+e.data['text']+'</div>');
+		}
 	})
 
 	Echo.channel('chats').listen('ActivateChat', (e) => {
