@@ -34,17 +34,17 @@
   </div>
 </div>
 
-<div id="chat_icon">
-  <i class="life ring blue icon"></i>
-</div>
-
-<div id="chat_window">
-  <div class="box">
-    <div class="msgs"></div>
-    <div class="ui fluid input"><input type="text" id="msg_input" /></div>
+@if(auth()->check() && auth()->user()->admin)
+  <div class="chat_windows"></div>
+@else
+  <div class="chat_icon user">
+    <i class="life ring blue icon"></i>
   </div>
-</div>
+@endif
 
+@if(!auth()->check() || (auth()->check() && auth()->user()->admin==0))
+  @include('chat.window',['user'=>Session::getId()])
+@endif
 
 </footer>	
 

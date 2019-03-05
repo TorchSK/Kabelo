@@ -35,7 +35,7 @@ class MessageSent implements ShouldBroadcastNow
      */
     public function broadcastWith()
     {
-        return ['message' => $this->data];
+        return ['data' => $this->data];
     }
 
     /**
@@ -45,6 +45,6 @@ class MessageSent implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new Channel('chat');
+        return new Channel('chat.'.$this->data['user']);
     }
 }

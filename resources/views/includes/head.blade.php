@@ -92,11 +92,19 @@
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/{{$appname}}.css">
 
+    @if(Auth::check())
     <script>
-      window.Laravel = {!! json_encode([
-        'user' => Session::getId()
-      ]) !!};
+        window.Laravel = {!! json_encode([
+            'user' => Auth::user()
+        ]) !!};
     </script>
+    @else
+    <script>
+        window.Laravel = {!! json_encode([
+            'user' => Session::getId()
+        ]) !!};
+    </script>
+    @endif
 
     <script src="/js/bootstrap.js"></script>
     <script src="/js/app.js"></script>

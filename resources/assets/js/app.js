@@ -4582,22 +4582,62 @@ $('#product_update_btn').click(function(){
 })
 
 
-$('#chat_icon').click(function(){
-	$('#chat_window').toggle();
-})
 
 $(document).unbind('keypress').on('keypress', '#msg_input', function(e) {
 	$this = $(this);
 	$text = $this.val();
-   	$.post('/chat/message', {'text':$text}, function(data){
-    });
+	if(e.which == 13) {
+	   	$.post('/chat/message', {'text':$text}, function(data){
+	    });
+   	}
 });
 
-/*
-Echo.channel('chat').listen('MessageSent', (e) => {
-	console.log(e.message);
-})
-*/
+if(Laravel.user.admin)
+{
+	//listen for all opened chats
+	Echo.private('chats').listen('InitChat', (e) => {
+        Echo.channel('chat.'+e.data['user']).listen('MessageSent', (f) => {
+
+			$window = $('.chat_window[data-user="'+e.data['user']+'"]');
+
+			$exists = $window.length;
+
+			if($exists==0)
+			{
+				$.get('/chat/window/html',{user: e.data['user']}, function(data){
+					$('.chat_windows').prepend(data);
+					$window = $('.chat_window[data-user="'+e.data['user']+'"]');
+					$window.show();
+					$window.find('.msgs').append('<div class="msg">'+f.data['text']+'</div>');
+				})
+			}
+
+			$window.find('.msgs').append('<div class="msg">'+f.data['text']+'</div>');
+
+        }) 
+    });
+}
+else
+{
+	// init chat on click
+	$('.chat_icon.user').click(function(){
+		$(this).hide();
+		$.post('/chat/init', {'user':Laravel.user}, function(data){
+			$('.chat_window').show();
+		});
+	})
+
+
+	Echo.channel('chat.'+Laravel.user).listen('MessageSent', (e) => {
+		$window = $('.chat_window[data-user="'+e.data['user']+'"]');
+		$window.find('.msgs').append('<div class="msg own">'+e.data['text']+'</div>');
+	})
+
+}
+
+
+
+
 
 });
 

@@ -298,6 +298,9 @@ Route::delete('/product/{productid}/sticker/{stickerid}', 'StickerController@rem
 
 //Chat
 Route::post('/chat/message','ChatController@sendMessage');
+Route::post('/chat/init','ChatController@initChat');
+Route::get('/chat/window/html','ChatController@chatWindowHtml');
+
 Route::resource('chat','ChatController');
 
 Route::get('katalog/{id}', 'UtilController@catalogue');

@@ -10,7 +10,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 
-class InitiateChat implements ShouldBroadcastNow
+class InitChat implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     
@@ -33,7 +33,7 @@ class InitiateChat implements ShouldBroadcastNow
      */
     public function broadcastWith()
     {
-        return ['message' => $this->data];
+        return ['data' => $this->data];
     }
 
     /**
@@ -43,6 +43,6 @@ class InitiateChat implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('chat.'.$this->data['user1'].'.'.$this->data['user2']);
+        return new PrivateChannel('chats');
     }
 }
