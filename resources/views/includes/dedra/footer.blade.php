@@ -36,7 +36,7 @@
 
 @if(auth()->check() && auth()->user()->admin)
   <div class="chat_windows"></div>
-  <div class="chat_icon operator @if(App\Setting::firstOrCreate(['name'=>'chat_active'])->value == 0) inactive @else active @endif"  data-tooltip="Zapnúť / vypnúť chat" data-position="left center">
+  <div class="chat_icon operator @if(App\Setting::firstOrCreate(['name'=>'chat_active'])->value == 0) inactive @else active @endif"  data-tooltip="Zapnúť / vypnúť chat" data-position="top center">
     <i class="life ring icon"></i>
   </div>
 @else
