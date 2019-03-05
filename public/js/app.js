@@ -4648,6 +4648,7 @@ if(Laravel.user.admin)
 			else
 			{
 				$window = $('.chat_window[data-user="'+e.data['user']+'"]');
+				$window.show();
 				if(f.data['sender'] == Laravel.user.id)
 				{
 					$window.find('.msgs').append('<div class="msg own">'+f.data['text']+'</div>');
