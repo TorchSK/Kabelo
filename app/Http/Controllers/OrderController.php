@@ -149,11 +149,11 @@ class OrderController extends Controller
 
             
             if(Setting::whereName('order_email_1')->first()->value!='') {
-                Mail::to(Setting::whereName('order_email_1')->first()->value)->queue(new CancelOrder($order));
+                Mail::to(Setting::whereName('order_email_1')->first()->value)->queue(new SentOrder($order));
             }
 
             if(Setting::whereName('order_email_2')->first()->value!='') {
-                Mail::to(Setting::whereName('order_email_2')->first()->value)->queue(new CancelOrder($order));
+                Mail::to(Setting::whereName('order_email_2')->first()->value)->queue(new SentOrder($order));
             }
         }
 
