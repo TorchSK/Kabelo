@@ -6065,7 +6065,6 @@ canvas {
   position: fixed;
   bottom: 85px;
   right: 35px;
-  height: 100%;
   width: 300px;
 }
 .chat_windows .chat_window {
