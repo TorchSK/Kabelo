@@ -146,6 +146,15 @@ class OrderController extends Controller
         if($request->has('status_id') && $request->get('status_id')==1)
         {
             Mail::to(json_decode($order->invoice_address)->email)->queue(new SentOrder($order));
+
+            
+            if(Setting::whereName('order_email_1')->first()->value!='') {
+                Mail::to(Setting::whereName('order_email_1')->first()->value)->queue(new CancelOrder($order));
+            }
+
+            if(Setting::whereName('order_email_2')->first()->value!='') {
+                Mail::to(Setting::whereName('order_email_2')->first()->value)->queue(new CancelOrder($order));
+            }
         }
 
         if($request->has('status_id') && $request->get('status_id')==4)
