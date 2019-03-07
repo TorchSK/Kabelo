@@ -171,7 +171,7 @@ Koordinátor: Monika Tagajová
 
 mobil :0904 857 725
 mail : obchod@dedraslovakia.sk
-web: www.dedraslovakia.sk
+web: dedraslovakia.sk
 </pre>
 
 </div>
