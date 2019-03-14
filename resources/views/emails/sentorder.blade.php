@@ -112,7 +112,7 @@
             Stav zásielky si môžete skontrolovať na <a target="_blank" href="https://tracking.dpd.de/status/sk_SK/parcel/{{$order->package_number}}">https://tracking.dpd.de/status/sk_SK/parcel/{{$order->package_number}}</a>
             @endif
             
-            @if($delivery_method->id == 6)
+            @if($delivery_method->id == 6 || $delivery_method->id == 4)
             Stav zásielky si môžete skontrolovať na <a target="_blank" href="https://tandt.posta.sk/zasielky/{{$order->package_number}}">https://tandt.posta.sk/zasielky/{{$order->package_number}}</a>
             @endif
 
