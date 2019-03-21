@@ -216,6 +216,9 @@ $('.login_form').submit(function(){
 $('.add_category_btn').click(function(){
 	$('#add_category_modal').modal('setting', {
     autofocus: false,
+    onShow: function(){
+    	$('.dropdown').dropdown();
+    },
     onApprove : function() {
     	$name = $('#add_category_input').val();
       	$parent_id = $('input[name="parent_id"]').val();
