@@ -21,7 +21,7 @@
 					</div>
 					
 					<form action="/catalogue/changeImage" class="hiden dropzone catalogue_image_dropzone"> 
-								<input type="hidden" name="catalogue_id" value="{{$catalogue->id}}" />
+							<input type="hidden" name="catalogue_id" value="{{$catalogue->id}}" />
 			                 <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
 			                 <div class="dz-message">Klikni pre nahranie súborov</div>
 			        </form>
