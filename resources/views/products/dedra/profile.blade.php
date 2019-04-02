@@ -143,7 +143,7 @@
               @if($variant->image && isset($variant->image->path))
               <img src="{{url($variant->image->path)}}" alt="{{url($variant->image->path)}}" />
               @else
-              <img src="img/empty.jpg" alt="variant" />
+              <img src="/img/empty.jpg" alt="variant" />
               @endif
             </a>
           @endforeach
