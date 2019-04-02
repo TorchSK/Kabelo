@@ -140,8 +140,10 @@
           <div class="caption">Farby</div>
           @foreach($product->colors->where('active',1)   as $variant)
             <a class="color" href="{{route('product.detail',['product'=>$variant->url])}}">
-              @if($variant->image)
+              @if($variant->image && isset($variant->image->path))
               <img src="{{url($variant->image->path)}}" alt="{{url($variant->image->path)}}" />
+              @else
+              <img src="img/empty.jpg" alt="variant" />
               @endif
             </a>
           @endforeach
