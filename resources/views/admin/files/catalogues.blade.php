@@ -26,7 +26,7 @@
 			                 <div class="dz-message">Klikni pre nahranie súborov</div>
 			        </form>
 
-					<div class="ui icon orange button catalogue_image_btn" data-id="{{$catalogue->id}}"  data-tooltip="Nahraj obrázok katalógu"><i class="image icon"></i></div>
+					<div class="ui icon orange button" id="catalogue_image_btn_{{$index}}" data-id="{{$catalogue->id}}"  data-tooltip="Nahraj obrázok katalógu"><i class="image icon"></i></div>
 					<div class="ui icon red button catalogue_delete_btn"  data-tooltip="Zmazať katalóg"><i class="delete icon"></i></div>
 					<div class="ui icon blue button @if($catalogue->primary) primary @endif catalogue_primary_btn"  data-tooltip="Nastaviť ako primárny"><i class="star icon"></i></div>
 
