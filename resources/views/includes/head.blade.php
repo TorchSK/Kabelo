@@ -106,8 +106,6 @@
     </script>
     @endif
 
-    <script src="/js/bootstrap.js"></script>
-    <script src="/js/app.js"></script>
 
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
