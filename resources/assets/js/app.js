@@ -4319,12 +4319,30 @@ $('#sticker_dropzone').dropzone({
     }
 });
 
-$('.catalogue_image_dropzone').dropzone({
+$('#catalogue_image_dropzone_1').dropzone({
 	clickable: '.catalogue_image_btn',
 	success: function(file, response){
         location.reload();
     }
 });
+
+
+$('#catalogue_image_dropzone_2').dropzone({
+	clickable: '.catalogue_image_btn',
+	success: function(file, response){
+        location.reload();
+    }
+});
+
+
+
+$('#catalogue_image_dropzone_3').dropzone({
+	clickable: '.catalogue_image_btn',
+	success: function(file, response){
+        location.reload();
+    }
+});
+
 
 $('.catalogue_path_btn').click(function(){
 	$('#catalogue_url_input').css('display','flex');

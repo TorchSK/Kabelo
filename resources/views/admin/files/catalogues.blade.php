@@ -4,7 +4,7 @@
 <div class="admin_wrapper" id="admin_settings">
 
 		<div id="files_list">
-			@foreach($catalogues as $catalogue)
+			@foreach($catalogues as $index => $catalogue)
 				<div class="catalogue" data-id="{{$catalogue->id}}">
 					<div class="img">
 						@if($catalogue->thumbnail)
@@ -20,7 +20,7 @@
 
 					</div>
 					
-					<form action="/catalogue/changeImage" class="hiden dropzone catalogue_image_dropzone"> 
+					<form action="/catalogue/changeImage" class="hiden dropzone" id="catalogue_image_dropzone_{{$index}}"> 
 							<input type="hidden" name="catalogue_id" value="{{$catalogue->id}}" />
 			                 <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
 			                 <div class="dz-message">Klikni pre nahranie súborov</div>
