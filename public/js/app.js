@@ -446,7 +446,7 @@ $(document).on('click', '.to_cart',function(){
 });
 
 
-$(document).on('click','.delete_cart', function(){
+$('body').on('click','.delete_cart', function(){
 	console.log(1);
     $('#delete_cart_modal').modal('setting', {
     onApprove : function() {
