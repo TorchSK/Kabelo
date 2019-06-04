@@ -447,7 +447,6 @@ $(document).on('click', '.to_cart',function(){
 
 
 $(document).on('click','.delete_cart', function(){
-	console.log(1);
     $('#delete_cart_modal').modal('setting', {
     onApprove : function() {
       $.ajax({
@@ -4320,30 +4319,12 @@ $('#sticker_dropzone').dropzone({
     }
 });
 
-$('#catalogue_image_dropzone_1').dropzone({
-	clickable: '#catalogue_image_btn_1',
+$('.catalogue_image_dropzone').dropzone({
+	clickable: '.catalogue_image_btn',
 	success: function(file, response){
         location.reload();
     }
 });
-
-
-$('#catalogue_image_dropzone_2').dropzone({
-	clickable: '#catalogue_image_btn_2',
-	success: function(file, response){
-        location.reload();
-    }
-});
-
-
-
-$('#catalogue_image_dropzone_3').dropzone({
-	clickable: '#catalogue_image_btn_3',
-	success: function(file, response){
-        location.reload();
-    }
-});
-
 
 $('.catalogue_path_btn').click(function(){
 	$('#catalogue_url_input').css('display','flex');
