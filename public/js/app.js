@@ -4605,7 +4605,7 @@ $('#product_update_btn').click(function(){
 	})
 })
 
-
+/*
 
 $(document).unbind('keypress').on('keypress', '.msg_input', function(e) {
 	$this = $(this);
@@ -4732,7 +4732,7 @@ else
 
 
 
-
+*/
 
 });
 
