@@ -380,7 +380,7 @@ $('#product_detail_tocart_btn').click(function(){
 })
 
 
-$(document).on('click', '.to_cart',function(){
+$('body').on('click', '.to_cart',function(){
   $product = $(this).closest('.product').data('productid');
   $product_code = $(this).closest('.product').data('productcode');
   $product_name = $(this).closest('.product').find('.title').text();
@@ -463,7 +463,7 @@ $('body').on('click','.delete_cart', function(){
 })
 
 
-$(document).on('click','.catalogue_delete_btn', function(){
+$('body').on('click','.catalogue_delete_btn', function(){
 	$catalogueid = $(this).closest('.catalogue').data('id');
     $('#delete_catalogue_modal').modal('setting', {
     onApprove : function() {
@@ -1481,7 +1481,7 @@ $('.categories .item').droppable({
 });
 
 
-$(document).on('click', '.admin_delete_user_btn', function(){
+$('body').on('click', '.admin_delete_user_btn', function(){
   $userid = $(this).closest('.user').data('userid');
   $.ajax({
     method: "DELETE",
@@ -3559,7 +3559,7 @@ $().prettyEmbed({
 });
 
 
-$(document).on('click', '.pretty-embed', function(){
+$('body').on('click', '.pretty-embed', function(){
   var lightbox = lity('//www.youtube.com/watch?v='+$(this).data('pe-videoid'));
 });
 
@@ -3627,7 +3627,7 @@ $('.delete_param_btn').click(function(){
 });
 
 
-$(document).on('click', '#params_list .param.item:not(.manage)', function(e){
+$('body').on('click', '#params_list .param.item:not(.manage)', function(e){
    if( e.target == this ||  $(e.target).hasClass('name')  ||  $(e.target).hasClass('eye') ) 
    {
 		$paramid = $(this).data('paramid');
@@ -3701,7 +3701,7 @@ $('#admin_order_params_save').click(function(){
 	})
 })
 
-$(document).on('click', '.delete_product_param', function(){
+$('body').on('click', '.delete_product_param', function(){
 	$(this).closest('.row').remove();
 })
 
@@ -3709,7 +3709,7 @@ $('#send_remider_btn').click(function(){
 	$(this).addClass('loading');
 })
 
-$(document).on('click','.delete_price_level_btn', function(){
+$('body').on('click','.delete_price_level_btn', function(){
 	$(this).closest('.product_price_level').remove();
 });
 
@@ -4605,7 +4605,7 @@ $('#product_update_btn').click(function(){
 
 
 
-$(document).unbind('keypress').on('keypress', '.msg_input', function(e) {
+$('body').unbind('keypress').on('keypress', '.msg_input', function(e) {
 	$this = $(this);
 	$text = $this.val();
 	$user = $this.closest('.chat_window').data('user');
@@ -4617,7 +4617,7 @@ $(document).unbind('keypress').on('keypress', '.msg_input', function(e) {
    	}
 });
 
-$(document).unbind('click').on('click', '.chat_window i.delete', function(e) {
+$('body').unbind('click').on('click', '.chat_window i.delete', function(e) {
 	$window = $(this).closest('.chat_window');
 	$window.hide();
 	$('.chat_icon.user').show();
