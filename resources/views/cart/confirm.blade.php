@@ -176,6 +176,8 @@
 
 
 	<div class="ct">
+
+			<div class="ui header temp_info">Z dôvodu dovolenky bude tovar expedovaný 26.06.2019</div>
 		 <div class="vop_info">Stlačením „Dokončiť objednávku s povinnosťou platby“ potvrdzujete, že ste sa oboznámili s <a href="/obchodne-podmienky" target="_blank">obchodnými podmienkami</a></div>
 		 <div class="gdpr_info"><a href="/obchodne-podmienky" target="_blank">Info o spracovaní osobných údajov</a></div>
 
