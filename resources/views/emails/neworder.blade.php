@@ -116,7 +116,7 @@
 
         <div style="margin: 15px 0;  font-family: 'Roboto', Sans-Serif; font-size: 15px; font-weight: 200;"><p>
         Dobrý deň, <br/><br/>
-        ďakujeme za Vašu objednávku.<br />Z dôvodu dovolenky bude tovar expedovaný 26.06.2019
+        ďakujeme za Vašu objednávku.<br />Tovar bude expedovaný najneskôr do 15 pracovných dní.
 
 
         </p>
