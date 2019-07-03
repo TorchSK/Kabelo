@@ -118,6 +118,7 @@
         Dobrý deň, <br/><br/>
         ďakujeme za Vašu objednávku.<br />Tovar bude expedovaný najneskôr do 15 pracovných dní.
 
+
         </p>
         </div>
         <br/>
