@@ -228,7 +228,7 @@ DEDRA SLOVAKIA
 Koordinátor: Monika Tagajová
 Číslo koordinátora: 133538
 
-mobil :0902 797 913
+mobil : 0902 797 913
 mail : obchod@dedraslovakia.sk
 web: www.dedraslovakia.sk
 
