@@ -155,7 +155,7 @@
 				    </tr>
 				    @if(isset(json_decode($order->invoice_address)->company))
 				    <tr>
-				      <td>IČO</td>
+				      <td>Firma</td>
 				      <td>{{json_decode($order->invoice_address)->company}}</td>
 				    </tr>
 				    @endif
