@@ -10,13 +10,13 @@
         @if(isset($description))
             <meta name="description" content="{{$description}}">
         @else
-            <meta name="description" content="DEDRA EKO čistiace prostriedky, darčeky pre mužov, darčeky pre ženy, šperky, drogéria pre domácnosť">
+            <meta name="description" content="Dedra eko čistiace prostriedky, darčeky pre mužov, darčeky pre ženy, šperky, drogéria pre domácnosť">
         @endif
 
         @if(isset($keywords))
             <meta name="keywords" content="{{$keywords}}">
         @else
-            <meta name="keywords" content="darček,darčeky pre muža,darčeky pre ženu,dedra,drogeria,dekoracie,šperky,doplnky do domácnosti,do bytu,domov, stolovanie,porcelán,bižutéria,cestovanie,keramika">
+            <meta name="keywords" content="dedra,darček,darčeky pre muža,darčeky pre ženu,drogeria,dekoracie,šperky,doplnky do domácnosti,do bytu,domov,stolovanie,porcelán,bižutéria,cestovanie,keramika">
         @endif
 
     @endif
@@ -27,7 +27,7 @@
     <meta property="og:url" content="{{Request::url()}}" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="@if(isset($title)){{$title}} @else Dedraslovakia.sk @endif"/>
-    <meta property="og:description" content="@if(isset($description)){{substr($description,0,100)}} @else DEDRA EKO čistiace prostriedky, darčeky pre mužov, darčeky pre ženy, šperky, drogéria pre domácnosť @endif" />
+    <meta property="og:description" content="@if(isset($description)){{substr($description,0,100)}}@else Dedra eko čistiace prostriedky,darčeky pre mužov,darčeky pre ženy,šperky,drogéria pre domácnosť @endif" />
     @if (isset($ogImages))
         @foreach($ogImages as $image)
             <meta property="og:image" content="{{$image}}" />
