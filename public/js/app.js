@@ -2068,6 +2068,8 @@ $('.admin_method_list i.edit').click(function(){
    $('#edit_method_modal').modal('setting', {
     autofocus: false,
     onShow: function(){
+    	console.log($type);
+    	console.log($id);
     	$('#edit_method_name_input').val($item.data('name'));
       	$('#edit_method_desc_input').val($item.data('desc'));
      	$('#edit_method_price_input').val($item.data('price'));
