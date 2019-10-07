@@ -1475,6 +1475,7 @@ class AdminController extends Controller
         $payment->desc = $request->get('desc');
         $payment->icon = $request->get('icon');
         $payment->price = $request->get('price');
+        $payment->note = $request->get('note');
         $payment->save();
 
         return $payment;
