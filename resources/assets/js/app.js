@@ -2085,6 +2085,8 @@ $('.admin_method_list i.edit').click(function(){
       	$icon = $('#edit_method_modal').find('.ui.dropdown.edit').dropdown('get value');
       	$note = $('#edit_method_note_input').val();
 
+      	console.log($note);
+      	
 		$.ajax({
 			type: "PUT",
 			url: "/admin/"+$type+"/"+$id,
