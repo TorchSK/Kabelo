@@ -2083,7 +2083,7 @@ $('.admin_method_list i.edit').click(function(){
       	$desc = $('#edit_method_desc_input').val();
      	$price = $('#edit_method_price_input').val();
       	$icon = $('#edit_method_modal').find('.ui.dropdown.edit').dropdown('get value');
-      	$note = $('edit_method_note_input').val();
+      	$note = $('#edit_method_note_input').val();
 
 		$.ajax({
 			type: "PUT",

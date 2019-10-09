@@ -93,7 +93,7 @@
 				</div>
 
 				<div class="inputs">
-					<form autocomplete="on">
+				
 			       	<div class="ui large input" data-column="name">
 			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->name}}" @endif />
 			      	</div><br/>
@@ -109,7 +109,7 @@
 			      	<div class="ui large input" data-column="phone">
 			            <input type="text" @if(count(json_decode($cart['delivery_address'], true))>1) value="{{json_decode($cart['delivery_address'])->phone}}" @endif  />
 			      	</div><br/>
-			      	</form>
+
 
        			</div>
        	</div>
