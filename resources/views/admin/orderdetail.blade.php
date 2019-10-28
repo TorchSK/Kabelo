@@ -153,6 +153,12 @@
 				      <td>email</td>
 				      <td>{{json_decode($order->invoice_address)->email}}</td>
 				    </tr>
+				    @if(isset(json_decode($order->invoice_address)->company))
+				    <tr>
+				      <td>Firma</td>
+				      <td>{{json_decode($order->invoice_address)->company}}</td>
+				    </tr>
+				    @endif
 				    @if(isset(json_decode($order->invoice_address)->ico))
 				    <tr>
 				      <td>IČO</td>

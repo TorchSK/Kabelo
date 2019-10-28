@@ -4,7 +4,7 @@
 <div id="admin_xmlupdate_wrapper" class="admin_wrapper">
 		
 		<div class="ui fluid styled accordion">
-			@foreach(App\Log::groupBy('created_at')->get(['created_at']) as $log)
+			@foreach(App\Log::groupBy('created_at')->orderBy('created_at','desc')->get(['created_at']) as $log)
 		  		<div class="title">
 				    <i class="dropdown icon"></i>
 				    {{$log->created_at->format('d.m.Y h:m')}} - 

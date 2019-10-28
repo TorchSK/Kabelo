@@ -2068,6 +2068,7 @@ $('.admin_method_list i.edit').click(function(){
    $('#edit_method_modal').modal('setting', {
     autofocus: false,
     onShow: function(){
+
     	$('#edit_method_name_input').val($item.data('name'));
       	$('#edit_method_desc_input').val($item.data('desc'));
      	$('#edit_method_price_input').val($item.data('price'));
@@ -2082,8 +2083,10 @@ $('.admin_method_list i.edit').click(function(){
       	$desc = $('#edit_method_desc_input').val();
      	$price = $('#edit_method_price_input').val();
       	$icon = $('#edit_method_modal').find('.ui.dropdown.edit').dropdown('get value');
-      	$note = $('edit_method_note_input').val();
+      	$note = $('#edit_method_note_input').val();
 
+      	console.log($note);
+      	
 		$.ajax({
 			type: "PUT",
 			url: "/admin/"+$type+"/"+$id,

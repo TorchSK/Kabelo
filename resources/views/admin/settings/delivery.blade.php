@@ -37,7 +37,7 @@
 		   	<th>Povolené</th>
 	  	</tr>
 	</thead>
-	<tbody class="admin_method_list" data-type="payment">
+	<tbody class="admin_method_list" data-type="delivery">
 	@foreach(App\DeliveryMethod::all() as $deliveryMethod)
 	@foreach(App\PaymentMethod::all() as $paymentMethod)
 		<tr data-delivery_method_id="{{$deliveryMethod->id}}" data-payment_method_id="{{$paymentMethod->id}}">
