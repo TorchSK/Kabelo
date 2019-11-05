@@ -17,7 +17,7 @@
 			    <th>Zmazať</th>
 			  </tr></thead>
 			  <tbody>
-			  	@foreach(App\Product::whereNew('1')->orderBy(['new_carousel','new_order'])->get() as $product)
+			  	@foreach(App\Product::whereNew('1')->orderBy('new_carousel','new_order')->get() as $product)
 				<tr data-id="{{$product->id}}">
 			 	  <td class="collapsing"><i class="content icon"></i></td>
 			 	  <td class="collapsing"><div class="ui checkbox"><input type="checkbox" name="new_carousel" @if($product->new_carousel)checked @endif></div></td>
