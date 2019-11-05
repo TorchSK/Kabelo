@@ -51,8 +51,8 @@
 	   	<th></th>
 	    <th>ID</th>
 	    <th>Datum prijatia</th>
-	    <th>Registrovany</th>
 	 	<th>Meno</th>
+	 	<th>Telefón</th>
 	    <th>Suma</th>
 	    <th>Stav</th>
 	    <th>Dodanie</th>
