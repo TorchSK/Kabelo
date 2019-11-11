@@ -45,7 +45,7 @@ class HomeController extends Controller
 
             if($data['bestsellerCategory']){
                 $request = new Request(['categories'=>[$data['bestsellerCategory']->id], 'active_only'=> true]);
-                $data['bestsellerProducts'] = $this->productService->filter($request)->random(20)->slice(0, 10);
+                $data['bestsellerProducts'] = $this->productService->filter($request)->random(10)->slice(0, 10);
                 
                 $manualBestsellers = Product::whereBestseller(1)->whereHas('categories', function($query) use($data){
                     $query->where('category_id', $data['bestsellerCategory']->id);
