@@ -68,7 +68,7 @@
           @foreach($product->images as $key => $image)
             @if($appname=='dedra')
             <a class="img ct" href="{{$image->path}}" style="display: inline-block;" >
-             <img src="{{url($image->thumb)}}" class="ui image" data-full="{{$image->path}}" data-index="{{$key}}" alt="{{$product->code}}-{{$product->name}}"/>
+             <img src="{{url($image->thumb)}}" class="ui image" data-full="{{url($image->path)}}" data-index="{{$key}}" alt="{{$product->code}}-{{$product->name}}"/>
              </a>
             @else
              <img src="{{url($image->path)}}" class="ui image" width="200px" alt="{{$product->code}}-{{$product->name}}" />
