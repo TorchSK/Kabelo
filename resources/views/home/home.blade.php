@@ -26,12 +26,10 @@
 
                 <div class="ui message">
                   <i class="close icon"></i>
-                  <div class="header">
-                    Welcome back!
-                  </div>
+                  
                   <p>Z dôvodu vianočných a novoročných sviatkov budeme expedovať tovar nasledovne:<br />
-                    objednávky prijaté po 16.12., budeme odosielať od 27.12.2019<br />
-                    objednávky prijaté po 23.12., budeme odosielať od 7.01.2020.</p>
+                    Objednávky prijaté po 16.12., budeme odosielať od <b>27.12.2019.</b><br />
+                    Objednávky prijaté po 23.12., budeme odosielať od <b>7.01.2020.</b></p>
                 </div>
 
                     <div class="top_banner_row_mobile">
