@@ -374,6 +374,14 @@ $('.other_img .img').click(function(e){
 
 });
 
+$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
 
 
 function flyToElement(flyer, flyingTo) {
