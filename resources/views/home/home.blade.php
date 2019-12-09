@@ -24,6 +24,16 @@
 
             <div class="grow">
 
+                <div class="ui message">
+                  <i class="close icon"></i>
+                  <div class="header">
+                    Welcome back!
+                  </div>
+                  <p>Z dôvodu vianočných a novoročných sviatkov budeme expedovať tovar nasledovne:<br />
+                    objednávky prijaté po 16.12., budeme odosielať od 27.12.2019<br />
+                    objednávky prijaté po 23.12., budeme odosielať od 7.01.2020.</p>
+                </div>
+
                     <div class="top_banner_row_mobile">
                             @foreach(App\Banner::where('type','cover')->orderBy('order')->get() as $cover)
                                 <img src="{{url($cover->image)}}" alt="{{$cover->image}}"/>
