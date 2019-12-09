@@ -1151,6 +1151,10 @@ a:hover {
       -ms-flex: 1;
           flex: 1;
 }
+#mssg {
+  background-color: #f22b6c;
+  color: #FFFFFF;
+}
 #home_bestsellers_div {
   margin-top: 50px;
 }
