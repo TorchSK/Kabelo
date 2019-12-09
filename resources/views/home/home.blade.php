@@ -24,7 +24,7 @@
 
             <div class="grow">
                 <br />
-                <div class="ui olive message">
+                <div class="ui orange message">
                   <i class="close icon"></i>
                   
                   <p>Z dôvodu vianočných a novoročných sviatkov budeme expedovať tovar nasledovne:<br />
