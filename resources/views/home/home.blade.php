@@ -23,8 +23,8 @@
             @endif
 
             <div class="grow">
-
-                <div class="ui message">
+                <br />
+                <div class="ui olive message">
                   <i class="close icon"></i>
                   
                   <p>Z dôvodu vianočných a novoročných sviatkov budeme expedovať tovar nasledovne:<br />
