@@ -52,7 +52,7 @@ class HomeController extends Controller
                     $query->where('category_id', $data['bestsellerCategory']->id);
                 })->get();
 
-                $data['bestsellerProducts'] = $data['bestsellerProducts']->merge($manualBestsellers);
+                $data['bestsellerProducts'] = $data['bestsellerProducts']->merge($manualBestsellers)->splice(20);
             }
 
         }
