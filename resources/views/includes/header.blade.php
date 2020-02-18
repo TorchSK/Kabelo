@@ -17,7 +17,7 @@
         </a>
 
             <div class="item">
-               <div class="image"><img alt="25" src="/img/cesky-vyrobce-25-let.png" /></div>
+               <div class="image"><img alt="25" src="/img/cesky-vyrobce-25-let.png" width="100" /></div>
             </div>
 
           
