@@ -16,8 +16,11 @@
           @endif
         </a>
 
-    
-        
+            <div class="item">
+               <div class="image"><img alt="25" src="/img/cesky-vyrobce-25-let.png" width="60" /></div>
+            </div>
+
+          
         <div class="item search">
           <div class="ui left icon input" id="main_search">
             <input type="text" placeholder="Hľadať produkty..." />
