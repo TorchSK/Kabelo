@@ -53,7 +53,6 @@
     @endif
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -73,10 +72,11 @@
     <script src="/js/handsontable.full.min.js"></script>
 
     <!--<script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script> -->
-
+    <!--
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
-
+    -->
+    
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
     
     <link media="all" type="text/css" rel="stylesheet" href="/css/rateyo.css">
