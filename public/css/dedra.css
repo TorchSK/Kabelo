@@ -4379,10 +4379,6 @@ body.admin #filterbar.vertical .categories .item {
 #cart_delivery {
   background-color: #F7F7F7;
 }
-
-.ui.steps .step .title ~ .description{
-  max-width: 370px;
-}
 #cart_delivery .price {
   margin-left: 25px;
   color: #767676;

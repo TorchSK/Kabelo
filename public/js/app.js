@@ -2423,9 +2423,6 @@ $('table.sortable').tablesorter({
 });
 
 
-setTimeout(function () {
-  $('.top_banner_row').fadeTo("slow", 0.9);
-}, 100);
 
 if ($('body').attr('id')=='dashboard')
 {
