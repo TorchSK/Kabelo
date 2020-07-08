@@ -53,22 +53,7 @@
     @endif
 
     <!-- Fonts -->
-        <script src="/js/jquery.min.js"></script>
 
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
-    <script src="/js/semantic.js"></script>
-    <script src="/js/flickity.js"></script>
-    <script src="/js/wNumb.js"></script>
-    <script src="/js/nouislider.js"></script>
-    <script src="/js/cropper.js"></script>
-    <script src="/js/rating.js"></script>
-    <script src="/js/spectrum.js"></script>
-    <script src="/js/tablesorter.js"></script>
-    <script src="/js/modulobox.min.js"></script>
-    <script src="/js/nestedsortable.js"></script>
-    <script src="/js/dropzone.js"></script>
-    <script src="/js/infinite.js"></script>
-    <script src="/js/handsontable.full.min.js"></script>
 
     <!--<script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script> -->
     <!--
