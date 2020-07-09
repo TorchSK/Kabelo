@@ -15,6 +15,15 @@
 
     @include('includes.footer')
 
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/app.js"></script>
+
+
+    <script src="/js/flickity.js"></script>
+    <script src="/js/cropper.js"></script>
+    <script src="/js/modulobox.min.js"></script>
+    <script src="/js/dropzone.js"></script>
+    <script src="/js/handsontable.full.min.js"></script>
 
     </body>
 </html>

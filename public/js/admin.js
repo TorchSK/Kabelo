@@ -1,1 +1,992 @@
-$(document).ready(function(){$(".admin_categories_list .accordion").nestedSortable({handle:".handle",items:".category",listType:"ul",disableParentChange:!1,stop:function(e,t){$data=[],$orders={},$parents={},$(".admin_categories_list .accordion .category").each(function(e,t){$orders[$(t).data("id")]=e,$parents[$(t).data("id")]=$(t).closest("li").parent().closest("li").data("id")}),$.ajax({method:"PUT",url:"/categories/setorder",data:{orders:$orders,parents:$parents}})}}),$(".pages_list").nestedSortable({handle:".handle",items:".item",listType:"ul",disableParentChange:!1,stop:function(e,t){$data=[],$orders={},$parents={},$(".pages_list .item").each(function(e,t){$orders[$(t).data("id")]=e,$parents[$(t).data("id")]=$(t).closest("li").parent().closest("li").data("id")}),$.ajax({method:"PUT",url:"/pages/setorder",data:{orders:$orders,parents:$parents}})}}),$(".change_cat_img_btn").click(function(){$("#category_image_dropzone").click()}),$("#xml_dropzone").dropzone({clickable:"#xml_upload_btn",success:function(e,t){$("#xml_url_input").val(t),$("#xml_url_input").data("external",0)}}),$("#catalogue_dropzone").dropzone({clickable:".catalogue_upload_btn",success:function(e,t){location.reload()}}),$("#sticker_dropzone").dropzone({clickable:".sticker_upload_btn",success:function(e,t){location.reload()}}),$("#catalogue_image_dropzone_1").dropzone({clickable:"#catalogue_image_btn_1",success:function(e,t){location.reload()}}),$("#catalogue_image_dropzone_2").dropzone({clickable:"#catalogue_image_btn_2",success:function(e,t){location.reload()}}),$("#catalogue_image_dropzone_3").dropzone({clickable:"#catalogue_image_btn_3",success:function(e,t){location.reload()}}),$("#product_detail_dropzone").dropzone({params:{_token:$('meta[name="csrf-token"]').attr("content")}}),$("#file_dropzone").dropzone({params:{_token:$('meta[name="csrf-token"]').attr("content")},success:function(e,t){location.reload()}}),$("#import_dropzone").dropzone({success:function(e,t){$table=$("#admin_import_results").find("table"),$row=$table.find("tbody tr"),$.each(t,function(e,t){$lastRow=$table.find("tbody tr:last-child"),$lastRow.find('td[col="name"]').html(t.name),$lastRow.find('td[col="code"]').html(t.code),$lastRow.find('td[col="maker"]').html(t.maker),console.log(t),$row.clone().appendTo($table)}),$table.find("tbody tr:last-child").remove()},params:{_token:$('meta[name="csrf-token"]').attr("content")}}),$("#category_image_dropzone").dropzone({success:function(e,t){this.removeAllFiles(!0),$categoryid=$("#category_image_div").data("categoryid"),$.ajax({method:"POST",url:"/category/"+$categoryid+"/image/confirmCrop",data:{filename:e.name},success:function(){location.reload()}})}}),$("#cover_dropzone").dropzone({clickable:["#admin_add_cover_change_image_btn","#cover_dropzone"],success:function(e,t){this.removeAllFiles(!0),$(".crop_preview").html("<img src=/"+t+" />").unbind("focus"),$(".admin_add_cover_under").css("display","flex"),$(".cover_image").show(),$("#cover_dropzone").hide(),$('#admin_add_cover_form input[name="filename"]').val(e.name),$("#admin_add_cover_change_image_btn").hide(),"cover"==$('input[name="type"]').val()?$aspect=$("#cover_ratio").text():$aspect=$("#banner_ratio").text(),$(".crop_preview img").cropper({guides:!1,viewMode:1,aspectRatio:$aspect,autoCropArea:1,crop:function(e){$('#admin_add_cover_form input[name="x"]').val(e.x),$('#admin_add_cover_form input[name="y"]').val(e.y),$('#admin_add_cover_form input[name="w"]').val(e.width),$('#admin_add_cover_form input[name="h"]').val(e.height)},preview:$(".cover_image .cover")}),$(".crop_ok").show().click(function(){$categoryid=$(this).data("categoryid"),$.ajax({method:"POST",url:"/category/"+$categoryid+"/image/confirmCrop",data:{filename:e.name,x:void 0,y:void 0,w:void 0,h:void 0},success:function(){location.reload()}})})}}),$(".ui.accordion").accordion({exclusive:!1}),$("#filterbar .ui.accordion").accordion({exclusive:!1,selector:{accordion:".accordion",title:".title",trigger:".title i",content:".content"}}),$(".admin_categories_list .ui.accordion").accordion({exclusive:!1,selector:{accordion:".accordion",title:".title",trigger:".name",content:".content"}}),$("#admin #grid .product.item").draggable({opacity:.6,helper:"clone"}),$(".categories .item").droppable({tolerance:"pointer",accept:".product",over:function(e,t){$(this).addClass("active")},out:function(e,t){$(this).removeClass("active")},deactivate:function(e,t){$(this).removeClass("active")},drop:function(e,t){$categoryId=$(this).data("categoryid"),$product=$(t.draggable),$.post("/product/"+$product.data("productid")+"/change/category/"+$categoryId,{},function(){$product.remove()}),$(this).removeClass("active")}}),$(".sticker_preview_div .sticker").draggable({containment:"parent",create:function(){stikcer_left=0,sticker_right=0},stop:function(){sticker_left=$(this).position().left,sticker_top=$(this).position().top}});var e=function(e,t){return t.children().each(function(){console.log(e),$(this).width($(this).width())}),t};$(".sticker_preview_div .sticker").resizable({containment:"parent",create:function(){sticker_width=$(this).width(),sticker_height=$(this).height()},stop:function(){sticker_width=$(this).width(),sticker_height=$(this).height()}}),$(".admin_cover_list").sortable({stop:function(){$data={},$(".admin_cover_list .banner").each(function(e,t){$data[$(t).data("id")]=e}),$.ajax({method:"PUT",url:"/admin/covers/setorder",data:$data})}}),$(".admin_banner_list").sortable({stop:function(){$data={},$(".admin_banner_list .banner").each(function(e,t){$data[$(t).data("id")]=e}),$.ajax({method:"PUT",url:"/admin/banners/setorder",data:$data})}}),$("#admin_new_wrapper table tbody").sortable({helper:e,stop:function(){$data={},$("#admin_new_wrapper table tbody tr").each(function(e,t){$data[$(t).data("id")]=e}),$.ajax({method:"PUT",url:"/products/new/setorder",data:$data})}}),$("#admin_sale_wrapper table tbody").sortable({helper:e,stop:function(){$data={},$("#admin_sale_wrapper table tbody tr").each(function(e,t){$data[$(t).data("id")]=e}),$.ajax({method:"PUT",url:"/products/sale/setorder",data:$data})}}),function(e,t,n,i){"use strict";t=void 0!==t&&t.Math==Math?t:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")(),e.fn.accordion=function(n){var i,o=e(this),a=(new Date).getTime(),r=[],c=arguments[0],s="string"==typeof c,d=[].slice.call(arguments,1);t.requestAnimationFrame||t.mozRequestAnimationFrame||t.webkitRequestAnimationFrame||t.msRequestAnimationFrame;return o.each(function(){var l,u,p=e.isPlainObject(n)?e.extend(!0,{},e.fn.accordion.settings,n):e.extend({},e.fn.accordion.settings),m=p.className,g=p.namespace,f=p.selector,h=p.error,v="."+g,$="module-"+g,b=o.selector||"",_=e(this),y=_.find(f.title),C=_.find(f.content),k=this,x=_.data($);u={initialize:function(){u.debug("Initializing",_),u.bind.events(),p.observeChanges&&u.observeChanges(),u.instantiate()},instantiate:function(){x=u,_.data($,u)},destroy:function(){u.debug("Destroying previous instance",_),_.off(v).removeData($)},refresh:function(){y=_.find(f.title),C=_.find(f.content)},observeChanges:function(){"MutationObserver"in t&&(l=new MutationObserver(function(e){u.debug("DOM tree modified, updating selector cache"),u.refresh()}),l.observe(k,{childList:!0,subtree:!0}),u.debug("Setting up mutation observer",l))},bind:{events:function(){u.debug("Binding delegated events"),_.on(p.on+v,f.trigger,u.event.click)}},event:{click:function(){u.toggle.call(this)}},toggle:function(t){var n=void 0!==t?"number"==typeof t?y.eq(t):e(t).closest(f.title):e(this).closest(f.title),i=n.next(C),o=i.hasClass(m.animating),a=i.hasClass(m.active),r=a&&!o,c=!a&&o;u.debug("Toggling visibility of content",n),r||c?p.collapsible?u.close.call(n):u.debug("Cannot close accordion content collapsing is disabled"):u.open.call(n)},open:function(t){var n=void 0!==t?"number"==typeof t?y.eq(t):e(t).closest(f.title):e(this).closest(f.title),i=n.next(C),o=i.hasClass(m.animating);if(i.hasClass(m.active)||o)return void u.debug("Accordion already open, skipping",i);u.debug("Opening accordion content",n),p.onOpening.call(i),p.onChanging.call(i),p.exclusive&&u.closeOthers.call(n),n.addClass(m.active),i.stop(!0,!0).addClass(m.animating),p.animateChildren&&(void 0!==e.fn.transition&&_.transition("is supported")?i.children().transition({animation:"fade in",queue:!1,useFailSafe:!0,debug:p.debug,verbose:p.verbose,duration:p.duration}):i.children().stop(!0,!0).animate({opacity:1},p.duration,u.resetOpacity)),i.slideDown(p.duration,p.easing,function(){i.removeClass(m.animating).addClass(m.active),u.reset.display.call(this),p.onOpen.call(this),p.onChange.call(this)})},close:function(t){var n=void 0!==t?"number"==typeof t?y.eq(t):e(t).closest(f.title):e(this).closest(f.title),i=n.next(C),o=i.hasClass(m.animating),a=i.hasClass(m.active),r=!a&&o,c=a&&o;!a&&!r||c||(u.debug("Closing accordion content",i),p.onClosing.call(i),p.onChanging.call(i),n.removeClass(m.active),i.stop(!0,!0).addClass(m.animating),p.animateChildren&&(void 0!==e.fn.transition&&_.transition("is supported")?i.children().transition({animation:"fade out",queue:!1,useFailSafe:!0,debug:p.debug,verbose:p.verbose,duration:p.duration}):i.children().stop(!0,!0).animate({opacity:0},p.duration,u.resetOpacity)),i.slideUp(p.duration,p.easing,function(){i.removeClass(m.animating).removeClass(m.active),u.reset.display.call(this),p.onClose.call(this),p.onChange.call(this)}))},closeOthers:function(t){var n,i,o,a=void 0!==t?y.eq(t):e(this).closest(f.title),r=a.parents(f.content).prev(f.title),c=a.closest(f.accordion),s=f.title+"."+m.active+":visible",d=f.content+"."+m.active+":visible";p.closeNested?(n=c.find(s).not(r),o=n.next(C)):(n=c.find(s).not(r),i=c.find(d).find(s).not(r),n=n.not(i),o=n.next(C)),n.length>0&&(u.debug("Exclusive enabled, closing other content",n),n.removeClass(m.active),o.removeClass(m.animating).stop(!0,!0),p.animateChildren&&(void 0!==e.fn.transition&&_.transition("is supported")?o.children().transition({animation:"fade out",useFailSafe:!0,debug:p.debug,verbose:p.verbose,duration:p.duration}):o.children().stop(!0,!0).animate({opacity:0},p.duration,u.resetOpacity)),o.slideUp(p.duration,p.easing,function(){e(this).removeClass(m.active),u.reset.display.call(this)}))},reset:{display:function(){u.verbose("Removing inline display from element",this),e(this).css("display",""),""===e(this).attr("style")&&e(this).attr("style","").removeAttr("style")},opacity:function(){u.verbose("Removing inline opacity from element",this),e(this).css("opacity",""),""===e(this).attr("style")&&e(this).attr("style","").removeAttr("style")}},setting:function(t,n){if(u.debug("Changing setting",t,n),e.isPlainObject(t))e.extend(!0,p,t);else{if(void 0===n)return p[t];e.isPlainObject(p[t])?e.extend(!0,p[t],n):p[t]=n}},internal:function(t,n){if(u.debug("Changing internal",t,n),void 0===n)return u[t];e.isPlainObject(t)?e.extend(!0,u,t):u[t]=n},debug:function(){!p.silent&&p.debug&&(p.performance?u.performance.log(arguments):(u.debug=Function.prototype.bind.call(console.info,console,p.name+":"),u.debug.apply(console,arguments)))},verbose:function(){!p.silent&&p.verbose&&p.debug&&(p.performance?u.performance.log(arguments):(u.verbose=Function.prototype.bind.call(console.info,console,p.name+":"),u.verbose.apply(console,arguments)))},error:function(){p.silent||(u.error=Function.prototype.bind.call(console.error,console,p.name+":"),u.error.apply(console,arguments))},performance:{log:function(e){var t,n,i;p.performance&&(t=(new Date).getTime(),i=a||t,n=t-i,a=t,r.push({Name:e[0],Arguments:[].slice.call(e,1)||"",Element:k,"Execution Time":n})),clearTimeout(u.performance.timer),u.performance.timer=setTimeout(u.performance.display,500)},display:function(){var t=p.name+":",n=0;a=!1,clearTimeout(u.performance.timer),e.each(r,function(e,t){n+=t["Execution Time"]}),t+=" "+n+"ms",b&&(t+=" '"+b+"'"),(void 0!==console.group||void 0!==console.table)&&r.length>0&&(console.groupCollapsed(t),console.table?console.table(r):e.each(r,function(e,t){console.log(t.Name+": "+t["Execution Time"]+"ms")}),console.groupEnd()),r=[]}},invoke:function(t,n,o){var a,r,c,s=x;return n=n||d,o=k||o,"string"==typeof t&&void 0!==s&&(t=t.split(/[\. ]/),a=t.length-1,e.each(t,function(n,i){var o=n!=a?i+t[n+1].charAt(0).toUpperCase()+t[n+1].slice(1):t;if(e.isPlainObject(s[o])&&n!=a)s=s[o];else{if(void 0!==s[o])return r=s[o],!1;if(!e.isPlainObject(s[i])||n==a)return void 0!==s[i]?(r=s[i],!1):(u.error(h.method,t),!1);s=s[i]}})),e.isFunction(r)?c=r.apply(o,n):void 0!==r&&(c=r),e.isArray(i)?i.push(c):void 0!==i?i=[i,c]:void 0!==c&&(i=c),r}},s?(void 0===x&&u.initialize(),u.invoke(c)):(void 0!==x&&x.invoke("destroy"),u.initialize())}),void 0!==i?i:this},e.fn.accordion.settings={name:"Accordion",namespace:"accordion",silent:!1,debug:!1,verbose:!1,performance:!0,on:"click",observeChanges:!0,exclusive:!0,collapsible:!0,closeNested:!1,animateChildren:!0,duration:350,easing:"easeOutQuad",onOpening:function(){},onClosing:function(){},onChanging:function(){},onOpen:function(){},onClose:function(){},onChange:function(){},error:{method:"The method you called is not defined"},className:{active:"active",animating:"animating"},selector:{accordion:".accordion",title:".title",trigger:".title",content:".content"}},e.extend(e.easing,{easeOutQuad:function(e,t,n,i,o){return-i*(t/=o)*(t-2)+n}})}(jQuery,window,document)});
+$(document).ready(function(){
+
+$('.admin_categories_list .accordion').nestedSortable({
+  handle: '.handle',
+  items: '.category',
+  listType: 'ul',
+  disableParentChange: false,
+  stop: function(event, ui){
+    $data = [];
+    $orders = {};
+    $parents = {};
+
+    $('.admin_categories_list .accordion .category').each(function(index, item){
+      $orders[$(item).data('id')] = index;
+      $parents[$(item).data('id')] = $(item).closest('li').parent().closest('li').data('id');
+    });
+    //console.log($(ui.item).closest('li').parent().closest('li').data('categoryid'));
+
+    $.ajax({
+      method: "PUT",
+      url: '/categories/setorder',
+      data: {'orders':$orders, 'parents': $parents}
+    })
+  }
+});
+
+$('.pages_list').nestedSortable({
+  handle: '.handle',
+  items: '.item',
+  listType: 'ul',
+  disableParentChange: false,
+  stop: function(event, ui){
+    $data = [];
+    $orders = {};
+    $parents = {};
+
+    $('.pages_list .item').each(function(index, item){
+      $orders[$(item).data('id')] = index;
+      $parents[$(item).data('id')] = $(item).closest('li').parent().closest('li').data('id');
+    });
+    //console.log($(ui.item).closest('li').parent().closest('li').data('categoryid'));
+
+    $.ajax({
+      method: "PUT",
+      url: '/pages/setorder',
+      data: {'orders':$orders, 'parents': $parents}
+    })
+  }
+});
+
+$('.change_cat_img_btn').click(function(){
+  $('#category_image_dropzone').click();
+});
+
+$('#xml_dropzone').dropzone({
+  clickable: '#xml_upload_btn',
+  success: function(file, response){
+        $('#xml_url_input').val(response);
+        $('#xml_url_input').data('external',0);
+    }
+});
+
+
+$('#catalogue_dropzone').dropzone({
+  clickable: '.catalogue_upload_btn',
+  success: function(file, response){
+        location.reload();
+    }
+});
+
+$('#sticker_dropzone').dropzone({
+  clickable: '.sticker_upload_btn',
+  success: function(file, response){
+        location.reload();
+    }
+});
+
+$('#catalogue_image_dropzone_1').dropzone({
+  clickable: '#catalogue_image_btn_1',
+  success: function(file, response){
+        location.reload();
+    }
+});
+
+
+$('#catalogue_image_dropzone_2').dropzone({
+  clickable: '#catalogue_image_btn_2',
+  success: function(file, response){
+        location.reload();
+    }
+});
+
+
+
+$('#catalogue_image_dropzone_3').dropzone({
+  clickable: '#catalogue_image_btn_3',
+  success: function(file, response){
+        location.reload();
+    }
+});
+
+
+$('#product_detail_dropzone').dropzone({
+  params: {
+      '_token': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+
+$('#file_dropzone').dropzone({
+    params: {
+      '_token': $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function(file, response){
+        location.reload();
+    }
+});
+
+$('#import_dropzone').dropzone({
+    success: function(param, data){
+      $table = $('#admin_import_results').find('table');
+      $row = $table.find('tbody tr');
+      $.each(data, function(index,item){
+        $lastRow = $table.find('tbody tr:last-child');
+        $lastRow.find('td[col="name"]').html(item['name']);
+        $lastRow.find('td[col="code"]').html(item['code']);
+        $lastRow.find('td[col="maker"]').html(item['maker']);
+
+        console.log(item);
+
+        $row.clone().appendTo($table);
+
+      })
+
+      //delete the duplicate last row
+      $table.find('tbody tr:last-child').remove();
+    },
+    params: {
+      '_token': $('meta[name="csrf-token"]').attr('content')
+    }
+})
+
+$('#category_image_dropzone').dropzone({
+  success: function(file, response){
+    
+    this.removeAllFiles(true);
+    $categoryid = $('#category_image_div').data('categoryid');
+
+    $.ajax({
+      method: "POST",
+      url: '/category/'+$categoryid+'/image/confirmCrop',
+      data: {filename: file.name},
+      success: function(){
+        location.reload();
+      }
+    })
+
+  } 
+});
+
+$('#cover_dropzone').dropzone({
+  clickable: ['#admin_add_cover_change_image_btn', '#cover_dropzone'],
+  success: function(file, response){
+    var $x, $y, $w, $h;
+    this.removeAllFiles(true); 
+    $('.crop_preview').html("<img src=/"+response+" />").unbind('focus');
+    $('.admin_add_cover_under').css('display','flex');
+    $('.cover_image').show();
+    $('#cover_dropzone').hide();
+    $('#admin_add_cover_form input[name="filename"]').val(file.name);
+    $('#admin_add_cover_change_image_btn').hide();
+
+    if($('input[name="type"]').val()=='cover')
+    {
+      $aspect = $('#cover_ratio').text();
+    }
+    else
+    {
+      $aspect = $('#banner_ratio').text();;
+    }
+
+    $('.crop_preview img').cropper({
+      guides: false,
+      viewMode: 1,
+      aspectRatio: $aspect,
+      autoCropArea: 1,
+
+      crop: function(e){
+        $('#admin_add_cover_form input[name="x"]').val(e.x);
+        $('#admin_add_cover_form input[name="y"]').val(e.y);
+        $('#admin_add_cover_form input[name="w"]').val(e.width);
+        $('#admin_add_cover_form input[name="h"]').val(e.height);
+
+      },
+      preview: $('.cover_image .cover')
+    });
+
+
+    // confirm crop
+    $('.crop_ok').show().click(function(){
+      $categoryid = $(this).data('categoryid');
+
+      $.ajax({
+        method: "POST",
+        url: '/category/'+$categoryid+'/image/confirmCrop',
+        data: {filename: file.name, x: $x, y:$y, w:$w, h:$h},
+        success: function(){
+          location.reload();
+        }
+      })
+    });
+
+  }
+});
+
+$('.ui.accordion').accordion({
+  exclusive: false
+}); 
+
+
+$('#filterbar .ui.accordion').accordion({
+  exclusive: false,
+    selector    : {
+    accordion : '.accordion',
+    title     : '.title',
+    trigger   : '.title i',
+    content   : '.content'
+  }
+}); 
+
+$('.admin_categories_list .ui.accordion').accordion({
+  exclusive: false,
+    selector    : {
+    accordion : '.accordion',
+    title     : '.title',
+    trigger   : '.name',
+    content   : '.content'
+  }
+}); 
+
+
+$('#admin #grid .product.item').draggable({ 
+  opacity: 0.6, 
+  helper: "clone"
+});
+
+$('.categories .item').droppable({
+  tolerance: "pointer",
+  accept: ".product",
+  over: function( event, ui ) {
+    $(this).addClass('active');
+  },
+  out: function( event, ui ) {
+    $(this).removeClass('active');
+  },
+  deactivate: function( event, ui ) {
+    $(this).removeClass('active');
+  },
+  drop: function( event, ui ) {
+    $categoryId = $(this).data('categoryid');
+    $product = $(ui.draggable);
+
+    $.post('/product/'+$product.data('productid')+'/change/category/'+$categoryId,{},function(){
+          $product.remove();
+    });
+
+    $(this).removeClass('active');
+  }
+
+});
+
+$('.sticker_preview_div .sticker').draggable({ 
+  containment: "parent",
+  create: function(){
+    stikcer_left = 0;
+    sticker_right = 0;
+  },
+  stop: function(){
+
+    sticker_left = $(this).position().left;
+        sticker_top = $(this).position().top;
+
+  }
+
+});
+
+
+var fixHelper = function(e, ui) {  
+  ui.children().each(function() {  
+  console.log(e);
+    $(this).width($(this).width());  
+  });  
+  return ui;  
+};
+
+$('.sticker_preview_div .sticker').resizable({ 
+  containment: "parent",
+  create: function(){
+    sticker_width = $(this).width();
+    sticker_height = $(this).height();
+  },
+  stop: function(){   
+    sticker_width = $(this).width();
+        sticker_height = $(this).height();
+  }
+
+});
+
+$('.admin_cover_list').sortable({
+  stop: function(){
+    $data = {};
+
+    $('.admin_cover_list .banner').each(function(index, item){
+      $data[$(item).data('id')] = index;
+    });
+
+    $.ajax({
+      method: "PUT",
+      url: '/admin/covers/setorder',
+      data: $data
+    })
+  }
+});
+
+$('.admin_banner_list').sortable({
+  stop: function(){
+    $data = {};
+
+    $('.admin_banner_list .banner').each(function(index, item){
+      $data[$(item).data('id')] = index;
+    });
+
+    $.ajax({
+      method: "PUT",
+      url: '/admin/banners/setorder',
+      data: $data
+    })
+  }
+});
+
+
+
+$('#admin_new_wrapper table tbody').sortable({
+  helper: fixHelper,
+  stop: function(){
+    $data = {};
+
+    $('#admin_new_wrapper table tbody tr').each(function(index, item){
+      $data[$(item).data('id')] = index;
+    });
+
+    $.ajax({
+      method: "PUT",
+      url: '/products/new/setorder',
+      data: $data
+    })
+  }
+});
+
+$('#admin_sale_wrapper table tbody').sortable({
+  helper: fixHelper,
+  stop: function(){
+    $data = {};
+
+    $('#admin_sale_wrapper table tbody tr').each(function(index, item){
+      $data[$(item).data('id')] = index;
+    });
+
+    $.ajax({
+      method: "PUT",
+      url: '/products/sale/setorder',
+      data: $data
+    })
+  }
+});
+
+/*!
+ * # Semantic UI 2.4.2 - Accordion
+ * http://github.com/semantic-org/semantic-ui/
+ *
+ *
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+;(function ($, window, document, undefined) {
+
+'use strict';
+
+window = (typeof window != 'undefined' && window.Math == Math)
+  ? window
+  : (typeof self != 'undefined' && self.Math == Math)
+    ? self
+    : Function('return this')()
+;
+
+$.fn.accordion = function(parameters) {
+  var
+    $allModules     = $(this),
+
+    time            = new Date().getTime(),
+    performance     = [],
+
+    query           = arguments[0],
+    methodInvoked   = (typeof query == 'string'),
+    queryArguments  = [].slice.call(arguments, 1),
+
+    requestAnimationFrame = window.requestAnimationFrame
+      || window.mozRequestAnimationFrame
+      || window.webkitRequestAnimationFrame
+      || window.msRequestAnimationFrame
+      || function(callback) { setTimeout(callback, 0); },
+
+    returnedValue
+  ;
+  $allModules
+    .each(function() {
+      var
+        settings        = ( $.isPlainObject(parameters) )
+          ? $.extend(true, {}, $.fn.accordion.settings, parameters)
+          : $.extend({}, $.fn.accordion.settings),
+
+        className       = settings.className,
+        namespace       = settings.namespace,
+        selector        = settings.selector,
+        error           = settings.error,
+
+        eventNamespace  = '.' + namespace,
+        moduleNamespace = 'module-' + namespace,
+        moduleSelector  = $allModules.selector || '',
+
+        $module  = $(this),
+        $title   = $module.find(selector.title),
+        $content = $module.find(selector.content),
+
+        element  = this,
+        instance = $module.data(moduleNamespace),
+        observer,
+        module
+      ;
+
+      module = {
+
+        initialize: function() {
+          module.debug('Initializing', $module);
+          module.bind.events();
+          if(settings.observeChanges) {
+            module.observeChanges();
+          }
+          module.instantiate();
+        },
+
+        instantiate: function() {
+          instance = module;
+          $module
+            .data(moduleNamespace, module)
+          ;
+        },
+
+        destroy: function() {
+          module.debug('Destroying previous instance', $module);
+          $module
+            .off(eventNamespace)
+            .removeData(moduleNamespace)
+          ;
+        },
+
+        refresh: function() {
+          $title   = $module.find(selector.title);
+          $content = $module.find(selector.content);
+        },
+
+        observeChanges: function() {
+          if('MutationObserver' in window) {
+            observer = new MutationObserver(function(mutations) {
+              module.debug('DOM tree modified, updating selector cache');
+              module.refresh();
+            });
+            observer.observe(element, {
+              childList : true,
+              subtree   : true
+            });
+            module.debug('Setting up mutation observer', observer);
+          }
+        },
+
+        bind: {
+          events: function() {
+            module.debug('Binding delegated events');
+            $module
+              .on(settings.on + eventNamespace, selector.trigger, module.event.click)
+            ;
+          }
+        },
+
+        event: {
+          click: function() {
+            module.toggle.call(this);
+          }
+        },
+
+        toggle: function(query) {
+          var
+            $activeTitle = (query !== undefined)
+              ? (typeof query === 'number')
+                ? $title.eq(query)
+                : $(query).closest(selector.title)
+              : $(this).closest(selector.title),
+            $activeContent = $activeTitle.next($content),
+            isAnimating = $activeContent.hasClass(className.animating),
+            isActive    = $activeContent.hasClass(className.active),
+            isOpen      = (isActive && !isAnimating),
+            isOpening   = (!isActive && isAnimating)
+          ;
+          module.debug('Toggling visibility of content', $activeTitle);
+          if(isOpen || isOpening) {
+            if(settings.collapsible) {
+              module.close.call($activeTitle);
+            }
+            else {
+              module.debug('Cannot close accordion content collapsing is disabled');
+            }
+          }
+          else {
+            module.open.call($activeTitle);
+          }
+        },
+
+        open: function(query) {
+          var
+            $activeTitle = (query !== undefined)
+              ? (typeof query === 'number')
+                ? $title.eq(query)
+                : $(query).closest(selector.title)
+              : $(this).closest(selector.title),
+            $activeContent = $activeTitle.next($content),
+            isAnimating = $activeContent.hasClass(className.animating),
+            isActive    = $activeContent.hasClass(className.active),
+            isOpen      = (isActive || isAnimating)
+          ;
+          if(isOpen) {
+            module.debug('Accordion already open, skipping', $activeContent);
+            return;
+          }
+          module.debug('Opening accordion content', $activeTitle);
+          settings.onOpening.call($activeContent);
+          settings.onChanging.call($activeContent);
+          if(settings.exclusive) {
+            module.closeOthers.call($activeTitle);
+          }
+          $activeTitle
+            .addClass(className.active)
+          ;
+          $activeContent
+            .stop(true, true)
+            .addClass(className.animating)
+          ;
+          if(settings.animateChildren) {
+            if($.fn.transition !== undefined && $module.transition('is supported')) {
+              $activeContent
+                .children()
+                  .transition({
+                    animation   : 'fade in',
+                    queue       : false,
+                    useFailSafe : true,
+                    debug       : settings.debug,
+                    verbose     : settings.verbose,
+                    duration    : settings.duration
+                  })
+              ;
+            }
+            else {
+              $activeContent
+                .children()
+                  .stop(true, true)
+                  .animate({
+                    opacity: 1
+                  }, settings.duration, module.resetOpacity)
+              ;
+            }
+          }
+          $activeContent
+            .slideDown(settings.duration, settings.easing, function() {
+              $activeContent
+                .removeClass(className.animating)
+                .addClass(className.active)
+              ;
+              module.reset.display.call(this);
+              settings.onOpen.call(this);
+              settings.onChange.call(this);
+            })
+          ;
+        },
+
+        close: function(query) {
+          var
+            $activeTitle = (query !== undefined)
+              ? (typeof query === 'number')
+                ? $title.eq(query)
+                : $(query).closest(selector.title)
+              : $(this).closest(selector.title),
+            $activeContent = $activeTitle.next($content),
+            isAnimating    = $activeContent.hasClass(className.animating),
+            isActive       = $activeContent.hasClass(className.active),
+            isOpening      = (!isActive && isAnimating),
+            isClosing      = (isActive && isAnimating)
+          ;
+          if((isActive || isOpening) && !isClosing) {
+            module.debug('Closing accordion content', $activeContent);
+            settings.onClosing.call($activeContent);
+            settings.onChanging.call($activeContent);
+            $activeTitle
+              .removeClass(className.active)
+            ;
+            $activeContent
+              .stop(true, true)
+              .addClass(className.animating)
+            ;
+            if(settings.animateChildren) {
+              if($.fn.transition !== undefined && $module.transition('is supported')) {
+                $activeContent
+                  .children()
+                    .transition({
+                      animation   : 'fade out',
+                      queue       : false,
+                      useFailSafe : true,
+                      debug       : settings.debug,
+                      verbose     : settings.verbose,
+                      duration    : settings.duration
+                    })
+                ;
+              }
+              else {
+                $activeContent
+                  .children()
+                    .stop(true, true)
+                    .animate({
+                      opacity: 0
+                    }, settings.duration, module.resetOpacity)
+                ;
+              }
+            }
+            $activeContent
+              .slideUp(settings.duration, settings.easing, function() {
+                $activeContent
+                  .removeClass(className.animating)
+                  .removeClass(className.active)
+                ;
+                module.reset.display.call(this);
+                settings.onClose.call(this);
+                settings.onChange.call(this);
+              })
+            ;
+          }
+        },
+
+        closeOthers: function(index) {
+          var
+            $activeTitle = (index !== undefined)
+              ? $title.eq(index)
+              : $(this).closest(selector.title),
+            $parentTitles    = $activeTitle.parents(selector.content).prev(selector.title),
+            $activeAccordion = $activeTitle.closest(selector.accordion),
+            activeSelector   = selector.title + '.' + className.active + ':visible',
+            activeContent    = selector.content + '.' + className.active + ':visible',
+            $openTitles,
+            $nestedTitles,
+            $openContents
+          ;
+          if(settings.closeNested) {
+            $openTitles   = $activeAccordion.find(activeSelector).not($parentTitles);
+            $openContents = $openTitles.next($content);
+          }
+          else {
+            $openTitles   = $activeAccordion.find(activeSelector).not($parentTitles);
+            $nestedTitles = $activeAccordion.find(activeContent).find(activeSelector).not($parentTitles);
+            $openTitles   = $openTitles.not($nestedTitles);
+            $openContents = $openTitles.next($content);
+          }
+          if( ($openTitles.length > 0) ) {
+            module.debug('Exclusive enabled, closing other content', $openTitles);
+            $openTitles
+              .removeClass(className.active)
+            ;
+            $openContents
+              .removeClass(className.animating)
+              .stop(true, true)
+            ;
+            if(settings.animateChildren) {
+              if($.fn.transition !== undefined && $module.transition('is supported')) {
+                $openContents
+                  .children()
+                    .transition({
+                      animation   : 'fade out',
+                      useFailSafe : true,
+                      debug       : settings.debug,
+                      verbose     : settings.verbose,
+                      duration    : settings.duration
+                    })
+                ;
+              }
+              else {
+                $openContents
+                  .children()
+                    .stop(true, true)
+                    .animate({
+                      opacity: 0
+                    }, settings.duration, module.resetOpacity)
+                ;
+              }
+            }
+            $openContents
+              .slideUp(settings.duration , settings.easing, function() {
+                $(this).removeClass(className.active);
+                module.reset.display.call(this);
+              })
+            ;
+          }
+        },
+
+        reset: {
+
+          display: function() {
+            module.verbose('Removing inline display from element', this);
+            $(this).css('display', '');
+            if( $(this).attr('style') === '') {
+              $(this)
+                .attr('style', '')
+                .removeAttr('style')
+              ;
+            }
+          },
+
+          opacity: function() {
+            module.verbose('Removing inline opacity from element', this);
+            $(this).css('opacity', '');
+            if( $(this).attr('style') === '') {
+              $(this)
+                .attr('style', '')
+                .removeAttr('style')
+              ;
+            }
+          },
+
+        },
+
+        setting: function(name, value) {
+          module.debug('Changing setting', name, value);
+          if( $.isPlainObject(name) ) {
+            $.extend(true, settings, name);
+          }
+          else if(value !== undefined) {
+            if($.isPlainObject(settings[name])) {
+              $.extend(true, settings[name], value);
+            }
+            else {
+              settings[name] = value;
+            }
+          }
+          else {
+            return settings[name];
+          }
+        },
+        internal: function(name, value) {
+          module.debug('Changing internal', name, value);
+          if(value !== undefined) {
+            if( $.isPlainObject(name) ) {
+              $.extend(true, module, name);
+            }
+            else {
+              module[name] = value;
+            }
+          }
+          else {
+            return module[name];
+          }
+        },
+        debug: function() {
+          if(!settings.silent && settings.debug) {
+            if(settings.performance) {
+              module.performance.log(arguments);
+            }
+            else {
+              module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
+              module.debug.apply(console, arguments);
+            }
+          }
+        },
+        verbose: function() {
+          if(!settings.silent && settings.verbose && settings.debug) {
+            if(settings.performance) {
+              module.performance.log(arguments);
+            }
+            else {
+              module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
+              module.verbose.apply(console, arguments);
+            }
+          }
+        },
+        error: function() {
+          if(!settings.silent) {
+            module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
+            module.error.apply(console, arguments);
+          }
+        },
+        performance: {
+          log: function(message) {
+            var
+              currentTime,
+              executionTime,
+              previousTime
+            ;
+            if(settings.performance) {
+              currentTime   = new Date().getTime();
+              previousTime  = time || currentTime;
+              executionTime = currentTime - previousTime;
+              time          = currentTime;
+              performance.push({
+                'Name'           : message[0],
+                'Arguments'      : [].slice.call(message, 1) || '',
+                'Element'        : element,
+                'Execution Time' : executionTime
+              });
+            }
+            clearTimeout(module.performance.timer);
+            module.performance.timer = setTimeout(module.performance.display, 500);
+          },
+          display: function() {
+            var
+              title = settings.name + ':',
+              totalTime = 0
+            ;
+            time = false;
+            clearTimeout(module.performance.timer);
+            $.each(performance, function(index, data) {
+              totalTime += data['Execution Time'];
+            });
+            title += ' ' + totalTime + 'ms';
+            if(moduleSelector) {
+              title += ' \'' + moduleSelector + '\'';
+            }
+            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+              console.groupCollapsed(title);
+              if(console.table) {
+                console.table(performance);
+              }
+              else {
+                $.each(performance, function(index, data) {
+                  console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                });
+              }
+              console.groupEnd();
+            }
+            performance = [];
+          }
+        },
+        invoke: function(query, passedArguments, context) {
+          var
+            object = instance,
+            maxDepth,
+            found,
+            response
+          ;
+          passedArguments = passedArguments || queryArguments;
+          context         = element         || context;
+          if(typeof query == 'string' && object !== undefined) {
+            query    = query.split(/[\. ]/);
+            maxDepth = query.length - 1;
+            $.each(query, function(depth, value) {
+              var camelCaseValue = (depth != maxDepth)
+                ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
+                : query
+              ;
+              if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                object = object[camelCaseValue];
+              }
+              else if( object[camelCaseValue] !== undefined ) {
+                found = object[camelCaseValue];
+                return false;
+              }
+              else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                object = object[value];
+              }
+              else if( object[value] !== undefined ) {
+                found = object[value];
+                return false;
+              }
+              else {
+                module.error(error.method, query);
+                return false;
+              }
+            });
+          }
+          if ( $.isFunction( found ) ) {
+            response = found.apply(context, passedArguments);
+          }
+          else if(found !== undefined) {
+            response = found;
+          }
+          if($.isArray(returnedValue)) {
+            returnedValue.push(response);
+          }
+          else if(returnedValue !== undefined) {
+            returnedValue = [returnedValue, response];
+          }
+          else if(response !== undefined) {
+            returnedValue = response;
+          }
+          return found;
+        }
+      };
+      if(methodInvoked) {
+        if(instance === undefined) {
+          module.initialize();
+        }
+        module.invoke(query);
+      }
+      else {
+        if(instance !== undefined) {
+          instance.invoke('destroy');
+        }
+        module.initialize();
+      }
+    })
+  ;
+  return (returnedValue !== undefined)
+    ? returnedValue
+    : this
+  ;
+};
+
+$.fn.accordion.settings = {
+
+  name            : 'Accordion',
+  namespace       : 'accordion',
+
+  silent          : false,
+  debug           : false,
+  verbose         : false,
+  performance     : true,
+
+  on              : 'click', // event on title that opens accordion
+
+  observeChanges  : true,  // whether accordion should automatically refresh on DOM insertion
+
+  exclusive       : true,  // whether a single accordion content panel should be open at once
+  collapsible     : true,  // whether accordion content can be closed
+  closeNested     : false, // whether nested content should be closed when a panel is closed
+  animateChildren : true,  // whether children opacity should be animated
+
+  duration        : 350, // duration of animation
+  easing          : 'easeOutQuad', // easing equation for animation
+
+  onOpening       : function(){}, // callback before open animation
+  onClosing       : function(){}, // callback before closing animation
+  onChanging      : function(){}, // callback before closing or opening animation
+
+  onOpen          : function(){}, // callback after open animation
+  onClose         : function(){}, // callback after closing animation
+  onChange        : function(){}, // callback after closing or opening animation
+
+  error: {
+    method : 'The method you called is not defined'
+  },
+
+  className   : {
+    active    : 'active',
+    animating : 'animating'
+  },
+
+  selector    : {
+    accordion : '.accordion',
+    title     : '.title',
+    trigger   : '.title',
+    content   : '.content'
+  }
+
+};
+
+
+// Adds easing
+$.extend( $.easing, {
+  easeOutQuad: function (x, t, b, c, d) {
+    return -c *(t/=d)*(t-2) + b;
+  }
+});
+
+})( jQuery, window, document );
+
+});
+

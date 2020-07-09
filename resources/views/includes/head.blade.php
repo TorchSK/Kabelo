@@ -48,24 +48,11 @@
 
     <link rel="canonical" href="https://dedraslovakia.sk/@if(Request::path()!="/"){{Request::path()}}@endif">
 
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/app.js"></script>
 
-    @if(Route::getCurrentRoute()->getPrefix() == '/admin')
-        <script src="/js/nestedsortable.js"></script>
-        <script src="/js/admin.js"></script>
-    @endif
-
-    <script src="/js/flickity.js"></script>
-    <script src="/js/cropper.js"></script>
-    <script src="/js/modulobox.min.js"></script>
-    <script src="/js/dropzone.js"></script>
-    <script src="/js/infinite.js"></script>
-    <script src="/js/handsontable.full.min.js"></script>
 
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
-    <link media="all" type="text/css" rel="stylesheet" href="/css/semantic.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/css/semantic.min.css">
     <link media="all" type="text/css" rel="stylesheet" href="https://use.typekit.net/nnc8ofe.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/flickity.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
