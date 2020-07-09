@@ -56,7 +56,7 @@
                             <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
                         </div>
                         <div class="items">
-                        @foreach(App\Product::where('new',1)->where('new_carousel',1)->orderBy('new_order')->get() as $product)
+                        @foreach(App\Product::where('new',1)->where('new_carousel',1)->where('active',1)->orderBy('new_order')->get() as $product)
                             @include('products.row',['showdesc'=>false])
                         @endforeach
                         </div>
@@ -80,17 +80,6 @@
                 </div>
                 @endif
 
-                @if($appname=='copper')
-                <div class="wrapper" id="makers_div">
-                <div class="container">
-                    <a><img src="/img/velleman-logo.png" /></a>
-                    <a><img src="/img/tasker_dark.png" /></a>
-                    <a><img src="/img/peaktech_dark.png" /></a>
-                    <a><img src="/img/distrelec_dark.png" /></a>
-
-                </div>
-                </div>
-                @endif
                 
                 <div id="home_sales_div" class="wrapper">
                     <div class="container">
@@ -101,7 +90,7 @@
                         </div>
 
                         <div class="items">
-                        @foreach(App\Product::where('sale',1)->where('sale_carousel',1)->orderBy('sale_order')->get() as $product)
+                        @foreach(App\Product::where('sale',1)->where('sale_carousel',1)->where('active',1)->orderBy('sale_order')->get() as $product)
                             @include('products.row',['showdesc'=>false])
                         @endforeach
                         </div>
