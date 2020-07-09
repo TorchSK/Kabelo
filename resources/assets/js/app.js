@@ -1,8 +1,7 @@
-  $(function() {
-        $('.ui.image').Lazy();
-    });	
 
 $(document).ready(function(){
+ 
+ $('img.ui.image').Lazy();
 
 $(document).on('click', '.to_cart',function(){
   $product = $(this).closest('.product').data('productid');
