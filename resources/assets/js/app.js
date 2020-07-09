@@ -3473,35 +3473,7 @@ if($('body').attr('id') == 'cart_shipping')
 */
 
 
-tinymce.init({
-	selector: '.richtext.editable',
-	auto_focus : "mce_0",
-    menubar: false,
-	plugins: [
-	    'advlist autolink lists link image charmap print preview anchor textcolor',
-	    'searchreplace visualblocks code fullscreen',
-	    'insertdatetime media table contextmenu paste code help wordcount'
-  	],
-  	toolbar: 'fontselect | code | insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-  	init_instance_callback : function (editor) {
-    	$('.text_files_list .item').click(function(){
-    		$path = $(this).data('content');
-    		$extension =  $path.split('.').pop();
-    		$filename = $path.split('/').pop();
 
-    		if ($extension == 'jpg')
-    		{
-    			$content = "<img src='/"+$path+"' width='100'>";
-    		}
-    		else
-    		{
-    			$content =  "<a href='"+$path+"'>"+$filename+"</a>";
-    		}
-
-    		editor.insertContent($content);
-    	})
-    }
-  });
 
 $('.text_save_btn').click(function(){
 	$('.text_form').submit();	
