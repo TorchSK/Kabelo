@@ -294,3 +294,71 @@ $('.sticker_preview_div .sticker').resizable({
   }
 
 });
+
+$('.admin_cover_list').sortable({
+  stop: function(){
+    $data = {};
+
+    $('.admin_cover_list .banner').each(function(index, item){
+      $data[$(item).data('id')] = index;
+    });
+
+    $.ajax({
+      method: "PUT",
+      url: '/admin/covers/setorder',
+      data: $data
+    })
+  }
+});
+
+$('.admin_banner_list').sortable({
+  stop: function(){
+    $data = {};
+
+    $('.admin_banner_list .banner').each(function(index, item){
+      $data[$(item).data('id')] = index;
+    });
+
+    $.ajax({
+      method: "PUT",
+      url: '/admin/banners/setorder',
+      data: $data
+    })
+  }
+});
+
+
+
+$('#admin_new_wrapper table tbody').sortable({
+  helper: fixHelper,
+  stop: function(){
+    $data = {};
+
+    $('#admin_new_wrapper table tbody tr').each(function(index, item){
+      $data[$(item).data('id')] = index;
+    });
+
+    $.ajax({
+      method: "PUT",
+      url: '/products/new/setorder',
+      data: $data
+    })
+  }
+});
+
+$('#admin_sale_wrapper table tbody').sortable({
+  helper: fixHelper,
+  stop: function(){
+    $data = {};
+
+    $('#admin_sale_wrapper table tbody tr').each(function(index, item){
+      $data[$(item).data('id')] = index;
+    });
+
+    $.ajax({
+      method: "PUT",
+      url: '/products/sale/setorder',
+      data: $data
+    })
+  }
+});
