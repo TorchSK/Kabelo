@@ -1,7 +1,6 @@
 
 $(document).ready(function(){
  
- $('img.ui.image').Lazy();
 
 $(document).on('click', '.to_cart',function(){
   $product = $(this).closest('.product').data('productid');
@@ -648,7 +647,8 @@ function doSort(){
     $filtersDiv.html(data.filters);
     
     filtersInit();
-    
+     $('img.ui.image').Lazy();
+     
     $('#grid_wrapper').find('.dimmer').removeClass('active');
     $('#grid_wrapper').show();
     $('.sorts').show();
@@ -1371,7 +1371,7 @@ $sales_carousel = $('#home_sales_div .items').flickity({
     prevNextButtons: false,
     imagesLoaded: true,
     wrapAround: true,
-    lazyLoad: true
+    lazyLoad: 5
 });
 
 $news_carousel = $('#home_news_div .items').flickity({
@@ -1381,7 +1381,7 @@ $news_carousel = $('#home_news_div .items').flickity({
     prevNextButtons: false,
     imagesLoaded: false,
         wrapAround: true,
-        lazyLoad: true
+        lazyLoad: 5
 
 });
 
@@ -1392,7 +1392,7 @@ $bestsellers_carousel = $('#home_bestsellers_div .items').flickity({
     prevNextButtons: false,
     imagesLoaded: true,
         wrapAround: true,
-        lazyLoad: true
+        lazyLoad: 5
 
 });
 
@@ -1448,7 +1448,7 @@ $('#filterbar .tabs .param.tab:not(".disabled")').click(function(){
 $carousel = $('.covers').flickity({
   autoPlay: 4000,
   setGallerySize: false,
-  lazyLoad: true
+  lazyLoad: 5
 });
 
 $carousel_mobile = $('.top_banner_row_mobile').flickity({
