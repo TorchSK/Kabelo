@@ -59,13 +59,9 @@
     <script src="/js/semantic.js"></script>
     <script src="/js/flickity.js"></script>
     <script src="/js/wNumb.js"></script>
-    <script src="/js/nouislider.js"></script>
-    <script src="/js/cropper.js"></script>
-    <script src="/js/spectrum.js"></script>
-    <script src="/js/tablesorter.js"></script>
+
     <script src="/js/modulobox.min.js"></script>
-    <script src="/js/nestedsortable.js"></script>
-    <script src="/js/dropzone.js"></script>
+
     <script src="/js/infinite.js"></script>
     <script src="/js/handsontable.full.min.js"></script>
 
@@ -77,14 +73,10 @@
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
     
-    <link media="all" type="text/css" rel="stylesheet" href="/css/rateyo.css">
-    <link media="all" type="text/css" rel="stylesheet" href="/css/spectrum.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/semantic.css">
     <link media="all" type="text/css" rel="stylesheet" href="https://use.typekit.net/nnc8ofe.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/flickity.css">
-    <link media="all" type="text/css" rel="stylesheet" href="/css/nouislider.css">
-    <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
-    <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
+
     <link media="all" type="text/css" rel="stylesheet" href="/css/modulobox.min.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/handsontable.full.min.css">
 
@@ -92,7 +84,13 @@
     <link media="all" type="text/css" rel="stylesheet" href="/css/{{$appname}}.css">
 
     @if(Route::getCurrentRoute()->getPrefix() == 'admin')
+        <script src="/js/cropper.js"></script>
+        <script src="/js/tablesorter.js"></script>
+        <script src="/js/nestedsortable.js"></script>
+        <script src="/js/dropzone.js"></script>
 
+        <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
+        <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
     @endif
 
     @if(Auth::check())
