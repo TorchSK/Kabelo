@@ -91,7 +91,7 @@
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/{{$appname}}.css">
 
-    @if(Route::getPrefix() == 'admin')
+    @if(Route::getCurrentRoute()->getPrefix() == 'admin')
 
     @endif
 
