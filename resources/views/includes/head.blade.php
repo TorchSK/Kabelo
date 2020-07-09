@@ -85,10 +85,10 @@
         <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
                 <script src="/js/nestedsortable.js"></script>
 
-        <script src="/js/admin.js"></script>
         <script src="/js/cropper.js"></script>
         <script src="/js/tablesorter.js"></script>
         <script src="/js/dropzone.js"></script>
+        <script src="/js/admin.js"></script>
 
         <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
         <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
