@@ -10,7 +10,6 @@
 
     <div class="pusher flex_column">
         @include('includes.header')
-        @yield('content')
     </div>
 
     @include('includes.footer')

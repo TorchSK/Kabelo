@@ -12,6 +12,7 @@
         @include('admin.tabs')
 
         <div class="flex_column">
+            @yield('content')
         </div>
     </div>
 
