@@ -77,7 +77,6 @@
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/modulobox.min.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/handsontable.full.min.css">
-    <script src="/js/app.js"></script>
 
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/{{$appname}}.css">
@@ -94,6 +93,8 @@
         <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
         <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
     @endif
+        <script src="/js/app.js"></script>
+
 
     @if(Auth::check())
     <script>
