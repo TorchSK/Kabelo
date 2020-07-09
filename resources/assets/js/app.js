@@ -1689,6 +1689,7 @@ $('.expand_all_toggle').click(function(){
 
 })
 
+
 $('.admin_categories_list .accordion').nestedSortable({
   handle: '.handle',
   items: '.category',

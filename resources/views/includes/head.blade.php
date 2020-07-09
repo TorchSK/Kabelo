@@ -96,13 +96,17 @@
     @if(Auth::check())
     <script>
         window.Laravel = {!! json_encode([
-            'user' => Auth::user()
+            'user' => Auth::user(),
+            'route' => Route::getCurrentRoute()
+
         ]) !!};
     </script>
     @else
     <script>
         window.Laravel = {!! json_encode([
-            'user' => ['id'=>Session::getId()]
+            'user' => ['id'=>Session::getId()],
+            'route' => Route::getCurrentRoute()
+
         ]) !!};
     </script>
     @endif
