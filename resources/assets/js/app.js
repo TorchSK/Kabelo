@@ -229,30 +229,6 @@ $('#header .cart.item').click(function(){
 	window.location.href = $(this).attr('href');
 });
 
-$('.ui.accordion').accordion({
-  exclusive: false
-}); 
-
-
-$('#filterbar .ui.accordion').accordion({
-  exclusive: false,
-    selector    : {
-    accordion : '.accordion',
-    title     : '.title',
-    trigger   : '.title i',
-    content   : '.content'
-  }
-}); 
-
-$('.admin_categories_list .ui.accordion').accordion({
-  exclusive: false,
-    selector    : {
-    accordion : '.accordion',
-    title     : '.title',
-    trigger   : '.name',
-    content   : '.content'
-  }
-}); 
 
 $('.register_form').click(function(){
 	$popup = $('#auth_popup');
