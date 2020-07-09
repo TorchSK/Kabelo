@@ -77,6 +77,7 @@
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/modulobox.min.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/handsontable.full.min.css">
+    <script src="/js/app.js"></script>
 
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/{{$appname}}.css">
@@ -112,7 +113,6 @@
     </script>
     @endif
 
-    <script src="/js/app.js"></script>
 
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
