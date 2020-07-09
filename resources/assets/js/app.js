@@ -1372,35 +1372,7 @@ $('#submit_order_btn').click(function(){
 })
 
 
-$('#admin #grid .product.item').draggable({ 
-  opacity: 0.6, 
-  helper: "clone"
-});
 
-$('.categories .item').droppable({
-  tolerance: "pointer",
-  accept: ".product",
-  over: function( event, ui ) {
-    $(this).addClass('active');
-  },
-  out: function( event, ui ) {
-    $(this).removeClass('active');
-  },
-  deactivate: function( event, ui ) {
-    $(this).removeClass('active');
-  },
-  drop: function( event, ui ) {
-    $categoryId = $(this).data('categoryid');
-    $product = $(ui.draggable);
-
-    $.post('/product/'+$product.data('productid')+'/change/category/'+$categoryId,{},function(){
-          $product.remove();
-    });
-
-    $(this).removeClass('active');
-  }
-
-});
 
 
 $(document).on('click', '.admin_delete_user_btn', function(){
@@ -1809,33 +1781,7 @@ var sticker_left, sticker_top;
 var sticker_width, sticker_height;
 
 
-$('.sticker_preview_div .sticker').draggable({ 
-	containment: "parent",
-	create: function(){
-		stikcer_left = 0;
-		sticker_right = 0;
-	},
-	stop: function(){
 
-		sticker_left = $(this).position().left;
-        sticker_top = $(this).position().top;
-
-	}
-
-});
-
-$('.sticker_preview_div .sticker').resizable({ 
-	containment: "parent",
-	create: function(){
-		sticker_width = $(this).width();
-		sticker_height = $(this).height();
-	},
-	stop: function(){		
-		sticker_width = $(this).width();
-        sticker_height = $(this).height();
-	}
-
-});
 
 $('#edit_sticker_submit').click(function(){
 
