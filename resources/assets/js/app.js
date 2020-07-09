@@ -610,71 +610,8 @@ function getDesiredSortOrder(){
   return $('.sort.active').data('sortorder');
 }
 
-function initPriceSlider(){
 
-    var checkExists = $('#price_slider').length;
 
-    var window_width = $(window).width();
-    
-    if (window_width < 770){
-      $pipsCount = 5;
-      $decimals = 1;
-    } else {
-      $pipsCount = 10;
-      $decimals = 2;
-    }
-
-    if (checkExists)
-    {
-
-      if ($('#price_slider')[0].noUiSlider)
-      {
-        $('#price_slider')[0].noUiSlider.destroy();
-      }
-
-      var priceSlider = document.getElementById('price_slider');
-
-      if ($('#grid_stats').data('maxprice'))
-      {
-        $max = $('#grid_stats').data('maxprice')
-      }
-      else
-      {
-        $max = 1;
-      }
-
-      noUiSlider.create(priceSlider, {
-        start: [ getPriceFilter('price')[0], getPriceFilter('price')[1]],
-        connect: true,
-        range: {
-          'min': 0,
-          'max': $max
-        },
-        pips: { 
-          mode: 'count', 
-          density: 1,
-          values: $pipsCount,
-          format: wNumb({
-            decimals: $decimals,
-            postfix: '€'
-          })
-        }
-      });
-
-      priceSlider.noUiSlider.on('set', function()
-      {
-        $min = priceSlider.noUiSlider.get()[0];
-        $max = priceSlider.noUiSlider.get()[1];
-
-        removeFilter('price');
-        addFilter('price',  priceSlider.noUiSlider.get(), 'Cena medzi: '+$min+' a '+$max);
-        doSort();
-      });
-
-    }
-}
-
-initPriceSlider();
 filtersInit();
 
 
@@ -848,7 +785,6 @@ function doSort(){
     $('.sorts').show();
     $('#price_slider').show();
     $('.sort').removeClass('loading');
-    initPriceSlider();
 
     $grid.on('click','.view_more_button',function(){
     	$('.view_more_button').addClass('loading');
@@ -1810,33 +1746,9 @@ $('.tabs .tab').click(function(){
   $('.tabs .content[data-tab="'+$(this).data("tab")+'"]').addClass('active');
 })
 
-$('.my.rating').rateYo({
-  rating: $('#myrating').data('rating')
-})
-
-$('.rating:not(.disabled)').rateYo().on("rateyo.set", function(e, data){
-
-      $('#new_rating_modal').modal('setting', {
-        autofocus: true,
-        onApprove : function() {
-          $text = $('#new_rating_modal textarea').val();
-          $id = $('#product_main_wrapper').data('id');
-          $.ajax({
-            type: "POST",
-            url: "/product/"+$id+"/rating",
-            data: {value: data.rating, text: $text},
-            success: function(){
-              location.reload();
-            }
-          })
-        }
-        }).modal('show');
-    });
 
 
-$('.disabled.rating').rateYo({
-  readOnly: true,
-})
+
 
 $('#new_page_btn').click(function(){
 $('#add_page_modal').modal('setting', {
@@ -2997,66 +2909,7 @@ function getClosestValue(myArray, myValue){
     return myArray[--i];
 }
 
-function initProductQtySlider(){
 
-  var slider = document.getElementById('product_buy_qty_m_slider');
-    if ($(slider).length)
-    {
-   	$step = $(slider).data('step');
-
-    $min = $(slider).data('min');
-    $max = $(slider).data('max');
-    $thresholds = [];
-
-    $('#product_price_thresholds').find('.threshold').each(function(index, obj)
-    {
-      $thresholds.push(parseInt($(this).text()));
-    });
-
-
-     noUiSlider.create(slider, {
-          start: $min,
-          step: $step,
-          orientation: "horizontal",
-          connect: [true, false],
-          range: {
-              'min': 0,
-              'max': $max
-          },
-          pips: {
-            mode: 'values',
-            values: $thresholds,
-            density: 1
-          },
-          format: wNumb({
-            decimals: 0,
-          })
-      });
-  
-    slider.noUiSlider.on('change', function ( values, handle ) {
-    if ( values[handle] < $min ) {
-      slider.noUiSlider.set($min);
-      $('#product_buy_qty_value').find('qty').text($min);
-      $price = $min * parseFloat($('#product_price_thresholds').find('.threshold').next().find('#final_price').text()).toFixed(2); 
-      $('#product_buy_qty_value').find('price').text(parseFloat($price.toFixed(2)));
-
-    };
-  });
-
-
-  slider.noUiSlider.on('slide', function ( values, handle ) {
-    $('#product_buy_qty_value').find('qty').text(values[handle]);
-    $('#product_detail_tocart_btn').data('qty',values[handle]);
-    $price = values[handle] * Math.round(parseFloat($('#product_price_thresholds').find('.threshold[data-value="'+getClosestValue($thresholds,values[handle])+'"]').next().find('#final_price').text())*100)/100; 
-    $('#product_price_thresholds').find('.threshold').closest('tr').removeClass('positive');
-    $('#product_price_thresholds').find('.threshold[data-value="'+getClosestValue($thresholds,values[handle])+'"]').closest('tr').addClass('positive');
-    $('#product_buy_qty_value').find('price').text($price);
-   });
-}
-}
-
-
-initProductQtySlider();
 
 
 
