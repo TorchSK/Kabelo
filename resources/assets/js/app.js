@@ -1386,7 +1386,8 @@ $sales_carousel = $('#home_sales_div .items').flickity({
     pageDots: false,
     prevNextButtons: false,
     imagesLoaded: true,
-    wrapAround: true
+    wrapAround: true,
+    lazyLoad: true
 });
 
 $news_carousel = $('#home_news_div .items').flickity({
@@ -1395,7 +1396,8 @@ $news_carousel = $('#home_news_div .items').flickity({
     pageDots: false,
     prevNextButtons: false,
     imagesLoaded: false,
-        wrapAround: true
+        wrapAround: true,
+        lazyLoad: true
 
 });
 
@@ -1405,7 +1407,8 @@ $bestsellers_carousel = $('#home_bestsellers_div .items').flickity({
     pageDots: false,
     prevNextButtons: false,
     imagesLoaded: true,
-        wrapAround: true
+        wrapAround: true,
+        lazyLoad: true
 
 });
 
@@ -1460,7 +1463,8 @@ $('#filterbar .tabs .param.tab:not(".disabled")').click(function(){
 
 $carousel = $('.covers').flickity({
   autoPlay: 4000,
-  setGallerySize: false
+  setGallerySize: false,
+  lazyLoad: true
 });
 
 $carousel_mobile = $('.top_banner_row_mobile').flickity({
