@@ -85,6 +85,7 @@
     <link media="all" type="text/css" rel="stylesheet" href="/css/{{$appname}}.css">
 
     @if(Route::getCurrentRoute()->getPrefix() == 'admin')
+        <script src="/js/admin.js"></script>
         <script src="/js/cropper.js"></script>
         <script src="/js/tablesorter.js"></script>
         <script src="/js/nestedsortable.js"></script>

@@ -13,3 +13,4 @@ let mix = require('laravel-mix');
 mix.less('resources/assets/less/copper/master.less','public/css/copper.css');
 mix.less('resources/assets/less/dedra/master.less','public/css/dedra.css');
 mix.copy('resources/assets/js/app.js','public/js/app.js');
+mix.copy('resources/assets/js/admin.js','public/js/admin.js');
