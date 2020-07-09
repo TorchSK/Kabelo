@@ -30,6 +30,7 @@
     <script src="/js/modulobox.min.js"></script>
     <script src="/js/dropzone.js"></script>
     <script src="/js/handsontable.full.min.js"></script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=qf9bxbfqc0n3wz9w142mp9fu5fybtks16oqfiduv88ea66zi"></script>
 
     </body>
 </html>
