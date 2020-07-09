@@ -2264,12 +2264,6 @@ $('#admin_sale_wrapper table tbody .checkbox').checkbox({
   });
 
 
-$('table.sortable').tablesorter({
-  cssAsc:'sorted ascending',
-  cssDesc:'sorted descending'
-});
-
-
 
 if ($('body').attr('id')=='dashboard')
 {
