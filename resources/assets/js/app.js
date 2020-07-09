@@ -1964,14 +1964,6 @@ $('.delete_banner_btn').click(function(){
 
 
 
-var fixHelper = function(e, ui) {  
-  ui.children().each(function() {  
-  console.log(e);
-    $(this).width($(this).width());  
-  });  
-  return ui;  
-};
-
 
 $('#admin_new_wrapper table tbody .checkbox').checkbox({
     onChecked: function(){

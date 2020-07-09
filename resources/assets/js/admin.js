@@ -282,6 +282,15 @@ $('.sticker_preview_div .sticker').draggable({
 
 });
 
+
+var fixHelper = function(e, ui) {  
+  ui.children().each(function() {  
+  console.log(e);
+    $(this).width($(this).width());  
+  });  
+  return ui;  
+};
+
 $('.sticker_preview_div .sticker').resizable({ 
   containment: "parent",
   create: function(){
