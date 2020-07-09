@@ -82,7 +82,7 @@
     <link media="all" type="text/css" rel="stylesheet" href="/css/{{$appname}}.css">
 
     @if(Route::getCurrentRoute()->getPrefix() == '/admin')
-    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sortable/0.9.13/jquery-sortable-min.js"></script>
                 <script src="/js/nestedsortable.js"></script>
 
         <script src="/js/cropper.js"></script>
