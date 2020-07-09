@@ -21,10 +21,7 @@
 
 
     <script defer async src="/js/flickity.js"></script>
-    <script defer async src="/js/cropper.js"></script>
     <script defer async src="/js/modulobox.min.js"></script>
-    <script defer async src="/js/dropzone.js"></script>
-    <script defer async src="/js/handsontable.full.min.js"></script>
 
     </body>
 </html>
