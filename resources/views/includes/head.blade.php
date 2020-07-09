@@ -53,7 +53,7 @@
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/semantic.min.css">
-    <link media="all" type="text/css" rel="stylesheet" href="https://use.typekit.net/nnc8ofe.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/css/typekit.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/flickity.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
