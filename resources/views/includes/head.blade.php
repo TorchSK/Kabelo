@@ -46,74 +46,50 @@
 
     <link rel="icon" type="image/png" href="{{url('img/'.$appname)}}_favico.png" />
 
-    @if($appname=='kabelo')
-    <link rel="canonical" href="https://www.dedra.kabelo.sk">
-    @else
     <link rel="canonical" href="https://dedraslovakia.sk/@if(Request::path()!="/"){{Request::path()}}@endif">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/app.js"></script>
+
+    @if(Route::getCurrentRoute()->getPrefix() == '/admin')
+        <script src="/js/nestedsortable.js"></script>
+        <script src="/js/admin.js"></script>
     @endif
 
-    <!-- Fonts -->
-    <script src="/js/jquery.min.js"></script>
-
-
     <script src="/js/flickity.js"></script>
-    <script src="/js/wNumb.js"></script>
-
+    <script src="/js/cropper.js"></script>
     <script src="/js/modulobox.min.js"></script>
-
+    <script src="/js/dropzone.js"></script>
+    <script src="/js/infinite.js"></script>
     <script src="/js/handsontable.full.min.js"></script>
 
-    <!--<script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script> -->
-    <!--
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
-    -->
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
-    
-    <link media="all" type="text/css" rel="stylesheet" href="/css/semantic.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/css/semantic.css">
     <link media="all" type="text/css" rel="stylesheet" href="https://use.typekit.net/nnc8ofe.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/flickity.css">
-
+    <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/modulobox.min.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/handsontable.full.min.css">
 
-
     <link media="all" type="text/css" rel="stylesheet" href="/css/{{$appname}}.css">
 
-    @if(Route::getCurrentRoute()->getPrefix() == '/admin')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sortable/0.9.13/jquery-sortable-min.js"></script>
-                <script src="/js/nestedsortable.js"></script>
-
-        <script src="/js/cropper.js"></script>
-        <script src="/js/tablesorter.js"></script>
-        <script src="/js/dropzone.js"></script>
-        <script src="/js/admin.js"></script>
-
-        <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
-        <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
-    @endif
-        <script src="/js/app.js"></script>
 
 
     @if(Auth::check())
     <script>
         window.Laravel = {!! json_encode([
-            'user' => Auth::user(),
-            'route' => Route::getCurrentRoute()
-
+            'user' => Auth::user()
         ]) !!};
     </script>
     @else
     <script>
         window.Laravel = {!! json_encode([
-            'user' => ['id'=>Session::getId()],
-            'route' => Route::getCurrentRoute()
-
+            'user' => ['id'=>Session::getId()]
         ]) !!};
     </script>
     @endif
-
 
 
     <!-- Global site tag (gtag.js) - Google Analytics -->

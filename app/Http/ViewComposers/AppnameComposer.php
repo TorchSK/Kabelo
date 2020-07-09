@@ -34,7 +34,7 @@ class AppnameComposer {
 
         if($appname == 'Laravel')
         {
-            $appname = explode(".", Request::getHost())[0];
+            $appname = 'Dedra';
         }
 
         $view->with('appname', strtolower($appname));

@@ -25,7 +25,7 @@ class SetDatabaseConnection
 
         if($app == 'Laravel')
         {
-            $app = ucfirst(explode(".", Request::getHost())[0]);
+            $app = 'Dedra';
         }
 
         Config::set('database.default', strtolower($app));

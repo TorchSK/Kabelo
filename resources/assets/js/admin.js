@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 $('.admin_categories_list .accordion').nestedSortable({
   handle: '.handle',
   items: '.category',
@@ -976,6 +978,7 @@ $.fn.accordion.settings = {
 
 };
 
+
 // Adds easing
 $.extend( $.easing, {
   easeOutQuad: function (x, t, b, c, d) {
@@ -984,4 +987,6 @@ $.extend( $.easing, {
 });
 
 })( jQuery, window, document );
+
+});
 
