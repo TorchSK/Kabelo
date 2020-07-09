@@ -648,7 +648,7 @@ function doSort(){
     
     filtersInit();
      $('img.ui.image').Lazy();
-     
+
     $('#grid_wrapper').find('.dimmer').removeClass('active');
     $('#grid_wrapper').show();
     $('.sorts').show();
@@ -662,6 +662,8 @@ function doSort(){
     		$grid.find('.item').last().after($(data.products));
    		    $('#grid_wrapper').find('.dimmer').removeClass('active');
    		    $('.view_more_button').removeClass('loading');
+   		         $('img.ui.image').Lazy();
+
     	});
     })
   })
