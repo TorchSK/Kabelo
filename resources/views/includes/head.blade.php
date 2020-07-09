@@ -59,6 +59,7 @@
     <script src="/js/semantic.js"></script>
     <script src="/js/flickity.js"></script>
     <script src="/js/wNumb.js"></script>
+        <script src="/js/dropzone.js"></script>
 
     <script src="/js/modulobox.min.js"></script>
 
@@ -87,7 +88,6 @@
         <script src="/js/cropper.js"></script>
         <script src="/js/tablesorter.js"></script>
         <script src="/js/nestedsortable.js"></script>
-        <script src="/js/dropzone.js"></script>
 
         <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
         <link media="all" type="text/css" rel="stylesheet" href="/css/cropper.css">
