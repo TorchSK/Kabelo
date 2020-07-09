@@ -82,7 +82,7 @@
     <link media="all" type="text/css" rel="stylesheet" href="/css/{{$appname}}.css">
 
     @if(Route::getCurrentRoute()->getPrefix() == '/admin')
-        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
+    
                 <script src="/js/nestedsortable.js"></script>
 
         <script src="/js/cropper.js"></script>
