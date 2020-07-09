@@ -7663,6 +7663,7 @@ a.ui.inverted.grey.header:hover {
   font-variant: normal;
   text-decoration: inherit;
   text-transform: none;
+  font-display: swap;
 }
 
 i.icon {
@@ -12942,6 +12943,7 @@ i.icon.youtube.play:before {
   font-variant: normal;
   text-decoration: inherit;
   text-transform: none;
+  font-display: swap;
 }
 
 i.icon.outline {
@@ -13448,6 +13450,7 @@ i.icon.star.empty:before {
   font-variant: normal;
   text-decoration: inherit;
   text-transform: none;
+  font-display: swap;
 }
 
 /* Brand Icon Font Family */

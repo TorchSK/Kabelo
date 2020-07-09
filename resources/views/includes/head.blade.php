@@ -52,7 +52,7 @@
 
 
     <link media="all" type="text/css" rel="stylesheet" href="/css/reset.css">
-    <link media="all" type="text/css" rel="stylesheet" href="/css/semantic.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/css/semantic.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/typekit.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/flickity.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/dropzone.css">
