@@ -17,13 +17,13 @@
     </div>
 
 	</div>
+    <script src="/js/admin.js"></script>
 
     
     <script src="/js/jquery.min.js"></script>
     <script src="/js/app.js"></script>
 
     <script src="/js/nestedsortable.js"></script>
-    <script src="/js/admin.js"></script>
 
     <script src="/js/flickity.js"></script>
     <script src="/js/cropper.js"></script>
