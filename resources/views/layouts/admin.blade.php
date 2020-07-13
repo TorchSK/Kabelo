@@ -17,10 +17,11 @@
     </div>
 
 	</div>
-    <script src="/js/admin.js"></script>
 
     
     <script src="/js/jquery.min.js"></script>
+        <script src="/js/admin.js"></script>
+
     <script src="/js/app.js"></script>
 
     <script src="/js/nestedsortable.js"></script>
