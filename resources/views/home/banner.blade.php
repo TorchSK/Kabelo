@@ -8,6 +8,6 @@
 
 </div>
 @else
-<a href="{{$cover->url}}" class="banner" data-type="{{$type}}" style="background-image: url({{url($cover->image)}}); @if(isset($width)) width: {{$width}}; @endif">
+<a href="{{$cover->url}}" class="banner lazy" loading="lazy" data-type="{{$type}}" style="background-image: url({{url($cover->image)}}); @if(isset($width)) width: {{$width}}; @endif">
 </a>
 @endif

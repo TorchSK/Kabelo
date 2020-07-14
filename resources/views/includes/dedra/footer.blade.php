@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="column">
 		 <a class="logo item" href="/">
-         <img src="/img/logo_{{strtolower($appname)}}.png" alt="logo" height="50"/>
+         <img src="/img/logo_{{strtolower($appname)}}.png" class="lazy" loading="lazy" alt="logo" height="50"/>
           <text>{{ucfirst($appname)}}</text>
         </a>
 

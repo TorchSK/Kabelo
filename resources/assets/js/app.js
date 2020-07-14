@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-$('img.lazy').Lazy();
+$('.lazy').Lazy();
 
 $(document).on('click', '.to_cart',function(){
   $product = $(this).closest('.product').data('productid');
