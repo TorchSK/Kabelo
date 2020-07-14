@@ -1395,7 +1395,7 @@ $('#filterbar .tabs .param.tab:not(".disabled")').click(function(){
 $carousel = $('.covers').flickity({
   //autoPlay: 4000,
   setGallerySize: false,
-  lazyLoad: 1
+  lazyLoad: true
 });
 
 
@@ -3705,18 +3705,6 @@ $('.scroll_to_top').click(function(){
   $("html, body").animate({ scrollTop: 0 }, "fast");
 })
 
-
-$('#home_sales_div').on('click','.right.icon',function(){
-	$sales_carousel.flickity('next');
-}).on('click','.left.icon',function(){
-	$sales_carousel.flickity('previous');
-});
-
-$('#home_news_div').on('click','.right.icon',function(){
-	$news_carousel.flickity('next');
-}).on('click','.left.icon',function(){
-	$news_carousel.flickity('previous');
-});
 
 
 $('#cartproducts').on('click', 'i.qty', function(){
