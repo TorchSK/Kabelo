@@ -27,10 +27,7 @@ class File extends Model {
 
       if(isset($array[5]) && isset($array[7]))
       {
-
- 
-
-    	$path = 'https://cdndedra.azureedge.net/imagehandler/dedra.blob.core.windows.net/cms/ContentItems/'.$array[5].'/m_max__w_300__h_375__a_middlecenter__f_webp__o__x_bottomright__r_50/'.explode('.',$array[7])[0].'.webp';
+    	$path = 'https://dedra.blob.core.windows.net/imagehandler/dedra.blob.core.windows.net/cms/ContentItems/'.$array[5].'/images/m_max__w_480__h_480__a_middlecenter__o__x_bottomright__r_30/'.explode('.',$array[7])[0].'.jpeg';
         return $path;
       }
       else{
