@@ -544,26 +544,21 @@ a:hover {
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
+  position: relative;
 }
 @media all and (max-width: 1280px) {
   .top_banners {
     display: none !important;
   }
 }
-.top_banners .banner {
-  display: block !important;
+.top_banners img {
   position: relative;
-  display: inline-block;
   margin-right: 5px;
-  height: 50%;
   overflow: hidden;
-  background-size: cover;
-}
-.top_banners .banner img {
   max-width: 100%;
-  height: auto;
+  max-height: 108.5px;
 }
-.top_banners .banner:first-child {
+.top_banners img:first-child {
   margin-bottom: 35px;
 }
 .covers {
@@ -571,6 +566,7 @@ a:hover {
   display: inline-block;
   flex: 0 0 100%;
   max-width: 71%;
+  position: relative;
 }
 @media all and (max-width: 1280px) {
   .covers {
@@ -579,15 +575,11 @@ a:hover {
     height: auto !important;
   }
 }
-.covers .banner {
-  width: 100%;
-  height: 100%;
-  display: block;
-  background-size: cover;
-}
-.covers .banner img {
+.covers img {
   max-height: 100%;
   max-width: 100%;
+  width: 100%;
+  height: 100%;
 }
 #home_content {
   background-color: #F7F7F7;
