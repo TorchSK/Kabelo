@@ -701,6 +701,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  max-height: 800px;
 }
 @media all and (max-width: 980px) {
   #home_bestsellers_div .box {
@@ -724,7 +725,7 @@ a:hover {
   color: #FFF !important;
 }
 #home_bestsellers_div .items .item {
-  width: 23%;
+  width: 31%;
 }
 @media all and (max-width: 980px) {
   #home_bestsellers_div .items .item {
