@@ -1,3 +1,6 @@
+$(function() {
+      $('.lazy').Lazy();
+  });
 
 $(document).ready(function(){
  
