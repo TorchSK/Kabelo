@@ -157,7 +157,7 @@
       @if($appname=='dedra')
         <div class="catalogues item ct">
           @if(App\File::whereType('catalogue')->wherePrimary(1)->count() > 0)
-          <img src="{{url(App\File::whereType('catalogue')->wherePrimary(1)->first()->thumbnail->path)}}" width="50" alt="catalogue" /> 
+          <img data-src="{{url(App\File::whereType('catalogue')->wherePrimary(1)->first()->thumbnail->path)}}" width="50" alt="catalogue" class="lazy" loading="lazy"/> 
           @endif
         </div>
 
