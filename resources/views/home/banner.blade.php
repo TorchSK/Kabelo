@@ -8,6 +8,6 @@
 
 </div>
 @else
-	<img data-src="{{url($cover->image)}}" loading="lazy" class="lazy" style="@if(isset($width)) width: {{$width}}; @endif" />
+	<img data-flickity-lazyload="{{url($cover->image)}}" loading="lazy" class="lazy" style="@if(isset($width)) width: {{$width}}; @endif" />
 
 @endif

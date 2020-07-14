@@ -1393,7 +1393,7 @@ $('#filterbar .tabs .param.tab:not(".disabled")').click(function(){
 
 
 $carousel = $('.covers').flickity({
-  //autoPlay: 4000,
+  autoPlay: 4000,
   setGallerySize: false,
   lazyLoad: true
 });
