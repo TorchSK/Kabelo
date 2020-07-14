@@ -42,7 +42,7 @@
 			<img src="/img/empty.jpg" class="ui image"/>
 		@elseif ($product->image)
 			@if($product->thumbnail_flag==1)
-			 <img data-flickity-lazyload="{{url((string)$product->image->thumb)}}" data-src="{{url((string)$product->image->thumb)}}" class="ui image lazy" alt="{{$product->code}}-{{$product->name}}" style="max-height: 187px; display: inline-block;"/>
+			 <img data-src="{{url((string)$product->image->thumb)}}" class="ui image lazy" alt="{{$product->code}}-{{$product->name}}" style="max-height: 187px; display: inline-block;"/>
 			@else
 			 <img data-src="{{url($product->image->path)}}" class="ui image lazy" alt="{{$product->code}}-{{$product->name}}" style="max-height: 187px; display: inline-block;"/>
            @endif

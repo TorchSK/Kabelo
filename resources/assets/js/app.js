@@ -1,9 +1,7 @@
-$(function() {
-      $('.lazy').Lazy();
-  });
 
 $(document).ready(function(){
- 
+
+$('img.lazy').Lazy();
 
 $(document).on('click', '.to_cart',function(){
   $product = $(this).closest('.product').data('productid');
@@ -1369,62 +1367,6 @@ $('.close_btn').click(function(){
 
 
 
-$sales_carousel = $('#home_sales_div .items').flickity({
-    cellAlign: 'left',
-    contain: false,
-    pageDots: false,
-    prevNextButtons: false,
-    imagesLoaded: true,
-    wrapAround: true,
-    lazyLoad: 5
-});
-
-$news_carousel = $('#home_news_div .items').flickity({
-    cellAlign: 'left',
-    contain: false,
-    pageDots: false,
-    prevNextButtons: false,
-    imagesLoaded: false,
-        wrapAround: true,
-        lazyLoad: 5
-
-});
-
-$bestsellers_carousel = $('#home_bestsellers_div .items').flickity({
-    cellAlign: 'left',
-    contain: false,
-    pageDots: false,
-    prevNextButtons: false,
-    imagesLoaded: true,
-        wrapAround: true,
-        lazyLoad: 5
-
-});
-
-
-$sales_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
-	$link = $(cellElement).find('.p_anch').attr('href');
-	if($($(pointer)[0].target).hasClass('to_cart')==false && $($(pointer)[0].target).hasClass('icon')==false )
-	{
-		window.location.href = $link;
-	}
-});
-
-$news_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
-	$link = $(cellElement).find('.p_anch').attr('href');
-	if($($(pointer)[0].target).hasClass('to_cart')==false && $($(pointer)[0].target).hasClass('icon')==false )
-	{
-			window.location.href = $link;
-	}
-});
-
-$bestsellers_carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
-	$link = $(cellElement).find('.p_anch').attr('href');
-	if($($(pointer)[0].target).hasClass('to_cart')==false && $($(pointer)[0].target).hasClass('icon')==false )
-	{
-			window.location.href = $link;
-	}
-});
 
 
 
@@ -1453,12 +1395,7 @@ $('#filterbar .tabs .param.tab:not(".disabled")').click(function(){
 $carousel = $('.covers').flickity({
   autoPlay: 4000,
   setGallerySize: false,
-  lazyLoad: 5
-});
-
-$carousel_mobile = $('.top_banner_row_mobile').flickity({
-  autoPlay: 4000,
-  pageDots: false
+  lazyLoad: 1
 });
 
 

@@ -32,6 +32,7 @@
     <script src="/js/dropzone.js"></script>
     <script src="/js/handsontable.full.min.js"></script>
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=qf9bxbfqc0n3wz9w142mp9fu5fybtks16oqfiduv88ea66zi"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
 
     </body>
 </html>

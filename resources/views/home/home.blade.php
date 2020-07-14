@@ -3,9 +3,7 @@
 
 
 
-    @if($layout == 2)
     @include('includes/filterbar_horizontal')
-    @endif
 
     <div id="m_categories_wrapper">
         <div class="ui red  small fluid button" id="catbar_handle">Kategorie</div>
@@ -53,7 +51,6 @@
                     <div class="container">
                         <div class="caption">
                             <name>Novinky</name>
-                            <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
                         </div>
                         <div class="items">
                         @foreach(App\Product::where('new',1)->where('new_carousel',1)->where('active',1)->orderBy('new_order')->get() as $product)
@@ -86,7 +83,6 @@
 
                         <div class="caption">
                             <name>Akcie</name>
-                            <arrows><i class="chevron circle left icon"></i><i class="chevron circle right icon"></i></arrows>
                         </div>
 
                         <div class="items">
