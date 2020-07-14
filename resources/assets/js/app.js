@@ -3403,6 +3403,13 @@ $("#grid_wrapper").on('click', '.product.item', function(e){
 	}
 });
 
+$(".main.wrapper").on('click', '.product.item', function(e){
+  $link = $(this).find('.p_anch').attr('href');
+  if($(e.target).hasClass('to_cart')==false  && $(e.target).hasClass('icon')==false )
+  {
+    window.location.href = $link;
+  }
+});
 
 
 
