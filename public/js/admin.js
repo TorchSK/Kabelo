@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+$('img.lazy').Lazy();
 tinymce.init({
   selector: '.richtext.editable',
   auto_focus : "mce_0",
