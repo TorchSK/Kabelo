@@ -1404,6 +1404,14 @@ $carousel.on( 'pointerUp.flickity', function(){
 });
 
 
+$carousel.on( 'staticClick.flickity', function( event, pointer, cellElement, cellIndex ) {
+  $link = $(cellElement).attr('href');
+  if($($(pointer)[0].target).hasClass('to_cart')==false && $($(pointer)[0].target).hasClass('icon')==false )
+  {
+      window.location.href = $link;
+  }
+});
+
 $('.expand_all_toggle').click(function(){
 	$target = $(this).data('target');
 	if ($(this).hasClass('expanded'))
