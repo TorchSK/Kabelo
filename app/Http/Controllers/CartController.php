@@ -115,7 +115,7 @@ class CartController extends Controller
         }
         else
         {
-            $cart = json_decode(Cookie::get('cart'));
+            $cart = json_decode(Cookie::get('cart'), true);
             $price = 0;
 
             if ($cart)
