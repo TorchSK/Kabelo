@@ -57,7 +57,7 @@ class CartService implements CartServiceContract {
         'ico_flag' => 0
       ];
 
-      Cookie::queue('cart', $cookieData, 0);  
+      Cookie::queue('cart', json_encode($cookieData), 0);  
 
     }
   
