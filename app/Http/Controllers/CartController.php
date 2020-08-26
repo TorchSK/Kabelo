@@ -157,7 +157,7 @@ class CartController extends Controller
         }
         else
         {
-            $cart = $this->getCart('undefined');
+            //$cart = $this->getCart('undefined');
 
             foreach ($request->except('_token') as $key => $item) {
                  $cart[$key] = $item;
