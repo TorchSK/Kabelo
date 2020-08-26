@@ -163,7 +163,7 @@ class CartController extends Controller
                  $cart[$key] = $item;
             }        
 
-            Cookie::queue('cart', $cart, 555555);
+            Cookie::queue('cart', jsonc_encode($cart), 555555);
         }
     }
 
