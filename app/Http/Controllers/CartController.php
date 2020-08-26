@@ -157,7 +157,7 @@ class CartController extends Controller
         }
         else
         {
-            //$cart = $this->getCart('undefined');
+            $cart = $this->getCart('undefined');
 
             foreach ($request->except('_token') as $key => $item) {
                  $cart[$key] = $item;
@@ -349,7 +349,7 @@ class CartController extends Controller
                 $cartData['sizes'] = $cartSizes;
             }
 
-            Cookie::queue('cart', $cartData, config('app.cartCookieExpire'));
+            Cookie::queue('cart', json_encode($cartData), config('app.cartCookieExpire'));
         }
 
         // return price for FE
