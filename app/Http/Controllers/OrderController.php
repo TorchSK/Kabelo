@@ -54,7 +54,7 @@ class OrderController extends Controller
         }
         else
         {
-            $orderData = Cookie::get('cart');
+            $orderData = json_decode(Cookie::get('cart') ,true);
             $orderCounts =  $orderData['counts'];
             $orderSizes =  $orderData['sizes'];
         }
