@@ -18,6 +18,7 @@ class CreateCartCookie
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        /*
         if (!Auth::guard($guard)->check()) 
         {
             $cart = Cookie::get('cart');
@@ -53,6 +54,7 @@ class CreateCartCookie
                 $cart = Cookie::get('cart');
             } 
         }
+        */
 
         return $next($request);
     }
