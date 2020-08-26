@@ -22,9 +22,9 @@ class SetDatabaseConnection
     public function handle($request, Closure $next, $guard = null)
     {
         try{
-                
+
         }
-        catch(ErrorException  $e) {
+        catch(Exception  $e) {
           Cookie::forget('cart');
         }
 
