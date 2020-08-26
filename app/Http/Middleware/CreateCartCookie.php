@@ -28,10 +28,7 @@ class CreateCartCookie
         {
             $cart = Cookie::get('cart');
         
-            if (!$this->isJson($cart))
-            {
                 $cart=null;
-            }
 
             if($cart == null)
             {
