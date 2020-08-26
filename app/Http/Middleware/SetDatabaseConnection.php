@@ -21,7 +21,9 @@ class SetDatabaseConnection
      */
     public function handle($request, Closure $next, $guard = null)
     {
-
+        try{
+                
+        }
         catch(ErrorException  $e) {
           Cookie::forget('cart');
         }
