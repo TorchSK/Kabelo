@@ -140,7 +140,7 @@ class UserController extends Controller
 
         if ($auth = Auth::attempt($credentials, true))
         {
-            $cookieCart = Cookie::get('cart');
+            $cookieCart = json_decode(Cookie::get('cart'), true);
             $dbCart = Auth::user()->cart;
 
             foreach($cookieCart['items'] as $key=>$item)
