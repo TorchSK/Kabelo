@@ -13,7 +13,6 @@
 			    <th></th>
 			    <th>Carousel</th>
 			    <th>ID</th>
-			    <th>Kód</th>
 			    <th>Názov</th>
 			    <th>Zmazať</th>
 			  </tr></thead>
@@ -24,7 +23,6 @@
 			 	  <td class="collapsing"><div class="ui checkbox"><input type="checkbox" name="new_carousel" @if($product->new_carousel)checked @endif></div></td>
 
 			      <td>{{$product->id}}</td>
-			   		<td>{{$product->code}}</td>
 			      <td>{{$product->name}}</td>
 			      <td class="collapsing"><a class="ui mini icon red button"><i class="delete large icon"></i></a></td>
 			  	</tr>
