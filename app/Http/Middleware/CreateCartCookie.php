@@ -41,8 +41,8 @@ class CreateCartCookie
                 ];
 
                 // create cookie
-                $cookie = Cookie::queue('cart',$cookieData,555555);
-                $cart = Cookie::get('cart');
+                $cookie = Cookie::queue('cart',json_encode($cookieData),555555);
+                $cart = json_decode(Cookie::get('cart'));
             }
 
             if(is_array($cart) && !array_key_exists('sizes', $cart))
