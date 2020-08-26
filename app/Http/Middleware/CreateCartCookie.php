@@ -18,7 +18,6 @@ class CreateCartCookie
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        /*
         if (!Auth::guard($guard)->check()) 
         {
             $cart = Cookie::get('cart');
@@ -42,7 +41,7 @@ class CreateCartCookie
                 ];
 
                 // create cookie
-                $cookie = Cookie::queue('cart',$cookieData,555555);
+                $cookie = Cookie::queue('cart',serailize($cookieData),555555);
                 $cart = Cookie::get('cart');
             }
 
@@ -54,7 +53,6 @@ class CreateCartCookie
                 $cart = Cookie::get('cart');
             } 
         }
-        */
 
         return $next($request);
     }
