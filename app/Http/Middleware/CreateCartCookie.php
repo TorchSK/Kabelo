@@ -34,14 +34,14 @@ class CreateCartCookie
                     'sizes' => [], 
                     'delivery_method' => '',
                     'payment_method' => '',
-                    'invoice_address' => '{}',
-                    'delivery_address' => '{}',
+                    'invoice_address' => '',
+                    'delivery_address' => '',
                     'delivery_address_flag' => 0,
                     'ico_flag' => 0
                 ];
 
                 // create cookie
-                $cookie = Cookie::queue('cart',serialize($cookieData),555555);
+                $cookie = Cookie::queue('cart',$cookieData,555555);
                 $cart = Cookie::get('cart');
             }
 
