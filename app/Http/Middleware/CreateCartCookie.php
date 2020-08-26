@@ -16,12 +16,23 @@ class CreateCartCookie
      * @param  string|null  $guard
      * @return mixed
      */
+
+    public function isJson($string) {
+         json_decode($string);
+         return (json_last_error() == JSON_ERROR_NONE);
+        }
+
     public function handle($request, Closure $next, $guard = null)
     {
         if (!Auth::guard($guard)->check()) 
         {
             $cart = Cookie::get('cart');
-    
+        
+            if (!$this->isJson($cart))
+            {
+                $cart=null;
+            }
+
             if($cart == null)
             {
                 $cookieData = [
