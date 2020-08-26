@@ -41,7 +41,7 @@ class CreateCartCookie
                 ];
 
                 // create cookie
-                $cookie = Cookie::queue('cart',json_encode($cookieData),555555);
+                $cookie = Cookie::queue('cart',$cookieData,555555);
                 $cart = Cookie::get('cart');
             }
 
