@@ -21,6 +21,11 @@ class SetDatabaseConnection
      */
     public function handle($request, Closure $next, $guard = null)
     {
+
+        catch(ErrorException  $e) {
+          Cookie::forget('cart');
+        }
+
         $app = env('APP_NAME');
 
         if($app == 'Laravel')
