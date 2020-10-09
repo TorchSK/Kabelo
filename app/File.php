@@ -24,7 +24,7 @@ class File extends Model {
     {
 		  $array = explode('/', $this->path);
 
-      
+      /*
       if(isset($array[5]) && isset($array[7]))
       {
     	$path = 'https://cdndedra.azureedge.net/imagehandler/dedra.blob.core.windows.net/cms/ContentItems/'.$array[5].'/images/m_max__w_480__h_480__a_middlecenter__o__x_bottomright__r_30/'.explode('.',$array[7])[0].'.jpeg';
@@ -33,9 +33,9 @@ class File extends Model {
       else{
         return $this->path;
       }
-      
+      */
 
-  
+      return $this->path;
 
     }
 }
