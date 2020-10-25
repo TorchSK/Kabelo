@@ -13,6 +13,7 @@
 	    <th>Datum prijatia</th>
 	 	<th>Meno</th>
 	 	<th>Telefón</th>
+	 	<th>Email</th>
 	    <th>Suma</th>
 	    <th>Stav</th>
 	    <th>Dodanie</th>
@@ -29,6 +30,7 @@
 	      <td>{{Carbon\Carbon::parse($order->created_at)->format('d.m.Y H:i:s')}}</td>
 	   	  <td>{{json_decode($order->invoice_address)->name}}</td>
 	   	  <td>{{json_decode($order->invoice_address)->phone}}</td>
+	   	  <td>{{json_decode($order->invoice_address)->email}}</td>
 	      <td>{{$order->price}} &euro;</td>
 	      <td  class="status collapsing" data-statusid="{{$order->status_id}}">{{$order->status->name}}</td>
 	      <td>{{$order->delivery->name}} / {{$order->payment->name}}</td>
@@ -53,6 +55,7 @@
 	    <th>Datum prijatia</th>
 	 	<th>Meno</th>
 	 	<th>Telefón</th>
+	 	<th>Email</th>
 	    <th>Suma</th>
 	    <th>Stav</th>
 	    <th>Dodanie</th>
@@ -69,6 +72,7 @@
 	      <td>{{Carbon\Carbon::parse($order->created_at)->format('d.m.Y H:i:s')}}</td>
 	   	  <td>{{json_decode($order->invoice_address)->name}}</td>
 	   	  <td>{{json_decode($order->invoice_address)->phone}}</td>
+	   	  <td>{{json_decode($order->invoice_address)->email}}</td>
 	      <td>{{$order->price}}&euro;</td>
 	      <td  class="status collapsing" data-statusid="{{$order->status_id}}">{{$order->status->name}}</td>
 	      <td>{{$order->delivery->name}} / {{$order->payment->name}}</td>
