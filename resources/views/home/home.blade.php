@@ -75,7 +75,7 @@
                     <div class="container">
 
                         <div class="caption">
-                            <name>Akcie</name>
+                            <name>Mimoriadna ponuka</name>
                         </div>
 
                         <div class="items">

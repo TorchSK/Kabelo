@@ -3857,6 +3857,12 @@ $('#product_update_btn').click(function(){
 	})
 })
 
+
+$('.top_banners img').click(function()
+{
+  $href = $(this).attr('href');
+   location.replace($href);
+})
 /*
 
 $(document).unbind('keypress').on('keypress', '.msg_input', function(e) {
