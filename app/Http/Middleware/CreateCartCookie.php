@@ -45,15 +45,15 @@ class CreateCartCookie
                 $cart = json_decode(Cookie::get('cart'));
             }
 
-            /*
+            
             if(json_decode($cart,true)['number'] == 0)
             {
                 $cookieData = $cart;
                 $cookieData['sizes'] = [];
-                $cookie = Cookie::queue('cart',$cookieData,555555);
-                $cart = Cookie::get('cart');
+                $cookie = Cookie::queue('cart',json_encode($cookieData),555555);
+                $cart = json_decode(Cookie::get('cart'));
             } 
-            */
+            
         }
 
         return $next($request);
