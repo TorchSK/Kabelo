@@ -379,7 +379,7 @@ class CartController extends Controller
             $cart['counts'][$productid] = $request->get('qty');
             $cart['price_levels'][$productid] = $this->getPriceLevel($productid, $request->get('qty'));
 
-            Cookie::queue('cart', $cart, config('app.cartCookieExpire'));
+            Cookie::queue('cart', json_encode($cart), config('app.cartCookieExpire'));
         }
 
         return $cart;
@@ -413,7 +413,7 @@ class CartController extends Controller
             unset($cart['counts'][$productId]);
             unset($cart['price_levels'][$productId]);
 
-            Cookie::queue('cart', $cart, config('app.cartCookieExpire'));
+            Cookie::queue('cart', json_encode($cart), config('app.cartCookieExpire'));
         }
 
         // return price for FE
@@ -453,7 +453,7 @@ class CartController extends Controller
         }
         else
         {
-            Cookie::queue('cart', $cartData, config('app.cartCookieExpire'));
+            Cookie::queue('cart', json_encode($cartData), config('app.cartCookieExpire'));
         }
 
         // return price for FE

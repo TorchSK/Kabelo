@@ -46,6 +46,7 @@ class CartService implements CartServiceContract {
         'number' => 0,
         'price' => 0,
         'shipping_price' => 0,
+        'sizes' => [],
         'items' => [],
         'counts' => [],
         'price_levels' => [], 
