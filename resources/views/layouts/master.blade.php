@@ -20,8 +20,8 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
 
 
-    <script src="/js/flickity.js"></script>
-    <script src="/js/modulobox.min.js"></script>
+    <script defer async src="/js/flickity.js"></script>
+    <script defer async src="/js/modulobox.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
 
     </body>
