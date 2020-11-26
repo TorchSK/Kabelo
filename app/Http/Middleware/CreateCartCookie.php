@@ -48,8 +48,21 @@ class CreateCartCookie
             
             if(json_decode($cart,true)['number'] == 0)
             {
-                $cookieData = $cart;
-                $cookieData['sizes'] = [];
+                $cookieData = [
+                    'number' => 0,
+                    'price' => 0,
+                    'shipping_price' => 0,
+                    'items' => [],
+                    'counts' => [],
+                    'price_levels' => [], 
+                    'sizes' => [], 
+                    'delivery_method' => '',
+                    'payment_method' => '',
+                    'invoice_address' => '{}',
+                    'delivery_address' => '{}',
+                    'delivery_address_flag' => 0,
+                    'ico_flag' => 0
+                ];
                 $cookie = Cookie::queue('cart',json_encode($cookieData),555555);
                 $cart = json_decode(Cookie::get('cart'));
             } 
