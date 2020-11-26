@@ -45,7 +45,7 @@ class CreateCartCookie
                 $cart = json_decode(Cookie::get('cart'));
             }
 
-            if(json_decode($cart)['number'] == 0)
+            if(json_decode($cart,true)['number'] == 0)
             {
                 $cookieData = $cart;
                 $cookieData['sizes'] = [];
