@@ -45,6 +45,7 @@ class CreateCartCookie
                 $cart = json_decode(Cookie::get('cart'));
             }
 
+            /*
             if(json_decode($cart,true)['number'] == 0)
             {
                 $cookieData = $cart;
@@ -52,6 +53,7 @@ class CreateCartCookie
                 $cookie = Cookie::queue('cart',$cookieData,555555);
                 $cart = Cookie::get('cart');
             } 
+            */
         }
 
         return $next($request);
