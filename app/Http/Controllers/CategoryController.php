@@ -114,6 +114,8 @@ class CategoryController extends Controller
 
         $category->save();
 
+        Cache::forget('categories');
+
         return redirect()->route('admin.eshop.category',['category'=>$category->url]);
     }
 
