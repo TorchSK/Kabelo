@@ -9,6 +9,10 @@
     @include('includes.parambar')   
 
     <div class="pusher flex_column">
+        <div class="ui warning fluid message">
+          <i class="close icon"></i>
+          Doba dodania je minimálne 10 dní, negarantujeme dodanie do vianoc 
+        </div>
         @include('includes.header')
         @yield('content')
     </div>
