@@ -9,11 +9,13 @@
     @include('includes.parambar')   
 
     <div class="pusher flex_column">
-        <div class="ui warning fluid message" style="margin-top: 7px;">
+        @include('includes.header')
+        
+        <div class="ui blue message" style="margin-top: 7px;">
           <i class="close icon"></i>
             <b>Doba dodania je minimálne 10 dní, negarantujeme dodanie do vianoc &nbsp;</b>
         </div>
-        @include('includes.header')
+
         @yield('content')
     </div>
 
