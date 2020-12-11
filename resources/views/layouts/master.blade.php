@@ -11,7 +11,7 @@
     <div class="pusher flex_column">
         <div class="ui warning fluid message" style="margin-top: 3px;">
           <i class="close icon" style="margin-left: 5px;"></i>
-          Doba dodania je minimálne 10 dní, negarantujeme dodanie do vianoc 
+            <b>Doba dodania je minimálne 10 dní, negarantujeme dodanie do vianoc</b>
         </div>
         @include('includes.header')
         @yield('content')
