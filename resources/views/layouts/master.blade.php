@@ -10,13 +10,6 @@
 
     <div class="pusher flex_column">
         @include('includes.header')
-        
-        <div class="container">
-        <div class="ui blue message" style="margin-top: 5px; margin-bottom: 5px; width: 100%; text-align: center;">
-          <i class="close icon"></i>
-            <b>Doba dodania je minimálne 10 dní, negarantujeme dodanie do vianoc &nbsp;</b>
-        </div>
-    </div>
 
         @yield('content')
     </div>
