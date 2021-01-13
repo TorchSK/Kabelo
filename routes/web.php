@@ -160,6 +160,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
 
 Route::get('/stock/', 'ProductController@setStock')->name('setStock');
+Route::get('/admin/fixtree/', 'CategoryController@fixTree');
 
 Route::get('/welcome', 'HomeController@welcome')->name('welcome');
 Route::post('/login', 'UserController@postLogin')->name('postLogin');

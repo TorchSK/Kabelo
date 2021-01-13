@@ -42,6 +42,12 @@ class CategoryController extends Controller
     }
 
 
+    public function fix()
+    {   
+        Category::fixTree();
+    }
+         
+
     public function products($path=null, Request $request)
     {   
             $cat = Category::whereFullUrl($path)->first();
