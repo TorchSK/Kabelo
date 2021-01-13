@@ -42,7 +42,7 @@ class CategoryController extends Controller
     }
 
 
-    public function fix()
+    public function fixTree()
     {   
         Category::fixTree();
     }
