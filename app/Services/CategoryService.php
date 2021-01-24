@@ -34,7 +34,23 @@ class CategoryService implements CategoryServiceContract {
       return $categories;
   }
 
-    public function getCategoriesRaw()
+
+  public function getActiveCategories()
+  { 
+
+      if(!Cache::has('categories'))
+      {
+        $categories = Category::whereActive(1)->with('descendants')->orderBy('order')->get()->toTree();
+        Cache::put('activeCategories', $categories, 60);
+      }
+      else
+      {
+        $categories =  Cache::get('activeCategories');
+      }
+      return $categories;
+  }
+
+      public function getCategoriesRaw()
   { 
 
       if(!Cache::has('categories'))

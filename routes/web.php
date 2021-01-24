@@ -43,6 +43,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 	Route::get('/eshop/xmlupdate', 'AdminController@xmlUpdate')->name('admin.eshop.xmlupdate');
 	Route::get('/eshop/xmlupdate/history', 'AdminController@xmlUpdateHistory')->name('admin.eshop.xmlUpdateHistory');
 	Route::get('/eshop/products', 'AdminController@products')->name('admin.eshop.products');
+	Route::get('/eshop/activecategories', 'AdminController@activeCategories')->name('admin.eshop.activeCategories');
 	Route::get('/eshop/categories', 'AdminController@categories')->name('admin.eshop.categories');
 	Route::get('/eshop/category/{category}', 'AdminController@category')->name('admin.eshop.category');
 	Route::get('/eshop/new', 'AdminController@new')->name('admin.eshop.new');

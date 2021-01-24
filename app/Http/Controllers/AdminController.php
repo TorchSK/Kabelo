@@ -989,6 +989,16 @@ class AdminController extends Controller
         return view('admin.eshop.categories', $data);
     }
     
+    public function activeCategories()
+    {
+        $data = [
+            'categories' => $this->categoryService->getActiveCategories(),
+            'categoryCounts' => $this->productService->categoryCounts(),
+        ];
+
+        return view('admin.eshop.categories', $data);
+    }
+
     public function users()
     {
         $data = [
