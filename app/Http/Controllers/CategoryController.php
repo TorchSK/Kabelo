@@ -264,6 +264,10 @@ class CategoryController extends Controller
 
             $category->save();
         }
+
+        Cache::forget('categories');
+        Cache::forget('activeCategories');
+
     }
 
 
