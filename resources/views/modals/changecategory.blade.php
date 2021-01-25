@@ -12,7 +12,7 @@ Zmeň kategóriu
 	<select multiple="true" name="categories[]" id="bulk_change_category_dropdown" class="ui fluid search dropdown filter_item category">
 	    <option value="">Kategória</option>
 
-	    @foreach (App\Category::orderBy('path','asc')->get() as $category)
+	    @foreach (App\Category::orderBy('order','asc')->get() as $category)
 		    <option value="{{$category->id}}">
 		    	@if($category->parent)
 		  		{{$category->parent->name}} - 
