@@ -32,7 +32,7 @@ class Welcome extends Mailable
     public function build()
     {
         return $this->view('emails.welcome')
-                    ->from('obchod@dedraslovakia.sk', "Dedraslovakia")
+                    ->from('eshop@dedraslovakia.sk', "Dedraslovakia")
                     ->subject('Vaša registrácia na dedraslovakia.sk')
                     ->with([
                         'token' => $this->user->activation->token,

@@ -15,3 +15,4 @@ yarn-error.log
 /semantic
 laravel-echo-server.json
 laravel-echo-server.lock
+public/zm.csv
