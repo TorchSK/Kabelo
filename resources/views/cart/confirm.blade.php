@@ -182,9 +182,9 @@
 
 		<a class="ui huge green button" id="submit_order_btn"><i class="upload icon"></i>Odoslať objednávku</a> 
 
-		@if(Auth::check() && Auth::user()->admin)
-		<div class="text_info" style="margin-top: 5px; font-size: 1.3em;">Odosielate objednávku s povinnosťou platby</div>
-		@endif
+	
+		<div class="text_info" style="margin-top: 15px; font-size: 1.2em;">Odosielate objednávku s povinnosťou platby</div>
+		
 	</div>
 
 </div>
