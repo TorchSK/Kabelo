@@ -180,10 +180,10 @@
 		 <div class="vop_info">Stlačením „Dokončiť objednávku s povinnosťou platby“ potvrdzujete, že ste sa oboznámili s <a href="/obchodne-podmienky" target="_blank">obchodnými podmienkami</a></div>
 		 <div class="gdpr_info"><a href="/obchodne-podmienky" target="_blank">Info o spracovaní osobných údajov</a></div>
 
-		<a class="ui huge green button" id="submit_order_btn"><i class="upload icon"></i>Dokončiť objednávku</a> 
+		<a class="ui huge green button" id="submit_order_btn"><i class="upload icon"></i>Odoslať objednávku</a> 
 
 		@if(Auth::check() && Auth::user()->admin)
-		<div class="text_info">s povinnosťou platby</div>
+		<div class="text_info" style="margin-top: 5px; font-size: 1.3em;">Odosielate objednávku s povinnosťou platby</div>
 		@endif
 	</div>
 
