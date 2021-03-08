@@ -228,7 +228,7 @@ Vaša
 DEDRA SLOVAKIA
 
 mobil : 0902 797 913
-mail : obchod@dedraslovakia.sk
+mail : eshop@dedraslovakia.sk
 web: www.dedraslovakia.sk
 
 V prílohe zasielame Všeobecné obchodné podmienky.
