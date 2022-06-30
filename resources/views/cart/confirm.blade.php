@@ -180,7 +180,7 @@
 			@endif
 
 			@if(in_array(substr(($cart['price'] + $cart['shipping_price']),-1), [8,9]))
-			{{round(($cart['price'] + $cart['shipping_price']),2)}}
+			{{round(($cart['price'] + $cart['shipping_price']),1)}}
 			@endif
 
 		</price> 
