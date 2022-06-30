@@ -171,7 +171,7 @@
 	<div id="cart_total_price">Celková cena: 
 		<price>
 
-			@if(in_array(substr(number_format($cart['price'] + $cart['shipping_price']),2),-1), [1,2]))
+			@if(in_array(substr(number_format(($cart['price'] + $cart['shipping_price']),2),-1), [1,2]))
 			{{substr(($cart['price'] + $cart['shipping_price']),0,-1).'0'}}
 			@endif
 
