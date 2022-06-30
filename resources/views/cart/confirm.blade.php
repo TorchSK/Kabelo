@@ -172,7 +172,7 @@
 		<price>
 
 			@if(in_array(substr(number_format(($cart['price'] + $cart['shipping_price']),2),-1), [0,1,2]))
-			{{substr(($cart['price'] + $cart['shipping_price']),0,-1).'0'}}
+			{{substr(number_format(($cart['price'] + $cart['shipping_price']),2),0,-1).'0'}}
 			@endif
 
 			@if(in_array(substr(($cart['price'] + $cart['shipping_price']),-1), [3,4,5,6,7]))
