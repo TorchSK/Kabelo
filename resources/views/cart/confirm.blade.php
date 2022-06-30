@@ -179,7 +179,7 @@
 			{{substr(number_format(($cart['price'] + $cart['shipping_price']),2),0,-1).'5'}}
 			@endif
 
-			@if(in_array(substr(number_format(($cart['price'] + $cart['shipping_price']),2)-1), [8,9]))
+			@if(in_array(substr(number_format(($cart['price'] + $cart['shipping_price']),2),-1), [8,9]))
 			{{round(($cart['price'] + $cart['shipping_price']),1)}}
 			@endif
 
