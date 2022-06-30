@@ -171,17 +171,7 @@
 	<div id="cart_total_price">Celková cena: 
 		<price>
 
-			@if(in_array(substr(($cart['price'] + $cart['shipping_price']),-1)), [1,2])
-			{{substr(($cart['price'] + $cart['shipping_price']),0,-1).'0'}}
-			@endif
-
-			@if(in_array(substr(($cart['price'] + $cart['shipping_price']),-1)), [3,4,5,6,7])
-			{{substr(($cart['price'] + $cart['shipping_price']),0,-1).'5'}}
-			@endif
-
-			@if(in_array(substr(($cart['price'] + $cart['shipping_price']),-1)), [8,9])
-			{{round(($cart['price'] + $cart['shipping_price']),2)}}
-			@endif
+		
 
 		</price> 
 		<symbol>&euro;</symbol>
