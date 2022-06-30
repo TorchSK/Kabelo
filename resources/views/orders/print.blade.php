@@ -120,7 +120,27 @@
 
 	<div class="total" style="margin-top: 25px; display: flex; justify-content: space-between; font-weight: 900;border-bottom: 1px solid #EEE; padding-bottom: 15px;">
 		<div style="">Celkom</div>
-		<div style="">{{$order->price + $order->shipping_price}} &euro;</div>
+
+        @if($order->delivery->id == 2 && $order->payment->id == 2)
+        @if(in_array(substr(number_format(($order->price + $order->shipping_price),2),-1), [0,1,2]))
+            {{substr(number_format(($order->price + $order->shipping_price),2),0,-1).'0'}}
+            @endif
+
+            @if(in_array(substr(number_format(($order->price + $order->shipping_price),2),-1), [3,4,5,6,7]))
+            {{substr(number_format(($order->price + $order->shipping_price),2),0,-1).'5'}}
+            @endif
+
+            @if(in_array(substr(number_format(($order->price + $order->shipping_price),2),-1), [8,9]))
+            {{round(($order->price + $order->shipping_price),1)}}
+            @endif
+
+            &euro;
+        @else
+		<div style="">
+            {{$order->price + $order->shipping_price}} &euro;
+        </div>
+        @endif
+
 	</div>
 
 
