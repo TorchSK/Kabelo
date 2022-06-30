@@ -166,7 +166,29 @@
 	@endif
 	<div id="cart_product_price">Cena za tovar celkovo: <price>{{$cart['price'] }}</price> <symbol>&euro;</symbol></div>	
 	<div id="cart_shipping_price">Cena za prepravu: <price>{{$cart['shipping_price']}}</price> <symbol>&euro;</symbol></div>
+
+	@if(App\PaymentMethod::find($cart['payment_method'])->key=="dobierka" && App\DeliveryMethod::find($cart['delivery_method'])->key=='kurier-dpda')
+	<div id="cart_total_price">Celková cena: 
+		<price>
+
+			@if(in_array(substr(($cart['price'] + $cart['shipping_price']),-1)), [1,2])
+			{{substr(($cart['price'] + $cart['shipping_price']),0,-1).'0'}}
+			@endif
+
+			@if(in_array(substr(($cart['price'] + $cart['shipping_price']),-1)), [3,4,5,6,7])
+			{{substr(($cart['price'] + $cart['shipping_price']),0,-1).'5'}}
+			@endif
+
+			@if(in_array(substr(($cart['price'] + $cart['shipping_price']),-1)), [8,9])
+			{{round(($cart['price'] + $cart['shipping_price']),2)}}
+			@endif
+
+		</price> 
+		<symbol>&euro;</symbol>
+	</div>
+	@else
 	<div id="cart_total_price">Celková cena: <price>{{$cart['price'] + $cart['shipping_price']}}</price> <symbol>&euro;</symbol></div>
+	@endif
 
 </div>
 </div>
