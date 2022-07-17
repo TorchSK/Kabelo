@@ -207,7 +207,7 @@
                 <div>DPH: <span style="font-weight: 900">{{($order->price + $order->shipping_price) - round(($order->price + $order->shipping_price)/(1 + App\Setting::where('name','vat')->first()->value/100),2)}}</span> &euro;</div>
                 @endif
                 
-                @if($payment_method->id == 2 && $delivery_method_id == 2)
+                @if($payment_method->id == 2 && $delivery_method->id == 2)
 
                 <div>Celková cena: 
                 <span style="font-weight: 900">
